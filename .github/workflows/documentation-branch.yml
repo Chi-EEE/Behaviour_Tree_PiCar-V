@@ -1,0 +1,59 @@
+# 'sync' job from: https://stackoverflow.com/questions/76509304/running-github-action-to-keep-a-branch-up-to-date-with-main
+name: Run Documentation Branch
+
+on:
+  push:
+    branches: [main]
+    
+permissions: 
+  contents: write
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+            with:
+                fetch-depth: 0
+
+          - name: Setup Git User
+            run: |
+                git config user.name "GitHub Action"
+                git config user.email "<EMAIL>"
+
+          - name: Update Documentation Branch
+            run: |
+                git checkout main
+                git fetch origin
+                git checkout test
+                git pull
+                git merge origin/main
+                git push origin documentation
+
+    build-documentation:
+        needs: sync
+        runs-on: ubuntu-latest
+        steps:
+          - name: Build DOxygen documentation
+            uses: mattnotmitt/doxygen-action@v1.9.5
+            with:
+                working-directory: './backend'
+                doxyfile-path: 'backend/Doxyfile'
+                enable-latex: true
+
+          - name: Build JSDoc documentation
+            uses: andstor/jsdoc-action@v1
+            with:
+                source_dir: ./frontend/src/lib
+                recurse: true
+                output_dir: ./docs/jsdoc
+    deploy:
+        needs: build-documentation
+        runs-on: ubuntu-latest
+        steps:
+          - name: Deploy
+            uses: peaceiris/actions-gh-pages@v3
+            with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./public
