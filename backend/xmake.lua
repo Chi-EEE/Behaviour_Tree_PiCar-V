@@ -7,7 +7,7 @@ set_languages("cxx17")
 add_requires("drogon")
 add_requires("rplidar_sdk")
 
-target("Car-Application")
+target("backend")
     set_kind("binary")
     add_packages("drogon")
     add_packages("rplidar_sdk")

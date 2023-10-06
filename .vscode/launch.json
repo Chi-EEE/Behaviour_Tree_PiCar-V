@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "xmake",
+            "request": "launch",
+            "name": "Debug XMake target",
+            "target": "backend",
+            "cwd": "${workspaceFolder}/backend"
+        }
+    ]
+}
