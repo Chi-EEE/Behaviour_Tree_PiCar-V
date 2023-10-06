@@ -38,7 +38,7 @@ jobs:
           - name: Build DOxygen documentation
             uses: mattnotmitt/doxygen-action@v1.9.5
             with:
-                doxyfile-path: './backend'
+                doxyfile-path: './backend/Doxyfile'
                 working-directory: '.'
                 enable-latex: true
 
