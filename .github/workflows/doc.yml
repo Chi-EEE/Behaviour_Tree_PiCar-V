@@ -4,6 +4,9 @@ name: Doxygen Action
 on:
   push:
     branches: [main]
+    
+permissions: 
+  contents: write
 
 jobs:
   build:
