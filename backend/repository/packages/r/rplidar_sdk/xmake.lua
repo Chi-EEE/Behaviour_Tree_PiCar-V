@@ -17,9 +17,9 @@ package("rplidar_sdk")
                package:add("defines", "WIN32")
             end
         elseif is_plat("linux") then
-            add_defines("__GNUC__")
+            package:add("defines", "__GNUC__")
         elseif is_plat("macosx") then
-            add_defines("_MACOS")
+            package:add("defines", "_MACOS")
         end
     end)
 
