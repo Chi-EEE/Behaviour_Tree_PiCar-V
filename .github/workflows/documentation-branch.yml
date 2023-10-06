@@ -10,7 +10,7 @@ permissions:
 
 jobs:
     sync:
-        if: github.ref == 'refs/heads/documentation'
+        # if: github.ref == 'refs/heads/documentation'
         runs-on: ubuntu-latest
         steps:
           - name: Checkout
