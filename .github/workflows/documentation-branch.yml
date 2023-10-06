@@ -47,6 +47,7 @@ jobs:
                 enable-latex: true
 
           - name: Build JSDoc documentation
+            if: ${{ false }}
             uses: andstor/jsdoc-action@v1
             with:
                 source_dir: './frontend/src/lib'
