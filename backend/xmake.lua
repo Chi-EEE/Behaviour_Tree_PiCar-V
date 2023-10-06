@@ -1,9 +1,16 @@
 add_rules("mode.debug", "mode.release")
+
+add_repositories("repository repository")
+
+set_languages("cxx17")
+
 add_requires("drogon")
+add_requires("rplidar_sdk")
 
 target("Car-Application")
     set_kind("binary")
     add_packages("drogon")
+    add_packages("rplidar_sdk")
 
     add_files("src/*.cpp")
 
