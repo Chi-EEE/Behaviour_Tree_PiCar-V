@@ -1,16 +1,24 @@
 add_rules("mode.debug", "mode.release")
 
+-- Add local repository
 add_repositories("repository repository")
 
 set_languages("cxx17")
 
+-- C++ Backend API for Svelte App
 add_requires("drogon")
-add_requires("rplidar_sdk")
+
+-- For the SunFounder Car
+add_requires("pca9685", "rplidar_sdk")
+
+-- For Functional Programming?
+add_requires("tl_expected")
 
 target("backend")
     set_kind("binary")
     add_packages("drogon")
     add_packages("rplidar_sdk")
+    add_packages("tl_expected")
 
     add_files("src/*.cpp")
 

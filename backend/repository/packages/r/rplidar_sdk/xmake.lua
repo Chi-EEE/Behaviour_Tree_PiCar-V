@@ -34,7 +34,6 @@ package("rplidar_sdk")
         assert(package:check_cxxsnippets({test = [[
             #include <rplidar.h>
             using namespace sl;
-            #define WIN64
             void test() {
                 ILidarDriver * drv = *createLidarDriver();
             }
