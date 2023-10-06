@@ -3,6 +3,8 @@
         "ms-vscode.cpptools-extension-pack",
         "cschlosser.doxdocgen",
         "lllllllqw.jsdoc",
-        "tboox.xmake-vscode"
+        "tboox.xmake-vscode",
+        "svelte.svelte-vscode",
+        "christian-kohler.path-intellisense"
     ]
 }
