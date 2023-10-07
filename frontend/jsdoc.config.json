@@ -19,7 +19,7 @@
     },
     "opts": {
         "encoding": "utf8",
-        "destination": "docs/jsdoc",
+        "destination": "../docs/jsdoc",
         "recurse": true
     }
 }
