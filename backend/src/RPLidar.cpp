@@ -9,7 +9,7 @@ RPLidar::RPLidar(const std::string &port, uint32_t baudrate)
         this->_serial = std::make_unique<serial::Serial>(port, baudrate, serial::Timeout(1000U));
         std::cout << "Opened serial: " << _serial->isOpen() << '\n';
     }
-    catch (std::exception& e)
+    catch (std::exception &e)
     {
         std::cout << "Unable to open serial: " << e.what() << '\n';
     }
@@ -49,6 +49,7 @@ void RPLidar::set_motor_speed(int pwm)
 
 void RPLidar::start_motor()
 {
+    spdlog::info("Starting motor");
     // For A1
     this->_serial->setDTR(false);
 
@@ -59,6 +60,7 @@ void RPLidar::start_motor()
 
 void RPLidar::stop_motor()
 {
+    spdlog::info("Stopping motor");
     // For A2
     this->_set_pwm(0);
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -90,6 +92,7 @@ void RPLidar::_send_payload_cmd(uint8_t cmd, const std::string &payload)
     req += static_cast<char>(checksum);
 
     this->_serial->write(req);
+    spdlog::debug("Command sent: {}", spdlog::to_hex(req));
 }
 
 void RPLidar::_send_cmd(uint8_t cmd)
@@ -99,6 +102,7 @@ void RPLidar::_send_cmd(uint8_t cmd)
     req += static_cast<char>(cmd);
 
     this->_serial->write(req);
+    spdlog::debug("Command sent: {}", spdlog::to_hex(req));
 }
 
 std::tuple<uint8_t, bool, uint8_t> RPLidar::_read_descriptor()
@@ -106,6 +110,7 @@ std::tuple<uint8_t, bool, uint8_t> RPLidar::_read_descriptor()
     // Read descriptor packet
     std::vector<uint8_t> descriptor(DESCRIPTOR_LEN);
     this->_serial->read(descriptor.data(), DESCRIPTOR_LEN);
+    spdlog::debug("Received descriptor: {}", spdlog::to_hex(descriptor));
 
     if (descriptor.size() != DESCRIPTOR_LEN)
     {
@@ -122,6 +127,8 @@ std::tuple<uint8_t, bool, uint8_t> RPLidar::_read_descriptor()
 
 std::vector<uint8_t> RPLidar::_read_response(int dsize)
 {
+    spdlog::debug("Trying to read response: {} bytes", dsize);
+
     std::vector<uint8_t> data;
     data.reserve(dsize);
 
@@ -130,14 +137,9 @@ std::vector<uint8_t> RPLidar::_read_response(int dsize)
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 
-    // Read the specified number of bytes
-    for (int i = 0; i < dsize; ++i)
-    {
-        uint8_t byte;
-        _serial->read(&byte, 1);
-        data.push_back(byte);
-    }
+    this->_serial->read(data, dsize);
 
+    spdlog::debug("Received data: {}", spdlog::to_hex(data));
     return data;
 }
 
@@ -206,6 +208,7 @@ HealthInfo RPLidar::get_health()
     {
         throw std::runtime_error("Data in buffer, you can't get health info! Run cleanInput() to empty the buffer.");
     }
+    spdlog::info("Asking for health");
 
     this->_send_cmd(GET_HEALTH_BYTE);
 
@@ -252,6 +255,7 @@ void RPLidar::clean_input()
 
 void RPLidar::stop()
 {
+    spdlog::info("Stopping scanning");
     this->_send_cmd(STOP_BYTE);
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
     this->scanning.currently_scanning = false;
@@ -268,6 +272,7 @@ void RPLidar::start(ScanType scanType = NORMAL)
     HealthInfo healthInfo = this->get_health();
     std::string status = healthInfo.status;
     int errorCode = healthInfo.errorCode;
+    spdlog::debug("Health status: {} [{}}]", status, errorCode);
 
     if (status == "Error")
     {
@@ -282,10 +287,12 @@ void RPLidar::start(ScanType scanType = NORMAL)
     }
     else if (status == "Warning")
     {
-        std::cout << "Warning sensor status detected! Error code: " << errorCode << std::endl;
+        spdlog::warn("Warning sensor status detected! Error code: {}", errorCode);
     }
 
     uint8_t cmd = SCAN_TYPE[scanType]["byte"];
+
+    spdlog::warn("starting scan process in {} mode", scanType);
 
     if (scanType == EXPRESS)
     {
@@ -321,6 +328,7 @@ void RPLidar::start(ScanType scanType = NORMAL)
 
 void RPLidar::reset()
 {
+    spdlog::info("Resetting the sensor");
     this->_send_cmd(RESET_BYTE);
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     this->clean_input();
@@ -380,16 +388,13 @@ Measure _process_express_scan(std::shared_ptr<ExpressPacket> data, float newAngl
 
 std::function<Measure()> RPLidar::iter_measures(ScanType scanType = NORMAL, int maxBufMeas = 3000)
 {
-std::cout << "asdsda\n";
     this->start_motor();
-std::cout << "sss\n";
 
     if (!this->scanning.currently_scanning)
     {
         this->start(scanType);
     }
 
-std::cout << "ok\n";
     // Define a lambda function to generate measures
     auto generator = [this, scanType, maxBufMeas]() -> Measure
     {
@@ -402,8 +407,10 @@ std::cout << "ok\n";
                 int dataInBuf = this->_serial->available();
                 if (dataInBuf > maxBufMeas)
                 {
-                    std::cout << "Too many bytes in the input buffer: " << dataInBuf << "/" << maxBufMeas
-                              << ". Cleaning buffer..." << std::endl;
+                    spdlog::warn(
+                        "Too many bytes in the input buffer: {}/{}. \n"
+                        "Cleaning buffer...",
+                        dataInBuf, maxBufMeas);
                     this->stop();
                     this->start(scanning.type);
                 }
@@ -423,19 +430,25 @@ std::cout << "ok\n";
 
                     if (this->express_data == nullptr)
                     {
+                        spdlog::debug("reading first time bytes");
                         this->express_data = std::make_shared<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
                     }
 
                     this->express_old_data = this->express_data;
+                    spdlog::debug("set old_data with start_angle {}", this->express_old_data->start_angle);
                     this->express_data = std::make_shared<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
+                    spdlog::debug("set new_data with start_angle {}", this->express_data->start_angle);
                 }
                 this->express_trame++;
+                spdlog::debug("process scan of frame %d with angle : \n"
+                                "%f and angle new : %f", this->express_trame,
+                                this->express_old_data->start_angle,
+                                this->express_data->start_angle);
                 Measure measure = _process_express_scan(this->express_old_data, this->express_data->start_angle, this->express_trame);
                 return measure;
             }
         }
     };
-std::cout << "yes\n";
 
     return generator;
 }
@@ -443,9 +456,7 @@ std::cout << "yes\n";
 std::function<std::vector<Measure>()> RPLidar::iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5)
 {
     std::vector<Measure> scanList;
-    std::cout << "start generator\n";
     std::function<Measure()> measureIterator = this->iter_measures(scanType, maxBufMeas);
-    std::cout << "startd generator\n";
 
     // Define a lambda function to generate scans
     auto scanGenerator = [this, scanType, maxBufMeas, minLen, measureIterator]() -> std::vector<Measure>
@@ -469,6 +480,5 @@ std::function<std::vector<Measure>()> RPLidar::iter_scans(ScanType scanType = NO
             }
         }
     };
-    std::cout << "return generator\n";
     return scanGenerator;
 }

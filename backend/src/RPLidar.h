@@ -23,6 +23,9 @@
 // iter_measures
 #include <functional>
 
+#include <spdlog/spdlog.h>
+#include <spdlog/fmt/bin_to_hex.h>
+
 #include "ExpressPacket.hpp"
 
 #define SYNC_BYTE 0xA5
