@@ -16,8 +16,8 @@ jobs:
       - name: Doxygen Action
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
-          doxyfile-path: "./backend/Doxyfile"
-          working-directory: "."
+          doxyfile-path: "./Doxyfile"
+          working-directory: "./backend"
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
