@@ -13,10 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone doxygen-awesome-css
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
+          sparse-checkout: |
+            doxygen-awesome.css
           repository: jothepro/doxygen-awesome-css
           ref: refs/heads/main
+          path: doxygen-awesome-css
           
       - uses: actions/checkout@v3
       - name: Build Doxygen documentation
