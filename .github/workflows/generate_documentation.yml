@@ -12,16 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone doxygen-awesome-css
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            doxygen-awesome.css
-          repository: jothepro/doxygen-awesome-css
-          ref: refs/heads/main
-          path: doxygen-awesome-css
-          sparse-checkout-cone-mode: false
-          
       - uses: actions/checkout@v3
       - name: Build Doxygen documentation
         uses: mattnotmitt/doxygen-action@v1.9.5
