@@ -21,7 +21,7 @@ jobs:
 
       - name: Move Doxygen HTML files into Doxygen directory
         run: |
-          mv docs/doxygen/html/* .
+          mv docs/doxygen/html/* docs/doxygen
         working-directory: ${{ github.workspace }}
 
       - name: Build JSDoc documentation
