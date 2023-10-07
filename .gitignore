@@ -1,4 +1,6 @@
 docs/*
+!docs/index.html
+!docs/static
 
 # Xmake cache
 .xmake/
