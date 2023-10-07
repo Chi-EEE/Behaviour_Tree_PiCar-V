@@ -8,8 +8,13 @@ set_languages("cxx17")
 -- C++ Backend API for Svelte App
 add_requires("drogon")
 
+-- For the Lidar Scanner
+add_requires("rplidar_sdk")
+
 -- For the SunFounder Car
-add_requires("pca9685", "rplidar_sdk")
+if is_plat("linux", "macosx") then
+    add_requires("pca9685")
+end
 
 -- For Functional Programming?
 add_requires("tl_expected")
@@ -17,7 +22,12 @@ add_requires("tl_expected")
 target("backend")
     set_kind("binary")
     add_packages("drogon")
+    
     add_packages("rplidar_sdk")
+    if is_plat("linux", "macosx") then
+        add_packages("pca9685")
+    end
+
     add_packages("tl_expected")
 
     add_files("src/*.cpp")
