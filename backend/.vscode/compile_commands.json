@@ -1,6 +1,16 @@
 [
 {
-  "directory": "/home/pass_is_1/Car-Application/backend",
-  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-std=c++17", "-DCARES_STATICLIB", "-I", "/home/pass_is_1/.xmake/packages/d/drogon/v1.8.2/2cd05160177c49af96ab3f7d3f5506b8/include", "-I", "/home/pass_is_1/.xmake/packages/t/trantor/v1.5.14/8f08ce4c70de4747884cb10e87eef3b7/include", "-I", "/home/pass_is_1/.xmake/packages/c/c-ares/1.19.0/de08b8aebbb8402582b5466949d39ab8/include", "-I", "/home/pass_is_1/.xmake/packages/j/jsoncpp/1.9.5/6a59121558c24c01a73b20670010be3a/include", "-I", "/home/pass_is_1/.xmake/packages/b/brotli/v1.1.0/e3f40d36e48b41ef850d98dfb7dfc2cd/include", "-I", "/home/pass_is_1/.xmake/packages/z/zlib/v1.3/45ea3fb9069b468faf0ef6782964c796/include", "-I", "/home/pass_is_1/.xmake/packages/l/libuuid/1.0.3/ebb1e73a94a74620a8f85987fbf3009c/include", "-I", "/home/pass_is_1/.xmake/packages/o/openssl/1.1.1-t/25a06d63c5c94540b3812b3f969192cb/include", "-I", "/home/pass_is_1/.xmake/packages/r/rplidar_sdk/v2.0.0/6a84f7ec22434b108ac49f46c65ba829/include", "-o", "build/.objs/backend/linux/x86_64/debug/src/main.cpp.o", "src/main.cpp"],
-  "file": "src/main.cpp"
+  "directory": "c:\\Users\\admin\\Documents\\GitHub\\Car-Application\\backend",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++17", "/D_WIN32", "/EHsc", "/IC:\\Users\\admin\\AppData\\Local\\.xmake\\packages\\s\\serial\\2022.3.9\\cefe600d4e804a218f4988a80900ae73\\include", "/IC:\\Users\\admin\\AppData\\Local\\.xmake\\packages\\t\\tl_expected\\v1.1.0\\06aea2638fda4a108c6e31ecc75bfc88\\include", "/DNDEBUG", "/Fobuild\\.objs\\backend\\windows\\x64\\release\\src\\main.cpp.obj", "src\\main.cpp"],
+  "file": "src\\main.cpp"
+},
+{
+  "directory": "c:\\Users\\admin\\Documents\\GitHub\\Car-Application\\backend",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++17", "/D_WIN32", "/EHsc", "/IC:\\Users\\admin\\AppData\\Local\\.xmake\\packages\\s\\serial\\2022.3.9\\cefe600d4e804a218f4988a80900ae73\\include", "/IC:\\Users\\admin\\AppData\\Local\\.xmake\\packages\\t\\tl_expected\\v1.1.0\\06aea2638fda4a108c6e31ecc75bfc88\\include", "/DNDEBUG", "/Fobuild\\.objs\\backend\\windows\\x64\\release\\src\\RPLidar.cpp.obj", "src\\RPLidar.cpp"],
+  "file": "src\\RPLidar.cpp"
+},
+{
+  "directory": "c:\\Users\\admin\\Documents\\GitHub\\Car-Application\\backend",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++17", "/D_WIN32", "/EHsc", "/IC:\\Users\\admin\\AppData\\Local\\.xmake\\packages\\s\\serial\\2022.3.9\\cefe600d4e804a218f4988a80900ae73\\include", "/IC:\\Users\\admin\\AppData\\Local\\.xmake\\packages\\t\\tl_expected\\v1.1.0\\06aea2638fda4a108c6e31ecc75bfc88\\include", "/DNDEBUG", "/Fobuild\\.objs\\backend\\windows\\x64\\release\\src\\Test.cpp.obj", "src\\Test.cpp"],
+  "file": "src\\Test.cpp"
 }]

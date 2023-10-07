@@ -1,16 +1,25 @@
 #include <iostream>
 
-#include <drogon/drogon.h>
-#include <rplidar.h>
-
-using namespace drogon;
+#include "RPLidar.h"
 
 int main()
 {
-    app().setLogPath("./")
-         .setLogLevel(trantor::Logger::kWarn)
-         .addListener("0.0.0.0", 9999)
-         .setThreadNum(16)
-         .enableRunAsDaemon()
-         .run();
+    auto lidar = RPLidar("COM3");
+    // std::function<std::vector<Measure>()> scanGenerator = lidar.iter_scans(ScanType::NORMAL, 3000, 5);
+    // for (int i = 0; i < 10; i++)
+    // {
+    //     std::vector<Measure> scan = scanGenerator();
+    //     std::cout << "Got " << scan.size() << " Measures!";
+    //     for (const Measure &measure : scan)
+    //     {
+    //         // Access individual measurements in the scan
+    //         bool newScan = measure.newScan;
+    //         int quality = measure.quality;
+    //         float angle = measure.angle;
+    //         float distance = measure.distance;
+    //     }
+    // }
+    lidar.stop();
+    lidar.stop_motor();
+    lidar.disconnect();
 }

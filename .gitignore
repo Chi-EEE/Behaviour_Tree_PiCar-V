@@ -6,6 +6,8 @@ docs/*
 .xmake/
 build/
 
+compile_commands.json
+
 # MacOS Cache
 .DS_Store
 
@@ -41,3 +43,4 @@ build/
 *.exe
 *.out
 *.app
+backend/.vscode/compile_commands.json
