@@ -20,6 +20,7 @@ jobs:
           repository: jothepro/doxygen-awesome-css
           ref: refs/heads/main
           path: doxygen-awesome-css
+          sparse-checkout-cone-mode: false
           
       - uses: actions/checkout@v3
       - name: Build Doxygen documentation
