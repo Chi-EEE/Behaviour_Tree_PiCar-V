@@ -13,11 +13,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Doxygen Action
+      - name: Build Doxygen documentation
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
           doxyfile-path: "./Doxyfile"
           working-directory: "./backend"
+      - name: Move Doxygen HTML files into Doxygen directory
+        run: mv ./docs/doxygen/html ./docs/doxygen
+      - name: Build JSDoc documentation
+        uses: andstor/jsdoc-action@v1
+        with:
+            config_file: "./frontend/jsdoc.config.json"
+            output_dir: './docs/jsdoc'
+            recurse: true
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

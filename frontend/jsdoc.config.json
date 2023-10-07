@@ -4,12 +4,12 @@
     ],
     "recurseDepth": 10,
     "source": {
+        "include": [ "frontend/src/lib" ],
         "includePattern": ".+\\.js(doc|x)?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
     "sourceType": "module",
     "tags": {
-        "include": [ "src/lib" ],
         "allowUnknownTags": true,
         "dictionaries": ["jsdoc","closure"]
     },
