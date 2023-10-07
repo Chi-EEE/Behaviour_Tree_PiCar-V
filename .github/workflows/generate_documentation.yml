@@ -15,7 +15,7 @@ jobs:
       - name: Clone doxygen-awesome-css
         uses: actions/checkout@v3
         with:
-          name: jothepro/doxygen-awesome-css
+          repository: jothepro/doxygen-awesome-css
           ref: refs/heads/release
 
       - uses: actions/checkout@v3
