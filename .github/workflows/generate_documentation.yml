@@ -21,7 +21,8 @@ jobs:
 
       - name: Move Doxygen HTML files into Doxygen directory
         run: |
-          mv "./docs/doxygen/html" ".."
+          mv "./docs/doxygen/html/*" "./docs/doxygen"
+          rm -r "./docs/doxygen/html"
 
       - name: Build JSDoc documentation
         uses: andstor/jsdoc-action@v1
