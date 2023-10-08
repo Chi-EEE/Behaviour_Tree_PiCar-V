@@ -1,11 +1,32 @@
 #include "RPLidar.h"
 
 /*
+auto lidar = RPLidar("COM3");
+
 auto info = lidar.get_info();
 std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
 
 auto health = lidar.get_health();
 std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
+
+std::function<std::vector<Measure>()> scanGenerator = lidar.iter_scans();
+for (int i = 0; i < 10; i++)
+{
+    std::vector<Measure> scan = scanGenerator();
+    std::cout << "Got " << scan.size() << " Measures!\n";
+    for (const Measure &measure : scan)
+    {
+        // Access individual measurements in the scan
+        bool newScan = measure.newScan;
+        int quality = measure.quality;
+        float angle = measure.angle;
+        float distance = measure.distance;
+    }
+}
+
+lidar.stop();
+lidar.stop_motor();
+lidar.disconnect();
 
 */
 
@@ -395,7 +416,7 @@ Measure _process_express_scan(std::shared_ptr<ExpressPacket> data, float newAngl
     return measurementData;
 }
 
-std::function<Measure()> RPLidar::iter_measures(ScanType scanType = NORMAL, int maxBufMeas = 3000)
+std::function<Measure()> RPLidar::iter_measures(ScanType scanType, int maxBufMeas)
 {
     this->start_motor();
 
@@ -456,13 +477,14 @@ std::function<Measure()> RPLidar::iter_measures(ScanType scanType = NORMAL, int 
                 Measure measure = _process_express_scan(this->express_old_data, this->express_data->start_angle, this->express_trame);
                 return measure;
             }
+            std::cout << "return null";
         }
     };
 
     return generator;
 }
 
-std::function<std::vector<Measure>()> RPLidar::iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5)
+std::function<std::vector<Measure>()> RPLidar::iter_scans(ScanType scanType, int maxBufMeas, int minLen)
 {
     std::vector<Measure> scanList;
     std::function<Measure()> measureIterator = this->iter_measures(scanType, maxBufMeas);

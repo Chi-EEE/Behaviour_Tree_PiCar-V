@@ -71,7 +71,12 @@
 			"functional": "cpp",
 			"list": "cpp",
 			"unordered_map": "cpp",
-			"xhash": "cpp"
+			"xhash": "cpp",
+			"algorithm": "cpp",
+			"array": "cpp",
+			"condition_variable": "cpp",
+			"cstdarg": "cpp",
+			"span": "cpp"
 		}
 	}
 }

@@ -7,6 +7,12 @@
             "name": "Debug XMake target",
             "target": "backend",
             "cwd": "${workspaceFolder}/backend"
+        },
+        {
+            "name": "Debug target: backend",
+            "type": "xmake",
+            "target": "backend",
+            "request": "launch"
         }
     ]
 }

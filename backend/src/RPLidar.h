@@ -51,7 +51,7 @@ struct ScanInfo
     ScanType type;
 };
 
-static std::map<ScanType, std::map<std::string, char>> SCAN_TYPE = {
+static std::map<ScanType, std::map<std::string, uint8_t>> SCAN_TYPE = {
     {ScanType::NORMAL, {{"byte", 0x20}, {"response", 129}, {"size", 5}}},
     {ScanType::FORCE, {{"byte", 0x21}, {"response", 129}, {"size", 5}}},
     {ScanType::EXPRESS, {{"byte", 0x82}, {"response", 130}, {"size", 84}}}};
@@ -131,9 +131,9 @@ public:
 
     void reset();
 
-    std::function<Measure()> iter_measures(ScanType scanType, int maxBufMeas);
+    std::function<Measure()> iter_measures(ScanType scanType = NORMAL, int maxBufMeas = 3000);
 
-    std::function<std::vector<Measure>()> iter_scans(ScanType scanType, int maxBufMeas, int minLen);
+    std::function<std::vector<Measure>()> iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5);
 
 private:
     std::unique_ptr<serial::Serial> _serial = nullptr;
