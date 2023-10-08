@@ -1,5 +1,15 @@
 #include "RPLidar.h"
 
+/*
+auto info = lidar.get_info();
+std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
+
+auto health = lidar.get_health();
+std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
+
+*/
+
+
 RPLidar::RPLidar(const std::string &port, uint32_t baudrate)
 {
     this->port = port;
@@ -158,7 +168,6 @@ DeviceInfo RPLidar::get_info()
     {
         throw std::runtime_error("Data in buffer, you can't have info! Run flush() to empty the buffer.");
     }
-
     this->_send_cmd(GET_INFO_BYTE);
 
     uint8_t dsize;

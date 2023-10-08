@@ -1,9 +1,13 @@
 #include <iostream>
 
+#include <fmt/format.h>
+
 #include "RPLidar.h"
 
 int main()
 {
+    spdlog::set_level(spdlog::level::debug);
+
     auto lidar = RPLidar("COM3");
     // std::function<std::vector<Measure>()> scanGenerator = lidar.iter_scans(ScanType::NORMAL, 3000, 5);
     // for (int i = 0; i < 10; i++)
