@@ -399,7 +399,7 @@ Measure _process_scan(const std::vector<uint8_t> &raw)
     return measurementData;
 }
 
-Measure _process_express_scan(std::shared_ptr<ExpressPacket> data, float newAngle, int trame)
+Measure _process_express_scan(std::unique_ptr<ExpressPacket> &data, float newAngle, int trame)
 {
     Measure measurementData;
 
@@ -461,12 +461,12 @@ std::function<Measure()> RPLidar::iter_measures(ScanType scanType, int maxBufMea
                     if (this->express_data == nullptr)
                     {
                         spdlog::debug("reading first time bytes");
-                        this->express_data = std::make_shared<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
+                        this->express_data = std::make_unique<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
                     }
 
-                    this->express_old_data = this->express_data;
+                    this->express_old_data = std::move(this->express_data);
                     spdlog::debug("set old_data with start_angle {}", this->express_old_data->start_angle);
-                    this->express_data = std::make_shared<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
+                    this->express_data = std::make_unique<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
                     spdlog::debug("set new_data with start_angle {}", this->express_data->start_angle);
                 }
                 this->express_trame++;
@@ -477,7 +477,6 @@ std::function<Measure()> RPLidar::iter_measures(ScanType scanType, int maxBufMea
                 Measure measure = _process_express_scan(this->express_old_data, this->express_data->start_angle, this->express_trame);
                 return measure;
             }
-            std::cout << "return null";
         }
     };
 

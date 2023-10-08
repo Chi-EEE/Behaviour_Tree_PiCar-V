@@ -143,8 +143,8 @@ private:
     bool motor_running = false;
     ScanInfo scanning = {false, 0, ScanType::NORMAL};
     int express_trame = 32;
-    std::shared_ptr<ExpressPacket> express_data = nullptr;
-    std::shared_ptr<ExpressPacket> express_old_data = nullptr;
+    std::unique_ptr<ExpressPacket> express_data = nullptr;
+    std::unique_ptr<ExpressPacket> express_old_data = nullptr;
 };
 
 #endif
