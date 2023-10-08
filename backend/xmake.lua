@@ -12,6 +12,8 @@ add_requires("spdlog")
 
 add_requires("fmt")
 
+add_requires("sfml")
+
 if is_plat("linux", "macosx") then
     -- C++ Backend API for Svelte App
     add_requires("drogon")
@@ -28,6 +30,7 @@ target("backend")
     add_packages("serial")
     add_packages("spdlog")
     add_packages("fmt")
+    add_packages("sfml")
     if is_plat("linux", "macosx") then
         add_packages("drogon")
         add_packages("pca9685")

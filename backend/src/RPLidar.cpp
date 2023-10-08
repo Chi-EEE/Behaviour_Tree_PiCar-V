@@ -278,7 +278,7 @@ void RPLidar::clean_input()
     {
         throw std::runtime_error("Cleaning not allowed during scanning process active!");
     }
-    this->_serial->flush();
+    this->_serial->flushInput();
     this->express_trame = 32;
     this->express_data = nullptr;
 }
