@@ -46,21 +46,53 @@ int main()
     std::function<std::vector<Measure>()> scanGenerator = lidar.iter_scans();
 
     sf::RenderWindow window(sf::VideoMode(1000, 1000), "My window");
+    sf::View view;
+    bool is_dragging = false;
+    sf::Vector2f previous_mouse_position;
+    float zoom = 1.0f;
 
-    // run the program as long as the window is open
     while (window.isOpen())
     {
-        // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
         {
-            // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+            {
+                is_dragging = true;
+                previous_mouse_position = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+            }
+            else if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
+            {
+                is_dragging = false;
+            }
+            else if (event.type == sf::Event::MouseMoved && is_dragging)
+            {
+                sf::Vector2f current_mouse_position = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+                sf::Vector2f delta = previous_mouse_position - current_mouse_position;
+                view.move(delta);
+                previous_mouse_position = current_mouse_position;
+            }
+            else if (event.type == sf::Event::KeyPressed)
+            {
+                if (event.key.code == sf::Keyboard::Add && event.key.control)
+                {
+                    zoom = std::max(zoom - 0.1f, 0.1f);
+                    view.zoom(zoom);
+                }
+                else if (event.key.code == sf::Keyboard::Subtract && event.key.control)
+                {
+                    zoom = zoom + 0.1f;
+                    view.zoom(zoom);
+                }
+            }
         }
 
         // clear the window with black color
         window.clear(sf::Color::Black);
+        window.setView(view);
 
         sf::Vector2f center(window.getSize().x / 2.0f, window.getSize().y / 2.0f);
         sf::CircleShape point(5.f); // Change the radius as needed
@@ -73,7 +105,7 @@ int main()
         std::unordered_map<sf::Vector2f, Point, Vector2fHash> point_map;
         std::vector<std::shared_ptr<sf::VertexArray>> line_vector;
 
-        for (int i = 0; i < scan.size(); i++)
+        for (int i = 1; i < scan.size(); i++)
         {
             const Measure &measure = scan[i];
             float angle = measure.angle;
@@ -83,7 +115,7 @@ int main()
             float y = distance * std::sin(angleInRadians);
             point_map.insert({{x, y}, Point{}});
         }
-        for (int i = 0; i < scan.size(); i++)
+        for (int i = 1; i < scan.size(); i++)
         {
             const Measure &previous_measure = scan[((i - 1 % scan.size()) + scan.size()) % scan.size()];
             const Measure &measure = scan[i];
@@ -122,6 +154,29 @@ int main()
             sf::Vector2f point = {center.x + x, center.y + y};
             sf::Vector2f next_point = {center.x + next_x, center.y + next_y};
 
+            float slope = (next_point.x - previous_point.x) / (next_point.y - previous_point.y);
+
+            int slope_y = (slope * point.x) + 0;
+            if (point.y + 60 <= slope_y && point.y - 60 >= slope_y)
+            {
+                std::shared_ptr<sf::VertexArray> lines = point_map[{previous_point.x, previous_point.y}].lines;
+                if (lines == nullptr)
+                {
+                    lines = std::make_shared<sf::VertexArray>(sf::VertexArray{sf::LinesStrip});
+                    point_map[{previous_point.x, previous_point.y}].lines = lines;
+                    line_vector.push_back(lines);
+
+                    lines->append(sf::Vertex{previous_point, sf::Color::Green});
+                }
+                point_map[{point.x, point.y}].lines = lines;
+                point_map[{next_point.x, next_point.y}].lines = lines;
+
+                lines->append(sf::Vertex{point, sf::Color::Green});
+                lines->append(sf::Vertex{next_point, sf::Color::Green});
+
+                continue;
+            }
+
             std::cout << fmt::format("Distance: {}\n", std::abs(distance - next_distance));
             if (std::abs(distance - next_distance) < 20)
             {
@@ -146,7 +201,7 @@ int main()
                     if (point_map[{next_point.x, next_point.y}].lines == nullptr)
                     {
                         point_map[{next_point.x, next_point.y}].lines = lines;
-                        
+
                         sf::Vertex vertex{next_point};
                         vertex.color = sf::Color::Green;
 
@@ -154,6 +209,28 @@ int main()
                     }
                 }
             }
+        }
+        for (auto &measure : scan)
+        {
+            bool newScan = measure.newScan;
+            int quality = measure.quality;
+            float angle = measure.angle;
+            float distance = measure.distance * 0.3;
+
+            // Convert degrees to radians
+            float angleInRadians = angle * (3.14159265f / 180.0f);
+
+            float x = distance * std::cos(angleInRadians);
+            float y = distance * std::sin(angleInRadians);
+
+            sf::Vector2f point = {center.x + x, center.y + y};
+
+            sf::Vertex vertices[2] = {
+                sf::Vertex{center, sf::Color::Blue},
+                sf::Vertex{point, sf::Color::Blue},
+            };
+
+            window.draw(vertices, 2, sf::Lines);
         }
         for (auto &lines : line_vector)
         {

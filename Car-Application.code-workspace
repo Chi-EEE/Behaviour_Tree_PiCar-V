@@ -76,7 +76,8 @@
 			"array": "cpp",
 			"condition_variable": "cpp",
 			"cstdarg": "cpp",
-			"span": "cpp"
+			"span": "cpp",
+			"xstddef": "cpp"
 		}
 	}
 }
