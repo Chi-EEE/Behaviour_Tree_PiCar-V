@@ -30,7 +30,12 @@ lidar.disconnect();
 
 */
 
-
+/**
+ * @brief Initilize RPLidar object for communicating with the sensor
+ * 
+ * @param port Serial port name to which sensor is connected
+ * @param baudrate Baudrate for serial connection (the default is 115200)
+ */
 RPLidar::RPLidar(const std::string &port, uint32_t baudrate)
 {
     this->port = port;
@@ -78,6 +83,10 @@ void RPLidar::set_motor_speed(int pwm)
         this->_set_pwm(this->_motor_speed);
 }
 
+/**
+ * @brief Starts sensor motor
+ * 
+ */
 void RPLidar::start_motor()
 {
     spdlog::info("Starting motor");
@@ -89,6 +98,10 @@ void RPLidar::start_motor()
     this->motor_running = true;
 }
 
+/**
+ * @brief Stops sensor motor
+ * 
+ */
 void RPLidar::stop_motor()
 {
     spdlog::info("Stopping motor");
@@ -101,6 +114,12 @@ void RPLidar::stop_motor()
     this->motor_running = false;
 }
 
+/**
+ * @brief Sends `cmd` command with `payload` to the sensor
+ * 
+ * @param cmd 
+ * @param payload 
+ */
 void RPLidar::_send_payload_cmd(uint8_t cmd, const std::string &payload)
 {
     // Calculate the size
@@ -126,6 +145,11 @@ void RPLidar::_send_payload_cmd(uint8_t cmd, const std::string &payload)
     spdlog::debug("Command sent: {}", spdlog::to_hex(req));
 }
 
+/**
+ * @brief Sends `cmd` command to the sensor
+ * 
+ * @param cmd 
+ */
 void RPLidar::_send_cmd(uint8_t cmd)
 {
     std::string req;
@@ -136,6 +160,11 @@ void RPLidar::_send_cmd(uint8_t cmd)
     spdlog::debug("Command sent: {}", spdlog::to_hex(req));
 }
 
+/**
+ * @brief Reads descriptor packet
+ * 
+ * @return std::tuple<uint8_t, bool, uint8_t> 
+ */
 std::tuple<uint8_t, bool, uint8_t> RPLidar::_read_descriptor()
 {
     // Read descriptor packet
@@ -156,6 +185,12 @@ std::tuple<uint8_t, bool, uint8_t> RPLidar::_read_descriptor()
     return std::make_tuple(descriptor[2], isSingle, descriptor[6]);
 }
 
+/**
+ * @brief Reads response packet with length of `dsize` bytes
+ * 
+ * @param dsize 
+ * @return std::vector<uint8_t> 
+ */
 std::vector<uint8_t> RPLidar::_read_response(int dsize)
 {
     spdlog::debug("Trying to read response: {} bytes", dsize);
@@ -182,6 +217,11 @@ std::string convertToHexString(uint8_t value)
     return stream.str();
 }
 
+/**
+ * @brief Get device information
+ * 
+ * @return DeviceInfo 
+ */
 DeviceInfo RPLidar::get_info()
 {
     // Check if there's data in the buffer
@@ -231,6 +271,16 @@ DeviceInfo RPLidar::get_info()
     return info;
 }
 
+/**
+ * @brief Get device health state. When the core system detects some
+        potential risk that may cause hardware failure in the future,
+        the returned status value will be 'Warning'. But sensor can still work
+        as normal. When sensor is in the Protection Stop state, the returned
+        status value will be 'Error'. In case of warning or error statuses
+        non-zero error code will be returned.
+ * 
+ * @return HealthInfo 
+ */
 HealthInfo RPLidar::get_health()
 {
     // Check if there's data in the buffer
@@ -272,6 +322,10 @@ HealthInfo RPLidar::get_health()
     return {status, errorCode};
 }
 
+/**
+ * @brief 
+ * Clean input buffer by reading all available data
+ */
 void RPLidar::clean_input()
 {
     if (this->scanning.currently_scanning)
@@ -283,6 +337,11 @@ void RPLidar::clean_input()
     this->express_data = nullptr;
 }
 
+/**
+ * @brief 
+ * Stops scanning process, disables laser diode and the measurement
+        system, moves sensor to the idle state.
+ */
 void RPLidar::stop()
 {
     spdlog::info("Stopping scanning");
@@ -292,6 +351,11 @@ void RPLidar::stop()
     this->clean_input();
 }
 
+/**
+ * @brief Start the scanning process
+ * 
+ * @param scanType NORMAL, FORCE or EXPRESS
+ */
 void RPLidar::start(ScanType scanType = NORMAL)
 {
     if (this->scanning.currently_scanning)
@@ -356,6 +420,11 @@ void RPLidar::start(ScanType scanType = NORMAL)
     scanning = {true, dsize, scanType};
 }
 
+/**
+ * @brief Resets sensor core, reverting it to a similar state as it has
+        just been powered up.
+ * 
+ */
 void RPLidar::reset()
 {
     spdlog::info("Resetting the sensor");
@@ -416,6 +485,17 @@ Measure _process_express_scan(std::unique_ptr<ExpressPacket> &data, float newAng
     return measurementData;
 }
 
+/**
+ * @brief Iterate over measures. Note that consumer must be fast enough,
+        otherwise data will be accumulated inside buffer and consumer will get
+        data with increasing lag.
+ * 
+ * @param scanType 
+ * @param maxBufMeas int or False if you want unlimited buffer
+            Maximum number of bytes to be stored inside the buffer. Once
+            numbe exceeds this limit buffer will be emptied out.
+ * @return std::function<Measure()> 
+ */
 std::function<Measure()> RPLidar::iter_measures(ScanType scanType, int maxBufMeas)
 {
     this->start_motor();
@@ -483,6 +563,17 @@ std::function<Measure()> RPLidar::iter_measures(ScanType scanType, int maxBufMea
     return generator;
 }
 
+/**
+ * @brief Iterate over scans. Note that consumer must be fast enough,
+        otherwise data will be accumulated inside buffer and consumer will get
+        data with increasing lag.
+ * 
+ * @param scanType 
+ * @param maxBufMeas Maximum number of measures to be stored inside the buffer. Once
+            numbe exceeds this limit buffer will be emptied out.
+ * @param minLen Minimum number of measures in the scan for it to be yelded.
+ * @return std::function<std::vector<Measure>()> 
+ */
 std::function<std::vector<Measure>()> RPLidar::iter_scans(ScanType scanType, int maxBufMeas, int minLen)
 {
     std::vector<Measure> scanList;

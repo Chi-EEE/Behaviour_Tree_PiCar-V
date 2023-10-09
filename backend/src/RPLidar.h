@@ -80,9 +80,21 @@ struct DeviceInfo
     std::string serialNumber;
 };
 
+/**
+ * @brief
+ * Health Info for Lidar Scanner
+ */
 struct HealthInfo
 {
+    /**
+     * @brief
+     * 'Good', 'Warning' or 'Error' statuses
+     */
     std::string status;
+    /**
+     * @brief
+     * The related error code that caused a warning/error.
+     */
     int errorCode;
 };
 
@@ -94,6 +106,10 @@ struct Measure
     double distance;
 };
 
+/**
+ * @brief Class for communicating with RPLidar rangefinder scanners
+ * 
+ */
 class RPLidar
 {
 public:
