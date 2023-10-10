@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['clean_5finput_0',['clean_input',['../classRPLidar.html#aa4b3838e2219923d24b97952a8a68b05',1,'RPLidar']]]
+  ['test_0',['Test',['../classTest.html',1,'Test'],['../classTest.html#a99f2bbfac6c95612322b0f10e607ebe5',1,'Test::Test()']]]
 ];

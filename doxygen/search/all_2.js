@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['deviceinfo_0',['DeviceInfo',['../structDeviceInfo.html',1,'']]]
+  ['vector2fhash_0',['Vector2fHash',['../structVector2fHash.html',1,'']]]
 ];

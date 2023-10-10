@@ -1,24 +1,21 @@
 var indexSectionsWithContent =
 {
-  0: "_cdeghimprstv~",
-  1: "dehmprstv",
-  2: "_cgirst~",
-  3: "es"
+  0: "ptv~",
+  1: "ptv",
+  2: "t~"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "functions",
-  3: "variables"
+  2: "functions"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Functions",
-  3: "Variables"
+  2: "Functions"
 };
 

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['errorcode_0',['errorCode',['../structHealthInfo.html#a225f597fe578e938f8bd649642018069',1,'HealthInfo']]],
-  ['expresspacket_1',['ExpressPacket',['../classExpressPacket.html',1,'']]]
+  ['_7etest_0',['~Test',['../classTest.html#a2b0a62f1e667bbe8d8cb18d785bfa991',1,'Test']]]
 ];
