@@ -22,6 +22,7 @@ end
 if is_plat("linux", "macosx") then
     -- For the SunFounder Car
     add_requires("pca9685")
+    add_requires("wiringpi")
 end
 
 -- For Functional Programming?
@@ -40,12 +41,14 @@ target("backend")
     end
     if is_plat("linux", "macosx") then
         add_packages("pca9685")
+        add_packages("wiringpi")
     end
 
     add_packages("tl_expected")
 
     add_files("src/*.cpp")
     add_headerfiles("src/*.h", "src/*.hpp")
+    add_includedirs("include")
 
     if is_plat("windows") then
         add_defines("_WIN32")
