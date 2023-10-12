@@ -12,9 +12,6 @@ add_requires("spdlog")
 
 add_requires("fmt")
 
--- C++ Backend API for Svelte App
-add_requires("oatpp")
-
 if is_plat("windows") then
     add_requires("sfml")
 end

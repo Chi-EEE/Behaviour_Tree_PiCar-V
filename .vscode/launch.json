@@ -4,15 +4,16 @@
         {
             "type": "xmake",
             "request": "launch",
-            "name": "Debug XMake target",
+            "name": "Debug `backend`",
             "target": "backend",
             "cwd": "${workspaceFolder}/backend"
         },
         {
-            "name": "Debug target: backend",
             "type": "xmake",
-            "target": "backend",
-            "request": "launch"
+            "request": "launch",
+            "name": "Debug `raspberry-pi`",
+            "target": "raspberry-pi",
+            "cwd": "${workspaceFolder}/raspberry-pi"
         }
     ]
 }

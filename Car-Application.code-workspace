@@ -2,6 +2,15 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "backend"
+		},
+		{
+			"path": "raspberry-pi"
+		},
+		{
+			"path": "frontend"
 		}
 	],
 	"settings": {
@@ -77,7 +86,16 @@
 			"condition_variable": "cpp",
 			"cstdarg": "cpp",
 			"span": "cpp",
-			"xstddef": "cpp"
+			"xstddef": "cpp",
+			"*.tcc": "cpp",
+			"cwctype": "cpp",
+			"deque": "cpp",
+			"memory_resource": "cpp",
+			"numeric": "cpp",
+			"random": "cpp",
+			"string_view": "cpp",
+			"numbers": "cpp",
+			"semaphore": "cpp"
 		}
 	}
 }
