@@ -5,49 +5,27 @@ add_repositories("repository repository")
 
 set_languages("cxx17")
 
--- For the Lidar Scanner
-add_requires("serial")
-
 add_requires("spdlog")
-
 add_requires("fmt")
 
 -- C++ Backend API for Svelte App
-add_requires("oatpp")
-
-if is_plat("windows") then
-    add_requires("sfml")
-end
-
-if is_plat("linux", "macosx") then
-    -- For the SunFounder Car
-    add_requires("pca9685")
-    add_requires("wiringpi")
-end
+add_requires("oatpp", "oatpp-websocket")
 
 -- For Functional Programming?
 add_requires("tl_expected")
 
-target("legacy")
+target("backend")
     set_kind("binary")
-    add_packages("serial")
-    add_packages("spdlog")
-    add_packages("fmt")
-
-    add_packages("oatpp")
     
-    if is_plat("windows") then
-        add_packages("sfml")
-    end
-    if is_plat("linux", "macosx") then
-        add_packages("pca9685")
-        add_packages("wiringpi")
-    end
+    add_packages("fmt")
+    add_packages("spdlog")
+
+    add_packages("oatpp", "oatpp-websocket")
 
     add_packages("tl_expected")
 
-    add_files("src/*.cpp")
-    add_headerfiles("src/*.h", "src/*.hpp")
+    add_files("src/**.cpp")
+    add_headerfiles("src/**.h", "src/**.hpp")
     add_includedirs("include")
 
     if is_plat("windows") then
