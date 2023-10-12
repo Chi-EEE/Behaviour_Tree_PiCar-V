@@ -8,6 +8,8 @@ set_languages("cxx17")
 add_requires("spdlog")
 add_requires("fmt")
 
+add_requires("nlohmann_json")
+
 -- C++ Backend API for Svelte App
 add_requires("oatpp", "oatpp-websocket")
 
@@ -16,7 +18,7 @@ add_requires("tl_expected")
 
 target("backend")
     set_kind("binary")
-    
+
     add_packages("fmt")
     add_packages("spdlog")
 

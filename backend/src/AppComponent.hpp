@@ -1,7 +1,7 @@
 #ifndef AppComponent_hpp
 #define AppComponent_hpp
 
-#include "websocket/WSListener.hpp"
+#include "rooms/Lobby.hpp"
 
 #include "oatpp/web/server/AsyncHttpConnectionHandler.hpp"
 #include "oatpp/web/server/HttpRouter.hpp"
@@ -65,7 +65,7 @@ public:
   OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::network::ConnectionHandler>, websocketConnectionHandler)("websocket", [] {
     OATPP_COMPONENT(std::shared_ptr<oatpp::async::Executor>, executor);
     auto connectionHandler = oatpp::websocket::AsyncConnectionHandler::createShared(executor);
-    connectionHandler->setSocketInstanceListener(std::make_shared<WSInstanceListener>());
+    connectionHandler->setSocketInstanceListener(std::make_shared<Lobby>());
     return connectionHandler;
   }());
 

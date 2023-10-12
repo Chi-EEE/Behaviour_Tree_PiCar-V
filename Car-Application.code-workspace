@@ -97,7 +97,9 @@
 			"random": "cpp",
 			"string_view": "cpp",
 			"numbers": "cpp",
-			"semaphore": "cpp"
+			"semaphore": "cpp",
+			"set": "cpp",
+			"unordered_set": "cpp"
 		}
 	}
 }
