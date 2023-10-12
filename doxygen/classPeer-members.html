@@ -70,13 +70,21 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">Point Member List</div></div>
+  <div class="headertitle"><div class="title">Peer Member List</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="structPoint.html">Point</a>, including all inherited members.</p>
+<p>This is the complete list of members for <a class="el" href="classPeer.html">Peer</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>lines</b> (defined in <a class="el" href="structPoint.html">Point</a>)</td><td class="entry"><a class="el" href="structPoint.html">Point</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPeer.html#a4e4b87783a12f3c971804e215f0c275d">getNickname</a>()</td><td class="entry"><a class="el" href="classPeer.html">Peer</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classPeer.html#a8e210bb6dd0d68fe429d39f2e7651c7d">getRoom</a>()</td><td class="entry"><a class="el" href="classPeer.html">Peer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPeer.html#aa63953719dcc1af6eb1583389823a392">getUserId</a>()</td><td class="entry"><a class="el" href="classPeer.html">Peer</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>onClose</b>(const std::shared_ptr&lt; AsyncWebSocket &gt; &amp;socket, v_uint16 code, const oatpp::String &amp;message) override (defined in <a class="el" href="classPeer.html">Peer</a>)</td><td class="entry"><a class="el" href="classPeer.html">Peer</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>onPing</b>(const std::shared_ptr&lt; AsyncWebSocket &gt; &amp;socket, const oatpp::String &amp;message) override (defined in <a class="el" href="classPeer.html">Peer</a>)</td><td class="entry"><a class="el" href="classPeer.html">Peer</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>onPong</b>(const std::shared_ptr&lt; AsyncWebSocket &gt; &amp;socket, const oatpp::String &amp;message) override (defined in <a class="el" href="classPeer.html">Peer</a>)</td><td class="entry"><a class="el" href="classPeer.html">Peer</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Peer</b>(const std::shared_ptr&lt; AsyncWebSocket &gt; &amp;socket, const std::shared_ptr&lt; Room &gt; &amp;room, const oatpp::String &amp;nickname, v_int32 userId) (defined in <a class="el" href="classPeer.html">Peer</a>)</td><td class="entry"><a class="el" href="classPeer.html">Peer</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>readMessage</b>(const std::shared_ptr&lt; AsyncWebSocket &gt; &amp;socket, v_uint8 opcode, p_char8 data, oatpp::v_io_size size) override (defined in <a class="el" href="classPeer.html">Peer</a>)</td><td class="entry"><a class="el" href="classPeer.html">Peer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPeer.html#a044f55559581d29eb50a438ae43a9270">sendMessage</a>(const oatpp::String &amp;message)</td><td class="entry"><a class="el" href="classPeer.html">Peer</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

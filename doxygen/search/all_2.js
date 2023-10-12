@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vector2fhash_0',['Vector2fHash',['../structVector2fHash.html',1,'']]]
+  ['lobby_0',['Lobby',['../classLobby.html',1,'']]]
 ];

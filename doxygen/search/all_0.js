@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['point_0',['Point',['../structPoint.html',1,'']]]
+  ['addpeer_0',['addPeer',['../classRoom.html#a377070ff3753d87d5c76e4e9253f11f0',1,'Room']]],
+  ['appcomponent_1',['AppComponent',['../classAppComponent.html',1,'']]]
 ];

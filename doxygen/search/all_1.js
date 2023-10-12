@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['test_0',['Test',['../classTest.html',1,'Test'],['../classTest.html#a99f2bbfac6c95612322b0f10e607ebe5',1,'Test::Test()']]]
+  ['getnickname_0',['getNickname',['../classPeer.html#a4e4b87783a12f3c971804e215f0c275d',1,'Peer']]],
+  ['getroom_1',['getRoom',['../classLobby.html#a2d2a59a1713320cb882227fb8598b71f',1,'Lobby::getRoom()'],['../classPeer.html#a8e210bb6dd0d68fe429d39f2e7651c7d',1,'Peer::getRoom()']]],
+  ['getuserid_2',['getUserId',['../classPeer.html#aa63953719dcc1af6eb1583389823a392',1,'Peer']]]
 ];

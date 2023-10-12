@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['point_0',['Point',['../structPoint.html',1,'']]]
+  ['appcomponent_0',['AppComponent',['../classAppComponent.html',1,'']]]
 ];
