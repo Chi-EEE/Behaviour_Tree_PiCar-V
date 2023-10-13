@@ -1,5 +1,6 @@
 docs/*
 !docs/index.html
+!docs/README.md
 !docs/static
 
 # Xmake cache
