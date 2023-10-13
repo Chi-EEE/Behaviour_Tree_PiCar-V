@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Car Application Backend: Member List</title>
+<title>Car Application Backend: RoomsController Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,21 +70,37 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">Lobby Member List</div></div>
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classRoomsController-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">RoomsController Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>This is the complete list of members for <a class="el" href="classLobby.html">Lobby</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classLobby.html#a7508a22e3eaacc218497649035b62efc">getOrCreateRoom</a>(const oatpp::String &amp;roomName)</td><td class="entry"><a class="el" href="classLobby.html">Lobby</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>Lobby</b>() (defined in <a class="el" href="classLobby.html">Lobby</a>)</td><td class="entry"><a class="el" href="classLobby.html">Lobby</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_rooms</b> (defined in <a class="el" href="classLobby.html">Lobby</a>)</td><td class="entry"><a class="el" href="classLobby.html">Lobby</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>m_roomsMutex</b> (defined in <a class="el" href="classLobby.html">Lobby</a>)</td><td class="entry"><a class="el" href="classLobby.html">Lobby</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_userIdCounter</b> (defined in <a class="el" href="classLobby.html">Lobby</a>)</td><td class="entry"><a class="el" href="classLobby.html">Lobby</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classLobby.html#ab6701f5da3a3b2e721b822d84a374ded">obtainNewUserId</a>()</td><td class="entry"><a class="el" href="classLobby.html">Lobby</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classLobby.html#a8ec4661eedceda3aa3b2032b52f6ba75">onAfterCreate_NonBlocking</a>(const std::shared_ptr&lt; AsyncWebSocket &gt; &amp;socket, const std::shared_ptr&lt; const ParameterMap &gt; &amp;params) override</td><td class="entry"><a class="el" href="classLobby.html">Lobby</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classLobby.html#ad6adb447dd7d2f53ecfdfa1a8d5d23f4">onBeforeDestroy_NonBlocking</a>(const std::shared_ptr&lt; AsyncWebSocket &gt; &amp;socket) override</td><td class="entry"><a class="el" href="classLobby.html">Lobby</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+<div class="dynheader">
+Inheritance diagram for RoomsController:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classRoomsController.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ada2836113a4581c35edd7c84a4a82be7"><td class="memItemLeft" align="right" valign="top"><a id="ada2836113a4581c35edd7c84a4a82be7" name="ada2836113a4581c35edd7c84a4a82be7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>RoomsController</b> (OATPP_COMPONENT(std::shared_ptr&lt; ObjectMapper &gt;, objectMapper))</td></tr>
+<tr class="separator:ada2836113a4581c35edd7c84a4a82be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab550180495ff3148c55bd7ebd19e0850"><td class="memItemLeft" align="right" valign="top"><a id="ab550180495ff3148c55bd7ebd19e0850" name="ab550180495ff3148c55bd7ebd19e0850"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ENDPOINT_ASYNC</b> (&quot;GET&quot;, &quot;/&quot;, Root)</td></tr>
+<tr class="separator:ab550180495ff3148c55bd7ebd19e0850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab63e583c55ad625f66e2837193dfecd7"><td class="memItemLeft" align="right" valign="top"><a id="ab63e583c55ad625f66e2837193dfecd7" name="ab63e583c55ad625f66e2837193dfecd7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ENDPOINT_ASYNC</b> (&quot;GET&quot;, &quot;ws/chat/{room-name}/*&quot;, WS)</td></tr>
+<tr class="separator:ab63e583c55ad625f66e2837193dfecd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Controller with WebSocket-connect endpoint. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/controller/RoomsController.cc</li>
+</ul>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5

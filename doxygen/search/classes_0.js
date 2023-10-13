@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['appcomponent_0',['AppComponent',['../classAppComponent.html',1,'']]]
+  ['abstractcontroller_0',['AbstractController',['../classAbstractController.html',1,'']]],
+  ['appcomponent_1',['AppComponent',['../classAppComponent.html',1,'']]]
 ];
