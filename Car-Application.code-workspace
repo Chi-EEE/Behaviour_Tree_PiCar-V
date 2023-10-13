@@ -101,7 +101,10 @@
 			"set": "cpp",
 			"unordered_set": "cpp",
 			"codecvt": "cpp",
-			"fstream": "cpp"
+			"fstream": "cpp",
+			"source_location": "cpp",
+			"shared_mutex": "cpp",
+			"cinttypes": "cpp"
 		}
 	}
 }

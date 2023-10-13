@@ -45,7 +45,7 @@ public:
             file.seekg(0, std::ios::beg);
             file.read(memblock.data(), size);
             file.close();
-            return controller->createResponse(status, memblock.data());
+            return controller->createResponse(status, std::string(memblock.begin(), memblock.end()));
         }
         else
         {
