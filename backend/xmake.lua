@@ -43,3 +43,6 @@ target("backend")
     if is_plat("windows") then
         add_defines("_WIN32")
     end
+
+     set_configdir("$(buildir)/$(plat)/$(arch)/$(mode)/config")
+     add_configfiles("config/*.json", {onlycopy = true})

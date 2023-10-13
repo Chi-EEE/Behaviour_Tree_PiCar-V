@@ -1,56 +1,59 @@
 #include <iostream>
-#include <thread>
-#include "sockpp/tcp_acceptor.h"
+#include <string>
+#include "sockpp/tcp_connector.h"
 #include "sockpp/version.h"
 
-void run_echo(sockpp::tcp_socket sock)
-{
-	ssize_t n;
-	char buf[512];
-
-	while ((n = sock.read(buf, sizeof(buf))) > 0)
-		sock.write_n(buf, n);
-
-	std::cout << "Connection closed from " << sock.peer_address() << std::endl;
-}
+using namespace std;
+using namespace std::chrono;
 
 int main(int argc, char* argv[])
 {
-	std::cout << "Sample TCP echo server for 'sockpp' "
-		<< sockpp::SOCKPP_VERSION << '\n' << std::endl;
+	cout << "Sample TCP echo client for 'sockpp' "
+		<< sockpp::SOCKPP_VERSION << '\n' << endl;
 
-	in_port_t port = (argc > 1) ? atoi(argv[1]) : 12345;
+	string host = (argc > 1) ? argv[1] : "localhost";
+	in_port_t port = (argc > 2) ? atoi(argv[2]) : 12345;
 
 	sockpp::initialize();
 
-	sockpp::tcp_acceptor acc(port);
+	// Implicitly creates an inet_address from {host,port}
+	// and then tries the connection.
 
-	if (!acc) {
-		std::cerr << "Error creating the acceptor: " << acc.last_error_str() << std::endl;
+	sockpp::tcp_connector conn({host, port}, seconds{5});
+	if (!conn) {
+		cerr << "Error connecting to server at "
+			<< sockpp::inet_address(host, port)
+			<< "\n\t" << conn.last_error_str() << endl;
 		return 1;
 	}
-	std::cout << "Awaiting connections on port " << port << "..." << std::endl;
 
-	while (true) {
-		sockpp::inet_address peer;
+	cout << "Created a connection from " << conn.address() << endl;
 
-		// Accept a new client connection
-		sockpp::tcp_socket sock = acc.accept(&peer);
-		std::cout << "Received a connection request from " << peer << std::endl;
+    // Set a timeout for the responses
+    if (!conn.read_timeout(seconds(5))) {
+        cerr << "Error setting timeout on TCP stream: "
+                << conn.last_error_str() << endl;
+    }
 
-		if (!sock) {
-			std::cerr << "Error accepting incoming connection: " 
-				<< acc.last_error_str() << std::endl;
+	string s, sret;
+	while (getline(cin, s) && !s.empty()) {
+		if (conn.write(s) != ssize_t(s.length())) {
+			cerr << "Error writing to the TCP stream: "
+				<< conn.last_error_str() << endl;
+			break;
 		}
-		else {
-			// Create a thread and transfer the new stream to it.
-			std::thread thr(run_echo, std::move(sock));
-			thr.detach();
+
+		sret.resize(s.length());
+		ssize_t n = conn.read_n(&sret[0], s.length());
+
+		if (n != ssize_t(s.length())) {
+			cerr << "Error reading from TCP stream: "
+				<< conn.last_error_str() << endl;
+			break;
 		}
+
+		cout << sret << endl;
 	}
 
-	return 0;
+	return (!conn) ? 1 : 0;
 }
-
-
-

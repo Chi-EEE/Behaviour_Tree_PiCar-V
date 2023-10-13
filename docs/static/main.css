@@ -63,3 +63,8 @@ a {
     filter: brightness(80%);
     text-align: center;
 }
+
+a.fill {
+    width: 100%;
+    height: 100%;
+}
