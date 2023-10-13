@@ -5,13 +5,13 @@ add_repositories("repository repository")
 
 set_languages("cxx17")
 
-add_requires("spdlog")
-add_requires("fmt")
-
+-- Logging / Data handling
+add_requires("boost")
+add_requires("fmt", "spdlog")
 add_requires("nlohmann_json")
 
 -- C++ Backend API for Svelte App
-add_requires("oatpp-websocket")
+add_requires("oatpp", "oatpp-websocket")
 
 -- For Functional Programming?
 add_requires("tl_expected")
@@ -19,12 +19,18 @@ add_requires("tl_expected")
 target("backend")
     set_kind("binary")
 
-    add_packages("fmt")
-    add_packages("spdlog")
-
-    add_packages("oatpp-websocket")
-
+    add_packages("boost")
+    add_packages("fmt", "spdlog")
+    add_packages("nlohmann_json")
+    add_packages("oatpp", "oatpp-websocket")
     add_packages("tl_expected")
+
+    before_build_files(function(target)
+        os.execv("pnpm", {"--prefix", path.join(os.scriptdir(), "client"), "run", "build"})
+        print("Copying svelte files...")
+        os.cp("$(scriptdir)/client/public", "$(buildir)/$(plat)/$(arch)/$(mode)/client/public")
+        print("Completed copying svelte files...")
+    end)
 
     add_files("src/**.cpp")
     add_headerfiles("src/**.hpp")
