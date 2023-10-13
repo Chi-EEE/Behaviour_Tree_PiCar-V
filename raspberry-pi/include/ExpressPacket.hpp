@@ -3,6 +3,8 @@
 
 #pragma once
 
+// Made with the help of ChatGPT
+
 #include <vector>
 #include <tuple>
 #include <stdexcept>

@@ -1,5 +1,7 @@
 #include "RPLidar.h"
 
+// Made with the help of ChatGPT
+
 /*
 auto lidar = RPLidar("COM3");
 
