@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sendmessage_0',['sendMessage',['../classPeer.html#a044f55559581d29eb50a438ae43a9270',1,'Peer::sendMessage()'],['../classRoom.html#af5081bb11f073b115e0178039f2e058a',1,'Room::sendMessage()']]]
+  ['removepeerbyuserid_0',['removePeerByUserId',['../classRoom.html#a025379de2ccc635467291a86a8d20faa',1,'Room']]]
 ];

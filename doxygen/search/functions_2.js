@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['oatpp_5fcreate_5fcomponent_0',['OATPP_CREATE_COMPONENT',['../classAppComponent.html#a936e77d639db27db9845ada6ccf90c40',1,'AppComponent::OATPP_CREATE_COMPONENT(std::shared_ptr&lt; oatpp::async::Executor &gt;, executor)([]'],['../classAppComponent.html#a498429c1247775317091b31ede4b8220',1,'AppComponent::OATPP_CREATE_COMPONENT(std::shared_ptr&lt; oatpp::network::ServerConnectionProvider &gt;, serverConnectionProvider)([]'],['../classAppComponent.html#a9f15d1d94e6d6b003dbf88cdae255b7f',1,'AppComponent::OATPP_CREATE_COMPONENT(std::shared_ptr&lt; oatpp::web::server::HttpRouter &gt;, httpRouter)([]'],['../classAppComponent.html#a222c653c14f2503d98d641c5e40d29a2',1,'AppComponent::OATPP_CREATE_COMPONENT(std::shared_ptr&lt; oatpp::network::ConnectionHandler &gt;, serverConnectionHandler)(&quot;http&quot;'],['../classAppComponent.html#a9203c578b40dec997f6b46edd00f7054',1,'AppComponent::OATPP_CREATE_COMPONENT(std::shared_ptr&lt; oatpp::data::mapping::ObjectMapper &gt;, apiObjectMapper)([]'],['../classAppComponent.html#aebde6cd9df5cf4d62e367fadcd39893c',1,'AppComponent::OATPP_CREATE_COMPONENT(std::shared_ptr&lt; oatpp::network::ConnectionHandler &gt;, websocketConnectionHandler)(&quot;websocket&quot;']]],
-  ['obtainnewuserid_1',['obtainNewUserId',['../classLobby.html#ab6701f5da3a3b2e721b822d84a374ded',1,'Lobby']]],
-  ['onaftercreate_5fnonblocking_2',['onAfterCreate_NonBlocking',['../classLobby.html#a8ec4661eedceda3aa3b2032b52f6ba75',1,'Lobby']]],
-  ['onbeforedestroy_5fnonblocking_3',['onBeforeDestroy_NonBlocking',['../classLobby.html#ad6adb447dd7d2f53ecfdfa1a8d5d23f4',1,'Lobby']]]
+  ['getnickname_0',['getNickname',['../classPeer.html#a4e4b87783a12f3c971804e215f0c275d',1,'Peer']]],
+  ['getorcreateroom_1',['getOrCreateRoom',['../classLobby.html#a7508a22e3eaacc218497649035b62efc',1,'Lobby']]],
+  ['getroom_2',['getRoom',['../classPeer.html#a8e210bb6dd0d68fe429d39f2e7651c7d',1,'Peer']]],
+  ['getuserid_3',['getUserId',['../classPeer.html#aa63953719dcc1af6eb1583389823a392',1,'Peer']]]
 ];

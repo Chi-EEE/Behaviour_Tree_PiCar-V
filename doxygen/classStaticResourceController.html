@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Car Application Backend: PageController Class Reference</title>
+<title>Car Application Backend: StaticResourceController Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -72,34 +72,34 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classPageController-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">PageController Class Reference</div></div>
+<a href="classStaticResourceController-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">StaticResourceController Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>For handling static pages.  
+ <a href="classStaticResourceController.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for PageController:</div>
+Inheritance diagram for StaticResourceController:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classPageController.png" usemap="#PageController_map" alt=""/>
-  <map id="PageController_map" name="PageController_map">
+  <img src="classStaticResourceController.png" usemap="#StaticResourceController_map" alt=""/>
+  <map id="StaticResourceController_map" name="StaticResourceController_map">
 <area href="classAbstractController.html" alt="AbstractController" shape="rect" coords="0,56,219,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a93ebb60705ba272f7293000d49d1f57c"><td class="memItemLeft" align="right" valign="top"><a id="a93ebb60705ba272f7293000d49d1f57c" name="a93ebb60705ba272f7293000d49d1f57c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PageController</b> (OATPP_COMPONENT(std::shared_ptr&lt; ObjectMapper &gt;, objectMapper))</td></tr>
-<tr class="separator:a93ebb60705ba272f7293000d49d1f57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57437026083e5f735431ed67c18df030"><td class="memItemLeft" align="right" valign="top"><a id="a57437026083e5f735431ed67c18df030" name="a57437026083e5f735431ed67c18df030"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ENDPOINT_ASYNC</b> (&quot;GET&quot;, &quot;/&quot;, Root)</td></tr>
-<tr class="separator:a57437026083e5f735431ed67c18df030"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44cee752dd0da2f5fa36b087285a77a7"><td class="memItemLeft" align="right" valign="top"><a id="a44cee752dd0da2f5fa36b087285a77a7" name="a44cee752dd0da2f5fa36b087285a77a7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ENDPOINT_ASYNC</b> (&quot;GET&quot;, &quot;/{path}&quot;, Path)</td></tr>
-<tr class="separator:a44cee752dd0da2f5fa36b087285a77a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f1d77acafef65dc9f362be28714357f"><td class="memItemLeft" align="right" valign="top"><a id="a0f1d77acafef65dc9f362be28714357f" name="a0f1d77acafef65dc9f362be28714357f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ENDPOINT_ASYNC</b> (&quot;GET&quot;, &quot;/build/{path}&quot;, BuildPath)</td></tr>
-<tr class="separator:a0f1d77acafef65dc9f362be28714357f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23fd939b1651a1a9888903616ae0df76"><td class="memItemLeft" align="right" valign="top"><a id="a23fd939b1651a1a9888903616ae0df76" name="a23fd939b1651a1a9888903616ae0df76"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>StaticResourceController</b> (OATPP_COMPONENT(std::shared_ptr&lt; ObjectMapper &gt;, objectMapper))</td></tr>
+<tr class="separator:a23fd939b1651a1a9888903616ae0df76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac554447dd1d935cfcd805644a3d3c595"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticResourceController.html#ac554447dd1d935cfcd805644a3d3c595">ENDPOINT_ASYNC</a> (&quot;GET&quot;, &quot;/&quot;, Root)</td></tr>
+<tr class="memdesc:ac554447dd1d935cfcd805644a3d3c595"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the index of the page to the index html.  <a href="classStaticResourceController.html#ac554447dd1d935cfcd805644a3d3c595">More...</a><br /></td></tr>
+<tr class="separator:ac554447dd1d935cfcd805644a3d3c595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dab4beeda112607fb27cbe40c65b553"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticResourceController.html#a9dab4beeda112607fb27cbe40c65b553">ENDPOINT_ASYNC</a> (&quot;GET&quot;, &quot;*&quot;, Path)</td></tr>
+<tr class="memdesc:a9dab4beeda112607fb27cbe40c65b553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try and load resource from path tail.  <a href="classStaticResourceController.html#a9dab4beeda112607fb27cbe40c65b553">More...</a><br /></td></tr>
+<tr class="separator:a9dab4beeda112607fb27cbe40c65b553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classAbstractController"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classAbstractController')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAbstractController.html">AbstractController</a></td></tr>
 <tr class="memitem:ab34cb9bc3295313ede947fa2d1012f20 inherit pub_methods_classAbstractController"><td class="memItemLeft" align="right" valign="top"><a id="ab34cb9bc3295313ede947fa2d1012f20" name="ab34cb9bc3295313ede947fa2d1012f20"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>AbstractController</b> (OATPP_COMPONENT(std::shared_ptr&lt; ObjectMapper &gt;, objectMapper))</td></tr>
@@ -116,8 +116,99 @@ template&lt;class ControllerT &gt; </td></tr>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>exists</b> (std::string relative_file_path)</td></tr>
 <tr class="separator:a56cb26d0a21ec7b3cd3319c1345f546c inherit pub_static_methods_classAbstractController"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >For handling static pages. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9dab4beeda112607fb27cbe40c65b553" name="a9dab4beeda112607fb27cbe40c65b553"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dab4beeda112607fb27cbe40c65b553">&#9670;&#160;</a></span>ENDPOINT_ASYNC() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StaticResourceController::ENDPOINT_ASYNC </td>
+          <td>(</td>
+          <td class="paramtype">&quot;GET&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;*&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Path&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Try and load resource from path tail. </p>
+
+</div>
+</div>
+<a id="ac554447dd1d935cfcd805644a3d3c595" name="ac554447dd1d935cfcd805644a3d3c595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac554447dd1d935cfcd805644a3d3c595">&#9670;&#160;</a></span>ENDPOINT_ASYNC() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StaticResourceController::ENDPOINT_ASYNC </td>
+          <td>(</td>
+          <td class="paramtype">&quot;GET&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;/&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Root&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the index of the page to the index html. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/controller/PageController.cc</li>
+<li>src/controller/StaticResourceController.cc</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
