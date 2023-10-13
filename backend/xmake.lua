@@ -11,7 +11,7 @@ add_requires("fmt")
 add_requires("nlohmann_json")
 
 -- C++ Backend API for Svelte App
-add_requires("oatpp", "oatpp-websocket")
+add_requires("oatpp-websocket")
 
 -- For Functional Programming?
 add_requires("tl_expected")
@@ -22,12 +22,14 @@ target("backend")
     add_packages("fmt")
     add_packages("spdlog")
 
-    add_packages("oatpp", "oatpp-websocket")
+    add_packages("oatpp-websocket")
 
     add_packages("tl_expected")
 
     add_files("src/**.cpp")
-    add_headerfiles("src/**.h", "src/**.hpp")
+    add_headerfiles("src/**.hpp")
+    add_files("src/controller/**.cc")
+
     add_includedirs("include")
 
     if is_plat("windows") then

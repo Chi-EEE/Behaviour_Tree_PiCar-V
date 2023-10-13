@@ -31,7 +31,7 @@ public:
    * @param roomName
    * @return
    */
-  std::shared_ptr<Room> getRoom(const oatpp::String& roomName);
+  std::shared_ptr<Room> getOrCreateRoom(const oatpp::String& roomName);
 
 public:
 
