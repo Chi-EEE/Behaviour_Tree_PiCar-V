@@ -28,7 +28,7 @@ public:
         ENDPOINT_ASYNC_INIT(Root)
 
         Action act() override{
-            return _return(PageController::return_file_response(controller, Status::CODE_200, "client/public/index.html"));
+            return _return(PageController::return_file_response(controller, Status::CODE_200, "frontend/public/index.html"));
         }
     };
 
@@ -38,12 +38,12 @@ public:
         Action act() override{
             auto path = request->getPathVariable("path");
             spdlog::info("The page ({}) has been visited", std::string(path));
-            std::string html_file_path = fmt::format("client/public/{}.html", std::string(path));
+            std::string html_file_path = fmt::format("frontend/public/{}.html", std::string(path));
             if (PageController::exists(html_file_path))
             {
                 return _return(PageController::return_file_response(controller, Status::CODE_200, html_file_path));
             }
-            std::string file_path = fmt::format("client/public/{}", std::string(path));
+            std::string file_path = fmt::format("frontend/public/{}", std::string(path));
             if (PageController::exists(file_path))
             {
                 return _return(PageController::return_file_response(controller, Status::CODE_200, file_path));
@@ -57,7 +57,7 @@ public:
 
         Action act() override{
             auto path = request->getPathVariable("path");
-            std::string file_path = fmt::format("client/public/build/{}", std::string(path));
+            std::string file_path = fmt::format("frontend/public/build/{}", std::string(path));
             return _return(PageController::return_file_response(controller, Status::CODE_200, file_path));
         }
     };

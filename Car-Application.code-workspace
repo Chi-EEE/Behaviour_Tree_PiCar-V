@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "raspberry-pi"
+		},
+		{
+			"path": "frontend"
 		}
 	],
 	"settings": {

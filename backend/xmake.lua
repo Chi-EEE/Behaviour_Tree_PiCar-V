@@ -26,9 +26,11 @@ target("backend")
     add_packages("tl_expected")
 
     before_build_files(function(target)
-        os.execv("pnpm", {"--prefix", path.join(os.scriptdir(), "client"), "run", "build"})
+        local frontend_dir = path.join(os.scriptdir(), "..", "frontend")
+        os.execv("pnpm", {"--prefix", frontend_dir, "i"})
+        os.execv("pnpm", {"--prefix", frontend_dir, "run", "build"})
         print("Copying svelte files...")
-        os.cp("$(scriptdir)/client/public", "$(buildir)/$(plat)/$(arch)/$(mode)/client/public")
+        os.cp("$(scriptdir)/../frontend/public", "$(buildir)/$(plat)/$(arch)/$(mode)/frontend/public")
         print("Completed copying svelte files...")
     end)
 
