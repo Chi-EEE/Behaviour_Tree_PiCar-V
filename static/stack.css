@@ -7,12 +7,12 @@
     background-color: #376399;
 }
 
-frontend {
+#frontend {
     background-color: #F8EEB9;
     color: black;
 }
 
-frontend .circle {
+#frontend .circle {
     background-color: #E5DBAC;
 }
 
