@@ -3,7 +3,7 @@ add_rules("mode.debug", "mode.release")
 add_requires("imath")
 add_requires("sockpp")
 
-target("raspberry-pi")
+target("raspberry_pi")
     set_kind("binary")
     add_files("src/*.cpp")
 

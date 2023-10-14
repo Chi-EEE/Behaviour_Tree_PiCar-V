@@ -7,9 +7,6 @@
 			"path": "backend"
 		},
 		{
-			"path": "raspberry-pi"
-		},
-		{
 			"path": "frontend"
 		}
 	],
