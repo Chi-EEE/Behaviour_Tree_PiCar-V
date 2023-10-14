@@ -35,7 +35,7 @@ jobs:
         uses: andstor/jsdoc-action@v1
         with:
             config_file: "./frontend/jsdoc.config.json"
-            output_dir: './docs/jsdoc'
+            output_dir: './docs/frontend'
             recurse: true
 
       - name: Deploy
