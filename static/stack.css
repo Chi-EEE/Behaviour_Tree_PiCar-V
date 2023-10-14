@@ -1,0 +1,26 @@
+#backend {
+    background-color: #1A4D89;
+    color: white;
+}
+
+#backend .circle {
+    background-color: #376399;
+}
+
+frontend {
+    background-color: #F8EEB9;
+    color: black;
+}
+
+frontend .circle {
+    background-color: #E5DBAC;
+}
+
+#raspberry_pi {
+    background-color: #9A002A;
+    color: white;
+}
+
+#raspberry_pi .circle {
+    background-color: #8b002a;
+}
