@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "raspberry_pi"
+		},
+		{
+			"path": "tcp"
 		}
 	],
 	"settings": {
