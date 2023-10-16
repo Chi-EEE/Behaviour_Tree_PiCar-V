@@ -6,7 +6,7 @@ add_repositories("repository repository")
 set_languages("cxx17")
 
 -- Logging / Data handling
-add_requires("boost")
+add_requires("boost", { configs = {chrono = true} })
 add_requires("fmt", "spdlog")
 add_requires("nlohmann_json")
 

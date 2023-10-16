@@ -2,6 +2,8 @@
 #ifndef AbstractController_cc
 #define AbstractController_cc
 
+#include <boost/chrono.hpp>
+
 #include <filesystem>
 #include <fstream>
 
@@ -9,6 +11,8 @@
 
 #include "fmt/format.h"
 #include "spdlog/spdlog.h"
+
+#include "../ConnectionProperty.hpp"
 
 #include "oatpp/web/server/api/ApiController.hpp"
 
@@ -30,8 +34,9 @@ public:
 
 public:
     template <class ControllerT>
-    static std::shared_ptr<OutgoingResponse> return_file_response(ControllerT *const controller, Status status, std::string relative_file_path)
+    static std::shared_ptr<OutgoingResponse> return_file_response(ControllerT *const controller, ConnectionProperty connection_property, Status status, std::string relative_file_path)
     {
+        auto start = boost::chrono::high_resolution_clock::now();
         std::string program_path = boost::dll::program_location().parent_path().string();
         std::string file_path = fmt::format("{program_path}/{file_path}",
                                             fmt::arg("program_path", program_path),
@@ -45,6 +50,10 @@ public:
             file.seekg(0, std::ios::beg);
             file.read(memblock.data(), size);
             file.close();
+            auto end = boost::chrono::high_resolution_clock::now();
+            auto duration = end - start;
+            auto duration_in_micros = boost::chrono::duration_cast<boost::chrono::nanoseconds>(duration);
+            spdlog::info("Resource [{}] has been loaded by {}:{}, took {} nano seconds.", std::string(relative_file_path), connection_property.address, connection_property.port, duration_in_micros.count());
             return controller->createResponse(status, std::string(memblock.begin(), memblock.end()));
         }
         else
