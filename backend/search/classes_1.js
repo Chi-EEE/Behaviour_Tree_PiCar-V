@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lobby_0',['Lobby',['../classLobby.html',1,'']]]
+  ['connectionproperty_0',['ConnectionProperty',['../structConnectionProperty.html',1,'']]]
 ];

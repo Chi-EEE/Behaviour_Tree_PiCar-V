@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['sendmessage_0',['sendMessage',['../classPeer.html#a044f55559581d29eb50a438ae43a9270',1,'Peer::sendMessage()'],['../classRoom.html#af5081bb11f073b115e0178039f2e058a',1,'Room::sendMessage()']]],
-  ['staticresourcecontroller_1',['StaticResourceController',['../classStaticResourceController.html',1,'']]]
+  ['removepeerbyuserid_0',['removePeerByUserId',['../classRoom.html#a025379de2ccc635467291a86a8d20faa',1,'Room']]],
+  ['room_1',['Room',['../classRoom.html',1,'']]],
+  ['roomscontroller_2',['RoomsController',['../classRoomsController.html',1,'']]]
 ];
