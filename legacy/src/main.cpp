@@ -9,11 +9,6 @@
 
 #include "DisplayWindow.h"
 
-struct Point
-{
-    std::shared_ptr<sf::VertexArray> lines;
-};
-
 int main()
 {
     spdlog::set_level(spdlog::level::off);

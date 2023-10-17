@@ -14,7 +14,7 @@ LidarScanner::~LidarScanner()
 std::vector<std::vector<ScanPoint>> LidarScanner::scan()
 {
     auto points = get_points();
-    
+
     auto shapes = get_shapes(points);
 
     this->previous_points.push_back(std::move(points));
@@ -32,9 +32,9 @@ void LidarScanner::disconnect()
 
 std::vector<ScanPoint> LidarScanner::get_points()
 {
+    std::vector<ScanPoint> points;
     std::function<std::vector<Measure>()> scanGenerator = lidar.iter_scans();
     std::vector<Measure> scan = scanGenerator();
-    std::vector<ScanPoint> points;
     for (int i = 1; i < scan.size(); i++)
     {
         const Measure &measure = scan[i];
@@ -43,13 +43,14 @@ std::vector<ScanPoint> LidarScanner::get_points()
         float angleInRadians = angle * (3.14159265f / 180.0f);
         float x = distance * std::cos(angleInRadians);
         float y = distance * std::sin(angleInRadians);
-        points.push_back({std::move(angle), std::move(distance), std::move(x), std::move(y)});
+        points.push_back({angle, distance, x, y});
     }
     return points;
 }
 
 std::vector<std::vector<ScanPoint>> LidarScanner::get_shapes(std::vector<ScanPoint> points)
 {
+    std::vector<std::vector<ScanPoint>> shapes;
     for (int i = 0; i < points.size(); i++) {
         ScanPoint point = points[i];
         std::vector<ScanPoint> shape;
@@ -57,7 +58,7 @@ std::vector<std::vector<ScanPoint>> LidarScanner::get_shapes(std::vector<ScanPoi
         for (int j = i + 1; j < points.size(); j++) {
             ScanPoint next_point = points[j];
             float distance = sqrt(pow(next_point.x - point.x, 2) + pow(next_point.y - point.y, 2) * 1.0);
-            if (distance < 0.1) {
+            if (distance < 20) {
                 shape.push_back(next_point);
                 continue;
             }
@@ -68,5 +69,7 @@ std::vector<std::vector<ScanPoint>> LidarScanner::get_shapes(std::vector<ScanPoi
                 continue;
             }
         }
+        shapes.push_back(std::move(shape));
     }
+    return shapes;
 }

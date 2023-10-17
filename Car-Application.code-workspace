@@ -14,12 +14,15 @@
 		},
 		{
 			"path": "tcp"
+		},
+		{
+			"path": "legacy"
 		}
 	],
 	"settings": {
 		"typescript.validate.enable": false,
 		"javascript.validate.enable": false,
-		"xmake.workingDirectory": "${workspaceRoot}/backend",
+		"xmake.workingDirectory": "${workspaceRoot}/legacy",
 		"files.associations": {
 			"iostream": "cpp",
 			"vector": "cpp",

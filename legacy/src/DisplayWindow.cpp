@@ -69,28 +69,26 @@ void DisplayWindow::process_events()
 
 void DisplayWindow::update(sf::Time delta_time)
 {
-    if (exit_window)
+    if (this->exit_window)
     {
-        window.close();
+        this->window.close();
     }
     this->shapes = this->lidar_scanner.scan();
 }
 
 void DisplayWindow::render()
 {
+    this->window.clear(sf::Color::White);
     for (auto &shape : this->shapes)
     {
         sf::Color color = sf::Color::Color(effolkronium::random_static::get(0U, UINT_MAX));
+        sf::VertexArray vertex_array(sf::Lines, shape.size());
         for (int i = 0; i < shape.size(); i++)
         {
             auto &point = shape[i];
-            auto &next_point = shape[(i + 1) % shape.size()];
-            sf::Vertex vertices[2] = {
-                sf::Vertex{{point.x, point.y}, color},
-                sf::Vertex{{next_point.x, next_point.y}, color},
-            };
-            window.draw(vertices, 2, sf::Lines);
+            vertex_array[i] = sf::Vertex(sf::Vector2f(point.x, point.y), color);
         }
+        this->window.draw(vertex_array);
     }
-    window.display();
+    this->window.display();
 }
