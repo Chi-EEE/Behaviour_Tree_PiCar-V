@@ -107,7 +107,8 @@
 			"fstream": "cpp",
 			"source_location": "cpp",
 			"shared_mutex": "cpp",
-			"cinttypes": "cpp"
+			"cinttypes": "cpp",
+			"filesystem": "cpp"
 		}
 	}
 }

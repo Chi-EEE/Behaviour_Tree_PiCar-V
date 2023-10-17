@@ -12,6 +12,9 @@ add_requires("spdlog")
 
 add_requires("fmt")
 
+add_requires("imath")
+add_requires("effolkronium-random")
+
 if is_plat("windows") then
     add_requires("sfml")
 end
@@ -30,6 +33,8 @@ target("legacy")
     add_packages("serial")
     add_packages("spdlog")
     add_packages("fmt")
+    add_packages("imath")
+    add_packages("effolkronium-random")
 
     add_packages("oatpp")
     
