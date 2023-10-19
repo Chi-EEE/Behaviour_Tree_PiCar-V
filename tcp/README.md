@@ -1,3 +1,3 @@
 How to enable Port Forwarding for TCP?
 
-[CzBiX/WSLHostPatcher](https://github.com/CzBiX/WSLHostPatcher)
+Run the wsl-port-forwarding.ps1 in Powershell Administrator
