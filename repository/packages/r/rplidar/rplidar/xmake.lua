@@ -1,0 +1,8 @@
+add_requires("serial", "spdlog")
+target("RPLidar")
+    set_kind("$(kind)")
+    add_packages("serial", "spdlog")
+    add_files("src/*.cpp")
+    add_headerfiles("include/(**.h)")
+    add_headerfiles("include/(**.hpp)")
+    add_includedirs("include", {public = true})

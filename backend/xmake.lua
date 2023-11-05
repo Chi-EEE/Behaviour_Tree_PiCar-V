@@ -9,6 +9,7 @@ set_languages("cxx17")
 add_requires("boost", { configs = {chrono = true} })
 add_requires("fmt", "spdlog")
 add_requires("nlohmann_json")
+add_requires("vcpkg::cartographer", {alias = "cartographer"})
 
 -- C++ Backend API for Svelte App
 add_requires("oatpp", "oatpp-websocket")
@@ -24,6 +25,8 @@ target("backend")
     add_packages("nlohmann_json")
     add_packages("oatpp", "oatpp-websocket")
     add_packages("tl_expected")
+
+    add_packages("cartographer")
 
     before_build_files(function(target)
         local frontend_dir = path.join(os.scriptdir(), "..", "frontend")

@@ -3,6 +3,7 @@
 
 #include "oatpp/network/Server.hpp"
 
+#include "cartographer/mapping/2d/"
 #include <iostream>
 
 void run() {

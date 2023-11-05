@@ -1,3 +1,5 @@
+vsxmake*
+
 docs/*
 !docs/index.html
 !docs/README.md
