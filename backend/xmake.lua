@@ -6,7 +6,7 @@ add_repositories("repository repository")
 set_languages("cxx17")
 
 -- Logging / Data handling
--- add_requires("boost", { configs = {chrono = true} })
+add_requires("boost", { configs = {chrono = true} })
 -- add_requires("fmt", "spdlog")
 -- add_requires("nlohmann_json")
 
@@ -19,7 +19,7 @@ add_requires("drogon")
 target("backend")
     set_kind("binary")
 
-    -- add_packages("boost")
+    add_packages("boost")
     -- add_packages("fmt", "spdlog")
     -- add_packages("nlohmann_json")
     add_packages("drogon")
@@ -51,6 +51,7 @@ target("backend")
         print("Completed copying svelte files...")
     end)
 
+    add_headerfiles("src/**.hpp")
     add_files("src/**.cpp")
 
     add_includedirs("include")

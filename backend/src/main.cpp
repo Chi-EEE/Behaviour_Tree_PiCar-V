@@ -1,10 +1,86 @@
-#include <drogon/HttpAppFramework.h>
-int main() {
-    //Set HTTP listener address and port
-    drogon::app().addListener("0.0.0.0",80);
-    //Load config file
-    drogon::app().loadConfigFile("settings/config.json");
-    //Run HTTP framework,the method will block in the internal event loop
-    drogon::app().run();
-    return 0;
-}
+ #include <boost/dll.hpp>
+
+ #include <drogon/HttpAppFramework.h>
+
+ int main()
+ {
+ 	auto config_json_path = boost::dll::program_location().parent_path() / "settings" / "config.json";
+ 	drogon::app().loadConfigFile(config_json_path.string());
+ 	//drogon::app().addListener("0.0.0.0", 8848);
+ 	drogon::app().addListener("127.0.0.1", 8848);
+ 	drogon::app().run();
+ }
+
+//#include <drogon/WebSocketController.h>
+//#include <drogon/PubSubService.h>
+//#include <drogon/HttpAppFramework.h>
+//using namespace drogon;
+//
+//class WebSocketChat : public drogon::WebSocketController<WebSocketChat>
+//{
+//  public:
+//    virtual void handleNewMessage(const WebSocketConnectionPtr &,
+//                                  std::string &&,
+//                                  const WebSocketMessageType &) override;
+//    virtual void handleConnectionClosed(
+//        const WebSocketConnectionPtr &) override;
+//    virtual void handleNewConnection(const HttpRequestPtr &,
+//                                     const WebSocketConnectionPtr &) override;
+//    WS_PATH_LIST_BEGIN
+//    WS_PATH_ADD("/chat", Get);
+//    WS_PATH_LIST_END
+//  private:
+//    PubSubService<std::string> chatRooms_;
+//};
+//
+//struct Subscriber
+//{
+//    std::string chatRoomName_;
+//    drogon::SubscriberID id_;
+//};
+//
+//void WebSocketChat::handleNewMessage(const WebSocketConnectionPtr &wsConnPtr,
+//                                     std::string &&message,
+//                                     const WebSocketMessageType &type)
+//{
+//     write your application logic here
+//    LOG_DEBUG << "new websocket message:" << message;
+//    if (type == WebSocketMessageType::Ping)
+//    {
+//        LOG_DEBUG << "recv a ping";
+//    }
+//    else if (type == WebSocketMessageType::Text)
+//    {
+//        auto &s = wsConnPtr->getContextRef<Subscriber>();
+//        chatRooms_.publish(s.chatRoomName_, message);
+//    }
+//}
+//
+//void WebSocketChat::handleConnectionClosed(const WebSocketConnectionPtr &conn)
+//{
+//    LOG_DEBUG << "websocket closed!";
+//    auto &s = conn->getContextRef<Subscriber>();
+//    chatRooms_.unsubscribe(s.chatRoomName_, s.id_);
+//}
+//
+//void WebSocketChat::handleNewConnection(const HttpRequestPtr &req,
+//                                        const WebSocketConnectionPtr &conn)
+//{
+//    LOG_DEBUG << "new websocket connection!";
+//    conn->send("haha!!!");
+//    Subscriber s;
+//    s.chatRoomName_ = req->getParameter("room_name");
+//    s.id_ = chatRooms_.subscribe(s.chatRoomName_,
+//                                 [conn](const std::string &topic,
+//                                        const std::string &message) {
+//                                      Supress unused variable warning
+//                                     (void)topic;
+//                                     conn->send(message);
+//                                 });
+//    conn->setContext(std::make_shared<Subscriber>(std::move(s)));
+//}
+//
+//int main()
+//{
+//    app().addListener("127.0.0.1", 8848).run();
+//}
