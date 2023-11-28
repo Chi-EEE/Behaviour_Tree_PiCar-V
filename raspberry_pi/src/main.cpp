@@ -86,5 +86,7 @@ int main()
 	lidar.stop_motor();
 	lidar.disconnect();
 	
+    ix::uninitNetSystem();
+	
 	return 0;
 }
