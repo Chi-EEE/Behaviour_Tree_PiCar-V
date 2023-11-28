@@ -22,7 +22,7 @@
 	"settings": {
 		"typescript.validate.enable": false,
 		"javascript.validate.enable": false,
-		"xmake.workingDirectory": "${workspaceRoot}/legacy",
+		"xmake.workingDirectory": "${workspaceRoot}/raspberry_pi",
 		"files.associations": {
 			"iostream": "cpp",
 			"vector": "cpp",

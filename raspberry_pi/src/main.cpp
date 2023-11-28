@@ -1,59 +1,90 @@
 #include <iostream>
-#include <string>
-#include "sockpp/tcp_connector.h"
-#include "sockpp/version.h"
+#include <fstream>
 
-using namespace std;
-using namespace std::chrono;
+#include <ixwebsocket/IXNetSystem.h>
+#include <ixwebsocket/IXWebSocket.h>
+#include <ixwebsocket/IXUserAgent.h>
 
-int main(int argc, char* argv[])
+#include <fmt/format.h>
+
+#include <nlohmann/json.hpp>
+
+#include <chrono> // std::chrono::microseconds
+#include <thread> // std::this_thread::sleep_for
+
+#include <RPLidar.h>
+
+using json = nlohmann::json;
+
+int main()
 {
-	cout << "Sample TCP echo client for 'sockpp' "
-		<< sockpp::SOCKPP_VERSION << '\n' << endl;
+	spdlog::set_level(spdlog::level::off);
 
-	string host = (argc > 1) ? argv[1] : "localhost";
-	in_port_t port = (argc > 2) ? atoi(argv[2]) : 12345;
+	ix::initNetSystem();
 
-	sockpp::initialize();
+	ix::WebSocket web_socket;
 
-	// Implicitly creates an inet_address from {host,port}
-	// and then tries the connection.
+	std::string url("ws://localhost:8848/chat");
+	web_socket.setUrl(url);
+	web_socket.setOnMessageCallback([](const ix::WebSocketMessagePtr& msg)
+		{
+			//if (msg->type == ix::WebSocketMessageType::Message)
+			//{
+			//	std::cout << "received message: " << msg->str << std::endl;
+			//	std::cout << "> " << std::flush;
+			//}
+			//else if (msg->type == ix::WebSocketMessageType::Open)
+			//{
+			//	std::cout << "Connection established" << std::endl;
+			//	std::cout << "> " << std::flush;
+			//}
+			//else if (msg->type == ix::WebSocketMessageType::Error)
+			//{
+			//	// Maybe SSL is not configured properly
+			//	std::cout << "Connection error: " << msg->errorInfo.reason << std::endl;
+			//	std::cout << "> " << std::flush;
+			//}
+			//else if (msg->type == ix::WebSocketMessageType::Close)
+			//{
+			//	std::cout << "Connection closed: " << msg->closeInfo.code << " " << msg->closeInfo.reason << std::endl;
+			//	std::cout << "> " << std::flush;
+			//}
+		}
+	);
+	web_socket.start();
 
-	sockpp::tcp_connector conn({host, port}, seconds{5});
-	if (!conn) {
-		cerr << "Error connecting to server at "
-			<< sockpp::inet_address(host, port)
-			<< "\n\t" << conn.last_error_str() << endl;
-		return 1;
+	auto lidar = RPLidar("COM3");
+	lidar.reset();
+	lidar.stop();
+	lidar.stop_motor();
+
+	auto info = lidar.get_info();
+	std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
+
+	auto health = lidar.get_health();
+	std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
+
+	lidar.start_motor();
+	std::function<std::vector<Measure>()> scan_generator = lidar.iter_scans();
+	while (true)
+	{
+		json output = json::array();
+		std::vector<Measure> scan = scan_generator();
+		for (const Measure& measure : scan)
+		{
+			output.push_back(
+				{
+				{"distance", measure.distance},
+				{"angle", measure.angle},
+				}
+			);
+		}
+		web_socket.send(output.dump());
 	}
 
-	cout << "Created a connection from " << conn.address() << endl;
-
-    // Set a timeout for the responses
-    if (!conn.read_timeout(seconds(5))) {
-        cerr << "Error setting timeout on TCP stream: "
-                << conn.last_error_str() << endl;
-    }
-
-	string s, sret;
-	while (getline(cin, s) && !s.empty()) {
-		if (conn.write(s) != ssize_t(s.length())) {
-			cerr << "Error writing to the TCP stream: "
-				<< conn.last_error_str() << endl;
-			break;
-		}
-
-		sret.resize(s.length());
-		ssize_t n = conn.read_n(&sret[0], s.length());
-
-		if (n != ssize_t(s.length())) {
-			cerr << "Error reading from TCP stream: "
-				<< conn.last_error_str() << endl;
-			break;
-		}
-
-		cout << sret << endl;
-	}
-
-	return (!conn) ? 1 : 0;
+	lidar.stop();
+	lidar.stop_motor();
+	lidar.disconnect();
+	
+	return 0;
 }
