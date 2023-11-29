@@ -52,6 +52,8 @@ target("backend")
     end)
 
     add_headerfiles("src/**.hpp")
+    
+    add_headerfiles("src/**.h")
     add_files("src/**.cpp")
 
     add_includedirs("include")

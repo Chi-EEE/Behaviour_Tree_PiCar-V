@@ -5,7 +5,7 @@
 #include <drogon/HttpAppFramework.h>
 
 #include <spdlog/spdlog.h>
-#include <cpptrace/cpptrace.hpp>
+#include "../room/User.h"
 
 #include <nlohmann/json.hpp>
 //#include <nlohmann/json-schema.hpp>
@@ -27,27 +27,14 @@ public:
 		WS_PATH_ADD("/chat", drogon::Get);
 	WS_PATH_LIST_END
 private:
-	drogon::PubSubService<std::string> chatRooms_;
-};
-
-enum SubscriberType {
-	Unknown,
-	User,
-	Car,
-};
-
-struct Subscriber
-{
-	SubscriberType type_;
-	std::string chatRoomName_;
-	drogon::SubscriberID id_;
+	drogon::PubSubService<std::string> chat_rooms;
 };
 
 void WebSocketChat::handleNewMessage(const drogon::WebSocketConnectionPtr& wsConnPtr,
 	std::string&& message,
 	const drogon::WebSocketMessageType& type)
 {
-	auto& subscriber = wsConnPtr->getContextRef<Subscriber>();
+	auto& subscriber = wsConnPtr->getContextRef<User>();
 	if (subscriber.type_ == SubscriberType::Unknown) {
 		if (type == drogon::WebSocketMessageType::Ping)
 		{
@@ -66,7 +53,7 @@ void WebSocketChat::handleNewMessage(const drogon::WebSocketConnectionPtr& wsCon
 	}
 	switch (type) {
 	case drogon::WebSocketMessageType::Text:
-		chatRooms_.publish(s.chatRoomName_, message);
+		chat_rooms.publish(s.chatRoomName_, message);
 		break;
 	}
 	/*if (type == drogon::WebSocketMessageType::Ping)
@@ -86,8 +73,8 @@ void WebSocketChat::handleNewMessage(const drogon::WebSocketConnectionPtr& wsCon
 void WebSocketChat::handleConnectionClosed(const drogon::WebSocketConnectionPtr& conn)
 {
 	LOG_DEBUG << "websocket closed!";
-	auto& s = conn->getContextRef<Subscriber>();
-	chatRooms_.unsubscribe(s.chatRoomName_, s.id_);
+	auto& user = conn->getContextRef<User>();
+	chat_rooms.unsubscribe(, user.id());
 }
 
 void WebSocketChat::handleNewConnection(const drogon::HttpRequestPtr& req,
@@ -95,13 +82,14 @@ void WebSocketChat::handleNewConnection(const drogon::HttpRequestPtr& req,
 {
 	LOG_DEBUG << "new websocket connection!";
 	conn->send("haha!!!");
-	Subscriber s;
-	s.chatRoomName_ = req->getParameter("room_name");
-	s.id_ = chatRooms_.subscribe(s.chatRoomName_,
-		[conn](const std::string& topic,
-			const std::string& message) {
-				(void)topic;
-				conn->send(message);
-		});
-	conn->setContext(std::make_shared<Subscriber>(std::move(s)));
+	User user(
+		chat_rooms.subscribe(req->getParameter("room_name"),
+			[conn](const std::string& topic,
+				const std::string& message) {
+					(void)topic;
+					conn->send(message);
+			}),
+		req->getParameter("room_name")
+	);
+	conn->setContext(std::make_shared<User>(std::move(user)));
 }
