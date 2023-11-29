@@ -7,23 +7,23 @@ set_languages("cxx17")
 
 -- Logging / Data handling
 add_requires("boost", { configs = {chrono = true} })
--- add_requires("fmt", "spdlog")
--- add_requires("nlohmann_json")
+add_requires("fmt", "spdlog")
+add_requires("nlohmann_json", "json-schema-validator")
 
 -- C++ Backend API for Svelte App
 add_requires("drogon")
 
 -- For Functional Programming?
--- add_requires("tl_expected")
+add_requires("tl_expected")
 
 target("backend")
     set_kind("binary")
 
     add_packages("boost")
-    -- add_packages("fmt", "spdlog")
-    -- add_packages("nlohmann_json")
+    add_packages("fmt", "spdlog")
+    add_packages("nlohmann_json", "json-schema-validator")
     add_packages("drogon")
-    -- add_packages("tl_expected")
+    add_packages("tl_expected")
 
     before_build_files(function(target)
         import("core.project.config")
@@ -47,7 +47,7 @@ target("backend")
         os.execv("pnpm", {"--prefix", frontend_dir, "run", "build"})
 
         print("Copying svelte files...")
-        os.cp(path.join(os.scriptdir(), "..", "frontend", "public"), static)
+        os.cp(path.join(os.scriptdir(), "..", "frontend", "build"), static)
         print("Completed copying svelte files...")
     end)
 

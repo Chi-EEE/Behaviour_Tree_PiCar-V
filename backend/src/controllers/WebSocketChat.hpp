@@ -4,6 +4,15 @@
 #include <drogon/PubSubService.h>
 #include <drogon/HttpAppFramework.h>
 
+#include <spdlog/spdlog.h>
+#include <cpptrace/cpptrace.hpp>
+
+#include <nlohmann/json.hpp>
+//#include <nlohmann/json-schema.hpp>
+
+using json = nlohmann::json;
+//using json_validator = nlohmann::json_schema::json_validator;
+
 class WebSocketChat : public drogon::WebSocketController<WebSocketChat>
 {
 public:
@@ -21,8 +30,15 @@ private:
 	drogon::PubSubService<std::string> chatRooms_;
 };
 
+enum SubscriberType {
+	Unknown,
+	User,
+	Car,
+};
+
 struct Subscriber
 {
+	SubscriberType type_;
 	std::string chatRoomName_;
 	drogon::SubscriberID id_;
 };
@@ -31,16 +47,40 @@ void WebSocketChat::handleNewMessage(const drogon::WebSocketConnectionPtr& wsCon
 	std::string&& message,
 	const drogon::WebSocketMessageType& type)
 {
-		LOG_DEBUG << "new websocket message:" << message;
-	if (type == drogon::WebSocketMessageType::Ping)
+	auto& subscriber = wsConnPtr->getContextRef<Subscriber>();
+	if (subscriber.type_ == SubscriberType::Unknown) {
+		if (type == drogon::WebSocketMessageType::Ping)
+		{
+			auto j = json::parse(message);
+			if (j["type"] == "user") {
+				subscriber.type_ = SubscriberType::User;
+				spdlog::debug("Received a ping from user: {} | WebSocketChat::handleNewMessage", wsConnPtr->peerAddr().toIp());
+			}
+			else if (j["type"] == "car") {
+				subscriber.type_ = SubscriberType::Car;
+				spdlog::debug("Received a ping from car: {} | WebSocketChat::handleNewMessage", wsConnPtr->peerAddr().toIp());
+				LOG_DEBUG << "";
+			}
+		}
+		return;
+	}
+	switch (type) {
+	case drogon::WebSocketMessageType::Text:
+		chatRooms_.publish(s.chatRoomName_, message);
+		break;
+	}
+	/*if (type == drogon::WebSocketMessageType::Ping)
 	{
+
+		s.type_ = SubscriberType::User;
 		LOG_DEBUG << "recv a ping";
+		LOG_DEBUG << "new websocket message:" << message;
 	}
 	else if (type == drogon::WebSocketMessageType::Text)
 	{
 		auto& s = wsConnPtr->getContextRef<Subscriber>();
 		chatRooms_.publish(s.chatRoomName_, message);
-	}
+	}*/
 }
 
 void WebSocketChat::handleConnectionClosed(const drogon::WebSocketConnectionPtr& conn)
@@ -53,10 +93,6 @@ void WebSocketChat::handleConnectionClosed(const drogon::WebSocketConnectionPtr&
 void WebSocketChat::handleNewConnection(const drogon::HttpRequestPtr& req,
 	const drogon::WebSocketConnectionPtr& conn)
 {
-	for (auto [k, v] : req->getCookies())
-	{
-		LOG_DEBUG << k << ":" << v;
-	}
 	LOG_DEBUG << "new websocket connection!";
 	conn->send("haha!!!");
 	Subscriber s;
