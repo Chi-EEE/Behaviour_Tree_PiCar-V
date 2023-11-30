@@ -39,7 +39,7 @@ public:
 		const drogon::WebSocketConnectionPtr&) override;
 
 	WS_PATH_LIST_BEGIN
-		WS_PATH_ADD("/chat", drogon::Get);
+		WS_PATH_ADD("/room", drogon::Get);
 	WS_PATH_LIST_END
 private:
 	drogon::PubSubService<std::string> chat_rooms;

@@ -1,7 +1,10 @@
+#include <filesystem>
+
 #include <boost/dll.hpp>
 #include <drogon/HttpAppFramework.h>
 
 // Controllers must be included before main
+#include "controllers/Room.hpp"
 #include "controllers/WebSocketChat.hpp"
 
 int main()
