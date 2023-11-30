@@ -18,13 +18,13 @@
 
     function draw() {
         const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!!;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (const point of points) {
             const x = canvas.width / 2 + point.distance * Math.cos(point.angle);
             const y =
                 canvas.height / 2 + point.distance * Math.sin(point.angle);
             ctx.fillRect(x, y, 1, 1);
         }
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
     onMount(async () => {
