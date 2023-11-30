@@ -58,10 +58,20 @@ int main()
 	lidar.stop();
 	lidar.stop_motor();
 
-	auto info = lidar.get_info();
+	auto info_result = lidar.get_info();
+	if (!info_result.has_value()) {
+		std::cout << "get_info failed: " << info_result.error() << std::endl;
+		return EXIT_FAILURE;
+	}
+	auto info = info_result.value();
 	std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
 
-	auto health = lidar.get_health();
+	auto health_result = lidar.get_health();
+	if (!health_result.has_value()) {
+		std::cout << "get_health failed: " << health_result.error() << std::endl;
+		return EXIT_FAILURE;
+	}
+	auto health = health_result.value();
 	std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
 
 	lidar.start_motor();
