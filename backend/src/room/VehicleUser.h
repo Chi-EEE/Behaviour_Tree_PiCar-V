@@ -10,7 +10,7 @@ class VehicleUser : public User
 public:
     VehicleUser(drogon::SubscriberID id, std::string chat_room_name);
     ~VehicleUser();
-    UserType type() const override { return UserType::Car; }
+    UserType get_type() const override { return UserType::Car; }
 private:
 
 };

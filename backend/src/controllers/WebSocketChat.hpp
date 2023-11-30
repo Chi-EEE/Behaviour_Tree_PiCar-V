@@ -19,10 +19,25 @@ public:
 	virtual void handleNewMessage(const drogon::WebSocketConnectionPtr&,
 		std::string&&,
 		const drogon::WebSocketMessageType&) override;
+
+	void handleFirstMessage(const drogon::WebSocketConnectionPtr&,
+		std::string&&,
+		const drogon::WebSocketMessageType&);
+
+	void handleUserMessage(const drogon::WebSocketConnectionPtr&,
+		std::string&&,
+		const drogon::WebSocketMessageType&);
+
+	void handleCarMessage(const drogon::WebSocketConnectionPtr&,
+		std::string&&,
+		const drogon::WebSocketMessageType&);
+
 	virtual void handleConnectionClosed(
 		const drogon::WebSocketConnectionPtr&) override;
+
 	virtual void handleNewConnection(const drogon::HttpRequestPtr&,
 		const drogon::WebSocketConnectionPtr&) override;
+
 	WS_PATH_LIST_BEGIN
 		WS_PATH_ADD("/chat", drogon::Get);
 	WS_PATH_LIST_END
@@ -34,54 +49,82 @@ void WebSocketChat::handleNewMessage(const drogon::WebSocketConnectionPtr& wsCon
 	std::string&& message,
 	const drogon::WebSocketMessageType& type)
 {
-	auto& subscriber = wsConnPtr->getContextRef<User>();
-	if (subscriber.type_ == SubscriberType::Unknown) {
-		if (type == drogon::WebSocketMessageType::Ping)
-		{
-			auto j = json::parse(message);
-			if (j["type"] == "user") {
-				subscriber.type_ = SubscriberType::User;
-				spdlog::debug("Received a ping from user: {} | WebSocketChat::handleNewMessage", wsConnPtr->peerAddr().toIp());
-			}
-			else if (j["type"] == "car") {
-				subscriber.type_ = SubscriberType::Car;
-				spdlog::debug("Received a ping from car: {} | WebSocketChat::handleNewMessage", wsConnPtr->peerAddr().toIp());
-				LOG_DEBUG << "";
-			}
-		}
+	auto& user = wsConnPtr->getContextRef<User>();
+	if (user.get_type() == UserType::Unknown) {
+		this->handleFirstMessage(wsConnPtr, std::move(message), type);
 		return;
 	}
-	switch (type) {
-	case drogon::WebSocketMessageType::Text:
-		chat_rooms.publish(s.chatRoomName_, message);
+	switch (user.get_type()) {
+	case UserType::User:
+	{
+		this->handleUserMessage(wsConnPtr, std::move(message), type);
 		break;
 	}
-	/*if (type == drogon::WebSocketMessageType::Ping)
-	{
-
-		s.type_ = SubscriberType::User;
-		LOG_DEBUG << "recv a ping";
-		LOG_DEBUG << "new websocket message:" << message;
+	case UserType::Car: {
+		this->handleCarMessage(wsConnPtr, std::move(message), type);
+		break;
 	}
-	else if (type == drogon::WebSocketMessageType::Text)
+	}
+}
+
+void WebSocketChat::handleFirstMessage(const drogon::WebSocketConnectionPtr& wsConnPtr,
+	std::string&& message,
+	const drogon::WebSocketMessageType& type)
+{
+	spdlog::info("Received a first message from: {} | WebSocketChat::handleFirstMessage", wsConnPtr->peerAddr().toIp());
+	auto& user = wsConnPtr->getContextRef<User>();
+	if (type == drogon::WebSocketMessageType::Ping)
 	{
-		auto& s = wsConnPtr->getContextRef<Subscriber>();
-		chatRooms_.publish(s.chatRoomName_, message);
-	}*/
+		auto j = json::parse(message);
+		if (j["type"] == "user") {
+			user.set_type(UserType::User);
+			spdlog::info("{} is a user", wsConnPtr->peerAddr().toIp());
+		}
+		else if (j["type"] == "car") {
+			user.set_type(UserType::Car);
+			spdlog::info("{} is a car", wsConnPtr->peerAddr().toIp());
+		}
+	}
+}
+
+
+void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsConnPtr,
+	std::string&& message,
+	const drogon::WebSocketMessageType& type)
+{
+	auto& user = wsConnPtr->getContextRef<User>();
+	spdlog::debug("Received a message from user: {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
+	switch (type) {
+	case drogon::WebSocketMessageType::Text:
+		chat_rooms.publish(user.get_chat_room_name(), message);
+		break;
+	}
+}
+
+void WebSocketChat::handleCarMessage(const drogon::WebSocketConnectionPtr& wsConnPtr,
+	std::string&& message,
+	const drogon::WebSocketMessageType& type)
+{
+	auto& user = wsConnPtr->getContextRef<User>();
+	spdlog::debug("Received a message from car: {} | WebSocketChat::handleCarMessage", wsConnPtr->peerAddr().toIp());
+	switch (type) {
+	case drogon::WebSocketMessageType::Text:
+		chat_rooms.publish(user.get_chat_room_name(), message);
+		break;
+	}
 }
 
 void WebSocketChat::handleConnectionClosed(const drogon::WebSocketConnectionPtr& conn)
 {
 	LOG_DEBUG << "websocket closed!";
 	auto& user = conn->getContextRef<User>();
-	chat_rooms.unsubscribe(, user.id());
+	chat_rooms.unsubscribe(user.get_chat_room_name(), user.get_id());
 }
 
 void WebSocketChat::handleNewConnection(const drogon::HttpRequestPtr& req,
 	const drogon::WebSocketConnectionPtr& conn)
 {
-	LOG_DEBUG << "new websocket connection!";
-	conn->send("haha!!!");
+	spdlog::info("New connection from: {} | WebSocketChat::handleNewConnection", conn->peerAddr().toIp());
 	User user(
 		chat_rooms.subscribe(req->getParameter("room_name"),
 			[conn](const std::string& topic,
