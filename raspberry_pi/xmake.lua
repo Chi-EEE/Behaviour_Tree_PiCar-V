@@ -54,7 +54,10 @@ target("lidar")
     add_packages("tl_expected")
 
     add_files("src/*.cpp")
+    
     add_files("include/*.cpp")
+    add_headerfiles("include/*.h")
+
     add_headerfiles("src/*.h", "src/*.hpp")
     add_includedirs("include")
 

@@ -28,6 +28,8 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/bin_to_hex.h>
 
+#include <tl/expected.hpp>
+
 #include "ExpressPacket.hpp"
 
 #define SYNC_BYTE 0xA5
@@ -41,22 +43,22 @@
 
 enum ScanType
 {
-    NORMAL,
-    FORCE,
-    EXPRESS
+	NORMAL,
+	FORCE,
+	EXPRESS
 };
 
 struct ScanInfo
 {
-    int currently_scanning;
-    int dsize;
-    ScanType type;
+	int currently_scanning;
+	int dsize;
+	ScanType type;
 };
 
 static std::map<ScanType, std::map<std::string, uint8_t>> SCAN_TYPE = {
-    {ScanType::NORMAL, {{"byte", 0x20}, {"response", 129}, {"size", 5}}},
-    {ScanType::FORCE, {{"byte", 0x21}, {"response", 129}, {"size", 5}}},
-    {ScanType::EXPRESS, {{"byte", 0x82}, {"response", 130}, {"size", 84}}}};
+	{ScanType::NORMAL, {{"byte", 0x20}, {"response", 129}, {"size", 5}}},
+	{ScanType::FORCE, {{"byte", 0x21}, {"response", 129}, {"size", 5}}},
+	{ScanType::EXPRESS, {{"byte", 0x82}, {"response", 130}, {"size", 84}}} };
 
 #define DESCRIPTOR_LEN 7
 #define INFO_LEN 20
@@ -70,16 +72,16 @@ static std::map<ScanType, std::map<std::string, uint8_t>> SCAN_TYPE = {
 #define SET_PWM_BYTE 0xF0
 
 static std::map<int, std::string> HEALTH_STATUSES = {
-    {0, "Good"},
-    {1, "Warning"},
-    {2, "Error"}};
+	{0, "Good"},
+	{1, "Warning"},
+	{2, "Error"} };
 
 struct DeviceInfo
 {
-    uint8_t model;
-    std::pair<uint8_t, uint8_t> firmware;
-    uint8_t hardware;
-    std::string serialNumber;
+	uint8_t model;
+	std::pair<uint8_t, uint8_t> firmware;
+	uint8_t hardware;
+	std::string serialNumber;
 };
 
 /**
@@ -88,81 +90,85 @@ struct DeviceInfo
  */
 struct HealthInfo
 {
-    /**
-     * @brief
-     * 'Good', 'Warning' or 'Error' statuses
-     */
-    std::string status;
-    /**
-     * @brief
-     * The related error code that caused a warning/error.
-     */
-    int errorCode;
+	/**
+	 * @brief
+	 * 'Good', 'Warning' or 'Error' statuses
+	 */
+	std::string status;
+	/**
+	 * @brief
+	 * The related error code that caused a warning/error.
+	 */
+	int errorCode;
 };
 
 struct Measure
 {
-    bool newScan;
-    int quality;
-    double angle;
-    double distance;
+	bool newScan;
+	int quality;
+	double angle;
+	double distance;
 };
 
 /**
  * @brief Class for communicating with RPLidar rangefinder scanners
- * 
+ *
  */
 class RPLidar
 {
 public:
-    RPLidar(const std::string &port, uint32_t baudrate = 115200U);
-    
-    ~RPLidar();
+	RPLidar(const std::string& port, uint32_t baudrate = 115200U);
 
-    void disconnect();
-    
-    void _set_pwm(int pwm);
+	~RPLidar();
 
-    void set_motor_speed(int pwm);
+	void disconnect();
 
-    void start_motor();
+	void _set_pwm(int pwm);
 
-    void stop_motor();
+	void set_motor_speed(int pwm);
 
-    void _send_payload_cmd(uint8_t cmd, const std::string &payload);
+	void start_motor();
 
-    void _send_cmd(uint8_t cmd);
+	void stop_motor();
 
-    std::tuple<uint8_t, bool, uint8_t> _read_descriptor();
+	void _send_payload_cmd(uint8_t cmd, const std::string& payload);
 
-    std::vector<uint8_t> _read_response(int dsize);
+	void _send_cmd(uint8_t cmd);
 
-    DeviceInfo get_info();
+	tl::expected<
+		std::tuple<uint8_t, bool, uint8_t>,
+		std::string
+	>
+		_read_descriptor();
 
-    HealthInfo get_health();
+	std::vector<uint8_t> _read_response(int dsize);
 
-    void clean_input();
+	tl::expected<DeviceInfo, std::string> get_info();
 
-    void stop();
+	tl::expected<HealthInfo, std::string> get_health();
 
-    void start(ScanType scanType);
+	void clean_input();
 
-    void reset();
+	void stop();
 
-    std::function<Measure()> iter_measures(ScanType scanType = NORMAL, int maxBufMeas = 3000);
+	tl::expected<nullptr_t, std::string> start(ScanType scanType);
 
-    std::function<std::vector<Measure>()> iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5);
+	void reset();
+
+	std::function<tl::expected<Measure, std::string>()> iter_measures(ScanType scanType = NORMAL, int maxBufMeas = 3000);
+
+	std::function<std::vector<Measure>()> iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5);
 
 private:
-    std::unique_ptr<serial::Serial> _serial = nullptr;
-    std::string port;
-    uint32_t baudrate;
-    int _motor_speed = DEFAULT_MOTOR_PWM;
-    bool motor_running = false;
-    ScanInfo scanning = {false, 0, ScanType::NORMAL};
-    int express_trame = 32;
-    std::unique_ptr<ExpressPacket> express_data = nullptr;
-    std::unique_ptr<ExpressPacket> express_old_data = nullptr;
+	std::unique_ptr<serial::Serial> _serial = nullptr;
+	std::string port;
+	uint32_t baudrate;
+	int _motor_speed = DEFAULT_MOTOR_PWM;
+	bool motor_running = false;
+	ScanInfo scanning = { false, 0, ScanType::NORMAL };
+	int express_trame = 32;
+	std::unique_ptr<ExpressPacket> express_data = nullptr;
+	std::unique_ptr<ExpressPacket> express_old_data = nullptr;
 };
 
 #endif
