@@ -25,6 +25,8 @@
 // iter_measures
 #include <functional>
 
+#include <memory>
+
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/bin_to_hex.h>
 
@@ -32,143 +34,151 @@
 
 #include "ExpressPacket.hpp"
 
-#define SYNC_BYTE 0xA5
-#define SYNC_BYTE2 0x5A
+namespace rplidar {
+	constexpr int SYNC_BYTE = 0xA5;
+	constexpr int SYNC_BYTE2 = 0x5A;
 
-#define GET_INFO_BYTE 0x50
-#define GET_HEALTH_BYTE 0x52
+	constexpr int GET_INFO_BYTE = 0x50;
+	constexpr int GET_HEALTH_BYTE = 0x52;
 
-#define STOP_BYTE 0x25
-#define RESET_BYTE 0x40
+	constexpr int STOP_BYTE = 0x25;
+	constexpr int RESET_BYTE = 0x40;
 
-enum ScanType
-{
-	NORMAL,
-	FORCE,
-	EXPRESS
-};
+	enum ScanType
+	{
+		NORMAL,
+		FORCE,
+		EXPRESS
+	};
 
-struct ScanInfo
-{
-	int currently_scanning;
-	int dsize;
-	ScanType type;
-};
+	struct ScanInfo
+	{
+		int currently_scanning;
+		int dsize;
+		ScanType type;
+	};
 
-static std::map<ScanType, std::map<std::string, uint8_t>> SCAN_TYPE = {
-	{ScanType::NORMAL, {{"byte", 0x20}, {"response", 129}, {"size", 5}}},
-	{ScanType::FORCE, {{"byte", 0x21}, {"response", 129}, {"size", 5}}},
-	{ScanType::EXPRESS, {{"byte", 0x82}, {"response", 130}, {"size", 84}}} };
+	static std::map<ScanType, std::map<std::string, uint8_t>> SCAN_TYPE = {
+		{ScanType::NORMAL, {{"byte", 0x20}, {"response", 129}, {"size", 5}}},
+		{ScanType::FORCE, {{"byte", 0x21}, {"response", 129}, {"size", 5}}},
+		{ScanType::EXPRESS, {{"byte", 0x82}, {"response", 130}, {"size", 84}}} };
 
-#define DESCRIPTOR_LEN 7
-#define INFO_LEN 20
-#define HEALTH_LEN 3
+	constexpr int DESCRIPTOR_LEN = 7;
+	constexpr int INFO_LEN = 20;
+	constexpr int HEALTH_LEN = 3;
 
-#define INFO_TYPE 4
-#define HEALTH_TYPE 6
+	constexpr int INFO_TYPE = 4;
+	constexpr int HEALTH_TYPE = 6;
 
-#define MAX_MOTOR_PWM 1023
-#define DEFAULT_MOTOR_PWM 660
-#define SET_PWM_BYTE 0xF0
+	constexpr int MAX_MOTOR_PWM = 1023;
+	constexpr int DEFAULT_MOTOR_PWM = 660;
+	constexpr int SET_PWM_BYTE = 0xF0;
 
-static std::map<int, std::string> HEALTH_STATUSES = {
-	{0, "Good"},
-	{1, "Warning"},
-	{2, "Error"} };
+	static std::map<int, std::string> HEALTH_STATUSES = {
+		{0, "Good"},
+		{1, "Warning"},
+		{2, "Error"} };
 
-struct DeviceInfo
-{
-	uint8_t model;
-	std::pair<uint8_t, uint8_t> firmware;
-	uint8_t hardware;
-	std::string serialNumber;
-};
+	struct DeviceInfo
+	{
+		uint8_t model;
+		std::pair<uint8_t, uint8_t> firmware;
+		uint8_t hardware;
+		std::string serialNumber;
+	};
 
-/**
- * @brief
- * Health Info for Lidar Scanner
- */
-struct HealthInfo
-{
 	/**
 	 * @brief
-	 * 'Good', 'Warning' or 'Error' statuses
+	 * Health Info for Lidar Scanner
 	 */
-	std::string status;
+	struct HealthInfo
+	{
+		/**
+		 * @brief
+		 * 'Good', 'Warning' or 'Error' statuses
+		 */
+		std::string status;
+		/**
+		 * @brief
+		 * The related error code that caused a warning/error.
+		 */
+		int errorCode;
+	};
+
+	struct Measure
+	{
+		bool newScan;
+		int quality;
+		double angle;
+		double distance;
+	};
+
 	/**
-	 * @brief
-	 * The related error code that caused a warning/error.
+	 * @brief Class for communicating with RPLidar rangefinder scanners
+	 *
 	 */
-	int errorCode;
-};
+	class RPLidar
+	{
+	public:
+		static tl::expected<std::unique_ptr<RPLidar>, nullptr_t> create(const std::string& port, uint32_t baudrate = 115200U);
+		
+		RPLidar(const std::string& port, uint32_t baudrate, std::unique_ptr<serial::Serial> serial);
 
-struct Measure
-{
-	bool newScan;
-	int quality;
-	double angle;
-	double distance;
-};
+		~RPLidar();
 
-/**
- * @brief Class for communicating with RPLidar rangefinder scanners
- *
- */
-class RPLidar
-{
-public:
-	RPLidar(const std::string& port, uint32_t baudrate = 115200U);
+		void disconnect();
 
-	~RPLidar();
+		void _set_pwm(int pwm);
 
-	void disconnect();
+		void set_motor_speed(int pwm);
 
-	void _set_pwm(int pwm);
+		void start_motor();
 
-	void set_motor_speed(int pwm);
+		void stop_motor();
 
-	void start_motor();
+		void _send_payload_cmd(uint8_t cmd, const std::string& payload);
 
-	void stop_motor();
+		void _send_cmd(uint8_t cmd);
 
-	void _send_payload_cmd(uint8_t cmd, const std::string& payload);
+		tl::expected<
+			std::tuple<uint8_t, bool, uint8_t>,
+			std::string
+		>
+			_read_descriptor();
 
-	void _send_cmd(uint8_t cmd);
+		std::vector<uint8_t> _read_response(int dsize);
 
-	tl::expected<
-		std::tuple<uint8_t, bool, uint8_t>,
-		std::string
-	>
-		_read_descriptor();
+		tl::expected<DeviceInfo, std::string> get_info();
 
-	std::vector<uint8_t> _read_response(int dsize);
+		tl::expected<HealthInfo, std::string> get_health();
 
-	tl::expected<DeviceInfo, std::string> get_info();
+		void clean_input();
 
-	tl::expected<HealthInfo, std::string> get_health();
+		void stop();
 
-	void clean_input();
+		tl::expected<nullptr_t, std::string> start(ScanType scanType);
 
-	void stop();
+		void reset();
 
-	tl::expected<nullptr_t, std::string> start(ScanType scanType);
+		std::function<tl::expected<Measure, std::string>()> iter_measures(ScanType scanType = NORMAL, int maxBufMeas = 3000);
 
-	void reset();
+		std::function<std::vector<Measure>()> iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5);
 
-	std::function<tl::expected<Measure, std::string>()> iter_measures(ScanType scanType = NORMAL, int maxBufMeas = 3000);
-
-	std::function<std::vector<Measure>()> iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5);
-
-private:
-	std::unique_ptr<serial::Serial> _serial = nullptr;
-	std::string port;
-	uint32_t baudrate;
-	int _motor_speed = DEFAULT_MOTOR_PWM;
-	bool motor_running = false;
-	ScanInfo scanning = { false, 0, ScanType::NORMAL };
-	int express_trame = 32;
-	std::unique_ptr<ExpressPacket> express_data = nullptr;
-	std::unique_ptr<ExpressPacket> express_old_data = nullptr;
-};
+	private:
+		
+		std::unique_ptr<serial::Serial> _serial = nullptr;
+		
+		std::string port;
+		uint32_t baudrate;
+		
+		int _motor_speed = DEFAULT_MOTOR_PWM;
+		bool motor_running = false;
+		ScanInfo scanning = { false, 0, ScanType::NORMAL };
+		int express_trame = 32;
+		
+		std::unique_ptr<ExpressPacket> express_data = nullptr;
+		std::unique_ptr<ExpressPacket> express_old_data = nullptr;
+	};
+}
 
 #endif

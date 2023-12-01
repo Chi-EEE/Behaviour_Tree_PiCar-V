@@ -15,6 +15,7 @@
 #include <RPLidar.h>
 
 using json = nlohmann::json;
+using namespace rplidar;
 
 int main()
 {
@@ -24,7 +25,7 @@ int main()
 
 	ix::WebSocket web_socket;
 
-	std::string url("ws://localhost:8848/chat");
+	const std::string url("ws://localhost:8848/chat");
 	web_socket.setUrl(url);
 	web_socket.setOnMessageCallback([](const ix::WebSocketMessagePtr& msg)
 		{
@@ -53,12 +54,12 @@ int main()
 	);
 	web_socket.start();
 
-	auto lidar = RPLidar("COM3");
-	lidar.reset();
-	lidar.stop();
-	lidar.stop_motor();
+	std::unique_ptr<RPLidar> lidar = RPLidar::create("COM3").value();
+	lidar->reset();
+	lidar->stop();
+	lidar->stop_motor();
 
-	auto info_result = lidar.get_info();
+	auto info_result = lidar->get_info();
 	if (!info_result.has_value()) {
 		std::cout << "get_info failed: " << info_result.error() << std::endl;
 		return EXIT_FAILURE;
@@ -66,16 +67,16 @@ int main()
 	auto info = info_result.value();
 	std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
 
-	auto health_result = lidar.get_health();
+	const auto health_result = lidar->get_health();
 	if (!health_result.has_value()) {
 		std::cout << "get_health failed: " << health_result.error() << std::endl;
 		return EXIT_FAILURE;
 	}
-	auto health = health_result.value();
+	const auto health = health_result.value();
 	std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
 
-	lidar.start_motor();
-	std::function<std::vector<Measure>()> scan_generator = lidar.iter_scans();
+	lidar->start_motor();
+	const std::function<std::vector<Measure>()> scan_generator = lidar->iter_scans();
 	while (true)
 	{
 		json output = json::array();
@@ -92,9 +93,9 @@ int main()
 		web_socket.send(output.dump());
 	}
 
-	lidar.stop();
-	lidar.stop_motor();
-	lidar.disconnect();
+	lidar->stop();
+	lidar->stop_motor();
+	lidar->disconnect();
 	
     ix::uninitNetSystem();
 	
