@@ -8,8 +8,7 @@ add_repositories("local-repo repository")
 add_requires("serial")
 
 -- Websocket Messaging
-add_requires("ixwebsocket_", {configs = {use_tls = true, ssl = "mbedtls"}})
--- add_requires("easywsclient")
+add_requires("ixwebsocket", {configs = {use_tls = true, ssl = "mbedtls"}})
 
 add_requires("nlohmann_json")
 
@@ -33,7 +32,7 @@ end
 -- For Functional Programming?
 add_requires("tl_expected")
 
-target("lidar")
+target("raspberry_pi")
     set_kind("binary")
     
     add_packages("serial")
@@ -42,8 +41,7 @@ target("lidar")
     add_packages("imath")
     add_packages("effolkronium-random")
 
-    add_packages("ixwebsocket_")
-    -- add_packages("easywsclient")
+    add_packages("ixwebsocket")
 
     add_packages("nlohmann_json")
     
@@ -55,12 +53,16 @@ target("lidar")
 
     add_files("src/*.cpp")
     
-    add_files("include/*.cpp")
-    add_headerfiles("include/*.h")
+    add_files("include/**.cpp")
+    add_headerfiles("include/**.h")
 
-    add_headerfiles("src/*.h", "src/*.hpp")
+    add_headerfiles("src/**.h", "src/**.hpp")
     add_includedirs("include")
 
     if is_plat("windows") then
         add_defines("_WIN32")
     end
+
+    set_configdir("$(buildir)/$(plat)/$(arch)/$(mode)")
+    add_configfiles("settings/config.jsonc", {onlycopy = true, prefixdir = "settings"})
+    

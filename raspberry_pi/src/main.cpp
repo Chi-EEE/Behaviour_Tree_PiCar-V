@@ -1,5 +1,9 @@
 #include <iostream>
 #include <fstream>
+#include <optional>
+#include <chrono> // std::chrono::microseconds
+#include <thread> // std::this_thread::sleep_for
+#include <string>
 
 #include <ixwebsocket/IXNetSystem.h>
 #include <ixwebsocket/IXWebSocket.h>
@@ -9,24 +13,33 @@
 
 #include <nlohmann/json.hpp>
 
-#include <chrono> // std::chrono::microseconds
-#include <thread> // std::this_thread::sleep_for
 
-#include <RPLidar.h>
+#include <rplidar/RPLidar.h>
+
+#include "global/Config.hpp"
 
 using json = nlohmann::json;
 using namespace rplidar;
 
+std::string get_websocket_url() {
+	std::optional<int> maybe_port = GET_CONFIG_VALUE(port);
+	if (maybe_port.has_value()) {
+		return "ws://" + GET_CONFIG_VALUE(host) + ":" + std::to_string(maybe_port.value()) + "/room/" + GET_CONFIG_VALUE(code);
+	}
+	return "ws://" + GET_CONFIG_VALUE(host) + "/room/" + GET_CONFIG_VALUE(code);
+}
+
 int main()
 {
-	spdlog::set_level(spdlog::level::off);
+	//spdlog::set_level(spdlog::level::off);
 
 	ix::initNetSystem();
 
 	ix::WebSocket web_socket;
 
-	const std::string url("ws://localhost:8848/chat");
-	web_socket.setUrl(url);
+	const std::string websocket_url = get_websocket_url();
+	spdlog::info("Connecting to {}", websocket_url);
+	web_socket.setUrl(websocket_url);
 	web_socket.setOnMessageCallback([](const ix::WebSocketMessagePtr& msg)
 		{
 			//if (msg->type == ix::WebSocketMessageType::Message)
@@ -54,26 +67,33 @@ int main()
 	);
 	web_socket.start();
 
+	{
+		json firstMessage = {{"type", "car"}};
+		web_socket.send(firstMessage.dump());
+	}
+
 	std::unique_ptr<RPLidar> lidar = RPLidar::create("COM3").value();
+
+	// Stop the lidar scan if it was running
 	lidar->reset();
 	lidar->stop();
 	lidar->stop_motor();
 
-	auto info_result = lidar->get_info();
-	if (!info_result.has_value()) {
-		std::cout << "get_info failed: " << info_result.error() << std::endl;
-		return EXIT_FAILURE;
-	}
-	auto info = info_result.value();
-	std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
+	//auto info_result = lidar->get_info();
+	//if (!info_result.has_value()) {
+	//	spdlog::error("get_info failed: {}", info_result.error());
+	//	return EXIT_FAILURE;
+	//}
+	//auto info = info_result.value();
+	//std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serial number: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
 
-	const auto health_result = lidar->get_health();
-	if (!health_result.has_value()) {
-		std::cout << "get_health failed: " << health_result.error() << std::endl;
-		return EXIT_FAILURE;
-	}
-	const auto health = health_result.value();
-	std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
+	//const auto health_result = lidar->get_health();
+	//if (!health_result.has_value()) {
+	//	spdlog::error("get_health failed: {}", health_result.error());
+	//	return EXIT_FAILURE;
+	//}
+	//const auto health = health_result.value();
+	//spdlog::info("({}, {})", health.status, health.errorCode);
 
 	lidar->start_motor();
 	const std::function<std::vector<Measure>()> scan_generator = lidar->iter_scans();

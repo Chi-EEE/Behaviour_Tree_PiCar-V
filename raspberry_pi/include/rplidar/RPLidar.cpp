@@ -307,7 +307,7 @@ namespace rplidar {
 		bool isSingle;
 		uint8_t dtype;
 		auto descripter_result = this->_read_descriptor();
-		if (descripter_result.has_value())
+		if (!descripter_result.has_value())
 			return tl::make_unexpected(descripter_result.error());
 		std::tie(dsize, isSingle, dtype) = descripter_result.value();
 
@@ -422,7 +422,7 @@ namespace rplidar {
 		bool isSingle;
 		uint8_t dtype;
 		auto descripter_result = this->_read_descriptor();
-		if (descripter_result.has_value())
+		if (!descripter_result.has_value())
 			return tl::make_unexpected(descripter_result.error());
 		std::tie(dsize, isSingle, dtype) = descripter_result.value();
 

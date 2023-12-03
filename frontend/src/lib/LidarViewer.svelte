@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount, tick } from "svelte";
     export let websocket_url: string;
+    export let room_name: string;
 
     let canvas: HTMLCanvasElement;
 
@@ -32,7 +33,7 @@
         draw();
     });
 
-    let web_socket = new WebSocket(websocket_url);
+    let web_socket = new WebSocket(`${websocket_url}?room_name=${room_name}`);
     web_socket.addEventListener("open", (event) => {
         console.log("Open");
     });
