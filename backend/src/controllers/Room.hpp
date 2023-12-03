@@ -20,5 +20,5 @@ void room::load(const HttpRequestPtr& req,
 	std::string&& room_name)
 {
 	// The 'room' page is dynamically generated locally, so we don't have a specific file to serve.
-	callback(drogon::HttpResponse::newFileResponse("public/dynamic.html"));
+	callback(drogon::HttpResponse::newFileResponse(drogon::app().getDocumentRoot() + "/dynamic.html"));
 }

@@ -26,7 +26,7 @@ target("backend")
     add_packages("tl_expected")
 
     -- Could improve this
-    before_build_files(function(target)
+    after_build_files(function(target)
         import("core.project.config")
         import("core.base.json")
 
