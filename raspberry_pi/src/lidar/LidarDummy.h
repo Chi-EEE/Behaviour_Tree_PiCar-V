@@ -16,7 +16,7 @@ class LidarDummy : public LidarStrategy
 public:
     LidarDummy();
     
-    std::vector<Measure> scan();
+    std::vector<Measure> scan() const override;
 
 private:
 

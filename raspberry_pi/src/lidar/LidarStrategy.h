@@ -12,7 +12,8 @@ using namespace rplidar;
 class LidarStrategy
 {
 public:
-    virtual std::vector<Measure> scan() = 0;
+    virtual void start() const = 0;
+    virtual std::vector<Measure> scan() const = 0;
 
 private:
 
