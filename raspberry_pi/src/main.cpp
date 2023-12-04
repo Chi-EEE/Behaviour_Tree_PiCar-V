@@ -30,7 +30,7 @@ std::string get_websocket_url()
 	std::optional<int> maybe_port = GET_CONFIG_VALUE(port);
 	if (maybe_port.has_value())
 	{
-		return "ws://" + GET_CONFIG_VALUE(host) + ":" + std::to_string(maybe_port.value()) + "/room/" + GET_CONFIG_VALUE(code);
+		return "ws://" + GET_CONFIG_VALUE(host) + ":" + std::to_string(maybe_port.value()) + "/room?room_name=" + GET_CONFIG_VALUE(code);
 	}
 	return "ws://" + GET_CONFIG_VALUE(host) + "/room/" + GET_CONFIG_VALUE(code);
 }
@@ -47,7 +47,7 @@ int main()
 {
 	// spdlog::set_level(spdlog::level::off);
 	std::string websocket_url = get_websocket_url();
-	spdlog::info("Connecting to {}", websocket_url);
+	spdlog::info("Got websocket url: {}", websocket_url);
 
 	std::unique_ptr<LidarDummy> dummy_scanner = std::make_unique<LidarDummy>();
 	// std::unique_ptr<LidarScanner> scanner = std::make_unique<LidarScanner>("COM3");
