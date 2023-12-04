@@ -30,9 +30,9 @@ std::string get_websocket_url()
 	std::optional<int> maybe_port = GET_CONFIG_VALUE(port);
 	if (maybe_port.has_value())
 	{
-		return "ws://" + GET_CONFIG_VALUE(host) + ":" + std::to_string(maybe_port.value()) + "/room?room_name=" + GET_CONFIG_VALUE(code);
+		return "ws://" + GET_CONFIG_VALUE(host) + ":" + std::to_string(maybe_port.value()) + "/ws/room?room_name=" + GET_CONFIG_VALUE(code);
 	}
-	return "ws://" + GET_CONFIG_VALUE(host) + "/room/" + GET_CONFIG_VALUE(code);
+	return "ws://" + GET_CONFIG_VALUE(host) + "/ws/room?room_name=" + GET_CONFIG_VALUE(code);
 }
 
 // Car is a global variable so that car.terminate() can be called on exit

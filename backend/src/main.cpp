@@ -4,7 +4,7 @@
 #include <drogon/HttpAppFramework.h>
 
 // Controllers must be included before main
-#include "controllers/Room.hpp"
+#include "controllers/DynamicController.hpp"
 #include "controllers/WebSocketChat.hpp"
 
 int main()
