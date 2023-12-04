@@ -16,17 +16,20 @@ using json = nlohmann::json;
 
 #include "lidar/LidarDevice.hpp"
 
-using namespace car::lidar;
+using namespace car_system::lidar;
 
-namespace car {
-	class Car
+namespace car_system {
+	class CarSystem
 	{
 	public:
-		Car(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device);
-		~Car();
+		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device);
+		~CarSystem();
 
 		void run();
 		void terminate();
+
+		void turn(float angle);
+		void move(float distance);
 
 	private:
 		void initalize(const std::string& websocket_url);

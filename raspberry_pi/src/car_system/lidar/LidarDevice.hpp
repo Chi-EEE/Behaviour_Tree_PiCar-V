@@ -9,7 +9,7 @@
 
 using namespace rplidar;
 
-namespace car::lidar {
+namespace car_system::lidar {
 	class LidarDevice
 	{
 	public:

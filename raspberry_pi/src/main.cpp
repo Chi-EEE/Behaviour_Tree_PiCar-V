@@ -14,14 +14,14 @@
 
 #include "global/Config.hpp"
 
-#include "car/Car.h"
-#include "car/lidar/LidarScanner.hpp"
-#include "car/lidar/LidarDummy.hpp"
+#include "car_system/CarSystem.h"
+#include "car_system/lidar/LidarScanner.hpp"
+#include "car_system/lidar/LidarDummy.hpp"
 
 using json = nlohmann::json;
 
-using namespace car;
-using namespace car::lidar;
+using namespace car_system;
+using namespace car_system::lidar;
 
 using namespace rplidar;
 
@@ -36,10 +36,10 @@ std::string get_websocket_url()
 }
 
 // Car is a global variable so that car.terminate() can be called on exit
-std::unique_ptr<Car> car_vehicle;
+std::unique_ptr<CarSystem> car_system_obj;
 
 void terminate() {
-	car_vehicle->terminate();
+	car_system_obj->terminate();
 	spdlog::info("Terminated");
 	system("pause");
 }
@@ -53,9 +53,9 @@ int main()
 	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 	// std::unique_ptr<LidarScanner> scanner = std::make_unique<LidarScanner>("COM3");
 
-	car_vehicle = std::make_unique<Car>(websocket_url, std::move(scanner));
+	car_system_obj = std::make_unique<CarSystem>(websocket_url, std::move(scanner));
 	std::atexit(terminate);
-	car_vehicle->run();
+	car_system_obj->run();
 
 	return 0;
 }

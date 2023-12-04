@@ -1,17 +1,17 @@
-#include "Car.h"
+#include "CarSystem.h"
 
-namespace car {
-	Car::Car(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device) : lidar_device(std::move(lidar_device))
+namespace car_system {
+	CarSystem::CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device) : lidar_device(std::move(lidar_device))
 	{
 		this->initalize(websocket_url);
 	}
 
-	Car::~Car()
+	CarSystem::~CarSystem()
 	{
 		this->terminate();
 	}
 
-	void Car::run()
+	void CarSystem::run()
 	{
 		spdlog::info("Running Car");
 		this->web_socket.start();
@@ -54,7 +54,7 @@ namespace car {
 		}
 	}
 
-	void Car::initalize(const std::string& websocket_url)
+	void CarSystem::initalize(const std::string& websocket_url)
 	{
 		ix::initNetSystem();
 		this->web_socket.setUrl(websocket_url);
@@ -85,10 +85,18 @@ namespace car {
 		);
 	}
 
-	void Car::terminate()
+	void CarSystem::terminate()
 	{
 		this->lidar_device->terminate();
 		this->web_socket.close();
 		ix::uninitNetSystem();
+	}
+
+	void CarSystem::turn(float angle)
+	{
+	}
+
+	void CarSystem::move(float distance)
+	{
 	}
 }

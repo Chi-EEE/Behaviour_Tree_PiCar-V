@@ -11,7 +11,7 @@
 
 using json = nlohmann::json;
 
-namespace car::lidar {
+namespace car_system::lidar {
 	class LidarDummy : public LidarDevice
 	{
 	public:
