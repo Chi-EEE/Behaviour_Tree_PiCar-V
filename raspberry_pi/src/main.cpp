@@ -13,10 +13,14 @@
 
 #include "global/Config.hpp"
 
-#include "Car.h"
-#include "lidar/LidarScanner.h"
+#include "car/Car.h"
+#include "car/lidar/LidarScanner.h"
 
 using json = nlohmann::json;
+
+using namespace car;
+using namespace car::lidar;
+
 using namespace rplidar;
 
 std::string get_websocket_url() {
