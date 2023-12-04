@@ -35,6 +35,7 @@ std::string get_websocket_url()
 	return "ws://" + GET_CONFIG_VALUE(host) + "/room/" + GET_CONFIG_VALUE(code);
 }
 
+// Car is a global variable so that car.terminate() can be called on exit
 std::unique_ptr<Car> car_vehicle;
 
 void terminate() {
@@ -49,10 +50,10 @@ int main()
 	std::string websocket_url = get_websocket_url();
 	spdlog::info("Got websocket url: {}", websocket_url);
 
-	std::unique_ptr<LidarDummy> dummy_scanner = std::make_unique<LidarDummy>();
+	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 	// std::unique_ptr<LidarScanner> scanner = std::make_unique<LidarScanner>("COM3");
 
-	car_vehicle = std::make_unique<Car>(websocket_url, std::move(dummy_scanner));
+	car_vehicle = std::make_unique<Car>(websocket_url, std::move(scanner));
 	std::atexit(terminate);
 	car_vehicle->run();
 

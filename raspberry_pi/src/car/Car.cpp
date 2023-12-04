@@ -87,6 +87,8 @@ namespace car {
 
 	void Car::terminate()
 	{
+		this->lidar_device->terminate();
+		this->web_socket.close();
 		ix::uninitNetSystem();
 	}
 }

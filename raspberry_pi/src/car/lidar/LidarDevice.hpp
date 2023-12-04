@@ -15,6 +15,7 @@ namespace car::lidar {
 	public:
 		virtual void start() const = 0;
 		virtual std::vector<Measure> scan() const = 0;
+		virtual void terminate() const = 0;
 
 	private:
 

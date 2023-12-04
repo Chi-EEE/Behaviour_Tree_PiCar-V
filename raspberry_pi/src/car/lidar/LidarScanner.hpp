@@ -21,9 +21,7 @@ namespace car::lidar
 		};
 		~LidarScanner()
 		{
-			this->lidar->stop();
-			this->lidar->stop_motor();
-			this->lidar->disconnect();
+			this->terminate();
 		};
 
 		void start() const
@@ -53,6 +51,13 @@ namespace car::lidar
 			std::function<std::vector<Measure>()> scanGenerator = this->lidar->iter_scans();
 			return scanGenerator();
 		};
+
+		void terminate() const override 
+		{
+			this->lidar->stop();
+			this->lidar->stop_motor();
+			this->lidar->disconnect();
+		}
 
 	private:
 		void initialize() const

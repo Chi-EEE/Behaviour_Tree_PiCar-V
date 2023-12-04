@@ -27,6 +27,8 @@ namespace car::lidar {
 			return measures;
 		};
 
+		void terminate() const override {};
+
 	private:
 
 	};
