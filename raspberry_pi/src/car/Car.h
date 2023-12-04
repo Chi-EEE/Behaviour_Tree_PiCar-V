@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <thread> // std::this_thread::sleep_for
 #include <memory>
 
 #include <ixwebsocket/IXNetSystem.h>
@@ -13,7 +14,7 @@
 
 using json = nlohmann::json;
 
-#include "lidar/LidarDevice.h"
+#include "lidar/LidarDevice.hpp"
 
 using namespace car::lidar;
 
@@ -25,10 +26,10 @@ namespace car {
 		~Car();
 
 		void run();
+		void terminate();
 
 	private:
 		void initalize(const std::string& websocket_url);
-		void terminate();
 
 		std::unique_ptr<LidarDevice> lidar_device;
 		ix::WebSocket web_socket;

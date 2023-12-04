@@ -520,7 +520,9 @@ namespace rplidar {
 	 */
 	std::function<tl::expected<Measure, std::string>()> RPLidar::iter_measures(ScanType scanType, int maxBufMeas)
 	{
-		this->start_motor();
+		if (!this->motor_running) {
+			this->start_motor();
+		}
 
 		if (!this->scanning.currently_scanning)
 		{

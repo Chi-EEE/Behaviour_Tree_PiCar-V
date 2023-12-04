@@ -1,5 +1,5 @@
-#ifndef LidarDevice_H
-#define LidarDevice_H
+#ifndef LidarDevice_HPP
+#define LidarDevice_HPP
 
 #pragma once
 
