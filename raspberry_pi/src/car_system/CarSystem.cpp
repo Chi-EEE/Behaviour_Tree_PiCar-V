@@ -34,7 +34,7 @@ namespace car_system {
 		{
 			json first_message = { {"type", "car"} };
 			spdlog::info("Sending first message: {}", first_message.dump());
-			this->web_socket.send(first_message.dump());
+			this->web_socket.ping(first_message.dump());
 		}
 		this->lidar_device->start();
 		while (true)
