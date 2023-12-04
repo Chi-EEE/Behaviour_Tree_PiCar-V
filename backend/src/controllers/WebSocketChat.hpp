@@ -5,10 +5,12 @@
 #include <drogon/HttpAppFramework.h>
 
 #include <spdlog/spdlog.h>
-#include "../room/User.h"
 
 #include <nlohmann/json.hpp>
 //#include <nlohmann/json-schema.hpp>
+
+#include "../room/RoomManager.hpp"
+#include "../room/User.hpp"
 
 using json = nlohmann::json;
 //using json_validator = nlohmann::json_schema::json_validator;
@@ -37,6 +39,12 @@ public:
 
 	virtual void handleNewConnection(const drogon::HttpRequestPtr&,
 		const drogon::WebSocketConnectionPtr&) override;
+
+	void handleCreateRequest(const drogon::HttpRequestPtr&,
+		const drogon::WebSocketConnectionPtr&);
+
+	void handleJoinRequest(const drogon::HttpRequestPtr&,
+		const drogon::WebSocketConnectionPtr&);
 
 	WS_PATH_LIST_BEGIN
 		WS_PATH_ADD("/ws/room", drogon::Get);
@@ -96,7 +104,7 @@ void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 	spdlog::debug("Received a message from user: {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
 	switch (type) {
 	case drogon::WebSocketMessageType::Text:
-		chat_rooms.publish(user.get_chat_room_name(), message);
+		this->chat_rooms.publish(user.get_chat_room_name(), message);
 		break;
 	}
 }
@@ -109,7 +117,7 @@ void WebSocketChat::handleCarMessage(const drogon::WebSocketConnectionPtr& wsCon
 	spdlog::debug("Received a message from car: {} | WebSocketChat::handleCarMessage", wsConnPtr->peerAddr().toIp());
 	switch (type) {
 	case drogon::WebSocketMessageType::Text:
-		chat_rooms.publish(user.get_chat_room_name(), message);
+		this->chat_rooms.publish(user.get_chat_room_name(), message);
 		break;
 	}
 }
@@ -117,22 +125,75 @@ void WebSocketChat::handleCarMessage(const drogon::WebSocketConnectionPtr& wsCon
 void WebSocketChat::handleConnectionClosed(const drogon::WebSocketConnectionPtr& conn)
 {
 	LOG_DEBUG << "websocket closed!";
-	auto& user = conn->getContextRef<User>();
-	chat_rooms.unsubscribe(user.get_chat_room_name(), user.get_id());
+	auto& user = conn->getContextRef<std::shared_ptr<User>>();
+	std::string room_name = user->get_chat_room_name();
+
+	auto& room = RoomManager::instance()->get_room(room_name);
+	room->remove_user(user);
+	if (room->get_users().empty()) {
+		RoomManager::instance()->remove_room(room_name);
+	};
+
+	this->chat_rooms.unsubscribe(room_name, user->get_id());
 }
 
 void WebSocketChat::handleNewConnection(const drogon::HttpRequestPtr& req,
 	const drogon::WebSocketConnectionPtr& conn)
 {
+	std::string request = req->getParameter("request");
 	spdlog::info("New connection from: {} | WebSocketChat::handleNewConnection", conn->peerAddr().toIp());
-	User user(
-		chat_rooms.subscribe(req->getParameter("room_name"),
+	if (request == "create") {
+		this->handleCreateRequest(req, conn);
+		return;
+	}
+	if (request == "join") {
+		this->handleJoinRequest(req, conn);
+		return;
+	}
+	spdlog::error("Invalid request: {} | WebSocketChat::handleNewConnection", request);
+	conn->forceClose();
+}
+
+inline void WebSocketChat::handleCreateRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
+{
+	std::string room_name = req->getParameter("room_name");
+	if (RoomManager::instance()->room_exists(room_name)) {
+		spdlog::error("Room {} already exists | WebSocketChat::handleCreateRequest", room_name);
+		conn->forceClose();
+		return;
+	}
+	auto user = std::make_shared<User>(
+		this->chat_rooms.subscribe(room_name,
 			[conn](const std::string& topic,
 				const std::string& message) {
 					(void)topic;
 					conn->send(message);
 			}),
-		req->getParameter("room_name")
+		room_name
 	);
-	conn->setContext(std::make_shared<User>(std::move(user)));
+	auto room = std::make_shared<Room>(user);
+	RoomManager::instance()->add_room(room_name, room);
+	conn->setContext(user);
+}
+
+inline void WebSocketChat::handleJoinRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
+{
+	std::string room_name = req->getParameter("room_name");
+	if (!RoomManager::instance()->room_exists(room_name)) {
+		spdlog::error("Room {} does not exist | WebSocketChat::handleJoinRequest", room_name);
+		conn->forceClose();
+		return;
+	}
+	auto user = std::make_shared<User>(
+		this->chat_rooms.subscribe(room_name,
+			[conn](const std::string& topic,
+				const std::string& message) {
+					(void)topic;
+					conn->send(message);
+			}),
+		room_name
+	);
+	auto room = RoomManager::instance()->get_room(room_name);
+	room->add_user(user);
+	conn->setContext(user);
 }

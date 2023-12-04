@@ -1,5 +1,5 @@
-#ifndef USERTYPE_H
-#define USERTYPE_H
+#ifndef USERTYPE_HPP
+#define USERTYPE_HPP
 
 #pragma once
 
