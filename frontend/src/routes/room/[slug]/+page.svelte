@@ -13,12 +13,12 @@
 	websocket_url_store.set(
 		`ws://${location.host}/ws/room?request=create&room_name=${room_name}`,
 	);
-	websocket_store.subscribe((websocket: WebSocket) => {
-		websocket.addEventListener("open", (event) => {
+	websocket_store.subscribe((websocket) => {
+		websocket!!.addEventListener("open", (event) => {
 			console.log("Websocket opened");
 		});
 
-		websocket.addEventListener("message", (event: MessageEvent<any>) => {
+		websocket!!.addEventListener("message", (event: MessageEvent<any>) => {
 			const json_data = JSON.parse(event.data);
 			console.log(json_data);
 		});
@@ -26,8 +26,8 @@
 
 	let message = "";
 	function sendMessage() {
-		const websocket: WebSocket = get(websocket_store);
-		websocket.send(JSON.stringify({ data: message }));
+		const websocket = get(websocket_store);
+		websocket!!.send(JSON.stringify({ data: message }));
 	}
 
 	let data: {
@@ -45,7 +45,10 @@
 <h1>This is the Room page</h1>
 <h2>Title: {data.room_name}</h2>
 
-<input on:keyup={sendMessage} bind:value={message} />
+<input on:keydown={(key_event) => {
+	if (key.key === "Enter")
+		sendMessage()
+	}} bind:value={message} />
 <button on:click={sendMessage}>Send</button>
 
 <h1>Hello {data.room_name}!</h1>

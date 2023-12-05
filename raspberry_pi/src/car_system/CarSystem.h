@@ -23,6 +23,8 @@ namespace car_system {
 		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system);
 		~CarSystem();
 
+		void initalize();
+
 		void run();
 		void terminate();
 
@@ -30,8 +32,6 @@ namespace car_system {
 		void move(float distance);
 
 	private:
-		void initialize(const std::string& websocket_url);
-
 		std::unique_ptr<LidarDevice> lidar_device;
 		std::unique_ptr<MessagingSystem> messaging_system;
 	};

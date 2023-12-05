@@ -2,7 +2,6 @@
     import { dev } from "$app/environment";
     import { onMount } from "svelte";
 
-    import LidarViewer from "$lib/LidarViewer.svelte";
 </script>
 
 <h1>Welcome to SvelteKit</h1>

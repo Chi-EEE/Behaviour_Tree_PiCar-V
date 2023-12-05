@@ -147,26 +147,33 @@ void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 {
     auto& user = wsConnPtr->getContextRef<User>();
     spdlog::debug("Received a message from user: {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
-    json message_json = json::parse(message);
-    const std::string message_data = message_json["data"].get<std::string>();
+    try {
+        json message_json = json::parse(message);
+        const std::string message_data = message_json["data"].get<std::string>();
 
-    auto& room = RoomManager::instance()->getRoom(user.getChatRoomName());
+        auto& room = RoomManager::instance()->getRoom(user.getChatRoomName());
 
-    json out_json;
-    out_json["name"] = user.getName();
-    bool is_command = message_data.rfind("/", 0);
-    if (is_command) {
-        this->handleUserCommand(out_json, split(message_data.c_str(), ' '), room);
+        json out_json;
+        out_json["name"] = user.getName();
+        bool is_command = !message_data.rfind("/", 0);
+        if (is_command) {
+            this->handleUserCommand(out_json, split(message_data.c_str(), ' '), room);
+        }
+        else {
+            out_json["type"] = "message";
+            out_json["data"] = message_data;
+        }
+        this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
     }
-    else {
-        out_json["type"] = "message";
+    catch (std::exception c) {
+        spdlog::error("Invalid JSON from {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
     }
-    this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
 }
 
 void WebSocketChat::handleUserCommand(json& out_json, std::vector<std::string>& split_string, std::shared_ptr<Room>& room) {
     out_json["type"] = "command";
     std::string command_type = split_string[0];
+    command_type.erase(0, 1); // Remove the slash
     if (command_type == "move") {
         out_json["command"] = "move";
         if (split_string.size() == 2) {
@@ -235,6 +242,12 @@ void WebSocketChat::handleNewConnection(const drogon::HttpRequestPtr& req,
     conn->forceClose();
 }
 
+/// <summary>
+/// room_name
+/// type
+/// </summary>
+/// <param name="req"></param>
+/// <param name="conn"></param>
 inline void WebSocketChat::handleCreateRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
 {
     std::string room_name = req->getParameter("room_name");
@@ -243,10 +256,6 @@ inline void WebSocketChat::handleCreateRequest(const drogon::HttpRequestPtr& req
         conn->forceClose();
         return;
     }
-    UserType type = UserType::User;
-    if (req->getParameter("type") == "car") {
-		type = UserType::Car;
-	}
     spdlog::info("Creating room {} from {} | WebSocketChat::handleCreateRequest", room_name, req->peerAddr().toIp());
     auto user = std::make_shared<User>(
         this->chat_rooms.subscribe(room_name,
@@ -257,7 +266,7 @@ inline void WebSocketChat::handleCreateRequest(const drogon::HttpRequestPtr& req
             }),
         conn,
         room_name,
-        type
+        UserType::User
     );
     auto room = std::make_shared<Room>(user);
     RoomManager::instance()->addRoom(room_name, room);
@@ -273,6 +282,10 @@ inline void WebSocketChat::handleJoinRequest(const drogon::HttpRequestPtr& req, 
         return;
     }
     spdlog::info("Joining room {} from {} | WebSocketChat::handleJoinRequest", room_name, req->peerAddr().toIp());
+    UserType type = UserType::User;
+    if (req->getParameter("type") == "car") {
+        type = UserType::Car;
+    }
     auto user = std::make_shared<User>(
         this->chat_rooms.subscribe(room_name,
             [conn](const std::string& topic,
@@ -282,7 +295,7 @@ inline void WebSocketChat::handleJoinRequest(const drogon::HttpRequestPtr& req, 
             }),
         conn,
         room_name,
-        UserType::User
+        type
     );
     auto room = RoomManager::instance()->getRoom(room_name);
     room->addUser(user);

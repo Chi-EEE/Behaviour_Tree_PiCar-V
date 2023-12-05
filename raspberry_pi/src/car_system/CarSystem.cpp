@@ -3,7 +3,7 @@
 namespace car_system {
 	CarSystem::CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system) : lidar_device(std::move(lidar_device)), messaging_system(std::move(messaging_system))
 	{
-		this->initialize(websocket_url);
+		this->initalize();
 	}
 
 	CarSystem::~CarSystem()
@@ -11,9 +11,15 @@ namespace car_system {
 		this->terminate();
 	}
 
+	void CarSystem::initalize()
+	{
+		this->messaging_system->initalize();
+	}
+
 	void CarSystem::run()
 	{
 		spdlog::info("Running Car");
+		this->messaging_system->start();
 		this->lidar_device->start();
 		while (true)
 		{
@@ -29,13 +35,8 @@ namespace car_system {
 					}
 				);
 			}
-			this->messaging_system->send(output_json.dump());
+			this->messaging_system->sendMessage(output_json.dump());
 		}
-	}
-
-	void CarSystem::initialize(const std::string& websocket_url)
-	{
-
 	}
 
 	void CarSystem::terminate()

@@ -27,32 +27,11 @@ namespace car_system::messaging {
 	{
 	public:
 		MessagingSystem(const std::string& websocket_url) : websocket_url(websocket_url) {
-			this->websocket.start();
-			bool open = false;
-			for (int i = 0; i < 3; i++) {
-				if (this->websocket.getReadyState() == ix::ReadyState::Open) {
-					open = true;
-					break;
-				}
-				std::this_thread::sleep_for(std::chrono::milliseconds(i * 3000));
-			}
-			if (!open) {
-				spdlog::error("Could not connect to websocket");
-				return;
-			}
-			else
-			{
-				spdlog::info("Connected to websocket");
-			}
-			{
-				json first_message = { {"type", "car"} };
-				spdlog::info("Sending first message: {}", first_message.dump());
-				this->websocket.ping(first_message.dump());
-			}
+
 		};
 
-		void initalize() {
-
+		void initalize()
+		{
 			ix::initNetSystem();
 			this->websocket.setUrl(websocket_url);
 			this->websocket.setOnMessageCallback([this](const ix::WebSocketMessagePtr& msg)
@@ -63,20 +42,20 @@ namespace car_system::messaging {
 						if (message_json["type"] == "command") {
 							if (message_json["command"] == "turn") {
 								float angle = message_json["angle"].get<float>();
-								this->turn_command_signal(
+								/*this->turn_command_signal(
 									TurnCommand{
 										angle
 									}
-								);
+								);*/
 								spdlog::info("Turning by {} angle", angle);
 							}
 							else if (message_json["command"] == "move") {
 								int speed = message_json["speed"].get<int>();
-								this->move_command_signal(
+							/*	this->move_command_signal(
 									MoveCommand{
 										speed
 									}
-								);
+								);*/
 								spdlog::info("Moving with {} speed", speed);
 							}
 						}
@@ -101,6 +80,27 @@ namespace car_system::messaging {
 			);
 		}
 
+		void start()
+		{
+			this->websocket.start();
+			bool open = false;
+			for (int i = 0; i < 3; i++) {
+				if (this->websocket.getReadyState() == ix::ReadyState::Open) {
+					open = true;
+					break;
+				}
+				std::this_thread::sleep_for(std::chrono::milliseconds(i * 3000));
+			}
+			if (!open) {
+				spdlog::error("Could not connect to websocket");
+				return;
+			}
+			else
+			{
+				spdlog::info("Connected to websocket");
+			}
+		}
+
 		void terminate() {
 			this->websocket.stop();
 			ix::uninitNetSystem();
@@ -118,8 +118,8 @@ namespace car_system::messaging {
 		ix::WebSocket websocket;
 		std::string websocket_url;
 
-		nod::signal<void(MoveCommand)> move_command_signal;
-		nod::signal<void(TurnCommand)> turn_command_signal;
+		/*nod::signal<void(MoveCommand)> move_command_signal;
+		nod::signal<void(TurnCommand)> turn_command_signal;*/
 	};
 };
 

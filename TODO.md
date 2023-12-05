@@ -1,7 +1,6 @@
 # TODO List:
-
-- Pass Lidar data from raspberry pi to backend
-- Caleribate the compass
-- Authenication to rooms
+- Wrap every endpoint with try-catch to prevent bad actors from crashing the server
 - Pass commands from backend to raspberry pi
 - Display Lidar data in Svelte
+
+- Authenication to rooms

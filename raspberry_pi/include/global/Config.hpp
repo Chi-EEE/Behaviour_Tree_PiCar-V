@@ -36,8 +36,7 @@ namespace global
 		std::optional<int> port;
 
 		std::string name;
-
-		std::string code;
+		std::string room;
 	private:
 		Config()
 		{
@@ -61,7 +60,7 @@ namespace global
 
 				this->name = config_json["name"].get<std::string>();
 
-				this->code = config_json["code"].get<std::string>();
+				this->room = config_json["room"].get<std::string>();
 			}
 			catch (const std::exception& e)
 			{

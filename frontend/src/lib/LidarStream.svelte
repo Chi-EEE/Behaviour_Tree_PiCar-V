@@ -17,7 +17,7 @@
 
     const websocket = get(websocket_store);
 
-    websocket.addEventListener("message", (event: MessageEvent<any>) => {
+    websocket!!.addEventListener("message", (event: MessageEvent<any>) => {
         const json_data = JSON.parse(event.data);
         if (json_data.type == "car") {
             points.length = 0;

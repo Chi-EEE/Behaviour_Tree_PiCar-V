@@ -30,19 +30,19 @@ std::string getWebsocketUrl()
 	std::optional<int> maybe_port = GET_CONFIG_VALUE(port);
 	if (maybe_port.has_value())
 	{
-		return "ws://" + GET_CONFIG_VALUE(host) + ":" + std::to_string(maybe_port.value()) + "/ws/room?room_name=" + GET_CONFIG_VALUE(code);
+		return fmt::format("ws://{}:{}/ws/room?request=join&type=car&room_name={}", GET_CONFIG_VALUE(host), maybe_port.value(), GET_CONFIG_VALUE(room));
 	}
-	return "ws://" + GET_CONFIG_VALUE(host) + "/ws/room?room_name=" + GET_CONFIG_VALUE(code);
+	return fmt::format("ws://{}/ws/room?request=join&type=&room_name={}", GET_CONFIG_VALUE(host), GET_CONFIG_VALUE(room));
 }
 
 // Car is a global variable so that car.terminate() can be called on exit
 std::unique_ptr<CarSystem> car_system_obj;
 
-void terminate() {
-	car_system_obj->terminate();
-	spdlog::info("Terminated");
-	system("pause");
-}
+//void terminate() {
+//	car_system_obj->terminate();
+//	spdlog::info("Terminated");
+//	system("pause");
+//}
 
 int main()
 {
@@ -53,8 +53,11 @@ int main()
 	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 	// std::unique_ptr<LidarScanner> scanner = std::make_unique<LidarScanner>("COM3");
 
-	car_system_obj = std::make_unique<CarSystem>(websocket_url, std::move(scanner));
-	std::atexit(terminate);
+	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(websocket_url);
+
+	car_system_obj = std::make_unique<CarSystem>(websocket_url, std::move(scanner), std::move(messaging_system));
+	//std::atexit(terminate);
+
 	car_system_obj->run();
 
 	return 0;
