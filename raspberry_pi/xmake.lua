@@ -7,8 +7,9 @@ add_repositories("local-repo repository")
 -- For the Lidar Scanner
 add_requires("serial")
 
--- Websocket Messaging
+-- Messaging System
 add_requires("ixwebsocket", {configs = {use_tls = true, ssl = "mbedtls"}})
+add_requires("nod")
 
 add_requires("nlohmann_json")
 
@@ -42,6 +43,7 @@ target("raspberry_pi")
     add_packages("effolkronium-random")
 
     add_packages("ixwebsocket")
+    add_packages("nod")
 
     add_packages("nlohmann_json")
     

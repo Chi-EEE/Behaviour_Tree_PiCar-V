@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <drogon/WebSocketController.h>
 #include <drogon/PubSubService.h>
 
 #include "UserType.hpp"
@@ -10,21 +11,19 @@
 class User
 {
 public:
-	User(drogon::SubscriberID id, std::string chat_room_name, drogon::WebSocketConnectionPtr conn) : id(id), connection(conn), chat_room_name(chat_room_name) {};
+	User(drogon::SubscriberID id, drogon::WebSocketConnectionPtr conn, std::string chat_room_name, UserType type) : id(id), connection(conn), chat_room_name(chat_room_name), type(type) {};
 
-	void set_type(UserType type) { this->type = type; }
+	UserType getType() const { return this->type; }
+	std::string getChatRoomName() const { return this->chat_room_name; }
+	drogon::SubscriberID getId() const { return this->id; }
 
-	UserType get_type() const { return this->type; }
-	std::string get_chat_room_name() const { return this->chat_room_name; }
-	drogon::SubscriberID get_id() const { return this->id; }
+	void setName(std::string name) { this->name = name; }
+	std::string getName() const { return this->name; }
 
-	void set_name(std::string name) { this->name = name; }
-	std::string get_name() const { return this->name; }
-
-	const drogon::WebSocketConnectionPtr get_connection() const { return this->connection; }
+	const drogon::WebSocketConnectionPtr getConnection() const { return this->connection; }
 
 private:
-	UserType type = UserType::Unknown;
+	const UserType type;
 	const std::string chat_room_name;
 	const drogon::SubscriberID id;
 	const drogon::WebSocketConnectionPtr connection;

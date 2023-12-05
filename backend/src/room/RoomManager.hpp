@@ -15,24 +15,24 @@ class RoomManager {
 public:
 	static RoomManager* instance();
 
-	void add_room(std::string name, std::shared_ptr<Room> room) {
-		rooms[name] = room;
+	void addRoom(std::string name, std::shared_ptr<Room> room) {
+		this->rooms[name] = room;
 	}
 
-	std::shared_ptr<Room> get_room(std::string name) {
-		return rooms[name];
+	std::shared_ptr<Room> getRoom(std::string name) {
+		return this->rooms[name];
 	}
 
-	void remove_room(std::string name) {
-		rooms.erase(name);
+	void removeRoom(std::string name) {
+		this->rooms.erase(name);
 	}
 
-	std::map<std::string, std::shared_ptr<Room>> get_rooms() {
-		return rooms;
+	std::map<std::string, std::shared_ptr<Room>> getRooms() {
+		return this->rooms;
 	}
 
-	bool room_exists(std::string name) {
-		return rooms.find(name) != rooms.end();
+	bool hasRoom(std::string name) {
+		return this->rooms.find(name) != this->rooms.end();
 	}
 
 private:
@@ -45,6 +45,7 @@ private:
 
 std::atomic<RoomManager*> RoomManager::pinstance{ nullptr };
 std::mutex RoomManager::m_;
+std::map<std::string, std::shared_ptr<Room>> RoomManager::rooms;
 
 RoomManager* RoomManager::instance() {
 	if (pinstance == nullptr) {

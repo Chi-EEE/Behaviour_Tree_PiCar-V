@@ -5,6 +5,8 @@
 
 // Controllers must be included before main
 #include "controllers/DynamicController.hpp"
+
+#include "controllers/RoomController.hpp"
 #include "controllers/WebSocketChat.hpp"
 
 int main()

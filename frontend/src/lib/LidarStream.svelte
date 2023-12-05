@@ -33,28 +33,6 @@
         draw();
     });
 
-    let web_socket = new WebSocket(`${websocket_url}?room_name=${room_name}`);
-    web_socket.addEventListener("open", (event) => {
-        console.log("Open");
-    });
-
-    web_socket.addEventListener("message", (event) => {
-        const json_data = JSON.parse(event.data);
-        switch (json_data["type"]) {
-            case "car": {
-                points.length = 0;
-                for (const point of json_data["points"]) {
-                    points.push(
-                        new ScanPoint(point["angle"], point["distance"]),
-                    );
-                }
-                break;
-            }
-            default: {
-                console.log("Unknown message type: " + json_data["type"]);
-            }
-        }
-    });
 </script>
 
 <canvas id="canvas" width="800" height="600" bind:this={canvas}></canvas>

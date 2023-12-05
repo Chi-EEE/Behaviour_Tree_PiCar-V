@@ -4,8 +4,7 @@
 #pragma once
 
 enum class UserType {
-	Unknown = 0,
-	User,
+	User = 0,
 	Car,
 };
 

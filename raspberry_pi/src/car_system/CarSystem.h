@@ -6,23 +6,21 @@
 #include <thread> // std::this_thread::sleep_for
 #include <memory>
 
-#include <ixwebsocket/IXNetSystem.h>
-#include <ixwebsocket/IXWebSocket.h>
-#include <ixwebsocket/IXUserAgent.h>
-
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
 #include "lidar/LidarDevice.hpp"
+#include "messaging/MessagingSystem.hpp"
 
 using namespace car_system::lidar;
+using namespace car_system::messaging;
 
 namespace car_system {
 	class CarSystem
 	{
 	public:
-		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device);
+		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system);
 		~CarSystem();
 
 		void run();
@@ -32,10 +30,10 @@ namespace car_system {
 		void move(float distance);
 
 	private:
-		void initalize(const std::string& websocket_url);
+		void initialize(const std::string& websocket_url);
 
 		std::unique_ptr<LidarDevice> lidar_device;
-		ix::WebSocket web_socket;
+		std::unique_ptr<MessagingSystem> messaging_system;
 	};
 }
 

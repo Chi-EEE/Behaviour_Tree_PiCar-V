@@ -26,7 +26,7 @@ target("backend")
 
     add_packages("tl_expected")
 
-    -- Could improve this
+    -- Could improve this so that it only builds the frontend if it has changed
     after_build_files(function(target)
         import("core.project.config")
         import("core.base.json")
@@ -36,6 +36,9 @@ target("backend")
         local exe_dir = path.join(os.projectdir(), config.get("buildir"), config.get("plat"), config.get("arch"), config.get("mode"))
 
         local static = path.join(exe_dir, "public")
+        if os.exists(static) then
+            os.rmdir(static)
+        end
 
         local config_table = json.loadfile(path.join(os.scriptdir(), "settings", "config.json"))
         config_table["app"]["document_root"] = static

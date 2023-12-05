@@ -1,9 +1,9 @@
 #include "CarSystem.h"
 
 namespace car_system {
-	CarSystem::CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device) : lidar_device(std::move(lidar_device))
+	CarSystem::CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system) : lidar_device(std::move(lidar_device)), messaging_system(std::move(messaging_system))
 	{
-		this->initalize(websocket_url);
+		this->initialize(websocket_url);
 	}
 
 	CarSystem::~CarSystem()
@@ -14,28 +14,6 @@ namespace car_system {
 	void CarSystem::run()
 	{
 		spdlog::info("Running Car");
-		this->web_socket.start();
-		bool open = false;
-		for (int i = 0; i < 3; i++) {
-			if (this->web_socket.getReadyState() == ix::ReadyState::Open) {
-				open = true;
-				break;
-			}
-			std::this_thread::sleep_for(std::chrono::milliseconds(i * 3000));
-		}
-		if (!open) {
-			spdlog::error("Could not connect to websocket");
-			return;
-		}
-		else
-		{
-			spdlog::info("Connected to websocket");
-		}
-		{
-			json first_message = { {"type", "car"} };
-			spdlog::info("Sending first message: {}", first_message.dump());
-			this->web_socket.ping(first_message.dump());
-		}
 		this->lidar_device->start();
 		while (true)
 		{
@@ -51,46 +29,19 @@ namespace car_system {
 					}
 				);
 			}
-			web_socket.send(output_json.dump());
+			this->messaging_system->send(output_json.dump());
 		}
 	}
 
-	void CarSystem::initalize(const std::string& websocket_url)
+	void CarSystem::initialize(const std::string& websocket_url)
 	{
-		ix::initNetSystem();
-		this->web_socket.setUrl(websocket_url);
-		this->web_socket.setOnMessageCallback([](const ix::WebSocketMessagePtr& msg)
-			{
-				//if (msg->type == ix::WebSocketMessageType::Message)
-				//{
-				//	std::cout << "received message: " << msg->str << std::endl;
-				//	std::cout << "> " << std::flush;
-				//}
-				//else if (msg->type == ix::WebSocketMessageType::Open)
-				//{
-				//	std::cout << "Connection established" << std::endl;
-				//	std::cout << "> " << std::flush;
-				//}
-				//else if (msg->type == ix::WebSocketMessageType::Error)
-				//{
-				//	// Maybe SSL is not configured properly
-				//	std::cout << "Connection error: " << msg->errorInfo.reason << std::endl;
-				//	std::cout << "> " << std::flush;
-				//}
-				//else if (msg->type == ix::WebSocketMessageType::Close)
-				//{
-				//	std::cout << "Connection closed: " << msg->closeInfo.code << " " << msg->closeInfo.reason << std::endl;
-				//	std::cout << "> " << std::flush;
-				//}
-			}
-		);
+
 	}
 
 	void CarSystem::terminate()
 	{
 		this->lidar_device->terminate();
-		this->web_socket.close();
-		ix::uninitNetSystem();
+		this->messaging_system->terminate();
 	}
 
 	void CarSystem::turn(float angle)

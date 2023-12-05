@@ -16,6 +16,7 @@ void DynamicController::load(const drogon::HttpRequestPtr& req,
 	std::function<void(const drogon::HttpResponsePtr&)>&& callback,
 	std::string&& arg1)
 {
+
 	// The 'room' page is dynamically generated locally, so we don't have a specific file to serve.
 	callback(drogon::HttpResponse::newFileResponse(drogon::app().getDocumentRoot() + "/dynamic.html"));
 }

@@ -25,7 +25,7 @@ using namespace car_system::lidar;
 
 using namespace rplidar;
 
-std::string get_websocket_url()
+std::string getWebsocketUrl()
 {
 	std::optional<int> maybe_port = GET_CONFIG_VALUE(port);
 	if (maybe_port.has_value())
@@ -47,7 +47,7 @@ void terminate() {
 int main()
 {
 	// spdlog::set_level(spdlog::level::off);
-	std::string websocket_url = get_websocket_url();
+	std::string websocket_url = getWebsocketUrl();
 	spdlog::info("Got websocket url: {}", websocket_url);
 
 	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
