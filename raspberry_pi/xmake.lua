@@ -11,6 +11,9 @@ add_requires("serial")
 add_requires("ixwebsocket", {configs = {use_tls = true, ssl = "mbedtls"}})
 add_requires("nod")
 
+-- Terminal UI
+add_requires("ftxui")
+
 add_requires("nlohmann_json")
 
 add_requires("spdlog")
@@ -44,6 +47,8 @@ target("raspberry_pi")
 
     add_packages("ixwebsocket")
     add_packages("nod")
+
+    add_packages("ftxui")
 
     add_packages("nlohmann_json")
     

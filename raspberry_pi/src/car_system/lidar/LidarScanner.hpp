@@ -26,9 +26,7 @@ namespace car_system::lidar
 
 		void start() const
 		{
-			this->lidar->reset();
-			this->lidar->stop();
-			this->lidar->stop_motor();
+			this->lidar->start_motor();
 
 			// auto info_result = lidar->get_info();
 			// if (!info_result.has_value()) {
@@ -62,7 +60,9 @@ namespace car_system::lidar
 	private:
 		void initialize() const
 		{
-			this->lidar->start_motor();
+			this->lidar->reset();
+			this->lidar->stop();
+			this->lidar->stop_motor();
 		};
 
 		std::unique_ptr<RPLidar> lidar;

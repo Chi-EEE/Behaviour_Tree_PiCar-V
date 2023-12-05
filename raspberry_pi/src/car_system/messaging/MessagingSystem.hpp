@@ -51,11 +51,11 @@ namespace car_system::messaging {
 							}
 							else if (message_json["command"] == "move") {
 								int speed = message_json["speed"].get<int>();
-							/*	this->move_command_signal(
-									MoveCommand{
-										speed
-									}
-								);*/
+							// /*	this->move_command_signal(
+							// 		MoveCommand{
+							// 			speed
+							// 		}
+							// 	);*/
 								spdlog::info("Moving with {} speed", speed);
 							}
 						}
@@ -118,8 +118,8 @@ namespace car_system::messaging {
 		ix::WebSocket websocket;
 		std::string websocket_url;
 
-		/*nod::signal<void(MoveCommand)> move_command_signal;
-		nod::signal<void(TurnCommand)> turn_command_signal;*/
+		nod::signal<void(MoveCommand)> move_command_signal;
+		nod::signal<void(TurnCommand)> turn_command_signal;
 	};
 };
 
