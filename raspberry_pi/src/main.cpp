@@ -82,7 +82,7 @@ int main()
 	int frame_count = 0;
 	int event_count = 0;
 
-	auto MainComponent = ftxui::Renderer([&] {
+	auto _MainComponent = ftxui::Renderer([&] {
 		frame_count++;
 		return ftxui::vbox({
 				   ftxui::text("This demonstrates using a custom ftxui::Loop. It "),
@@ -97,12 +97,15 @@ int main()
 			ftxui::border;
 		});
 
-	MainComponent |= ftxui::CatchEvent([&](ftxui::Event) -> bool {
+	_MainComponent |= ftxui::CatchEvent([&](ftxui::Event) -> bool {
 		event_count++;
 		return false;
 		});
 
-	ftxui::Loop loop(&screen, MainComponent);
+	bool modal_shown = false;
+	auto show_modal = [&] { modal_shown = true; };
+	auto exit = screen.ExitLoopClosure();
+	ftxui::Loop loop(&screen, MainComponent(show_modal, exit));
 
 	while (!loop.HasQuitted()) {
 		custom_loop_count++;
