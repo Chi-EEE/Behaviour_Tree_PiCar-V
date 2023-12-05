@@ -1,9 +1,7 @@
 <script lang="ts">
-    import { onMount, tick } from "svelte";
-    export let websocket_url: string;
-    export let room_name: string;
+    import { get } from "svelte/store";
 
-    let canvas: HTMLCanvasElement;
+    import { websocket_store } from "$lib/WebsocketStore";
 
     class ScanPoint {
         constructor(angle: number, distance: number) {
@@ -17,6 +15,20 @@
 
     let points: Array<ScanPoint> = [];
 
+    const websocket = get(websocket_store);
+
+    websocket.addEventListener("message", (event: MessageEvent<any>) => {
+        const json_data = JSON.parse(event.data);
+        if (json_data.type == "car") {
+            points.length = 0;
+            for (const point of json_data.points) {
+                points.push(new ScanPoint(point.angle, point.distance));
+            }
+            draw();
+        }
+    })
+
+    let canvas: HTMLCanvasElement;
     function draw() {
         const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!!;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -28,11 +40,10 @@
         }
     }
 
-    onMount(async () => {
-        await tick();
-        draw();
-    });
-
+    // onMount(async () => {
+    //     await tick();
+    //     draw();
+    // });
 </script>
 
 <canvas id="canvas" width="800" height="600" bind:this={canvas}></canvas>

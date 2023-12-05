@@ -1,74 +1,57 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+	import { get } from "svelte/store";
+
 	import { page } from "$app/stores";
 
 	import LidarStream from "$lib/LidarStream.svelte";
 
-	import { socketStore } from "./store";
+	import { websocket_store, websocket_url_store } from "$lib/WebsocketStore";
 
-	socketStore.subscribe((value) => {
-		console.log(value);
+	const room_name = $page.params.slug;
+
+	websocket_url_store.set(
+		`ws://${location.host}/ws/room?request=create&room_name=${room_name}`,
+	);
+	websocket_store.subscribe((websocket: WebSocket) => {
+		websocket.addEventListener("open", (event) => {
+			console.log("Websocket opened");
+		});
+
+		websocket.addEventListener("message", (event: MessageEvent<any>) => {
+			const json_data = JSON.parse(event.data);
+			console.log(json_data);
+		});
 	});
 
-	const room_name = $page.params.slug
-	const websocket_url = `ws://${location.host}/ws/room`;
-
-    let websocket = new WebSocket(`${websocket_url}?request=create&room_name=${room_name}`);
-    
-	websocket.addEventListener("open", (event) => {
-        console.log("Websocket opened")
-    });
-
-    websocket.addEventListener("message", (event) => {
-        const json_data = JSON.parse(event.data);
-        switch (json_data["type"]) {
-            case "car": {
-                points.length = 0;
-                for (const point of json_data["points"]) {
-                    points.push(
-                        new ScanPoint(point["angle"], point["distance"]),
-                    );
-                }
-                break;
-            }
-            default: {
-                console.log("Unknown message type: " + json_data["type"]);
-            }
-        }
-    });
-	function handle_keyup(event: KeyboardEvent) {
-		console.log(event);
+	let message = "";
+	function sendMessage() {
+		const websocket: WebSocket = get(websocket_store);
+		websocket.send(JSON.stringify({ data: message }));
 	}
 
 	let data: {
 		room_name: string | undefined;
-		websocket_url: string | undefined;
 	} = {
-		room_name: undefined,
-		websocket_url: undefined,
+		room_name: room_name,
 	};
 	onMount(() => {
-		data = {
-			,
-			,
+		return {
+			data,
 		};
 	});
-
-	let message = "";
 </script>
 
 <h1>This is the Room page</h1>
 <h2>Title: {data.room_name}</h2>
 
-<input on:keyup={handle_keyup} bind:value={message} />
+<input on:keyup={sendMessage} bind:value={message} />
+<button on:click={sendMessage}>Send</button>
 
-<h1>Hello {name}!</h1>
+<h1>Hello {data.room_name}!</h1>
 
-{#if data.websocket_url !== undefined}
-	<LidarStream
-		websocket_url={data.websocket_url}
-		room_name={data.room_name}
-	/>
+{#if $websocket_url_store !== undefined}
+	<LidarStream />
 {:else}
 	<p>Waiting to retrieve the Websocket Url...</p>
 {/if}
