@@ -25,6 +25,10 @@ public:
 		}
 	}
 
+	std::shared_ptr<User> get_car_user() const {
+		return this->car_user;
+	}
+
 	void add_user(std::shared_ptr<User> user) {
 		this->users.push_back(user);
 	}

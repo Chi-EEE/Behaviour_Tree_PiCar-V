@@ -39,18 +39,19 @@ namespace car_system {
 		this->lidar_device->start();
 		while (true)
 		{
-			json output = json::array();
+			json output_json;
+			output_json["data"] = json::array();
 			std::vector<Measure> scan = this->lidar_device->scan();
 			for (const Measure& measure : scan)
 			{
-				output.push_back(
+				output_json["data"].push_back(
 					{
 					{"distance", measure.distance},
 					{"angle", measure.angle},
 					}
 				);
 			}
-			web_socket.send(output.dump());
+			web_socket.send(output_json.dump());
 		}
 	}
 

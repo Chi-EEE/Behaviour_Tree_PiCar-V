@@ -1,5 +1,6 @@
 {
     "host": "localhost",
     "port": 8848,
+    "name": "RaspberryPi",
     "code": "1"
 }

@@ -34,6 +34,9 @@ namespace global
 	public:
 		std::string host;
 		std::optional<int> port;
+
+		std::string name;
+
 		std::string code;
 	private:
 		Config()
@@ -56,7 +59,9 @@ namespace global
 				
 				this->port = std::make_optional<int>(config_json["port"].get<int>());
 
-				code = config_json["code"].get<std::string>();
+				this->name = config_json["name"].get<std::string>();
+
+				this->code = config_json["code"].get<std::string>();
 			}
 			catch (const std::exception& e)
 			{

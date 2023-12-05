@@ -13,7 +13,7 @@ add_requires("nlohmann_json")
 -- C++ Backend API for Svelte App
 add_requires("drogon", { configs = {sqlite3 = true, mysql = true}})
 
--- For Functional Programming?
+-- For Rust-Like Programming
 add_requires("tl_expected")
 
 target("backend")
@@ -23,6 +23,7 @@ target("backend")
     add_packages("fmt", "spdlog")
     add_packages("nlohmann_json")
     add_packages("drogon")
+
     add_packages("tl_expected")
 
     -- Could improve this
