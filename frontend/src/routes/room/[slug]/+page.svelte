@@ -45,10 +45,12 @@
 <h1>This is the Room page</h1>
 <h2>Title: {data.room_name}</h2>
 
-<input on:keydown={(key_event) => {
-	if (key_event.key === "Enter")
-		sendMessage()
-	}} bind:value={message} />
+<input
+	on:keydown={(key_event) => {
+		if (key_event.key === "Enter") sendMessage();
+	}}
+	bind:value={message}
+/>
 <button on:click={sendMessage}>Send</button>
 
 <h1>Hello {data.room_name}!</h1>

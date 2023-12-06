@@ -22,7 +22,8 @@
         const json_data = JSON.parse(event.data);
         if (json_data.type == "car") {
             points.length = 0;
-            for (const point of json_data.points) {
+            console.log(json_data["data"].length);
+            for (const point of json_data["data"]) {
                 points.push(new ScanPoint(point.angle, point.distance));
             }
             draw();
@@ -39,17 +40,19 @@
     }
 
     function draw() {
+        console.log("Drawing");
         clear();
         context.fillStyle = "green";
+        
         for (const point of points) {
-            const x = canvas.width / 2 + point.distance * Math.cos(point.angle);
-            const y =
-                canvas.height / 2 + point.distance * Math.sin(point.angle);
-            context.fillRect(x, y, 1, 1);
+            const angle = point.angle;
+            const distance = point.distance * 0.3;
+            const angleInRadians = angle * (3.14159265 / 180.0);
+            const x = distance * Math.cos(angleInRadians);
+            const y = distance * Math.sin(angleInRadians);
+            context.fillRect(x + (canvas.width / 2), y + (canvas.height / 2), 10, 10);
         }
     }
-
-    $: if (context !== undefined) draw();
 
     onMount(async () => {
         context = canvas.getContext("2d")!!;

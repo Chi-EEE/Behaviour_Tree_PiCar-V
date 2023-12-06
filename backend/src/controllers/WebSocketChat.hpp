@@ -129,6 +129,7 @@ void WebSocketChat::handleUserCommand(const drogon::WebSocketConnectionPtr& wsCo
 	}
 	std::string command_type = command_type_list[0];
 	command_type.erase(0, 1); // Remove the slash
+	// TODO: Make this whole section cleaner
 	if (command_type == "move") {
 		out_json["command"] = "move";
 		auto arguments = Utility::split(message_data.c_str(), 1, 2, ' ');
@@ -176,6 +177,7 @@ void WebSocketChat::handleCarMessage(const drogon::WebSocketConnectionPtr& wsCon
 	if (type != drogon::WebSocketMessageType::Text) {
 		return;
 	}
+	// TODO: Prevent Car User from sending unfiltered messages
 	spdlog::debug("Received a message from car: {} | WebSocketChat::handleCarMessage", wsConnPtr->peerAddr().toIp());
 	json message_json = json::parse(message); 
 	
