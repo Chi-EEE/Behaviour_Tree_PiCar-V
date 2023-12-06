@@ -49,8 +49,11 @@ namespace car::system {
 
 	void CarSystem::terminate()
 	{
-		this->lidar_device->terminate();
-		this->messaging_system->terminate();
+		if (!this->terminated) {
+			this->terminated = true;
+			this->lidar_device->terminate();
+			this->messaging_system->terminate();
+		}
 	}
 
 	void CarSystem::move(MoveCommand& move_command)

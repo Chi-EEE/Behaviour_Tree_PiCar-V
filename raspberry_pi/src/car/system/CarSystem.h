@@ -34,6 +34,8 @@ namespace car::system {
 	private:
 		std::unique_ptr<LidarDevice> lidar_device;
 		std::unique_ptr<MessagingSystem> messaging_system;
+
+		bool terminated = false;
 	};
 }
 

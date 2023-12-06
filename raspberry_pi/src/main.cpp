@@ -36,8 +36,8 @@ int main()
 	std::string websocket_url = getWebsocketUrl();
 	spdlog::info("Got websocket url: {}", websocket_url);
 
-	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
-	//std::unique_ptr<LidarScanner> scanner = std::make_unique<LidarScanner>("COM3");
+	//std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
+	std::unique_ptr<LidarScanner> scanner = std::make_unique<LidarScanner>("COM3");
 
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(websocket_url);
 
