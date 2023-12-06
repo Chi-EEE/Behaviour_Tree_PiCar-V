@@ -173,12 +173,18 @@ void WebSocketChat::handleCarMessage(const drogon::WebSocketConnectionPtr& wsCon
 	const drogon::WebSocketMessageType& type)
 {
 	auto& user = wsConnPtr->getContextRef<User>();
-	spdlog::debug("Received a message from car: {} | WebSocketChat::handleCarMessage", wsConnPtr->peerAddr().toIp());
-	switch (type) {
-	case drogon::WebSocketMessageType::Text:
-		this->chat_rooms.publish(user.getChatRoomName(), message);
-		break;
+	if (type != drogon::WebSocketMessageType::Text) {
+		return;
 	}
+	spdlog::debug("Received a message from car: {} | WebSocketChat::handleCarMessage", wsConnPtr->peerAddr().toIp());
+	json message_json = json::parse(message); 
+	
+	json out_json;
+	out_json["name"] = user.getName();
+	out_json["type"] = "car";
+	out_json["car"] = "lidar";
+	out_json["data"] = message_json["data"];
+	this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
 }
 
 void WebSocketChat::handleConnectionClosed(const drogon::WebSocketConnectionPtr& conn)
