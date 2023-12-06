@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import { get } from "svelte/store";
 
     import { websocket_store } from "$lib/WebsocketStore";
@@ -26,24 +27,34 @@
             }
             draw();
         }
-    })
+    });
 
     let canvas: HTMLCanvasElement;
+    let context: CanvasRenderingContext2D;
+
+    function clear() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "black";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
     function draw() {
-        const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!!;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        clear();
+        context.fillStyle = "green";
         for (const point of points) {
             const x = canvas.width / 2 + point.distance * Math.cos(point.angle);
             const y =
                 canvas.height / 2 + point.distance * Math.sin(point.angle);
-            ctx.fillRect(x, y, 1, 1);
+            context.fillRect(x, y, 1, 1);
         }
     }
 
-    // onMount(async () => {
-    //     await tick();
-    //     draw();
-    // });
+    $: if (context !== undefined) draw();
+
+    onMount(async () => {
+        context = canvas.getContext("2d")!!;
+        clear();
+    });
 </script>
 
 <canvas id="canvas" width="800" height="600" bind:this={canvas}></canvas>

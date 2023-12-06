@@ -46,7 +46,7 @@
 <h2>Title: {data.room_name}</h2>
 
 <input on:keydown={(key_event) => {
-	if (key.key === "Enter")
+	if (key_event.key === "Enter")
 		sendMessage()
 	}} bind:value={message} />
 <button on:click={sendMessage}>Send</button>
