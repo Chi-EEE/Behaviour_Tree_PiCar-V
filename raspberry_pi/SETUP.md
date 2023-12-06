@@ -12,4 +12,7 @@ Run the following commands to get the raspberry pi running:
 ```
 sudo apt-get install build-essential
 curl -fsSL https://xmake.io/shget.text | bash
+source ~/.xmake/profile
 ```
+
+Use [CyberDuck](https://cyberduck.io/) to copy the raspberry_pi folder.

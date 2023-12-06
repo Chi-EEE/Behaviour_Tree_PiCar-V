@@ -32,6 +32,8 @@ namespace global
 			return instance;
 		}
 	public:
+		std::string lidar_port;
+
 		std::string host;
 		std::optional<int> port;
 
@@ -54,6 +56,8 @@ namespace global
 			{
 				json config_json = json::parse(config_file, nullptr, true, true);
 				
+				this->lidar_port = config_json["lidar_port"].get<std::string>();
+
 				this->host = config_json["host"].get<std::string>();
 				
 				this->port = std::make_optional<int>(config_json["port"].get<int>());
