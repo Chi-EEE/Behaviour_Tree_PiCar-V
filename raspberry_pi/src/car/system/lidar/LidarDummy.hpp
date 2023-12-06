@@ -15,6 +15,8 @@ namespace car::system::lidar {
 		{
 		};
 
+		void initialize() const override {};
+
 		void start() const override {};
 
 		std::vector<Measure> scan() const override

@@ -18,11 +18,18 @@ namespace car::system::lidar
 	public:
 		LidarScanner(const std::string &lidar_port) : lidar(RPLidar::create(lidar_port).value())
 		{
-			this->initialize();
 		};
+
 		~LidarScanner()
 		{
 			this->terminate();
+		};
+
+		void initialize() const
+		{
+			this->lidar->reset();
+			this->lidar->stop();
+			this->lidar->stop_motor();
 		};
 
 		void start() const
@@ -59,13 +66,6 @@ namespace car::system::lidar
 		}
 
 	private:
-		void initialize() const
-		{
-			this->lidar->reset();
-			this->lidar->stop();
-			this->lidar->stop_motor();
-		};
-
 		std::unique_ptr<RPLidar> lidar;
 	};
 }

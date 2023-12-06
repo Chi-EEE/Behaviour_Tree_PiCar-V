@@ -27,7 +27,6 @@ namespace car::system::messaging {
 	{
 	public:
 		MessagingSystem(const std::string& websocket_url) : websocket_url(websocket_url) {
-
 		};
 
 		void initalize()

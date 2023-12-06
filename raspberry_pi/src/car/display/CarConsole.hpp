@@ -78,6 +78,8 @@ namespace car::display {
 
 			Loop loop(&screen, main_component);
 
+			this->car_system->initalize();
+			this->car_system->start();
 			// The main loop:
 			while (!loop.HasQuitted()) {
 				this->car_system->update();
