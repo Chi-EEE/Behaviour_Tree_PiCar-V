@@ -6,6 +6,7 @@
 #include "LidarDevice.hpp"
 
 #include <memory>
+
 #include <rplidar/RPLidar.h>
 
 using namespace rplidar;

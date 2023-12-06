@@ -5,11 +5,7 @@
 
 #include <fstream>
 
-#include <nlohmann/json.hpp>
-
 #include "LidarDevice.hpp"
-
-using json = nlohmann::json;
 
 namespace car::system::lidar {
 	class LidarDummy : public LidarDevice

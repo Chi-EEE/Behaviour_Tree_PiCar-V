@@ -1,14 +1,7 @@
-#include <iostream>
-#include <fstream>
 #include <optional>
-#include <chrono> // std::chrono::microseconds
-#include <thread> // std::this_thread::sleep_for
 #include <string>
-#include <cstdlib>
 
 #include <fmt/format.h>
-
-#include <rplidar/RPLidar.h>
 
 #include "global/Config.hpp"
 
@@ -18,8 +11,6 @@
 
 #include "car/system/lidar/LidarScanner.hpp"
 #include "car/system/lidar/LidarDummy.hpp"
-
-
 
 std::string getWebsocketUrl()
 {

@@ -11,8 +11,8 @@
 #include <ftxui/component/loop.hpp> // ftxui::Loop
 
 #include "../system/CarSystem.h"
-using namespace car::system;
 
+using namespace car::system;
 using namespace ftxui;
 
 auto button_style = ButtonOption::Animated();
