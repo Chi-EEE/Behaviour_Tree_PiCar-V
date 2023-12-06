@@ -3,25 +3,21 @@
 
 #pragma once
 
-#include <thread> // std::this_thread::sleep_for
 #include <memory>
-
-#include <nlohmann/json.hpp>
 
 #include <ftxui/component/component.hpp>
 #include <ftxui/component/screen_interactive.hpp>
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/component/loop.hpp> // ftxui::Loop
 
-#include "CarSystem.h"
-
-using json = nlohmann::json;
+#include "../system/CarSystem.h"
+using namespace car::system;
 
 using namespace ftxui;
 
 auto button_style = ButtonOption::Animated();
 
-namespace car_system {
+namespace car::display {
 	class CarConsole
 	{
 	public:

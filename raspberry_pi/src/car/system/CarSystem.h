@@ -14,10 +14,10 @@
 
 using json = nlohmann::json;
 
-using namespace car_system::lidar;
-using namespace car_system::messaging;
+using namespace car::system::lidar;
+using namespace car::system::messaging;
 
-namespace car_system {
+namespace car::system {
 	class CarSystem
 	{
 	public:

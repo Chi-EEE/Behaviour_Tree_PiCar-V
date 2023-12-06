@@ -1,31 +1,25 @@
 #include <iostream>
 #include <fstream>
 #include <optional>
-#include <chrono>  std::chrono::microseconds
-#include <thread>  std::this_thread::sleep_for
+#include <chrono> // std::chrono::microseconds
+#include <thread> // std::this_thread::sleep_for
 #include <string>
 #include <cstdlib>
 
 #include <fmt/format.h>
 
-#include <nlohmann/json.hpp>
-
 #include <rplidar/RPLidar.h>
 
 #include "global/Config.hpp"
 
-#include "car_system/CarSystem.h"
-#include "car_system/CarConsole.hpp"
+#include "car/display/CarConsole.hpp"
 
-#include "car_system/lidar/LidarScanner.hpp"
-#include "car_system/lidar/LidarDummy.hpp"
+#include "car/system/CarSystem.h"
 
-using json = nlohmann::json;
+#include "car/system/lidar/LidarScanner.hpp"
+#include "car/system/lidar/LidarDummy.hpp"
 
-using namespace car_system;
-using namespace car_system::lidar;
 
-using namespace rplidar;
 
 std::string getWebsocketUrl()
 {
@@ -39,6 +33,12 @@ std::string getWebsocketUrl()
 
 int main()
 {
+	using namespace car::display;
+	using namespace car::system;
+	using namespace car::system::lidar;
+	using namespace car::system::messaging;
+	using namespace rplidar;
+
 	spdlog::set_level(spdlog::level::off);
 	//test();
 	

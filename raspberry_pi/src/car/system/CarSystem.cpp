@@ -1,6 +1,6 @@
 #include "CarSystem.h"
 
-namespace car_system {
+namespace car::system {
 	CarSystem::CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system) : lidar_device(std::move(lidar_device)), messaging_system(std::move(messaging_system))
 	{
 		this->initalize();

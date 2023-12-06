@@ -20,9 +20,9 @@
 
 using json = nlohmann::json;
 
-using namespace car_system::messaging::commands;
+using namespace car::system::messaging::commands;
 
-namespace car_system::messaging {
+namespace car::system::messaging {
 	class MessagingSystem
 	{
 	public:
