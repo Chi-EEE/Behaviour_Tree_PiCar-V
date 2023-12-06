@@ -27,11 +27,11 @@ namespace car::system {
 		void initalize();
 		void start();
 
-		void run();
+		void update();
 		void terminate();
 
-		void turn(float angle);
-		void move(float distance);
+		void move(MoveCommand& move_command);
+		void turn(TurnCommand& move_command);
 
 	private:
 		std::unique_ptr<LidarDevice> lidar_device;

@@ -65,10 +65,9 @@ namespace car::display {
 		void run() {
 			auto screen = ScreenInteractive::Fullscreen();
 
-			// State of the application:
+			// State of the ExitModalComponent:
 			bool exit_modal_shown = false;
 
-			// Some actions modifying the state:
 			auto show_exit_modal = [&] { exit_modal_shown = true; };
 			auto hide_exit_modal = [&] { exit_modal_shown = false; };
 			auto exit = screen.ExitLoopClosure();
@@ -79,10 +78,13 @@ namespace car::display {
 
 			Loop loop(&screen, main_component);
 
+			// The main loop:
 			while (!loop.HasQuitted()) {
-				this->car_system_obj->run();
+				this->car_system_obj->update();
 				loop.RunOnce();
 			}
+
+			// Called after the loop ended.
 			this->car_system_obj->terminate();
 		};
 

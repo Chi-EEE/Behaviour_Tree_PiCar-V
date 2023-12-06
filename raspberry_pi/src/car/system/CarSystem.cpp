@@ -14,6 +14,14 @@ namespace car::system {
 	void CarSystem::initalize()
 	{
 		this->messaging_system->initalize();
+
+		this->messaging_system->move_command_signal.connect([this](MoveCommand move_command) {
+			this->move(move_command);
+		});
+
+		this->messaging_system->turn_command_signal.connect([this](TurnCommand turn_command) {
+			this->turn(turn_command);
+		});
 	}
 
 	void CarSystem::start()
@@ -22,7 +30,7 @@ namespace car::system {
 		this->lidar_device->start();
 	}
 
-	void CarSystem::run()
+	void CarSystem::update()
 	{
 		json output_json;
 		output_json["data"] = json::array();
@@ -45,11 +53,11 @@ namespace car::system {
 		this->messaging_system->terminate();
 	}
 
-	void CarSystem::turn(float angle)
+	void CarSystem::move(MoveCommand& move_command)
 	{
 	}
 
-	void CarSystem::move(float distance)
+	void CarSystem::turn(TurnCommand& turn_command)
 	{
 	}
 }

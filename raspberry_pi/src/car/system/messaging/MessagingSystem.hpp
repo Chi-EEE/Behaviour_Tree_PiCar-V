@@ -42,20 +42,20 @@ namespace car::system::messaging {
 						if (message_json["type"] == "command") {
 							if (message_json["command"] == "turn") {
 								float angle = message_json["angle"].get<float>();
-								/*this->turn_command_signal(
+								this->turn_command_signal(
 									TurnCommand{
 										angle
 									}
-								);*/
+								);
 								spdlog::info("Turning by {} angle", angle);
 							}
 							else if (message_json["command"] == "move") {
 								int speed = message_json["speed"].get<int>();
-							// /*	this->move_command_signal(
-							// 		MoveCommand{
-							// 			speed
-							// 		}
-							// 	);*/
+								this->move_command_signal(
+									MoveCommand{
+										speed
+									}
+								);
 								spdlog::info("Moving with {} speed", speed);
 							}
 						}
@@ -114,12 +114,11 @@ namespace car::system::messaging {
 			this->terminate();
 		};
 
+		nod::signal<void(MoveCommand)> move_command_signal;
+		nod::signal<void(TurnCommand)> turn_command_signal;
 	private:
 		ix::WebSocket websocket;
 		std::string websocket_url;
-
-		nod::signal<void(MoveCommand)> move_command_signal;
-		nod::signal<void(TurnCommand)> turn_command_signal;
 	};
 };
 
