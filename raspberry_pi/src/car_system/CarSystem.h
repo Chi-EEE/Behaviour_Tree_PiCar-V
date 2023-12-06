@@ -1,17 +1,18 @@
-#ifndef CAR_H
-#define CAR_H
+#ifndef CARSYSTEM_H
+#define CARSYSTEM_H
 
 #pragma once
 
 #include <thread> // std::this_thread::sleep_for
 #include <memory>
 
-#include <nlohmann/json.hpp>
 
-using json = nlohmann::json;
+#include <nlohmann/json.hpp>
 
 #include "lidar/LidarDevice.hpp"
 #include "messaging/MessagingSystem.hpp"
+
+using json = nlohmann::json;
 
 using namespace car_system::lidar;
 using namespace car_system::messaging;
@@ -24,6 +25,7 @@ namespace car_system {
 		~CarSystem();
 
 		void initalize();
+		void start();
 
 		void run();
 		void terminate();

@@ -16,27 +16,27 @@ namespace car_system {
 		this->messaging_system->initalize();
 	}
 
-	void CarSystem::run()
+	void CarSystem::start()
 	{
-		spdlog::info("Running Car");
 		this->messaging_system->start();
 		this->lidar_device->start();
-		while (true)
+	}
+
+	void CarSystem::run()
+	{
+		json output_json;
+		output_json["data"] = json::array();
+		std::vector<Measure> scan = this->lidar_device->scan();
+		for (const Measure& measure : scan)
 		{
-			json output_json;
-			output_json["data"] = json::array();
-			std::vector<Measure> scan = this->lidar_device->scan();
-			for (const Measure& measure : scan)
-			{
-				output_json["data"].push_back(
-					{
-					{"distance", measure.distance},
-					{"angle", measure.angle},
-					}
-				);
-			}
-			this->messaging_system->sendMessage(output_json.dump());
+			output_json["data"].push_back(
+				{
+				{"distance", measure.distance},
+				{"angle", measure.angle},
+				}
+			);
 		}
+		this->messaging_system->sendMessage(output_json.dump());
 	}
 
 	void CarSystem::terminate()
