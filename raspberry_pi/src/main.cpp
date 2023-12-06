@@ -41,14 +41,14 @@ int main()
 
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(websocket_url);
 
-	auto car_system_obj = std::make_unique<CarSystem>(
+	auto car_system = std::make_unique<CarSystem>(
 		websocket_url,
 		std::move(scanner),
 		std::move(messaging_system)
 	);
 
 	// The CarConsole object will display the UI and handle user input:
-	CarConsole car_console(std::move(car_system_obj));
+	CarConsole car_console(std::move(car_system));
 	car_console.run();
 	return 0;
 }

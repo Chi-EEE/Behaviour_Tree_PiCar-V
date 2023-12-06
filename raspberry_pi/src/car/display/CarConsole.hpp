@@ -59,7 +59,7 @@ namespace car::display {
 			return component;
 		}
 
-		CarConsole(std::unique_ptr<CarSystem> car_system_obj) : car_system_obj(std::move(car_system_obj)) {
+		CarConsole(std::unique_ptr<CarSystem> car_system) : car_system(std::move(car_system)) {
 		};
 
 		void run() {
@@ -80,16 +80,16 @@ namespace car::display {
 
 			// The main loop:
 			while (!loop.HasQuitted()) {
-				this->car_system_obj->update();
+				this->car_system->update();
 				loop.RunOnce();
 			}
 
 			// Called after the loop ended.
-			this->car_system_obj->terminate();
+			this->car_system->terminate();
 		};
 
 	private:
-		std::unique_ptr<CarSystem> car_system_obj;
+		std::unique_ptr<CarSystem> car_system;
 	};
 }
 
