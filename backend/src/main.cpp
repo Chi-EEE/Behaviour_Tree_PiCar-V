@@ -1,7 +1,11 @@
 #include <filesystem>
+#include <vector>
+#include <string>
 
 #include <boost/dll.hpp>
 #include <drogon/HttpAppFramework.h>
+
+#include <spdlog/spdlog.h>
 
 // Controllers must be included before main
 #include "controllers/DynamicController.hpp"

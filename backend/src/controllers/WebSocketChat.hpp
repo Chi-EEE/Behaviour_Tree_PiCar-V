@@ -140,7 +140,7 @@ void WebSocketChat::handleUserCommand(const drogon::WebSocketConnectionPtr& wsCo
 			this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
 		}
 		else {
-			spdlog::error("The following arguments do not match the command move from {}: {} | WebSocketChat::handleUserCommand", wsConnPtr->peerAddr().toIp(), arguments);
+			spdlog::error("The following arguments do not match the command move from {}: {} | WebSocketChat::handleUserCommand", wsConnPtr->peerAddr().toIp(), message_data);
 		}
 	}
 	else if (command_type == "turn") {
@@ -154,7 +154,7 @@ void WebSocketChat::handleUserCommand(const drogon::WebSocketConnectionPtr& wsCo
 			this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
 		}
 		else {
-			spdlog::error("The arguments do not match the command turn from {} | WebSocketChat::handleUserCommand", wsConnPtr->peerAddr().toIp());
+			spdlog::error("The arguments do not match the command turn from {}: {} | WebSocketChat::handleUserCommand", wsConnPtr->peerAddr().toIp(), message_data);
 		}
 	}
 	else if (command_type == "stop") {

@@ -56,8 +56,9 @@ target("backend")
         print("Completed copying svelte files...")
     end)
 
+    add_headerfiles("include/utils/**.hpp")
+
     add_headerfiles("src/**.hpp")
-    
     add_headerfiles("src/**.h")
     add_files("src/**.cpp")
 
