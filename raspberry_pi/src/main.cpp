@@ -12,14 +12,19 @@
 #include "car/system/lidar/LidarScanner.hpp"
 #include "car/system/lidar/LidarDummy.hpp"
 
-std::string getWebsocketUrl()
+std::string getWebSocketUrl()
 {
 	std::optional<int> maybe_port = GET_CONFIG_VALUE(port);
+	std::string host_name;
 	if (maybe_port.has_value())
 	{
-		return fmt::format("ws://{}:{}/ws/room?request=join&type=car&room_name={}", GET_CONFIG_VALUE(host), maybe_port.value(), GET_CONFIG_VALUE(room));
+		host_name = fmt::format("{}:{}", GET_CONFIG_VALUE(host), maybe_port.value());
 	}
-	return fmt::format("ws://{}/ws/room?request=join&type=&room_name={}", GET_CONFIG_VALUE(host), GET_CONFIG_VALUE(room));
+	else
+	{
+		host_name = GET_CONFIG_VALUE(host);
+	}
+	return fmt::format("ws://{}/ws/room?request=join&type=car&room_name={}", host_name, GET_CONFIG_VALUE(room));
 }
 
 int main()
@@ -33,7 +38,7 @@ int main()
 	spdlog::set_level(spdlog::level::off);
 	//test();
 	
-	std::string websocket_url = getWebsocketUrl();
+	std::string websocket_url = getWebSocketUrl();
 	spdlog::info("Got websocket url: {}", websocket_url);
 
 	//std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
