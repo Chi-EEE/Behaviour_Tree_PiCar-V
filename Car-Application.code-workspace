@@ -4,19 +4,16 @@
 			"path": "."
 		},
 		{
-			"path": "backend"
+			"path": "app/backend"
 		},
 		{
-			"path": "frontend"
+			"path": "app/frontend"
 		},
 		{
-			"path": "raspberry_pi"
+			"path": "app/raspberry_pi"
 		},
 		{
-			"path": "tcp"
-		},
-		{
-			"path": "legacy"
+			"path": "old/legacy"
 		}
 	],
 	"settings": {
@@ -111,7 +108,8 @@
 			"source_location": "cpp",
 			"shared_mutex": "cpp",
 			"cinttypes": "cpp",
-			"filesystem": "cpp"
+			"filesystem": "cpp",
+			"variant": "cpp"
 		}
 	}
 }

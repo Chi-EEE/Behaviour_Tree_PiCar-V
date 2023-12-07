@@ -175,8 +175,8 @@ namespace rplidar {
 	tl::expected<std::tuple<uint8_t, bool, uint8_t>, std::string> RPLidar::_read_descriptor()
 	{
 		// Read descriptor packet
-		std::vector<uint8_t> descriptor(DESCRIPTOR_LEN);
-		this->_serial->read(descriptor.data(), DESCRIPTOR_LEN);
+		std::string descriptor(DESCRIPTOR_LEN, '\0');
+		this->_serial->read(reinterpret_cast<uint8_t*>(&descriptor[0]), DESCRIPTOR_LEN);
 		spdlog::debug("Received descriptor: {}", spdlog::to_hex(descriptor));
 
 		if (descriptor.size() != DESCRIPTOR_LEN)
