@@ -169,17 +169,18 @@ void RPLidar::_send_cmd(uint8_t cmd)
 std::tuple<uint8_t, bool, uint8_t> RPLidar::_read_descriptor()
 {
     // Read descriptor packet
-    std::vector<uint8_t> descriptor(DESCRIPTOR_LEN);
+    std::vector<uint8_t> descriptor;
+    descriptor.reserve(DESCRIPTOR_LEN);
     this->_serial->read(descriptor.data(), DESCRIPTOR_LEN);
     spdlog::debug("Received descriptor: {}", spdlog::to_hex(descriptor));
 
     if (descriptor.size() != DESCRIPTOR_LEN)
     {
-        throw std::runtime_error("Descriptor length mismatch");
+        throw std::runtime_error(fmt::format("Descriptor length mismatch : {}", descriptor.size()));
     }
     else if (descriptor[0] != SYNC_BYTE || descriptor[1] != SYNC_BYTE2)
     {
-        throw std::runtime_error("Incorrect descriptor starting bytes");
+        throw std::runtime_error(fmt::format("Incorrect descriptor starting bytes : {} | {}", descriptor[0], descriptor[1]));
     }
 
     bool isSingle = descriptor[5] == 0;
