@@ -74,8 +74,8 @@ namespace rplidar {
 	void RPLidar::_set_pwm(int pwm)
 	{
 		std::string payload;
-		payload.push_back(static_cast<char>(pwm & 0xFF));
-		payload.push_back(static_cast<char>((pwm >> 8) & 0xFF));
+		payload.push_back(static_cast<uint8_t>(pwm & 0xFF));
+		payload.push_back(static_cast<uint8_t>((pwm >> 8) & 0xFF));
 		this->_send_payload_cmd(SET_PWM_BYTE, payload);
 	}
 
@@ -134,19 +134,19 @@ namespace rplidar {
 
 		// Construct the request string
 		std::string req;
-		req += static_cast<char>(SYNC_BYTE);
-		req += static_cast<char>(cmd);
-		req += static_cast<char>(size);
+		req += static_cast<uint8_t>(SYNC_BYTE);
+		req += static_cast<uint8_t>(cmd);
+		req += static_cast<uint8_t>(size);
 		req += payload;
 
 		// Calculate the checksum
 		uint8_t checksum = 0;
-		for (const char& c : req)
+		for (const uint8_t& c : req)
 		{
 			checksum ^= static_cast<uint8_t>(c);
 		}
 
-		req += static_cast<char>(checksum);
+		req += static_cast<uint8_t>(checksum);
 
 		this->_serial->write(req);
 		spdlog::debug("Command sent: {}", spdlog::to_hex(req));
@@ -160,8 +160,8 @@ namespace rplidar {
 	void RPLidar::_send_cmd(uint8_t cmd)
 	{
 		std::string req;
-		req += static_cast<char>(SYNC_BYTE);
-		req += static_cast<char>(cmd);
+		req += static_cast<uint8_t>(SYNC_BYTE);
+		req += static_cast<uint8_t>(cmd);
 
 		this->_serial->write(req);
 		spdlog::debug("Command sent: {}", spdlog::to_hex(req));
@@ -241,10 +241,10 @@ namespace rplidar {
 		uint8_t dsize;
 		bool isSingle;
 		uint8_t dtype;
-		auto descripter_result = this->_read_descriptor();
-		if (!descripter_result.has_value())
-			return tl::make_unexpected(descripter_result.error());
-		std::tie(dsize, isSingle, dtype) = descripter_result.value();
+		auto descriptor_result = this->_read_descriptor();
+		if (!descriptor_result.has_value())
+			return tl::make_unexpected(descriptor_result.error());
+		std::tie(dsize, isSingle, dtype) = descriptor_result.value();
 
 		// Check response properties
 		if (dsize != INFO_LEN)
@@ -306,10 +306,10 @@ namespace rplidar {
 		uint8_t dsize;
 		bool isSingle;
 		uint8_t dtype;
-		auto descripter_result = this->_read_descriptor();
-		if (!descripter_result.has_value())
-			return tl::make_unexpected(descripter_result.error());
-		std::tie(dsize, isSingle, dtype) = descripter_result.value();
+		auto descriptor_result = this->_read_descriptor();
+		if (!descriptor_result.has_value())
+			return tl::make_unexpected(descriptor_result.error());
+		std::tie(dsize, isSingle, dtype) = descriptor_result.value();
 
 		// Check response properties
 		if (dsize != HEALTH_LEN)
@@ -421,10 +421,10 @@ namespace rplidar {
 		uint8_t dsize;
 		bool isSingle;
 		uint8_t dtype;
-		auto descripter_result = this->_read_descriptor();
-		if (!descripter_result.has_value())
-			return tl::make_unexpected(descripter_result.error());
-		std::tie(dsize, isSingle, dtype) = descripter_result.value();
+		auto descriptor_result = this->_read_descriptor();
+		if (!descriptor_result.has_value())
+			return tl::make_unexpected(descriptor_result.error());
+		std::tie(dsize, isSingle, dtype) = descriptor_result.value();
 
 		if (dsize != SCAN_TYPE[scanType]["size"])
 		{

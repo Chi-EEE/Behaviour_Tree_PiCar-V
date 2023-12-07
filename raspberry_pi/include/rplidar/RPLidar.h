@@ -35,14 +35,14 @@
 #include "ExpressPacket.hpp"
 
 namespace rplidar {
-	constexpr int SYNC_BYTE = 0xA5;
-	constexpr int SYNC_BYTE2 = 0x5A;
+	constexpr uint8_t SYNC_BYTE = 0xA5;
+	constexpr uint8_t SYNC_BYTE2 = 0x5A;
 
-	constexpr int GET_INFO_BYTE = 0x50;
-	constexpr int GET_HEALTH_BYTE = 0x52;
+	constexpr uint8_t GET_INFO_BYTE = 0x50;
+	constexpr uint8_t GET_HEALTH_BYTE = 0x52;
 
-	constexpr int STOP_BYTE = 0x25;
-	constexpr int RESET_BYTE = 0x40;
+	constexpr uint8_t STOP_BYTE = 0x25;
+	constexpr uint8_t RESET_BYTE = 0x40;
 
 	enum ScanType
 	{
@@ -72,7 +72,7 @@ namespace rplidar {
 
 	constexpr int MAX_MOTOR_PWM = 1023;
 	constexpr int DEFAULT_MOTOR_PWM = 660;
-	constexpr int SET_PWM_BYTE = 0xF0;
+	constexpr uint8_t SET_PWM_BYTE = 0xF0;
 
 	static std::map<int, std::string> HEALTH_STATUSES = {
 		{0, "Good"},
