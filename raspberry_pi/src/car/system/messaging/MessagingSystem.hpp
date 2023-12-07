@@ -110,7 +110,6 @@ namespace car::system::messaging {
 		}
 
 		~MessagingSystem() {
-			this->terminate();
 		};
 
 		nod::signal<void(MoveCommand)> move_command_signal;

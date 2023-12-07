@@ -22,7 +22,6 @@ namespace car::system::lidar
 
 		~LidarScanner()
 		{
-			this->terminate();
 		};
 
 		void initialize() const
