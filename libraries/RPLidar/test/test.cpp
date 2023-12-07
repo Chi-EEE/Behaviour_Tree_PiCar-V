@@ -1,8 +1,11 @@
 #include <RPLidar.h>
 #include <memory>
+#include <spdlog/spdlog.h>
 
 int main()
 {
+    spdlog::set_level(spdlog::level::debug);
+
     auto lidar = std::make_unique<RPLidar>("/dev/ttyUSB0");
 
     auto info = lidar->get_info();
