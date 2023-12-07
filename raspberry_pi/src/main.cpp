@@ -35,7 +35,7 @@ int main()
 	using namespace car::system::messaging;
 	using namespace rplidar;
 
-	spdlog::set_level(spdlog::level::off);
+	// spdlog::set_level(spdlog::level::off);
 	//test();
 	
 	std::string websocket_url = getWebSocketUrl();

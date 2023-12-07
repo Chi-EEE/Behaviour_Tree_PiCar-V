@@ -359,7 +359,7 @@ namespace rplidar {
 	{
 		spdlog::info("Stopping scanning");
 		this->_send_cmd(STOP_BYTE);
-		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		this->scanning.currently_scanning = false;
 		this->clean_input();
 	}
