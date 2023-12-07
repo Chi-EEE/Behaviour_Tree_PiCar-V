@@ -1,16 +1,17 @@
 #include <RPLidar.h>
+#include <memory>
 
 int main()
 {
-    auto lidar = RPLidar("COM3");
+    auto lidar = std::make_unique<RPLidar>("/dev/ttyUSB0");
 
-    auto info = lidar.get_info();
+    auto info = lidar->get_info();
     std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
 
-    auto health = lidar.get_health();
+    auto health = lidar->get_health();
     std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
 
-    std::function<std::vector<Measure>()> scanGenerator = lidar.iter_scans();
+    std::function<std::vector<Measure>()> scanGenerator = lidar->iter_scans();
     for (int i = 0; i < 10; i++)
     {
         std::vector<Measure> scan = scanGenerator();
@@ -25,8 +26,8 @@ int main()
         }
     }
 
-    lidar.stop();
-    lidar.stop_motor();
-    lidar.disconnect();
+    lidar->stop();
+    lidar->stop_motor();
+    lidar->disconnect();
     return 0;
 }

@@ -155,9 +155,8 @@ void RPLidar::_send_payload_cmd(uint8_t cmd, const std::string &payload)
 void RPLidar::_send_cmd(uint8_t cmd)
 {
     std::string req;
-    req += static_cast<char>(SYNC_BYTE);
-    req += static_cast<char>(cmd);
-
+    req.push_back(SYNC_BYTE);
+    req.push_back(cmd);
     this->_serial->write(req);
     spdlog::debug("Command sent: {}", spdlog::to_hex(req));
 }
