@@ -7,12 +7,30 @@ int main()
 {
     spdlog::set_level(spdlog::level::debug);
 
-    auto lidar = RPLidar::create("COM3").value();
+    auto lidar_result = RPLidar::create("/dev/ttyUSB0");
+    auto lidar_result = RPLidar::create("COM3");
+    if (!lidar_result.has_value())
+    {
+        return 0;
+    }
+    auto lidar = std::move(lidar_result.value());
 
-    auto info = lidar->get_info().value();
+    auto info_result = lidar->get_info();
+    if (!info_result.has_value())
+    {
+        std::cout << info_result.error();
+        return 0;
+    }
+    auto info = info_result.value();
     std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
 
-    auto health = lidar->get_health().value();
+    auto health_result = lidar->get_health();
+    if (!health_result.has_value())
+    {
+        std::cout << health_result.error();
+        return 0;
+    }
+    auto health = health_result.value();
     std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
 
     std::function<std::vector<Measure>()> scanGenerator = lidar->iter_scans();
@@ -33,5 +51,5 @@ int main()
     lidar->stop();
     lidar->stop_motor();
     lidar->disconnect();
-    return 0;
+    return 1;
 }
