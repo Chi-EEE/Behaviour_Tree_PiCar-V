@@ -169,8 +169,7 @@ void RPLidar::_send_cmd(uint8_t cmd)
 std::tuple<uint8_t, bool, uint8_t> RPLidar::_read_descriptor()
 {
     // Read descriptor packet
-    std::vector<uint8_t> descriptor;
-    descriptor.reserve(DESCRIPTOR_LEN);
+    std::vector<uint8_t> descriptor(DESCRIPTOR_LEN);
     this->_serial->read(descriptor.data(), DESCRIPTOR_LEN);
     spdlog::debug("Received descriptor: {}", spdlog::to_hex(descriptor));
 
