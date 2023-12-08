@@ -1,4 +1,5 @@
 add_requires("serial", "spdlog")
+add_requires("tl_expected")
 
 target("RPLidar")
     set_kind("static")
@@ -7,10 +8,12 @@ target("RPLidar")
     add_headerfiles("include/(**.hpp)")
     add_includedirs("include")
     add_packages("serial", "spdlog")
+    add_packages("tl_expected")
 
 target("test")
     set_kind("binary")
     add_files("test/*.cpp")
     add_includedirs("include")
     add_packages("serial", "spdlog")
+    add_packages("tl_expected")
     add_deps("RPLidar")

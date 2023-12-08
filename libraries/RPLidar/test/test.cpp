@@ -2,16 +2,17 @@
 #include <memory>
 #include <spdlog/spdlog.h>
 
+using namespace rplidar;
 int main()
 {
     spdlog::set_level(spdlog::level::debug);
 
-    auto lidar = std::make_unique<RPLidar>("/dev/ttyUSB0");
+    auto lidar = RPLidar::create("COM3").value();
 
-    auto info = lidar->get_info();
+    auto info = lidar->get_info().value();
     std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
 
-    auto health = lidar->get_health();
+    auto health = lidar->get_health().value();
     std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
 
     std::function<std::vector<Measure>()> scanGenerator = lidar->iter_scans();
