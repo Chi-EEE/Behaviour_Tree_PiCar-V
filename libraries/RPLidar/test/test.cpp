@@ -68,6 +68,9 @@ void run_python() {
     auto health = lidar.attr("get_health")();
     py::print(health);
 
+    lidar.attr("stop")();
+    lidar.attr("stop_motor")();
+    lidar.attr("disconnect")();
 }
 
 int main()
