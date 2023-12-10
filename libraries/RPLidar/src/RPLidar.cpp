@@ -159,8 +159,12 @@ namespace rplidar {
 	 */
 	void RPLidar::_send_cmd(uint8_t cmd)
 	{
-		uint8_t msg[] = {SYNC_BYTE, cmd};
-		this->_serial->write(msg, sizeof(msg));
+		std::string req;
+		req += static_cast<uint8_t>(SYNC_BYTE);
+		req += static_cast<uint8_t>(cmd);
+
+		this->_serial->write(req);
+		spdlog::debug("Command sent: {}", spdlog::to_hex(req));
 	}
 
 	/**
