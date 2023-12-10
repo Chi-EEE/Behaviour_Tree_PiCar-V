@@ -47,7 +47,7 @@ namespace rplidar {
 	{
 		try
 		{
-			std::unique_ptr<serial::Serial> serial = std::make_unique<serial::Serial>(port, baudrate, serial::Timeout(1000U));
+			std::unique_ptr<serial::Serial> serial = std::make_unique<serial::Serial>(port, baudrate, serial::Timeout(10U, 10U, 10U, 10U, 10U));
 			std::unique_ptr<RPLidar> lidar = std::make_unique<RPLidar>(port, baudrate, std::move(serial));
 			return std::move(lidar);
 		}
@@ -159,12 +159,8 @@ namespace rplidar {
 	 */
 	void RPLidar::_send_cmd(uint8_t cmd)
 	{
-		std::string req;
-		req += static_cast<uint8_t>(SYNC_BYTE);
-		req += static_cast<uint8_t>(cmd);
-
-		this->_serial->write(req);
-		spdlog::debug("Command sent: {}", spdlog::to_hex(req));
+		uint8_t msg[] = {SYNC_BYTE, cmd};
+		this->_serial->write(msg, sizeof(msg));
 	}
 
 	/**
@@ -175,7 +171,8 @@ namespace rplidar {
 	tl::expected<std::tuple<uint8_t, bool, uint8_t>, std::string> RPLidar::_read_descriptor()
 	{
 		// Read descriptor packet
-		std::vector<uint8_t> descriptor(DESCRIPTOR_LEN);
+		std::array<uint8_t, DESCRIPTOR_LEN> descriptor;
+		memset(descriptor.data(), '\0', sizeof(descriptor));
 		this->_serial->read(descriptor.data(), DESCRIPTOR_LEN);
 		spdlog::debug("Received descriptor: {}", spdlog::to_hex(descriptor));
 

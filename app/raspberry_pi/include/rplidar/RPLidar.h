@@ -120,7 +120,7 @@ namespace rplidar {
 	class RPLidar
 	{
 	public:
-		static tl::expected<std::unique_ptr<RPLidar>, nullptr_t> create(const std::string& port, uint32_t baudrate = 115200U);
+		static tl::expected<std::unique_ptr<RPLidar>, nullptr_t> create(const std::string& port, uint32_t baudrate = B115200);
 		
 		RPLidar(const std::string& port, uint32_t baudrate, std::unique_ptr<serial::Serial> serial);
 
