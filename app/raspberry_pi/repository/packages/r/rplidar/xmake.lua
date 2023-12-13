@@ -1,5 +1,5 @@
 package("rplidar")
-    add_deps("serial", "spdlog")
+    add_deps("serial", "spdlog", "tl_expected")
     set_sourcedir(path.join(os.scriptdir(), "rplidar"))
     set_policy("package.install_always", true)
     on_install(function (package)

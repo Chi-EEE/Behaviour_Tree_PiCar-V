@@ -7,7 +7,7 @@
 
 #include <memory>
 
-#include <rplidar/RPLidar.h>
+#include <RPLidar.h>
 
 using namespace rplidar;
 
