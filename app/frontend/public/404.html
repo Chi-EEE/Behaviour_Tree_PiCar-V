@@ -1,11 +1,15 @@
 <html>
     <head>
         <script>
+            const url = `http://${location.host}/#${location.pathname}`
             document.documentElement.innerHTML = `
 <html>
     <head>
-        <meta http-equiv="refresh" content="0; url=http://${location.host}/#${location.pathname}" />
+        <meta http-equiv="refresh" content="0; url=${url}" />
     </head>
+    <body>
+        <p><a href="${url}">Redirect</a></p>
+    </body>
 </html>
             `
         </script>
