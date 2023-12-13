@@ -18,7 +18,7 @@ int main()
 	spdlog::set_level(spdlog::level::debug);
 	auto config_json_path = boost::dll::program_location().parent_path() / "settings" / "config.json";
 	drogon::app().loadConfigFile(config_json_path.string());
-
+	drogon::app().setCustom404Page(drogon::HttpResponse::newFileResponse(drogon::app().getDocumentRoot() + "/404.html"));
 	std::vector<std::pair<std::string, int>> ip_addresses = {
 		{"0.0.0.0", 8848},
 		{"127.0.0.1", 8848},
