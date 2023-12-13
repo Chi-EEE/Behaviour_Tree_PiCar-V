@@ -35,7 +35,8 @@
 
 #include <tl/expected.hpp>
 
-namespace rplidar {
+namespace rplidar
+{
 	constexpr uint8_t SYNC_BYTE = 0xA5;
 	constexpr uint8_t SYNC_BYTE2 = 0x5A;
 
@@ -47,7 +48,7 @@ namespace rplidar {
 
 	enum ScanType
 	{
-		NORMAL,
+		NORMAL = 0,
 		FORCE,
 		EXPRESS
 	};
@@ -62,7 +63,7 @@ namespace rplidar {
 	static std::map<ScanType, std::map<std::string, uint8_t>> SCAN_TYPE = {
 		{ScanType::NORMAL, {{"byte", 0x20}, {"response", 129}, {"size", 5}}},
 		{ScanType::FORCE, {{"byte", 0x21}, {"response", 129}, {"size", 5}}},
-		{ScanType::EXPRESS, {{"byte", 0x82}, {"response", 130}, {"size", 84}}} };
+		{ScanType::EXPRESS, {{"byte", 0x82}, {"response", 130}, {"size", 84}}}};
 
 	constexpr int DESCRIPTOR_LEN = 7;
 	constexpr int INFO_LEN = 20;
@@ -78,7 +79,7 @@ namespace rplidar {
 	static std::map<int, std::string> HEALTH_STATUSES = {
 		{0, "Good"},
 		{1, "Warning"},
-		{2, "Error"} };
+		{2, "Error"}};
 
 	struct DeviceInfo
 	{
@@ -168,9 +169,9 @@ namespace rplidar {
 	class RPLidar
 	{
 	public:
-		static tl::expected<std::unique_ptr<RPLidar>, nullptr_t> create(const std::string& port, uint32_t baudrate = 115200U);
+		static tl::expected<std::unique_ptr<RPLidar>, nullptr_t> create(const std::string &port, uint32_t baudrate = 115200U);
 
-		RPLidar(const std::string& port, uint32_t baudrate, std::unique_ptr<serial::Serial> serial);
+		RPLidar(const std::string &port, uint32_t baudrate, std::unique_ptr<serial::Serial> serial);
 
 		~RPLidar();
 
@@ -184,15 +185,14 @@ namespace rplidar {
 
 		void stop_motor();
 
-		void _send_payload_cmd(uint8_t cmd, const std::string& payload);
+		void _send_payload_cmd(uint8_t cmd, const std::string &payload);
 
 		void _send_cmd(uint8_t cmd);
 
 		tl::expected<
 			std::tuple<uint8_t, bool, uint8_t>,
-			std::string
-		>
-			_read_descriptor();
+			std::string>
+		_read_descriptor();
 
 		std::vector<uint8_t> _read_response(int dsize);
 
@@ -213,7 +213,6 @@ namespace rplidar {
 		std::function<std::vector<Measure>()> iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5);
 
 	private:
-
 		std::unique_ptr<serial::Serial> _serial = nullptr;
 
 		std::string port;
@@ -221,7 +220,7 @@ namespace rplidar {
 
 		int _motor_speed = DEFAULT_MOTOR_PWM;
 		bool motor_running = false;
-		ScanInfo scanning = { false, 0, ScanType::NORMAL };
+		ScanInfo scanning = ScanInfo{false, 0, ScanType::NORMAL};
 		int express_trame = 32;
 
 		std::unique_ptr<ExpressPacket> express_data = nullptr;

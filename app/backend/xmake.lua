@@ -52,7 +52,7 @@ target("backend")
         os.execv("pnpm", {"--prefix", frontend_dir, "run", "build"})
 
         print("Copying svelte files...")
-        os.cp(path.join(os.scriptdir(), "..", "frontend", "build"), static)
+        os.cp(path.join(os.scriptdir(), "..", "frontend", "dist"), static)
         print("Completed copying svelte files...")
     end)
 

@@ -47,7 +47,7 @@ namespace rplidar {
 	{
 		try
 		{
-			std::unique_ptr<serial::Serial> serial = std::make_unique<serial::Serial>(port, baudrate, serial::Timeout(1000U));
+			std::unique_ptr<serial::Serial> serial = std::make_unique<serial::Serial>(port, baudrate, serial::Timeout(1000U, 60000U, 0U, 1000U, 0U));
 			std::unique_ptr<RPLidar> lidar = std::make_unique<RPLidar>(port, baudrate, std::move(serial));
 			return std::move(lidar);
 		}

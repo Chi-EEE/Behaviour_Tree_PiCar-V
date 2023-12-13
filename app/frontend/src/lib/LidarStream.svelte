@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import { get } from "svelte/store";
 
-    import { websocket_store } from "$lib/WebsocketStore";
+    import { websocket_store } from "./WebsocketStore";
 
     class ScanPoint {
         constructor(angle: number, distance: number) {

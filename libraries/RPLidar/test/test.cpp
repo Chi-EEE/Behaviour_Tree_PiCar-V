@@ -35,20 +35,20 @@ int run_native()
     auto &health = health_result.value();
     std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
 
-    // std::function<std::vector<Measure>()> scanGenerator = lidar->iter_scans();
-    // for (int i = 0; i < 10; i++)
-    // {
-    //     std::vector<Measure> scan = scanGenerator();
-    //     std::cout << "Got " << scan.size() << " Measures!\n";
-    //     for (const Measure &measure : scan)
-    //     {
-    //         // Access individual measurements in the scan
-    //         bool newScan = measure.newScan;
-    //         int quality = measure.quality;
-    //         float angle = measure.angle;
-    //         float distance = measure.distance;
-    //     }
-    // }
+    std::function<std::vector<Measure>()> scanGenerator = lidar->iter_scans();
+    for (int i = 0; i < 10; i++)
+    {
+        std::vector<Measure> scan = scanGenerator();
+        std::cout << "Got " << scan.size() << " Measures!\n";
+        for (const Measure &measure : scan)
+        {
+            // Access individual measurements in the scan
+            bool newScan = measure.newScan;
+            int quality = measure.quality;
+            float angle = measure.angle;
+            float distance = measure.distance;
+        }
+    }
 
     lidar->stop();
     lidar->stop_motor();
