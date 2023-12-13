@@ -32,30 +32,32 @@ lidar.disconnect();
 
 */
 
-namespace rplidar {
+namespace rplidar
+{
 	/**
 	 * @brief Initilize RPLidar object for communicating with the sensor
 	 *
 	 * @param port Serial port name to which sensor is connected
 	 * @param baudrate Baudrate for serial connection (the default is 115200)
 	 */
-	RPLidar::RPLidar(const std::string& port, uint32_t baudrate, std::unique_ptr<serial::Serial> serial) : port(port), baudrate(baudrate), _serial(std::move(serial))
+	RPLidar::RPLidar(const std::string &port, uint32_t baudrate, std::unique_ptr<serial::Serial> serial) : port(port), baudrate(baudrate), _serial(std::move(serial))
 	{
 	}
 
-	tl::expected<std::unique_ptr<RPLidar>, nullptr_t> RPLidar::create(const std::string& port, uint32_t baudrate)
+	tl::expected<std::unique_ptr<RPLidar>, nullptr_t> RPLidar::create(const std::string &port, uint32_t baudrate)
 	{
 		try
 		{
-			std::unique_ptr<serial::Serial> serial = std::make_unique<serial::Serial>(port, baudrate, serial::Timeout(10U, 10U, 10U, 10U, 10U));
+			// Timeout after 60 seconds if nothing read
+			auto timeout = serial::Timeout(1000U, 60000U, 0, 1000U, 0);
+			std::unique_ptr<serial::Serial> serial = std::make_unique<serial::Serial>(port, baudrate, timeout);
 			std::unique_ptr<RPLidar> lidar = std::make_unique<RPLidar>(port, baudrate, std::move(serial));
 			return std::move(lidar);
 		}
-		catch (std::exception& e)
+		catch (std::exception &e)
 		{
 			return tl::make_unexpected(nullptr);
 		}
-
 	}
 
 	RPLidar::~RPLidar()
@@ -127,7 +129,7 @@ namespace rplidar {
 	 * @param cmd
 	 * @param payload
 	 */
-	void RPLidar::_send_payload_cmd(uint8_t cmd, const std::string& payload)
+	void RPLidar::_send_payload_cmd(uint8_t cmd, const std::string &payload)
 	{
 		// Calculate the size
 		uint8_t size = static_cast<uint8_t>(payload.size());
@@ -141,7 +143,7 @@ namespace rplidar {
 
 		// Calculate the checksum
 		uint8_t checksum = 0;
-		for (const uint8_t& c : req)
+		for (const uint8_t &c : req)
 		{
 			checksum ^= static_cast<uint8_t>(c);
 		}
@@ -333,7 +335,7 @@ namespace rplidar {
 		std::string status = HEALTH_STATUSES[raw[0]];
 		int errorCode = (static_cast<int>(raw[1]) << 8) + static_cast<int>(raw[2]);
 
-		return HealthInfo{ status, errorCode };
+		return HealthInfo{status, errorCode};
 	}
 
 	/**
@@ -380,6 +382,7 @@ namespace rplidar {
 		auto health_info_result = this->get_health();
 		if (!health_info_result.has_value())
 			return tl::make_unexpected(health_info_result.error());
+
 		HealthInfo healthInfo = health_info_result.value();
 		std::string status = healthInfo.status;
 		int errorCode = healthInfo.errorCode;
@@ -422,9 +425,11 @@ namespace rplidar {
 		uint8_t dsize;
 		bool isSingle;
 		uint8_t dtype;
+
 		auto descriptor_result = this->_read_descriptor();
 		if (!descriptor_result.has_value())
 			return tl::make_unexpected(descriptor_result.error());
+
 		std::tie(dsize, isSingle, dtype) = descriptor_result.value();
 
 		if (dsize != SCAN_TYPE[scanType]["size"])
@@ -439,8 +444,8 @@ namespace rplidar {
 		{
 			return tl::make_unexpected("Wrong response data type");
 		}
-
-		scanning = { true, dsize, scanType };
+		this->scanning = ScanInfo{true, dsize, scanType};
+		return nullptr;
 	}
 
 	/**
@@ -456,7 +461,7 @@ namespace rplidar {
 		this->clean_input();
 	}
 
-	tl::expected<Measure, std::string> _process_scan(const std::vector<uint8_t>& raw)
+	tl::expected<Measure, std::string> _process_scan(const std::vector<uint8_t> &raw)
 	{
 		Measure measurementData;
 
@@ -491,7 +496,7 @@ namespace rplidar {
 		return measurementData;
 	}
 
-	Measure _process_express_scan(std::unique_ptr<ExpressPacket>& data, float newAngle, int trame)
+	Measure _process_express_scan(std::unique_ptr<ExpressPacket> &data, float newAngle, int trame)
 	{
 		Measure measurementData;
 
@@ -521,7 +526,8 @@ namespace rplidar {
 	 */
 	std::function<tl::expected<Measure, std::string>()> RPLidar::iter_measures(ScanType scanType, int maxBufMeas)
 	{
-		if (!this->motor_running) {
+		if (!this->motor_running)
+		{
 			this->start_motor();
 		}
 
@@ -532,61 +538,62 @@ namespace rplidar {
 
 		// Define a lambda function to generate measures
 		auto generator = [this, scanType, maxBufMeas]() -> tl::expected<Measure, std::string>
+		{
+			while (true)
 			{
-				while (true)
+				int dsize = scanning.dsize;
+
+				if (maxBufMeas)
 				{
-					int dsize = scanning.dsize;
-
-					if (maxBufMeas)
+					int dataInBuf = this->_serial->available();
+					if (dataInBuf > maxBufMeas)
 					{
-						int dataInBuf = this->_serial->available();
-						if (dataInBuf > maxBufMeas)
-						{
-							spdlog::warn(
-								"Too many bytes in the input buffer: {}/{}. \n"
-								"Cleaning buffer...",
-								dataInBuf, maxBufMeas);
-							this->stop();
-							this->start(scanning.type);
-						}
-					}
-
-					if (scanType == NORMAL)
-					{
-						std::vector<uint8_t> raw = this->_read_response(dsize);
-						auto process_scan_result = _process_scan(raw);
-						if (!process_scan_result.has_value())
-							return tl::make_unexpected(process_scan_result.error());
-						Measure measure = process_scan_result.value();
-						return measure;
-					}
-					else if (scanType == EXPRESS)
-					{
-						if (this->express_trame == 32)
-						{
-							this->express_trame = 0;
-
-							if (this->express_data == nullptr)
-							{
-								spdlog::debug("reading first time bytes");
-								this->express_data = std::make_unique<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
-							}
-
-							this->express_old_data = std::move(this->express_data);
-							spdlog::debug("set old_data with start_angle {}", this->express_old_data->start_angle);
-							this->express_data = std::make_unique<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
-							spdlog::debug("set new_data with start_angle {}", this->express_data->start_angle);
-						}
-						this->express_trame++;
-						spdlog::debug("process scan of frame %d with angle : \n"
-							"%f and angle new : %f", this->express_trame,
-							this->express_old_data->start_angle,
-							this->express_data->start_angle);
-						Measure measure = _process_express_scan(this->express_old_data, this->express_data->start_angle, this->express_trame);
-						return measure;
+						spdlog::warn(
+							"Too many bytes in the input buffer: {}/{}. \n"
+							"Cleaning buffer...",
+							dataInBuf, maxBufMeas);
+						this->stop();
+						this->start(scanning.type);
 					}
 				}
-			};
+
+				if (scanType == NORMAL)
+				{
+					std::vector<uint8_t> raw = this->_read_response(dsize);
+					auto process_scan_result = _process_scan(raw);
+					if (!process_scan_result.has_value())
+						return tl::make_unexpected(process_scan_result.error());
+					Measure measure = process_scan_result.value();
+					return measure;
+				}
+				else if (scanType == EXPRESS)
+				{
+					if (this->express_trame == 32)
+					{
+						this->express_trame = 0;
+
+						if (this->express_data == nullptr)
+						{
+							spdlog::debug("reading first time bytes");
+							this->express_data = std::make_unique<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
+						}
+
+						this->express_old_data = std::move(this->express_data);
+						spdlog::debug("set old_data with start_angle {}", this->express_old_data->start_angle);
+						this->express_data = std::make_unique<ExpressPacket>(ExpressPacket(this->_read_response(dsize)));
+						spdlog::debug("set new_data with start_angle {}", this->express_data->start_angle);
+					}
+					this->express_trame++;
+					spdlog::debug("process scan of frame %d with angle : \n"
+								  "%f and angle new : %f",
+								  this->express_trame,
+								  this->express_old_data->start_angle,
+								  this->express_data->start_angle);
+					Measure measure = _process_express_scan(this->express_old_data, this->express_data->start_angle, this->express_trame);
+					return measure;
+				}
+			}
+		};
 
 		return generator;
 	}
@@ -609,26 +616,26 @@ namespace rplidar {
 
 		// Define a lambda function to generate scans
 		auto scanGenerator = [this, scanType, maxBufMeas, minLen, measureIterator]() -> std::vector<Measure>
+		{
+			std::vector<Measure> scanList;
+			for (;;)
 			{
-				std::vector<Measure> scanList;
-				for (;;)
+				Measure measure = measureIterator().value();
+				bool newScan = measure.newScan;
+				if (newScan)
 				{
-					Measure measure = measureIterator().value();
-					bool newScan = measure.newScan;
-					if (newScan)
+					if (scanList.size() > minLen)
 					{
-						if (scanList.size() > minLen)
-						{
-							return scanList;
-						}
-						scanList.clear();
+						return scanList;
 					}
-					if (measure.distance > 0)
-					{
-						scanList.push_back(measure);
-					}
+					scanList.clear();
 				}
-			};
+				if (measure.distance > 0)
+				{
+					scanList.push_back(measure);
+				}
+			}
+		};
 		return scanGenerator;
 	}
 } // namespace rplidar
