@@ -30,7 +30,7 @@
 {#await fetchRooms()}
 	<p>Waiting to retrieve rooms...</p>
 {:then rooms_json}
-	<ul>
+	<ul style="list-style: none">
 		{#each rooms_json["data"] as room}
 		<li>
 			<a href={`#/room/${room.id}`}>{room.name}</a>
