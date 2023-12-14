@@ -44,7 +44,7 @@ public:
 			else
 				this->owner = nullptr;
 		}
-		if (this->car_user->getId() == user.getId()) {
+		if (this->car_user != nullptr && this->car_user->getId() == user.getId()) {
 			this->car_user = nullptr;
 		}
 	}
