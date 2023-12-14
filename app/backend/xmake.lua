@@ -47,12 +47,12 @@ target("backend")
 
         io.writefile(path.join(exe_dir, "settings", "config.json"), config_json)
 
-        local frontend_dir = path.join(os.scriptdir(), "..", "frontend")
+        local frontend_dir = path.join(path.directory(os.scriptdir()), "frontend")
         os.execv("pnpm", {"--prefix", frontend_dir, "i"})
         os.execv("pnpm", {"--prefix", frontend_dir, "run", "build"})
 
         print("Copying svelte files...")
-        os.cp(path.join(os.scriptdir(), "..", "frontend", "dist"), static)
+        os.cp(path.join(path.directory(os.scriptdir()), "frontend", "dist"), static)
         print("Completed copying svelte files...")
     end)
 
