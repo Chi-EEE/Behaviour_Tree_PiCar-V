@@ -1,6 +1,6 @@
 <script lang="ts">
 	async function fetchRooms() {
-		const res = await fetch(`http://${location.host}/v1/api/rooms`);
+		const res = await fetch(`http://${location.host}/api/v1/rooms`);
 		const data = await res.json();
 
 		if (res.ok) {
