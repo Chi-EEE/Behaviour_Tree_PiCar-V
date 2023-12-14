@@ -41,8 +41,12 @@ public:
 		// TODO: Check if owner / car_user has left the room
 	}
 
-	std::vector<std::shared_ptr<User>> getUsers() {
-		return this->users;
+	int getSize() const {
+		return this->users.size();
+	}
+
+	bool isEmpty() const {
+		return this->users.size() == 0;
 	}
 
 private:

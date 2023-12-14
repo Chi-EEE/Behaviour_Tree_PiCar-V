@@ -198,7 +198,7 @@ void WebSocketChat::handleConnectionClosed(const drogon::WebSocketConnectionPtr&
 
 		auto& room = RoomManager::instance()->getRoom(room_name);
 		room->removeUser(user);
-		if (room->getUsers().empty()) {
+		if (room->isEmpty()) {
 			RoomManager::instance()->removeRoom(room_name);
 		};
 
@@ -232,6 +232,12 @@ void WebSocketChat::handleNewConnection(const drogon::HttpRequestPtr& req,
 inline void WebSocketChat::handleCreateRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
 {
 	std::string room_name = req->getParameter("room_name");
+	// https://stackoverflow.com/a/6319898 : Remove all characters not string or number
+	room_name.erase(std::remove_if(room_name.begin(), room_name.end(), (int(*)(int))std::isalnum), room_name.end());
+	if (room_name.size() < 3) {
+		conn->forceClose();
+		return;
+	}
 	if (RoomManager::instance()->hasRoom(room_name)) {
 		spdlog::error("Room {} already exists | WebSocketChat::handleCreateRequest", room_name);
 		conn->forceClose();
@@ -257,6 +263,12 @@ inline void WebSocketChat::handleCreateRequest(const drogon::HttpRequestPtr& req
 inline void WebSocketChat::handleJoinRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
 {
 	std::string room_name = req->getParameter("room_name");
+	// https://stackoverflow.com/a/6319898 : Remove all characters not string or number
+	room_name.erase(std::remove_if(room_name.begin(), room_name.end(), (int(*)(int))std::isalnum), room_name.end());
+	if (room_name.size() < 3) {
+		conn->forceClose();
+		return;
+	}
 	if (!RoomManager::instance()->hasRoom(room_name)) {
 		spdlog::error("Room {} does not exist | WebSocketChat::handleJoinRequest", room_name);
 		conn->forceClose();
