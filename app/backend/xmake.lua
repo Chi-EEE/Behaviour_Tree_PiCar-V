@@ -1,8 +1,5 @@
 add_rules("mode.debug", "mode.release")
 
--- Add local repository
-add_repositories("repository repository")
-
 set_languages("cxx17")
 
 -- Logging / Data handling
@@ -68,6 +65,7 @@ target("backend")
         add_defines("_WIN32")
     end
 
+-- From xmake sample code:
 -- for _, file in ipairs(os.files("tests/test_*.cpp")) do
 --     local name = path.basename(file)
 --     target(name)
