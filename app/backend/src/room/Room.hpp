@@ -38,6 +38,7 @@ public:
 			return user_ptr->getId() == user.getId();
 			}
 		), this->users.end());
+		// No need to check if owner is in room, because if owner leaves, the room is deleted anyways after
 		if (this->owner->getId() == user.getId()) {
 			if (!this->isEmpty())
 				this->owner = this->users[0];
