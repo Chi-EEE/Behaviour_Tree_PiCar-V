@@ -38,7 +38,15 @@ public:
 			return user_ptr->getId() == user.getId();
 			}
 		), this->users.end());
-		// TODO: Check if owner / car_user has left the room
+		if (this->owner->getId() == user.getId()) {
+			if (!this->isEmpty())
+				this->owner = this->users[0];
+			else
+				this->owner = nullptr;
+		}
+		if (this->car_user->getId() == user.getId()) {
+			this->car_user = nullptr;
+		}
 	}
 
 	int getSize() const {
