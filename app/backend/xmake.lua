@@ -8,7 +8,7 @@ set_languages("cxx17")
 -- Logging / Data handling
 add_requires("boost", { configs = {chrono = true} })
 add_requires("fmt", "spdlog")
-add_requires("nlohmann_json")
+add_requires("nlohmann_json", "rapidjson")
 
 -- C++ Backend API for Svelte App
 add_requires("drogon", { configs = {sqlite3 = true, mysql = true}})
@@ -21,7 +21,7 @@ target("backend")
 
     add_packages("boost")
     add_packages("fmt", "spdlog")
-    add_packages("nlohmann_json")
+    add_packages("nlohmann_json", "rapidjson")
     add_packages("drogon")
 
     add_packages("tl_expected")
