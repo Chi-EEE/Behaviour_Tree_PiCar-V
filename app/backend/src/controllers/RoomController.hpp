@@ -1,6 +1,8 @@
 #pragma once
 #include <drogon/HttpController.h>
 
+#include <nlohmann/json.hpp>
+
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
