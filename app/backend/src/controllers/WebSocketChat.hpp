@@ -78,16 +78,6 @@ void WebSocketChat::handleNewMessage(const drogon::WebSocketConnectionPtr& wsCon
 	}
 }
 
-void santize_name(std::string& name) {
-	for (int i = 0; i < name.size(); i++) {
-		if (name[i] < 'A' || name[i] > 'Z' && name[i] < 'a'
-			|| name[i] > 'z') {
-			name.erase(i, 1);
-			i--;
-		}
-	}
-};
-
 void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsConnPtr,
 	std::string&& message,
 	const drogon::WebSocketMessageType& type)
