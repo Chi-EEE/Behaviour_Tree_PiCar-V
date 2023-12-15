@@ -112,8 +112,8 @@ namespace car::system::messaging {
 		~MessagingSystem() {
 		};
 
-		nod::signal<void(MoveCommand)> move_command_signal;
-		nod::signal<void(TurnCommand)> turn_command_signal;
+		nod::signal<void(const MoveCommand)> move_command_signal;
+		nod::signal<void(const TurnCommand)> turn_command_signal;
 	private:
 		ix::WebSocket websocket;
 		std::string websocket_url;

@@ -18,11 +18,11 @@ public:
 		ADD_METHOD_TO(RoomController::getRooms, "/api/v1/rooms", drogon::Get);
 	METHOD_LIST_END
 		void getRooms(const drogon::HttpRequestPtr& req,
-			std::function<void(const drogon::HttpResponsePtr&)>&& callback);
+			std::function<void(const drogon::HttpResponsePtr&)>&& callback) const;
 };
 
 void RoomController::getRooms(const drogon::HttpRequestPtr& req,
-	std::function<void(const drogon::HttpResponsePtr&)>&& callback)
+	std::function<void(const drogon::HttpResponsePtr&)>&& callback) const
 {
 	rapidjson::Document output;
 	output.SetObject();

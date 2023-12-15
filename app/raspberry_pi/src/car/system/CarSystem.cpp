@@ -56,11 +56,11 @@ namespace car::system {
 		}
 	}
 
-	void CarSystem::move(MoveCommand& move_command)
+	void CarSystem::move(const MoveCommand& move_command)
 	{
 	}
 
-	void CarSystem::turn(TurnCommand& turn_command)
+	void CarSystem::turn(const TurnCommand& turn_command)
 	{
 	}
 }

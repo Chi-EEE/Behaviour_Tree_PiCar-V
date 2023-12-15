@@ -103,7 +103,7 @@ void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 			this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
 		}
 	}
-	catch (std::exception c) {
+	catch (std::exception& c) {
 		spdlog::error("Invalid JSON from {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
 	}
 }

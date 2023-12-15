@@ -574,7 +574,7 @@ namespace rplidar
 			{
 				int dsize = scanning.dsize;
 
-				if (maxBufMeas)
+				if (maxBufMeas != 0)
 				{
 					int dataInBuf = this->_serial->available();
 					if (dataInBuf > maxBufMeas)

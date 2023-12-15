@@ -24,14 +24,14 @@ namespace car::system::lidar
 		{
 		};
 
-		void initialize() const
+		void initialize() const override
 		{
 			this->lidar->reset();
 			this->lidar->stop();
 			this->lidar->stop_motor();
 		};
 
-		void start() const
+		void start() const override
 		{
 			this->lidar->start_motor();
 
