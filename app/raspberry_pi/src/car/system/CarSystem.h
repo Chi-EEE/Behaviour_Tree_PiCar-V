@@ -29,7 +29,7 @@ namespace car::system {
 		void terminate();
 
 		void move(const MoveCommand& move_command);
-		void turn(const TurnCommand& move_command);
+		void turn(const TurnCommand& turn_command);
 
 	private:
 		std::unique_ptr<LidarDevice> lidar_device;

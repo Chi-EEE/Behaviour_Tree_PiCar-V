@@ -48,6 +48,7 @@ std::mutex RoomManager::m_;
 std::map<std::string, std::shared_ptr<Room>> RoomManager::rooms;
 
 RoomManager* RoomManager::instance() {
+	// cppcheck-suppress identicalInnerCondition
 	if (pinstance == nullptr) {
 		std::lock_guard<std::mutex> lock(m_);
 		if (pinstance == nullptr) {

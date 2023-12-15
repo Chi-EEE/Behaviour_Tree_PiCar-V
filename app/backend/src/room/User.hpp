@@ -23,9 +23,9 @@ public:
 	const drogon::WebSocketConnectionPtr getConnection() const { return this->connection; }
 
 private:
+	const drogon::SubscriberID id;
 	const std::string chat_room_name;
 	const UserType type;
-	const drogon::SubscriberID id;
 	const drogon::WebSocketConnectionPtr connection;
 
 	std::string name;
