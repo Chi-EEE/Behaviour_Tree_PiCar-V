@@ -1,0 +1,116 @@
+app/backend/src/room/User.hpp:27:20: style:inconclusive: Member variable 'User::chat_room_name' is in the wrong place in the initializer list. [initializerList]
+ const std::string chat_room_name;
+                   ^
+app/backend/src/room/User.hpp:14:140: note: Member variable 'User::chat_room_name' is in the wrong place in the initializer list.
+ User(drogon::SubscriberID id, drogon::WebSocketConnectionPtr conn, std::string chat_room_name, UserType type) : id(id), connection(conn), chat_room_name(chat_room_name), type(type) {};
+                                                                                                                                           ^
+app/backend/src/room/User.hpp:27:20: note: Member variable 'User::chat_room_name' is in the wrong place in the initializer list.
+ const std::string chat_room_name;
+                   ^
+app/backend/src/room/User.hpp:26:17: style:inconclusive: Member variable 'User::type' is in the wrong place in the initializer list. [initializerList]
+ const UserType type;
+                ^
+app/backend/src/room/User.hpp:14:172: note: Member variable 'User::type' is in the wrong place in the initializer list.
+ User(drogon::SubscriberID id, drogon::WebSocketConnectionPtr conn, std::string chat_room_name, UserType type) : id(id), connection(conn), chat_room_name(chat_room_name), type(type) {};
+                                                                                                                                                                           ^
+app/backend/src/room/User.hpp:26:17: note: Member variable 'User::type' is in the wrong place in the initializer list.
+ const UserType type;
+                ^
+app/backend/src/room/RoomManager.hpp:30:47: style:inconclusive: Technically the member function 'RoomManager::getRooms' can be const. [functionConst]
+ std::map<std::string, std::shared_ptr<Room>> getRooms() {
+                                              ^
+app/backend/src/room/Room.hpp:15:2: style: Class 'Room' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+ Room(std::shared_ptr<User> owner) : owner(owner) {
+ ^
+app/backend/src/room/RoomManager.hpp:53:17: warning: Identical inner 'if' condition is always true. [identicalInnerCondition]
+  if (pinstance == nullptr) {
+                ^
+app/backend/src/room/RoomManager.hpp:51:16: note: outer condition: pinstance==nullptr
+ if (pinstance == nullptr) {
+               ^
+app/backend/src/room/RoomManager.hpp:53:17: note: identical inner condition: pinstance==nullptr
+  if (pinstance == nullptr) {
+                ^
+app/backend/src/controllers/WebSocketChat.hpp:106:2: style: Exception should be caught by reference. [catchExceptionByValue]
+ catch (std::exception c) {
+ ^
+app/backend/src/room/User.hpp:14:81: performance: Function parameter 'chat_room_name' should be passed by const reference. [passedByValue]
+ User(drogon::SubscriberID id, drogon::WebSocketConnectionPtr conn, std::string chat_room_name, UserType type) : id(id), connection(conn), chat_room_name(chat_room_name), type(type) {};
+                                                                                ^
+app/backend/src/room/User.hpp:20:27: performance: Function parameter 'name' should be passed by const reference. [passedByValue]
+ void setName(std::string name) { this->name = name; }
+                          ^
+app/backend/src/controllers/WebSocketChat.hpp:111:127: style: Parameter 'user' can be declared with const [constParameter]
+void WebSocketChat::handleUserCommand(const drogon::WebSocketConnectionPtr& wsConnPtr, const std::string& message_data, User& user, std::shared_ptr<Room>& room) {
+                                                                                                                              ^
+app/backend/src/controllers/WebSocketChat.hpp:111:156: style: Parameter 'room' can be declared with const [constParameter]
+void WebSocketChat::handleUserCommand(const drogon::WebSocketConnectionPtr& wsConnPtr, const std::string& message_data, User& user, std::shared_ptr<Room>& room) {
+                                                                                                                                                           ^
+app/raspberry_pi/include/rplidar/RPLidar.cpp:539:9: error: Syntax Error: AST broken, 'if' doesn't have two operands. [internalAstError]
+     if (maxBufMeas)
+        ^
+app/raspberry_pi/repository/packages/r/rplidar/rplidar/src/RPLidar.cpp:577:8: error: Syntax Error: AST broken, 'if' doesn't have two operands. [internalAstError]
+    if (maxBufMeas)
+       ^
+app/raspberry_pi/src/car/system/CarSystem.h:31:8: performance:inconclusive: Technically the member function 'car::system::CarSystem::move' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+  void move(MoveCommand& move_command);
+       ^
+app/raspberry_pi/src/car/system/CarSystem.cpp:59:18: note: Technically the member function 'car::system::CarSystem::move' can be static (but you may consider moving to unnamed namespace).
+ void CarSystem::move(MoveCommand& move_command)
+                 ^
+app/raspberry_pi/src/car/system/CarSystem.h:31:8: note: Technically the member function 'car::system::CarSystem::move' can be static (but you may consider moving to unnamed namespace).
+  void move(MoveCommand& move_command);
+       ^
+app/raspberry_pi/src/car/system/CarSystem.h:32:8: performance:inconclusive: Technically the member function 'car::system::CarSystem::turn' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+  void turn(TurnCommand& move_command);
+       ^
+app/raspberry_pi/src/car/system/CarSystem.cpp:63:18: note: Technically the member function 'car::system::CarSystem::turn' can be static (but you may consider moving to unnamed namespace).
+ void CarSystem::turn(TurnCommand& turn_command)
+                 ^
+app/raspberry_pi/src/car/system/CarSystem.h:32:8: note: Technically the member function 'car::system::CarSystem::turn' can be static (but you may consider moving to unnamed namespace).
+  void turn(TurnCommand& move_command);
+       ^
+app/raspberry_pi/src/car/system/messaging/MessagingSystem.hpp:29:3: style: Class 'MessagingSystem' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+  MessagingSystem(const std::string& websocket_url) : websocket_url(websocket_url) {
+  ^
+app/raspberry_pi/src/car/system/CarSystem.cpp:63:36: style:inconclusive: Function 'turn' argument 1 names different: declaration 'move_command' definition 'turn_command'. [funcArgNamesDifferent]
+ void CarSystem::turn(TurnCommand& turn_command)
+                                   ^
+app/raspberry_pi/src/car/system/CarSystem.h:32:26: note: Function 'turn' argument 1 names different: declaration 'move_command' definition 'turn_command'.
+  void turn(TurnCommand& move_command);
+                         ^
+app/raspberry_pi/src/car/system/CarSystem.cpp:63:36: note: Function 'turn' argument 1 names different: declaration 'move_command' definition 'turn_command'.
+ void CarSystem::turn(TurnCommand& turn_command)
+                                   ^
+app/raspberry_pi/src/car/display/CarConsole.hpp:24:13: performance:inconclusive: Technically the member function 'car::display::CarConsole::MainComponent' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+  Component MainComponent(std::function<void()> show_exit_modal) {
+            ^
+app/raspberry_pi/src/car/display/CarConsole.hpp:43:13: performance:inconclusive: Technically the member function 'car::display::CarConsole::ExitModalComponent' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+  Component ExitModalComponent(std::function<void()> hide_exit_modal,
+            ^
+app/raspberry_pi/src/car/display/CarConsole.hpp:62:3: style: Class 'CarConsole' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+  CarConsole(std::unique_ptr<CarSystem> car_system) : car_system(std::move(car_system)) {
+  ^
+app/raspberry_pi/src/car/system/lidar/LidarScanner.hpp:19:3: style: Class 'LidarScanner' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+  LidarScanner(const std::string &lidar_port) : lidar(RPLidar::create(lidar_port).value())
+  ^
+app/raspberry_pi/src/car/system/lidar/LidarScanner.hpp:27:8: style: The function 'initialize' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+  void initialize() const
+       ^
+app/raspberry_pi/src/car/system/lidar/LidarDevice.hpp:16:16: note: Virtual function in base class
+  virtual void initialize() const = 0;
+               ^
+app/raspberry_pi/src/car/system/lidar/LidarScanner.hpp:27:8: note: Function in derived class
+  void initialize() const
+       ^
+app/raspberry_pi/src/car/system/lidar/LidarScanner.hpp:34:8: style: The function 'start' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+  void start() const
+       ^
+app/raspberry_pi/src/car/system/lidar/LidarDevice.hpp:17:16: note: Virtual function in base class
+  virtual void start() const = 0;
+               ^
+app/raspberry_pi/src/car/system/lidar/LidarScanner.hpp:34:8: note: Function in derived class
+  void start() const
+       ^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+
