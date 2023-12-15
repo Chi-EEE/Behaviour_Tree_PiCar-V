@@ -15,11 +15,11 @@ namespace car::system {
 		this->messaging_system->initalize();
 		this->lidar_device->initialize();
 
-		this->messaging_system->move_command_signal.connect([this](MoveCommand move_command) {
+		this->messaging_system->move_command_signal.connect([this](const MoveCommand move_command) {
 			this->move(move_command);
 		});
 
-		this->messaging_system->turn_command_signal.connect([this](TurnCommand turn_command) {
+		this->messaging_system->turn_command_signal.connect([this](const TurnCommand turn_command) {
 			this->turn(turn_command);
 		});
 	}

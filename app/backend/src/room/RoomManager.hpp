@@ -27,7 +27,7 @@ public:
 		this->rooms.erase(name);
 	}
 
-	std::map<std::string, std::shared_ptr<Room>> getRooms() {
+	std::map<std::string, std::shared_ptr<Room>> getRooms() const {
 		return this->rooms;
 	}
 
