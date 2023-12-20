@@ -26,7 +26,7 @@ jobs:
           git fetch origin
           git checkout cpp_check
           git pull
-          git merge origin/main
+          git merge origin/main --force
           git push origin cpp_check
           
       - name: cppcheck
