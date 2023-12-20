@@ -5,23 +5,31 @@ on:
     branches: [main]
 
 jobs:
-# From: https://github.com/marketplace/actions/update-git-branch
-  updateBranch:
-    name: Update cpp_check branch
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: Embraser01/update-git-branch-action@v1.0.0
-      if: github.ref == 'refs/heads/main'
-      with:
-        branch: cpp_check
-        force: 1 # To push-force to the branch
-        githubToken: ${{ secrets.PAT_TOKEN }} # Github Token
 # From: https://github.com/marketplace/actions/cppcheck-action
   build:
     name: cppcheck-test
     runs-on: ubuntu-latest
     steps:
+    # From: https://stackoverflow.com/a/76512688
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git User
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "<EMAIL>"
+
+      - name: Update cpp_check Branch
+        run: |
+          git checkout main
+          git fetch origin
+          git checkout cpp_check
+          git pull
+          git merge origin/main
+          git push origin cpp_check
+
       - name: Checkout
         uses: actions/checkout@v3
         with:
