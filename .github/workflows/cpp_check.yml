@@ -1,23 +1,41 @@
-# From: https://github.com/marketplace/actions/cppcheck-action
+# From: https://github.com/marketplace/actions/cppcheck-action & https://stackoverflow.com/a/76512688
 
 name: cppcheck-action-test
-on: [push]
+on:
+  push:
+    branches: [main]
 
 jobs:
   build:
     name: cppcheck-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git User
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "<EMAIL>"
+
+      - name: Update cpp_check Branch
+        run: |
+          git checkout main
+          git fetch origin
+          git checkout cpp_check
+          git pull
+          git merge origin/main
+          git push origin cpp_check
           
       - name: cppcheck
         uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           
-        
       - name: publish report    
         uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: 'main'
+          BRANCH_NAME: 'cpp_check'
