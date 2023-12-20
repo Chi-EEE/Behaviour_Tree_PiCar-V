@@ -1,4 +1,3 @@
-# From: https://github.com/marketplace/actions/cppcheck-action
 
 name: cppcheck-action-test
 on:
@@ -6,18 +5,23 @@ on:
     branches: [main]
 
 jobs:
+# From: https://github.com/marketplace/actions/update-git-branch
+  updateBranch:
+    name: Update cpp_check branch
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: Embraser01/update-git-branch-action@v1.0.0
+      if: github.ref == 'refs/heads/main'
+      with:
+        branch: cpp_check
+        force: 1 # To push-force to the branch
+        githubToken: ${{ secrets.PAT_TOKEN }} # Github Token
+# From: https://github.com/marketplace/actions/cppcheck-action
   build:
     name: cppcheck-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-        # https://github.com/marketplace/actions/update-git-branch
-      - uses: Embraser01/update-git-branch-action@v1.0.0
-        with:
-          branch: cpp_check
-          force: 1 # To push-force to the branch
-          githubToken: ${{ secrets.PAT_TOKEN }} # Github Token
-          
       - name: cppcheck
         uses: deep5050/cppcheck-action@main
         with:
