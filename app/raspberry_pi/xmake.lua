@@ -21,7 +21,7 @@ add_requires("imath")
 
 if is_plat("linux", "macosx") then
     -- For the SunFounder Car
-    add_requires("pca9685")
+    add_requires("pca9685", {configs = {shared = true}})
 end
 
 -- For Functional Programming?
@@ -57,3 +57,18 @@ target("raspberry_pi")
     set_configdir("$(buildir)/$(plat)/$(arch)/$(mode)")
     add_configfiles("settings/config.jsonc", {onlycopy = true, prefixdir = "settings"})
     
+-- From xmake sample code:
+
+if is_plat("linux", "macosx") then
+    for _, file in ipairs(os.files("tests/pca9685/test_*.cpp")) do
+        local name = path.basename(file)
+        target(name)
+            set_kind("binary")
+            set_default(false)
+            
+            add_packages("pca9685")
+
+            add_files("tests/pca9685/" .. name .. ".cpp")
+        target_end()
+    end
+end
