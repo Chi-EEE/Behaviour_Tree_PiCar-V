@@ -9,17 +9,19 @@
 
 #include "lidar/LidarDevice.hpp"
 #include "messaging/MessagingSystem.hpp"
+#include "movement/MovementSystem.hpp"
 
 using json = nlohmann::json;
 
 using namespace car::system::lidar;
 using namespace car::system::messaging;
+using namespace car::system::movement;
 
 namespace car::system {
 	class CarSystem
 	{
 	public:
-		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system);
+		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system, std::unique_ptr<MovementSystem> movement_system);
 		~CarSystem();
 
 		void initalize();
@@ -34,6 +36,7 @@ namespace car::system {
 	private:
 		std::unique_ptr<LidarDevice> lidar_device;
 		std::unique_ptr<MessagingSystem> messaging_system;
+		std::unique_ptr<MovementSystem> movement_system;
 
 		bool terminated = false;
 	};

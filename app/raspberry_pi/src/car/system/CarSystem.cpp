@@ -1,7 +1,12 @@
 #include "CarSystem.h"
 
 namespace car::system {
-	CarSystem::CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system) : lidar_device(std::move(lidar_device)), messaging_system(std::move(messaging_system))
+	CarSystem::CarSystem(
+		const std::string& websocket_url,
+		std::unique_ptr<LidarDevice> lidar_device, 
+		std::unique_ptr<MessagingSystem> messaging_system, 
+		std::unique_ptr<MovementSystem> movement_system
+	) : lidar_device(std::move(lidar_device)), messaging_system(std::move(messaging_system)), movement_system(std::move(movement_system))
 	{
 	}
 
@@ -62,5 +67,6 @@ namespace car::system {
 
 	void CarSystem::turn(const TurnCommand& turn_command)
 	{
+		this->movement_system->turn(turn_command);
 	}
 }

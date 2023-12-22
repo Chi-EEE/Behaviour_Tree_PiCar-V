@@ -12,11 +12,8 @@ add_requires("nod")
 add_requires("ftxui")
 
 add_requires("nlohmann_json")
-
 add_requires("spdlog")
-
 add_requires("fmt")
-
 add_requires("imath")
 
 if is_plat("linux", "macosx") then
@@ -31,17 +28,24 @@ add_requires("rplidar")
 
 target("raspberry_pi")
     set_kind("binary")
-    
+    set_license("LGPL-2.1")
+            
     add_packages("spdlog")
     add_packages("fmt")
+    add_packages("nlohmann_json")
     add_packages("imath")
+    add_packages("tl_expected")
 
+    -- Messaging System
     add_packages("ixwebsocket")
     add_packages("nod")
+
+    -- UI
     add_packages("ftxui")
-    add_packages("nlohmann_json")
+
+    -- For the SunFounder Car
     add_packages("rplidar")
-    add_packages("tl_expected")
+    add_packages("pca9685")
 
     add_headerfiles("include/**.h")
 
@@ -59,12 +63,13 @@ target("raspberry_pi")
     
 -- From xmake sample code:
 
-if is_plat("linux", "macosx") then
+if is_plat("linux") then
     for _, file in ipairs(os.files("tests/pca9685/test_*.cpp")) do
         local name = path.basename(file)
         target(name)
             set_kind("binary")
             set_default(false)
+            set_license("LGPL-2.1")
             
             add_packages("pca9685")
 
