@@ -252,7 +252,11 @@ namespace car::display {
 					rear_wheel_speed_slider->Render(),
 					front_wheel_angle_slider->Render(),
 					separator(),
-					text("Rear Wheel Speed: " + std::to_string(rear_wheel_speed) + " | Front Wheel Angle: " + std::to_string(front_wheel_angle)),
+					hbox({
+						text("Rear Wheel Speed: " + std::to_string(rear_wheel_speed)) | xflex,
+						separator(),
+						text("Front Wheel Angle: " + std::to_string(front_wheel_angle)) | xflex,
+					}),
 					});
 			});
 
