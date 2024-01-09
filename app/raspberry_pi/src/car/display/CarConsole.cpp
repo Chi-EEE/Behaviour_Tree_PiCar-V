@@ -45,7 +45,7 @@ namespace car::display {
 		std::function<void()> hide_enable_debug_warning_modal,
 		std::function<void()> enable_debug_mode
 	) {
-		constexpr auto DEBUG_ENABLE_WARNING_MESSAGE = "Enabling debug mode temporarily disables connecting to online. Are you sure you want to do this?";
+		static constexpr auto DEBUG_ENABLE_WARNING_MESSAGE = "Enabling debug mode temporarily disables connecting to online. Are you sure you want to do this?";
 
 		auto component = Container::Vertical({
 			Button("No", hide_enable_debug_warning_modal, animated_button_style),
@@ -135,9 +135,9 @@ namespace car::display {
 #pragma region Debug Modal		
 		bool debug_enabled = false;
 
-		constexpr auto DEBUG_MODE_ENABLED_MESSAGE = "Debug Status: Enabled";
-		constexpr auto DEBUG_MODE_DISABLED_MESSAGE = "Debug Status: Disabled";
-		constexpr auto DEBUG_MODE_WAIT_MESSAGE = "Debug Status: Waiting for user input...";
+		static constexpr auto DEBUG_MODE_ENABLED_MESSAGE = "Debug Status: Enabled";
+		static constexpr auto DEBUG_MODE_DISABLED_MESSAGE = "Debug Status: Disabled";
+		static constexpr auto DEBUG_MODE_WAIT_MESSAGE = "Debug Status: Waiting for user input...";
 
 		std::string debug_status = DEBUG_MODE_DISABLED_MESSAGE;
 
@@ -184,10 +184,10 @@ namespace car::display {
 #pragma endregion
 
 #pragma region Lidar Scanner Checkbox
-		constexpr auto LIDAR_ENABLED_MESSAGE = "Lidar Status: Enabled";
-		constexpr auto LIDAR_DISABLED_MESSAGE = "Lidar Status: Disconnected";
-		constexpr auto LIDAR_WAIT_ENABLED_MESSAGE = "Lidar Status: Enabling...";
-		constexpr auto LIDAR_WAIT_DISABLED_MESSAGE = "Lidar Status: Disabling...";
+		static constexpr auto LIDAR_ENABLED_MESSAGE = "Lidar Status: Enabled";
+		static constexpr auto LIDAR_DISABLED_MESSAGE = "Lidar Status: Disconnected";
+		static constexpr auto LIDAR_WAIT_ENABLED_MESSAGE = "Lidar Status: Enabling...";
+		static constexpr auto LIDAR_WAIT_DISABLED_MESSAGE = "Lidar Status: Disabling...";
 
 		nod::signal<void(bool)> lidar_signal;
 
