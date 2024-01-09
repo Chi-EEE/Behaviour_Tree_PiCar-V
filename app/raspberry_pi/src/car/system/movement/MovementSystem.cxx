@@ -5,8 +5,8 @@
 
 #include <memory>
 
-#include "../messaging/commands/MoveCommand.cxx"
-#include "../messaging/commands/TurnCommand.cxx"
+#include "../messaging/commands/SpeedCommand.cxx"
+#include "../messaging/commands/AngleCommand.cxx"
 
 #include "controller/AbstractWheelController.cxx"
 
@@ -39,7 +39,7 @@ namespace car::system::movement {
 			this->wheel_controller->set_rear_wheels_speed(speed_command);
 		}
 
-		void set_front_wheels_angle(const TurnCommand& angle_command) {
+		void set_front_wheels_angle(const AngleCommand& angle_command) {
 			this->wheel_controller->set_front_wheels_angle(angle_command);
 		}
 
@@ -53,12 +53,12 @@ namespace car::system::movement {
 			this->wheel_controller->set_rear_right_wheel_speed(speed_command);
 		}
 
-		void set_front_left_wheel_angle(const TurnCommand& angle_command)
+		void set_front_left_wheel_angle(const AngleCommand& angle_command)
 		{
 			this->wheel_controller->set_front_left_wheel_angle(angle_command);
 		}
 
-		void set_front_right_wheel_angle(const TurnCommand& angle_command)
+		void set_front_right_wheel_angle(const AngleCommand& angle_command)
 		{
 			this->wheel_controller->set_front_right_wheel_angle(angle_command);
 		}

@@ -1,10 +1,10 @@
-#ifndef TURNCOMMAND_CXX
-#define TURNCOMMAND_CXX
+#ifndef ANGLECOMMAND_CXX
+#define ANGLECOMMAND_CXX
 
 #pragma once
 
 namespace car::system::messaging::commands {
-	struct TurnCommand
+	struct AngleCommand
 	{
 		float angle;
 	};

@@ -15,8 +15,8 @@
 
 #include <nlohmann/json.hpp>
 
-#include "commands/MoveCommand.cxx"
-#include "commands/TurnCommand.cxx"
+#include "commands/SpeedCommand.cxx"
+#include "commands/AngleCommand.cxx"
 
 using json = nlohmann::json;
 
@@ -42,7 +42,7 @@ namespace car::system::messaging {
 							if (message_json["command"] == "turn") {
 								float angle = message_json["angle"].get<float>();
 								this->angle_command_signal(
-									TurnCommand{
+									AngleCommand{
 										angle
 									}
 								);
@@ -113,7 +113,7 @@ namespace car::system::messaging {
 		};
 
 		nod::signal<void(const SpeedCommand)> speed_command_signal;
-		nod::signal<void(const TurnCommand)> angle_command_signal;
+		nod::signal<void(const AngleCommand)> angle_command_signal;
 	private:
 		ix::WebSocket websocket;
 		std::string websocket_url;

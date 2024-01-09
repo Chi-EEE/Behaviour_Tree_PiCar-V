@@ -16,7 +16,7 @@ namespace car::system::movement::controller
         
         }
 
-        void set_front_wheels_angle(const TurnCommand &angle_command) override {
+        void set_front_wheels_angle(const AngleCommand &angle_command) override {
 
         }
 
@@ -28,11 +28,11 @@ namespace car::system::movement::controller
 
         }
 
-        void set_front_left_wheel_angle(const TurnCommand& angle_command) override {
+        void set_front_left_wheel_angle(const AngleCommand& angle_command) override {
 
         }
 
-        void set_front_right_wheel_angle(const TurnCommand& angle_command) override {
+        void set_front_right_wheel_angle(const AngleCommand& angle_command) override {
 
         }
     private:

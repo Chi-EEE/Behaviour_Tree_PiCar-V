@@ -1,10 +1,10 @@
-#ifndef MOVECOMMAND_CXX
-#define MOVECOMMAND_CXX
+#ifndef SPEEDCOMMAND_CXX
+#define SPEEDCOMMAND_CXX
 
 #pragma once
 
 namespace car::system::messaging::commands {
-	struct MoveCommand
+	struct SpeedCommand
 	{
 		int speed;
 	};

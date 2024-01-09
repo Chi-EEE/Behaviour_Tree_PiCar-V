@@ -5,7 +5,7 @@
 
 #include "global/Config.hpp"
 
-#include "car/display/CarConsole.cxx"
+#include "car/display/CarConsole.h"
 
 #include "car/system/CarSystem.h"
 
