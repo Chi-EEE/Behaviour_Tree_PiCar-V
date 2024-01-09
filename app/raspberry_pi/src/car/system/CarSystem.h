@@ -30,19 +30,19 @@ namespace car::system {
 
 		void update();
 
-		void start_lidar_device();
-		void stop_lidar_device();
+		void startLidarDevice();
+		void stopLidarDevice();
 
-		void set_rear_wheels_speed(const SpeedCommand& speed_command);
-		void set_front_wheels_angle(const AngleCommand& angle_command);
+		void setRearWheelsSpeed(const SpeedCommand& speed_command);
+		void setFrontWheelsAngle(const AngleCommand& angle_command);
 
-		void set_rear_left_wheel_speed(const SpeedCommand& speed_command);
-		void set_rear_right_wheel_speed(const SpeedCommand& speed_command);
+		void setRearLeftWheelSpeed(const SpeedCommand& speed_command);
+		void setRearRightWheelSpeed(const SpeedCommand& speed_command);
 
-		void set_front_left_wheel_angle(const AngleCommand& angle_command);
-		void set_front_right_wheel_angle(const AngleCommand& angle_command);
+		void setFrontLeftWheelAngle(const AngleCommand& angle_command);
+		void setFrontRightWheelAngle(const AngleCommand& angle_command);
 
-		const std::vector<Measure>& get_scan_data() const { return this->scan_data; }
+		const std::vector<Measure>& getScanData() const { return this->scan_data; }
 
 	private:
 		std::unique_ptr<LidarDevice> lidar_device;

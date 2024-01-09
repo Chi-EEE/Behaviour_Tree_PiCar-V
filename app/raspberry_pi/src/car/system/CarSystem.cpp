@@ -21,10 +21,10 @@ namespace car::system
 		this->lidar_device->initialize();
 
 		this->messaging_system->speed_command_signal.connect([this](const SpeedCommand speed_command)
-			{ this->set_rear_wheels_speed(speed_command); });
+			{ this->setRearWheelsSpeed(speed_command); });
 
 		this->messaging_system->angle_command_signal.connect([this](const AngleCommand angle_command)
-			{ this->set_front_wheels_angle(angle_command); });
+			{ this->setFrontWheelsAngle(angle_command); });
 	}
 
 	void CarSystem::start()
@@ -66,43 +66,43 @@ namespace car::system
 		this->messaging_system->sendMessage(output_json.dump());
 	}
 
-	void CarSystem::start_lidar_device()
+	void CarSystem::startLidarDevice()
 	{
 		this->lidar_device->start();
 	}
 
-	void CarSystem::stop_lidar_device()
+	void CarSystem::stopLidarDevice()
 	{
 		this->lidar_device->stop();
 	}
 
-	void CarSystem::set_rear_wheels_speed(const SpeedCommand& speed_command)
+	void CarSystem::setRearWheelsSpeed(const SpeedCommand& speed_command)
 	{
-		this->movement_system->set_rear_wheels_speed(speed_command);
+		this->movement_system->setRearWheelsSpeed(speed_command);
 	}
 
-	void CarSystem::set_front_wheels_angle(const AngleCommand& angle_command)
+	void CarSystem::setFrontWheelsAngle(const AngleCommand& angle_command)
 	{
-		this->movement_system->set_front_wheels_angle(angle_command);
+		this->movement_system->setFrontWheelsAngle(angle_command);
 	}
 
-	void CarSystem::set_rear_left_wheel_speed(const SpeedCommand& speed_command)
+	void CarSystem::setRearLeftWheelSpeed(const SpeedCommand& speed_command)
 	{
-		this->movement_system->set_rear_left_wheel_speed(speed_command);
+		this->movement_system->setRearLeftWheelSpeed(speed_command);
 	}
 
-	void CarSystem::set_rear_right_wheel_speed(const SpeedCommand& speed_command)
+	void CarSystem::setRearRightWheelSpeed(const SpeedCommand& speed_command)
 	{
-		this->movement_system->set_rear_right_wheel_speed(speed_command);
+		this->movement_system->setRearRightWheelSpeed(speed_command);
 	}
 
-	void CarSystem::set_front_left_wheel_angle(const AngleCommand& angle_command)
+	void CarSystem::setFrontLeftWheelAngle(const AngleCommand& angle_command)
 	{
-		this->movement_system->set_front_left_wheel_angle(angle_command);
+		this->movement_system->setFrontLeftWheelAngle(angle_command);
 	}
 
-	void CarSystem::set_front_right_wheel_angle(const AngleCommand& angle_command)
+	void CarSystem::setFrontRightWheelAngle(const AngleCommand& angle_command)
 	{
-		this->movement_system->set_front_right_wheel_angle(angle_command);
+		this->movement_system->setFrontRightWheelAngle(angle_command);
 	}
 }

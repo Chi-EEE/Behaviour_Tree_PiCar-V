@@ -117,7 +117,7 @@ namespace car::display {
 #pragma region Lidar Scan Map
 		auto renderer_line_block = Renderer([&] {
 			auto c = Canvas(100, 100);
-			for (auto& point : this->car_system->get_scan_data()) {
+			for (auto& point : this->car_system->getScanData()) {
 				const double angle = point.angle;
 				const double distance = point.distance;
 				const double angleInRadians = angle * (3.14159265f / 180.0f);
@@ -216,12 +216,12 @@ namespace car::display {
 		lidar_signal.connect([&](bool connected)
 			{
 				if (connected) {
-					this->car_system->start_lidar_device();
+					this->car_system->startLidarDevice();
 					lidar_status = LIDAR_ENABLED_MESSAGE;
 					lidar_loading_debounce = false;
 				}
 				else {
-					this->car_system->stop_lidar_device();
+					this->car_system->stopLidarDevice();
 					lidar_status = LIDAR_DISABLED_MESSAGE;
 					lidar_loading_debounce = false;
 				}

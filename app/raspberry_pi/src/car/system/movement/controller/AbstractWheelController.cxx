@@ -15,14 +15,14 @@ namespace car::system::movement::controller
     public:
         virtual void initialize() = 0;
 
-        virtual void set_rear_wheels_speed(const SpeedCommand &speed_command) = 0;
-        virtual void set_front_wheels_angle(const AngleCommand &angle_command) = 0;
+        virtual void setRearWheelsSpeed(const SpeedCommand &speed_command) = 0;
+        virtual void setFrontWheelsAngle(const AngleCommand &angle_command) = 0;
 
-        virtual void set_rear_left_wheel_speed(const SpeedCommand& speed_command) = 0;
-        virtual void set_rear_right_wheel_speed(const SpeedCommand& speed_command) = 0;
+        virtual void setRearLeftWheelSpeed(const SpeedCommand& speed_command) = 0;
+        virtual void setRearRightWheelSpeed(const SpeedCommand& speed_command) = 0;
 
-        virtual void set_front_left_wheel_angle(const AngleCommand& angle_command) = 0;
-        virtual void set_front_right_wheel_angle(const AngleCommand& angle_command) = 0;
+        virtual void setFrontLeftWheelAngle(const AngleCommand& angle_command) = 0;
+        virtual void setFrontRightWheelAngle(const AngleCommand& angle_command) = 0;
     };
 } // namespace car::system::movement::controller
 
