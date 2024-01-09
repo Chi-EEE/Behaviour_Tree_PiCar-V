@@ -60,10 +60,12 @@ int main()
 		websocket_url,
 		std::move(scanner),
 		std::move(messaging_system),
-		std::move(movement_system));
+		std::move(movement_system)
+	);
 
 	// The CarConsole object will display the UI and handle user input:
 	CarConsole car_console(std::move(car_system));
+	car_console.initialize();
 	car_console.run();
 	return 0;
 }

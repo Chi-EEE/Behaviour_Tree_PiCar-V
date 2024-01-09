@@ -42,21 +42,44 @@ namespace car::display {
 			return component;
 		}
 
-		inline Component ExitModalComponent(std::function<void()> hide_exit_modal,
-			std::function<void()> exit) {
+		inline Component ExitModalComponent(
+			std::function<void()> hide_exit_modal,
+			std::function<void()> exit
+		) {
 			auto component = Container::Vertical({
 				Button("No", hide_exit_modal, animated_button_style),
 				Button("Yes", exit, animated_button_style),
 				});
-			// Polish how the two buttons are rendered:
 			component |= Renderer([&](Element inner) {
 				return vbox({
 						   text("Are you sure you want to exit?"),
 						   separator(),
 						   inner,
-					})                               //
-					| size(WIDTH, GREATER_THAN, 30)  //
-					| border;                        //
+					})
+					| size(WIDTH, GREATER_THAN, 30)
+					| border;
+				});
+			return component;
+		}
+
+		inline Component DebugEnableWarningComponent(
+			std::function<void()> hide_enable_debug_warning_modal,
+			std::function<void()> enable_debug_mode
+		) {
+			constexpr auto DEBUG_ENABLE_WARNING_MESSAGE = "Enabling debug mode temporarily disables connecting to online. Are you sure you want to do this?";
+
+			auto component = Container::Vertical({
+				Button("No", hide_enable_debug_warning_modal, animated_button_style),
+				Button("Yes", enable_debug_mode, animated_button_style),
+				});
+			component |= Renderer([&](Element inner) {
+				return vbox({
+						   text(DEBUG_ENABLE_WARNING_MESSAGE),
+						   separator(),
+						   inner,
+					})
+					| size(WIDTH, GREATER_THAN, 30)
+					| border;
 				});
 			return component;
 		}
@@ -64,22 +87,22 @@ namespace car::display {
 		CarConsole(std::unique_ptr<CarSystem> car_system) : car_system(std::move(car_system)) {
 		};
 
+		void initialize() {
+			this->car_system->initialize();
+		};
+
 		void run() {
 			auto screen = ScreenInteractive::Fullscreen();
 
-			// State of the ExitModalComponent:
-			bool exit_modal_shown = false;
-
-			auto show_exit_modal = [&] { exit_modal_shown = true; };
-			auto hide_exit_modal = [&] { exit_modal_shown = false; };
-
-			bool debounce = false;
+#pragma region Main Screen
+#pragma region Main Button
+			bool main_debounce = false;
 			bool button_pressed = false;
 			std::string main_button_text = "Start Car Application";
 
 			auto main_button_lambda = [&] {
-				if (debounce) return;
-				debounce = true;
+				if (main_debounce) return;
+				main_debounce = true;
 				button_pressed = !button_pressed;
 				std::cout << "Button pressed: " << button_pressed << std::endl;
 				if (button_pressed) {
@@ -92,17 +115,28 @@ namespace car::display {
 					this->car_system->stop();
 					main_button_text = "Start Car Application";
 				}
-				debounce = false;
+				main_debounce = false;
 				};
 
 			auto main_button = Button(&main_button_text, main_button_lambda, animated_button_style);
+#pragma endregion
+
+#pragma region Exit Modal
+			bool exit_modal_shown = false;
+
+			auto show_exit_modal = [&] { exit_modal_shown = true; };
+			auto hide_exit_modal = [&] { exit_modal_shown = false; };
 
 			auto exit = screen.ExitLoopClosure();
 
-			auto main_component = MainComponent(main_button, show_exit_modal);
 			auto modal_component = ExitModalComponent(hide_exit_modal, exit);
-			main_component |= Modal(modal_component, &exit_modal_shown);
+#pragma endregion
 
+			auto main_component = MainComponent(main_button, show_exit_modal);
+			main_component |= Modal(modal_component, &exit_modal_shown);
+#pragma endregion
+
+#pragma region Lidar Scan Map
 			auto renderer_line_block = Renderer([&] {
 				auto c = Canvas(100, 100);
 				for (auto& point : this->car_system->get_scan_data()) {
@@ -116,44 +150,159 @@ namespace car::display {
 				return canvas(std::move(c));
 				}
 			);
+#pragma endregion
 
+#pragma region Settings Screen
+
+#pragma region Debug Modal		
+			bool debug_enabled = false;
+
+			constexpr auto DEBUG_MODE_ENABLED_MESSAGE = "Debug Status: Enabled";
+			constexpr auto DEBUG_MODE_DISABLED_MESSAGE = "Debug Status: Disabled";
+			constexpr auto DEBUG_MODE_WAIT_MESSAGE = "Debug Status: Waiting for user input...";
+
+			std::string debug_status = DEBUG_MODE_DISABLED_MESSAGE;
+
+			bool debug_debounce = false;
+			bool debug_checkbox_value = false;
+			bool display_warn_debug_modal = false;
+			auto debug_checkbox_option = CheckboxOption::Simple();
+
+			debug_checkbox_option.on_change = [&]
+				{
+					if (debug_debounce) {
+						debug_checkbox_value = !debug_checkbox_value;
+						return;
+					}
+					debug_debounce = true;
+					if (debug_enabled) {
+						debug_status = DEBUG_MODE_DISABLED_MESSAGE;
+						debug_enabled = false;
+						debug_debounce = false;
+					}
+					else {
+						display_warn_debug_modal = true;
+						debug_status = DEBUG_MODE_WAIT_MESSAGE;
+					}
+				};
+
+			auto debug_checkbox_component = Checkbox(&debug_status, &debug_checkbox_value, debug_checkbox_option);
+
+			auto enable_debug_mode = [&] {
+				debug_enabled = true;
+				display_warn_debug_modal = false;
+				debug_status = DEBUG_MODE_ENABLED_MESSAGE;
+				debug_debounce = false;
+				};
+
+			auto hide_enable_debug_warning_modal = [&] {
+				debug_checkbox_value = false;
+				display_warn_debug_modal = false;
+				debug_status = DEBUG_MODE_DISABLED_MESSAGE;
+				debug_debounce = false;
+				};
+
+			auto warn_enable_debug_modal = Modal(DebugEnableWarningComponent(hide_enable_debug_warning_modal, enable_debug_mode), &display_warn_debug_modal);
+#pragma endregion
+
+#pragma region Lidar Scanner Checkbox
+			constexpr auto LIDAR_ENABLED_MESSAGE = "Lidar Status: Enabled";
+			constexpr auto LIDAR_DISABLED_MESSAGE = "Lidar Status: Disconnected";
+			constexpr auto LIDAR_WAIT_ENABLED_MESSAGE = "Lidar Status: Enabling...";
+			constexpr auto LIDAR_WAIT_DISABLED_MESSAGE = "Lidar Status: Disabling...";
 
 			nod::signal<void(bool)> lidar_signal;
 
-			bool loading = false;
-			std::string lidar_status = "Lidar Status: Disconnected";
+			bool lidar_loading_debounce = false;
+			std::string lidar_status = LIDAR_DISABLED_MESSAGE;
 			bool lidar_enabled = false;
 			auto lidar_checkbox_option = CheckboxOption::Simple();
 			lidar_checkbox_option.on_change = [&]
 				{
-					if (loading) {
+					if (lidar_loading_debounce) {
 						lidar_enabled = !lidar_enabled;
 						return;
 					}
-					loading = true;
+					lidar_loading_debounce = true;
 					if (lidar_enabled) {
-						lidar_status = "Lidar Status: Connecting...";
+						lidar_status = LIDAR_WAIT_ENABLED_MESSAGE;
 					}
 					else {
-						lidar_status = "Lidar Status: Disconnecting...";
+						lidar_status = LIDAR_WAIT_DISABLED_MESSAGE;
 					}
 					lidar_signal(lidar_enabled);
 				};
-			auto lidar_checkbox = Checkbox(&lidar_status, &lidar_enabled, lidar_checkbox_option);
 
-			int image_index = 0;
-			auto lidar_spinner = Renderer([&] {return spinner(18, image_index); });
-			auto settings_container = Container::Vertical({
-				lidar_checkbox,
-				Maybe(lidar_spinner, &loading),
+			auto lidar_checkbox_component = Checkbox(&lidar_status, &lidar_enabled, lidar_checkbox_option);
+
+			lidar_signal.connect([&](bool connected)
+				{
+					if (connected) {
+						this->car_system->start_lidar_device();
+						lidar_status = LIDAR_ENABLED_MESSAGE;
+						lidar_loading_debounce = false;
+					}
+					else {
+						this->car_system->stop_lidar_device();
+						lidar_status = LIDAR_DISABLED_MESSAGE;
+						lidar_loading_debounce = false;
+					}
 				}
 			);
+#pragma endregion
+
+#pragma region Wheels
+
+#pragma region Rear Wheel Slider
+			int rear_wheel_speed = 0;
+			auto rear_wheel_speed_slider = Slider("Rear Wheel Speed:", &rear_wheel_speed, 0, 100, 1);
+#pragma endregion
+
+#pragma region Front Wheel Slider
+			int front_wheel_angle = 90;
+			auto front_wheel_angle_slider = Slider("Front Wheel Angle:", &front_wheel_angle, 0, 180, 1);
+#pragma endregion
+			auto slider_container = Container::Vertical({
+				rear_wheel_speed_slider,
+				front_wheel_angle_slider,
+				}
+			);
+
+			auto wheel_settings_renderer = Renderer(slider_container, [&] {
+				return
+					vbox({
+						rear_wheel_speed_slider->Render(),
+						front_wheel_angle_slider->Render(),
+						separator(),
+						text("Rear Wheel Speed: " + std::to_string(rear_wheel_speed) + " | Front Wheel Angle: " + std::to_string(front_wheel_angle)),
+						});
+				});
+
+#pragma endregion
+
+#pragma endregion
+
+			auto settings_container = Container::Vertical(
+				{
+					debug_checkbox_component,
+					Container::Vertical(
+						{
+						lidar_checkbox_component,
+						Renderer([&] {return separator(); }),
+						wheel_settings_renderer,
+						}
+					) | border | Maybe(&debug_enabled)
+				}
+			) | border;
+
+			settings_container |= warn_enable_debug_modal;
 
 			int selected_tab = 0;
 			std::vector<std::string> tab_titles = {
 				"Main",
 				"Scan Map",
 				"Settings",
+				"Logs",
 			};
 
 			auto tab_selection = Toggle(&tab_titles, &selected_tab);
@@ -185,23 +334,6 @@ namespace car::display {
 				}
 			);
 
-			this->car_system->initialize();
-
-			lidar_signal.connect([&](bool connected)
-				{
-					if (connected) {
-						this->car_system->start_lidar_device();
-						lidar_status = "Lidar Status: Connected";
-						loading = false;
-					}
-					else {
-						this->car_system->stop_lidar_device();
-						lidar_status = "Lidar Status: Disconnected";
-						loading = false;
-					}
-				}
-			);
-
 			std::atomic<bool> refresh_ui_continue = true;
 			std::thread refresh_ui([&]
 				{
@@ -211,7 +343,11 @@ namespace car::display {
 						// The |shift| variable belong to the main thread. `screen.Post(task)`
 						// will execute the update on the thread where |screen| lives (e.g. the
 						// main thread). Using `screen.Post(task)` is threadsafe.
-						screen.Post([&] { image_index++; });
+						screen.Post([&]
+							{
+								this->car_system->update();
+							}
+						);
 						// After updating the state, request a new frame to be drawn. This is done
 						// by simulating a new "custom" event to be handled.
 						screen.Post(Event::Custom);
