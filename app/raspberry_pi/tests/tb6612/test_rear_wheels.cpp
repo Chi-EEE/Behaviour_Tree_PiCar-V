@@ -6,7 +6,7 @@
 #include <algorithm>
 
 #include "PCA9685.h"
-#include "TB6612.hpp"
+#include "TB6612.h"
 
 static constexpr int Motor_A = 17;
 static constexpr int Motor_B = 27;

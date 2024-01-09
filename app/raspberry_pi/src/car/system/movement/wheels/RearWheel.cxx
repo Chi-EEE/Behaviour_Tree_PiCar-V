@@ -13,23 +13,24 @@
 
 namespace car::system::movement::wheels
 {
-	class RearWheel {
+	class RearWheel
+	{
 	private:
 		static constexpr int Motor_A = 17;
 		static constexpr int Motor_B = 27;
 		static constexpr int PWM_A = 4;
 		static constexpr int PWM_B = 5;
+
 	public:
-		RearWheel(std::shared_ptr<PCA9685> pwm, std::unique_ptr<TB6612> motor) :
-			pwm(pwm),
-			motor(std::move(motor))
+		RearWheel(std::shared_ptr<PCA9685> pwm, std::unique_ptr<TB6612> motor) : pwm(pwm),
+																				 motor(std::move(motor))
 		{
 			this->forward_A = true;
 
 			this->speed = 0;
 		}
 
-			void forward()
+		void forward()
 		{
 			this->motor->forward();
 		}
@@ -49,7 +50,7 @@ namespace car::system::movement::wheels
 			return this->speed;
 		}
 
-		void setSpeed(const int& speed)
+		void setSpeed(const int &speed)
 		{
 			this->speed = std::clamp(speed, 0, 100);
 			const int pulse_wide = (this->speed / 100.0f) * 4095;
