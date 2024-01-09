@@ -42,13 +42,16 @@ namespace car::system::movement::wheels
 		}
 
 		// Some of the code was from: https://github.com/chaoticmachinery/pca9685
-		int setAngle(const int& angle)
+		void setAngle(const int& angle)
 		{
-			this->angle = std::clamp(angle, 0, 180);
+			const int new_angle = std::clamp(angle, 0, 180);
+			if (new_angle == this->angle) {
+				return;
+			}
+			this->angle = new_angle;
 			int analog_angle = getAnalogAngle();
 			this->pwm->setPWM(channel, 0, analog_angle);
 			spdlog::info("Channel: {} \tAngle: {} \tAnalog Angle: {}", this->channel, angle, analog_angle);
-			return (0);
 		}
 
 	private:

@@ -52,7 +52,12 @@ namespace car::system::movement::wheels
 
 		void setSpeed(const int &speed)
 		{
-			this->speed = std::clamp(speed, 0, 100);
+			const int new_speed = std::clamp(speed, 0, 100);
+			if (new_speed == this->speed)
+			{
+				return;
+			}
+			this->speed = new_speed;
 			const int pulse_wide = (this->speed / 100.0f) * 4095;
 			this->pwm->setPWM(PWM_A, 0, pulse_wide);
 		}

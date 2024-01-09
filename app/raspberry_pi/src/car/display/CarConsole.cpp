@@ -327,6 +327,8 @@ namespace car::display {
 					// main thread). Using `screen.Post(task)` is threadsafe.
 					screen.Post([&]
 						{
+							this->car_system->setFrontWheelsAngle({ front_wheel_angle * 1.0f });
+							this->car_system->setRearWheelsSpeed({ rear_wheel_speed });
 							this->car_system->update();
 						}
 					);
