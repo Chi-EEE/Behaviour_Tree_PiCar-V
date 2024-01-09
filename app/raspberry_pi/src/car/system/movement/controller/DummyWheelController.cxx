@@ -12,9 +12,29 @@ namespace car::system::movement::controller
     public:
         void initialize(){};
 
-        void move(const MoveCommand &move_command){};
-        void turn(const TurnCommand &turn_command){};
+        void set_rear_wheels_speed(const SpeedCommand &speed_command) override {
+        
+        }
 
+        void set_front_wheels_angle(const TurnCommand &angle_command) override {
+
+        }
+
+        void set_rear_left_wheel_speed(const SpeedCommand& speed_command) override {
+
+        }
+
+        void set_rear_right_wheel_speed(const SpeedCommand& speed_command) override {
+
+        }
+
+        void set_front_left_wheel_angle(const TurnCommand& angle_command) override {
+
+        }
+
+        void set_front_right_wheel_angle(const TurnCommand& angle_command) override {
+
+        }
     private:
     };
 } // namespace car::system::movement::controller

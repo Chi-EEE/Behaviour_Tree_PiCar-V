@@ -26,20 +26,44 @@ namespace car::system::movement {
 			this->wheel_controller->initialize();
 		}
 
-		void start()
-		{
+		void start() {
+
 		}
 
 		void stop() {
+		
 		}
 
-		void move(const MoveCommand& move_command) {
-			this->wheel_controller->move(move_command);
+#pragma region Wheels
+		void set_rear_wheels_speed(const SpeedCommand& speed_command) {
+			this->wheel_controller->set_rear_wheels_speed(speed_command);
 		}
 
-		void turn(const TurnCommand& turn_command) {
-			this->wheel_controller->turn(turn_command);
+		void set_front_wheels_angle(const TurnCommand& angle_command) {
+			this->wheel_controller->set_front_wheels_angle(angle_command);
 		}
+
+		void set_rear_left_wheel_speed(const SpeedCommand& speed_command)
+		{
+			this->wheel_controller->set_rear_left_wheel_speed(speed_command);
+		}
+
+		void set_rear_right_wheel_speed(const SpeedCommand& speed_command)
+		{
+			this->wheel_controller->set_rear_right_wheel_speed(speed_command);
+		}
+
+		void set_front_left_wheel_angle(const TurnCommand& angle_command)
+		{
+			this->wheel_controller->set_front_left_wheel_angle(angle_command);
+		}
+
+		void set_front_right_wheel_angle(const TurnCommand& angle_command)
+		{
+			this->wheel_controller->set_front_right_wheel_angle(angle_command);
+		}
+#pragma endregion
+
 
 		~MovementSystem() {
 		};

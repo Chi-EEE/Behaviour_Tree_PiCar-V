@@ -41,7 +41,7 @@ namespace car::system::messaging {
 						if (message_json["type"] == "command") {
 							if (message_json["command"] == "turn") {
 								float angle = message_json["angle"].get<float>();
-								this->turn_command_signal(
+								this->angle_command_signal(
 									TurnCommand{
 										angle
 									}
@@ -50,8 +50,8 @@ namespace car::system::messaging {
 							}
 							else if (message_json["command"] == "move") {
 								int speed = message_json["speed"].get<int>();
-								this->move_command_signal(
-									MoveCommand{
+								this->speed_command_signal(
+									SpeedCommand{
 										speed
 									}
 								);
@@ -112,8 +112,8 @@ namespace car::system::messaging {
 		~MessagingSystem() {
 		};
 
-		nod::signal<void(const MoveCommand)> move_command_signal;
-		nod::signal<void(const TurnCommand)> turn_command_signal;
+		nod::signal<void(const SpeedCommand)> speed_command_signal;
+		nod::signal<void(const TurnCommand)> angle_command_signal;
 	private:
 		ix::WebSocket websocket;
 		std::string websocket_url;
