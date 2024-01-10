@@ -33,58 +33,69 @@ namespace car::system::movement::controller
 	class CarWheelController : public AbstractWheelController
 	{
 	public:
-		CarWheelController() {
+		CarWheelController()
+		{
 			this->pwm = std::make_shared<PCA9685>();
 			this->rear_left_wheel = std::make_unique<RearWheel>(
 				this->pwm,
-				std::make_unique<TB6612>(Motor_A, PWM_A)
-			);
+				std::make_unique<TB6612>(Motor_A, PWM_A));
 			this->rear_right_wheel = std::make_unique<RearWheel>(
 				this->pwm,
-				std::make_unique<TB6612>(Motor_B, PWM_B)
-			);
+				std::make_unique<TB6612>(Motor_B, PWM_B));
 			this->front_left_wheel = std::make_unique<FrontWheel>(
 				this->pwm,
-				0
-			);
+				0);
 			this->front_right_wheel = std::make_unique<FrontWheel>(
 				this->pwm,
-				1
-			);
+				1);
 		};
 
-		~CarWheelController() {};
+		~CarWheelController()
+		{
+			this->front_left_wheel->reset();
+			this->front_right_wheel->reset();
+			this->rear_left_wheel->stop();
+			this->rear_right_wheel->stop();
+			this->pwm->reset();
+		};
 
-		void initialize() override {
+		void initialize() override
+		{
 			this->pwm->init(BUS_NUMBER, 0x40);
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 			this->pwm->setPWMFreq(FREQUENCY);
 			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		}
 
-		void setRearWheelsSpeed(const SpeedCommand& speed_command) override {
+		void setRearWheelsSpeed(const SpeedCommand &speed_command) override
+		{
 			this->setRearLeftWheelSpeed(speed_command);
 			this->setRearRightWheelSpeed(speed_command);
 		}
 
-		void setFrontWheelsAngle(const AngleCommand& angle_command) override {
+		void setFrontWheelsAngle(const AngleCommand &angle_command) override
+		{
 			this->setFrontLeftWheelAngle(angle_command);
 			this->setFrontRightWheelAngle(angle_command);
 		}
 
-		void setRearLeftWheelSpeed(const SpeedCommand& speed_command) override {
+		void setRearLeftWheelSpeed(const SpeedCommand &speed_command) override
+		{
 			this->rear_left_wheel->setSpeed(speed_command.speed);
 		}
 
-		void setRearRightWheelSpeed(const SpeedCommand& speed_command) override {
+		void setRearRightWheelSpeed(const SpeedCommand &speed_command) override
+		{
 			this->rear_right_wheel->setSpeed(speed_command.speed);
 		}
 
-		void setFrontLeftWheelAngle(const AngleCommand& angle_command) override {
+		void setFrontLeftWheelAngle(const AngleCommand &angle_command) override
+		{
 			this->front_left_wheel->setAngle(angle_command.angle);
 		}
 
-		void setFrontRightWheelAngle(const AngleCommand& angle_command) override {
+		void setFrontRightWheelAngle(const AngleCommand &angle_command) override
+		{
 			this->front_right_wheel->setAngle(angle_command.angle);
 		}
 

@@ -33,3 +33,13 @@ void TB6612::setOffset(bool offset)
 {
     this->offset = offset;
 }
+
+const int &TB6612::getMotorPin() const
+{
+    return this->motor_pin;
+}
+
+const int &TB6612::getPWMPin() const
+{
+    return this->pwm_pin;
+}

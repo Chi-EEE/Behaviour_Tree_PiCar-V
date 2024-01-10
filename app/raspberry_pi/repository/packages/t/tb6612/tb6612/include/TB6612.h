@@ -23,9 +23,13 @@ public:
 
     void setOffset(bool offset);
 
+    const int& getMotorPin() const;
+
+    const int& getPWMPin() const;
+
 private:
-    int motor_pin;
-    int pwm_pin;
+    const int motor_pin;
+    const int pwm_pin;
     bool offset = true;
 };
 

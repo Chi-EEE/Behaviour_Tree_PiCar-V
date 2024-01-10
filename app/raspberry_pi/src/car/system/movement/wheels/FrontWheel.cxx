@@ -54,6 +54,10 @@ namespace car::system::movement::wheels
 			spdlog::info("Channel: {} \tAngle: {} \tAnalog Angle: {}", this->channel, angle, analog_angle);
 		}
 
+		void reset() {
+			this->setAngle(90);
+		}
+
 	private:
 		const std::shared_ptr<PCA9685> pwm;
 		const int channel;
