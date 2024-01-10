@@ -19,6 +19,7 @@ namespace car::system
 	{
 		this->messaging_system->initialize();
 		this->lidar_device->initialize();
+		this->movement_system->initialize();
 
 		this->messaging_system->speed_command_signal.connect([this](const SpeedCommand speed_command)
 			{ this->setRearWheelsSpeed(speed_command); });

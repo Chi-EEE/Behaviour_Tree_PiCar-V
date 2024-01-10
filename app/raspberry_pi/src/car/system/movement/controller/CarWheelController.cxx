@@ -27,10 +27,14 @@ namespace car::system::movement::controller
 	static constexpr int MIN_PULSE_WIDTH = 900;
 	static constexpr int MAX_PULSE_WIDTH = 2100;
 	static constexpr int FREQUENCY = 50;
+
+	static constexpr int BUS_NUMBER = 1;
+
 	class CarWheelController : public AbstractWheelController
 	{
 	public:
 		CarWheelController() {
+			this->pwm = std::make_shared<PCA9685>();
 			this->rear_left_wheel = std::make_unique<RearWheel>(
 				this->pwm,
 				std::make_unique<TB6612>(Motor_A, PWM_A)
@@ -52,7 +56,7 @@ namespace car::system::movement::controller
 		~CarWheelController() {};
 
 		void initialize() override {
-			this->pwm->init(1, 0x40);
+			this->pwm->init(BUS_NUMBER, 0x40);
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 			this->pwm->setPWMFreq(FREQUENCY);
 			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
