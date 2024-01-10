@@ -32,10 +32,6 @@ public:
 
     void forward()
     {
-        // this->pca9685.setPWM(Motor_A, 1);
-        // this->pca9685.setPWM(Motor_B, 1);
-        // gpioWrite(Motor_A, 1);
-        // gpioWrite(Motor_B, 1);
         this->left_wheel->forward();
         this->right_wheel->forward();
         std::cout << "Forward" << std::endl;
@@ -43,10 +39,6 @@ public:
 
     void backward()
     {
-        // this->pca9685.setPWM(Motor_A, 0);
-        // this->pca9685.setPWM(Motor_B, 0);
-        // gpioWrite(Motor_A, 0);
-        // gpioWrite(Motor_B, 0);
         this->left_wheel->backward();
         this->right_wheel->backward();
         std::cout << "Backward" << std::endl;

@@ -6,8 +6,6 @@ TB6612::TB6612(int motor_pin, int pwm_pin) : motor_pin(motor_pin), pwm_pin(pwm_p
 {
     gpioSetMode(this->motor_pin, PI_OUTPUT);
     gpioSetMode(this->pwm_pin, PI_OUTPUT);
-    // gpioWrite(this->motor_pin, 0);
-    // gpioPWM(this->pwm_pin, 0);
 }
 
 void TB6612::setPWM(int value)
