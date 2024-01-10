@@ -32,6 +32,10 @@ public:
 
     void forward()
     {
+        // this->pca9685.setPWM(Motor_A, 1);
+        // this->pca9685.setPWM(Motor_B, 1);
+        // gpioWrite(Motor_A, 1);
+        // gpioWrite(Motor_B, 1);
         this->left_wheel->forward();
         this->right_wheel->forward();
         std::cout << "Forward" << std::endl;
@@ -39,6 +43,10 @@ public:
 
     void backward()
     {
+        // this->pca9685.setPWM(Motor_A, 0);
+        // this->pca9685.setPWM(Motor_B, 0);
+        // gpioWrite(Motor_A, 0);
+        // gpioWrite(Motor_B, 0);
         this->left_wheel->backward();
         this->right_wheel->backward();
         std::cout << "Backward" << std::endl;
@@ -48,6 +56,7 @@ public:
     {
         this->left_wheel->stop();
         this->right_wheel->stop();
+        this->pca9685.reset();
         std::cout << "Stop" << std::endl;
     }
 
@@ -106,10 +115,10 @@ public:
         std::cout << "CaliOK" << std::endl;
     }
 
+    PCA9685 pca9685;
 private:
     std::unique_ptr<TB6612> left_wheel;
     std::unique_ptr<TB6612> right_wheel;
-    PCA9685 pca9685;
     int forward_A;
     int forward_B;
     int cali_forward_A;

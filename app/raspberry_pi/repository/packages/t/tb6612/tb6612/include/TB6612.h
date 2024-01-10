@@ -21,12 +21,12 @@ public:
 
     void stop();
 
-    void setOffset(int offset);
+    void setOffset(bool offset);
 
 private:
     int motor_pin;
     int pwm_pin;
-    int offset;
+    bool offset = true;
 };
 
 #endif
