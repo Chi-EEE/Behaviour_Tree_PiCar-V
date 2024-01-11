@@ -216,13 +216,12 @@ namespace car::display {
 				if (connected) {
 					this->car_system->startLidarDevice();
 					lidar_motor_status = LIDAR_MOTOR_ENABLED_MESSAGE;
-					lidar_motor_loading_debounce = false;
 				}
 				else {
 					this->car_system->stopLidarDevice();
 					lidar_motor_status = LIDAR_MOTOR_DISABLED_MESSAGE;
-					lidar_motor_loading_debounce = false;
 				}
+				lidar_motor_loading_debounce = false;
 			}
 		);
 
@@ -243,6 +242,46 @@ namespace car::display {
 		auto rear_left_wheel_speed_slider = Slider("Left Rear Wheel Speed:", &rear_left_wheel_speed_slider_value, 0, 100, 1);
 		auto rear_right_wheel_speed_slider = Slider("Right Rear Wheel Speed:", &rear_right_wheel_speed_slider_value, 0, 100, 1);
 
+		static constexpr auto REAR_WHEEL_DIRECTION_FORWARD_MESSAGE = "Rear Wheel Direction: Forward";
+		static constexpr auto REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE = "Rear Wheel Direction: Backward";
+
+		nod::signal<void(bool)> rear_wheel_direction_signal;
+
+		bool rear_wheel_direction_debounce = false;
+		std::string rear_wheel_direction_status = LIDAR_MOTOR_DISABLED_MESSAGE;
+		bool rear_wheel_direction = true;
+		auto rear_wheel_direction_checkbox_option = CheckboxOption::Simple();
+		rear_wheel_direction_checkbox_option.on_change = [&]
+			{
+				if (rear_wheel_direction_debounce) {
+					rear_wheel_direction = !rear_wheel_direction;
+					return;
+				}
+				rear_wheel_direction_debounce = true;
+				if (rear_wheel_direction) {
+					rear_wheel_direction_status = REAR_WHEEL_DIRECTION_FORWARD_MESSAGE;
+				}
+				else {
+					rear_wheel_direction_status = REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE;
+				}
+				rear_wheel_direction_signal(rear_wheel_direction);
+			};
+
+		rear_wheel_direction_signal.connect([&](bool direction)
+			{
+				if (direction) {
+					this->car_system->setRearWheelDirectionToForwards();
+					rear_wheel_direction_status = REAR_WHEEL_DIRECTION_FORWARD_MESSAGE;
+				}
+				else {
+					this->car_system->setRearWheelDirectionToBackwards();
+					rear_wheel_direction_status = REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE;
+				}
+				rear_wheel_direction_debounce = false;
+			}
+		);
+		auto rear_wheel_direction_checkbox_component = Checkbox(&rear_wheel_direction_status, &rear_wheel_direction, rear_wheel_direction_checkbox_option);
+
 		int previous_front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
 
 		int front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
@@ -253,15 +292,20 @@ namespace car::display {
 		auto front_left_wheel_angle_slider = Slider("Left Front Wheel Angle:", &front_left_wheel_angle_slider_value, 0, 180, 1);
 		auto front_right_wheel_angle_slider = Slider("Right Front Wheel Angle:", &front_right_wheel_angle_slider_value, 0, 180, 1);
 
+		auto rear_wheel_menu_entry = MenuEntry("Rear Wheel:") | bold;
+		auto front_wheel_menu_entry = MenuEntry("Front Wheel:") | bold;
 
 		auto slider_container =
 			Container::Horizontal({
 				Container::Vertical({
+					rear_wheel_menu_entry,
 					rear_wheel_speed_slider,
 					rear_left_wheel_speed_slider,
 					rear_right_wheel_speed_slider,
+					rear_wheel_direction_checkbox_component,
 				}),
 				Container::Vertical({
+					front_wheel_menu_entry,
 					front_wheels_angle_slider,
 					front_left_wheel_angle_slider,
 					front_right_wheel_angle_slider,
@@ -272,6 +316,8 @@ namespace car::display {
 			return
 				hbox({
 					vbox({
+						rear_wheel_menu_entry->Render(),
+						separator(),
 						rear_wheel_speed_slider->Render(),
 						separator(),
 						rear_left_wheel_speed_slider->Render(),
@@ -279,9 +325,13 @@ namespace car::display {
 						separator(),
 						text("Left Rear Wheel Speed: " + std::to_string(rear_left_wheel_speed_slider_value)),
 						text("Right Rear Wheel Speed: " + std::to_string(rear_right_wheel_speed_slider_value)),
+						separator(),
+						rear_wheel_direction_checkbox_component->Render(),
 					}) | xflex,
 					separator(),
 					vbox({
+						front_wheel_menu_entry->Render(),
+						separator(),
 						front_wheels_angle_slider->Render(),
 						separator(),
 						front_left_wheel_angle_slider->Render(),

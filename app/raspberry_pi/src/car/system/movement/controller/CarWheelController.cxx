@@ -99,6 +99,16 @@ namespace car::system::movement::controller
 			this->front_right_wheel->setAngle(angle_command.angle);
 		}
 
+		void setRearWheelDirectionToForwards() override {
+			this->rear_left_wheel->forward();
+			this->rear_right_wheel->forward();
+		}
+
+		void setRearWheelDirectionToBackwards() override {
+			this->rear_left_wheel->backward();
+			this->rear_right_wheel->backward();
+		}
+
 	private:
 		std::shared_ptr<PCA9685> pwm;
 

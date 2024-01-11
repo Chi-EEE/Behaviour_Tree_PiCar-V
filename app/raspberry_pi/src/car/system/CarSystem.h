@@ -42,6 +42,9 @@ namespace car::system {
 		void setFrontLeftWheelAngle(const AngleCommand& angle_command);
 		void setFrontRightWheelAngle(const AngleCommand& angle_command);
 
+		void setRearWheelDirectionToForwards();
+		void setRearWheelDirectionToBackwards();
+
 		const std::vector<Measure>& getScanData() const { return this->scan_data; }
 
 	private:

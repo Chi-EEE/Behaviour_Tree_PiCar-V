@@ -106,4 +106,13 @@ namespace car::system
 	{
 		this->movement_system->setFrontRightWheelAngle(angle_command);
 	}
+
+	void CarSystem::setRearWheelDirectionToForwards()
+	{
+		this->movement_system->setRearWheelDirectionToForwards();
+	}
+	void CarSystem::setRearWheelDirectionToBackwards()
+	{
+		this->movement_system->setRearWheelDirectionToBackwards();
+	}
 }

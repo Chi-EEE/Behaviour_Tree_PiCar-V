@@ -23,6 +23,9 @@ namespace car::system::movement::controller
 
         virtual void setFrontLeftWheelAngle(const AngleCommand& angle_command) = 0;
         virtual void setFrontRightWheelAngle(const AngleCommand& angle_command) = 0;
+
+        virtual void setRearWheelDirectionToForwards() = 0;
+        virtual void setRearWheelDirectionToBackwards() = 0;
     };
 } // namespace car::system::movement::controller
 

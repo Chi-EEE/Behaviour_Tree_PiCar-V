@@ -62,6 +62,15 @@ namespace car::system::movement {
 		{
 			this->wheel_controller->setFrontRightWheelAngle(angle_command);
 		}
+
+		void setRearWheelDirectionToForwards()
+		{
+			this->wheel_controller->setRearWheelDirectionToForwards();
+		}
+		void setRearWheelDirectionToBackwards()
+		{
+			this->wheel_controller->setRearWheelDirectionToBackwards();
+		}
 #pragma endregion
 
 
