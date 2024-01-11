@@ -19,9 +19,10 @@ add_requires("nlohmann_json")
 add_requires("spdlog")
 add_requires("fmt")
 
+-- SunFounder Car
+add_requires("opencv 4.8.0")
 add_requires("rplidar")
 if is_plat("linux", "macosx") then
-    -- For the SunFounder Car
     add_requires("pca9685")
     add_requires("tb6612")
 end
@@ -50,7 +51,7 @@ target("raspberry_pi")
     add_packages("pca9685")
     add_packages("tb6612")
 
-    add_headerfiles("include/**.h")
+    add_headerfiles("include/**.hpp")
 
     add_headerfiles("src/**.h")
     add_files("src/**.cpp", "src/**.cxx")
