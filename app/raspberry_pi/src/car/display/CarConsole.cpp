@@ -228,123 +228,19 @@ namespace car::display {
 		auto lidar_motor_checkbox_component = Checkbox(&lidar_motor_status, &lidar_motor_enabled, lidar_motor_checkbox_option);
 #pragma endregion
 
-#pragma region Wheels
-		static constexpr int DEFAULT_REAR_WHEEL_SPEED = 0;
-		static constexpr int DEFAULT_FRONT_WHEEL_ANGLE = 90;
-
-		int previous_rear_wheels_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
-
-		int rear_wheels_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
-		int rear_left_wheel_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
-		int rear_right_wheel_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
-
-		auto rear_wheel_speed_slider = Slider("Rear Wheels Speed:", &rear_wheels_speed_slider_value, 0, 100, 1);
-		auto rear_left_wheel_speed_slider = Slider("Left Rear Wheel Speed:", &rear_left_wheel_speed_slider_value, 0, 100, 1);
-		auto rear_right_wheel_speed_slider = Slider("Right Rear Wheel Speed:", &rear_right_wheel_speed_slider_value, 0, 100, 1);
-
-		static constexpr auto REAR_WHEEL_DIRECTION_FORWARD_MESSAGE = "Rear Wheel Direction: Forward";
-		static constexpr auto REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE = "Rear Wheel Direction: Backward";
-
-		nod::signal<void(bool)> rear_wheel_direction_signal;
-
-		bool rear_wheel_direction_debounce = false;
-		std::string rear_wheel_direction_status = REAR_WHEEL_DIRECTION_FORWARD_MESSAGE;
-		bool rear_wheel_direction = true;
-		auto rear_wheel_direction_checkbox_option = CheckboxOption::Simple();
-		rear_wheel_direction_checkbox_option.on_change = [&]
-			{
-				if (rear_wheel_direction_debounce) {
-					rear_wheel_direction = !rear_wheel_direction;
-					return;
-				}
-				rear_wheel_direction_debounce = true;
-				if (rear_wheel_direction) {
-					rear_wheel_direction_status = REAR_WHEEL_DIRECTION_FORWARD_MESSAGE;
-				}
-				else {
-					rear_wheel_direction_status = REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE;
-				}
-				rear_wheel_direction_signal(rear_wheel_direction);
-			};
-
-		rear_wheel_direction_signal.connect([&](bool direction)
+		DebugWheelRenderer debug_wheel_renderer;
+		debug_wheel_renderer.getRearWheelDirectionSignal().connect([&](bool direction)
 			{
 				if (direction) {
 					this->car_system->setRearWheelDirectionToForwards();
-					rear_wheel_direction_status = REAR_WHEEL_DIRECTION_FORWARD_MESSAGE;
 				}
 				else {
 					this->car_system->setRearWheelDirectionToBackwards();
-					rear_wheel_direction_status = REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE;
 				}
-				rear_wheel_direction_debounce = false;
 			}
 		);
-		auto rear_wheel_direction_checkbox_component = Checkbox(&rear_wheel_direction_status, &rear_wheel_direction, rear_wheel_direction_checkbox_option);
 
-		int previous_front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
-
-		int front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
-		int front_left_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
-		int front_right_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
-
-		auto front_wheels_angle_slider = Slider("Front Wheels Angle:", &front_wheels_angle_slider_value, 0, 180, 1);
-		auto front_left_wheel_angle_slider = Slider("Left Front Wheel Angle:", &front_left_wheel_angle_slider_value, 0, 180, 1);
-		auto front_right_wheel_angle_slider = Slider("Right Front Wheel Angle:", &front_right_wheel_angle_slider_value, 0, 180, 1);
-
-		auto rear_wheel_menu_entry = MenuEntry("Rear Wheel:") | bold;
-		auto front_wheel_menu_entry = MenuEntry("Front Wheel:") | bold;
-
-		auto slider_container =
-			Container::Horizontal({
-				Container::Vertical({
-					rear_wheel_menu_entry,
-					rear_wheel_speed_slider,
-					rear_left_wheel_speed_slider,
-					rear_right_wheel_speed_slider,
-					rear_wheel_direction_checkbox_component,
-				}),
-				Container::Vertical({
-					front_wheel_menu_entry,
-					front_wheels_angle_slider,
-					front_left_wheel_angle_slider,
-					front_right_wheel_angle_slider,
-				})
-			});
-
-		auto wheel_settings_renderer = Renderer(slider_container, [&] {
-			return
-				hbox({
-					vbox({
-						rear_wheel_menu_entry->Render(),
-						separator(),
-						rear_wheel_speed_slider->Render(),
-						separator(),
-						rear_left_wheel_speed_slider->Render(),
-						rear_right_wheel_speed_slider->Render(),
-						separator(),
-						text("Left Rear Wheel Speed: " + std::to_string(rear_left_wheel_speed_slider_value)),
-						text("Right Rear Wheel Speed: " + std::to_string(rear_right_wheel_speed_slider_value)),
-						separator(),
-						rear_wheel_direction_checkbox_component->Render(),
-					}) | xflex,
-					separator(),
-					vbox({
-						front_wheel_menu_entry->Render(),
-						separator(),
-						front_wheels_angle_slider->Render(),
-						separator(),
-						front_left_wheel_angle_slider->Render(),
-						front_right_wheel_angle_slider->Render(),
-						separator(),
-						text("Left Front Wheel Angle: " + std::to_string(front_left_wheel_angle_slider_value)),
-						text("Right Front Wheel Angle: " + std::to_string(front_right_wheel_angle_slider_value)),
-					}) | xflex,
-					separator(),
-					});
-			});
-
-#pragma endregion
+		auto wheel_settings_renderer = debug_wheel_renderer.element();
 
 #pragma endregion
 
@@ -411,19 +307,15 @@ namespace car::display {
 					// main thread). Using `screen.Post(task)` is threadsafe.
 					screen.Post([&]
 						{
-							if (previous_front_wheels_angle_slider_value != front_wheels_angle_slider_value) {
-								previous_front_wheels_angle_slider_value = front_wheels_angle_slider_value;
-								front_left_wheel_angle_slider_value = front_wheels_angle_slider_value;
-								front_right_wheel_angle_slider_value = front_wheels_angle_slider_value;
-								this->car_system->setFrontLeftWheelAngle({ front_left_wheel_angle_slider_value * 1.0f });
-								this->car_system->setFrontRightWheelAngle({ front_right_wheel_angle_slider_value * 1.0f });
-							}
-							if (previous_rear_wheels_speed_slider_value != rear_wheels_speed_slider_value) {
-								previous_rear_wheels_speed_slider_value = rear_wheels_speed_slider_value;
-								rear_left_wheel_speed_slider_value = rear_wheels_speed_slider_value;
-								rear_right_wheel_speed_slider_value = rear_wheels_speed_slider_value;
-								this->car_system->setRearLeftWheelSpeed({ rear_left_wheel_speed_slider_value });
-								this->car_system->setRearRightWheelSpeed({ rear_right_wheel_speed_slider_value });
+							if (debug_enabled) {
+								if (debug_wheel_renderer.updateFrontWheels()) {
+									this->car_system->setFrontLeftWheelAngle({ debug_wheel_renderer.getFrontLeftWheelAngleSliderValue() * 1.0f });
+									this->car_system->setFrontRightWheelAngle({ debug_wheel_renderer.getFrontRightWheelAngleSliderValue() * 1.0f });
+								}
+								if (debug_wheel_renderer.updateRearWheels()) {
+									this->car_system->setRearLeftWheelSpeed({ debug_wheel_renderer.getRearLeftWheelSpeedSliderValue() });
+									this->car_system->setRearRightWheelSpeed({ debug_wheel_renderer.getRearRightWheelSpeedSliderValue() });
+								}
 							}
 							this->car_system->update();
 						}

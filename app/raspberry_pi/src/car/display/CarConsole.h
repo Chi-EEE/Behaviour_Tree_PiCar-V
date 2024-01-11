@@ -15,9 +15,11 @@
 #include <nod/nod.hpp>
 
 #include "../system/CarSystem.h"
+#include "component/DebugWheelRenderer.cxx"
 
 using namespace car::system;
 using namespace ftxui;
+using namespace car::display::component;
 
 namespace car::display {
 	static const ButtonOption animated_button_style = ButtonOption::Animated();

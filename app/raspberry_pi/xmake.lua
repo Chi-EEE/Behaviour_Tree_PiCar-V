@@ -47,7 +47,7 @@ target("raspberry_pi")
 
     add_packages("ftxui")
 
-    add_requires("opencv")
+    add_packages("opencv")
     add_packages("rplidar")
     add_packages("pca9685")
     add_packages("tb6612")
