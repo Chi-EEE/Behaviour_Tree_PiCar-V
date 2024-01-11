@@ -41,29 +41,7 @@ namespace car::display {
 		return component;
 	}
 
-	Component CarConsole::DebugEnableWarningComponent(
-		std::function<void()> hide_enable_debug_warning_modal,
-		std::function<void()> enable_debug_mode
-	) {
-		static constexpr auto DEBUG_ENABLE_WARNING_MESSAGE = "Enabling debug mode temporarily disables connecting to online. Are you sure you want to do this?";
-
-		auto component = Container::Vertical({
-			Button("No", hide_enable_debug_warning_modal, animated_button_style),
-			Button("Yes", enable_debug_mode, animated_button_style),
-			});
-		component |= Renderer([&](Element inner) {
-			return vbox({
-					   text(DEBUG_ENABLE_WARNING_MESSAGE),
-					   separator(),
-					   inner,
-				})
-				| size(WIDTH, GREATER_THAN, 30)
-				| border;
-			});
-		return component;
-	}
-
-	CarConsole::CarConsole(std::unique_ptr<CarSystem> car_system) : car_system(std::move(car_system)) {
+	CarConsole::CarConsole(std::shared_ptr<CarSystem> car_system) : car_system(std::move(car_system)) {
 	};
 
 	void CarConsole::initialize() {
@@ -129,135 +107,9 @@ namespace car::display {
 			}
 		);
 #pragma endregion
+		SettingsScreen settings_screen(this->car_system);
 
-#pragma region Settings Screen
-
-#pragma region Debug Modal		
-		bool debug_enabled = false;
-
-		static constexpr auto DEBUG_MODE_ENABLED_MESSAGE = "Debug Status: Enabled";
-		static constexpr auto DEBUG_MODE_DISABLED_MESSAGE = "Debug Status: Disabled";
-		static constexpr auto DEBUG_MODE_WAIT_MESSAGE = "Debug Status: Waiting for user input...";
-
-		std::string debug_status = DEBUG_MODE_DISABLED_MESSAGE;
-
-		bool debug_debounce = false;
-		bool debug_checkbox_value = false;
-		bool display_warn_debug_modal = false;
-		auto debug_checkbox_option = CheckboxOption::Simple();
-
-		debug_checkbox_option.on_change = [&]
-			{
-				if (debug_debounce) {
-					debug_checkbox_value = !debug_checkbox_value;
-					return;
-				}
-				debug_debounce = true;
-				if (debug_enabled) {
-					debug_status = DEBUG_MODE_DISABLED_MESSAGE;
-					debug_enabled = false;
-					debug_debounce = false;
-				}
-				else {
-					display_warn_debug_modal = true;
-					debug_status = DEBUG_MODE_WAIT_MESSAGE;
-				}
-			};
-
-		auto debug_checkbox_component = Checkbox(&debug_status, &debug_checkbox_value, debug_checkbox_option);
-
-		auto enable_debug_mode = [&] {
-			debug_enabled = true;
-			display_warn_debug_modal = false;
-			debug_status = DEBUG_MODE_ENABLED_MESSAGE;
-			debug_debounce = false;
-			};
-
-		auto hide_enable_debug_warning_modal = [&] {
-			debug_checkbox_value = false;
-			display_warn_debug_modal = false;
-			debug_status = DEBUG_MODE_DISABLED_MESSAGE;
-			debug_debounce = false;
-			};
-
-		auto warn_enable_debug_modal = Modal(DebugEnableWarningComponent(hide_enable_debug_warning_modal, enable_debug_mode), &display_warn_debug_modal);
-#pragma endregion
-
-#pragma region Lidar Scanner Motor Checkbox
-		static constexpr auto LIDAR_MOTOR_ENABLED_MESSAGE = "Lidar Motor Status: Enabled";
-		static constexpr auto LIDAR_MOTOR_DISABLED_MESSAGE = "Lidar Motor Status: Disconnected";
-		static constexpr auto LIDAR_MOTOR_WAIT_ENABLED_MESSAGE = "Lidar Motor Status: Enabling...";
-		static constexpr auto LIDAR_MOTOR_WAIT_DISABLED_MESSAGE = "Lidar Motor Status: Disabling...";
-
-		nod::signal<void(bool)> lidar_motor_signal;
-
-		bool lidar_motor_loading_debounce = false;
-		std::string lidar_motor_status = LIDAR_MOTOR_DISABLED_MESSAGE;
-		bool lidar_motor_enabled = false;
-		auto lidar_motor_checkbox_option = CheckboxOption::Simple();
-		lidar_motor_checkbox_option.on_change = [&]
-			{
-				if (lidar_motor_loading_debounce) {
-					lidar_motor_enabled = !lidar_motor_enabled;
-					return;
-				}
-				lidar_motor_loading_debounce = true;
-				if (lidar_motor_enabled) {
-					lidar_motor_status = LIDAR_MOTOR_WAIT_ENABLED_MESSAGE;
-				}
-				else {
-					lidar_motor_status = LIDAR_MOTOR_WAIT_DISABLED_MESSAGE;
-				}
-				lidar_motor_signal(lidar_motor_enabled);
-			};
-
-		lidar_motor_signal.connect([&](bool connected)
-			{
-				if (connected) {
-					this->car_system->startLidarDevice();
-					lidar_motor_status = LIDAR_MOTOR_ENABLED_MESSAGE;
-				}
-				else {
-					this->car_system->stopLidarDevice();
-					lidar_motor_status = LIDAR_MOTOR_DISABLED_MESSAGE;
-				}
-				lidar_motor_loading_debounce = false;
-			}
-		);
-
-		auto lidar_motor_checkbox_component = Checkbox(&lidar_motor_status, &lidar_motor_enabled, lidar_motor_checkbox_option);
-#pragma endregion
-
-		DebugWheelRenderer debug_wheel_renderer;
-		debug_wheel_renderer.getRearWheelDirectionSignal().connect([&](bool direction)
-			{
-				if (direction) {
-					this->car_system->setRearWheelDirectionToForwards();
-				}
-				else {
-					this->car_system->setRearWheelDirectionToBackwards();
-				}
-			}
-		);
-
-		auto wheel_settings_renderer = debug_wheel_renderer.element();
-
-#pragma endregion
-
-		auto settings_container = Container::Vertical(
-			{
-				debug_checkbox_component,
-				Container::Vertical(
-					{
-						lidar_motor_checkbox_component,
-						Renderer([&] {return separator(); }),
-						wheel_settings_renderer,
-					}
-				) | border | Maybe(&debug_enabled)
-			}
-		) | border;
-
-		settings_container |= warn_enable_debug_modal;
+		auto settings_container = settings_screen.element();
 
 		int selected_tab = 0;
 		std::vector<std::string> tab_titles = {
@@ -307,16 +159,7 @@ namespace car::display {
 					// main thread). Using `screen.Post(task)` is threadsafe.
 					screen.Post([&]
 						{
-							if (debug_enabled) {
-								if (debug_wheel_renderer.updateFrontWheels()) {
-									this->car_system->setFrontLeftWheelAngle({ debug_wheel_renderer.getFrontLeftWheelAngleSliderValue() * 1.0f });
-									this->car_system->setFrontRightWheelAngle({ debug_wheel_renderer.getFrontRightWheelAngleSliderValue() * 1.0f });
-								}
-								if (debug_wheel_renderer.updateRearWheels()) {
-									this->car_system->setRearLeftWheelSpeed({ debug_wheel_renderer.getRearLeftWheelSpeedSliderValue() });
-									this->car_system->setRearRightWheelSpeed({ debug_wheel_renderer.getRearRightWheelSpeedSliderValue() });
-								}
-							}
+							settings_screen.update();
 							this->car_system->update();
 						}
 					);

@@ -6,13 +6,10 @@
 #include <nod/nod.hpp>
 
 #include <ftxui/component/component.hpp>
-#include <ftxui/component/screen_interactive.hpp>
-#include <ftxui/dom/elements.hpp>
-#include <ftxui/component/loop.hpp> // ftxui::Loop
 
 using namespace ftxui;
 
-namespace car::display::component {
+namespace car::display::component::debug {
 	class DebugWheelRenderer {
 	private:
 		static constexpr int DEFAULT_REAR_WHEEL_SPEED = 0;
@@ -163,8 +160,8 @@ namespace car::display::component {
 		int front_right_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
 
 		bool rear_wheel_direction_debounce = false;
-		std::string rear_wheel_direction_status = REAR_WHEEL_DIRECTION_FORWARD_MESSAGE;
-		bool rear_wheel_direction = true;
+		std::string rear_wheel_direction_status = REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE;
+		bool rear_wheel_direction = false;
 
 		Component rear_wheel_speed_slider;
 		Component rear_left_wheel_speed_slider;

@@ -58,7 +58,7 @@ int main()
 	 std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyWheelController>());
 	//std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<CarWheelController>());
 
-	auto car_system = std::make_unique<CarSystem>(
+	auto car_system = std::make_shared<CarSystem>(
 		websocket_url,
 		std::move(scanner),
 		std::move(messaging_system),
