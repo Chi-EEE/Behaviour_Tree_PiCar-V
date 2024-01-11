@@ -15,7 +15,6 @@
     }
 
     let points: Array<ScanPoint> = [];
-    let drawPoints: Array<{ x: number; y: number }> = [];
 
     const websocket = get(websocket_store);
 
@@ -34,6 +33,27 @@
     let canvas: HTMLCanvasElement;
     let context: CanvasRenderingContext2D;
 
+    function drawCursor() {
+        context.fillStyle = "black";
+        const width = 4;
+        const height = 4;
+        context.fillRect(
+            canvas.width / 2 - width / 2,
+            canvas.height / 2 - height / 2,
+            width,
+            height,
+        );
+        context.beginPath();
+        context.arc(
+            canvas.width / 2,
+            canvas.height / 2,
+            30 * 2,
+            0,
+            2 * Math.PI,
+        );
+        context.stroke();
+    }
+
     function clear() {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.fillStyle = "white";
@@ -43,7 +63,7 @@
     function draw() {
         console.log("Drawing");
         clear();
-
+        drawCursor();
         context.fillStyle = "blue";
         for (const point of points) {
             const angle = point.angle;
@@ -53,16 +73,12 @@
             const y = distance * Math.sin(angleInRadians);
             context.fillRect(x + canvas.width / 2, y + canvas.height / 2, 2, 2);
         }
-
-        context.fillStyle = "black";
-        for (const point of drawPoints) {
-            context.fillRect(point.x, point.y, 4, 4);
-        }
     }
 
     onMount(async () => {
         context = canvas.getContext("2d")!!;
         clear();
+        drawCursor();
     });
 
     let mouseDown: boolean = false;
@@ -110,9 +126,9 @@
             return;
         }
         const { x, y } = getMousePos(event);
-        drawPoints.push({ x, y });
-        context.fillStyle = "black";
-        context.fillRect(x, y, 4, 4);
+        // drawPoints.push({ x, y });
+        // context.fillStyle = "black";
+        // context.fillRect(x, y, 4, 4);
     }
 </script>
 
