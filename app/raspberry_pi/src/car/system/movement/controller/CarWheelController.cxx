@@ -67,34 +67,34 @@ namespace car::system::movement::controller
 			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		}
 
-		void setRearWheelsSpeed(const SpeedCommand &speed_command) override
+		void setRearWheelsSpeed(const int& speed) override
 		{
 			this->setRearLeftWheelSpeed(speed_command);
 			this->setRearRightWheelSpeed(speed_command);
 		}
 
-		void setFrontWheelsAngle(const AngleCommand &angle_command) override
+		void setFrontWheelsAngle(const float& angle) override
 		{
 			this->setFrontLeftWheelAngle(angle_command);
 			this->setFrontRightWheelAngle(angle_command);
 		}
 
-		void setRearLeftWheelSpeed(const SpeedCommand &speed_command) override
+		void setRearLeftWheelSpeed(const int& speed) override
 		{
 			this->rear_left_wheel->setSpeed(speed_command.speed);
 		}
 
-		void setRearRightWheelSpeed(const SpeedCommand &speed_command) override
+		void setRearRightWheelSpeed(const int& speed) override
 		{
 			this->rear_right_wheel->setSpeed(speed_command.speed);
 		}
 
-		void setFrontLeftWheelAngle(const AngleCommand &angle_command) override
+		void setFrontLeftWheelAngle(const float& angle) override
 		{
 			this->front_left_wheel->setAngle(angle_command.angle);
 		}
 
-		void setFrontRightWheelAngle(const AngleCommand &angle_command) override
+		void setFrontRightWheelAngle(const float& angle) override
 		{
 			this->front_right_wheel->setAngle(angle_command.angle);
 		}

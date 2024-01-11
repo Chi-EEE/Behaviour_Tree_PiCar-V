@@ -3,11 +3,6 @@
 
 #pragma once
 
-#include "../../messaging/commands/SpeedCommand.cxx"
-#include "../../messaging/commands/AngleCommand.cxx"
-
-using namespace car::system::messaging::commands;
-
 namespace car::system::movement::controller
 {
     class AbstractWheelController
@@ -15,14 +10,14 @@ namespace car::system::movement::controller
     public:
         virtual void initialize() = 0;
 
-        virtual void setRearWheelsSpeed(const SpeedCommand &speed_command) = 0;
-        virtual void setFrontWheelsAngle(const AngleCommand &angle_command) = 0;
+        virtual void setRearWheelsSpeed(const int& speed) = 0;
+        virtual void setFrontWheelsAngle(const float& angle) = 0;
 
-        virtual void setRearLeftWheelSpeed(const SpeedCommand& speed_command) = 0;
-        virtual void setRearRightWheelSpeed(const SpeedCommand& speed_command) = 0;
+        virtual void setRearLeftWheelSpeed(const int& speed) = 0;
+        virtual void setRearRightWheelSpeed(const int& speed) = 0;
 
-        virtual void setFrontLeftWheelAngle(const AngleCommand& angle_command) = 0;
-        virtual void setFrontRightWheelAngle(const AngleCommand& angle_command) = 0;
+        virtual void setFrontLeftWheelAngle(const float& angle) = 0;
+        virtual void setFrontRightWheelAngle(const float& angle) = 0;
 
         virtual void setRearWheelDirectionToForwards() = 0;
         virtual void setRearWheelDirectionToBackwards() = 0;

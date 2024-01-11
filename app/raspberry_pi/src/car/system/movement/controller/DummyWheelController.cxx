@@ -12,27 +12,27 @@ namespace car::system::movement::controller
 	public:
 		void initialize() {};
 
-		void setRearWheelsSpeed(const SpeedCommand& speed_command) override {
+		void setRearWheelsSpeed(const int& speed) override {
 
 		}
 
-		void setFrontWheelsAngle(const AngleCommand& angle_command) override {
+		void setFrontWheelsAngle(const float& angle) override {
 
 		}
 
-		void setRearLeftWheelSpeed(const SpeedCommand& speed_command) override {
+		void setRearLeftWheelSpeed(const int& speed) override {
 
 		}
 
-		void setRearRightWheelSpeed(const SpeedCommand& speed_command) override {
+		void setRearRightWheelSpeed(const int& speed) override {
 
 		}
 
-		void setFrontLeftWheelAngle(const AngleCommand& angle_command) override {
+		void setFrontLeftWheelAngle(const float& angle) override {
 
 		}
 
-		void setFrontRightWheelAngle(const AngleCommand& angle_command) override {
+		void setFrontRightWheelAngle(const float& angle) override {
 
 		}
 

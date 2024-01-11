@@ -11,22 +11,23 @@ add_requires("nod")
 -- Terminal UI
 add_requires("ftxui")
 
+-- Embedded
+add_requires("etl")
+
+-- Logging and JSON
 add_requires("nlohmann_json")
 add_requires("spdlog")
 add_requires("fmt")
 
-add_requires("imath")
-
+add_requires("rplidar")
 if is_plat("linux", "macosx") then
     -- For the SunFounder Car
     add_requires("pca9685")
     add_requires("tb6612")
 end
 
--- For Functional Programming?
+-- For Better Programming
 add_requires("tl_expected")
-
-add_requires("rplidar")
 
 target("raspberry_pi")
     set_kind("binary")
@@ -35,17 +36,16 @@ target("raspberry_pi")
     add_packages("spdlog")
     add_packages("fmt")
     add_packages("nlohmann_json")
-    add_packages("imath")
+
+    add_packages("etl")
+
     add_packages("tl_expected")
 
-    -- Messaging System
     add_packages("ixwebsocket")
     add_packages("nod")
 
-    -- UI
     add_packages("ftxui")
 
-    -- For the SunFounder Car
     add_packages("rplidar")
     add_packages("pca9685")
     add_packages("tb6612")

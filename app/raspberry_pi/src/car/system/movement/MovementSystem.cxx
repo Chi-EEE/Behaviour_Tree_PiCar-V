@@ -5,13 +5,9 @@
 
 #include <memory>
 
-#include "../messaging/commands/SpeedCommand.cxx"
-#include "../messaging/commands/AngleCommand.cxx"
-
 #include "controller/AbstractWheelController.cxx"
 
 using namespace car::system::movement::controller;
-using namespace car::system::messaging::commands;
 
 namespace car::system::movement {
 	class MovementSystem
@@ -35,32 +31,32 @@ namespace car::system::movement {
 		}
 
 #pragma region Wheels
-		void setRearWheelsSpeed(const SpeedCommand& speed_command) {
-			this->wheel_controller->setRearWheelsSpeed(speed_command);
+		void setRearWheelsSpeed(const int& speed) {
+			this->wheel_controller->setRearWheelsSpeed(speed);
 		}
 
-		void setFrontWheelsAngle(const AngleCommand& angle_command) {
-			this->wheel_controller->setFrontWheelsAngle(angle_command);
+		void setFrontWheelsAngle(const float& angle) {
+			this->wheel_controller->setFrontWheelsAngle(angle);
 		}
 
-		void setRearLeftWheelSpeed(const SpeedCommand& speed_command)
+		void setRearLeftWheelSpeed(const int& speed)
 		{
-			this->wheel_controller->setRearLeftWheelSpeed(speed_command);
+			this->wheel_controller->setRearLeftWheelSpeed(speed);
 		}
 
-		void setRearRightWheelSpeed(const SpeedCommand& speed_command)
+		void setRearRightWheelSpeed(const int& speed)
 		{
-			this->wheel_controller->setRearRightWheelSpeed(speed_command);
+			this->wheel_controller->setRearRightWheelSpeed(speed);
 		}
 
-		void setFrontLeftWheelAngle(const AngleCommand& angle_command)
+		void setFrontLeftWheelAngle(const float& angle)
 		{
-			this->wheel_controller->setFrontLeftWheelAngle(angle_command);
+			this->wheel_controller->setFrontLeftWheelAngle(angle);
 		}
 
-		void setFrontRightWheelAngle(const AngleCommand& angle_command)
+		void setFrontRightWheelAngle(const float& angle)
 		{
-			this->wheel_controller->setFrontRightWheelAngle(angle_command);
+			this->wheel_controller->setFrontRightWheelAngle(angle);
 		}
 
 		void setRearWheelDirectionToForwards()
