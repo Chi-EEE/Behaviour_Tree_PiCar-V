@@ -248,7 +248,7 @@ namespace car::display {
 		nod::signal<void(bool)> rear_wheel_direction_signal;
 
 		bool rear_wheel_direction_debounce = false;
-		std::string rear_wheel_direction_status = LIDAR_MOTOR_DISABLED_MESSAGE;
+		std::string rear_wheel_direction_status = REAR_WHEEL_DIRECTION_FORWARD_MESSAGE;
 		bool rear_wheel_direction = true;
 		auto rear_wheel_direction_checkbox_option = CheckboxOption::Simple();
 		rear_wheel_direction_checkbox_option.on_change = [&]
