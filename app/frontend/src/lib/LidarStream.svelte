@@ -15,6 +15,7 @@
     }
 
     let points: Array<ScanPoint> = [];
+    let drawPoints: Array<{ x: number; y: number }> = [];
 
     const websocket = get(websocket_store);
 
@@ -42,15 +43,20 @@
     function draw() {
         console.log("Drawing");
         clear();
+
         context.fillStyle = "blue";
-        
         for (const point of points) {
             const angle = point.angle;
             const distance = point.distance * 0.3;
             const angleInRadians = angle * (3.14159265 / 180.0);
             const x = distance * Math.cos(angleInRadians);
             const y = distance * Math.sin(angleInRadians);
-            context.fillRect(x + (canvas.width / 2), y + (canvas.height / 2), 2, 2);
+            context.fillRect(x + canvas.width / 2, y + canvas.height / 2, 2, 2);
+        }
+
+        context.fillStyle = "black";
+        for (const point of drawPoints) {
+            context.fillRect(point.x, point.y, 4, 4);
         }
     }
 
@@ -58,6 +64,65 @@
         context = canvas.getContext("2d")!!;
         clear();
     });
+
+    let mouseDown: boolean = false;
+
+    // https://stackoverflow.com/a/33063222
+    function getMousePos(event: MouseEvent) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x:
+                ((event.clientX - rect.left) / (rect.right - rect.left)) *
+                canvas.width,
+            y:
+                ((event.clientY - rect.top) / (rect.bottom - rect.top)) *
+                canvas.height,
+        };
+    }
+
+    // https://stackoverflow.com/a/12737882
+    function detectLeftButton(event: MouseEvent) {
+        if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
+            return false;
+        } else if (event["which"] !== undefined) {
+            return event["which"] === 1;
+        } else if (event["buttons"] !== undefined) {
+            return event["buttons"] === 1;
+        } else {
+            return event["button"] == 1 || event["type"] == "click";
+        }
+    }
+
+    function onMouseDown(event: MouseEvent) {
+        if (detectLeftButton(event)) {
+            mouseDown = true;
+        }
+    }
+
+    function onMouseUp(event: MouseEvent) {
+        if (detectLeftButton(event)) {
+            mouseDown = false;
+        }
+    }
+
+    function onMouseMove(event: MouseEvent) {
+        if (!mouseDown) {
+            return;
+        }
+        const { x, y } = getMousePos(event);
+        drawPoints.push({ x, y });
+        context.fillStyle = "black";
+        context.fillRect(x, y, 4, 4);
+    }
 </script>
 
-<canvas id="canvas" width="800" height="600" style="border-style:solid" bind:this={canvas}></canvas>
+<canvas
+    id="canvas"
+    width="800"
+    height="600"
+    style="border-style:solid"
+    on:mousedown={onMouseDown}
+    on:mouseup={onMouseUp}
+    on:mousemove={onMouseMove}
+    bind:this={canvas}
+/>
