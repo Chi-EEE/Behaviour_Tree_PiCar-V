@@ -183,80 +183,114 @@ namespace car::display {
 		auto warn_enable_debug_modal = Modal(DebugEnableWarningComponent(hide_enable_debug_warning_modal, enable_debug_mode), &display_warn_debug_modal);
 #pragma endregion
 
-#pragma region Lidar Scanner Checkbox
-		static constexpr auto LIDAR_ENABLED_MESSAGE = "Lidar Status: Enabled";
-		static constexpr auto LIDAR_DISABLED_MESSAGE = "Lidar Status: Disconnected";
-		static constexpr auto LIDAR_WAIT_ENABLED_MESSAGE = "Lidar Status: Enabling...";
-		static constexpr auto LIDAR_WAIT_DISABLED_MESSAGE = "Lidar Status: Disabling...";
+#pragma region Lidar Scanner Motor Checkbox
+		static constexpr auto LIDAR_MOTOR_ENABLED_MESSAGE = "Lidar Motor Status: Enabled";
+		static constexpr auto LIDAR_MOTOR_DISABLED_MESSAGE = "Lidar Motor Status: Disconnected";
+		static constexpr auto LIDAR_MOTOR_WAIT_ENABLED_MESSAGE = "Lidar Motor Status: Enabling...";
+		static constexpr auto LIDAR_MOTOR_WAIT_DISABLED_MESSAGE = "Lidar Motor Status: Disabling...";
 
-		nod::signal<void(bool)> lidar_signal;
+		nod::signal<void(bool)> lidar_motor_signal;
 
-		bool lidar_loading_debounce = false;
-		std::string lidar_status = LIDAR_DISABLED_MESSAGE;
-		bool lidar_enabled = false;
-		auto lidar_checkbox_option = CheckboxOption::Simple();
-		lidar_checkbox_option.on_change = [&]
+		bool lidar_motor_loading_debounce = false;
+		std::string lidar_motor_status = LIDAR_MOTOR_DISABLED_MESSAGE;
+		bool lidar_motor_enabled = false;
+		auto lidar_motor_checkbox_option = CheckboxOption::Simple();
+		lidar_motor_checkbox_option.on_change = [&]
 			{
-				if (lidar_loading_debounce) {
-					lidar_enabled = !lidar_enabled;
+				if (lidar_motor_loading_debounce) {
+					lidar_motor_enabled = !lidar_motor_enabled;
 					return;
 				}
-				lidar_loading_debounce = true;
-				if (lidar_enabled) {
-					lidar_status = LIDAR_WAIT_ENABLED_MESSAGE;
+				lidar_motor_loading_debounce = true;
+				if (lidar_motor_enabled) {
+					lidar_motor_status = LIDAR_MOTOR_WAIT_ENABLED_MESSAGE;
 				}
 				else {
-					lidar_status = LIDAR_WAIT_DISABLED_MESSAGE;
+					lidar_motor_status = LIDAR_MOTOR_WAIT_DISABLED_MESSAGE;
 				}
-				lidar_signal(lidar_enabled);
+				lidar_motor_signal(lidar_motor_enabled);
 			};
 
-		auto lidar_checkbox_component = Checkbox(&lidar_status, &lidar_enabled, lidar_checkbox_option);
-
-		lidar_signal.connect([&](bool connected)
+		lidar_motor_signal.connect([&](bool connected)
 			{
 				if (connected) {
 					this->car_system->startLidarDevice();
-					lidar_status = LIDAR_ENABLED_MESSAGE;
-					lidar_loading_debounce = false;
+					lidar_motor_status = LIDAR_MOTOR_ENABLED_MESSAGE;
+					lidar_motor_loading_debounce = false;
 				}
 				else {
 					this->car_system->stopLidarDevice();
-					lidar_status = LIDAR_DISABLED_MESSAGE;
-					lidar_loading_debounce = false;
+					lidar_motor_status = LIDAR_MOTOR_DISABLED_MESSAGE;
+					lidar_motor_loading_debounce = false;
 				}
 			}
 		);
+
+		auto lidar_motor_checkbox_component = Checkbox(&lidar_motor_status, &lidar_motor_enabled, lidar_motor_checkbox_option);
 #pragma endregion
 
 #pragma region Wheels
+		static constexpr int DEFAULT_REAR_WHEEL_SPEED = 0;
+		static constexpr int DEFAULT_FRONT_WHEEL_ANGLE = 90;
 
-#pragma region Rear Wheel Slider
-		int rear_wheel_speed = 0;
-		auto rear_wheel_speed_slider = Slider("Rear Wheel Speed:", &rear_wheel_speed, 0, 100, 1);
-#pragma endregion
+		int previous_rear_wheels_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
 
-#pragma region Front Wheel Slider
-		int front_wheel_angle = 90;
-		auto front_wheel_angle_slider = Slider("Front Wheel Angle:", &front_wheel_angle, 0, 180, 1);
-#pragma endregion
-		auto slider_container = Container::Vertical({
-			rear_wheel_speed_slider,
-			front_wheel_angle_slider,
-			}
-		);
+		int rear_wheels_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
+		int rear_left_wheel_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
+		int rear_right_wheel_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
+
+		auto rear_wheel_speed_slider = Slider("Rear Wheels Speed:", &rear_wheels_speed_slider_value, 0, 100, 1);
+		auto rear_left_wheel_speed_slider = Slider("Left Rear Wheel Speed:", &rear_left_wheel_speed_slider_value, 0, 100, 1);
+		auto rear_right_wheel_speed_slider = Slider("Right Rear Wheel Speed:", &rear_right_wheel_speed_slider_value, 0, 100, 1);
+
+		int previous_front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
+
+		int front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
+		int front_left_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
+		int front_right_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
+
+		auto front_wheels_angle_slider = Slider("Front Wheels Angle:", &front_wheels_angle_slider_value, 0, 180, 1);
+		auto front_left_wheel_angle_slider = Slider("Left Front Wheel Angle:", &front_left_wheel_angle_slider_value, 0, 180, 1);
+		auto front_right_wheel_angle_slider = Slider("Right Front Wheel Angle:", &front_right_wheel_angle_slider_value, 0, 180, 1);
+
+
+		auto slider_container =
+			Container::Horizontal({
+				Container::Vertical({
+					rear_wheel_speed_slider,
+					rear_left_wheel_speed_slider,
+					rear_right_wheel_speed_slider,
+				}),
+				Container::Vertical({
+					front_wheels_angle_slider,
+					front_left_wheel_angle_slider,
+					front_right_wheel_angle_slider,
+				})
+			});
 
 		auto wheel_settings_renderer = Renderer(slider_container, [&] {
 			return
-				vbox({
-					rear_wheel_speed_slider->Render(),
-					front_wheel_angle_slider->Render(),
-					separator(),
-					hbox({
-						text("Rear Wheel Speed: " + std::to_string(rear_wheel_speed)) | xflex,
+				hbox({
+					vbox({
+						rear_wheel_speed_slider->Render(),
 						separator(),
-						text("Front Wheel Angle: " + std::to_string(front_wheel_angle)) | xflex,
-					}),
+						rear_left_wheel_speed_slider->Render(),
+						rear_right_wheel_speed_slider->Render(),
+						separator(),
+						text("Left Rear Wheel Speed: " + std::to_string(rear_left_wheel_speed_slider_value)),
+						text("Right Rear Wheel Speed: " + std::to_string(rear_right_wheel_speed_slider_value)),
+					}) | xflex,
+					separator(),
+					vbox({
+						front_wheels_angle_slider->Render(),
+						separator(),
+						front_left_wheel_angle_slider->Render(),
+						front_right_wheel_angle_slider->Render(),
+						separator(),
+						text("Left Front Wheel Angle: " + std::to_string(front_left_wheel_angle_slider_value)),
+						text("Right Front Wheel Angle: " + std::to_string(front_right_wheel_angle_slider_value)),
+					}) | xflex,
+					separator(),
 					});
 			});
 
@@ -269,9 +303,9 @@ namespace car::display {
 				debug_checkbox_component,
 				Container::Vertical(
 					{
-					lidar_checkbox_component,
-					Renderer([&] {return separator(); }),
-					wheel_settings_renderer,
+						lidar_motor_checkbox_component,
+						Renderer([&] {return separator(); }),
+						wheel_settings_renderer,
 					}
 				) | border | Maybe(&debug_enabled)
 			}
@@ -327,8 +361,20 @@ namespace car::display {
 					// main thread). Using `screen.Post(task)` is threadsafe.
 					screen.Post([&]
 						{
-							this->car_system->setFrontWheelsAngle({ front_wheel_angle * 1.0f });
-							this->car_system->setRearWheelsSpeed({ rear_wheel_speed });
+							if (previous_front_wheels_angle_slider_value != front_wheels_angle_slider_value) {
+								previous_front_wheels_angle_slider_value = front_wheels_angle_slider_value;
+								front_left_wheel_angle_slider_value = front_wheels_angle_slider_value;
+								front_right_wheel_angle_slider_value = front_wheels_angle_slider_value;
+								this->car_system->setFrontLeftWheelAngle({ front_left_wheel_angle_slider_value * 1.0f });
+								this->car_system->setFrontRightWheelAngle({ front_right_wheel_angle_slider_value * 1.0f });
+							}
+							if (previous_rear_wheels_speed_slider_value != rear_wheels_speed_slider_value) {
+								previous_rear_wheels_speed_slider_value = rear_wheels_speed_slider_value;
+								rear_left_wheel_speed_slider_value = rear_wheels_speed_slider_value;
+								rear_right_wheel_speed_slider_value = rear_wheels_speed_slider_value;
+								this->car_system->setRearLeftWheelSpeed({ rear_left_wheel_speed_slider_value });
+								this->car_system->setRearRightWheelSpeed({ rear_right_wheel_speed_slider_value });
+							}
 							this->car_system->update();
 						}
 					);

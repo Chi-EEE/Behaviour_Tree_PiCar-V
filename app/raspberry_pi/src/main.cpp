@@ -44,19 +44,19 @@ int main()
 	std::string websocket_url = getWebSocketUrl();
 	spdlog::info("Got websocket url: {}", websocket_url);
 
-	//std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
+	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 
-	 auto maybe_scanner = LidarScanner::create(GET_CONFIG_VALUE(lidar_port));
+	 /*auto maybe_scanner = LidarScanner::create(GET_CONFIG_VALUE(lidar_port));
 	 if (!maybe_scanner.has_value())
 	 {
 	 	spdlog::error("Unable to connect to the Lidar Scanner");
 	 }
-	 std::unique_ptr<LidarScanner> &scanner = maybe_scanner.value();
+	 std::unique_ptr<LidarScanner> &scanner = maybe_scanner.value();*/
 
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(websocket_url);
 
-	// std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyWheelController>());
-	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<CarWheelController>());
+	 std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyWheelController>());
+	//std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<CarWheelController>());
 
 	auto car_system = std::make_unique<CarSystem>(
 		websocket_url,
