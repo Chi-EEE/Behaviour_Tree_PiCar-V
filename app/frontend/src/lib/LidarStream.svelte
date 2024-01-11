@@ -35,14 +35,14 @@
 
     function clear() {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        context.fillStyle = "black";
+        context.fillStyle = "white";
         context.fillRect(0, 0, canvas.width, canvas.height);
     }
 
     function draw() {
         console.log("Drawing");
         clear();
-        context.fillStyle = "green";
+        context.fillStyle = "blue";
         
         for (const point of points) {
             const angle = point.angle;
@@ -50,7 +50,7 @@
             const angleInRadians = angle * (3.14159265 / 180.0);
             const x = distance * Math.cos(angleInRadians);
             const y = distance * Math.sin(angleInRadians);
-            context.fillRect(x + (canvas.width / 2), y + (canvas.height / 2), 10, 10);
+            context.fillRect(x + (canvas.width / 2), y + (canvas.height / 2), 2, 2);
         }
     }
 
@@ -60,4 +60,4 @@
     });
 </script>
 
-<canvas id="canvas" width="800" height="600" bind:this={canvas}></canvas>
+<canvas id="canvas" width="800" height="600" style="border-style:solid" bind:this={canvas}></canvas>

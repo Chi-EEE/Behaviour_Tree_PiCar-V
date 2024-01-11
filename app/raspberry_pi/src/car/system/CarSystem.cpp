@@ -47,10 +47,11 @@ namespace car::system
 
 	void CarSystem::stop()
 	{
-		if (!this->running)
+		if (this->running)
 		{
 			this->messaging_system->stop();
 			this->lidar_device->stop();
+			this->lidar_device->disconnect();
 			this->running = false;
 		}
 	}

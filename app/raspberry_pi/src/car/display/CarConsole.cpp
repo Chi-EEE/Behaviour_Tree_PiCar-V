@@ -160,9 +160,9 @@ namespace car::display {
 					screen.Post([&]
 						{
 							settings_screen.update();
-							this->car_system->update();
 						}
 					);
+					this->car_system->update();
 					// After updating the state, request a new frame to be drawn. This is done
 					// by simulating a new "custom" event to be handled.
 					screen.Post(Event::Custom);
