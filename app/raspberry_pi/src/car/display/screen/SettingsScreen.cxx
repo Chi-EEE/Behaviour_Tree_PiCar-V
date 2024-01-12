@@ -73,8 +73,13 @@ namespace car::display::screen {
 		void update() {
 			if (this->debug_enabler.isEnabled()) {
 				if (this->debug_wheel_renderer.updateFrontWheels()) {
-					this->car_system->setFrontLeftWheelAngle({ this->debug_wheel_renderer.getFrontLeftWheelAngleSliderValue() * 1.0f });
-					this->car_system->setFrontRightWheelAngle({ this->debug_wheel_renderer.getFrontRightWheelAngleSliderValue() * 1.0f });
+					this->car_system->setFrontWheelsAngle({ this->debug_wheel_renderer.getFrontWheelsAngleSliderValue() * 1.0f });
+				}
+				if (this->debug_wheel_renderer.updateCameraServo1()) {
+					this->car_system->setCameraServo1Angle({ this->debug_wheel_renderer.getCameraServo1AngleSliderValue() * 1.0f });
+				}
+				if (this->debug_wheel_renderer.updateCameraServo2()) {
+					this->car_system->setCameraServo2Angle({ this->debug_wheel_renderer.getCameraServo2AngleSliderValue() * 1.0f });
 				}
 				if (this->debug_wheel_renderer.updateRearWheels()) {
 					this->car_system->setRearLeftWheelSpeed({ this->debug_wheel_renderer.getRearLeftWheelSpeedSliderValue() });

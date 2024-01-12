@@ -16,10 +16,6 @@ namespace car::system::movement::controller
 
 		}
 
-		void setFrontWheelsAngle(const float& angle) override {
-
-		}
-
 		void setRearLeftWheelSpeed(const int& speed) override {
 
 		}
@@ -28,11 +24,18 @@ namespace car::system::movement::controller
 
 		}
 
-		void setFrontLeftWheelAngle(const float& angle) override {
-
+		void setFrontWheelsAngle(const float& angle) override
+		{
+		
 		}
 
-		void setFrontRightWheelAngle(const float& angle) override {
+		void setCameraServo1Angle(const float& angle) override
+		{
+		
+		}
+
+		void setCameraServo2Angle(const float& angle) override
+		{
 
 		}
 

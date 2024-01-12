@@ -90,12 +90,6 @@ namespace car::system
 	{
 		this->movement_system->setRearWheelsSpeed(speed);
 	}
-
-	void CarSystem::setFrontWheelsAngle(const float& angle)
-	{
-		this->movement_system->setFrontWheelsAngle(angle);
-	}
-
 	void CarSystem::setRearLeftWheelSpeed(const int& speed)
 	{
 		this->movement_system->setRearLeftWheelSpeed(speed);
@@ -106,14 +100,19 @@ namespace car::system
 		this->movement_system->setRearRightWheelSpeed(speed);
 	}
 
-	void CarSystem::setFrontLeftWheelAngle(const float& angle)
+	void CarSystem::setFrontWheelsAngle(const float& angle)
 	{
-		this->movement_system->setFrontLeftWheelAngle(angle);
+		this->movement_system->setFrontWheelsAngle(angle);
 	}
 
-	void CarSystem::setFrontRightWheelAngle(const float& angle)
+	void CarSystem::setCameraServo1Angle(const float& angle)
 	{
-		this->movement_system->setFrontRightWheelAngle(angle);
+		this->movement_system->setCameraServo1Angle(angle);
+	
+	}
+	void CarSystem::setCameraServo2Angle(const float& angle)
+	{
+		this->movement_system->setCameraServo2Angle(angle);
 	}
 
 	void CarSystem::setRearWheelDirectionToForwards()

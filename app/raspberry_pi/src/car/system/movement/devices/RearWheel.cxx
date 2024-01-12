@@ -11,7 +11,7 @@
 
 // Made with the help of ChatGPT
 
-namespace car::system::movement::wheels
+namespace car::system::movement::devices
 {
 	class RearWheel
 	{

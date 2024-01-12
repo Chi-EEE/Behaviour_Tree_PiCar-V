@@ -29,11 +29,11 @@ namespace car::display::component::debug {
 			this->rear_right_wheel_speed_slider = Slider("Right Rear Wheel Speed:", &this->rear_right_wheel_speed_slider_value, 0, 100, 1);
 
 			this->front_wheels_angle_slider = Slider("Front Wheels Angle:", &this->front_wheels_angle_slider_value, 0, 180, 1);
-			this->front_left_wheel_angle_slider = Slider("Left Front Wheel Angle:", &this->front_left_wheel_angle_slider_value, 0, 180, 1);
-			this->front_right_wheel_angle_slider = Slider("Right Front Wheel Angle:", &this->front_right_wheel_angle_slider_value, 0, 180, 1);
+			this->camera_servo_1_angle_slider = Slider("Camera Servo 1 Angle:", &this->camera_servo_1_angle_slider_angle, 0, 180, 1);
+			this->camera_servo_2_angle_slider = Slider("Camera Servo 2 Angle:", &this->camera_servo_2_angle_slider_angle, 0, 180, 1);
 
 			this->rear_wheel_menu_entry = MenuEntry("Rear Wheel:") | bold;
-			this->front_wheel_menu_entry = MenuEntry("Front Wheel:") | bold;
+			this->servo_menu_entry = MenuEntry("Servo:") | bold;
 
 			auto rear_wheel_direction_checkbox_option = CheckboxOption::Simple();
 			rear_wheel_direction_checkbox_option.on_change = [&]
@@ -65,10 +65,10 @@ namespace car::display::component::debug {
 						this->rear_wheel_direction_checkbox_component,
 					}),
 					Container::Vertical({
-						this->front_wheel_menu_entry,
+						this->servo_menu_entry,
 						this->front_wheels_angle_slider,
-						this->front_left_wheel_angle_slider,
-						this->front_right_wheel_angle_slider,
+						this->camera_servo_1_angle_slider,
+						this->camera_servo_2_angle_slider,
 					})
 					}
 			);
@@ -91,15 +91,17 @@ namespace car::display::component::debug {
 						}) | xflex,
 						separator(),
 						vbox({
-							this->front_wheel_menu_entry->Render(),
+							this->servo_menu_entry->Render(),
 							separator(),
 							this->front_wheels_angle_slider->Render(),
 							separator(),
-							this->front_left_wheel_angle_slider->Render(),
-							this->front_right_wheel_angle_slider->Render(),
+							this->camera_servo_1_angle_slider->Render(),
+							this->camera_servo_2_angle_slider->Render(),
 							separator(),
-							text("Left Front Wheel Angle: " + std::to_string(this->front_left_wheel_angle_slider_value)),
-							text("Right Front Wheel Angle: " + std::to_string(this->front_right_wheel_angle_slider_value)),
+							text("Front Wheels Angle: " + std::to_string(this->front_wheels_angle_slider_value)),
+							separator(),
+							text("Camera Servo 1 Angle: " + std::to_string(this->camera_servo_1_angle_slider_angle)),
+							text("Camera Servo 2 Angle: " + std::to_string(this->camera_servo_2_angle_slider_angle)),
 						}) | xflex,
 						separator(),
 						});
@@ -109,20 +111,22 @@ namespace car::display::component::debug {
 		bool updateFrontWheels() {
 			if (this->previous_front_wheels_angle_slider_value != this->front_wheels_angle_slider_value) {
 				this->previous_front_wheels_angle_slider_value = this->front_wheels_angle_slider_value;
-			
-				this->previous_front_left_wheel_angle_slider_value = this->front_wheels_angle_slider_value;
-				this->front_left_wheel_angle_slider_value = this->front_wheels_angle_slider_value;
-			
-				this->previous_front_right_wheel_angle_slider_value = this->front_wheels_angle_slider_value;
-				this->front_right_wheel_angle_slider_value = this->front_wheels_angle_slider_value;
 				return true;
 			}
-			if (this->previous_front_left_wheel_angle_slider_value != this->front_left_wheel_angle_slider_value) {
-				this->previous_front_left_wheel_angle_slider_value = this->front_left_wheel_angle_slider_value;
+			return false;
+		}
+
+		bool updateCameraServo1() {
+			if (this->previous_camera_servo_1_angle_slider_angle != this->camera_servo_1_angle_slider_angle) {
+				this->previous_camera_servo_1_angle_slider_angle = this->camera_servo_1_angle_slider_angle;
 				return true;
 			}
-			if (this->previous_front_right_wheel_angle_slider_value != this->front_right_wheel_angle_slider_value) {
-				this->previous_front_right_wheel_angle_slider_value = this->front_right_wheel_angle_slider_value;
+			return false;
+		}
+
+		bool updateCameraServo2() {
+			if (this->previous_camera_servo_2_angle_slider_angle != this->camera_servo_2_angle_slider_angle) {
+				this->previous_camera_servo_2_angle_slider_angle = this->camera_servo_2_angle_slider_angle;
 				return true;
 			}
 			return false;
@@ -154,12 +158,16 @@ namespace car::display::component::debug {
 			return this->rear_wheel_direction_signal;
 		}
 
-		const int& getFrontLeftWheelAngleSliderValue() const {
-			return this->front_left_wheel_angle_slider_value;
+		const int& getFrontWheelsAngleSliderValue() const {
+			return this->front_wheels_angle_slider_value;
 		}
 
-		const int& getFrontRightWheelAngleSliderValue() const {
-			return this->front_right_wheel_angle_slider_value;
+		const int& getCameraServo1AngleSliderValue() const {
+			return this->camera_servo_1_angle_slider_angle;
+		}
+
+		const int& getCameraServo2AngleSliderValue() const {
+			return this->camera_servo_2_angle_slider_angle;
 		}
 
 		const int& getRearLeftWheelSpeedSliderValue() const {
@@ -187,11 +195,11 @@ namespace car::display::component::debug {
 		int previous_front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
 		int front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
 
-		int previous_front_left_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
-		int front_left_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
+		int previous_camera_servo_1_angle_slider_angle = DEFAULT_FRONT_WHEEL_ANGLE;
+		int camera_servo_1_angle_slider_angle = DEFAULT_FRONT_WHEEL_ANGLE;
 
-		int previous_front_right_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
-		int front_right_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
+		int previous_camera_servo_2_angle_slider_angle = DEFAULT_FRONT_WHEEL_ANGLE;
+		int camera_servo_2_angle_slider_angle = DEFAULT_FRONT_WHEEL_ANGLE;
 
 
 		bool rear_wheel_direction_debounce = false;
@@ -205,11 +213,12 @@ namespace car::display::component::debug {
 		Component rear_wheel_direction_checkbox_component;
 
 		Component front_wheels_angle_slider;
-		Component front_left_wheel_angle_slider;
-		Component front_right_wheel_angle_slider;
+
+		Component camera_servo_1_angle_slider;
+		Component camera_servo_2_angle_slider;
 
 		Component rear_wheel_menu_entry;
-		Component front_wheel_menu_entry;
+		Component servo_menu_entry;
 
 		Component slider_container;
 	};

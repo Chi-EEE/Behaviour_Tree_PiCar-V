@@ -1,15 +1,15 @@
 #ifdef __linux__
-#ifndef FRONTWHEEL_CXX
-#define FRONTWHEEL_CXX
+#ifndef SERVO_CXX
+#define SERVO_CXX
 
 #include <algorithm>
 
 #include <PCA9685.h>
 #include <spdlog/spdlog.h>
 
-namespace car::system::movement::wheels
+namespace car::system::movement::devices
 {
-	class FrontWheel {
+	class Servo {
 	private:
 		/**
 		 * Following method clamps the x to in_min and in_max.

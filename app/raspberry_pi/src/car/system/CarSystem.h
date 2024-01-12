@@ -34,13 +34,13 @@ namespace car::system {
 		void stopLidarDevice();
 
 		void setRearWheelsSpeed(const int& speed);
-		void setFrontWheelsAngle(const float& angle);
 
 		void setRearLeftWheelSpeed(const int& speed);
 		void setRearRightWheelSpeed(const int& speed);
 
-		void setFrontLeftWheelAngle(const float& angle);
-		void setFrontRightWheelAngle(const float& angle);
+		void setFrontWheelsAngle(const float& angle);
+		void setCameraServo1Angle(const float& angle);
+		void setCameraServo2Angle(const float& angle);
 
 		void setRearWheelDirectionToForwards();
 		void setRearWheelDirectionToBackwards();

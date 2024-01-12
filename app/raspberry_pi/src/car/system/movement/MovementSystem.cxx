@@ -9,54 +9,55 @@
 
 using namespace car::system::movement::controller;
 
-namespace car::system::movement {
+namespace car::system::movement
+{
 	class MovementSystem
 	{
 	public:
-		MovementSystem(std::unique_ptr<AbstractWheelController> wheel_controller) : wheel_controller(std::move(wheel_controller))
-		{
-		};
+		MovementSystem(std::unique_ptr<AbstractWheelController> wheel_controller) : wheel_controller(std::move(wheel_controller)){};
 
 		void initialize()
 		{
 			this->wheel_controller->initialize();
 		}
 
-		void start() {
-
+		void start()
+		{
 		}
 
-		void stop() {
-		
+		void stop()
+		{
 		}
 
 #pragma region Wheels
-		void setRearWheelsSpeed(const int& speed) {
+		void setRearWheelsSpeed(const int &speed)
+		{
 			this->wheel_controller->setRearWheelsSpeed(speed);
 		}
 
-		void setFrontWheelsAngle(const float& angle) {
-			this->wheel_controller->setFrontWheelsAngle(angle);
-		}
-
-		void setRearLeftWheelSpeed(const int& speed)
+		void setRearLeftWheelSpeed(const int &speed)
 		{
 			this->wheel_controller->setRearLeftWheelSpeed(speed);
 		}
 
-		void setRearRightWheelSpeed(const int& speed)
+		void setRearRightWheelSpeed(const int &speed)
 		{
 			this->wheel_controller->setRearRightWheelSpeed(speed);
 		}
 
-		void setFrontLeftWheelAngle(const float& angle)
+		void setFrontWheelsAngle(const float &angle)
 		{
-			this->wheel_controller->setFrontLeftWheelAngle(angle);
+			this->wheel_controller->setFrontWheelsAngle(angle);
 		}
 
-		void setFrontRightWheelAngle(const float& angle)
+		void setCameraServo1Angle(const float &angle)
 		{
-			this->wheel_controller->setFrontRightWheelAngle(angle);
+			this->wheel_controller->setCameraServo1Angle(angle);
+		}
+
+		void setCameraServo2Angle(const float &angle)
+		{
+			this->wheel_controller->setCameraServo2Angle(angle);
 		}
 
 		void setRearWheelDirectionToForwards()
@@ -69,9 +70,7 @@ namespace car::system::movement {
 		}
 #pragma endregion
 
-
-		~MovementSystem() {
-		};
+		~MovementSystem(){};
 
 	private:
 		std::unique_ptr<AbstractWheelController> wheel_controller;

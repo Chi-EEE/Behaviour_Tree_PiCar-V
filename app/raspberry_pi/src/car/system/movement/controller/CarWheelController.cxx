@@ -12,10 +12,10 @@
 
 #include "AbstractWheelController.cxx"
 
-#include "../wheels/FrontWheel.cxx"
-#include "../wheels/RearWheel.cxx"
+#include "../devices/Servo.cxx"
+#include "../devices/RearWheel.cxx"
 
-using namespace car::system::movement::wheels;
+using namespace car::system::movement::devices;
 
 namespace car::system::movement::controller
 {
@@ -42,18 +42,22 @@ namespace car::system::movement::controller
 			this->rear_right_wheel = std::make_unique<RearWheel>(
 				this->pwm,
 				std::make_unique<TB6612>(Motor_B, PWM_B));
-			this->front_left_wheel = std::make_unique<FrontWheel>(
+			this->front_wheels = std::make_unique<FrontWheel>(
 				this->pwm,
 				0);
-			this->front_right_wheel = std::make_unique<FrontWheel>(
+			this->camera_servo_1 = std::make_unique<FrontWheel>(
 				this->pwm,
 				1);
+			this->camera_servo_2 = std::make_unique<FrontWheel>(
+				this->pwm,
+				2);
 		};
 
 		~CarWheelController()
 		{
-			this->front_left_wheel->reset();
-			this->front_right_wheel->reset();
+			this->front_wheels->reset();
+			this->camera_servo_1->reset();
+			this->camera_servo_2->reset();
 			this->rear_left_wheel->stop();
 			this->rear_right_wheel->stop();
 			this->pwm->reset();
@@ -73,12 +77,6 @@ namespace car::system::movement::controller
 			this->setRearRightWheelSpeed(speed);
 		}
 
-		void setFrontWheelsAngle(const float& angle) override
-		{
-			this->setFrontLeftWheelAngle(angle);
-			this->setFrontRightWheelAngle(angle);
-		}
-
 		void setRearLeftWheelSpeed(const int& speed) override
 		{
 			this->rear_left_wheel->setSpeed(speed);
@@ -89,14 +87,19 @@ namespace car::system::movement::controller
 			this->rear_right_wheel->setSpeed(speed);
 		}
 
-		void setFrontLeftWheelAngle(const float& angle) override
+		void setFrontWheelsAngle(const float& angle) override
 		{
-			this->front_left_wheel->setAngle(angle);
+			this->front_wheels->setAngle(angle);
 		}
 
-		void setFrontRightWheelAngle(const float& angle) override
+		void setCameraServo1Angle(const float& angle) override
 		{
-			this->front_right_wheel->setAngle(angle);
+			this->camera_servo_1->setAngle(angle);
+		}
+
+		void setCameraServo2Angle(const float& angle) override
+		{
+			this->camera_servo_2->setAngle(angle);
 		}
 
 		void setRearWheelDirectionToForwards() override {
@@ -112,8 +115,9 @@ namespace car::system::movement::controller
 	private:
 		std::shared_ptr<PCA9685> pwm;
 
-		std::unique_ptr<FrontWheel> front_left_wheel;
-		std::unique_ptr<FrontWheel> front_right_wheel;
+		std::unique_ptr<Servo> front_wheels;
+		std::unique_ptr<Servo> camera_servo_1;
+		std::unique_ptr<Servo> camera_servo_2;
 
 		std::unique_ptr<RearWheel> rear_left_wheel;
 		std::unique_ptr<RearWheel> rear_right_wheel;
