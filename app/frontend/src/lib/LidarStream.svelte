@@ -3,6 +3,10 @@
     import { get } from "svelte/store";
 
     import { websocket_store } from "./WebsocketStore";
+    import { detectLeftButton } from "./Mouse";
+    import DrawButton from "./DrawButton.svelte";
+
+    const DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH = 200; // 30 cm
 
     class ScanPoint {
         constructor(angle: number, distance: number) {
@@ -33,6 +37,9 @@
     let canvas: HTMLCanvasElement;
     let context: CanvasRenderingContext2D;
 
+    let zoom: number = 1;
+    $: sunfounder_car_width = DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH * zoom;
+
     function drawCursor() {
         context.fillStyle = "black";
         const width = 4;
@@ -44,10 +51,12 @@
             height,
         );
         context.beginPath();
-        context.arc(
+        context.ellipse(
             canvas.width / 2,
             canvas.height / 2,
-            30 * 2,
+            sunfounder_car_width / 2,
+            sunfounder_car_width,
+            0,
             0,
             2 * Math.PI,
         );
@@ -67,7 +76,7 @@
         context.fillStyle = "blue";
         for (const point of points) {
             const angle = point.angle;
-            const distance = point.distance * 0.3;
+            const distance = point.distance * zoom;
             const angleInRadians = angle * (3.14159265 / 180.0);
             const x = distance * Math.cos(angleInRadians);
             const y = distance * Math.sin(angleInRadians);
@@ -94,19 +103,6 @@
                 ((event.clientY - rect.top) / (rect.bottom - rect.top)) *
                 canvas.height,
         };
-    }
-
-    // https://stackoverflow.com/a/12737882
-    function detectLeftButton(event: MouseEvent) {
-        if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
-            return false;
-        } else if (event["which"] !== undefined) {
-            return event["which"] === 1;
-        } else if (event["buttons"] !== undefined) {
-            return event["buttons"] === 1;
-        } else {
-            return event["button"] == 1 || event["type"] == "click";
-        }
     }
 
     function onMouseDown(event: MouseEvent) {
@@ -142,3 +138,4 @@
     on:mousemove={onMouseMove}
     bind:this={canvas}
 />
+<DrawButton {canvas} />
