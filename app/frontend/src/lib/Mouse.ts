@@ -11,3 +11,16 @@ export function detectLeftButton(event: MouseEvent) {
         return event["button"] == 1 || event["type"] == "click";
     }
 }
+
+// https://stackoverflow.com/a/33063222
+export function getMousePos(event: MouseEvent) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x:
+            ((event.clientX - rect.left) / (rect.right - rect.left)) *
+            canvas.width,
+        y:
+            ((event.clientY - rect.top) / (rect.bottom - rect.top)) *
+            canvas.height,
+    };
+}

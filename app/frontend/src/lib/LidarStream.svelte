@@ -3,7 +3,6 @@
     import { get } from "svelte/store";
 
     import { websocket_store } from "./WebsocketStore";
-    import { detectLeftButton } from "./Mouse";
     import DrawButton from "./DrawButton.svelte";
 
     const DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH = 200; // 30 cm
@@ -37,7 +36,7 @@
     let canvas: HTMLCanvasElement;
     let context: CanvasRenderingContext2D;
 
-    let zoom: number = 1;
+    let zoom: number = 0.3;
     $: sunfounder_car_width = DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH * zoom;
 
     function drawCursor() {
@@ -89,43 +88,6 @@
         clear();
         drawCursor();
     });
-
-    let mouseDown: boolean = false;
-
-    // https://stackoverflow.com/a/33063222
-    function getMousePos(event: MouseEvent) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-            x:
-                ((event.clientX - rect.left) / (rect.right - rect.left)) *
-                canvas.width,
-            y:
-                ((event.clientY - rect.top) / (rect.bottom - rect.top)) *
-                canvas.height,
-        };
-    }
-
-    function onMouseDown(event: MouseEvent) {
-        if (detectLeftButton(event)) {
-            mouseDown = true;
-        }
-    }
-
-    function onMouseUp(event: MouseEvent) {
-        if (detectLeftButton(event)) {
-            mouseDown = false;
-        }
-    }
-
-    function onMouseMove(event: MouseEvent) {
-        if (!mouseDown) {
-            return;
-        }
-        const { x, y } = getMousePos(event);
-        // drawPoints.push({ x, y });
-        // context.fillStyle = "black";
-        // context.fillRect(x, y, 4, 4);
-    }
 </script>
 
 <canvas
@@ -133,9 +95,6 @@
     width="800"
     height="600"
     style="border-style:solid"
-    on:mousedown={onMouseDown}
-    on:mouseup={onMouseUp}
-    on:mousemove={onMouseMove}
     bind:this={canvas}
 />
-<DrawButton {canvas} />
+<DrawButton {canvas} {zoom} />
