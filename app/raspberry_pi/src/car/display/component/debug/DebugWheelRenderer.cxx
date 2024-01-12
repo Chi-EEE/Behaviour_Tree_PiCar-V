@@ -109,8 +109,20 @@ namespace car::display::component::debug {
 		bool updateFrontWheels() {
 			if (this->previous_front_wheels_angle_slider_value != this->front_wheels_angle_slider_value) {
 				this->previous_front_wheels_angle_slider_value = this->front_wheels_angle_slider_value;
+			
+				this->previous_front_left_wheel_angle_slider_value = this->front_wheels_angle_slider_value;
 				this->front_left_wheel_angle_slider_value = this->front_wheels_angle_slider_value;
+			
+				this->previous_front_right_wheel_angle_slider_value = this->front_wheels_angle_slider_value;
 				this->front_right_wheel_angle_slider_value = this->front_wheels_angle_slider_value;
+				return true;
+			}
+			if (this->previous_front_left_wheel_angle_slider_value != this->front_left_wheel_angle_slider_value) {
+				this->previous_front_left_wheel_angle_slider_value = this->front_left_wheel_angle_slider_value;
+				return true;
+			}
+			if (this->previous_front_right_wheel_angle_slider_value != this->front_right_wheel_angle_slider_value) {
+				this->previous_front_right_wheel_angle_slider_value = this->front_right_wheel_angle_slider_value;
 				return true;
 			}
 			return false;
@@ -119,8 +131,20 @@ namespace car::display::component::debug {
 		bool updateRearWheels() {
 			if (this->previous_rear_wheels_speed_slider_value != this->rear_wheels_speed_slider_value) {
 				this->previous_rear_wheels_speed_slider_value = this->rear_wheels_speed_slider_value;
+
+				this->previous_rear_left_wheel_speed_slider_value = this->rear_wheels_speed_slider_value;
 				this->rear_left_wheel_speed_slider_value = this->rear_wheels_speed_slider_value;
+
+				this->previous_rear_right_wheel_speed_slider_value = this->rear_wheels_speed_slider_value;
 				this->rear_right_wheel_speed_slider_value = this->rear_wheels_speed_slider_value;
+				return true;
+			}
+			if (this->previous_rear_left_wheel_speed_slider_value != this->rear_left_wheel_speed_slider_value) {
+				this->previous_rear_left_wheel_speed_slider_value = this->rear_left_wheel_speed_slider_value;
+				return true;
+			}
+			if (this->previous_rear_right_wheel_speed_slider_value != this->rear_right_wheel_speed_slider_value) {
+				this->previous_rear_right_wheel_speed_slider_value = this->rear_right_wheel_speed_slider_value;
 				return true;
 			}
 			return false;
@@ -149,15 +173,26 @@ namespace car::display::component::debug {
 	private:
 		nod::signal<void(bool)> rear_wheel_direction_signal;
 
+
 		int previous_rear_wheels_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
 		int rear_wheels_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
+
+		int previous_rear_left_wheel_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
 		int rear_left_wheel_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
+
+		int previous_rear_right_wheel_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
 		int rear_right_wheel_speed_slider_value = DEFAULT_REAR_WHEEL_SPEED;
+
 
 		int previous_front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
 		int front_wheels_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
+
+		int previous_front_left_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
 		int front_left_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
+
+		int previous_front_right_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
 		int front_right_wheel_angle_slider_value = DEFAULT_FRONT_WHEEL_ANGLE;
+
 
 		bool rear_wheel_direction_debounce = false;
 		std::string rear_wheel_direction_status = REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE;
