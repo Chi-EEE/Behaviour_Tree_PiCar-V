@@ -7,6 +7,8 @@ add_requires("boost", { configs = {chrono = true} })
 add_requires("fmt", "spdlog")
 add_requires("nlohmann_json", "rapidjson", "pugixml v1.14")
 
+add_requires("robin-map")
+
 -- C++ Backend API for Svelte App
 add_requires("drogon", { configs = {sqlite3 = true, mysql = true}})
 
@@ -18,7 +20,8 @@ target("backend")
 
     add_packages("boost")
     add_packages("fmt", "spdlog")
-    add_packages("nlohmann_json", "rapidjson", "pugixml v1.14")
+    add_packages("nlohmann_json", "rapidjson", "pugixml")
+    add_packages("robin-map")
     add_packages("drogon")
 
     add_packages("tl_expected")

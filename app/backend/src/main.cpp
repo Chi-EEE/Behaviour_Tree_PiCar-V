@@ -13,9 +13,18 @@
 #include "controllers/RoomController.hpp"
 #include "controllers/WebSocketChat.hpp"
 
+#include "behaviour_tree/BehaviourTree.hpp"
+
 int main()
 {
-	spdlog::set_level(spdlog::level::debug);
+	auto maybe_behaviour_tree = behaviour_tree::BehaviourTree::parseFileXML("out/behaviourtree.xml");
+	if (maybe_behaviour_tree) {
+		std::cout << "Behaviour tree parsed successfully\n";
+	}
+	else {
+		std::cout << "Behaviour tree parsing failed: " << maybe_behaviour_tree.error() << "\n";
+	}
+	/*spdlog::set_level(spdlog::level::debug);
 	auto config_json_path = boost::dll::program_location().parent_path() / "settings" / "config.json";
 	drogon::app().loadConfigFile(config_json_path.string());
 	drogon::app().setCustom404Page(drogon::HttpResponse::newFileResponse(drogon::app().getDocumentRoot() + "/404.html"));
@@ -27,5 +36,5 @@ int main()
 		drogon::app().addListener(host, port);
 		spdlog::info("Listening on {}:{}", host, port);
 	}
-	drogon::app().run();
+	drogon::app().run();*/
 }
