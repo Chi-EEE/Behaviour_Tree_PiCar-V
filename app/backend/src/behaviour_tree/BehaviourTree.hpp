@@ -140,8 +140,7 @@ namespace behaviour_tree
 		{
 			const std::string name = node.attribute("name").as_string();
 			const std::string& node_name = node.name();
-			const auto node_hash = hash(node_name);
-			switch (node_hash)
+			switch (hash(node_name))
 			{
 #pragma region Composite Node
 			case hash("Sequence"):
@@ -201,7 +200,7 @@ namespace behaviour_tree
 #pragma endregion
 			default:
 			{
-				return tl::unexpected(fmt::format("Invalid node | {}:[{}]", node_name, name, index));
+				return tl::unexpected(fmt::format(R"(Invalid node | {}:["{}",{}])", node_name, name, index));
 			}
 			}
 		}
