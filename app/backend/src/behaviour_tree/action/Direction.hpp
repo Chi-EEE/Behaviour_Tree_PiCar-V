@@ -30,10 +30,12 @@ namespace behaviour_tree::action
 			switch (this->getDirectionType()) {
 			case DirectionType::Forward:
 				direction_type = "Forward";
+				break;
 			case DirectionType::Backward:
 				direction_type = "Backward";
+				break;
 			}
-			return fmt::format(R"(<Direction direction="{}"/>)", direction_type);
+			return fmt::format(R"(<Action type="Direction" direction="{}"/>)", direction_type);
 		}
 
 	private:

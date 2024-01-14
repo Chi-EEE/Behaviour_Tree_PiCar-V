@@ -27,7 +27,11 @@ namespace behaviour_tree::node::leaf
         }
 
         const std::string toString() const override {
-            return fmt::format(R"(<LogMessage name="{}" text="{}"/>)", this->getName(), this->getText());
+            const std::string& name = this->getName();
+            if (name != "")
+                return fmt::format(R"(<LogMessage name="{}" text="{}"/>)", name, this->getText());
+            else
+                return fmt::format(R"(<LogMessage text="{}"/>)", this->getText());
         }
 
     private:

@@ -20,7 +20,7 @@ namespace behaviour_tree::action
         }
 
         const std::string toString() const override {
-            return fmt::format(R"(<Turn angle="{}"/>)", this->getAngle());
+            return fmt::format(R"(<Action type="Turn" angle="{}"/>)", this->getAngle());
         }
 
         const int& getAngle() const {

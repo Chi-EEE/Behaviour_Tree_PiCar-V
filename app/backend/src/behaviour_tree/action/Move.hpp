@@ -20,7 +20,7 @@ namespace behaviour_tree::action
         }
 
         const std::string toString() const override {
-            return fmt::format(R"(<Move ms="{}"/>)", this->getMS());
+            return fmt::format(R"(<Action type="Move" ms="{}"/>)", this->getMS());
         }
 
         const int& getMS() const {
