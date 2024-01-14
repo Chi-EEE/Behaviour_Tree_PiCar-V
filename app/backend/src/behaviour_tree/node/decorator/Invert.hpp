@@ -19,15 +19,19 @@ namespace behaviour_tree::node::decorator
 			auto status = this->child->run();
 			switch (status)
 			{
-			case Status::SUCCESS:
-				return Status::FAILURE;
-			case Status::FAILURE:
-				return Status::SUCCESS;
+			case Status::Success:
+				return Status::Failure;
+			case Status::Failure:
+				return Status::Success;
 			}
 		}
 
 		const std::string toString() const override {
-			return fmt::format(R"(<Invert name="{}">{}</Invert>)", this->getName(), this->child->toString());
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<Invert name="{}">{}</Invert>)", name, this->child->toString());
+			else
+				return fmt::format(R"(<Invert>{}</Invert>)", this->child->toString());
 		}
 	};
 }

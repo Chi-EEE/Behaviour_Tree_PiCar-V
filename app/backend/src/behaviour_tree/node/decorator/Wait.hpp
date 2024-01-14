@@ -19,11 +19,15 @@ namespace behaviour_tree::node::decorator
 		const Status run() override
 		{
 			// TODO:
-			return Status::SUCCESS;
+			return Status::Success;
 		}
 
 		const std::string toString() const override {
-			return fmt::format(R"(<Wait name="{}" ms="{}">{}</Wait>)", this->getName(), this->getMS(), this->child->toString());
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<Wait name="{}" ms="{}">{}</Wait>)", name, this->getMS(), this->child->toString());
+			else
+				return fmt::format(R"(<Wait ms="{}">{}</Wait>)", this->getMS(), this->child->toString());
 		}
 
 		const int& getMS() const {

@@ -22,7 +22,7 @@ namespace behaviour_tree::node::leaf::condition
 		const Status run()
 		{
 			// TODO:
-			return Status::SUCCESS;
+			return Status::Success;
 		}
 
 		const int& getMinAngle() const {
@@ -38,7 +38,11 @@ namespace behaviour_tree::node::leaf::condition
 		}
 
 		const std::string toString() const override {
-			return fmt::format(R"(<Condition name="{}" type="NearbyPoints" min_angle="{}" max_angle="{}" avg_distance="{}"/>)", this->getName(), this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<Condition name="{}" type="NearbyPoints" min_angle="{}" max_angle="{}" avg_distance="{}"/>)", name, this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
+			else
+				return fmt::format(R"(<Condition type="NearbyPoints" min_angle="{}" max_angle="{}" avg_distance="{}"/>)", this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
 		}
 
 	private:

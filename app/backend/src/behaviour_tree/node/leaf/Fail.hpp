@@ -16,11 +16,15 @@ namespace behaviour_tree::node::leaf
 
 		const Status run() override
 		{
-			return Status::FAILURE;
+			return Status::Failure;
 		}
 
 		const std::string toString() const override {
-			return fmt::format(R"(<Fail name="{}"/>)", this->getName());
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<Fail name="{}"/>)", name);
+			else
+				return fmt::format(R"(<Fail/>)");
 		}
 	};
 }

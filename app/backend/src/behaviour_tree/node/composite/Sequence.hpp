@@ -19,12 +19,12 @@ namespace behaviour_tree::node::composite
 			for (auto &child : this->children)
 			{
 				auto status = child->run();
-				if (status == Status::FAILURE)
+				if (status == Status::Failure)
 				{
-					return Status::FAILURE;
+					return Status::Failure;
 				}
 			}
-			return Status::SUCCESS;
+			return Status::Success;
 		}
 
 		const std::string toString() const override {
@@ -33,7 +33,11 @@ namespace behaviour_tree::node::composite
 			{
 				out += child->toString();
 			}
-			return fmt::format(R"(<Sequence name="{}">{}</Sequence>)", this->getName(), out);
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<Sequence name="{}">{}</Sequence>)", name, out);
+			else
+				return fmt::format(R"(<Sequence>{}</Sequence>)", out);
 		}
 	};
 }

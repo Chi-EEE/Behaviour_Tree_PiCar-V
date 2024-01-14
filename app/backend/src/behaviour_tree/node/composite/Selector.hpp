@@ -16,15 +16,15 @@ namespace behaviour_tree::node::composite
 
 		const Status run() override
 		{
-			for (auto &child : this->children)
+			for (auto& child : this->children)
 			{
 				auto status = child->run();
-				if (status == Status::SUCCESS)
+				if (status == Status::Success)
 				{
-					return Status::SUCCESS;
+					return Status::Success;
 				}
 			}
-			return Status::FAILURE;
+			return Status::Failure;
 		}
 
 		const std::string toString() const override {
@@ -33,7 +33,11 @@ namespace behaviour_tree::node::composite
 			{
 				out += child->toString();
 			}
-			return fmt::format(R"(<Selector name="{}">{}</Selector>)", this->getName(), out);
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<Selector name="{}">{}</Selector>)", name, out);
+			else
+				return fmt::format(R"(<Selector>{}</Selector>)", out);
 		}
 	};
 }

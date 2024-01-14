@@ -24,10 +24,14 @@ namespace behaviour_tree
 		}
 
 		const std::string toString() const {
-			return fmt::format(R"(<Root id="{}">{}</Root>)", this->getId(), this->child->toString());
+			const std::string& id = this->getId();
+			if (id != "")
+				return fmt::format(R"(<Root id="{}">{}</Root>)", id, this->child->toString());
+			else
+				return fmt::format(R"(<Root>{}</Root>)", this->child->toString());
 		}
 
-		const std::string &getId() const
+		const std::string& getId() const
 		{
 			return this->id;
 		}

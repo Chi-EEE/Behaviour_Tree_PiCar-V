@@ -17,13 +17,17 @@ namespace behaviour_tree::node::leaf
 		const Status run() override
 		{
 			// TODO
-			return Status::SUCCESS;
+			return Status::Success;
 		}
 
 		const std::string &getId() const { return this->id; }
 
 		const std::string toString() const override {
-			return fmt::format(R"(<ToRoot name="{}" id="{}"/>)", this->getName(), this->getId());
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<ToRoot name="{}" id="{}"/>)", name, this->getId());
+			else
+				return fmt::format(R"(<ToRoot id="{}"/>)", this->getId());
 		}
 
 	private:

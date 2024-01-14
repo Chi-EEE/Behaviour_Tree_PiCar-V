@@ -7,9 +7,9 @@ namespace behaviour_tree::node
 {
     enum class Status
     {
-        SUCCESS,
-        FAILURE,
-        RUNNING
+        Success,
+        Failure,
+        Running
     };
 }
 

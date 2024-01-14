@@ -23,12 +23,12 @@ namespace behaviour_tree::node::decorator
 				auto status = this->child->run();
 				switch (status)
 				{
-				case Status::SUCCESS:
+				case Status::Success:
 					continue;
-				case Status::FAILURE:
+				case Status::Failure:
 					if (this->break_on_fail)
 					{
-						return Status::FAILURE;
+						return Status::Failure;
 					}
 					continue;
 				}
@@ -36,7 +36,11 @@ namespace behaviour_tree::node::decorator
 		}
 
 		const std::string toString() const override {
-			return fmt::format(R"(<Repeat name="{}" count="{}" break_on_fail="{}">{}</Repeat>)", this->getName(), this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<Repeat name="{}" count="{}" break_on_fail="{}">{}</Repeat>)", name, this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
+			else
+				return fmt::format(R"(<Repeat count="{}" break_on_fail="{}">{}</Repeat>)", this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
 		}
 
 		const int& getCount() const {

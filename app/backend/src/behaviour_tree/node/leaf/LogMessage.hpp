@@ -19,7 +19,7 @@ namespace behaviour_tree::node::leaf
         const Status run() override
         {
             // std::cout << text << std::endl;
-            return Status::SUCCESS;
+            return Status::Success;
         }
 
         const std::string& getText() const {

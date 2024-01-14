@@ -21,7 +21,7 @@ namespace behaviour_tree::node
 
 		virtual const std::string toString() const = 0;
 
-		const std::string getName() const
+		const std::string& getName() const
 		{
 			return name;
 		}

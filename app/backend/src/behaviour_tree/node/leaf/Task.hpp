@@ -32,7 +32,7 @@ namespace behaviour_tree::node::leaf
                 }*/
             }
 
-            return Status::SUCCESS;
+            return Status::Success;
         }
 
         const std::string toString() const override {
@@ -41,7 +41,11 @@ namespace behaviour_tree::node::leaf
             {
                 out += action->toString();
             }
-            return fmt::format(R"(<Task name="{}">{}</Task>)", this->getName(), out);
+            const std::string& name = this->getName();
+            if (name != "")
+                return fmt::format(R"(<Task name="{}">{}</Task>)", name, out);
+            else
+                return fmt::format(R"(<Task>{}</Task>)", out);
         }
 
         std::vector<std::unique_ptr<Action>> actions;
