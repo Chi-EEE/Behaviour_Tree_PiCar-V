@@ -12,7 +12,7 @@ namespace behaviour_tree::node::leaf
 	class Condition : public Leaf
 	{
 	public:
-		Condition(const std::string& name) : Leaf(std::move(name)) {}
+		Condition(const std::string& name) : Leaf(name) {}
 
 		const LeafType type() const override { return LeafType::Condition; }
 

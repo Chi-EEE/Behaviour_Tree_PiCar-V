@@ -10,7 +10,7 @@ namespace behaviour_tree::node::leaf
     class Succeed : public Leaf
     {
     public:
-        Succeed(const std::string& name) : Leaf(std::move(name)) {}
+        Succeed(const std::string& name) : Leaf(name) {}
 
         const LeafType type() const override { return LeafType::Succeed; }
 
