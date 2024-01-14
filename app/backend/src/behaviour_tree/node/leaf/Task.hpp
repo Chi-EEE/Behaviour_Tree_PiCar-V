@@ -16,7 +16,7 @@ namespace behaviour_tree::node::leaf
     class Task : public Leaf
     {
     public:
-        Task(std::string name, std::vector<std::unique_ptr<Action>> actions) : Leaf(name), actions(std::move(actions))
+        Task(const std::string& name, std::vector<std::unique_ptr<Action>> actions) : Leaf(name), actions(std::move(actions))
         {
         }
 

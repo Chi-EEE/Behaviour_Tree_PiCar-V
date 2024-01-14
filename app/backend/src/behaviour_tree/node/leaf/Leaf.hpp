@@ -12,7 +12,7 @@ namespace behaviour_tree::node::leaf
     class Leaf : public Node
     {
     public:
-        Leaf(std::string name) : Node(name)
+        Leaf(const std::string& name) : Node(name)
         {
         }
 

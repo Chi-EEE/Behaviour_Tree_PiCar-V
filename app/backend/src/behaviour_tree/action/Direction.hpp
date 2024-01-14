@@ -12,7 +12,7 @@ namespace behaviour_tree::action
     class Direction : public Action
     {
     public:
-        Direction(DirectionType direction_type) : direction_type(direction_type)
+        Direction(const DirectionType &direction_type) : direction_type(direction_type)
         {
         }
 
@@ -22,7 +22,7 @@ namespace behaviour_tree::action
         }
 
     private:
-        DirectionType direction_type;
+        const DirectionType direction_type;
     };
 }
 

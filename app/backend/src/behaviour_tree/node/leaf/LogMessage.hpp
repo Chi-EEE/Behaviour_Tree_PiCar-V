@@ -10,7 +10,7 @@ namespace behaviour_tree::node::leaf
     class LogMessage : public Leaf
     {
     public:
-        LogMessage(std::string name, std::string text) : Leaf(name), text(text)
+        LogMessage(const std::string& name, const std::string& text) : Leaf(name), text(text)
         {
         }
 
@@ -23,7 +23,7 @@ namespace behaviour_tree::node::leaf
         }
 
     private:
-        std::string text;
+        const std::string text;
     };
 }
 

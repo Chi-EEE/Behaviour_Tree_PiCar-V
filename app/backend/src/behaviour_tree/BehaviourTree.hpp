@@ -31,6 +31,9 @@ XML format inspired by: https://github.com/telcy/modular-behavior-tree & https:/
 #include "node/leaf/LogMessage.hpp"
 #include "node/leaf/ToRoot.hpp"
 
+#include "node/leaf/Condition.hpp"
+#include "node/leaf/condition/NearbyPoints.hpp"
+
 #include "action/Action.hpp"
 #include "action/Direction.hpp"
 #include "action/Turn.hpp"
@@ -40,6 +43,7 @@ using namespace behaviour_tree::node;
 using namespace behaviour_tree::node::composite;
 using namespace behaviour_tree::node::decorator;
 using namespace behaviour_tree::node::leaf;
+using namespace behaviour_tree::node::leaf::condition;
 using namespace behaviour_tree::action;
 
 namespace behaviour_tree
@@ -86,9 +90,12 @@ namespace behaviour_tree
 			int child_count = 0;
 			for (pugi::xml_node child = doc.first_child(); child; child = doc.next_sibling())
 			{
-				if (std::string(child.name()) != "Root")
+				const std::string& child_name = child.name();
+				if (child_name == "") // Skip empty nodes
+					continue;
+				if (child_name != "Root")
 				{
-					return tl::unexpected("Invalid node: " + std::string(child.name()) + "");
+					return tl::unexpected("Invalid node: " + child_name + "");
 				}
 				++child_count;
 			}
@@ -118,7 +125,7 @@ namespace behaviour_tree
 				++child_count;
 			if (child_count > 1)
 			{
-				return tl::unexpected("Root node must have only one child");
+				return tl::unexpected("Root node " + std::string(node.attribute("id").as_string()) + " must have only one child");
 			}
 			auto child = node.first_child();
 			auto maybe_child_node = parseChild(child);
@@ -162,6 +169,10 @@ namespace behaviour_tree
 			}
 #pragma endregion
 #pragma region Leaf Node
+			case hash("Condition"):
+			{
+				return parseCondition(node);
+			}
 			case hash("Task"):
 			{
 				return parseTask(node);
@@ -201,7 +212,7 @@ namespace behaviour_tree
 			auto child = node.first_child();
 			if (!child)
 			{
-				return tl::unexpected("Decorator node must have one child");
+				return tl::unexpected("Decorator node " + std::string(node.name()) + " must have a child");
 			}
 			auto maybe_child_node = parseChild(child);
 			if (!maybe_child_node.has_value())
@@ -251,7 +262,7 @@ namespace behaviour_tree
 			}
 			if (children.size() <= 0)
 			{
-				return tl::unexpected("Composite node must have at least one child");
+				return tl::unexpected("Composite node " + std::string(node.name()) + " must have at least one child");
 			}
 			switch (composite_type)
 			{
@@ -259,6 +270,22 @@ namespace behaviour_tree
 				return std::make_unique<Sequence>(Sequence(node.attribute("name").as_string(), std::move(children)));
 			case CompositeType::Selector:
 				return std::make_unique<Selector>(Selector(node.attribute("name").as_string(), std::move(children)));
+			}
+		}
+
+		static tl::expected<std::unique_ptr<Condition>, std::string> parseCondition(pugi::xml_node& node)
+		{
+			switch (hash(node.attribute("type").as_string()))
+			{
+			case hash("NearbyPoints"):
+				return std::make_unique<NearbyPoints>(
+					NearbyPoints(
+						node.attribute("name").as_string(),
+						node.attribute("min_angle").as_int(),
+						node.attribute("max_angle").as_int(),
+						node.attribute("avg_distance").as_int()
+					)
+				);
 			}
 		}
 

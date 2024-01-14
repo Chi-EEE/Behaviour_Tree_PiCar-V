@@ -13,19 +13,19 @@ namespace behaviour_tree::node
 	class Node
 	{
 	public:
-		Node(std::string name) : name(name)
+		Node(const std::string& name) : name(name)
 		{
 		}
 
 		virtual const Status run() = 0;
 
-		std::string getName() const
+		const std::string getName() const
 		{
 			return name;
 		}
 
 	protected:
-		std::string name;
+		const std::string name;
 	};
 }
 

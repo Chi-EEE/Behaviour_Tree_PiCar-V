@@ -10,7 +10,7 @@ namespace behaviour_tree::node::composite
 	class Sequence : public Composite
 	{
 	public:
-		Sequence(std::string name, std::vector<std::unique_ptr<Node>> children) : Composite(name, std::move(children)) {}
+		Sequence(const std::string &name, std::vector<std::unique_ptr<Node>> children) : Composite(name, std::move(children)) {}
 
 		const CompositeType type() const override { return CompositeType::Sequence; }
 

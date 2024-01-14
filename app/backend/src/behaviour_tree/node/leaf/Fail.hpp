@@ -10,7 +10,7 @@ namespace behaviour_tree::node::leaf
 	class Fail : public Leaf
 	{
 	public:
-		Fail(std::string name) : Leaf(std::move(name)) {}
+		Fail(const std::string& name) : Leaf(std::move(name)) {}
 
 		const LeafType type() const override { return LeafType::Fail; }
 

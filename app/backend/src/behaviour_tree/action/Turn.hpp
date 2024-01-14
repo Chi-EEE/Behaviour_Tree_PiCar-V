@@ -10,7 +10,7 @@ namespace behaviour_tree::action
     class Turn : public Action
     {
     public:
-        Turn(int angle) : angle(angle)
+        Turn(const int &angle) : angle(angle)
         {
         }
 
@@ -20,7 +20,7 @@ namespace behaviour_tree::action
         }
 
     private:
-        int angle;
+        const int angle;
     };
 }
 

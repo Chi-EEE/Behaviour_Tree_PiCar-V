@@ -10,7 +10,7 @@ namespace behaviour_tree::action
     class Move : public Action
     {
     public:
-        Move(int ms) : ms(ms)
+        Move(const int &ms) : ms(ms)
         {
         }
 
@@ -20,7 +20,7 @@ namespace behaviour_tree::action
         }
 
     private:
-        int ms;
+        const int ms;
     };
 }
 
