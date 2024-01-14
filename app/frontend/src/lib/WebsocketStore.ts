@@ -1,4 +1,4 @@
-import { readable, writable, derived, type Readable, type Writable } from "svelte/store";
+import { writable, derived, type Readable, type Writable } from "svelte/store";
 
 export let websocket_url_store: Writable<string | undefined> = writable();
 

@@ -3,7 +3,6 @@
     import { get } from "svelte/store";
 
     import { websocket_store } from "./WebsocketStore";
-    import DrawButton from "./DrawButton.svelte";
 
     const DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH = 200; // 30 cm
 
@@ -97,4 +96,3 @@
     style="border-style:solid"
     bind:this={canvas}
 />
-<DrawButton {canvas} {zoom} />
