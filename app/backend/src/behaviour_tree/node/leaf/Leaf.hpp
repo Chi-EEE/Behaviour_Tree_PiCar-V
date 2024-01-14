@@ -17,7 +17,6 @@ namespace behaviour_tree::node::leaf
         }
 
         virtual const LeafType type() const = 0;
-
     };
 }
 

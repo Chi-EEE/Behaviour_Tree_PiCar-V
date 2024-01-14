@@ -7,18 +7,20 @@
 
 namespace behaviour_tree::node::leaf
 {
-	class ToRoot : public Leaf {
+	class ToRoot : public Leaf
+	{
 	public:
-		ToRoot(std::string name, const std::string& id) : Leaf(name), id(id) {}
+		ToRoot(std::string name, const std::string &id) : Leaf(name), id(id) {}
 
 		const LeafType type() const override { return LeafType::ToRoot; }
 
-		const Status run() override {
+		const Status run() override
+		{
 			// TODO
 			return Status::SUCCESS;
 		}
 
-		const std::string& getId() const { return this->id; }
+		const std::string &getId() const { return this->id; }
 
 	private:
 		std::string id;

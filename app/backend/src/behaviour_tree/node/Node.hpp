@@ -19,6 +19,11 @@ namespace behaviour_tree::node
 
 		virtual const Status run() = 0;
 
+		std::string getName() const
+		{
+			return name;
+		}
+
 	protected:
 		std::string name;
 	};

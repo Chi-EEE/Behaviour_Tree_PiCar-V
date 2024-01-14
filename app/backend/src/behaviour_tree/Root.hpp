@@ -14,20 +14,23 @@ namespace behaviour_tree
 	class Root
 	{
 	public:
-		Root(std::string id, std::unique_ptr<Node> child) : id(id), child(std::move(child)) {
+		Root(std::string id, std::shared_ptr<Node> child) : id(id), child(std::move(child))
+		{
 		}
 
-		const Status run() {
+		const Status run()
+		{
 			return this->child->run();
 		}
 
-		const std::string& getId() const {
+		const std::string &getId() const
+		{
 			return this->id;
 		}
 
 	private:
 		std::string id;
-		std::unique_ptr<Node> child;
+		std::shared_ptr<Node> child;
 	};
 }
 

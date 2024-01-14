@@ -11,9 +11,7 @@ class Context
 public:
     Context()
     {
-
     }
-
 };
 
 #endif

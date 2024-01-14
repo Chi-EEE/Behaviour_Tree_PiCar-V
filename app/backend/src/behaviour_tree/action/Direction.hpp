@@ -15,7 +15,7 @@ namespace behaviour_tree::action
         Direction(DirectionType direction_type) : direction_type(direction_type)
         {
         }
-        
+
         ActionType type() const override
         {
             return ActionType::Direction;

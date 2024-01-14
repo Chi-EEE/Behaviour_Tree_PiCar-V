@@ -22,15 +22,17 @@ namespace behaviour_tree::node::leaf
 
         const LeafType type() const override { return LeafType::Task; }
 
-        const Status run() override {
-			for (auto& action : actions) {
+        const Status run() override
+        {
+            for (auto &action : actions)
+            {
                 // TODO
-				/*if (action->run() == Status::FAILURE) {
-					return Status::FAILURE;
-				}*/
-			}
+                /*if (action->run() == Status::FAILURE) {
+                    return Status::FAILURE;
+                }*/
+            }
 
-			return Status::SUCCESS;
+            return Status::SUCCESS;
         }
 
         std::vector<std::unique_ptr<Action>> actions;

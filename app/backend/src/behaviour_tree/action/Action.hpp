@@ -7,7 +7,8 @@
 
 namespace behaviour_tree::action
 {
-	class Action {
+	class Action
+	{
 	public:
 		virtual ActionType type() const = 0;
 	};
