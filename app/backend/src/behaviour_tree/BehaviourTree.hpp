@@ -7,6 +7,7 @@
 XML format inspired by: https://github.com/telcy/modular-behavior-tree & https://github.com/Defaultio/BehaviorTree3
 */
 
+#include <filesystem>
 #include <string>
 
 #include <tl/expected.hpp>
@@ -81,6 +82,10 @@ namespace behaviour_tree
 
 		static tl::expected<std::unique_ptr<BehaviourTree>, std::string> parseFileXML(const std::string& file_path)
 		{
+			if (std::filesystem::exists(file_path) == false)
+			{
+				return tl::unexpected("File [" + file_path + "] does not exist");
+			}
 			pugi::xml_document doc;
 			pugi::xml_parse_result result = doc.load_file(file_path.c_str());
 			if (!result)
