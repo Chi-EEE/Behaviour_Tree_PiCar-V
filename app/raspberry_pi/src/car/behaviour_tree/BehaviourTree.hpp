@@ -100,6 +100,18 @@ namespace behaviour_tree
 				BehaviourTree(std::move(roots))
 			);
 		}
+
+		void run()
+		{
+			for (auto& root : this->roots)
+			{
+				if (root->getId() == "Main")
+				{
+					root->run();
+					break;
+				}
+			}
+		}
 		
 		const std::string toString() const {
 			std::string out;

@@ -14,6 +14,12 @@ namespace behaviour_tree::node::leaf
 
 		const LeafType type() const override { return LeafType::ToRoot; }
 
+		const Status run() override
+		{
+			// TODO
+			return Status::Success;
+		}
+
 		const std::string &getId() const { return this->id; }
 
 		const std::string toString() const override {

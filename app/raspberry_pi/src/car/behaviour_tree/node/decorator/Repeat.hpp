@@ -16,6 +16,25 @@ namespace behaviour_tree::node::decorator
 
 		const DecoratorType type() const override { return DecoratorType::Repeat; }
 
+		const Status run() override
+		{
+			for (int i = 0; i < this->count; i++)
+			{
+				auto status = this->child->run();
+				switch (status)
+				{
+				case Status::Success:
+					continue;
+				case Status::Failure:
+					if (this->break_on_fail)
+					{
+						return Status::Failure;
+					}
+					continue;
+				}
+			}
+		}
+
 		const std::string toString() const override {
 			const std::string& name = this->getName();
 			if (name != "")

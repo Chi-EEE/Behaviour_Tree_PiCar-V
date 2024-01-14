@@ -16,6 +16,12 @@ namespace behaviour_tree::node::decorator
 
 		const DecoratorType type() const override { return DecoratorType::Repeat; }
 
+		const Status run() override
+		{
+			// TODO:
+			return Status::Success;
+		}
+
 		const std::string toString() const override {
 			const std::string& name = this->getName();
 			if (name != "")

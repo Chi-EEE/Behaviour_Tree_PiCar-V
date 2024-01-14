@@ -18,6 +18,11 @@ namespace behaviour_tree
 		{
 		}
 
+		const Status run()
+		{
+			return this->child->run();
+		}
+
 		const std::string toString() const {
 			const std::string& id = this->getId();
 			if (id != "")

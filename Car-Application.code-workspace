@@ -11,9 +11,6 @@
 		},
 		{
 			"path": "app/raspberry_pi"
-		},
-		{
-			"path": "old/legacy"
 		}
 	],
 	"settings": {

@@ -19,12 +19,10 @@ namespace behaviour_tree::node::leaf::condition
 
 		const ConditionType condition_type() const override { return ConditionType::NearbyPoints; }
 
-		const std::string toString() const override {
-			const std::string& name = this->getName();
-			if (name != "")
-				return fmt::format(R"(<Condition name="{}" type="NearbyPoints" min_angle="{}" max_angle="{}" avg_distance="{}"/>)", name, this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
-			else
-				return fmt::format(R"(<Condition type="NearbyPoints" min_angle="{}" max_angle="{}" avg_distance="{}"/>)", this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
+		const Status run()
+		{
+			// TODO:
+			return Status::Success;
 		}
 
 		const int& getMinAngle() const {
@@ -37,6 +35,14 @@ namespace behaviour_tree::node::leaf::condition
 
 		const int& getAvgDistance() const {
 			return this->avg_distance;
+		}
+
+		const std::string toString() const override {
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<Condition name="{}" type="NearbyPoints" min_angle="{}" max_angle="{}" avg_distance="{}"/>)", name, this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
+			else
+				return fmt::format(R"(<Condition type="NearbyPoints" min_angle="{}" max_angle="{}" avg_distance="{}"/>)", this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
 		}
 
 	private:

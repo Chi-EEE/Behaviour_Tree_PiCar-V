@@ -14,6 +14,19 @@ namespace behaviour_tree::node::composite
 
 		const CompositeType type() const override { return CompositeType::Selector; }
 
+		const Status run() override
+		{
+			for (auto& child : this->children)
+			{
+				auto status = child->run();
+				if (status == Status::Success)
+				{
+					return Status::Success;
+				}
+			}
+			return Status::Failure;
+		}
+
 		const std::string toString() const override {
 			std::string out;
 			for (auto& child : this->children)

@@ -14,6 +14,11 @@ namespace behaviour_tree::node::leaf
 
 		const LeafType type() const override { return LeafType::Succeed; }
 
+		const Status run() override
+		{
+			return Status::Success;
+		}
+
 		const std::string toString() const override {
 			const std::string& name = this->getName();
 			if (name != "")
