@@ -201,7 +201,7 @@ namespace behaviour_tree
 #pragma endregion
 			default:
 			{
-				return tl::unexpected(fmt::format("Invalid node | {}:[{}]", node_name, name));
+				return tl::unexpected(fmt::format("Invalid node | {}:[{}]", node_name, name, index));
 			}
 			}
 		}
