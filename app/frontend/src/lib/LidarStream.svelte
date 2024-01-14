@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { get } from "svelte/store";
 
-    import { websocket_store } from "./WebsocketStore";
+    export let room_name: string;
+    export let websocket: WebSocket;
 
     const DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH = 200; // 30 cm
 
@@ -18,9 +18,7 @@
 
     let points: Array<ScanPoint> = [];
 
-    const websocket = get(websocket_store);
-
-    websocket!!.addEventListener("message", (event: MessageEvent<any>) => {
+    websocket.addEventListener("message", (event: MessageEvent<any>) => {
         const json_data = JSON.parse(event.data);
         if (json_data.type == "car") {
             points.length = 0;
@@ -91,8 +89,8 @@
 
 <canvas
     id="canvas"
+    class="border-2 border-black"
     width="800"
     height="600"
-    style="border-style:solid"
     bind:this={canvas}
 />
