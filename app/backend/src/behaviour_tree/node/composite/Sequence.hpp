@@ -26,6 +26,15 @@ namespace behaviour_tree::node::composite
 			}
 			return Status::SUCCESS;
 		}
+
+		const std::string toString() const override {
+			std::string out;
+			for (auto& child : this->children)
+			{
+				out += child->toString();
+			}
+			return fmt::format(R"(<Sequence name="{}">{}</Sequence>)", this->getName(), out);
+		}
 	};
 }
 

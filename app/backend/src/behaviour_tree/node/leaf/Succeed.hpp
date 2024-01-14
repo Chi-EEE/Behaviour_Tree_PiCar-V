@@ -7,18 +7,22 @@
 
 namespace behaviour_tree::node::leaf
 {
-    class Succeed : public Leaf
-    {
-    public:
-        Succeed(const std::string& name) : Leaf(name) {}
+	class Succeed : public Leaf
+	{
+	public:
+		Succeed(const std::string& name) : Leaf(name) {}
 
-        const LeafType type() const override { return LeafType::Succeed; }
+		const LeafType type() const override { return LeafType::Succeed; }
 
-        const Status run() override
-        {
-            return Status::SUCCESS;
-        }
-    };
+		const Status run() override
+		{
+			return Status::SUCCESS;
+		}
+
+		const std::string toString() const override {
+			return fmt::format(R"(<Succeed name="{}"/>)", this->getName());
+		}
+	};
 }
 
 #endif

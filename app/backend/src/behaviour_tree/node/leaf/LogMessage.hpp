@@ -22,6 +22,14 @@ namespace behaviour_tree::node::leaf
             return Status::SUCCESS;
         }
 
+        const std::string& getText() const {
+            return this->text;
+        }
+
+        const std::string toString() const override {
+            return fmt::format(R"(<LogMessage name="{}" text="{}"/>)", this->getName(), this->getText());
+        }
+
     private:
         const std::string text;
     };

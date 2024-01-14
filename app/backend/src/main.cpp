@@ -20,6 +20,8 @@ int main()
 	auto maybe_behaviour_tree = behaviour_tree::BehaviourTree::parseFileXML("out/behaviourtree.xml");
 	if (maybe_behaviour_tree) {
 		std::cout << "Behaviour tree parsed successfully\n";
+		auto &behaviour_tree = maybe_behaviour_tree.value();
+		std::cout << behaviour_tree->toString();
 	}
 	else {
 		std::cout << "Behaviour tree parsing failed: " << maybe_behaviour_tree.error() << "\n";

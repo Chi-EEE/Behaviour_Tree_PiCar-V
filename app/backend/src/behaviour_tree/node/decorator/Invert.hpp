@@ -25,6 +25,10 @@ namespace behaviour_tree::node::decorator
 				return Status::SUCCESS;
 			}
 		}
+
+		const std::string toString() const override {
+			return fmt::format(R"(<Invert name="{}">{}</Invert>)", this->getName(), this->child->toString());
+		}
 	};
 }
 

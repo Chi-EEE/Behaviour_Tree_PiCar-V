@@ -70,20 +70,6 @@ namespace behaviour_tree
 		{
 		}
 
-		std::vector<std::unique_ptr<Root>> roots;
-
-		void run()
-		{
-			for (auto& root : this->roots)
-			{
-				if (root->getId() == "Main")
-				{
-					root->run();
-					break;
-				}
-			}
-		}
-
 		static tl::expected<std::unique_ptr<BehaviourTree>, std::string> parseFileXML(const std::string& file_path)
 		{
 			if (std::filesystem::exists(file_path) == false)
@@ -115,6 +101,31 @@ namespace behaviour_tree
 			);
 		}
 
+		void run()
+		{
+			for (auto& root : this->roots)
+			{
+				if (root->getId() == "Main")
+				{
+					root->run();
+					break;
+				}
+			}
+		}
+		
+		const std::string toString() const {
+			std::string out;
+			for (auto& root : this->roots)
+			{
+				out += root->toString();
+			}
+			return out;
+		}
+
+	private:
+		std::vector<std::unique_ptr<Root>> roots;
+
+	private:
 		static tl::expected<std::unique_ptr<Root>, std::string> parseRoot(pugi::xml_node& node, const int& index)
 		{
 			int child_count = 0;

@@ -19,6 +19,14 @@ namespace behaviour_tree::action
             return ActionType::Turn;
         }
 
+        const std::string toString() const override {
+            return fmt::format(R"(<Turn angle="{}"/>)", this->getAngle());
+        }
+
+        const int& getAngle() const {
+            return this->angle;
+        }
+
     private:
         const int angle;
     };

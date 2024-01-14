@@ -11,6 +11,8 @@ namespace behaviour_tree::action
 	{
 	public:
 		virtual ActionType type() const = 0;
+
+		virtual const std::string toString() const = 0;
 	};
 }
 

@@ -35,6 +35,18 @@ namespace behaviour_tree::node::decorator
 			}
 		}
 
+		const std::string toString() const override {
+			return fmt::format(R"(<Repeat name="{}" count="{}" break_on_fail="{}">{}</Repeat>)", this->getName(), this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
+		}
+
+		const int& getCount() const {
+			return this->count;
+		}
+
+		const bool& getBreakOnFail() const {
+			return this->break_on_fail;
+		}
+
 	private:
 		const int count;
 		const bool break_on_fail;

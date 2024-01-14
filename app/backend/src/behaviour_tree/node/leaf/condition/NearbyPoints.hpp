@@ -25,6 +25,22 @@ namespace behaviour_tree::node::leaf::condition
 			return Status::SUCCESS;
 		}
 
+		const int& getMinAngle() const {
+			return this->min_angle;
+		}
+
+		const int& getMaxAngle() const {
+			return this->max_angle;
+		}
+
+		const int& getAvgDistance() const {
+			return this->avg_distance;
+		}
+
+		const std::string toString() const override {
+			return fmt::format(R"(<Condition name="{}" type="NearbyPoints" min_angle="{}" max_angle="{}" avg_distance="{}"/>)", this->getName(), this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
+		}
+
 	private:
 		const int min_angle;
 		const int max_angle;

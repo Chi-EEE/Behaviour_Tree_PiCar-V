@@ -24,7 +24,7 @@ namespace behaviour_tree::node::leaf
 
         const Status run() override
         {
-            for (auto &action : actions)
+            for (auto &action : this->actions)
             {
                 // TODO
                 /*if (action->run() == Status::FAILURE) {
@@ -33,6 +33,15 @@ namespace behaviour_tree::node::leaf
             }
 
             return Status::SUCCESS;
+        }
+
+        const std::string toString() const override {
+            std::string out;
+            for (auto& action : this->actions)
+            {
+                out += action->toString();
+            }
+            return fmt::format(R"(<Task name="{}">{}</Task>)", this->getName(), out);
         }
 
         std::vector<std::unique_ptr<Action>> actions;

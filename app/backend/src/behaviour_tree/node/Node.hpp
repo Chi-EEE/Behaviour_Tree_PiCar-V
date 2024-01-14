@@ -19,6 +19,8 @@ namespace behaviour_tree::node
 
 		virtual const Status run() = 0;
 
+		virtual const std::string toString() const = 0;
+
 		const std::string getName() const
 		{
 			return name;

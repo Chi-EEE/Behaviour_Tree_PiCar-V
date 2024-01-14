@@ -18,6 +18,10 @@ namespace behaviour_tree::node::leaf
 		{
 			return Status::FAILURE;
 		}
+
+		const std::string toString() const override {
+			return fmt::format(R"(<Fail name="{}"/>)", this->getName());
+		}
 	};
 }
 

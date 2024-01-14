@@ -22,6 +22,14 @@ namespace behaviour_tree::node::decorator
 			return Status::SUCCESS;
 		}
 
+		const std::string toString() const override {
+			return fmt::format(R"(<Wait name="{}" ms="{}">{}</Wait>)", this->getName(), this->getMS(), this->child->toString());
+		}
+
+		const int& getMS() const {
+			return this->ms;
+		}
+
 	private:
 		const int ms;
 	};

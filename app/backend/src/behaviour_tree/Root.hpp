@@ -23,6 +23,10 @@ namespace behaviour_tree
 			return this->child->run();
 		}
 
+		const std::string toString() const {
+			return fmt::format(R"(<Root id="{}">{}</Root>)", this->getId(), this->child->toString());
+		}
+
 		const std::string &getId() const
 		{
 			return this->id;

@@ -22,6 +22,10 @@ namespace behaviour_tree::node::leaf
 
 		const std::string &getId() const { return this->id; }
 
+		const std::string toString() const override {
+			return fmt::format(R"(<ToRoot name="{}" id="{}"/>)", this->getName(), this->getId());
+		}
+
 	private:
 		const std::string id;
 	};

@@ -19,6 +19,14 @@ namespace behaviour_tree::action
             return ActionType::Move;
         }
 
+        const std::string toString() const override {
+            return fmt::format(R"(<Move ms="{}"/>)", this->getMS());
+        }
+
+        const int& getMS() const {
+            return this->ms;
+        }
+
     private:
         const int ms;
     };
