@@ -99,7 +99,7 @@ namespace behaviour_tree
 			std::vector<std::unique_ptr<Root>> roots;
 			for (pugi::xml_node& node = doc.child("Root"); node; node = node.next_sibling("Root"))
 			{
-				auto maybe_root = parseRoot(node, roots.size());
+				auto maybe_root = parseRoot(node, STARTING_INDEX + roots.size());
 				if (!maybe_root.has_value())
 				{
 					return tl::unexpected(maybe_root.error());
@@ -108,7 +108,7 @@ namespace behaviour_tree
 			}
 			if (roots.size() <= 0)
 			{
-				return tl::unexpected("No root node found");
+				return tl::unexpected(R"(No "Root" node found)");
 			}
 			return std::make_unique<BehaviourTree>(
 				BehaviourTree(std::move(roots))
@@ -123,13 +123,13 @@ namespace behaviour_tree
 			const std::string id = node.attribute("id").as_string();
 			if (child_count > 1)
 			{
-				return tl::unexpected(fmt::format(R"(Root node must have only one child | Root:["{}",{}])", id, STARTING_INDEX + index));
+				return tl::unexpected(fmt::format(R"(Root node must have only one child | Root:["{}",{}])", id, index));
 			}
 			pugi::xml_node& child = node.first_child();
 			auto maybe_child_node = parseChild(child, STARTING_INDEX);
 			if (!maybe_child_node.has_value())
 			{
-				return tl::unexpected(fmt::format(R"({}<-Root:["{}",{}])", maybe_child_node.error(), id, STARTING_INDEX + index));
+				return tl::unexpected(fmt::format(R"({}<-Root:["{}",{}])", maybe_child_node.error(), id, index));
 			}
 			return std::make_unique<Root>(
 				Root(id, std::move(maybe_child_node.value()))
