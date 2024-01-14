@@ -10,7 +10,7 @@ namespace behaviour_tree::node::decorator
 	class Repeat : public Decorator
 	{
 	public:
-		Repeat(std::string name, std::shared_ptr<Node> child, int count, bool break_on_fail) : Decorator(name, std::move(child)), count(count), break_on_fail(break_on_fail)
+		Repeat(std::string name, std::unique_ptr<Node> child, int count, bool break_on_fail) : Decorator(name, std::move(child)), count(count), break_on_fail(break_on_fail)
 		{
 		}
 

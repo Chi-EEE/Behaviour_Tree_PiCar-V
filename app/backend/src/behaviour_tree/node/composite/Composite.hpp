@@ -13,13 +13,13 @@ namespace behaviour_tree::node::composite
 	class Composite : public Node
 	{
 	public:
-		Composite(std::string name, std::vector<std::shared_ptr<Node>> children) : Node(name), children(children)
+		Composite(std::string name, std::vector<std::unique_ptr<Node>> children) : Node(name), children(std::move(children))
 		{
 		}
 		virtual const CompositeType type() const = 0;
 
 	protected:
-		std::vector<std::shared_ptr<Node>> children;
+		std::vector<std::unique_ptr<Node>> children;
 	};
 }
 

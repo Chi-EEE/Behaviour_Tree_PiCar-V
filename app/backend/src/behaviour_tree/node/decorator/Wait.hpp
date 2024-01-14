@@ -10,7 +10,7 @@ namespace behaviour_tree::node::decorator
 	class Wait : public Decorator
 	{
 	public:
-		Wait(std::string name, std::shared_ptr<Node> child, int ms) : Decorator(name, std::move(child)), ms(ms)
+		Wait(std::string name, std::unique_ptr<Node> child, int ms) : Decorator(name, std::move(child)), ms(ms)
 		{
 		}
 
