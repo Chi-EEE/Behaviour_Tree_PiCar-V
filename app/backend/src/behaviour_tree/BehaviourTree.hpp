@@ -12,6 +12,7 @@ XML format inspired by: https://github.com/telcy/modular-behavior-tree & https:/
 
 #include <tl/expected.hpp>
 #include <pugixml.hpp>
+#include <fmt/format.h>
 
 #include "Root.hpp"
 #include "node/Node.hpp"
@@ -49,6 +50,8 @@ using namespace behaviour_tree::action;
 
 namespace behaviour_tree
 {
+	static constexpr int STARTING_INDEX = 1;
+
 	// https://stackoverflow.com/a/46711735
 	static constexpr uint32_t hash(const std::string_view s) noexcept
 	{
@@ -93,59 +96,49 @@ namespace behaviour_tree
 			{
 				return tl::unexpected("XML [" + file_path + "] parsed with errors");
 			}
-			int child_count = 0;
-			for (pugi::xml_node& child = doc.first_child(); child; child = doc.next_sibling())
-			{
-				const std::string& child_name = child.name();
-				if (child_name == "") // Skip empty nodes
-					continue;
-				if (child_name != "Root")
-				{
-					return tl::unexpected("Invalid node: " + child_name + "");
-				}
-				++child_count;
-			}
-			if (child_count <= 0)
-			{
-				return tl::unexpected("No root node found");
-			}
 			std::vector<std::unique_ptr<Root>> roots;
 			for (pugi::xml_node& node = doc.child("Root"); node; node = node.next_sibling("Root"))
 			{
-				auto maybe_root = parseRoot(node);
+				auto maybe_root = parseRoot(node, roots.size());
 				if (!maybe_root.has_value())
 				{
 					return tl::unexpected(maybe_root.error());
 				}
 				roots.push_back(std::move(maybe_root.value()));
 			}
+			if (roots.size() <= 0)
+			{
+				return tl::unexpected("No root node found");
+			}
 			return std::make_unique<BehaviourTree>(
 				BehaviourTree(std::move(roots))
 			);
 		}
 
-		static tl::expected<std::unique_ptr<Root>, std::string> parseRoot(pugi::xml_node& node)
+		static tl::expected<std::unique_ptr<Root>, std::string> parseRoot(pugi::xml_node& node, const int& index)
 		{
 			int child_count = 0;
 			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
 				++child_count;
+			const std::string id = node.attribute("id").as_string();
 			if (child_count > 1)
 			{
-				return tl::unexpected("Root node " + std::string(node.attribute("id").as_string()) + " must have only one child");
+				return tl::unexpected(fmt::format(R"(Root node must have only one child | Root:["{}",{}])", id, STARTING_INDEX + index));
 			}
 			pugi::xml_node& child = node.first_child();
-			auto maybe_child_node = parseChild(child);
+			auto maybe_child_node = parseChild(child, STARTING_INDEX);
 			if (!maybe_child_node.has_value())
 			{
-				return tl::unexpected(maybe_child_node.error());
+				return tl::unexpected(fmt::format(R"({}<-Root:["{}",{}])", maybe_child_node.error(), id, STARTING_INDEX + index));
 			}
 			return std::make_unique<Root>(
-				Root(node.attribute("id").as_string(), std::move(maybe_child_node.value()))
+				Root(id, std::move(maybe_child_node.value()))
 			);
 		}
 
-		static tl::expected<std::unique_ptr<Node>, std::string> parseChild(pugi::xml_node& node)
+		static tl::expected<std::unique_ptr<Node>, std::string> parseChild(pugi::xml_node& node, const int& index)
 		{
+			const std::string name = node.attribute("name").as_string();
 			const std::string& node_name = node.name();
 			const auto node_hash = hash(node_name);
 			switch (node_hash)
@@ -153,74 +146,75 @@ namespace behaviour_tree
 #pragma region Composite Node
 			case hash("Sequence"):
 			{
-				return parseComposite(node, CompositeType::Sequence);
+				return parseComposite(node, index, CompositeType::Sequence);
 			}
 			case hash("Selector"):
 			{
-				return parseComposite(node, CompositeType::Selector);
+				return parseComposite(node, index, CompositeType::Selector);
 			}
 #pragma endregion
 #pragma region Decorator Node
 			case hash("Repeat"):
 			{
-				return parseDecorator(node, DecoratorType::Repeat);
+				return parseDecorator(node, index, DecoratorType::Repeat);
 			}
 			case hash("Invert"):
 			{
-				return parseDecorator(node, DecoratorType::Invert);
+				return parseDecorator(node, index, DecoratorType::Invert);
 			}
 			case hash("Wait"):
 			{
-				return parseDecorator(node, DecoratorType::Wait);
+				return parseDecorator(node, index, DecoratorType::Wait);
 			}
 #pragma endregion
 #pragma region Leaf Node
 			case hash("Condition"):
 			{
-				return parseCondition(node);
+				return parseCondition(node, index);
 			}
 			case hash("Task"):
 			{
-				return parseTask(node);
+				return parseTask(node, index);
 			}
 			case hash("Succeed"):
 			{
-				return std::make_unique<Succeed>(Succeed(node.attribute("name").as_string()));
+				return std::make_unique<Succeed>(Succeed(name));
 			}
 			case hash("Fail"):
 			{
-				return std::make_unique<Fail>(Fail(node.attribute("name").as_string()));
+				return std::make_unique<Fail>(Fail(name));
 			}
 			case hash("LogMessage"):
 			{
 				return std::make_unique<LogMessage>(
 					LogMessage(
-						node.attribute("name").as_string(),
+						name,
 						node.attribute("text").as_string()));
 			}
 			case hash("ToRoot"):
 			{
 				return std::make_unique<ToRoot>(
 					ToRoot(
-						node.attribute("name").as_string(),
+						name,
 						node.attribute("id").as_string()));
 			}
 #pragma endregion
 			default:
 			{
-				return tl::unexpected("Invalid node: " + node_name);
+				return tl::unexpected(fmt::format("Invalid node | {}:[{}]", node_name, name));
 			}
 			}
 		}
 
-		static tl::expected<std::unique_ptr<Decorator>, std::string> parseDecorator(pugi::xml_node& node, const DecoratorType& decorator_type)
+		static tl::expected<std::unique_ptr<Decorator>, std::string> parseDecorator(pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
 		{
+			const std::string name = node.attribute("name").as_string();
 			pugi::xml_node& child = node.first_child();
 			if (!child)
 			{
-				return tl::unexpected("Decorator node " + std::string(node.name()) + " must have a child");
+				return tl::unexpected(fmt::format(R"(Decorator node must have a child | {}:["{}",{}])", std::string(node.name()), name, index));
 			}
-			auto maybe_child_node = parseChild(child);
+			auto maybe_child_node = parseChild(child, STARTING_INDEX);
 			if (!maybe_child_node.has_value())
 			{
 				return tl::unexpected(maybe_child_node.error());
@@ -231,14 +225,14 @@ namespace behaviour_tree
 			{
 				return std::make_unique<Invert>(
 					Invert(
-						node.attribute("name").as_string(),
+						name,
 						std::move(maybe_child_node.value())));
 			}
 			case DecoratorType::Repeat:
 			{
 				return std::make_unique<Repeat>(
 					Repeat(
-						node.attribute("name").as_string(),
+						name,
 						std::move(maybe_child_node.value()),
 						node.attribute("count").as_int(),
 						node.attribute("break_on_fail").as_bool()));
@@ -247,46 +241,48 @@ namespace behaviour_tree
 			{
 				return std::make_unique<Wait>(
 					Wait(
-						node.attribute("name").as_string(),
+						name,
 						std::move(maybe_child_node.value()),
 						node.attribute("ms").as_int()));
 			}
 			}
 		}
 
-		static tl::expected<std::unique_ptr<Composite>, std::string> parseComposite(pugi::xml_node& node, const CompositeType& composite_type)
+		static tl::expected<std::unique_ptr<Composite>, std::string> parseComposite(pugi::xml_node& node, const int& index, const CompositeType& composite_type)
 		{
+			const std::string name = node.attribute("name").as_string();
 			std::vector<std::unique_ptr<Node>> children;
 			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
 			{
-				auto maybe_node = parseChild(child);
+				auto maybe_node = parseChild(child, STARTING_INDEX + children.size());
 				if (!maybe_node.has_value())
 				{
-					return tl::unexpected(maybe_node.error());
+					return tl::unexpected(fmt::format(R"({}<-{}:["{}",{}])", maybe_node.error(), std::string(node.name()), name, index));
 				}
 				children.push_back(std::move(maybe_node.value()));
 			}
 			if (children.size() <= 0)
 			{
-				return tl::unexpected("Composite node " + std::string(node.name()) + " must have at least one child");
+				return tl::unexpected(fmt::format(R"(Composite node must have at least one child | {}:["{}",{}])", std::string(node.name()), name, index));
 			}
 			switch (composite_type)
 			{
 			case CompositeType::Sequence:
-				return std::make_unique<Sequence>(Sequence(node.attribute("name").as_string(), std::move(children)));
+				return std::make_unique<Sequence>(Sequence(name, std::move(children)));
 			case CompositeType::Selector:
-				return std::make_unique<Selector>(Selector(node.attribute("name").as_string(), std::move(children)));
+				return std::make_unique<Selector>(Selector(name, std::move(children)));
 			}
 		}
 
-		static tl::expected<std::unique_ptr<Condition>, std::string> parseCondition(pugi::xml_node& node)
+		static tl::expected<std::unique_ptr<Condition>, std::string> parseCondition(pugi::xml_node& node, const int& index)
 		{
+			const std::string name = node.attribute("name").as_string();
 			switch (hash(node.attribute("type").as_string()))
 			{
 			case hash("NearbyPoints"):
 				return std::make_unique<NearbyPoints>(
 					NearbyPoints(
-						node.attribute("name").as_string(),
+						name,
 						node.attribute("min_angle").as_int(),
 						node.attribute("max_angle").as_int(),
 						node.attribute("avg_distance").as_int()
@@ -294,11 +290,11 @@ namespace behaviour_tree
 				);
 
 			default:
-				return tl::unexpected("Invalid condition type: " + std::string(node.attribute("type").as_string()));
+				return tl::unexpected(fmt::format(R"(Invalid condition type: {} | Condition:["{}",{}])", std::string(node.attribute("type").as_string()), name, index));
 			}
 		}
 
-		static tl::expected<std::unique_ptr<Task>, std::string> parseTask(pugi::xml_node& node)
+		static tl::expected<std::unique_ptr<Task>, std::string> parseTask(pugi::xml_node& node, const int& index)
 		{
 			std::vector<std::unique_ptr<Action>> actions;
 			for (pugi::xml_node& child = node.child("Action"); child; child = child.next_sibling("Action"))
@@ -310,11 +306,12 @@ namespace behaviour_tree
 				}
 				actions.push_back(std::move(maybe_action.value()));
 			}
+			const std::string name = node.attribute("name").as_string();
 			if (actions.size() <= 0)
 			{
-				return tl::unexpected("Task node " + std::string(node.name()) + " must have at least one action");
+				return tl::unexpected(fmt::format(R"(Task node must have at least one action | Task:["{}",{}])", name, index));
 			}
-			return std::make_unique<Task>(Task(node.attribute("name").as_string(), std::move(actions)));
+			return std::make_unique<Task>(Task(name, std::move(actions)));
 		}
 
 		static tl::expected<std::unique_ptr<Action>, std::string> parseAction(pugi::xml_node& node)
@@ -327,14 +324,14 @@ namespace behaviour_tree
 			{
 				const int ms = node.attribute("ms").as_int();
 				if (ms < 0)
-					return tl::unexpected("Invalid ms: " + std::to_string(ms));
+					return tl::unexpected(fmt::format("Invalid ms: {} | Move", std::to_string(ms), node.name()));
 				return std::make_unique<Move>(Move(ms));
 			}
 			case hash("Turn"):
 			{
 				const int angle = node.attribute("angle").as_int();
 				if (angle < 0 || angle > 180)
-					return tl::unexpected("Invalid angle: " + std::to_string(angle));
+					return tl::unexpected(fmt::format("Invalid angle: {} | Turn", std::to_string(angle), node.name()));
 				return std::make_unique<Turn>(Turn(angle));
 			}
 			case hash("Direction"):
@@ -345,11 +342,11 @@ namespace behaviour_tree
 				else if (direction_type_attribute == "Backward")
 					return std::make_unique<Direction>(Direction(DirectionType::Backward));
 				else
-					return tl::unexpected("Invalid direction_type: " + direction_type_attribute);
+					return tl::unexpected(fmt::format("Invalid direction_type: {} | Direction", direction_type_attribute, node.name()));
 			}
 			default:
 			{
-				return tl::unexpected("Invalid action type: " + type);
+				return tl::unexpected(fmt::format("Invalid action type: {} | {}", type, node.name()));
 			}
 			}
 		}
