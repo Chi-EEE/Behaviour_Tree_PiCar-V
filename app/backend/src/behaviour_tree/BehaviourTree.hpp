@@ -49,6 +49,7 @@ using namespace behaviour_tree::action;
 
 namespace behaviour_tree
 {
+	// https://stackoverflow.com/a/46711735
 	static constexpr uint32_t hash(const std::string_view s) noexcept
 	{
 		uint32_t hash = 5381;
@@ -93,7 +94,7 @@ namespace behaviour_tree
 				return tl::unexpected("XML [" + file_path + "] parsed with errors");
 			}
 			int child_count = 0;
-			for (pugi::xml_node child = doc.first_child(); child; child = doc.next_sibling())
+			for (pugi::xml_node& child = doc.first_child(); child; child = doc.next_sibling())
 			{
 				const std::string& child_name = child.name();
 				if (child_name == "") // Skip empty nodes
@@ -109,7 +110,7 @@ namespace behaviour_tree
 				return tl::unexpected("No root node found");
 			}
 			std::vector<std::unique_ptr<Root>> roots;
-			for (pugi::xml_node node = doc.child("Root"); node; node = node.next_sibling("Root"))
+			for (pugi::xml_node& node = doc.child("Root"); node; node = node.next_sibling("Root"))
 			{
 				auto maybe_root = parseRoot(node);
 				if (!maybe_root.has_value())
@@ -126,13 +127,13 @@ namespace behaviour_tree
 		static tl::expected<std::unique_ptr<Root>, std::string> parseRoot(pugi::xml_node& node)
 		{
 			int child_count = 0;
-			for (pugi::xml_node child = node.first_child(); child; child = child.next_sibling())
+			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
 				++child_count;
 			if (child_count > 1)
 			{
 				return tl::unexpected("Root node " + std::string(node.attribute("id").as_string()) + " must have only one child");
 			}
-			auto child = node.first_child();
+			pugi::xml_node& child = node.first_child();
 			auto maybe_child_node = parseChild(child);
 			if (!maybe_child_node.has_value())
 			{
@@ -214,7 +215,7 @@ namespace behaviour_tree
 
 		static tl::expected<std::unique_ptr<Decorator>, std::string> parseDecorator(pugi::xml_node& node, const DecoratorType& decorator_type)
 		{
-			auto child = node.first_child();
+			pugi::xml_node& child = node.first_child();
 			if (!child)
 			{
 				return tl::unexpected("Decorator node " + std::string(node.name()) + " must have a child");
@@ -256,7 +257,7 @@ namespace behaviour_tree
 		static tl::expected<std::unique_ptr<Composite>, std::string> parseComposite(pugi::xml_node& node, const CompositeType& composite_type)
 		{
 			std::vector<std::unique_ptr<Node>> children;
-			for (auto child = node.first_child(); child; child = child.next_sibling())
+			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
 			{
 				auto maybe_node = parseChild(child);
 				if (!maybe_node.has_value())
@@ -291,13 +292,16 @@ namespace behaviour_tree
 						node.attribute("avg_distance").as_int()
 					)
 				);
+
+			default:
+				return tl::unexpected("Invalid condition type: " + std::string(node.attribute("type").as_string()));
 			}
 		}
 
 		static tl::expected<std::unique_ptr<Task>, std::string> parseTask(pugi::xml_node& node)
 		{
 			std::vector<std::unique_ptr<Action>> actions;
-			for (pugi::xml_node child = node.child("Action"); child; child = child.next_sibling("Action"))
+			for (pugi::xml_node& child = node.child("Action"); child; child = child.next_sibling("Action"))
 			{
 				auto maybe_action = parseAction(child);
 				if (!maybe_action.has_value())
@@ -305,6 +309,10 @@ namespace behaviour_tree
 					return tl::unexpected(maybe_action.error());
 				}
 				actions.push_back(std::move(maybe_action.value()));
+			}
+			if (actions.size() <= 0)
+			{
+				return tl::unexpected("Task node " + std::string(node.name()) + " must have at least one action");
 			}
 			return std::make_unique<Task>(Task(node.attribute("name").as_string(), std::move(actions)));
 		}
