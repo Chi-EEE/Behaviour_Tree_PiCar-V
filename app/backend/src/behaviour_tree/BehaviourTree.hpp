@@ -120,7 +120,7 @@ namespace behaviour_tree
 			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
 				++child_count;
 			const std::string id = node.attribute("id").as_string();
-			if (child_count > 1)
+			if (child_count != 1)
 			{
 				return tl::unexpected(fmt::format(R"(Root node must have only one child | Root:["{}",{}])", id, index));
 			}

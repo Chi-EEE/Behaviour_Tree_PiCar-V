@@ -23,6 +23,7 @@
     "vite": "^5.0.11"
   },
   "dependencies": {
+    "brace": "^0.11.1",
     "svelte-spa-router": "^4.0.1",
     "url-pattern": "^1.0.3"
   }

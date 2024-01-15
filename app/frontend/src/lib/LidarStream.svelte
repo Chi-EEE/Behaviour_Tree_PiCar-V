@@ -87,10 +87,13 @@
     });
 </script>
 
-<canvas
-    id="canvas"
-    class="border-2 border-black"
-    width="800"
-    height="600"
-    bind:this={canvas}
-/>
+<div class="row-span-3">
+    <canvas
+        id="canvas"
+        class="border-2 border-black"
+        width="800"
+        height="600"
+        bind:this={canvas}
+    />
+    <h1 class="w-1/6">Title: {room_name}</h1>
+</div>
