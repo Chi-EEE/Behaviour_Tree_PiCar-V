@@ -7,7 +7,7 @@
 #include <memory>
 
 #include "../Context.hpp"
-#include "Status.hpp"
+#include "../Status.hpp"
 
 namespace behaviour_tree::node
 {

@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace behaviour_tree::node
+namespace behaviour_tree
 {
     enum class Status
     {

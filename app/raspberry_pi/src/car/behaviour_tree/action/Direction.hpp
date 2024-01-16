@@ -3,10 +3,11 @@
 
 #pragma once
 
-#include "Action.hpp"
+#include "behaviour_tree/action/Action.hpp"
+
+#include "behaviour_tree/Context.hpp"
 
 #include "DirectionType.hpp"
-//#include "../../../src/car/behaviour_tree/CarContext.cxx"
 
 namespace behaviour_tree::action
 {
@@ -15,11 +16,6 @@ namespace behaviour_tree::action
 	public:
 		Direction(const DirectionType& direction_type) : direction_type(direction_type)
 		{
-		}
-
-		ActionType type() const override
-		{
-			return ActionType::Direction;
 		}
 
 		const Status run(Context& context) override

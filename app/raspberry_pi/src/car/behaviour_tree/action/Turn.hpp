@@ -3,7 +3,15 @@
 
 #pragma once
 
-#include "Action.hpp"
+#include <string>
+
+#include <fmt/format.h>
+
+#include "behaviour_tree/Context.hpp"
+#include "behaviour_tree/action/Action.hpp"
+
+using namespace behaviour_tree;
+using namespace behaviour_tree::action;
 
 namespace behaviour_tree::action
 {
@@ -12,11 +20,6 @@ namespace behaviour_tree::action
     public:
         Turn(const int &angle) : angle(angle)
         {
-        }
-
-        const ActionType type() const override
-        {
-            return ActionType::Turn;
         }
 
         const Status run(Context& context) override {

@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "Action.hpp"
+#include "behaviour_tree/action/Action.hpp"
 
 namespace behaviour_tree::action
 {
@@ -12,11 +12,6 @@ namespace behaviour_tree::action
 	public:
 		Move(const int& ms) : ms(ms)
 		{
-		}
-
-		const ActionType type() const override
-		{
-			return ActionType::Move;
 		}
 
 		const Status run(Context& context) override {

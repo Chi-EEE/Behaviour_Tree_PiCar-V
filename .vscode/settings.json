@@ -89,6 +89,7 @@
         "any": "cpp",
         "ranges": "cpp",
         "cinttypes": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "queue": "cpp"
     }
 }
