@@ -138,7 +138,7 @@ namespace car::display {
 						{
 							line_elements.push_back(paragraph(message));
 						}
-						return vbox(line_elements) | flex;
+						return vbox(line_elements) | xflex;
 					}
 				)
 			}
