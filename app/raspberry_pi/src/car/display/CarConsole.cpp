@@ -108,8 +108,12 @@ namespace car::display {
 		);
 #pragma endregion
 		SettingsScreen settings_screen(this->car_system);
-
 		auto settings_container = settings_screen.element();
+
+		VectorSink<std::mutex> vector_sink(10);
+
+		LoggingScreen logging_screen;
+		auto logging_container = logging_screen.element();
 
 		int selected_tab = 0;
 		std::vector<std::string> tab_titles = {

@@ -16,9 +16,13 @@
 
 #include "../system/CarSystem.h"
 #include "screen/SettingsScreen.cxx"
+#include "screen/LoggingScreen.cxx"
+
+#include "logging/VectorSink.cxx"
 
 using namespace car::system;
 using namespace car::display::screen;
+using namespace car::display::logging;
 
 using namespace ftxui;
 
