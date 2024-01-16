@@ -56,7 +56,7 @@ target("raspberry_pi")
 
     add_headerfiles("include/**.hpp")
 
-    add_headerfiles("src/**.h")
+    add_headerfiles("src/**.h", "src/**.hpp")
     add_files("src/**.cpp", "src/**.cxx")
     
     add_includedirs("include")

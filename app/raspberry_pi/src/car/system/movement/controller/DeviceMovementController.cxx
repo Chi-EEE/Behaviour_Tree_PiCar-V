@@ -1,6 +1,6 @@
 #ifdef __linux__
-#ifndef CARWHEELCONTROLLER_CXX
-#define CARWHEELCONTROLLER_CXX
+#ifndef DEVICEMOVEMENTCONTROLLER_CXX
+#define DEVICEMOVEMENTCONTROLLER_CXX
 
 #pragma once
 
@@ -10,7 +10,7 @@
 
 #include <PCA9685.h>
 
-#include "AbstractWheelController.cxx"
+#include "AbstractMovementController.cxx"
 
 #include "../devices/Servo.cxx"
 #include "../devices/RearWheel.cxx"
@@ -30,10 +30,10 @@ namespace car::system::movement::controller
 
 	static constexpr int BUS_NUMBER = 1;
 
-	class CarWheelController : public AbstractWheelController
+	class DeviceMovementController : public AbstractMovementController
 	{
 	public:
-		CarWheelController()
+		DeviceMovementController()
 		{
 			this->pwm = std::make_shared<PCA9685>();
 			this->rear_left_wheel = std::make_unique<RearWheel>(
@@ -53,7 +53,7 @@ namespace car::system::movement::controller
 				2);
 		};
 
-		~CarWheelController()
+		~DeviceMovementController()
 		{
 			this->front_wheels->reset();
 			this->camera_servo_1->reset();

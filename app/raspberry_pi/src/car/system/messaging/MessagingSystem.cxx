@@ -18,6 +18,17 @@
 using json = nlohmann::json;
 
 namespace car::system::messaging {
+	// https://stackoverflow.com/a/46711735
+	static constexpr uint32_t hash(const std::string_view s) noexcept
+	{
+		uint32_t hash = 5381;
+
+		for (const char* c = s.data(); c < s.data() + s.size(); ++c)
+			hash = ((hash << 5) + hash) + (unsigned char)*c;
+
+		return hash;
+	}
+
 	class MessagingSystem
 	{
 	public:
@@ -28,41 +39,8 @@ namespace car::system::messaging {
 		{
 			ix::initNetSystem();
 			this->websocket.setUrl(websocket_url);
-			this->websocket.setOnMessageCallback([this](const ix::WebSocketMessagePtr& msg)
-				{
-					if (msg->type == ix::WebSocketMessageType::Message)
-					{
-						json message_json = json::parse(msg->str);
-						if (message_json["type"] == "command") {
-							if (message_json["command"] == "turn") {
-								float angle = message_json["angle"].get<float>();
-								this->angle_command_signal(angle);
-								spdlog::info("Turning by {} angle", angle);
-							}
-							else if (message_json["command"] == "move") {
-								int speed = message_json["speed"].get<int>();
-								this->speed_command_signal(speed);
-								spdlog::info("Moving with {} speed", speed);
-							}
-						}
-					}
-					//else if (msg->type == ix::WebSocketMessageType::Open)
-					//{
-					//	std::cout << "Connection established" << std::endl;
-					//	std::cout << "> " << std::flush;
-					//}
-					//else if (msg->type == ix::WebSocketMessageType::Error)
-					//{
-					//	// Maybe SSL is not configured properly
-					//	std::cout << "Connection error: " << msg->errorInfo.reason << std::endl;
-					//	std::cout << "> " << std::flush;
-					//}
-					//else if (msg->type == ix::WebSocketMessageType::Close)
-					//{
-					//	std::cout << "Connection closed: " << msg->closeInfo.code << " " << msg->closeInfo.reason << std::endl;
-					//	std::cout << "> " << std::flush;
-					//}
-				}
+			this->websocket.setOnMessageCallback(
+				std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1)
 			);
 		}
 
@@ -92,6 +70,65 @@ namespace car::system::messaging {
 			ix::uninitNetSystem();
 		}
 
+		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const
+		{
+			switch (msg->type) {
+			case ix::WebSocketMessageType::Open:
+			{
+				spdlog::info("WebSocket connected");
+				this->on_websocket_connect_signal();
+				break;
+			}
+			case ix::WebSocketMessageType::Close:
+			{
+				spdlog::info("WebSocket closed");
+				this->on_websocket_disconnect_signal();
+				break;
+			}
+			case ix::WebSocketMessageType::Message:
+			{
+				const json message_json = json::parse(msg->str);
+				const std::string type = message_json["type"].get<std::string>();
+				switch (hash(type)) {
+				case hash("command"):
+					this->handleCommand(message_json);
+					break;
+				case hash("status"):
+					spdlog::info("Received status message");
+					break;
+				default:
+					spdlog::info("Received unknown message");
+					break;
+				}
+				break;
+			}
+			}
+
+		}
+
+		void handleCommand(const json& message_json) const {
+			switch (hash(message_json["command"])) {
+			case hash("turn"): {
+				float angle = message_json["angle"].get<float>();
+				this->angle_command_signal(angle);
+				spdlog::info("Turning by {} angle", angle);
+				break;
+			}
+			case hash("move"): {
+				int speed = message_json["speed"].get<int>();
+				this->speed_command_signal(speed);
+				spdlog::info("Moving with {} speed", speed);
+				break;
+			}
+			case hash("custom"): {
+				const std::string custom_type = message_json["custom_type"].get<std::string>();
+				const std::string custom = message_json["custom"].get<std::string>();
+				this->custom_command_signal(custom_type, custom);
+				break;
+			}
+			}
+		}
+
 		void sendMessage(const std::string& message) {
 			this->websocket.send(message);
 		}
@@ -99,8 +136,12 @@ namespace car::system::messaging {
 		~MessagingSystem() {
 		};
 
+		nod::signal<void()> on_websocket_connect_signal;
+		nod::signal<void()> on_websocket_disconnect_signal;
+		
 		nod::signal<void(const int)> speed_command_signal;
 		nod::signal<void(const float)> angle_command_signal;
+		nod::signal<void(const std::string, const std::string)> custom_command_signal;
 	private:
 		ix::WebSocket websocket;
 		std::string websocket_url;

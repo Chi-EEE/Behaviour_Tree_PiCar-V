@@ -3,11 +3,11 @@
 
 #pragma once
 
-#include "AbstractWheelController.cxx"
+#include "AbstractMovementController.cxx"
 
 namespace car::system::movement::controller
 {
-	class DummyWheelController : public AbstractWheelController
+	class DummyMovementController : public AbstractMovementController
 	{
 	public:
 		void initialize() {};

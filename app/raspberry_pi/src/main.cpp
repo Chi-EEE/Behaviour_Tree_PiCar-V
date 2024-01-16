@@ -12,8 +12,8 @@
 #include "car/system/lidar/LidarScanner.cxx"
 #include "car/system/lidar/LidarDummy.cxx"
 
-#include "car/system/movement/controller/DummyWheelController.cxx"
-#include "car/system/movement/controller/CarWheelController.cxx"
+#include "car/system/movement/controller/DummyMovementController.cxx"
+#include "car/system/movement/controller/DeviceMovementController.cxx"
 
 std::string getWebSocketUrl()
 {
@@ -56,10 +56,10 @@ int main()
 
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(websocket_url);
 
-	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyWheelController>());
-	//std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<CarWheelController>());
+	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
+	//std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
 
-	auto car_system = std::make_shared<CarSystem>(
+	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
 		websocket_url,
 		std::move(scanner),
 		std::move(messaging_system),

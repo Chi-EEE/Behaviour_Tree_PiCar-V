@@ -5,7 +5,7 @@
 
 namespace car::system::movement::controller
 {
-    class AbstractWheelController
+    class AbstractMovementController
     {
     public:
         virtual void initialize() = 0;
