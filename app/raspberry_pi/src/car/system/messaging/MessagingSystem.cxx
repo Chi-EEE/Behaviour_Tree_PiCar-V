@@ -42,6 +42,11 @@ namespace car::system::messaging {
 			this->websocket.setOnMessageCallback(
 				std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1)
 			);
+			this->handle_message_signal.connect([this](const std::string message)
+				{
+					this->handleMessage(message);
+				}
+			);
 		}
 
 		void start()
@@ -71,6 +76,7 @@ namespace car::system::messaging {
 		}
 
 		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() { return this->custom_command_signal; }
+		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->handle_message_signal; }
 
 		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const
 		{
@@ -89,23 +95,26 @@ namespace car::system::messaging {
 			}
 			case ix::WebSocketMessageType::Message:
 			{
-				const json message_json = json::parse(msg->str);
-				const std::string type = message_json["type"].get<std::string>();
-				switch (hash(type)) {
-				case hash("command"):
-					this->handleCommand(message_json);
-					break;
-				case hash("status"):
-					spdlog::info("Received status message");
-					break;
-				default:
-					spdlog::info("Received unknown message");
-					break;
-				}
-				break;
+				this->handle_message_signal(msg->str);
 			}
 			}
 
+		}
+
+		void handleMessage(const std::string& message) const {
+			const json message_json = json::parse(message);
+			const std::string type = message_json["type"].get<std::string>();
+			switch (hash(type)) {
+			case hash("command"):
+				this->handleCommand(message_json);
+				break;
+			case hash("status"):
+				spdlog::info("Received status message");
+				break;
+			default:
+				spdlog::info("Received unknown message");
+				break;
+			}
 		}
 
 		void handleCommand(const json& message_json) const {
@@ -140,9 +149,10 @@ namespace car::system::messaging {
 
 		nod::signal<void()> on_websocket_connect_signal;
 		nod::signal<void()> on_websocket_disconnect_signal;
-		
+
 		nod::signal<void(const int)> speed_command_signal;
 		nod::signal<void(const float)> angle_command_signal;
+		nod::signal<void(const std::string)> handle_message_signal;
 		nod::signal<void(const std::string, const std::string)> custom_command_signal;
 	private:
 		ix::WebSocket websocket;

@@ -49,7 +49,7 @@ int main()
 	std::string websocket_url = getWebSocketUrl();
 	spdlog::info("Got websocket url: {}", websocket_url);
 
-	 std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
+	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 
 	/*auto maybe_scanner = LidarScanner::create(GET_CONFIG_VALUE(lidar_port));
 	if (!maybe_scanner.has_value())
@@ -64,11 +64,13 @@ int main()
 	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 	//std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
 
-	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
-		websocket_url,
-		std::move(scanner),
-		std::move(messaging_system),
-		std::move(movement_system));
+	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>
+		(
+			websocket_url,
+			std::move(scanner),
+			std::move(messaging_system),
+			std::move(movement_system)
+		);
 
 	BehaviourTreeHandler behaviour_tree_handler(car_system, car_system->getCustomCommandSignal(), true);
 

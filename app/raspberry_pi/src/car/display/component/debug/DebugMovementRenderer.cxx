@@ -1,5 +1,5 @@
-#ifndef DEBUGWHEELRENDERER_CXX
-#define DEBUGWHEELRENDERER_CXX
+#ifndef DEBUGMOVEMENTRENDERER_CXX
+#define DEBUGMOVEMENTRENDERER_CXX
 
 #pragma once
 
@@ -10,7 +10,7 @@
 using namespace ftxui;
 
 namespace car::display::component::debug {
-	class DebugWheelRenderer {
+	class DebugMovementRenderer {
 	private:
 		static constexpr int DEFAULT_REAR_WHEEL_SPEED = 0;
 		static constexpr int DEFAULT_FRONT_WHEEL_ANGLE = 90;
@@ -18,7 +18,7 @@ namespace car::display::component::debug {
 		static constexpr auto REAR_WHEEL_DIRECTION_FORWARD_MESSAGE = "Rear Wheel Direction: Forward";
 		static constexpr auto REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE = "Rear Wheel Direction: Backward";
 	public:
-		DebugWheelRenderer() {
+		DebugMovementRenderer() {
 
 		}
 

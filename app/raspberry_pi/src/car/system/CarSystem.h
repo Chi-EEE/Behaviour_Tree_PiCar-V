@@ -31,6 +31,7 @@ namespace car::system {
 		void update();
 
 		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() const { return this->messaging_system->getCustomCommandSignal(); }
+		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->messaging_system->getHandleMessageSignal(); }
 
 		void startLidarDevice();
 		void stopLidarDevice();

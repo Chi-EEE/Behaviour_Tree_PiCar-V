@@ -33,6 +33,10 @@ end
 -- For Better Programming
 add_requires("tl_expected")
 
+if is_plat("windows") then
+    add_rules("plugin.vsxmake.autoupdate")
+end
+
 target("raspberry_pi")
     set_kind("binary")
     set_license("LGPL-2.1")
