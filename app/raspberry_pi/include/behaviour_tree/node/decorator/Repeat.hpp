@@ -18,7 +18,6 @@ namespace behaviour_tree::node::decorator
 
 		const Status run(Context& context) override
 		{
-			spdlog::info("Running Repeat node {} times", this->getCount());
 			for (int i = 0; i < this->count; i++)
 			{
 				auto status = this->child->run(context);
