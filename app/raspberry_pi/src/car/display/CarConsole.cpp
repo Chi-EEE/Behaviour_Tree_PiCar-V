@@ -41,7 +41,8 @@ namespace car::display {
 		return component;
 	}
 
-	CarConsole::CarConsole(std::shared_ptr<CarSystem> car_system) : car_system(std::move(car_system)) {
+	CarConsole::CarConsole(std::shared_ptr<CarSystem> car_system, std::shared_ptr<logging::vector_sink_mt> vector_sink) : car_system(std::move(car_system)), vector_sink(vector_sink) {
+		vector_sink->get_log_messages();
 	};
 
 	void CarConsole::initialize() {
@@ -110,10 +111,6 @@ namespace car::display {
 		SettingsScreen settings_screen(this->car_system);
 		auto settings_container = settings_screen.element();
 
-		std::shared_ptr<vector_sink_mt> vector_sink = std::make_shared<vector_sink_mt>(10);
-		auto vector_sink_logger = std::make_shared<spdlog::logger>("CLI", static_cast<std::shared_ptr<spdlog::sinks::sink>>(vector_sink));
-		spdlog::set_default_logger(vector_sink_logger);
-
 		//LoggingScreen logging_screen;
 		//auto logging_container = logging_screen.element();
 
@@ -127,12 +124,22 @@ namespace car::display {
 
 		auto tab_selection = Toggle(&tab_titles, &selected_tab);
 
+		ftxui::Elements line_elements;
 		auto tab_content = Container::Tab(
 			{
 				main_component,
 				renderer_line_block,
 				settings_container,
-				vector_sink->element(),
+				Renderer(
+					[&] {
+						line_elements.clear();
+						for (const std::string& message : this->vector_sink->get_log_messages())
+						{
+							line_elements.push_back(text(message));
+						}
+						return vbox(line_elements) | flex;
+					}
+				)
 			}
 			, &selected_tab
 		);

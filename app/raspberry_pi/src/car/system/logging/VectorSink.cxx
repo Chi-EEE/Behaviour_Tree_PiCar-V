@@ -6,15 +6,11 @@
 
 #include <fmt/format.h>
 
-#include <ftxui/component/component.hpp>
-#include <ftxui/dom/elements.hpp>
-
 #include <spdlog/sinks/base_sink.h>
 #include <spdlog/details/synchronous_factory.h>
+#include <iostream>
 
-using namespace ftxui;
-
-namespace car::display::logging {
+namespace car::system::logging {
 	template<typename Mutex>
 	class VectorSink : public spdlog::sinks::base_sink<Mutex> {
 	public:
@@ -41,28 +37,17 @@ namespace car::display::logging {
 			}
 		};
 
-		void flush_() override 
+		void flush_() override
 		{
 			this->log_messages.clear();
 		};
 
-		Component element()
-		{
-			this->line_elements.clear();
-			for (std::string& message : this->log_messages)
-			{
-				this->line_elements.push_back(text(message));
-			}
-			return Renderer([&]
-				{
-					return vbox(this->line_elements) | flex;
-				}
-			);
+		const std::vector<std::string>& get_log_messages() const {
+			return this->log_messages;
 		}
 
 	private:
 		const int max_lines;
-		ftxui::Elements line_elements;
 
 		std::vector<std::string> log_messages;
 	};

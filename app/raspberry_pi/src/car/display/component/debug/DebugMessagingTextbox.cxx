@@ -29,7 +29,8 @@ namespace car::display::component::debug {
 
 			this->messaging_container =
 				Container::Vertical({
-					this->messaging_textbox
+					this->messaging_textbox,
+					this->messaging_button,
 					});
 
 			return Renderer(this->messaging_container, [&] {

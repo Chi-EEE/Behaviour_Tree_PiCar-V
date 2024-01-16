@@ -18,6 +18,7 @@
 #include "car/system/movement/controller/DeviceMovementController.cxx"
 
 #include "car/behaviour_tree/BehaviourTreeHandler.cxx"
+#include "car/system/logging/VectorSink.cxx"
 
 std::string getWebSocketUrl()
 {
@@ -64,6 +65,10 @@ int main()
 	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 	//std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
 
+	std::shared_ptr<car::system::logging::vector_sink_mt> vector_sink = std::make_shared<car::system::logging::vector_sink_mt>(10);
+	auto vector_sink_logger = std::make_shared<spdlog::logger>("CLI", static_cast<std::shared_ptr<spdlog::sinks::sink>>(vector_sink));
+	spdlog::set_default_logger(vector_sink_logger);
+
 	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>
 		(
 			websocket_url,
@@ -75,7 +80,7 @@ int main()
 	BehaviourTreeHandler behaviour_tree_handler(car_system, car_system->getCustomCommandSignal(), true);
 
 	// The CarConsole object will display the UI and handle user input:
-	CarConsole car_console(std::move(car_system));
+	CarConsole car_console(std::move(car_system), vector_sink);
 	car_console.initialize();
 	car_console.run();
 	return 0;

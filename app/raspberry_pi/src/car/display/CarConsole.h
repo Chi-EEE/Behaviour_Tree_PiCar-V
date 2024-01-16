@@ -15,14 +15,12 @@
 #include <nod/nod.hpp>
 
 #include "../system/CarSystem.h"
+#include "../system/logging/VectorSink.cxx"
 #include "screen/SettingsScreen.cxx"
 #include "screen/LoggingScreen.cxx"
 
-#include "logging/VectorSink.cxx"
-
 using namespace car::system;
 using namespace car::display::screen;
-using namespace car::display::logging;
 
 using namespace ftxui;
 
@@ -34,7 +32,7 @@ namespace car::display {
 		inline Component MainComponent(Component main_button, std::function<void()> show_exit_modal);
 		inline Component ExitModalComponent(std::function<void()> hide_exit_modal, std::function<void()> exit);
 
-		CarConsole(std::shared_ptr<CarSystem> car_system);
+		CarConsole(std::shared_ptr<CarSystem> car_system, std::shared_ptr<logging::vector_sink_mt> vector_sink);
 
 		void initialize();
 
@@ -42,6 +40,7 @@ namespace car::display {
 
 	private:
 		std::shared_ptr<CarSystem> car_system;
+		std::shared_ptr<logging::vector_sink_mt> vector_sink;
 	};
 }
 

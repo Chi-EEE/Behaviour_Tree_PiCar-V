@@ -102,41 +102,52 @@ namespace car::system::messaging {
 		}
 
 		void handleMessage(const std::string& message) const {
-			const json message_json = json::parse(message);
-			const std::string type = message_json["type"].get<std::string>();
-			switch (hash(type)) {
-			case hash("command"):
-				this->handleCommand(message_json);
-				break;
-			case hash("status"):
-				spdlog::info("Received status message");
-				break;
-			default:
-				spdlog::info("Received unknown message");
-				break;
+			try {
+				const json message_json = json::parse(message);
+				const std::string type = message_json["type"].get<std::string>();
+				switch (hash(type)) {
+				case hash("command"):
+					this->handleCommand(message_json);
+					break;
+				case hash("status"):
+					spdlog::info("Received status message");
+					break;
+				default:
+					spdlog::info("Received unknown message");
+					break;
+				}
+			}
+			catch (std::exception e) {
+				spdlog::error(R"(Unable to parse message "{}" into a json)", message);
 			}
 		}
 
 		void handleCommand(const json& message_json) const {
-			switch (hash(message_json["command"])) {
-			case hash("turn"): {
-				float angle = message_json["angle"].get<float>();
-				this->angle_command_signal(angle);
-				spdlog::info("Turning by {} angle", angle);
-				break;
+			try {
+				switch (hash(message_json["command"])) {
+				case hash("turn"): {
+					float angle = message_json["angle"].get<float>();
+					this->angle_command_signal(angle);
+					spdlog::info("Turning by {} angle", angle);
+					break;
+				}
+				case hash("move"): {
+					int speed = message_json["speed"].get<int>();
+					this->speed_command_signal(speed);
+					spdlog::info("Moving with {} speed", speed);
+					break;
+				}
+				case hash("custom"): {
+					const std::string custom_type = message_json["custom_type"].get<std::string>();
+					const std::string custom = message_json["custom"].get<std::string>();
+					this->custom_command_signal(custom_type, custom);
+					break;
+				}
+				}
 			}
-			case hash("move"): {
-				int speed = message_json["speed"].get<int>();
-				this->speed_command_signal(speed);
-				spdlog::info("Moving with {} speed", speed);
-				break;
-			}
-			case hash("custom"): {
-				const std::string custom_type = message_json["custom_type"].get<std::string>();
-				const std::string custom = message_json["custom"].get<std::string>();
-				this->custom_command_signal(custom_type, custom);
-				break;
-			}
+			catch (...) {
+				
+				spdlog::error(R"(Unable to index 'command' from json: {})");
 			}
 		}
 
