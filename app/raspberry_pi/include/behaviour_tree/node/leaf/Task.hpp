@@ -22,14 +22,13 @@ namespace behaviour_tree::node::leaf
 
         const LeafType type() const override { return LeafType::Task; }
 
-        const Status run() override
+        const Status run(Context& context) override
         {
             for (auto &action : this->actions)
             {
-                // TODO
-                /*if (action->run() == Status::FAILURE) {
-                    return Status::FAILURE;
-                }*/
+                if (action->run(context) == Status::Failure) {
+                    return Status::Failure;
+                }
             }
 
             return Status::Success;

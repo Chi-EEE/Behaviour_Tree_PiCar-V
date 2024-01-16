@@ -18,9 +18,9 @@ namespace behaviour_tree
 		{
 		}
 
-		const Status run()
+		const Status run(Context& context)
 		{
-			return this->child->run();
+			return this->child->run(context);
 		}
 
 		const std::string toString() const {

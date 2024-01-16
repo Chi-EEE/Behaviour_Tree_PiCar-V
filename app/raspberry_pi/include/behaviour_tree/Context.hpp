@@ -11,6 +11,14 @@ namespace behaviour_tree
 		Context()
 		{
 		}
+
+		void log(std::string message)
+		{
+			this->messages.push_back(message);
+		}
+
+	private:
+		std::vector<std::string> messages;
 	};
 }
 

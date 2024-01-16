@@ -11,7 +11,7 @@ using namespace behaviour_tree;
 
 namespace car::behaviour_tree
 {
-    class CarContext
+    class CarContext : public Context
     {
     public:
         CarContext(std::shared_ptr<CarSystem> car_system) : car_system(std::move(car_system))

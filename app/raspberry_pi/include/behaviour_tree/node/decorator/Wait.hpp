@@ -16,7 +16,7 @@ namespace behaviour_tree::node::decorator
 
 		const DecoratorType type() const override { return DecoratorType::Repeat; }
 
-		const Status run() override
+		const Status run(Context& context) override
 		{
 			// TODO:
 			return Status::Success;

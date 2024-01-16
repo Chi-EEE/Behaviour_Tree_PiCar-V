@@ -16,9 +16,9 @@ namespace behaviour_tree::node::leaf
 
         const LeafType type() const override { return LeafType::LogMessage; }
 
-        const Status run() override
+        const Status run(Context& context) override
         {
-            // std::cout << text << std::endl;
+            context.log(this->getText());
             return Status::Success;
         }
 

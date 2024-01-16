@@ -6,6 +6,7 @@
 #include "Action.hpp"
 
 #include "DirectionType.hpp"
+//#include "../../../src/car/behaviour_tree/CarContext.cxx"
 
 namespace behaviour_tree::action
 {
@@ -19,6 +20,14 @@ namespace behaviour_tree::action
 		ActionType type() const override
 		{
 			return ActionType::Direction;
+		}
+
+		const Status run(Context& context) override
+		{
+			/*using namespace car::behaviour_tree;
+			CarContext &car_context = static_cast<CarContext&>(context);
+			context.setDirection(this->getDirectionType());*/
+			return Status::Success;
 		}
 
 		const DirectionType& getDirectionType() const {

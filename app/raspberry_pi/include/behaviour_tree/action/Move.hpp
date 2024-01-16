@@ -7,29 +7,35 @@
 
 namespace behaviour_tree::action
 {
-    class Move : public Action
-    {
-    public:
-        Move(const int &ms) : ms(ms)
-        {
-        }
+	class Move : public Action
+	{
+	public:
+		Move(const int& ms) : ms(ms)
+		{
+		}
 
-        ActionType type() const override
-        {
-            return ActionType::Move;
-        }
+		const ActionType type() const override
+		{
+			return ActionType::Move;
+		}
 
-        const std::string toString() const override {
-            return fmt::format(R"(<Action type="Move" ms="{}"/>)", this->getMS());
-        }
+		const Status run(Context& context) override {
+			/*using namespace car::behaviour_tree;
+			CarContext &car_context = static_cast<CarContext&>(context);*/
+			return Status::Success;
+		}
 
-        const int& getMS() const {
-            return this->ms;
-        }
+		const std::string toString() const override {
+			return fmt::format(R"(<Action type="Move" ms="{}"/>)", this->getMS());
+		}
 
-    private:
-        const int ms;
-    };
+		const int& getMS() const {
+			return this->ms;
+		}
+
+	private:
+		const int ms;
+	};
 }
 
 #endif

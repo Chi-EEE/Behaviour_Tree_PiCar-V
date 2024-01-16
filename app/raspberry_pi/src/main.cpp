@@ -5,6 +5,8 @@
 
 #include "global/Config.hpp"
 
+#include "car/behaviour_tree/BehaviourTreeHandler.cxx"
+
 #include "car/display/CarConsole.h"
 
 #include "car/system/CarSystem.h"

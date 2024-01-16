@@ -19,7 +19,7 @@ namespace behaviour_tree::node::leaf::condition
 
 		const ConditionType condition_type() const override { return ConditionType::NearbyPoints; }
 
-		const Status run()
+		const Status run(Context& context)
 		{
 			// TODO:
 			return Status::Success;

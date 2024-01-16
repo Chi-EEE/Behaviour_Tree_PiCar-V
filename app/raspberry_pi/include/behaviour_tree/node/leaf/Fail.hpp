@@ -14,7 +14,7 @@ namespace behaviour_tree::node::leaf
 
 		const LeafType type() const override { return LeafType::Fail; }
 
-		const Status run() override
+		const Status run(Context& context) override
 		{
 			return Status::Failure;
 		}

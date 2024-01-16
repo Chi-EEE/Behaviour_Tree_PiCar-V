@@ -15,6 +15,7 @@ XML format inspired by: https://github.com/telcy/modular-behavior-tree & https:/
 #include <fmt/format.h>
 
 #include "Root.hpp"
+#include "Context.hpp"
 #include "node/Node.hpp"
 
 #include "node/composite/Composite.hpp"
@@ -70,7 +71,18 @@ namespace behaviour_tree
 		{
 		}
 
-		static tl::expected<std::unique_ptr<BehaviourTree>, std::string> parseFileXML(const std::string& file_path)
+		static tl::expected<std::shared_ptr<BehaviourTree>, std::string> parseXML(const std::string& xml)
+		{
+			pugi::xml_document doc;
+			pugi::xml_parse_result result = doc.load_string(xml.c_str());
+			if (!result)
+			{
+				return tl::unexpected("XML parsed with errors");
+			}
+			return parse(doc);
+		}
+
+		static tl::expected<std::shared_ptr<BehaviourTree>, std::string> parseFileXML(const std::string& file_path)
 		{
 			if (std::filesystem::exists(file_path) == false)
 			{
@@ -82,6 +94,33 @@ namespace behaviour_tree
 			{
 				return tl::unexpected("XML [" + file_path + "] parsed with errors");
 			}
+			return parse(doc);
+		}
+
+		void run(Context& context)
+		{
+			for (auto& root : this->roots)
+			{
+				if (root->getId() == "Main")
+				{
+					root->run(context);
+					break;
+				}
+			}
+		}
+
+		const std::string toString() const {
+			std::string out;
+			for (auto& root : this->roots)
+			{
+				out += root->toString();
+			}
+			return out;
+		}
+
+	private:
+		static tl::expected<std::shared_ptr<BehaviourTree>, std::string> parse(pugi::xml_document& doc)
+		{
 			std::vector<std::unique_ptr<Root>> roots;
 			for (pugi::xml_node& node = doc.child("Root"); node; node = node.next_sibling("Root"))
 			{
@@ -101,28 +140,6 @@ namespace behaviour_tree
 			);
 		}
 
-		void run()
-		{
-			for (auto& root : this->roots)
-			{
-				if (root->getId() == "Main")
-				{
-					root->run();
-					break;
-				}
-			}
-		}
-		
-		const std::string toString() const {
-			std::string out;
-			for (auto& root : this->roots)
-			{
-				out += root->toString();
-			}
-			return out;
-		}
-
-	private:
 		std::vector<std::unique_ptr<Root>> roots;
 
 	private:

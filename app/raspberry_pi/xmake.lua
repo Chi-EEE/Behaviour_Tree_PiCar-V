@@ -14,6 +14,8 @@ add_requires("ftxui")
 -- Embedded
 add_requires("etl")
 
+add_requires("robin-map")
+
 -- Logging and JSON
 add_requires("nlohmann_json")
 add_requires("pugixml v1.14")
@@ -41,6 +43,8 @@ target("raspberry_pi")
     add_packages("pugixml")
 
     add_packages("etl")
+
+    add_packages("robin-map")
 
     add_packages("tl_expected")
 
