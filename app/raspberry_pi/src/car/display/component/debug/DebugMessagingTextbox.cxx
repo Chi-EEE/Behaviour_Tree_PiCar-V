@@ -27,7 +27,7 @@ namespace car::display::component::debug {
 					this->handle_message_signal(this->message);
 					this->message = "";
 				};
-			this->messaging_textbox = Input(&this->message, "[Enter text here! Press enter to send!]", messaging_textbox_option) | dim;
+			this->messaging_textbox = Input(&this->message, "[Enter text here and press enter to send the message!]", messaging_textbox_option) | dim;
 
 			this->messaging_container =
 				Container::Vertical({
