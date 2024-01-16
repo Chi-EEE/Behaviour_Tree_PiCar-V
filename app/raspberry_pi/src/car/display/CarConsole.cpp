@@ -94,6 +94,7 @@ namespace car::display {
 #pragma endregion
 
 #pragma region Lidar Scan Map
+		// TODO: Fix crash which happens with this.
 		auto renderer_line_block = Renderer([&] {
 			auto c = Canvas(100, 100);
 			for (auto& point : this->car_system->getScanData()) {
