@@ -56,15 +56,15 @@ namespace global
 			{
 				json config_json = json::parse(config_file, nullptr, true, true);
 				
-				this->lidar_port = config_json["lidar_port"].get<std::string>();
+				this->lidar_port = config_json.at("lidar_port").get<std::string>();
 
-				this->host = config_json["host"].get<std::string>();
+				this->host = config_json.at("host").get<std::string>();
 				
-				this->port = std::make_optional<int>(config_json["port"].get<int>());
+				this->port = std::make_optional<int>(config_json.at("port").get<int>());
 
-				this->name = config_json["name"].get<std::string>();
+				this->name = config_json.at("name").get<std::string>();
 
-				this->room = config_json["room"].get<std::string>();
+				this->room = config_json.at("room").get<std::string>();
 			}
 			catch (const std::exception& e)
 			{
