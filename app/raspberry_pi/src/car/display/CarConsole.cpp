@@ -110,8 +110,10 @@ namespace car::display {
 		SettingsScreen settings_screen(this->car_system);
 		auto settings_container = settings_screen.element();
 
-		VectorSink<std::mutex> vector_sink(10);
-
+		VectorSink<std::mutex> vector_sink = VectorSink<std::mutex>(10);
+		auto vector_sink_logger = std::make_shared<spdlog::logger>("CLI", vector_sink);
+		//spdlog::set_default_logger(vector_sink_logger);
+		
 		LoggingScreen logging_screen;
 		auto logging_container = logging_screen.element();
 
@@ -130,6 +132,7 @@ namespace car::display {
 				main_component,
 				renderer_line_block,
 				settings_container,
+				vector_sink.element(),
 			}
 			, &selected_tab
 		);

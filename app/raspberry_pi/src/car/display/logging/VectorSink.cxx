@@ -6,9 +6,13 @@
 
 #include <fmt/format.h>
 
+#include <ftxui/component/component.hpp>
 #include <ftxui/dom/elements.hpp>
 
 #include <spdlog/sinks/base_sink.h>
+#include <spdlog/details/synchronous_factory.h>
+
+using namespace ftxui;
 
 namespace car::display::logging {
 	template<typename Mutex>
@@ -39,20 +43,19 @@ namespace car::display::logging {
 
 		void flush_() override {};
 
-		inline auto element()
+		Component element()
 		{
 			ftxui::Elements line_elements;
-			for (auto& el : this->log_messages)
+			for (std::string& message : this->log_messages)
 			{
-				line_elements.push_back(ftxui::text_element(el.msg, el.msg_color));
+				line_elements.push_back(text(message));
 			}
 
-			if (enable_flex)
-				return hbox(
-					window(text(name), vbox(std::move(line_elements)) | flex));
-			else
-				return hbox(
-					window(text(name), vbox(std::move(line_elements))));
+			return Renderer([&]
+				{
+					return vbox(std::move(line_elements)) | flex;
+				}
+			);
 		}
 
 	private:
@@ -60,6 +63,12 @@ namespace car::display::logging {
 
 		std::vector<std::string> log_messages;
 	};
+	template <typename Factory = spdlog::synchronous_factory>
+	inline std::shared_ptr<spdlog::logger> vector_sink_mt(const std::string& logger_name,
+		int max_lines) {
+		return Factory::template create<VectorSink>(
+			logger_name, logger_name);
+	}
 }
 
 #endif
