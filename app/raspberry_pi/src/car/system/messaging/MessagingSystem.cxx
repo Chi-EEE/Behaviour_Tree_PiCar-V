@@ -104,7 +104,7 @@ namespace car::system::messaging {
 		void handleMessage(const std::string& message) const {
 			try {
 				const json message_json = json::parse(message);
-				const std::string type = message_json["type"].get<std::string>();
+				const std::string type = message_json.at("type").get<std::string>();
 				switch (hash(type)) {
 				case hash("command"):
 					this->handleCommand(message_json);
@@ -118,28 +118,28 @@ namespace car::system::messaging {
 				}
 			}
 			catch (std::exception e) {
-				spdlog::error(R"(Unable to parse message "{}" into a json)", message);
+				spdlog::error("Unable to parse message '{}' into a json", message);
 			}
 		}
 
 		void handleCommand(const json& message_json) const {
 			try {
-				switch (hash(message_json["command"])) {
+				switch (hash(message_json.at("command").get<std::string>())) {
 				case hash("turn"): {
-					float angle = message_json["angle"].get<float>();
+					float angle = message_json.at("angle").get<float>();
 					this->angle_command_signal(angle);
 					spdlog::info("Turning by {} angle", angle);
 					break;
 				}
 				case hash("move"): {
-					int speed = message_json["speed"].get<int>();
+					int speed = message_json.at("speed").get<int>();
 					this->speed_command_signal(speed);
 					spdlog::info("Moving with {} speed", speed);
 					break;
 				}
 				case hash("custom"): {
-					const std::string custom_type = message_json["custom_type"].get<std::string>();
-					const std::string custom = message_json["custom"].get<std::string>();
+					const std::string custom_type = message_json.at("custom_type").get<std::string>();
+					const std::string custom = message_json.at("custom").get<std::string>();
 					this->custom_command_signal(custom_type, custom);
 					break;
 				}
