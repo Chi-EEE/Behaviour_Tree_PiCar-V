@@ -63,15 +63,22 @@ namespace car::display::screen {
 					this->debug_enabler.getCheckbox(),
 					Container::Vertical(
 						{
-							lidar_motor_checkbox_component,
-							Renderer([&] {return separator(); }),
-							movement_settings_renderer,
-							Renderer([&] {return separator(); }),
-							debug_messaging_text_box_renderer,
+							Renderer([&] {return separatorEmpty(); }),
+							Container::Vertical({
+								lidar_motor_checkbox_component,
+							}) | border,
+							Renderer([&] {return separatorEmpty(); }),
+							Container::Vertical({
+								movement_settings_renderer,
+							}) | border,
+							Renderer([&] {return separatorEmpty(); }),
+							Container::Vertical({
+								debug_messaging_text_box_renderer,
+							}) | border,
 						}
-					) | border | Maybe(&this->debug_enabler.isEnabled())
+					) | Maybe(&this->debug_enabler.isEnabled())
 				}
-			) | border;
+			);
 
 			settings_container |= this->debug_enabler.getWarningModal();
 

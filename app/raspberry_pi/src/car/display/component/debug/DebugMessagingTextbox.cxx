@@ -19,7 +19,8 @@ namespace car::display::component::debug {
 
 		ftxui::Component element()
 		{
-			this->messaging_textbox = Input(&this->message, "Enter a JSON message");
+			this->messaging_title = MenuEntry("Simulate the MessagingSystem:") | bold;
+			this->messaging_textbox = Input(&this->message, "Enter text here!") | blink;
 			this->messaging_button = Button("Click here to send a message to the MessagingSystem", [&]
 				{
 					this->handle_message_signal(this->message);
@@ -29,22 +30,31 @@ namespace car::display::component::debug {
 
 			this->messaging_container =
 				Container::Vertical({
+					this->messaging_title,
 					this->messaging_textbox,
 					this->messaging_button,
 					});
 
-			return Renderer(this->messaging_container, [&] {
-				return
-					vbox({
-						this->messaging_textbox->Render(),
-						this->messaging_button->Render(),
-						});
-				});
+			return Renderer(this->messaging_container, [&]
+				{
+					return
+						vbox(
+							{
+							this->messaging_title->Render(),
+							separator(),
+							this->messaging_textbox->Render(),
+							separator(),
+							this->messaging_button->Render(),
+							}
+					);
+				}
+			);
 		}
 
 	private:
 		std::string message;
 
+		Component messaging_title;
 		Component messaging_textbox;
 		Component messaging_button;
 
