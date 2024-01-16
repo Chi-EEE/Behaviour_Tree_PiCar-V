@@ -20,19 +20,19 @@ namespace car::display::component::debug {
 		ftxui::Component element()
 		{
 			this->messaging_title = MenuEntry("Simulate the MessagingSystem:") | bold;
-			this->messaging_textbox = Input(&this->message, "Enter text here!") | blink;
-			this->messaging_button = Button("Click here to send a message to the MessagingSystem", [&]
+
+			InputOption messaging_textbox_option = InputOption();
+			messaging_textbox_option.on_enter = [&]()
 				{
 					this->handle_message_signal(this->message);
 					this->message = "";
-				}
-			);
+				};
+			this->messaging_textbox = Input(&this->message, "Enter text here! Press enter to send!", messaging_textbox_option) | blink;
 
 			this->messaging_container =
 				Container::Vertical({
 					this->messaging_title,
 					this->messaging_textbox,
-					this->messaging_button,
 					});
 
 			return Renderer(this->messaging_container, [&]
@@ -43,8 +43,6 @@ namespace car::display::component::debug {
 							this->messaging_title->Render(),
 							separator(),
 							this->messaging_textbox->Render(),
-							separator(),
-							this->messaging_button->Render(),
 							}
 					);
 				}
@@ -56,7 +54,6 @@ namespace car::display::component::debug {
 
 		Component messaging_title;
 		Component messaging_textbox;
-		Component messaging_button;
 
 		Component messaging_container;
 

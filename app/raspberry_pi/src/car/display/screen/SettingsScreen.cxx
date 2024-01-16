@@ -60,6 +60,7 @@ namespace car::display::screen {
 
 			auto settings_container = Container::Vertical(
 				{
+					Renderer([&] {return separatorEmpty(); }),
 					this->debug_enabler.getCheckbox(),
 					Container::Vertical(
 						{
