@@ -14,7 +14,7 @@ namespace behaviour_tree
 	class BehaviourTree
 	{
 	public:
-		BehaviourTree(std::vector<std::unique_ptr<Root>> roots) : roots(std::move(roots))
+		BehaviourTree(std::vector<std::shared_ptr<Root>> roots) : roots(std::move(roots))
 		{
 		}
 
@@ -30,6 +30,17 @@ namespace behaviour_tree
 			}
 		}
 
+		Status toRoot(Context& context, const std::string& id) {
+			for (auto& root : this->roots)
+			{
+				if (root->getId() == id)
+				{
+					return root->run(context);
+				}
+			}
+			return Status::Failure;
+		}
+
 		const std::string toString() const {
 			std::string out;
 			for (auto& root : this->roots)
@@ -40,7 +51,7 @@ namespace behaviour_tree
 		}
 
 	private:
-		std::vector<std::unique_ptr<Root>> roots;
+		std::vector<std::shared_ptr<Root>> roots;
 	};
 }
 

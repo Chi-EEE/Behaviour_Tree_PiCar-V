@@ -4,6 +4,7 @@
 #pragma once
 
 #include <string>
+#include <fmt/format.h>
 
 #include "node/Node.hpp"
 

@@ -12,7 +12,7 @@
 
 #include "BehaviourTree.hpp"
 #include "Root.hpp"
-#include "Context.hpp"
+#include "Context.h"
 #include "node/Node.hpp"
 
 #include "node/composite/Composite.hpp"
@@ -109,7 +109,7 @@ namespace behaviour_tree
 
 		tl::expected<std::shared_ptr<BehaviourTree>, std::string> parse(pugi::xml_document& doc)
 		{
-			std::vector<std::unique_ptr<Root>> roots;
+			std::vector<std::shared_ptr<Root>> roots;
 			for (pugi::xml_node& node = doc.child("Root"); node; node = node.next_sibling("Root"))
 			{
 				auto maybe_root = parseRoot(node, STARTING_INDEX + roots.size());
@@ -129,7 +129,7 @@ namespace behaviour_tree
 		}
 
 	private:
-		tl::expected<std::unique_ptr<Root>, std::string> parseRoot(pugi::xml_node& node, const int& index)
+		tl::expected<std::shared_ptr<Root>, std::string> parseRoot(pugi::xml_node& node, const int& index)
 		{
 			int child_count = 0;
 			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
@@ -145,7 +145,7 @@ namespace behaviour_tree
 			{
 				return tl::unexpected(fmt::format(R"({}<-Root:["{}",{}])", maybe_child_node.error(), id, index));
 			}
-			return std::make_unique<Root>(
+			return std::make_shared<Root>(
 				Root(id, std::move(maybe_child_node.value()))
 			);
 		}

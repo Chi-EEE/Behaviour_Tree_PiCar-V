@@ -58,7 +58,9 @@ target("raspberry_pi")
     add_packages("pca9685")
     add_packages("tb6612")
 
+    add_headerfiles("include/**.h")
     add_headerfiles("include/**.hpp")
+    add_files("include/**.cpp")
 
     add_headerfiles("src/**.h", "src/**.hpp")
     add_files("src/**.cpp", "src/**.cxx")

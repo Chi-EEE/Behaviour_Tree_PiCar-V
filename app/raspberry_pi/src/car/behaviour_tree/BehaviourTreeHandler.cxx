@@ -19,7 +19,7 @@ namespace car::behaviour_tree
 	class BehaviourTreeHandler
 	{
 	public:
-		BehaviourTreeHandler(CarContext car_context, nod::signal<void(std::string, std::string)>& custom_command_signal, bool autorun) : car_context(car_context), autorun(autorun)
+		BehaviourTreeHandler(std::shared_ptr<CarSystem> car_system, nod::signal<void(std::string, std::string)>& custom_command_signal, bool autorun) : car_system(car_system), autorun(autorun)
 		{
 			BehaviourTreeParser::instance().setActionParser(std::make_unique<CarActionParser>(CarActionParser()));
 			custom_command_signal.connect([&](std::string custom_command_type, std::string custom)
@@ -33,7 +33,7 @@ namespace car::behaviour_tree
 					}
 					if (autorun) {
 						std::shared_ptr<BehaviourTree>& behaviour_tree = std::move(maybe_behaviour_tree.value());
-						behaviour_tree->run(car_context);
+						behaviour_tree->run(CarContext(behaviour_tree, car_system));
 					}
 					//this->addBehaviourTree(std::move(maybe_behaviour_tree.value()));
 				}
@@ -54,7 +54,7 @@ namespace car::behaviour_tree
 		}
 
 	private:
-		CarContext car_context;
+		std::shared_ptr<CarSystem> car_system;
 		bool autorun = false;
 
 		int id = 0;

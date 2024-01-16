@@ -16,8 +16,7 @@ namespace behaviour_tree::node::leaf
 
 		const Status run(Context& context) override
 		{
-			// TODO
-			return Status::Success;
+			return context.toRoot(this->id);
 		}
 
 		const std::string &getId() const { return this->id; }

@@ -18,7 +18,8 @@ namespace behaviour_tree::node::decorator
 
 		const Status run(Context& context) override
 		{
-			// TODO:
+			spdlog::info("Wait: {}", this->ms);
+			std::this_thread::sleep_for(std::chrono::milliseconds(this->ms));
 			return Status::Success;
 		}
 

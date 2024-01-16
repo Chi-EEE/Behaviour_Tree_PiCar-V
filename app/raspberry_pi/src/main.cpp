@@ -70,7 +70,7 @@ int main()
 		std::move(messaging_system),
 		std::move(movement_system));
 
-	BehaviourTreeHandler behaviour_tree_handler(CarContext(car_system), car_system->getCustomCommandSignal(), true);
+	BehaviourTreeHandler behaviour_tree_handler(car_system, car_system->getCustomCommandSignal(), true);
 
 	// The CarConsole object will display the UI and handle user input:
 	CarConsole car_console(std::move(car_system));
