@@ -41,7 +41,10 @@ namespace car::display::logging {
 			}
 		};
 
-		void flush_() override {};
+		void flush_() override 
+		{
+			this->log_messages.clear();
+		};
 
 		Component element()
 		{

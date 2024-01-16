@@ -111,8 +111,8 @@ namespace car::display {
 		auto settings_container = settings_screen.element();
 
 		std::shared_ptr<vector_sink_mt> vector_sink = std::make_shared<vector_sink_mt>(10);
-		auto vector_sink_logger = spdlog::logger("CLI", static_cast<std::shared_ptr<spdlog::sinks::sink>>(vector_sink));
-		//spdlog::set_default_logger(vector_sink_logger);
+		auto vector_sink_logger = std::make_shared<spdlog::logger>("CLI", static_cast<std::shared_ptr<spdlog::sinks::sink>>(vector_sink));
+		spdlog::set_default_logger(vector_sink_logger);
 
 		//LoggingScreen logging_screen;
 		//auto logging_container = logging_screen.element();
