@@ -136,7 +136,7 @@ namespace car::display {
 						line_elements.clear();
 						for (const std::string& message : this->vector_sink->get_log_messages())
 						{
-							line_elements.push_back(text(message));
+							line_elements.push_back(paragraph(message));
 						}
 						return vbox(line_elements) | flex;
 					}
