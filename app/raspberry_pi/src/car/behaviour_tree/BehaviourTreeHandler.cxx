@@ -19,7 +19,7 @@ namespace car::behaviour_tree
 	class BehaviourTreeHandler
 	{
 	public:
-		BehaviourTreeHandler(CarContext car_context, nod::signal<void(std::string, std::string)>& custom_command_signal) : car_context(car_context)
+		BehaviourTreeHandler(CarContext car_context, nod::signal<void(std::string, std::string)>& custom_command_signal, bool autorun) : car_context(car_context), autorun(autorun)
 		{
 			BehaviourTreeParser::instance().setActionParser(std::make_unique<CarActionParser>(CarActionParser()));
 			custom_command_signal.connect([&](std::string custom_command_type, std::string custom)

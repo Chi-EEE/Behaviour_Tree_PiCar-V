@@ -70,6 +70,8 @@ namespace car::system::messaging {
 			ix::uninitNetSystem();
 		}
 
+		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() { return this->custom_command_signal; }
+
 		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const
 		{
 			switch (msg->type) {

@@ -17,6 +17,8 @@
 #include "car/system/movement/controller/DummyMovementController.cxx"
 #include "car/system/movement/controller/DeviceMovementController.cxx"
 
+#include "car/behaviour_tree/BehaviourTreeHandler.cxx"
+
 std::string getWebSocketUrl()
 {
 	std::optional<int> maybe_port = GET_CONFIG_VALUE(port);
@@ -39,6 +41,7 @@ int main()
 	using namespace car::system::lidar;
 	using namespace car::system::messaging;
 	using namespace car::system::movement::controller;
+	using namespace car::behaviour_tree;
 	using namespace rplidar;
 
 	// spdlog::set_level(spdlog::level::off);
@@ -66,6 +69,8 @@ int main()
 		std::move(scanner),
 		std::move(messaging_system),
 		std::move(movement_system));
+
+	BehaviourTreeHandler behaviour_tree_handler(CarContext(car_system), car_system->getCustomCommandSignal(), true);
 
 	// The CarConsole object will display the UI and handle user input:
 	CarConsole car_console(std::move(car_system));
