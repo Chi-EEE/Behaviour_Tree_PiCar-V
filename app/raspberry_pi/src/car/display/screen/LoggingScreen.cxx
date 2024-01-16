@@ -10,9 +10,9 @@ using namespace ftxui;
 namespace car::display::screen {
 	class LoggingScreen {
 	public:
-		Component element() {
+		/*Component element() {
 
-		}
+		}*/
 	private:
 
 	};

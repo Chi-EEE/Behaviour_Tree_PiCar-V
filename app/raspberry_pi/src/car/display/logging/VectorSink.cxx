@@ -45,30 +45,25 @@ namespace car::display::logging {
 
 		Component element()
 		{
-			ftxui::Elements line_elements;
+			this->line_elements.clear();
 			for (std::string& message : this->log_messages)
 			{
-				line_elements.push_back(text(message));
+				this->line_elements.push_back(text(message));
 			}
-
 			return Renderer([&]
 				{
-					return vbox(std::move(line_elements)) | flex;
+					return vbox(this->line_elements) | flex;
 				}
 			);
 		}
 
 	private:
 		const int max_lines;
+		ftxui::Elements line_elements;
 
 		std::vector<std::string> log_messages;
 	};
-	template <typename Factory = spdlog::synchronous_factory>
-	inline std::shared_ptr<spdlog::logger> vector_sink_mt(const std::string& logger_name,
-		int max_lines) {
-		return Factory::template create<VectorSink>(
-			logger_name, logger_name);
-	}
+	using vector_sink_mt = VectorSink<std::mutex>;
 }
 
 #endif
