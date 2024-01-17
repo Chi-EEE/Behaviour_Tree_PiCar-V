@@ -4,7 +4,7 @@
 	import { xml } from "@codemirror/lang-xml";
 	import { oneDark } from "@codemirror/theme-one-dark";
 	import { hoverTooltip } from "@codemirror/view";
-    import { range_0_100, range_0_180 } from "./numbers";
+	import { range_0_100, range_0_180 } from "./numbers";
 
 	let value = "";
 	let common_children = [
@@ -142,7 +142,7 @@
 		["Succeed", "Always succeeds"],
 		["ToRoot", "Goes to the given root node id"],
 		["Repeat", "Repeats the child given the amount of times"],
-		
+
 		["LogMessage", "Logs the given message"],
 		["Wait", "Waits for the given amount of time"],
 
@@ -160,8 +160,8 @@
 		let { from, to, text } = view.state.doc.lineAt(pos);
 		let start = pos,
 			end = pos;
-		while (start > from && /\w/.test(text[start - from - 1])) start--;
-		while (end < to && /\w/.test(text[end - from])) end++;
+		while (start > from && /[\w|:]/.test(text[start - from - 1])) start--;
+		while (end < to && /[\w|:]/.test(text[end - from])) end++;
 		if ((start == pos && side < 0) || (end == pos && side > 0)) return null;
 		const highlighted_node = text.slice(start - from, end - from);
 		const node_information = node_information_list.get(highlighted_node);
