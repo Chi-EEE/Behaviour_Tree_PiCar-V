@@ -2,14 +2,14 @@
 	// If this does not work then try preview
 	import CodeMirror from "svelte-codemirror-editor";
 	import { xml } from "@codemirror/lang-xml";
+	import { oneDark } from "@codemirror/theme-one-dark";
 	let value = "";
 
-	let common_children = 
-	[
+	let common_children = [
 		// Composite
 		"Selector",
-		"Sequence", 
-		
+		"Sequence",
+
 		// Decorator
 		"Invert",
 		"Repeat",
@@ -22,15 +22,13 @@
 		"Task",
 		"ToRoot",
 		"Wait",
-	]
+	];
 	let schema = {
 		elements: [
 			{
 				name: "Root",
 				top: true,
-				attributes: [
-					"id",
-  				],
+				attributes: ["id"],
 				children: common_children,
 				completion: { type: "keyword" },
 			},
@@ -65,9 +63,9 @@
 					{
 						name: "type",
 						values: ["NearbyPoints"],
-						completion: { type: "keyword" }
+						completion: { type: "keyword" },
 					},
-					"min_angle", 
+					"min_angle",
 					"max_angle",
 					"distance",
 				],
@@ -83,9 +81,7 @@
 			},
 			{
 				name: "ToRoot",
-				attributes: [
-					"id",
-				],
+				attributes: ["id"],
 				completion: { type: "keyword" },
 			},
 			{
@@ -99,25 +95,36 @@
 					{
 						name: "type",
 						values: ["Turn", "Move", "Direction"],
-						completion: { type: "keyword" }
+						completion: { type: "keyword" },
 					},
-					"angle", 
+					"angle",
 					"ms",
 					{
 						name: "direction",
 						values: ["forward"],
-						completion: { type: "keyword" }
+						completion: { type: "keyword" },
 					},
 				],
 				completion: { type: "keyword" },
 			},
 		],
-		attributes: [
-			{ name: "name", global: true },
-		],
+		attributes: [{ name: "name", global: true }],
 	};
 </script>
 
-<div class="w-60 h-60 text-left">
-	<CodeMirror class="flex-auto" bind:value lang={xml(schema)} />
+<div style="height:50vh;" class="w-full text-left flex-auto">
+	<CodeMirror
+		class="h-full flex-auto font-mono text-lg font-bold"
+		bind:value
+		lang={xml(schema)}
+		theme={oneDark}
+	/>
+	<style>
+		.cm-editor {
+			height: 100% !important;
+		}
+		.cm-scroller {
+			height: 100% !important;
+		}
+	</style>
 </div>

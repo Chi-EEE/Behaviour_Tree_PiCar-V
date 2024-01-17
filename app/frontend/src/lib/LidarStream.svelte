@@ -86,14 +86,11 @@
         drawCursor();
     });
 </script>
-
-<div class="row-span-3">
+<div class="">
     <canvas
         id="canvas"
-        class="border-2 border-black"
-        width="800"
-        height="600"
+        class="flex-auto border-2 border-black"
         bind:this={canvas}
     />
-    <h1 class="w-1/6">Title: {room_name}</h1>
+    <h1>Title: {room_name}</h1>
 </div>

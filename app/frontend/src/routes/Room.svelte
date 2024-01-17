@@ -2,7 +2,7 @@
 	import ChatBox from "../lib/ChatBox.svelte";
 	import LidarStream from "../lib/LidarStream.svelte";
 	import UrlPattern from "url-pattern";
-    import CodeBox from "../lib/CodeBox.svelte";
+	import CodeBox from "../lib/CodeBox.svelte";
 
 	const room_pattern = new UrlPattern("#/room/:room");
 	let room_name = room_pattern.match(window.location.hash).room;
