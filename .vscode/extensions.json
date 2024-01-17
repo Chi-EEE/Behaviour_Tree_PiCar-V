@@ -6,6 +6,7 @@
         "tboox.xmake-vscode",
         "svelte.svelte-vscode",
         "christian-kohler.path-intellisense",
-        "fleexo.cpp-class-creator"
+        "fleexo.cpp-class-creator",
+        "bradlc.vscode-tailwindcss"
     ]
 }
