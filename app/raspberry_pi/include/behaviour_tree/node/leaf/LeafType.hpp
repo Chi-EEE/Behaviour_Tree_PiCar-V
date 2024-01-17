@@ -13,6 +13,7 @@ namespace behaviour_tree::node::leaf
         ToRoot,
         LogMessage,
         Condition,
+        Wait,
     };
 }
 

@@ -4,34 +4,120 @@
 	import { xml } from "@codemirror/lang-xml";
 	let value = "";
 
-	// From @codemirror/lang-xml repository
-	let schema1 = {
+	let common_children = 
+	[
+		// Composite
+		"Selector",
+		"Sequence", 
+		
+		// Decorator
+		"Invert",
+		"Repeat",
+
+		// Leaf
+		"Condition",
+		"Fail",
+		"LogMessage",
+		"Succeed",
+		"Task",
+		"ToRoot",
+		"Wait",
+	]
+	let schema = {
 		elements: [
 			{
-				name: "doc",
+				name: "Root",
 				top: true,
 				attributes: [
-					"attr1",
-					"attr2",
-					{
-						name: "attr3",
-						values: ["x", "y"],
-						completion: { type: "keyword" },
-					},
-				],
-				children: ["head", "body"],
+					"id",
+  				],
+				children: common_children,
 				completion: { type: "keyword" },
 			},
-			{ name: "head", attributes: ["attr2"] },
-			{ name: "body", children: [] },
+			// Composite
+			{
+				name: "Selector",
+				children: common_children,
+				completion: { type: "keyword" },
+			},
+			{
+				name: "Sequence",
+				children: common_children,
+				completion: { type: "keyword" },
+			},
+
+			// Decorator
+			{
+				name: "Invert",
+				children: common_children,
+				completion: { type: "keyword" },
+			},
+			{
+				name: "Repeat",
+				children: common_children,
+				completion: { type: "keyword" },
+			},
+
+			// Leaf
+			{
+				name: "Condition",
+				attributes: [
+					{
+						name: "type",
+						values: ["NearbyPoints"],
+						completion: { type: "keyword" }
+					},
+					"min_angle", 
+					"max_angle",
+					"distance",
+				],
+				completion: { type: "keyword" },
+			},
+			{
+				name: "Fail",
+				completion: { type: "keyword" },
+			},
+			{
+				name: "Succeed",
+				completion: { type: "keyword" },
+			},
+			{
+				name: "ToRoot",
+				attributes: [
+					"id",
+				],
+				completion: { type: "keyword" },
+			},
+			{
+				name: "Task",
+				children: ["Action"],
+				completion: { type: "keyword" },
+			},
+			{
+				name: "Action",
+				attributes: [
+					{
+						name: "type",
+						values: ["Turn", "Move", "Direction"],
+						completion: { type: "keyword" }
+					},
+					"angle", 
+					"ms",
+					{
+						name: "direction",
+						values: ["forward"],
+						completion: { type: "keyword" }
+					},
+				],
+				completion: { type: "keyword" },
+			},
 		],
 		attributes: [
-			{ name: "attr2", values: ["one", "two"] },
-			{ name: "attrglobal", global: true },
+			{ name: "name", global: true },
 		],
 	};
 </script>
 
-<div class="text-left">
-	<CodeMirror class="w-60 h-60" bind:value lang={xml(schema1)} />
+<div class="w-60 h-60 text-left">
+	<CodeMirror class="flex-auto" bind:value lang={xml(schema)} />
 </div>

@@ -175,10 +175,6 @@ namespace behaviour_tree
 			{
 				return parseDecorator(node, index, DecoratorType::Invert);
 			}
-			case hash("Wait"):
-			{
-				return parseDecorator(node, index, DecoratorType::Wait);
-			}
 #pragma endregion
 #pragma region Leaf Node
 			case hash("Condition"):
@@ -210,6 +206,13 @@ namespace behaviour_tree
 					ToRoot(
 						name,
 						node.attribute("id").as_string()));
+			}
+			case hash("Wait"):
+			{
+				return std::make_unique<Wait>(
+					Wait(
+						name,
+						node.attribute("ms").as_int()));
 			}
 #pragma endregion
 			default:
@@ -249,14 +252,6 @@ namespace behaviour_tree
 						std::move(maybe_child_node.value()),
 						node.attribute("count").as_int(),
 						node.attribute("break_on_fail").as_bool()));
-			}
-			case DecoratorType::Wait:
-			{
-				return std::make_unique<Wait>(
-					Wait(
-						name,
-						std::move(maybe_child_node.value()),
-						node.attribute("ms").as_int()));
 			}
 			}
 		}

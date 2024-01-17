@@ -9,7 +9,6 @@ namespace behaviour_tree::node::decorator
     {
         Invert,
         Repeat,
-        Wait,
     };
 }
 
