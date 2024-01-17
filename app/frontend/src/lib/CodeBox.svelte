@@ -7,7 +7,7 @@
 	import { range_0_100, range_0_180 } from "./numbers";
 
 	let value = "";
-	let common_children = [
+	const common_children = [
 		// Composite
 		"Selector",
 		"Sequence",
@@ -17,13 +17,22 @@
 		"Repeat",
 
 		// Leaf
-		"Condition",
 		"Fail",
 		"LogMessage",
 		"Succeed",
 		"Task",
 		"ToRoot",
 		"Wait",
+
+		// Conditions
+		"Condition:NearbyPoints",
+	];
+
+	const actions = [
+		"Action:Turn",
+		"Action:Move",
+		"Action:Direction",
+		"Action:Stop",
 	];
 
 	let schema = {
@@ -92,7 +101,7 @@
 			},
 			{
 				name: "Task",
-				children: ["Action"],
+				children: actions,
 				completion: { type: "keyword" },
 			},
 			{
@@ -128,6 +137,10 @@
 				],
 				completion: { type: "keyword" },
 			},
+			{
+				name: "Action:Stop",
+				completion: { type: "keyword" },
+			},
 		],
 		attributes: [{ name: "name", global: true }],
 	};
@@ -151,6 +164,7 @@
 		["Action:Turn", "Turns the car by the given angle"],
 		["Action:Move", "Moves the car by the given speed"],
 		["Action:Direction", "Sets the direction of the car"],
+		["Action:Stop", "Stops the car from moving"],
 
 		["Condition:NearbyPoints", "Checks if there are nearby points"],
 	]);
