@@ -16,6 +16,7 @@ namespace behaviour_tree::node
 	class Node
 	{
 	public:
+#pragma warning(disable:26495)
 		Node(const std::string& name) : name(name)
 		{
 		}
@@ -26,7 +27,11 @@ namespace behaviour_tree::node
 
 		const std::string& getName() const
 		{
-			return name;
+			return this->name;
+		}
+
+		void _setParent(const Node* parent) {
+			this->parent = parent;
 		}
 
 	protected:

@@ -13,10 +13,6 @@ namespace behaviour_tree::node::task
 		TaskNode(const std::string& name) : Node(name) {
 
 		}
-
-		virtual const Status run(Context& context) = 0;
-
-		virtual const std::string toString() const = 0;
 	};
 }
 
