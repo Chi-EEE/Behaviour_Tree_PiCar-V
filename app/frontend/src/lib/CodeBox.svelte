@@ -3,8 +3,9 @@
 	import CodeMirror from "svelte-codemirror-editor";
 	import { xml } from "@codemirror/lang-xml";
 	import { oneDark } from "@codemirror/theme-one-dark";
-	let value = "";
+	import { hoverTooltip } from "@codemirror/view";
 
+	let value = "";
 	let common_children = [
 		// Composite
 		"Selector",
@@ -23,6 +24,7 @@
 		"ToRoot",
 		"Wait",
 	];
+
 	let schema = {
 		elements: [
 			{
@@ -110,6 +112,47 @@
 		],
 		attributes: [{ name: "name", global: true }],
 	};
+
+	const node_information_list = new Map<string, string>([
+		["Root", "Start of every node tree"],
+		["Selector", "Runs children until one succeeds"],
+		["Sequence", "Runs children until one fails"],
+		["Invert", "Inverts the result of the child"],
+		["Repeat", "Repeats the child until it fails"],
+		["Condition", "Checks if the condition is true"],
+		["Fail", "Always fails"],
+		["Succeed", "Always succeeds"],
+		["ToRoot", "Goes to the given root node id"],
+		["Turn", "Turns the car"],
+		["Move", "Moves the car"],
+		["Direction", "Sets the direction of the car"],
+		["Repeat", "Repeats the child given the amount of times"],
+		["Task", "Runs its action nodes in order"],
+		["Action", "An action to run"],
+	]);
+
+	// Modified code from: https://codemirror.net/examples/tooltip/
+	const node_hover = hoverTooltip((view, pos, side) => {
+		let { from, to, text } = view.state.doc.lineAt(pos);
+		let start = pos,
+			end = pos;
+		while (start > from && /\w/.test(text[start - from - 1])) start--;
+		while (end < to && /\w/.test(text[end - from])) end++;
+		if ((start == pos && side < 0) || (end == pos && side > 0)) return null;
+		const highlighted_node = text.slice(start - from, end - from);
+		const node_information = node_information_list.get(highlighted_node);
+		if (!node_information) return null;
+		return {
+			pos: start,
+			end,
+			above: true,
+			create(view) {
+				let dom = document.createElement("div");
+				dom.textContent = node_information;
+				return { dom };
+			},
+		};
+	});
 </script>
 
 <div style="height:50vh;" class="w-full text-left flex-auto">
@@ -118,6 +161,7 @@
 		bind:value
 		lang={xml(schema)}
 		theme={oneDark}
+		extensions={[node_hover]}
 	/>
 	<style>
 		.cm-editor {
