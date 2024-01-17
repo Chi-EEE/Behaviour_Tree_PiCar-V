@@ -23,9 +23,6 @@
 		"Task",
 		"ToRoot",
 		"Wait",
-
-		// Conditions
-		"Condition:NearbyPoints",
 	];
 
 	const task_nodes = [
