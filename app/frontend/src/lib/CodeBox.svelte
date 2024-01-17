@@ -28,11 +28,11 @@
 		"Condition:NearbyPoints",
 	];
 
-	const actions = [
+	const task_nodes = [
 		"Action:Turn",
 		"Action:Move",
 		"Action:Direction",
-		"Action:Stop",
+		"Condition:NearbyPoints",
 	];
 
 	let schema = {
@@ -70,23 +70,6 @@
 
 			// Leaf
 			{
-				name: "Condition:NearbyPoints",
-				attributes: [
-					{
-						name: "min_angle",
-						values: range_0_180,
-						completion: { type: "keyword" },
-					},
-					{
-						name: "max_angle",
-						values: range_0_180,
-						completion: { type: "keyword" },
-					},
-					"distance",
-				],
-				completion: { type: "keyword" },
-			},
-			{
 				name: "Fail",
 				completion: { type: "keyword" },
 			},
@@ -101,7 +84,7 @@
 			},
 			{
 				name: "Task",
-				children: actions,
+				children: task_nodes,
 				completion: { type: "keyword" },
 			},
 			{
@@ -131,14 +114,27 @@
 				attributes: [
 					{
 						name: "direction",
-						values: ["forward", "backward"],
+						values: ["Forward", "Backward"],
 						completion: { type: "keyword" },
 					},
 				],
 				completion: { type: "keyword" },
 			},
 			{
-				name: "Action:Stop",
+				name: "Condition:NearbyPoints",
+				attributes: [
+					{
+						name: "min_angle",
+						values: range_0_180,
+						completion: { type: "keyword" },
+					},
+					{
+						name: "max_angle",
+						values: range_0_180,
+						completion: { type: "keyword" },
+					},
+					"distance",
+				],
 				completion: { type: "keyword" },
 			},
 		],

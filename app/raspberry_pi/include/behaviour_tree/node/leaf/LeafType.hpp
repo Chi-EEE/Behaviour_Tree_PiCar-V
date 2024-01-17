@@ -12,7 +12,6 @@ namespace behaviour_tree::node::leaf
         Task,
         ToRoot,
         LogMessage,
-        Condition,
         Wait,
     };
 }

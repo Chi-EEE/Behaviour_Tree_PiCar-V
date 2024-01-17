@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "Status.hpp"
+
 namespace behaviour_tree
 {
 	class BehaviourTree;

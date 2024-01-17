@@ -22,7 +22,6 @@
 #include "node/decorator/Decorator.hpp"
 #include "node/decorator/Repeat.hpp"
 #include "node/decorator/Invert.hpp"
-#include "node/decorator/Wait.hpp"
 
 #include "node/leaf/Leaf.hpp"
 #include "node/leaf/Task.hpp"
@@ -30,19 +29,16 @@
 #include "node/leaf/Fail.hpp"
 #include "node/leaf/LogMessage.hpp"
 #include "node/leaf/ToRoot.hpp"
+#include "node/leaf/Wait.hpp"
 
-#include "node/leaf/Condition.hpp"
-#include "node/leaf/condition/NearbyPoints.hpp"
-
-#include "action/Action.hpp"
-#include "action/ActionParser.hpp"
+#include "task_node/Action.hpp"
+#include "task_node/TaskNodeParser.hpp"
 
 using namespace behaviour_tree::node;
 using namespace behaviour_tree::node::composite;
 using namespace behaviour_tree::node::decorator;
 using namespace behaviour_tree::node::leaf;
-using namespace behaviour_tree::node::leaf::condition;
-using namespace behaviour_tree::action;
+using namespace behaviour_tree::task_node;
 
 namespace behaviour_tree
 {
@@ -62,18 +58,18 @@ namespace behaviour_tree
 	class BehaviourTreeParser
 	{
 	public:
-        BehaviourTreeParser(BehaviourTreeParser const&) = delete;
-        void operator=(BehaviourTreeParser const&)  = delete;
+		BehaviourTreeParser(BehaviourTreeParser const&) = delete;
+		void operator=(BehaviourTreeParser const&) = delete;
 
-        static BehaviourTreeParser& instance()
-        {
-            static BehaviourTreeParser instance;
-            return instance;
-        }
-
-		void setActionParser(std::unique_ptr<ActionParser> action_parser)
+		static BehaviourTreeParser& instance()
 		{
-			this->action_parser = std::move(action_parser);
+			static BehaviourTreeParser instance;
+			return instance;
+		}
+
+		void setTaskNodeParser(std::unique_ptr<TaskNodeParser> task_node_parser)
+		{
+			this->task_node_parser = std::move(task_node_parser);
 		}
 
 		tl::expected<std::shared_ptr<BehaviourTree>, std::string> parseXML(const std::string& xml)
@@ -103,9 +99,9 @@ namespace behaviour_tree
 		}
 
 	private:
-        BehaviourTreeParser() {}
-		
-        std::unique_ptr<ActionParser> action_parser;
+		BehaviourTreeParser() {}
+
+		std::unique_ptr<TaskNodeParser> task_node_parser;
 
 		tl::expected<std::shared_ptr<BehaviourTree>, std::string> parse(pugi::xml_document& doc)
 		{
@@ -150,7 +146,7 @@ namespace behaviour_tree
 			);
 		}
 
-		tl::expected<std::unique_ptr<Node>, std::string> parseChild(pugi::xml_node& node, const int& index)
+		tl::expected<std::unique_ptr<node::Node>, std::string> parseChild(pugi::xml_node& node, const int& index)
 		{
 			const std::string name = node.attribute("name").as_string();
 			const std::string& node_name = node.name();
@@ -177,10 +173,6 @@ namespace behaviour_tree
 			}
 #pragma endregion
 #pragma region Leaf Node
-			case hash("Condition"):
-			{
-				return parseCondition(node, index);
-			}
 			case hash("Task"):
 			{
 				return parseTask(node, index);
@@ -222,7 +214,7 @@ namespace behaviour_tree
 			}
 		}
 
-		tl::expected<std::unique_ptr<Decorator>, std::string> parseDecorator(pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
+		tl::expected<std::unique_ptr<node::decorator::Decorator>, std::string> parseDecorator(pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
 		{
 			const std::string name = node.attribute("name").as_string();
 			pugi::xml_node& child = node.first_child();
@@ -259,7 +251,7 @@ namespace behaviour_tree
 		tl::expected<std::unique_ptr<Composite>, std::string> parseComposite(pugi::xml_node& node, const int& index, const CompositeType& composite_type)
 		{
 			const std::string name = node.attribute("name").as_string();
-			std::vector<std::unique_ptr<Node>> children;
+			std::vector<std::unique_ptr<node::Node>> children;
 			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
 			{
 				auto maybe_node = parseChild(child, STARTING_INDEX + children.size());
@@ -282,44 +274,27 @@ namespace behaviour_tree
 			}
 		}
 
-		tl::expected<std::unique_ptr<Condition>, std::string> parseCondition(pugi::xml_node& node, const int& index)
+		tl::expected<std::unique_ptr<node::leaf::Task>, std::string> parseTask(pugi::xml_node& node, const int& index)
 		{
-			const std::string name = node.attribute("name").as_string();
-			switch (hash(node.attribute("type").as_string()))
+			std::vector<std::unique_ptr<TaskNode>> task_nodes;
+			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
 			{
-			case hash("NearbyPoints"):
-				return std::make_unique<NearbyPoints>(
-					NearbyPoints(
-						name,
-						node.attribute("min_angle").as_int(),
-						node.attribute("max_angle").as_int(),
-						node.attribute("avg_distance").as_int()
-					)
-				);
-
-			default:
-				return tl::unexpected(fmt::format(R"(Invalid condition type: {} | Condition:["{}",{}])", std::string(node.attribute("type").as_string()), name, index));
-			}
-		}
-
-		tl::expected<std::unique_ptr<Task>, std::string> parseTask(pugi::xml_node& node, const int& index)
-		{
-			std::vector<std::unique_ptr<Action>> actions;
-			for (pugi::xml_node& child = node.child("Action"); child; child = child.next_sibling("Action"))
-			{
-				auto maybe_action = action_parser->parseAction(child);
-				if (!maybe_action.has_value())
-				{
-					return tl::unexpected(maybe_action.error());
+				if (std::string(node.name()).rfind("Action:", 0) != 0 && std::string(node.name()).rfind("Condition:", 0) != 0) {
+					continue;
 				}
-				actions.push_back(std::move(maybe_action.value()));
+				auto maybe_task_node = this->task_node_parser->parseTaskNode(child);
+				if (!maybe_task_node.has_value())
+				{
+					return tl::unexpected(maybe_task_node.error());
+				}
+				task_nodes.push_back(std::move(maybe_task_node.value()));
 			}
 			const std::string name = node.attribute("name").as_string();
-			if (actions.size() <= 0)
+			if (task_nodes.size() <= 0)
 			{
 				return tl::unexpected(fmt::format(R"(Task node must have at least one action | Task:["{}",{}])", name, index));
 			}
-			return std::make_unique<Task>(Task(name, std::move(actions)));
+			return std::make_unique<node::leaf::Task>(node::leaf::Task(name, std::move(task_nodes)));
 		}
 	};
 }

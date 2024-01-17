@@ -3,14 +3,14 @@
 
 #pragma once
 
-#include "behaviour_tree/action/Action.hpp"
+#include "behaviour_tree/task_node/Action.hpp"
 
-namespace behaviour_tree::action
+namespace car::behaviour_tree::task_node::action
 {
 	class Move : public Action
 	{
 	public:
-		Move(const int& ms) : ms(ms)
+		Move(const int& speed) : speed(speed)
 		{
 		}
 
@@ -21,15 +21,15 @@ namespace behaviour_tree::action
 		}
 
 		const std::string toString() const override {
-			return fmt::format(R"(<Action type="Move" ms="{}"/>)", this->getMS());
+			return fmt::format(R"(<Action:Move ms="{}"/>)", this->getSpeed());
 		}
 
-		const int& getMS() const {
-			return this->ms;
+		const int& getSpeed() const {
+			return this->speed;
 		}
 
 	private:
-		const int ms;
+		const int speed;
 	};
 }
 

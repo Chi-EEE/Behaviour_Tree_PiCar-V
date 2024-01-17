@@ -15,7 +15,7 @@ namespace behaviour_tree
 	class Root
 	{
 	public:
-		Root(std::string id, std::shared_ptr<Node> child) : id(id), child(std::move(child))
+		Root(std::string id, std::shared_ptr<node::Node> child) : id(id), child(std::move(child))
 		{
 		}
 
@@ -39,7 +39,7 @@ namespace behaviour_tree
 
 	private:
 		std::string id;
-		std::shared_ptr<Node> child;
+		std::shared_ptr<node::Node> child;
 	};
 }
 

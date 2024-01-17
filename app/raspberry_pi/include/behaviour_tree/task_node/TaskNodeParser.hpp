@@ -1,5 +1,5 @@
-#ifndef BEHAVIOUR_TREE_ACTION_PARSER_HPP
-#define BEHAVIOUR_TREE_ACTION_PARSER_HPP
+#ifndef BEHAVIOUR_TREE_TASK_NODE_PARSER_HPP
+#define BEHAVIOUR_TREE_TASK_NODE_PARSER_HPP
 
 #pragma once
 
@@ -10,9 +10,9 @@
 #include <tl/expected.hpp>
 #include <fmt/format.h>
 
-#include "Action.hpp"
+#include "TaskNode.hpp"
 
-namespace behaviour_tree::action
+namespace behaviour_tree::task_node
 {
 	// https://stackoverflow.com/a/46711735
 	static constexpr uint32_t hash(const std::string_view s) noexcept
@@ -25,10 +25,10 @@ namespace behaviour_tree::action
 		return hash;
 	}
 
-	class ActionParser
+	class TaskNodeParser
 	{
 	public:
-		virtual tl::expected<std::unique_ptr<Action>, std::string> parseAction(pugi::xml_node& node) = 0;
+		virtual tl::expected<std::unique_ptr<TaskNode>, std::string> parseTaskNode(pugi::xml_node& node) = 0;
 	};
 }
 

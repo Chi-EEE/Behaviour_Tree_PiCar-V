@@ -9,7 +9,7 @@
 #include <nod/nod.hpp>
 
 #include "behaviour_tree/BehaviourTreeParser.hpp"
-#include "CarActionParser.cxx"
+#include "CarTaskNodeParser.cxx"
 #include "CarContext.cxx"
 
 using namespace behaviour_tree;
@@ -21,8 +21,8 @@ namespace car::behaviour_tree
 	public:
 		BehaviourTreeHandler(std::shared_ptr<CarSystem> car_system, nod::signal<void(std::string, std::string)>& custom_command_signal, bool autorun) : car_system(car_system), autorun(autorun)
 		{
-			// The BehaviourTreeParser does not come with a ActionParser since each program can have a different set of Action nodes
-			BehaviourTreeParser::instance().setActionParser(std::make_unique<CarActionParser>(CarActionParser()));
+			// The BehaviourTreeParser does not come with a TaskNodeParser since each program can have a different set of Action nodes
+			BehaviourTreeParser::instance().setTaskNodeParser(std::make_unique<CarTaskNodeParser>(CarTaskNodeParser()));
 			custom_command_signal.connect([&](std::string custom_command_type, std::string custom)
 				{
 					if (custom_command_type != "behaviour_tree") {

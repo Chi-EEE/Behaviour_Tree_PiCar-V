@@ -7,16 +7,16 @@
 
 #include "Leaf.hpp"
 
-#include "../../action/Action.hpp"
+#include "../../task_node/TaskNode.hpp"
 
-using namespace behaviour_tree::action;
+using namespace behaviour_tree::task_node;
 
 namespace behaviour_tree::node::leaf
 {
     class Task : public Leaf
     {
     public:
-        Task(const std::string& name, std::vector<std::unique_ptr<Action>> actions) : Leaf(name), actions(std::move(actions))
+        Task(const std::string& name, std::vector<std::unique_ptr<TaskNode>> task_nodes) : Leaf(name), task_nodes(std::move(task_nodes))
         {
         }
 
@@ -24,9 +24,9 @@ namespace behaviour_tree::node::leaf
 
         const Status run(Context& context) override
         {
-            for (auto &action : this->actions)
+            for (auto & task_node : this->task_nodes)
             {
-                if (action->run(context) == Status::Failure) {
+                if (task_node->run(context) == Status::Failure) {
                     return Status::Failure;
                 }
             }
@@ -36,9 +36,9 @@ namespace behaviour_tree::node::leaf
 
         const std::string toString() const override {
             std::string out;
-            for (auto& action : this->actions)
+            for (auto& task_node : this->task_nodes)
             {
-                out += action->toString();
+                out += task_node->toString();
             }
             const std::string& name = this->getName();
             if (name != "")
@@ -47,7 +47,7 @@ namespace behaviour_tree::node::leaf
                 return fmt::format(R"(<Task>{}</Task>)", out);
         }
 
-        std::vector<std::unique_ptr<Action>> actions;
+        std::vector<std::unique_ptr<TaskNode>> task_nodes;
     };
 }
 

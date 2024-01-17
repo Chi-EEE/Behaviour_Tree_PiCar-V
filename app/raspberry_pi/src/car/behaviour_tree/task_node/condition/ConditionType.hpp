@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace behaviour_tree::node::leaf::condition
+namespace car::behaviour_tree::task_node::condition
 {
     enum class ConditionType
     {
