@@ -5,11 +5,14 @@
 
 #include "TaskNode.hpp"
 
-namespace behaviour_tree::task_node
+namespace behaviour_tree::node::task
 {
 	class Action : public TaskNode
 	{
 	public:
+		Action(const std::string& name) : TaskNode(name) {
+
+		}
 	};
 }
 

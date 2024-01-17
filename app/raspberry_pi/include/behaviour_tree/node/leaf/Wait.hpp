@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include <thread>
+
 #include "Leaf.hpp"
 
 namespace behaviour_tree::node::leaf

@@ -3,16 +3,17 @@
 
 #pragma once
 
-#include <fmt/format.h>
+#include "../Node.hpp"
 
-#include "../Context.h"
-#include "../Status.hpp"
-
-namespace behaviour_tree::task_node
+namespace behaviour_tree::node::task
 {
-	class TaskNode
+	class TaskNode : public Node
 	{
 	public:
+		TaskNode(const std::string& name) : Node(name) {
+
+		}
+
 		virtual const Status run(Context& context) = 0;
 
 		virtual const std::string toString() const = 0;

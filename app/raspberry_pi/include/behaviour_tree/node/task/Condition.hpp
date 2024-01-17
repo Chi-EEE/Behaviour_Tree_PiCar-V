@@ -5,12 +5,14 @@
 
 #include "TaskNode.hpp"
 
-namespace behaviour_tree::task_node
+namespace behaviour_tree::node::task
 {
 	class Condition : public TaskNode
 	{
 	public:
+		Condition(const std::string& name) : TaskNode(name) {
 
+		}
 	};
 }
 

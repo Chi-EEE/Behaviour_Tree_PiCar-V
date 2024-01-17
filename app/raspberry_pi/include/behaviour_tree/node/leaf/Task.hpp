@@ -7,9 +7,9 @@
 
 #include "Leaf.hpp"
 
-#include "../../task_node/TaskNode.hpp"
+#include "../task/TaskNode.hpp"
 
-using namespace behaviour_tree::task_node;
+using namespace behaviour_tree::node::task;
 
 namespace behaviour_tree::node::leaf
 {

@@ -11,17 +11,19 @@
 #include <fmt/format.h>
 
 #include "behaviour_tree/BehaviourTree.hpp"
-#include "behaviour_tree/task_node/TaskNode.hpp"
-#include "behaviour_tree/task_node/Action.hpp"
-#include "behaviour_tree/task_node/Condition.hpp"
+#include "behaviour_tree/node/task/TaskNode.hpp"
+#include "behaviour_tree/node/task/Action.hpp"
+#include "behaviour_tree/node/task/Condition.hpp"
 
-#include "behaviour_tree/task_node/TaskNodeParser.hpp"
+#include "behaviour_tree/node/task/TaskNodeParser.hpp"
 
 #include "task_node/action/Direction.hpp"
 #include "task_node/action/Turn.hpp"
 #include "task_node/action/Move.hpp"
 
 #include "task_node/condition/NearbyPoints.hpp"
+
+using namespace behaviour_tree::node::task;
 
 using namespace car::behaviour_tree::task_node;
 
@@ -45,6 +47,7 @@ namespace car::behaviour_tree
 
 		tl::expected<std::unique_ptr<TaskNode>, std::string> parseTaskNode(pugi::xml_node& node) override
 		{
+			const std::string name_attribute = node.attribute("name").as_string();
 			const std::string name = node.name();
 			switch (hash(name))
 			{
@@ -53,22 +56,22 @@ namespace car::behaviour_tree
 				const int speed = node.attribute("speed").as_int();
 				if (speed < 0 || speed > 100)
 					return tl::unexpected(fmt::format("Invalid speed: {} | Action:Move", std::to_string(speed)));
-				return std::make_unique<action::Move>(action::Move(speed));
+				return std::make_unique<action::Move>(action::Move(name_attribute, speed));
 			}
 			case hash("Action:Turn"):
 			{
 				const int angle = node.attribute("angle").as_int();
 				if (angle < 0 || angle > 180)
 					return tl::unexpected(fmt::format("Invalid angle: {} | Action:Turn", std::to_string(angle)));
-				return std::make_unique<action::Turn>(action::Turn(angle));
+				return std::make_unique<action::Turn>(action::Turn(name_attribute, angle));
 			}
 			case hash("Action:Direction"):
 			{
 				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
 				if (direction_type_attribute == "Forward")
-					return std::make_unique<action::Direction>(action::Direction(action::DirectionType::Forward));
+					return std::make_unique<action::Direction>(action::Direction(name_attribute, action::DirectionType::Forward));
 				else if (direction_type_attribute == "Backward")
-					return std::make_unique<action::Direction>(action::Direction(action::DirectionType::Backward));
+					return std::make_unique<action::Direction>(action::Direction(name_attribute, action::DirectionType::Backward));
 				else
 					return tl::unexpected(fmt::format("Invalid direction_type: {} | Action:Direction", direction_type_attribute));
 			}
@@ -85,6 +88,7 @@ namespace car::behaviour_tree
 					return tl::unexpected(fmt::format("Invalid avg_distance: {} | Condition:NearbyPoints", std::to_string(avg_distance)));
 				return std::make_unique<condition::NearbyPoints>(
 					condition::NearbyPoints(
+						name_attribute,
 						min_angle,
 						max_angle,
 						avg_distance

@@ -3,21 +3,21 @@
 
 #pragma once
 
-#include "behaviour_tree/task_node/Action.hpp"
+#include "behaviour_tree/node/task/Action.hpp"
 
 #include "behaviour_tree/Context.h"
 
 #include "DirectionType.hpp"
 
 using namespace behaviour_tree;
-using namespace behaviour_tree::task_node;
+using namespace behaviour_tree::node::task;
 
 namespace car::behaviour_tree::task_node::action
 {
 	class Direction : public Action
 	{
 	public:
-		Direction(const DirectionType& direction_type) : direction_type(direction_type)
+		Direction(const std::string& name, const DirectionType& direction_type) : Action(name), direction_type(direction_type)
 		{
 		}
 
@@ -43,7 +43,12 @@ namespace car::behaviour_tree::task_node::action
 				direction_type = "Backward";
 				break;
 			}
-			return fmt::format(R"(<Action:Direction direction="{}"/>)", direction_type);
+
+			const std::string& name = this->getName();
+			if (name != "")
+				return fmt::format(R"(<Action:Direction name="{}" direction="{}"/>)", name, direction_type);
+			else
+				return fmt::format(R"(<Action:Direction direction="{}"/>)", direction_type);
 		}
 
 	private:

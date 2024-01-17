@@ -12,7 +12,7 @@
 
 #include "TaskNode.hpp"
 
-namespace behaviour_tree::task_node
+namespace behaviour_tree::node::task
 {
 	// https://stackoverflow.com/a/46711735
 	static constexpr uint32_t hash(const std::string_view s) noexcept

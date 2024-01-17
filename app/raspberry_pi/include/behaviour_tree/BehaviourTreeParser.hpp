@@ -31,14 +31,14 @@
 #include "node/leaf/ToRoot.hpp"
 #include "node/leaf/Wait.hpp"
 
-#include "task_node/Action.hpp"
-#include "task_node/TaskNodeParser.hpp"
+#include "node/task/Action.hpp"
+#include "node/task/TaskNodeParser.hpp"
 
 using namespace behaviour_tree::node;
 using namespace behaviour_tree::node::composite;
 using namespace behaviour_tree::node::decorator;
 using namespace behaviour_tree::node::leaf;
-using namespace behaviour_tree::task_node;
+using namespace behaviour_tree::node::task;
 
 namespace behaviour_tree
 {

@@ -10,7 +10,7 @@ namespace behaviour_tree::node::leaf
 	class ToRoot : public Leaf
 	{
 	public:
-		ToRoot(const std::string& name, const std::string &id) : Leaf(name), id(id) {}
+		ToRoot(const std::string& name, const std::string& id) : Leaf(name), id(id) {}
 
 		const LeafType type() const override { return LeafType::ToRoot; }
 
@@ -19,7 +19,7 @@ namespace behaviour_tree::node::leaf
 			return context.toRoot(this->id);
 		}
 
-		const std::string &getId() const { return this->id; }
+		const std::string& getId() const { return this->id; }
 
 		const std::string toString() const override {
 			const std::string& name = this->getName();

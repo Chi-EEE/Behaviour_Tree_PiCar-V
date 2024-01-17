@@ -6,6 +6,8 @@
 #include <string>
 #include <memory>
 
+#include <fmt/format.h>
+
 #include "../Status.hpp"
 #include "../Context.h"
 
@@ -28,6 +30,7 @@ namespace behaviour_tree::node
 		}
 
 	protected:
+		const Node* parent;
 		const std::string name;
 	};
 }
