@@ -51,7 +51,7 @@ namespace car::behaviour_tree
 			case hash("Action:Move"):
 			{
 				const int speed = node.attribute("speed").as_int();
-				if (speed < 0)
+				if (speed < 0 || speed > 100)
 					return tl::unexpected(fmt::format("Invalid speed: {} | Action:Move", std::to_string(speed)));
 				return std::make_unique<action::Move>(action::Move(speed));
 			}

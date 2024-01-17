@@ -21,7 +21,7 @@ namespace car::behaviour_tree::task_node::action
 		}
 
 		const std::string toString() const override {
-			return fmt::format(R"(<Action:Move ms="{}"/>)", this->getSpeed());
+			return fmt::format(R"(<Action:Move speed="{}"/>)", this->getSpeed());
 		}
 
 		const int& getSpeed() const {
