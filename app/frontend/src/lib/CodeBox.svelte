@@ -4,6 +4,7 @@
 	import { xml } from "@codemirror/lang-xml";
 	import { oneDark } from "@codemirror/theme-one-dark";
 	import { hoverTooltip } from "@codemirror/view";
+    import { range_0_100, range_0_180 } from "./numbers";
 
 	let value = "";
 	let common_children = [
@@ -60,15 +61,18 @@
 
 			// Leaf
 			{
-				name: "Condition",
+				name: "Condition:NearbyPoints",
 				attributes: [
 					{
-						name: "type",
-						values: ["NearbyPoints"],
+						name: "min_angle",
+						values: range_0_180,
 						completion: { type: "keyword" },
 					},
-					"min_angle",
-					"max_angle",
+					{
+						name: "max_angle",
+						values: range_0_180,
+						completion: { type: "keyword" },
+					},
 					"distance",
 				],
 				completion: { type: "keyword" },
@@ -92,18 +96,33 @@
 				completion: { type: "keyword" },
 			},
 			{
-				name: "Action",
+				name: "Action:Turn",
 				attributes: [
 					{
-						name: "type",
-						values: ["Turn", "Move", "Direction"],
+						name: "angle",
+						values: range_0_180,
 						completion: { type: "keyword" },
 					},
-					"angle",
-					"ms",
+				],
+				completion: { type: "keyword" },
+			},
+			{
+				name: "Action:Move",
+				attributes: [
+					{
+						name: "speed",
+						values: range_0_100,
+						completion: { type: "keyword" },
+					},
+				],
+				completion: { type: "keyword" },
+			},
+			{
+				name: "Action:Direction",
+				attributes: [
 					{
 						name: "direction",
-						values: ["forward"],
+						values: ["forward", "backward"],
 						completion: { type: "keyword" },
 					},
 				],
@@ -119,16 +138,21 @@
 		["Sequence", "Runs children until one fails"],
 		["Invert", "Inverts the result of the child"],
 		["Repeat", "Repeats the child until it fails"],
-		["Condition", "Checks if the condition is true"],
 		["Fail", "Always fails"],
 		["Succeed", "Always succeeds"],
 		["ToRoot", "Goes to the given root node id"],
-		["Turn", "Turns the car"],
-		["Move", "Moves the car"],
-		["Direction", "Sets the direction of the car"],
 		["Repeat", "Repeats the child given the amount of times"],
+		
+		["LogMessage", "Logs the given message"],
+		["Wait", "Waits for the given amount of time"],
+
 		["Task", "Runs its action nodes in order"],
-		["Action", "An action to run"],
+
+		["Action:Turn", "Turns the car by the given angle"],
+		["Action:Move", "Moves the car by the given speed"],
+		["Action:Direction", "Sets the direction of the car"],
+
+		["Condition:NearbyPoints", "Checks if there are nearby points"],
 	]);
 
 	// Modified code from: https://codemirror.net/examples/tooltip/
@@ -160,6 +184,7 @@
 		class="h-full flex-auto font-mono text-lg font-bold"
 		bind:value
 		lang={xml(schema)}
+		tabSize={4}
 		theme={oneDark}
 		extensions={[node_hover]}
 	/>

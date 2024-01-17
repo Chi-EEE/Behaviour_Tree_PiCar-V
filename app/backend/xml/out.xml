@@ -1,13 +1,13 @@
 <Root id="main">
     <Sequence>
         <Task name="Move">
-            <Action type="Turn" angle="180" />
-            <Action type="Move" ms="10" />
-            <Action type="Direction" direction_type="forward" />
-            <Action type="Direction" direction_type="backward" />
+            <Action:Turn angle="180" />
+            <Action:Move ms="10" />
+            <Action:Direction direction_type="forward" />
+            <Action:Direction direction_type="backward" />
             
         </Task>
-        <Condition type="NearbyPoints" min_angle="0" max_angle="0" distance="200" />
+        <Condition:NearbyPoints min_angle="0" max_angle="0" distance="200" />
         <Wait ms="5000">
         </Wait>
         <LogMessage text="Waited 5 seconds" />
@@ -22,25 +22,8 @@
     </Sequence>
     <!--
     <Selector>
-        <Task name="Move">
-            <Action type="Turn" angle="180" />
-
-            <Action type="Move" ms="10" />
-            <Action type="Direction" direction="forward" />
-            <Action type="Direction" direction="backward" />
-            <Wait ms="5000" />
-            <LogMessage text="Waited 5 seconds" />
-        </Task>
     </Selector> -->
     <!-- <RandomSelector name="Random">
-        <Task name="Attack">
-            <Action type="Turn" angle="180" />
-            <Action type="Attack" />
-        </Task>
-        <Task name="Defend">
-            <Action type="Turn" angle="180" />
-            <Action type="Defend" />
-        </Task>
     </RandomSelector> -->
     <!-- <RandomSequence name="Random">
     </RandomSequence> -->
