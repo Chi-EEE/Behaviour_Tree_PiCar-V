@@ -51,7 +51,6 @@ namespace car::system::movement::devices
 			this->angle = new_angle;
 			int analog_angle = getAnalogAngle();
 			this->pwm->setPWM(channel, 0, analog_angle);
-			spdlog::info("Channel: {} \tAngle: {} \tAnalog Angle: {}", this->channel, angle, analog_angle);
 		}
 
 		void reset() {
