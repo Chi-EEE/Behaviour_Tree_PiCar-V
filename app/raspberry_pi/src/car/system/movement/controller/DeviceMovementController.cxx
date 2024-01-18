@@ -35,6 +35,7 @@ namespace car::system::movement::controller
 	public:
 		DeviceMovementController()
 		{
+			gpioInitialise();
 			this->pwm = std::make_shared<PCA9685>();
 			this->rear_left_wheel = std::make_unique<RearWheel>(
 				this->pwm,
@@ -61,6 +62,7 @@ namespace car::system::movement::controller
 			this->rear_left_wheel->stop();
 			this->rear_right_wheel->stop();
 			this->pwm->reset();
+			gpioTerminate();
 		};
 
 		void initialize() override
@@ -103,11 +105,13 @@ namespace car::system::movement::controller
 		}
 
 		void setRearWheelDirectionToForwards() override {
+			spdlog::info("Setting both rear wheels to move forward");
 			this->rear_left_wheel->forward();
 			this->rear_right_wheel->forward();
 		}
 
 		void setRearWheelDirectionToBackwards() override {
+			spdlog::info("Setting both rear wheels to move backward");
 			this->rear_left_wheel->backward();
 			this->rear_right_wheel->backward();
 		}

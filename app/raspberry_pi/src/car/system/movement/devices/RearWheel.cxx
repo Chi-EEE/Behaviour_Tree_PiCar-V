@@ -2,9 +2,8 @@
 #ifndef REARWHEEL_CXX
 #define REARWHEEL_CXX
 
+#include <algorithm>
 #include <memory>
-
-#include <spdlog/spdlog.h>
 
 #include <PCA9685.h>
 #include <TB6612.h>
@@ -19,6 +18,7 @@ namespace car::system::movement::devices
 		RearWheel(std::shared_ptr<PCA9685> pwm, std::unique_ptr<TB6612> motor) : pwm(pwm),
 																				 motor(std::move(motor))
 		{
+			this->motor->setOffset(false);
 			this->speed = 0;
 		}
 
