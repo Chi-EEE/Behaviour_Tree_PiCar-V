@@ -17,13 +17,13 @@
 
 #include "behaviour_tree/node/task/TaskNodeParser.hpp"
 
-#include "node/task/action/SetSpeed.hpp"
-#include "node/task/action/SetRearWheelDirection.hpp"
-#include "node/task/action/SetAngle.hpp"
+#include "action/SetSpeed.hpp"
+#include "action/SetRearWheelDirection.hpp"
+#include "action/SetAngle.hpp"
 
-#include "node/task/condition/NearbyPoints.hpp"
+#include "condition/NearbyPoints.hpp"
 
-namespace behaviour_tree
+namespace behaviour_tree::node::task
 {
 	class CarTaskNodeParser : public task::TaskNodeParser
 	{

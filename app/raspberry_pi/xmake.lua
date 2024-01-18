@@ -33,6 +33,8 @@ end
 -- For Better Programming
 add_requires("tl_expected")
 
+includes("../behaviour_tree/xmake.lua")
+
 target("raspberry_pi")
     set_kind("binary")
     set_license("LGPL-2.1")
@@ -58,9 +60,9 @@ target("raspberry_pi")
     add_packages("pca9685")
     add_packages("tb6612")
 
-    add_headerfiles("include/**.h")
+    add_deps("behaviour_tree")
+
     add_headerfiles("include/**.hpp")
-    add_files("include/**.cpp")
 
     add_headerfiles("src/**.h", "src/**.hpp")
     add_files("src/**.cpp", "src/**.cxx")

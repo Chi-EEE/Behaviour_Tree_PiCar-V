@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace behaviour_tree::action
+namespace behaviour_tree::node::task::action
 {
     enum class DirectionType
     {

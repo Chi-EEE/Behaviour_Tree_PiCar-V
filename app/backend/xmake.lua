@@ -15,6 +15,8 @@ add_requires("drogon", { configs = {sqlite3 = true, mysql = true}})
 -- For Rust-Like Programming
 add_requires("tl_expected")
 
+includes("../behaviour_tree/xmake.lua")
+
 target("backend")
     set_kind("binary")
 
@@ -25,6 +27,21 @@ target("backend")
     add_packages("drogon")
 
     add_packages("tl_expected")
+
+    add_deps("behaviour_tree")
+    add_defines("BEHAVIOUR_TREE_DISABLE_RUN")
+
+    add_headerfiles("include/utils/**.hpp")
+
+    add_headerfiles("src/**.hpp")
+    add_headerfiles("src/**.h")
+    add_files("src/**.cxx", "src/**.cpp")
+
+    add_includedirs("include")
+
+    if is_plat("windows") then
+        add_defines("_WIN32")
+    end
 
     -- Could improve this so that it only builds the frontend if it has changed
     after_build_files(function(target)
@@ -55,18 +72,6 @@ target("backend")
         os.cp(path.join(path.directory(os.scriptdir()), "frontend", "dist"), static)
         print("Completed copying svelte files...")
     end)
-
-    add_headerfiles("include/utils/**.hpp")
-
-    add_headerfiles("src/**.hpp")
-    add_headerfiles("src/**.h")
-    add_files("src/**.cpp")
-
-    add_includedirs("include")
-
-    if is_plat("windows") then
-        add_defines("_WIN32")
-    end
 
 -- From xmake sample code:
 -- for _, file in ipairs(os.files("tests/test_*.cpp")) do
