@@ -14,13 +14,13 @@
 	);
 </script>
 
-<Splitpanes horizontal={false}>
+<Splitpanes horizontal={false} style="height:100vh; padding:1em">
 	<Pane>
-		<Splitpanes horizontal={true} class="h-screen w-auto">
-			<Pane>
+		<Splitpanes horizontal={true}>
+			<Pane size={80}>
 				<LidarStream {room_name} {websocket} />
 			</Pane>
-			<Pane>
+			<Pane size={20} snapSize={20}>
 				<CodeBox />
 			</Pane>
 		</Splitpanes>

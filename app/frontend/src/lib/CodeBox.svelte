@@ -8,20 +8,21 @@
 	let value = "";
 </script>
 
-<CodeMirror
-	class="text-left h-full flex-auto font-mono text-lg font-bold"
-	bind:value
-	lang={xml(xml_schema)}
-	tabSize={4}
-	theme={oneDark}
-	extensions={[node_hover]}
-/>
-
-<style>
-	.cm-editor {
-		height: 100% !important;
-	}
-	.cm-scroller {
-		height: 100% !important;
-	}
-</style>
+<div class="h-full">
+	<CodeMirror
+		class="text-left h-full flex-auto font-mono text-lg font-bold"
+		bind:value
+		lang={xml(xml_schema)}
+		tabSize={4}
+		theme={oneDark}
+		extensions={[node_hover]}
+	/>
+	<style>
+		.cm-editor {
+			height: 100% !important;
+		}
+		.cm-scroller {
+			height: 100% !important;
+		}
+	</style>
+</div>

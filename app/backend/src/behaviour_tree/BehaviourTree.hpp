@@ -83,7 +83,7 @@ namespace behaviour_tree
 				return tl::unexpected("XML [" + file_path + "] parsed with errors");
 			}
 			std::vector<std::unique_ptr<Root>> roots;
-			for (const pugi::xml_node& node = doc.child("Root"); node; node = node.next_sibling("Root"))
+			for (pugi::xml_node node = doc.child("Root"); node; node = node.next_sibling("Root"))
 			{
 				auto maybe_root = parseRoot(node, STARTING_INDEX + roots.size());
 				if (!maybe_root.has_value())
@@ -117,14 +117,14 @@ namespace behaviour_tree
 		static tl::expected<std::unique_ptr<Root>, std::string> parseRoot(const pugi::xml_node& node, const int& index)
 		{
 			int child_count = 0;
-			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
+			for (pugi::xml_node child = node.first_child(); child; child = child.next_sibling())
 				++child_count;
 			const std::string id = node.attribute("id").as_string();
 			if (child_count != 1)
 			{
 				return tl::unexpected(fmt::format(R"(Root node must have only one child | Root:["{}",{}])", id, index));
 			}
-			pugi::xml_node& child = node.first_child();
+			pugi::xml_node child = node.first_child();
 			auto maybe_child_node = parseChild(child, STARTING_INDEX);
 			if (!maybe_child_node.has_value())
 			{
@@ -207,7 +207,7 @@ namespace behaviour_tree
 		static tl::expected<std::unique_ptr<Decorator>, std::string> parseDecorator(const pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
 		{
 			const std::string name = node.attribute("name").as_string();
-			pugi::xml_node& child = node.first_child();
+			pugi::xml_node child = node.first_child();
 			if (!child)
 			{
 				return tl::unexpected(fmt::format(R"(Decorator node must have a child | {}:["{}",{}])", std::string(node.name()), name, index));
@@ -250,7 +250,7 @@ namespace behaviour_tree
 		{
 			const std::string name = node.attribute("name").as_string();
 			std::vector<std::unique_ptr<Node>> children;
-			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
+			for (pugi::xml_node child = node.first_child(); child; child = child.next_sibling())
 			{
 				auto maybe_node = parseChild(child, STARTING_INDEX + children.size());
 				if (!maybe_node.has_value())
@@ -295,7 +295,7 @@ namespace behaviour_tree
 		static tl::expected<std::unique_ptr<Task>, std::string> parseTask(const pugi::xml_node& node, const int& index)
 		{
 			std::vector<std::unique_ptr<Action>> actions;
-			for (pugi::xml_node& child = node.child("Action"); child; child = child.next_sibling("Action"))
+			for (pugi::xml_node child = node.child("Action"); child; child = child.next_sibling("Action"))
 			{
 				auto maybe_action = parseAction(child);
 				if (!maybe_action.has_value())
