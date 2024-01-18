@@ -38,10 +38,10 @@ namespace car::system::movement::controller
 			this->pwm = std::make_shared<PCA9685>();
 			this->rear_left_wheel = std::make_unique<RearWheel>(
 				this->pwm,
-				std::make_unique<TB6612>(Motor_A, PWM_A));
+				std::make_unique<TB6612>(Motor_B, PWM_B));
 			this->rear_right_wheel = std::make_unique<RearWheel>(
 				this->pwm,
-				std::make_unique<TB6612>(Motor_B, PWM_B));
+				std::make_unique<TB6612>(Motor_A, PWM_A));
 			this->front_wheels = std::make_unique<Servo>(
 				this->pwm,
 				0);
