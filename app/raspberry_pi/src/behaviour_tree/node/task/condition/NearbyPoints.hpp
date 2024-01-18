@@ -23,7 +23,15 @@ namespace behaviour_tree::node::task::condition
 
 		const Status run(Context& context)
 		{
-			// TODO:
+			CarContext& car_context = static_cast<CarContext&>(context);
+			auto& car_system = car_context.getCarSystem();
+			for (auto& measure : car_system->getScanData()) {
+				if (measure.angle > this->getMinAngle() && measure.angle < this->getMaxAngle()) {
+					if (measure.distance < this->getAvgDistance()) {
+						return Status::Failure;
+					}
+				}
+			}
 			return Status::Success;
 		}
 
