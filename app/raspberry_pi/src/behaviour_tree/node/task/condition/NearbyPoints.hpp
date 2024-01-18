@@ -3,7 +3,13 @@
 
 #pragma once
 
+#include "behaviour_tree/Context.h"
+#ifndef BEHAVIOUR_TREE_DISABLE_RUN
+#include "../../../CarContext.cxx"
+#endif // !BEHAVIOUR_TREE_DISABLE_RUN
+
 #include "behaviour_tree/node/task/Condition.hpp"
+
 #include "ConditionType.hpp"
 
 namespace behaviour_tree::node::task::condition
@@ -21,8 +27,9 @@ namespace behaviour_tree::node::task::condition
 
 		const ConditionType condition_type() const { return ConditionType::NearbyPoints; }
 
-		const Status run(Context& context)
+		const Status run(Context& context) override
 		{
+#ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			CarContext& car_context = static_cast<CarContext&>(context);
 			auto& car_system = car_context.getCarSystem();
 			for (auto& measure : car_system->getScanData()) {
@@ -32,6 +39,7 @@ namespace behaviour_tree::node::task::condition
 					}
 				}
 			}
+#endif // !BEHAVIOUR_TREE_DISABLE_RUN
 			return Status::Success;
 		}
 

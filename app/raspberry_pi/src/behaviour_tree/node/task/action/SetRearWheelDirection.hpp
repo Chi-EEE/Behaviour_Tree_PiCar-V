@@ -5,7 +5,10 @@
 
 #include "behaviour_tree/node/task/Action.hpp"
 
+#include "behaviour_tree/Context.h"
+#ifndef BEHAVIOUR_TREE_DISABLE_RUN
 #include "../../../CarContext.cxx"
+#endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
 #include "DirectionType.hpp"
 #include "WheelType.hpp"
@@ -21,6 +24,7 @@ namespace behaviour_tree::node::task::action
 
 		const Status run(Context& context) override
 		{
+#ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			CarContext& car_context = static_cast<CarContext&>(context);
 			auto& car_system = car_context.getCarSystem();
 			switch (this->getDirectionType()) {
@@ -67,6 +71,7 @@ namespace behaviour_tree::node::task::action
 				break;
 			}
 			}
+#endif // !BEHAVIOUR_TREE_DISABLE_RUN
 			return Status::Success;
 		}
 
