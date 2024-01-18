@@ -83,7 +83,7 @@ namespace behaviour_tree
 				return tl::unexpected("XML [" + file_path + "] parsed with errors");
 			}
 			std::vector<std::unique_ptr<Root>> roots;
-			for (pugi::xml_node& node = doc.child("Root"); node; node = node.next_sibling("Root"))
+			for (const pugi::xml_node& node = doc.child("Root"); node; node = node.next_sibling("Root"))
 			{
 				auto maybe_root = parseRoot(node, STARTING_INDEX + roots.size());
 				if (!maybe_root.has_value())
@@ -114,7 +114,7 @@ namespace behaviour_tree
 		std::vector<std::unique_ptr<Root>> roots;
 
 	private:
-		static tl::expected<std::unique_ptr<Root>, std::string> parseRoot(pugi::xml_node& node, const int& index)
+		static tl::expected<std::unique_ptr<Root>, std::string> parseRoot(const pugi::xml_node& node, const int& index)
 		{
 			int child_count = 0;
 			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
@@ -135,7 +135,7 @@ namespace behaviour_tree
 			);
 		}
 
-		static tl::expected<std::unique_ptr<Node>, std::string> parseChild(pugi::xml_node& node, const int& index)
+		static tl::expected<std::unique_ptr<Node>, std::string> parseChild(const pugi::xml_node& node, const int& index)
 		{
 			const std::string name = node.attribute("name").as_string();
 			const std::string& node_name = node.name();
@@ -204,7 +204,7 @@ namespace behaviour_tree
 			}
 		}
 
-		static tl::expected<std::unique_ptr<Decorator>, std::string> parseDecorator(pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
+		static tl::expected<std::unique_ptr<Decorator>, std::string> parseDecorator(const pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
 		{
 			const std::string name = node.attribute("name").as_string();
 			pugi::xml_node& child = node.first_child();
@@ -246,7 +246,7 @@ namespace behaviour_tree
 			}
 		}
 
-		static tl::expected<std::unique_ptr<Composite>, std::string> parseComposite(pugi::xml_node& node, const int& index, const CompositeType& composite_type)
+		static tl::expected<std::unique_ptr<Composite>, std::string> parseComposite(const pugi::xml_node& node, const int& index, const CompositeType& composite_type)
 		{
 			const std::string name = node.attribute("name").as_string();
 			std::vector<std::unique_ptr<Node>> children;
@@ -272,7 +272,7 @@ namespace behaviour_tree
 			}
 		}
 
-		static tl::expected<std::unique_ptr<Condition>, std::string> parseCondition(pugi::xml_node& node, const int& index)
+		static tl::expected<std::unique_ptr<Condition>, std::string> parseCondition(const pugi::xml_node& node, const int& index)
 		{
 			const std::string name = node.attribute("name").as_string();
 			switch (hash(node.attribute("type").as_string()))
@@ -292,7 +292,7 @@ namespace behaviour_tree
 			}
 		}
 
-		static tl::expected<std::unique_ptr<Task>, std::string> parseTask(pugi::xml_node& node, const int& index)
+		static tl::expected<std::unique_ptr<Task>, std::string> parseTask(const pugi::xml_node& node, const int& index)
 		{
 			std::vector<std::unique_ptr<Action>> actions;
 			for (pugi::xml_node& child = node.child("Action"); child; child = child.next_sibling("Action"))
@@ -312,7 +312,7 @@ namespace behaviour_tree
 			return std::make_unique<Task>(Task(name, std::move(actions)));
 		}
 
-		static tl::expected<std::unique_ptr<Action>, std::string> parseAction(pugi::xml_node& node)
+		static tl::expected<std::unique_ptr<Action>, std::string> parseAction(const pugi::xml_node& node)
 		{
 			const std::string name = node.attribute("name").as_string();
 			const std::string type = node.attribute("type").as_string();

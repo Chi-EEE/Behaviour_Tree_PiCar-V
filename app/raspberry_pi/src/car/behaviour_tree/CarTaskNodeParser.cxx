@@ -45,7 +45,7 @@ namespace car::behaviour_tree
 	public:
 		CarTaskNodeParser() {}
 
-		tl::expected<std::unique_ptr<TaskNode>, std::string> parseTaskNode(pugi::xml_node& node) override
+		tl::expected<std::unique_ptr<TaskNode>, std::string> parseTaskNode(const pugi::xml_node& node) override
 		{
 			const std::string name_attribute = node.attribute("name").as_string();
 			const std::string name = node.name();

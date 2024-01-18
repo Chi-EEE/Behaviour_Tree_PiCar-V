@@ -33,8 +33,9 @@ namespace car::behaviour_tree
 						return;
 					}
 					if (autorun) {
-						std::shared_ptr<BehaviourTree>& behaviour_tree = std::move(maybe_behaviour_tree.value());
-						behaviour_tree->run(CarContext(behaviour_tree, car_system));
+						std::shared_ptr<BehaviourTree> behaviour_tree = std::move(maybe_behaviour_tree.value());
+						auto context = CarContext(std::move(behaviour_tree), car_system);
+						behaviour_tree->run(context);
 					}
 					//this->addBehaviourTree(std::move(maybe_behaviour_tree.value()));
 				}

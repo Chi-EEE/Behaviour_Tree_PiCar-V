@@ -28,7 +28,7 @@ namespace behaviour_tree::node::task
 	class TaskNodeParser
 	{
 	public:
-		virtual tl::expected<std::unique_ptr<TaskNode>, std::string> parseTaskNode(pugi::xml_node& node) = 0;
+		virtual tl::expected<std::unique_ptr<TaskNode>, std::string> parseTaskNode(const pugi::xml_node& node) = 0;
 	};
 }
 

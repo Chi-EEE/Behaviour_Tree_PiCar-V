@@ -106,7 +106,7 @@ namespace behaviour_tree
 		tl::expected<std::shared_ptr<BehaviourTree>, std::string> parse(pugi::xml_document& doc)
 		{
 			std::vector<std::shared_ptr<Root>> roots;
-			for (pugi::xml_node& node = doc.child("Root"); node; node = node.next_sibling("Root"))
+			for (pugi::xml_node node = doc.child("Root"); node; node = node.next_sibling("Root"))
 			{
 				auto maybe_root = parseRoot(node, STARTING_INDEX + roots.size());
 				if (!maybe_root.has_value())
@@ -125,17 +125,17 @@ namespace behaviour_tree
 		}
 
 	private:
-		tl::expected<std::shared_ptr<Root>, std::string> parseRoot(pugi::xml_node& node, const int& index)
+		tl::expected<std::shared_ptr<Root>, std::string> parseRoot(const pugi::xml_node& node, const int& index)
 		{
 			int child_count = 0;
-			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
+			for (pugi::xml_node child = node.first_child(); child; child = child.next_sibling())
 				++child_count;
 			const std::string id = node.attribute("id").as_string();
 			if (child_count != 1)
 			{
 				return tl::unexpected(fmt::format(R"(Root node must have only one child | Root:["{}",{}])", id, index));
 			}
-			pugi::xml_node& child = node.first_child();
+			const pugi::xml_node child = node.first_child();
 			auto maybe_child_node = parseChild(child, STARTING_INDEX);
 			if (!maybe_child_node.has_value())
 			{
@@ -146,7 +146,7 @@ namespace behaviour_tree
 			);
 		}
 
-		tl::expected<std::unique_ptr<node::Node>, std::string> parseChild(pugi::xml_node& node, const int& index)
+		tl::expected<std::unique_ptr<node::Node>, std::string> parseChild(const pugi::xml_node& node, const int& index)
 		{
 			const std::string name = node.attribute("name").as_string();
 			const std::string& node_name = node.name();
@@ -214,10 +214,10 @@ namespace behaviour_tree
 			}
 		}
 
-		tl::expected<std::unique_ptr<node::decorator::Decorator>, std::string> parseDecorator(pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
+		tl::expected<std::unique_ptr<node::decorator::Decorator>, std::string> parseDecorator(const pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
 		{
 			const std::string name = node.attribute("name").as_string();
-			pugi::xml_node& child = node.first_child();
+			const pugi::xml_node child = node.first_child();
 			if (!child)
 			{
 				return tl::unexpected(fmt::format(R"(Decorator node must have a child | {}:["{}",{}])", std::string(node.name()), name, index));
@@ -248,11 +248,11 @@ namespace behaviour_tree
 			}
 		}
 
-		tl::expected<std::unique_ptr<Composite>, std::string> parseComposite(pugi::xml_node& node, const int& index, const CompositeType& composite_type)
+		tl::expected<std::unique_ptr<Composite>, std::string> parseComposite(const pugi::xml_node& node, const int& index, const CompositeType& composite_type)
 		{
 			const std::string name = node.attribute("name").as_string();
 			std::vector<std::unique_ptr<node::Node>> children;
-			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
+			for (pugi::xml_node child = node.first_child(); child; child = child.next_sibling())
 			{
 				auto maybe_node = parseChild(child, STARTING_INDEX + children.size());
 				if (!maybe_node.has_value())
@@ -274,10 +274,10 @@ namespace behaviour_tree
 			}
 		}
 
-		tl::expected<std::unique_ptr<node::leaf::Task>, std::string> parseTask(pugi::xml_node& node, const int& index)
+		tl::expected<std::unique_ptr<node::leaf::Task>, std::string> parseTask(const pugi::xml_node& node, const int& index)
 		{
 			std::vector<std::unique_ptr<TaskNode>> task_nodes;
-			for (pugi::xml_node& child = node.first_child(); child; child = child.next_sibling())
+			for (pugi::xml_node child = node.first_child(); child; child = child.next_sibling())
 			{
 				if (std::string(node.name()).rfind("Action:", 0) != 0 && std::string(node.name()).rfind("Condition:", 0) != 0) {
 					continue;

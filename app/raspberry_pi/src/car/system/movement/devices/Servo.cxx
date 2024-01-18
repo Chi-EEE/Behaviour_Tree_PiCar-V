@@ -25,7 +25,7 @@ namespace car::system::movement::devices
 		static constexpr int FREQUENCY = 50;
 
 	public:
-		FrontWheel(std::shared_ptr<PCA9685> pwm, int channel) : pwm(pwm), channel(channel) {
+		Servo(std::shared_ptr<PCA9685> pwm, int channel) : pwm(pwm), channel(channel) {
 		}
 
 		// Some of the code was from: https://github.com/chaoticmachinery/pca9685

@@ -42,13 +42,13 @@ namespace car::system::movement::controller
 			this->rear_right_wheel = std::make_unique<RearWheel>(
 				this->pwm,
 				std::make_unique<TB6612>(Motor_B, PWM_B));
-			this->front_wheels = std::make_unique<FrontWheel>(
+			this->front_wheels = std::make_unique<Servo>(
 				this->pwm,
 				0);
-			this->camera_servo_1 = std::make_unique<FrontWheel>(
+			this->camera_servo_1 = std::make_unique<Servo>(
 				this->pwm,
 				1);
-			this->camera_servo_2 = std::make_unique<FrontWheel>(
+			this->camera_servo_2 = std::make_unique<Servo>(
 				this->pwm,
 				2);
 		};
