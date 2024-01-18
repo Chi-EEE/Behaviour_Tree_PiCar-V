@@ -15,6 +15,11 @@ namespace behaviour_tree
         {
         }
 
+        std::shared_ptr<car::system::CarSystem> getCarSystem() const
+		{
+			return this->car_system;
+		}
+
     private:
         std::shared_ptr<car::system::CarSystem> car_system;
     };

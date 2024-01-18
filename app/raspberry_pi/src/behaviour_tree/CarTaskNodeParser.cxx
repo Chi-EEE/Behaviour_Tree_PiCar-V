@@ -17,59 +17,120 @@
 
 #include "behaviour_tree/node/task/TaskNodeParser.hpp"
 
-#include "node/task/action/Direction.hpp"
-#include "node/task/action/Turn.hpp"
-#include "node/task/action/Move.hpp"
+#include "node/task/action/SetSpeed.hpp"
+#include "node/task/action/SetRearWheelDirection.hpp"
+#include "node/task/action/SetAngle.hpp"
 
 #include "node/task/condition/NearbyPoints.hpp"
 
 namespace behaviour_tree
 {
-	// https://stackoverflow.com/a/46711735
-	static constexpr uint32_t hash(const std::string_view s) noexcept
-	{
-		uint32_t hash = 5381;
-
-		for (const char* c = s.data(); c < s.data() + s.size(); ++c)
-			hash = ((hash << 5) + hash) + (unsigned char)*c;
-
-		return hash;
-	}
-
-	class CarTaskNodeParser : public node::task::TaskNodeParser
+	class CarTaskNodeParser : public task::TaskNodeParser
 	{
 	public:
 		CarTaskNodeParser() {}
 
-		tl::expected<std::unique_ptr<node::task::TaskNode>, std::string> parseTaskNode(const pugi::xml_node& node) override
+		tl::expected<std::unique_ptr<task::TaskNode>, std::string> parseTaskNode(const pugi::xml_node& node) override
 		{
 			const std::string name_attribute = node.attribute("name").as_string();
 			const std::string name = node.name();
 			switch (hash(name))
 			{
-			case hash("Action:Move"):
+			case hash("Action:SetSpeed"):
 			{
+				const std::string wheel_type_attribute = node.attribute("wheel").as_string();
+				task::action::WheelType wheel_type;
+				switch (hash(wheel_type_attribute))
+				{
+				case hash("Left"):
+				{
+					wheel_type = task::action::WheelType::Left;
+				}
+				case hash("Right"):
+				{
+					wheel_type = task::action::WheelType::Right;
+				}
+				case hash("Both"):
+				{
+					wheel_type = task::action::WheelType::Both;
+				}
+				default:
+				{
+					return tl::unexpected(fmt::format("Invalid wheel: {} | Action:SetSpeed", wheel_type_attribute));
+				}
+				}
 				const int speed = node.attribute("speed").as_int();
 				if (speed < 0 || speed > 100)
-					return tl::unexpected(fmt::format("Invalid speed: {} | Action:Move", std::to_string(speed)));
-				return std::make_unique<task::action::Move>(node::task::action::Move(name_attribute, speed));
+					return tl::unexpected(fmt::format("Invalid speed: {} | Action:SetSpeed", std::to_string(speed)));
+				return std::make_unique<task::action::SetSpeed>(task::action::SetSpeed(name_attribute, wheel_type, speed));
 			}
-			case hash("Action:Turn"):
+			case hash("Action:SetAngle"):
 			{
+				const std::string servo_type_attribute = node.attribute("servo").as_string();
+				task::action::ServoType servo_type;
+				switch (hash(servo_type_attribute))
+				{
+				case hash("FrontWheels"):
+				{
+					servo_type = task::action::ServoType::FrontWheels;
+				}
+				case hash("CameraServo1"):
+				{
+					servo_type = task::action::ServoType::CameraServo1;
+				}
+				case hash("CameraServo2"):
+				{
+					servo_type = task::action::ServoType::CameraServo2;
+				}
+				default:
+				{
+					return tl::unexpected(fmt::format("Invalid servo: {} | Action:SetAngle", servo_type_attribute));
+				}
+				}
 				const int angle = node.attribute("angle").as_int();
 				if (angle < 0 || angle > 180)
-					return tl::unexpected(fmt::format("Invalid angle: {} | Action:Turn", std::to_string(angle)));
-				return std::make_unique<node::task::action::Turn>(node::task::action::Turn(name_attribute, angle));
+					return tl::unexpected(fmt::format("Invalid angle: {} | Action:SetAngle", std::to_string(angle)));
+				return std::make_unique<task::action::SetAngle>(task::action::SetAngle(name_attribute, servo_type, angle));
 			}
-			case hash("Action:Direction"):
+			case hash("Action:SetRearWheelDirection"):
 			{
+				const std::string wheel_type_attribute = node.attribute("wheel").as_string();
+				task::action::WheelType wheel_type;
+				switch (hash(wheel_type_attribute))
+				{
+				case hash("Left"):
+				{
+					wheel_type = task::action::WheelType::Left;
+				}
+				case hash("Right"):
+				{
+					wheel_type = task::action::WheelType::Right;
+				}
+				case hash("Both"):
+				{
+					wheel_type = task::action::WheelType::Both;
+				}
+				default:
+				{
+					return tl::unexpected(fmt::format("Invalid wheel: {} | Action:SetRearWheelDirection", wheel_type_attribute));
+				}
+				}
 				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
-				if (direction_type_attribute == "Forward")
-					return std::make_unique<task::action::Direction>(task::action::Direction(name_attribute, task::action::DirectionType::Forward));
-				else if (direction_type_attribute == "Backward")
-					return std::make_unique<task::action::Direction>(task::action::Direction(name_attribute, task::action::DirectionType::Backward));
-				else
-					return tl::unexpected(fmt::format("Invalid direction_type: {} | Action:Direction", direction_type_attribute));
+				switch (hash(direction_type_attribute))
+				{
+				case hash("Forward"):
+				{
+					return std::make_unique<task::action::SetRearWheelDirection>(task::action::SetRearWheelDirection(name_attribute, wheel_type, task::action::DirectionType::Forward));
+				}
+				case hash("Backward"):
+				{
+					return std::make_unique<task::action::SetRearWheelDirection>(task::action::SetRearWheelDirection(name_attribute, wheel_type, task::action::DirectionType::Backward));
+				}
+				default:
+				{
+					return tl::unexpected(fmt::format("Invalid direction_type: {} | Action:SetRearWheelDirection", direction_type_attribute));
+				}
+				}
 			}
 			case hash("Condition:NearbyPoints"):
 			{
@@ -82,14 +143,12 @@ namespace behaviour_tree
 				const int avg_distance = node.attribute("angle").as_int();
 				if (avg_distance < 0)
 					return tl::unexpected(fmt::format("Invalid avg_distance: {} | Condition:NearbyPoints", std::to_string(avg_distance)));
-				return std::make_unique<node::task::condition::NearbyPoints>(
-					node::task::condition::NearbyPoints(
+				return std::make_unique<task::condition::NearbyPoints>(
+					task::condition::NearbyPoints(
 						name_attribute,
 						min_angle,
 						max_angle,
-						avg_distance
-					)
-				);
+						avg_distance));
 			}
 			default:
 			{

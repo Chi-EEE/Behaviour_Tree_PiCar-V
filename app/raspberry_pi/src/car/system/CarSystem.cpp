@@ -115,12 +115,33 @@ namespace car::system
 		this->movement_system->setCameraServo2Angle(angle);
 	}
 
-	void CarSystem::setRearWheelDirectionToForward()
+	void CarSystem::setRearWheelsDirectionToForward()
 	{
-		this->movement_system->setRearWheelDirectionToForward();
+		this->movement_system->setRearWheelsDirectionToForward();
 	}
-	void CarSystem::setRearWheelDirectionToBackward()
+
+	void CarSystem::setRearLeftWheelDirectionToForward()
 	{
-		this->movement_system->setRearWheelDirectionToBackward();
+		this->movement_system->setRearLeftWheelDirectionToForward();
+	}
+
+	void CarSystem::setRearRightWheelDirectionToForward()
+	{
+		this->movement_system->setRearRightWheelDirectionToForward();
+	}
+	
+	void CarSystem::setRearWheelsDirectionToBackward()
+	{
+		this->movement_system->setRearWheelsDirectionToBackward();
+	}
+
+	void CarSystem::setRearLeftWheelDirectionToBackward()
+	{
+		this->movement_system->setRearLeftWheelDirectionToBackward();
+	}
+
+	void CarSystem::setRearRightWheelDirectionToBackward()
+	{
+		this->movement_system->setRearRightWheelDirectionToBackward();
 	}
 }

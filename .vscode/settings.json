@@ -90,6 +90,7 @@
         "ranges": "cpp",
         "cinttypes": "cpp",
         "valarray": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "stack": "cpp"
     }
 }

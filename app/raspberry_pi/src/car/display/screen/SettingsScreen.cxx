@@ -46,10 +46,10 @@ namespace car::display::screen {
 			this->debug_movement_renderer.getRearWheelDirectionSignal().connect([&](bool direction)
 				{
 					if (direction) {
-						this->car_system->setRearWheelDirectionToForward();
+						this->car_system->setRearWheelsDirectionToForward();
 					}
 					else {
-						this->car_system->setRearWheelDirectionToBackward();
+						this->car_system->setRearWheelsDirectionToBackward();
 					}
 				}
 			);

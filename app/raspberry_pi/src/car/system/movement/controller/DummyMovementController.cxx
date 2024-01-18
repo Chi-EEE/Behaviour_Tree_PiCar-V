@@ -15,40 +15,56 @@ namespace car::system::movement::controller
 		void initialize() {};
 
 		void setRearWheelsSpeed(const int& speed) override {
-			spdlog::info("[DUMMY] Setting Left Rear Wheel speed to {}", speed);
+			spdlog::info("[DUMMY] Both Rear Wheels speed are set to {}", speed);
 		}
 
 		void setRearLeftWheelSpeed(const int& speed) override
 		{
-			spdlog::info("[DUMMY] Setting Left Rear Wheel speed to {}", speed);
+			spdlog::info("[DUMMY] Left Rear Wheel speed is set to {}", speed);
 		}
 
 		void setRearRightWheelSpeed(const int& speed) override
 		{
-			spdlog::info("[DUMMY] Setting Right Rear Wheel speed to {}", speed);
+			spdlog::info("[DUMMY] Right Rear Wheel speed is set to {}", speed);
 		}
 
 		void setFrontWheelsAngle(const float& angle) override
 		{
-			spdlog::info("[DUMMY] Setting Front Wheels angle to {}", angle);
+			spdlog::info("[DUMMY] Front Wheels angle is set to {}", angle);
 		}
 
 		void setCameraServo1Angle(const float& angle) override
 		{
-			spdlog::info("[DUMMY] Setting Camera Servo 1 angle to {}", angle);
+			spdlog::info("[DUMMY] Camera Servo 1 angle is set to {}", angle);
 		}
 
 		void setCameraServo2Angle(const float& angle) override
 		{
-			spdlog::info("[DUMMY] Setting Camera Servo 2 angle to {}", angle);
+			spdlog::info("[DUMMY] Camera Servo 2 angle is set to {}", angle);
 		}
 
-		void setRearWheelDirectionToForward() override {
-			spdlog::info("[DUMMY] Both Rear Wheels are set to to move forward");
+		void setRearWheelsDirectionToForward() override {
+			spdlog::info("[DUMMY] Both Rear Wheels are set to move forward");
 		}
 
-		void setRearWheelDirectionToBackward() override {
+		void setRearLeftWheelDirectionToForward() override {
+			spdlog::info("[DUMMY] Left Rear Wheel is set to move forward");
+		}
+
+		void setRearRightWheelDirectionToForward() override {
+			spdlog::info("[DUMMY] Right Rear Wheel is set to move forward");
+		}
+
+		void setRearWheelsDirectionToBackward() override {
 			spdlog::info("[DUMMY] Both Rear Wheels are set to move backward");
+		}
+
+		void setRearLeftWheelDirectionToBackward() override {
+			spdlog::info("[DUMMY] Left Rear Wheel is set to move backward");
+		}
+
+		void setRearRightWheelDirectionToBackward() override {
+			spdlog::info("[DUMMY] Right Rear Wheel is set to move backward");
 		}
 
 	private:
