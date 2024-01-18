@@ -19,7 +19,10 @@ includes("../behaviour_tree/xmake.lua", "../behaviour_tree_car/xmake.lua")
 target("backend")
     set_kind("binary")
     set_languages("cxx17")
-    add_deps("behaviour_tree", "behaviour_tree_car")
+    add_deps("behaviour_tree")
+    add_deps("behaviour_tree_car")
+
+    add_defines("BEHAVIOUR_TREE_DISABLE_RUN")
 
     add_packages("boost")
     add_packages("fmt", "spdlog")
@@ -28,8 +31,6 @@ target("backend")
     add_packages("drogon")
 
     add_packages("tl_expected")
-
-    add_defines("BEHAVIOUR_TREE_DISABLE_RUN")
 
     add_headerfiles("include/utils/**.hpp")
 

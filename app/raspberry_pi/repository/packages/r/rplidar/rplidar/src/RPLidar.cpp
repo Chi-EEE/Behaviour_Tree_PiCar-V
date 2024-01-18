@@ -66,7 +66,7 @@ int main()
 namespace rplidar
 {
 	/**
-	 * @brief Initilize RPLidar object for communicating with the sensor
+	 * @brief Initialize RPLidar object for communicating with the sensor
 	 *
 	 * @param port Serial port name to which sensor is connected
 	 * @param baudrate Baudrate for serial connection (the default is 115200)
