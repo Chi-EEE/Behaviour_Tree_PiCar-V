@@ -3,26 +3,25 @@
 	import CodeMirror from "svelte-codemirror-editor";
 	import { xml } from "@codemirror/lang-xml";
 	import { oneDark } from "@codemirror/theme-one-dark";
-    import { node_hover, xml_schema } from "./CodeBox_Constants";
+	import { node_hover, xml_schema } from "./CodeBox_Constants";
 
 	let value = "";
 </script>
 
-<div style="height:50vh;" class="w-full text-left flex-auto">
-	<CodeMirror
-		class="h-full flex-auto font-mono text-lg font-bold"
-		bind:value
-		lang={xml(xml_schema)}
-		tabSize={4}
-		theme={oneDark}
-		extensions={[node_hover]}
-	/>
-	<style>
-		.cm-editor {
-			height: 100% !important;
-		}
-		.cm-scroller {
-			height: 100% !important;
-		}
-	</style>
-</div>
+<CodeMirror
+	class="text-left h-full flex-auto font-mono text-lg font-bold"
+	bind:value
+	lang={xml(xml_schema)}
+	tabSize={4}
+	theme={oneDark}
+	extensions={[node_hover]}
+/>
+
+<style>
+	.cm-editor {
+		height: 100% !important;
+	}
+	.cm-scroller {
+		height: 100% !important;
+	}
+</style>
