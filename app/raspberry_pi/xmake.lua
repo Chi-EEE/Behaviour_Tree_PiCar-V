@@ -1,7 +1,5 @@
 add_rules("mode.debug", "mode.release")
 
-set_languages("cxx17")
-
 add_repositories("local-repo repository")
 
 -- Messaging System
@@ -33,12 +31,14 @@ end
 -- For Better Programming
 add_requires("tl_expected")
 
-includes("../behaviour_tree/xmake.lua")
+includes("../behaviour_tree/xmake.lua", "../behaviour_tree_car/xmake.lua")
 
 target("raspberry_pi")
     set_kind("binary")
+    set_languages("cxx17")
     set_license("LGPL-2.1")
-            
+    add_deps("behaviour_tree", "behaviour_tree_car")
+     
     add_packages("spdlog")
     add_packages("fmt")
     add_packages("nlohmann_json")
@@ -63,6 +63,9 @@ target("raspberry_pi")
     add_deps("behaviour_tree")
 
     add_headerfiles("include/**.hpp")
+
+    add_includedirs("include")
+    add_headerfiles("include/(behaviour_tree/**.hpp)")
 
     add_headerfiles("src/**.h", "src/**.hpp")
     add_files("src/**.cpp", "src/**.cxx")

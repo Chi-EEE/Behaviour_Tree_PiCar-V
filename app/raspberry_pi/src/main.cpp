@@ -5,8 +5,6 @@
 
 #include "global/Config.hpp"
 
-#include "behaviour_tree/BehaviourTreeHandler.cxx"
-
 #include "car/display/CarConsole.h"
 
 #include "car/system/CarSystem.h"
@@ -17,8 +15,9 @@
 #include "car/system/movement/controller/DummyMovementController.cxx"
 #include "car/system/movement/controller/DeviceMovementController.cxx"
 
-#include "behaviour_tree/BehaviourTreeHandler.cxx"
 #include "car/system/logging/VectorSink.cxx"
+
+#include "behaviour_tree/BehaviourTreeHandler.hpp"
 
 std::string getWebSocketUrl()
 {

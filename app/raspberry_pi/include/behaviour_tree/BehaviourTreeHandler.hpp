@@ -1,5 +1,5 @@
-#ifndef BEHAVIOURTREEHANDLER_CXX
-#define BEHAVIOURTREEHANDLER_CXX
+#ifndef BEHAVIOURTREEHANDLER_HPP
+#define BEHAVIOURTREEHANDLER_HPP
 
 #pragma once
 
@@ -9,8 +9,8 @@
 #include <nod/nod.hpp>
 
 #include "behaviour_tree/BehaviourTreeParser.hpp"
-#include "node/task/CarTaskNodeParser.hpp"
-#include "CarContext.cxx"
+#include "behaviour_tree/node/task/CarTaskNodeParser.hpp"
+#include "CarContext.hpp"
 
 namespace behaviour_tree
 {

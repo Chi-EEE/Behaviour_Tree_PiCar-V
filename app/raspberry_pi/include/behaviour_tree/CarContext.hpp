@@ -1,9 +1,9 @@
-#ifndef BEHAVIOUR_TREE_CARCONTEXT_CXX
-#define BEHAVIOUR_TREE_CARCONTEXT_CXX
+#ifndef BEHAVIOUR_TREE_CARCONTEXT_HPP
+#define BEHAVIOUR_TREE_CARCONTEXT_HPP
 
 #pragma once
 
-#include "../car/system/CarSystem.h"
+#include "../../src/car/system/CarSystem.h"
 #include "behaviour_tree/Context.h"
 
 namespace behaviour_tree
