@@ -23,6 +23,9 @@ public:
     {
         this->forward_A = true;
         this->forward_B = true;
+        
+        this->left_wheel->setOffset(false);
+        this->right_wheel->setOffset(false);
 
         std::cout << "Initializing PCA9685" << std::endl;
         this->pca9685.init(bus_number, 0x40);

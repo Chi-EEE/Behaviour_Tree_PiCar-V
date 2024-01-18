@@ -15,12 +15,12 @@ void TB6612::setPWM(int value)
 
 void TB6612::forward()
 {
-    gpioWrite(this->motor_pin, 1);
+    gpioWrite(this->motor_pin, this->offset);
 }
 
 void TB6612::backward()
 {
-    gpioWrite(this->motor_pin, 0);
+    gpioWrite(this->motor_pin, !this->offset);
 }
 
 void TB6612::stop()
