@@ -60,13 +60,13 @@ namespace car::system::movement
 			this->movement_controller->setCameraServo2Angle(angle);
 		}
 
-		void setRearWheelDirectionToForwards()
+		void setRearWheelDirectionToForward()
 		{
-			this->movement_controller->setRearWheelDirectionToForwards();
+			this->movement_controller->setRearWheelDirectionToForward();
 		}
-		void setRearWheelDirectionToBackwards()
+		void setRearWheelDirectionToBackward()
 		{
-			this->movement_controller->setRearWheelDirectionToBackwards();
+			this->movement_controller->setRearWheelDirectionToBackward();
 		}
 #pragma endregion
 

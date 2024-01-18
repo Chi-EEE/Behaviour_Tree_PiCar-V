@@ -19,8 +19,8 @@ namespace car::system::movement::controller
 		virtual void setCameraServo1Angle(const float& angle) = 0;
 		virtual void setCameraServo2Angle(const float& angle) = 0;
 
-        virtual void setRearWheelDirectionToForwards() = 0;
-        virtual void setRearWheelDirectionToBackwards() = 0;
+        virtual void setRearWheelDirectionToForward() = 0;
+        virtual void setRearWheelDirectionToBackward() = 0;
     };
 } // namespace car::system::movement::controller
 

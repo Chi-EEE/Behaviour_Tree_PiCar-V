@@ -45,8 +45,8 @@ namespace car::system {
 		void setCameraServo1Angle(const float& angle);
 		void setCameraServo2Angle(const float& angle);
 
-		void setRearWheelDirectionToForwards();
-		void setRearWheelDirectionToBackwards();
+		void setRearWheelDirectionToForward();
+		void setRearWheelDirectionToBackward();
 
 		const std::vector<Measure>& getScanData() const { return this->scan_data; }
 

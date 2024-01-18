@@ -81,37 +81,42 @@ namespace car::system::movement::controller
 
 		void setRearLeftWheelSpeed(const int& speed) override
 		{
+			spdlog::info("Setting Left Rear Wheel speed to {}", speed);
 			this->rear_left_wheel->setSpeed(speed);
 		}
 
 		void setRearRightWheelSpeed(const int& speed) override
 		{
+			spdlog::info("Setting Right Rear Wheel speed to {}", speed);
 			this->rear_right_wheel->setSpeed(speed);
 		}
 
 		void setFrontWheelsAngle(const float& angle) override
 		{
+			spdlog::info("Setting Front Wheels angle to {}", angle);
 			this->front_wheels->setAngle(angle);
 		}
 
 		void setCameraServo1Angle(const float& angle) override
 		{
+			spdlog::info("Setting Camera Servo 1 angle to {}", angle);
 			this->camera_servo_1->setAngle(angle);
 		}
 
 		void setCameraServo2Angle(const float& angle) override
 		{
+			spdlog::info("Setting Camera Servo 2 angle to {}", angle);
 			this->camera_servo_2->setAngle(angle);
 		}
 
-		void setRearWheelDirectionToForwards() override {
-			spdlog::info("Setting both rear wheels to move forward");
+		void setRearWheelDirectionToForward() override {
+			spdlog::info("Both Rear Wheels are set to to move forward");
 			this->rear_left_wheel->forward();
 			this->rear_right_wheel->forward();
 		}
 
-		void setRearWheelDirectionToBackwards() override {
-			spdlog::info("Setting both rear wheels to move backward");
+		void setRearWheelDirectionToBackward() override {
+			spdlog::info("Both Rear Wheels are set to move backward");
 			this->rear_left_wheel->backward();
 			this->rear_right_wheel->backward();
 		}

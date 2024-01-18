@@ -39,11 +39,11 @@ namespace car::system::movement::controller
 
 		}
 
-		void setRearWheelDirectionToForwards() override {
+		void setRearWheelDirectionToForward() override {
 
 		}
 
-		void setRearWheelDirectionToBackwards() override {
+		void setRearWheelDirectionToBackward() override {
 
 		}
 	private:
