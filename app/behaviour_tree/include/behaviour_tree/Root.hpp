@@ -21,15 +21,17 @@ namespace behaviour_tree
 
 		const Status run(Context& context)
 		{
+			if (this->child == nullptr) return Status::Success;
 			return this->child->run(context);
 		}
 
 		const std::string toString() const {
 			const std::string& id = this->getId();
+			std::string child_string = this->child != nullptr ? this->child->toString() : "";
 			if (id != "")
-				return fmt::format(R"(<Root id="{}">{}</Root>)", id, this->child->toString());
+				return fmt::format(R"(<Root id="{}">{}</Root>)", id, child_string);
 			else
-				return fmt::format(R"(<Root>{}</Root>)", this->child->toString());
+				return fmt::format(R"(<Root>{}</Root>)", child_string);
 		}
 
 		const std::string& getId() const

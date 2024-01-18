@@ -1,16 +1,14 @@
 <Root id="main">
     <Sequence>
         <Task name="Move">
-            <Action:Turn angle="180" />
-            <Action:Move ms="10" />
-            <Action:Direction direction_type="forward" />
-            <Action:Direction direction_type="backward" />
-            
+            <Action:SetAngle servo_type="FrontWheels" angle="180"/>
+            <Action:SetSpeed wheel_type="Both" speed="50"/>
+            <Action:SetRearWheelDirection wheel_type="Both" direction_type="Forward"/>
+            <Action:SetRearWheelDirection wheel_type="Both" direction_type="Backward"/>
+            <Condition:NearbyPoints min_angle="0" max_angle="0" distance="200"/>
         </Task>
-        <Condition:NearbyPoints min_angle="0" max_angle="0" distance="200" />
-        <Wait ms="5000">
-        </Wait>
-        <LogMessage text="Waited 5 seconds" />
+        <Wait ms="5000"/>
+        <LogMessage text="Waited 5 seconds"/>
         <ToRoot id="abc"/>
 
         <Invert>
@@ -18,6 +16,7 @@
             <Succeed />
         </Invert>
         <Repeat count="2" break_on_fail="false">
+            <LogMessage text="Hey"/>
         </Repeat>
     </Sequence>
     <!--

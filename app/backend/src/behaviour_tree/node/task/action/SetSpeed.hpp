@@ -59,9 +59,9 @@ namespace behaviour_tree::node::task::action
 			}
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Action:SetSpeed name="{}" wheel="{}" speed="{}"/>)", name, wheel_type, this->getSpeed());
+				return fmt::format(R"(<Action:SetSpeed name="{}" wheel_type="{}" speed="{}"/>)", name, wheel_type, this->getSpeed());
 			else
-				return fmt::format(R"(<Action:SetSpeed wheel="{}" speed="{}"/>)", wheel_type, this->getSpeed());
+				return fmt::format(R"(<Action:SetSpeed wheel_type="{}" speed="{}"/>)", wheel_type, this->getSpeed());
 		}
 
 		const WheelType& getWheelType() const

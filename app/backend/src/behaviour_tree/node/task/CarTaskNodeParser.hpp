@@ -38,7 +38,7 @@ namespace behaviour_tree::node::task
 			{
 			case hash("Action:SetSpeed"):
 			{
-				const std::string wheel_type_attribute = node.attribute("wheel").as_string();
+				const std::string wheel_type_attribute = node.attribute("wheel_type").as_string();
 				task::action::WheelType wheel_type;
 				switch (hash(wheel_type_attribute))
 				{
@@ -59,17 +59,17 @@ namespace behaviour_tree::node::task
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format("Invalid wheel: {} | Action:SetSpeed", wheel_type_attribute));
+					return tl::unexpected(fmt::format("Invalid wheel_type: '{}' | Action:SetSpeed", wheel_type_attribute));
 				}
 				}
 				const int speed = node.attribute("speed").as_int();
 				if (speed < 0 || speed > 100)
-					return tl::unexpected(fmt::format("Invalid speed: {} | Action:SetSpeed", std::to_string(speed)));
+					return tl::unexpected(fmt::format("Invalid speed: '{}' | Action:SetSpeed", std::to_string(speed)));
 				return std::make_unique<task::action::SetSpeed>(task::action::SetSpeed(name_attribute, wheel_type, speed));
 			}
 			case hash("Action:SetAngle"):
 			{
-				const std::string servo_type_attribute = node.attribute("servo").as_string();
+				const std::string servo_type_attribute = node.attribute("servo_type").as_string();
 				task::action::ServoType servo_type;
 				switch (hash(servo_type_attribute))
 				{
@@ -90,17 +90,17 @@ namespace behaviour_tree::node::task
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format("Invalid servo: {} | Action:SetAngle", servo_type_attribute));
+					return tl::unexpected(fmt::format("Invalid servo_type: '{}' | Action:SetAngle", servo_type_attribute));
 				}
 				}
 				const int angle = node.attribute("angle").as_int();
 				if (angle < 0 || angle > 180)
-					return tl::unexpected(fmt::format("Invalid angle: {} | Action:SetAngle", std::to_string(angle)));
+					return tl::unexpected(fmt::format("Invalid angle: '{}' | Action:SetAngle", std::to_string(angle)));
 				return std::make_unique<task::action::SetAngle>(task::action::SetAngle(name_attribute, servo_type, angle));
 			}
 			case hash("Action:SetRearWheelDirection"):
 			{
-				const std::string wheel_type_attribute = node.attribute("wheel").as_string();
+				const std::string wheel_type_attribute = node.attribute("wheel_type").as_string();
 				task::action::WheelType wheel_type;
 				switch (hash(wheel_type_attribute))
 				{
@@ -121,7 +121,7 @@ namespace behaviour_tree::node::task
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format("Invalid wheel: {} | Action:SetRearWheelDirection", wheel_type_attribute));
+					return tl::unexpected(fmt::format("Invalid wheel_type: '{}' | Action:SetRearWheelDirection", wheel_type_attribute));
 				}
 				}
 				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
@@ -137,7 +137,7 @@ namespace behaviour_tree::node::task
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format("Invalid direction_type: {} | Action:SetRearWheelDirection", direction_type_attribute));
+					return tl::unexpected(fmt::format("Invalid direction_type: '{}' | Action:SetRearWheelDirection", direction_type_attribute));
 				}
 				}
 			}
@@ -145,13 +145,13 @@ namespace behaviour_tree::node::task
 			{
 				const int min_angle = node.attribute("angle").as_int();
 				if (min_angle < 0 || min_angle > 180)
-					return tl::unexpected(fmt::format("Invalid min_angle: {} | Condition:NearbyPoints", std::to_string(min_angle)));
+					return tl::unexpected(fmt::format("Invalid min_angle: '{}' | Condition:NearbyPoints", std::to_string(min_angle)));
 				const int max_angle = node.attribute("angle").as_int();
 				if (max_angle < 0 || max_angle > 180)
-					return tl::unexpected(fmt::format("Invalid max_angle: {} | Condition:NearbyPoints", std::to_string(max_angle)));
+					return tl::unexpected(fmt::format("Invalid max_angle: '{}' | Condition:NearbyPoints", std::to_string(max_angle)));
 				const int avg_distance = node.attribute("angle").as_int();
 				if (avg_distance < 0)
-					return tl::unexpected(fmt::format("Invalid avg_distance: {} | Condition:NearbyPoints", std::to_string(avg_distance)));
+					return tl::unexpected(fmt::format("Invalid avg_distance: '{}' | Condition:NearbyPoints", std::to_string(avg_distance)));
 				return std::make_unique<task::condition::NearbyPoints>(
 					task::condition::NearbyPoints(
 						name_attribute,
@@ -161,7 +161,7 @@ namespace behaviour_tree::node::task
 			}
 			default:
 			{
-				return tl::unexpected(fmt::format("Invalid task node type: {}", node.name()));
+				return tl::unexpected(fmt::format("Invalid task node type: '{}'", node.name()));
 			}
 			}
 		}

@@ -131,9 +131,14 @@ namespace behaviour_tree
 			for (pugi::xml_node child = node.first_child(); child; child = child.next_sibling())
 				++child_count;
 			const std::string id = node.attribute("id").as_string();
+			if (child_count == 0) {
+				return std::make_shared<Root>(
+					Root(id, nullptr)
+				);
+			}
 			if (child_count != 1)
 			{
-				return tl::unexpected(fmt::format(R"(Root node must have only one child | Root:["{}",{}])", id, index));
+				return tl::unexpected(fmt::format(R"(Root node must have only at most one child | Root:["{}",{}])", id, index));
 			}
 			const pugi::xml_node child = node.first_child();
 			auto maybe_child_node = parseChild(child, STARTING_INDEX);
@@ -279,7 +284,7 @@ namespace behaviour_tree
 			std::vector<std::unique_ptr<TaskNode>> task_nodes;
 			for (pugi::xml_node child = node.first_child(); child; child = child.next_sibling())
 			{
-				if (std::string(node.name()).rfind("Action:", 0) != 0 && std::string(node.name()).rfind("Condition:", 0) != 0) {
+				if (std::string(child.name()).rfind("Action:", 0) != 0 && std::string(child.name()).rfind("Condition:", 0) != 0) {
 					continue;
 				}
 				auto maybe_task_node = this->task_node_parser->parseTaskNode(child);
