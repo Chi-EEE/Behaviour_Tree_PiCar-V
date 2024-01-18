@@ -10,10 +10,7 @@
 #include "behaviour_tree/Context.h"
 #include "behaviour_tree/node/task/Action.hpp"
 
-using namespace behaviour_tree;
-using namespace behaviour_tree::node::task;
-
-namespace car::behaviour_tree::task_node::action
+namespace behaviour_tree::node::task::action
 {
 	class Turn : public Action
 	{

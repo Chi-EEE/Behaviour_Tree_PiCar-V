@@ -9,10 +9,7 @@
 
 #include "DirectionType.hpp"
 
-using namespace behaviour_tree;
-using namespace behaviour_tree::node::task;
-
-namespace car::behaviour_tree::task_node::action
+namespace behaviour_tree::node::task::action
 {
 	class Direction : public Action
 	{

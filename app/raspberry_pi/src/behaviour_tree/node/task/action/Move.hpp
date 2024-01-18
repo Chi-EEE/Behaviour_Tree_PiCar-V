@@ -5,7 +5,7 @@
 
 #include "behaviour_tree/node/task/Action.hpp"
 
-namespace car::behaviour_tree::task_node::action
+namespace behaviour_tree::node::task::action
 {
 	class Move : public Action
 	{

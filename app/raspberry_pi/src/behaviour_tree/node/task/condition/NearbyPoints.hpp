@@ -6,10 +6,7 @@
 #include "behaviour_tree/node/task/Condition.hpp"
 #include "ConditionType.hpp"
 
-using namespace behaviour_tree;
-using namespace behaviour_tree::node::task;
-
-namespace car::behaviour_tree::task_node::condition
+namespace behaviour_tree::node::task::condition
 {
 	class NearbyPoints : public Condition
 	{
