@@ -5,7 +5,7 @@
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
-#include "../../../CarContext.cxx"
+#include "behaviour_tree/CarContext.cxx"
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
 #include "behaviour_tree/node/task/Condition.hpp"

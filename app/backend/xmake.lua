@@ -1,6 +1,5 @@
 add_rules("mode.debug", "mode.release")
 
-set_languages("cxx17")
 
 -- Logging / Data handling
 add_requires("boost", { configs = {chrono = true} })
@@ -15,10 +14,12 @@ add_requires("drogon", { configs = {sqlite3 = true, mysql = true}})
 -- For Rust-Like Programming
 add_requires("tl_expected")
 
-includes("../behaviour_tree/xmake.lua")
+includes("../behaviour_tree/xmake.lua", "../behaviour_tree_car/xmake.lua")
 
 target("backend")
     set_kind("binary")
+    set_languages("cxx17")
+    add_deps("behaviour_tree", "behaviour_tree_car")
 
     add_packages("boost")
     add_packages("fmt", "spdlog")
@@ -28,14 +29,13 @@ target("backend")
 
     add_packages("tl_expected")
 
-    add_deps("behaviour_tree")
     add_defines("BEHAVIOUR_TREE_DISABLE_RUN")
 
     add_headerfiles("include/utils/**.hpp")
 
     add_headerfiles("src/**.hpp")
     add_headerfiles("src/**.h")
-    add_files("src/**.cxx", "src/**.cpp")
+    add_files("src/**.cpp")
 
     add_includedirs("include")
 
