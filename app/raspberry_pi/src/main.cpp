@@ -5,7 +5,7 @@
 
 #include "global/Config.hpp"
 
-#include "car/behaviour_tree/BehaviourTreeHandler.cxx"
+#include "behaviour_tree/BehaviourTreeHandler.cxx"
 
 #include "car/display/CarConsole.h"
 
@@ -17,7 +17,7 @@
 #include "car/system/movement/controller/DummyMovementController.cxx"
 #include "car/system/movement/controller/DeviceMovementController.cxx"
 
-#include "car/behaviour_tree/BehaviourTreeHandler.cxx"
+#include "behaviour_tree/BehaviourTreeHandler.cxx"
 #include "car/system/logging/VectorSink.cxx"
 
 std::string getWebSocketUrl()
@@ -42,7 +42,7 @@ int main()
 	using namespace car::system::lidar;
 	using namespace car::system::messaging;
 	using namespace car::system::movement::controller;
-	using namespace car::behaviour_tree;
+	using namespace behaviour_tree;
 	using namespace rplidar;
 
 	// spdlog::set_level(spdlog::level::off);
@@ -62,8 +62,8 @@ int main()
 
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(websocket_url);
 
-	// std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
-	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
+	 std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
+	//std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
 
 	std::shared_ptr<car::system::logging::vector_sink_mt> vector_sink = std::make_shared<car::system::logging::vector_sink_mt>(10);
 	auto vector_sink_logger = std::make_shared<spdlog::logger>("CLI", static_cast<std::shared_ptr<spdlog::sinks::sink>>(vector_sink));
