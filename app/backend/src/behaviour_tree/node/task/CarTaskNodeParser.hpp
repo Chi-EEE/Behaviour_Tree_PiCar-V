@@ -45,14 +45,17 @@ namespace behaviour_tree::node::task
 				case hash("Left"):
 				{
 					wheel_type = task::action::WheelType::Left;
+					break;
 				}
 				case hash("Right"):
 				{
 					wheel_type = task::action::WheelType::Right;
+					break;
 				}
 				case hash("Both"):
 				{
 					wheel_type = task::action::WheelType::Both;
+					break;
 				}
 				default:
 				{
@@ -73,14 +76,17 @@ namespace behaviour_tree::node::task
 				case hash("FrontWheels"):
 				{
 					servo_type = task::action::ServoType::FrontWheels;
+					break;
 				}
 				case hash("CameraServo1"):
 				{
 					servo_type = task::action::ServoType::CameraServo1;
+					break;
 				}
 				case hash("CameraServo2"):
 				{
 					servo_type = task::action::ServoType::CameraServo2;
+					break;
 				}
 				default:
 				{
@@ -101,14 +107,17 @@ namespace behaviour_tree::node::task
 				case hash("Left"):
 				{
 					wheel_type = task::action::WheelType::Left;
+					break;
 				}
 				case hash("Right"):
 				{
 					wheel_type = task::action::WheelType::Right;
+					break;
 				}
 				case hash("Both"):
 				{
 					wheel_type = task::action::WheelType::Both;
+					break;
 				}
 				default:
 				{
