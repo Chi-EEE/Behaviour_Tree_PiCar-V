@@ -10,6 +10,8 @@
 #include <pugixml.hpp>
 #include <fmt/format.h>
 
+#include "utils/Utility.hpp"
+
 #include "BehaviourTree.hpp"
 #include "Root.hpp"
 #include "Context.h"
@@ -43,17 +45,6 @@ using namespace behaviour_tree::node::task;
 namespace behaviour_tree
 {
 	static constexpr int STARTING_INDEX = 1;
-
-	// https://stackoverflow.com/a/46711735
-	static constexpr uint32_t hash(const std::string_view s) noexcept
-	{
-		uint32_t hash = 5381;
-
-		for (const char* c = s.data(); c < s.data() + s.size(); ++c)
-			hash = ((hash << 5) + hash) + (unsigned char)*c;
-
-		return hash;
-	}
 
 	class BehaviourTreeParser
 	{
@@ -155,56 +146,56 @@ namespace behaviour_tree
 		{
 			const std::string name = node.attribute("name").as_string();
 			const std::string& node_name = node.name();
-			switch (hash(node_name))
+			switch (utils::Utility::hash(node_name))
 			{
 #pragma region Composite Node
-			case hash("Sequence"):
+			case utils::Utility::hash("Sequence"):
 			{
 				return parseComposite(node, index, CompositeType::Sequence);
 			}
-			case hash("Selector"):
+			case utils::Utility::hash("Selector"):
 			{
 				return parseComposite(node, index, CompositeType::Selector);
 			}
 #pragma endregion
 #pragma region Decorator Node
-			case hash("Repeat"):
+			case utils::Utility::hash("Repeat"):
 			{
 				return parseDecorator(node, index, DecoratorType::Repeat);
 			}
-			case hash("Invert"):
+			case utils::Utility::hash("Invert"):
 			{
 				return parseDecorator(node, index, DecoratorType::Invert);
 			}
 #pragma endregion
 #pragma region Leaf Node
-			case hash("Task"):
+			case utils::Utility::hash("Task"):
 			{
 				return parseTask(node, index);
 			}
-			case hash("Succeed"):
+			case utils::Utility::hash("Succeed"):
 			{
 				return std::make_unique<Succeed>(Succeed(name));
 			}
-			case hash("Fail"):
+			case utils::Utility::hash("Fail"):
 			{
 				return std::make_unique<Fail>(Fail(name));
 			}
-			case hash("LogMessage"):
+			case utils::Utility::hash("LogMessage"):
 			{
 				return std::make_unique<LogMessage>(
 					LogMessage(
 						name,
 						node.attribute("text").as_string()));
 			}
-			case hash("ToRoot"):
+			case utils::Utility::hash("ToRoot"):
 			{
 				return std::make_unique<ToRoot>(
 					ToRoot(
 						name,
 						node.attribute("id").as_string()));
 			}
-			case hash("Wait"):
+			case utils::Utility::hash("Wait"):
 			{
 				return std::make_unique<Wait>(
 					Wait(

@@ -14,17 +14,6 @@
 
 namespace behaviour_tree::node::task
 {
-	// https://stackoverflow.com/a/46711735
-	static constexpr uint32_t hash(const std::string_view s) noexcept
-	{
-		uint32_t hash = 5381;
-
-		for (const char* c = s.data(); c < s.data() + s.size(); ++c)
-			hash = ((hash << 5) + hash) + (unsigned char)*c;
-
-		return hash;
-	}
-
 	class TaskNodeParser
 	{
 	public:

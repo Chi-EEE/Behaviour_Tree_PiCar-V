@@ -34,25 +34,25 @@ namespace behaviour_tree::node::task
 		{
 			const std::string name_attribute = node.attribute("name").as_string();
 			const std::string name = node.name();
-			switch (hash(name))
+			switch (utils::Utility::hash(name))
 			{
-			case hash("Action:SetSpeed"):
+			case utils::Utility::hash("Action:SetSpeed"):
 			{
 				const std::string wheel_type_attribute = node.attribute("wheel_type").as_string();
 				task::action::WheelType wheel_type;
-				switch (hash(wheel_type_attribute))
+				switch (utils::Utility::hash(wheel_type_attribute))
 				{
-				case hash("Left"):
+				case utils::Utility::hash("Left"):
 				{
 					wheel_type = task::action::WheelType::Left;
 					break;
 				}
-				case hash("Right"):
+				case utils::Utility::hash("Right"):
 				{
 					wheel_type = task::action::WheelType::Right;
 					break;
 				}
-				case hash("Both"):
+				case utils::Utility::hash("Both"):
 				{
 					wheel_type = task::action::WheelType::Both;
 					break;
@@ -67,23 +67,23 @@ namespace behaviour_tree::node::task
 					return tl::unexpected(fmt::format("Invalid speed: '{}' | Action:SetSpeed", std::to_string(speed)));
 				return std::make_unique<task::action::SetSpeed>(task::action::SetSpeed(name_attribute, wheel_type, speed));
 			}
-			case hash("Action:SetAngle"):
+			case utils::Utility::hash("Action:SetAngle"):
 			{
 				const std::string servo_type_attribute = node.attribute("servo_type").as_string();
 				task::action::ServoType servo_type;
-				switch (hash(servo_type_attribute))
+				switch (utils::Utility::hash(servo_type_attribute))
 				{
-				case hash("FrontWheels"):
+				case utils::Utility::hash("FrontWheels"):
 				{
 					servo_type = task::action::ServoType::FrontWheels;
 					break;
 				}
-				case hash("CameraServo1"):
+				case utils::Utility::hash("CameraServo1"):
 				{
 					servo_type = task::action::ServoType::CameraServo1;
 					break;
 				}
-				case hash("CameraServo2"):
+				case utils::Utility::hash("CameraServo2"):
 				{
 					servo_type = task::action::ServoType::CameraServo2;
 					break;
@@ -98,23 +98,23 @@ namespace behaviour_tree::node::task
 					return tl::unexpected(fmt::format("Invalid angle: '{}' | Action:SetAngle", std::to_string(angle)));
 				return std::make_unique<task::action::SetAngle>(task::action::SetAngle(name_attribute, servo_type, angle));
 			}
-			case hash("Action:SetRearWheelDirection"):
+			case utils::Utility::hash("Action:SetRearWheelDirection"):
 			{
 				const std::string wheel_type_attribute = node.attribute("wheel_type").as_string();
 				task::action::WheelType wheel_type;
-				switch (hash(wheel_type_attribute))
+				switch (utils::Utility::hash(wheel_type_attribute))
 				{
-				case hash("Left"):
+				case utils::Utility::hash("Left"):
 				{
 					wheel_type = task::action::WheelType::Left;
 					break;
 				}
-				case hash("Right"):
+				case utils::Utility::hash("Right"):
 				{
 					wheel_type = task::action::WheelType::Right;
 					break;
 				}
-				case hash("Both"):
+				case utils::Utility::hash("Both"):
 				{
 					wheel_type = task::action::WheelType::Both;
 					break;
@@ -125,13 +125,13 @@ namespace behaviour_tree::node::task
 				}
 				}
 				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
-				switch (hash(direction_type_attribute))
+				switch (utils::Utility::hash(direction_type_attribute))
 				{
-				case hash("Forward"):
+				case utils::Utility::hash("Forward"):
 				{
 					return std::make_unique<task::action::SetRearWheelDirection>(task::action::SetRearWheelDirection(name_attribute, wheel_type, task::action::DirectionType::Forward));
 				}
-				case hash("Backward"):
+				case utils::Utility::hash("Backward"):
 				{
 					return std::make_unique<task::action::SetRearWheelDirection>(task::action::SetRearWheelDirection(name_attribute, wheel_type, task::action::DirectionType::Backward));
 				}
@@ -141,7 +141,7 @@ namespace behaviour_tree::node::task
 				}
 				}
 			}
-			case hash("Condition:NearbyPoints"):
+			case utils::Utility::hash("Condition:NearbyPoints"):
 			{
 				const int min_angle = node.attribute("angle").as_int();
 				if (min_angle < 0 || min_angle > 180)

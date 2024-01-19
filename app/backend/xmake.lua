@@ -14,13 +14,15 @@ add_requires("drogon", { configs = {sqlite3 = true, mysql = true}})
 -- For Rust-Like Programming
 add_requires("tl_expected")
 
-includes("../behaviour_tree/xmake.lua", "../behaviour_tree_car/xmake.lua")
+includes("../other/utils/xmake.lua")
+includes("../other/behaviour_tree/xmake.lua", "../other/behaviour_tree_car/xmake.lua")
 
 target("backend")
     set_kind("binary")
     set_languages("cxx17")
-    add_deps("behaviour_tree")
-    add_deps("behaviour_tree_car")
+
+    add_deps("utils")
+    add_deps("behaviour_tree", "behaviour_tree_car")
 
     add_defines("BEHAVIOUR_TREE_DISABLE_RUN")
 
@@ -32,13 +34,9 @@ target("backend")
 
     add_packages("tl_expected")
 
-    add_headerfiles("include/utils/**.hpp")
-
     add_headerfiles("src/**.hpp")
     add_headerfiles("src/**.h")
     add_files("src/**.cpp")
-
-    add_includedirs("include")
 
     if is_plat("windows") then
         add_defines("_WIN32")

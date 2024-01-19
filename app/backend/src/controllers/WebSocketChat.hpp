@@ -84,23 +84,67 @@ void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 {
 	auto& user = wsConnPtr->getContextRef<User>();
 	try {
-		json message_json = json::parse(message);
-		const std::string message_data = message_json["data"].get<std::string>();
+		std::optional<std::string> maybe_message_type;
+		std::optional<std::string> maybe_message_data;
+
+		rapidjson::Document message_json;
+		if (!message_json.Parse(message.c_str()).HasParseError()) {
+			if (message_json.HasMember("type") && message_json["type"].IsString()) {
+				maybe_message_type = std::make_optional<std::string>(message_json["type"].GetString());
+			}
+			if (message_json.HasMember("data") && message_json["data"].IsString()) {
+				maybe_message_data = std::make_optional<std::string>(message_json["data"].GetString());
+			}
+		}
+		if (!maybe_message_type.has_value() || !maybe_message_data.has_value()) {
+			spdlog::info("Invalid JSON from {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
+			return;
+		}
+		std::string& message_data = maybe_message_data.value();
+		utils::Utility::encode(message_data);
 
 		auto& room = RoomManager::instance()->getRoom(user.getChatRoomName());
-
-		bool is_command = !message_data.rfind("/", 0);
-		if (is_command) {
-			spdlog::info("Received the following command from {}: {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp(), message_data);
-			this->handleUserCommand(wsConnPtr, message_data, user, room);
+		if (room == nullptr) {
+			spdlog::error("Room {} does not exist | WebSocketChat::handleUserMessage", user.getChatRoomName());
+			return;
 		}
-		else {
+
+		std::string& message_type = maybe_message_type.value();
+		switch (utils::Utility::hash(message_type)) {
+		case utils::Utility::hash("message"): {
 			spdlog::info("Received the following message from {}: {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp(), message_data);
-			json out_json;
-			out_json["name"] = user.getName();
-			out_json["type"] = "message";
-			out_json["data"] = message_data;
-			this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
+
+			/*
+			Returns the following JSON:
+			{
+				"name": "username",
+				"type": "message",
+				"data": message_data
+			}
+			*/
+			rapidjson::Document out_json;
+			out_json.SetObject();
+
+			rapidjson::Value name;
+			name.SetString(user.getName().c_str(), out_json.GetAllocator());
+			out_json.AddMember("name", name, out_json.GetAllocator());
+			out_json.AddMember("type", "message", out_json.GetAllocator());
+
+			rapidjson::Value data;
+			data.SetString(message_data.c_str(), out_json.GetAllocator());
+			out_json.AddMember("data", data, out_json.GetAllocator());
+
+			this->chat_rooms.publish(user.getChatRoomName(), [&out_json] {
+				rapidjson::StringBuffer buffer;
+				rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+				out_json.Accept(writer);
+				return buffer.GetString();
+				}());
+			break;
+		}
+		case utils::Utility::hash("command"): {
+			break;
+		}
 		}
 	}
 	catch (std::exception& c) {
@@ -109,54 +153,70 @@ void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 }
 
 void WebSocketChat::handleUserCommand(const drogon::WebSocketConnectionPtr& wsConnPtr, const std::string& message_data, User& user, std::shared_ptr<Room>& room) {
-	json out_json;
-	out_json["name"] = user.getName();
-	out_json["type"] = "command";
+	/*
+	Returns the following JSON:
+	{
+		"name": "username",
+		"type": "command",
+		"command": "move",
+		"distance": 10
+	}
+	*/
 
-	auto command_type_list = Utility::split(message_data.c_str(), 0, 1, ' ');
-	if (command_type_list.size() != 1) {
-		return;
-	}
-	std::string command_type = command_type_list[0];
-	command_type.erase(0, 1); // Remove the slash
-	// TODO: Make this whole section cleaner
-	if (command_type == "move") {
-		out_json["command"] = "move";
-		auto arguments = Utility::split(message_data.c_str(), 1, 2, ' ');
-		if (arguments.size() == 1) {
-			int distance = std::atoi(arguments[0].c_str());
-			out_json["distance"] = distance;
-			if (room->getCarUser() != nullptr)
-				room->getCarUser()->getConnection()->send(out_json.dump());
-			this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
-		}
-		else {
-			spdlog::error("The following arguments do not match the command move from {}: {} | WebSocketChat::handleUserCommand", wsConnPtr->peerAddr().toIp(), message_data);
-		}
-	}
-	else if (command_type == "turn") {
-		out_json["command"] = "turn";
-		auto arguments = Utility::split(message_data.c_str(), 1, 2, ' ');
-		if (arguments.size() == 1) {
-			int distance = std::atoi(arguments[0].c_str());
-			out_json["distance"] = distance;
-			if (room->getCarUser() != nullptr)
-				room->getCarUser()->getConnection()->send(out_json.dump());
-			this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
-		}
-		else {
-			spdlog::error("The arguments do not match the command turn from {}: {} | WebSocketChat::handleUserCommand", wsConnPtr->peerAddr().toIp(), message_data);
-		}
-	}
-	else if (command_type == "stop") {
 
-	}
-	else if (command_type == "speed") {
+	//rapidjson::Document out_json;
+	//out_json.SetObject();
 
-	}
-	else {
-		spdlog::error("Invalid command {} from {} | WebSocketChat::handleUserCommand", command_type, wsConnPtr->peerAddr().toIp());
-	}
+	//rapidjson::Value name;
+	//name.SetString(user.getName().c_str(), out_json.GetAllocator());
+	//out_json.AddMember("name", name, out_json.GetAllocator());
+	//out_json.AddMember("type", "command", out_json.GetAllocator());
+
+	//auto command_type_list = Utility::split(message_data.c_str(), 0, 1, ' ');
+	//if (command_type_list.size() != 1) {
+	//	return;
+	//}
+	//std::string command_type = command_type_list[0];
+	//command_type.erase(0, 1); // Remove the slash
+	//// TODO: Make this whole section cleaner
+
+	//switch (Utility::hash(command_type)) {
+	//case Utility::hash("move"): {
+	//	out_json.AddMember("command", "move", out_json.GetAllocator());
+	//	auto arguments = Utility::split(message_data.c_str(), 1, 2, ' ');
+	//	if (arguments.size() == 1) {
+	//		int distance = std::atoi(arguments[0].c_str());
+	//		out_json["distance"] = distance;
+	//		if (room->getCarUser() != nullptr)
+	//			room->getCarUser()->getConnection()->send(out_json.dump());
+	//		this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
+	//	}
+	//	else {
+	//		spdlog::error("The following arguments do not match the command move from {}: {} | WebSocketChat::handleUserCommand", wsConnPtr->peerAddr().toIp(), message_data);
+	//	}
+	//	break;
+	//}
+	//case Utility::hash("turn"): {
+	//	out_json.AddMember("command", "turn", out_json.GetAllocator());
+	//	auto arguments = Utility::split(message_data.c_str(), 1, 2, ' ');
+	//	if (arguments.size() == 1) {
+	//		int distance = std::atoi(arguments[0].c_str());
+	//		out_json["distance"] = distance;
+	//		if (room->getCarUser() != nullptr)
+	//			room->getCarUser()->getConnection()->send(out_json.dump());
+	//		this->chat_rooms.publish(user.getChatRoomName(), out_json.dump());
+	//	}
+	//	else {
+	//		spdlog::error("The arguments do not match the command turn from {}: {} | WebSocketChat::handleUserCommand", wsConnPtr->peerAddr().toIp(), message_data);
+	//	}
+	//	break;
+	//}
+	//default:
+	//{
+	//	spdlog::error("Invalid command {} from {} | WebSocketChat::handleUserCommand", command_type, wsConnPtr->peerAddr().toIp());
+	//	break;
+	//}
+	//}
 }
 
 void WebSocketChat::handleCarMessage(const drogon::WebSocketConnectionPtr& wsConnPtr,
@@ -169,8 +229,8 @@ void WebSocketChat::handleCarMessage(const drogon::WebSocketConnectionPtr& wsCon
 	}
 	// TODO: Prevent Car User from sending unfiltered messages
 	spdlog::debug("Received a message from car: {} | WebSocketChat::handleCarMessage", wsConnPtr->peerAddr().toIp());
-	json message_json = json::parse(message); 
-	
+	json message_json = json::parse(message);
+
 	json out_json;
 	out_json["name"] = user.getName();
 	out_json["type"] = "car";

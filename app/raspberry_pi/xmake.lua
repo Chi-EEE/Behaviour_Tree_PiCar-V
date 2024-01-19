@@ -31,12 +31,15 @@ end
 -- For Better Programming
 add_requires("tl_expected")
 
-includes("../behaviour_tree/xmake.lua", "../behaviour_tree_car/xmake.lua")
+includes("../other/utils/xmake.lua")
+includes("../other/behaviour_tree/xmake.lua", "../other/behaviour_tree_car/xmake.lua")
 
 target("raspberry_pi")
     set_kind("binary")
     set_languages("cxx17")
     set_license("LGPL-2.1")
+
+    add_deps("utils")
     add_deps("behaviour_tree", "behaviour_tree_car")
      
     add_packages("spdlog")
