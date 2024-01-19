@@ -4,15 +4,15 @@ add_rules("mode.debug", "mode.release")
                     --    python3-wheel ninja-build
 -- sudo apt-get install libglib2.0-dev
 
-add_repositories("my-repo repository", {rootdir = path.join(os.scriptdir(), "..")})
 add_requires("cartographer") -- Install `sudo apt-get install gfortran`
-add_requires("rplidar")
+add_requires("cpp-dump")
 
 target("lidar")
     set_kind("binary")
+    set_languages("cxx17")
 
     add_packages("cartographer")
-    add_packages("rplidar")
+    add_packages("cpp-dump")
 
     add_files("src/*.cpp")
 

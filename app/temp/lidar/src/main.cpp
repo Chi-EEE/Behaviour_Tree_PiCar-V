@@ -4,25 +4,9 @@
 #include <cartographer/mapping/2d/submap_2d.h>
 #include <cartographer/sensor/timed_point_cloud_data.h>
 #include "cartographer/mapping/proto/map_builder_options.pb.h"
-#include "RPLidar.h"
 
+#include <cpp-dump/dump.hpp>
 #include <set>
-
-// Edited code from "https://github.com/cartographer-project/cartographer_ros"
-std::tuple<cartographer::mapping::proto::MapBuilderOptions, cartographer::mapping::proto::TrajectoryBuilderOptions> LoadOptions(
-	const std::string& configuration_directory,
-	const std::string& configuration_basename) {
-	auto file_resolver =
-		std::make_unique<cartographer::common::ConfigurationFileResolver>(
-			std::vector<std::string>{configuration_directory});
-	const std::string code =
-		file_resolver->GetFileContentOrDie(configuration_basename);
-	cartographer::common::LuaParameterDictionary lua_parameter_dictionary(
-		code, std::move(file_resolver));
-
-	return std::make_tuple(CreateMapBuilderOptions(&lua_parameter_dictionary),
-		CreateTrajectoryBuilderOptions(&lua_parameter_dictionary));
-}
 
 cartographer::mapping::proto::MapBuilderOptions CreateMapBuilderOptions(
 	::cartographer::common::LuaParameterDictionary* const
@@ -38,6 +22,22 @@ cartographer::mapping::proto::TrajectoryBuilderOptions CreateTrajectoryBuilderOp
 	return
 		::cartographer::mapping::CreateTrajectoryBuilderOptions(
 			lua_parameter_dictionary->GetDictionary("trajectory_builder").get());
+}
+
+// Edited code from "https://github.com/cartographer-project/cartographer_ros"
+std::tuple<cartographer::mapping::proto::MapBuilderOptions, cartographer::mapping::proto::TrajectoryBuilderOptions> LoadOptions(
+	const std::string& configuration_directory,
+	const std::string& configuration_basename) {
+	auto file_resolver =
+		std::make_unique<cartographer::common::ConfigurationFileResolver>(
+			std::vector<std::string>{configuration_directory});
+	const std::string code =
+		file_resolver->GetFileContentOrDie(configuration_basename);
+	cartographer::common::LuaParameterDictionary lua_parameter_dictionary(
+		code, std::move(file_resolver));
+
+	return std::make_tuple(CreateMapBuilderOptions(&lua_parameter_dictionary),
+		CreateTrajectoryBuilderOptions(&lua_parameter_dictionary));
 }
 
 int main() {
@@ -60,6 +60,8 @@ int main() {
 		const ::cartographer::mapping::TrajectoryBuilderInterface::
 		InsertionResult>) {
 		});
+	cpp_dump(map_builder.pose_graph()->GetTrajectoryData());
+	
 	// Initialize and start your lidar sensor here (e.g., using your_lidar_library).
 	//RPLidar lidar;
 

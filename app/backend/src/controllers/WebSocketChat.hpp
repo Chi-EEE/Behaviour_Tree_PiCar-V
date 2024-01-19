@@ -282,9 +282,7 @@ void WebSocketChat::handleNewConnection(const drogon::HttpRequestPtr& req,
 inline void WebSocketChat::handleCreateRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
 {
 	std::string room_name = req->getParameter("room_name");
-	// https://stackoverflow.com/a/45521713 : Remove all characters not string or number
-	room_name.erase(std::remove_if(room_name.begin(), room_name.end(),
-		[](auto const& c) -> bool { return !std::isalnum(c); }), room_name.end());
+	utils::Utility::encode(room_name);
 	if (room_name.size() < 3) {
 		spdlog::info("Room name {} is too short | WebSocketChat::handleCreateRequest", room_name);
 		conn->forceClose();
@@ -315,9 +313,7 @@ inline void WebSocketChat::handleCreateRequest(const drogon::HttpRequestPtr& req
 inline void WebSocketChat::handleJoinRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
 {
 	std::string room_name = req->getParameter("room_name");
-	// https://stackoverflow.com/a/45521713 : Remove all characters not string or number
-	room_name.erase(std::remove_if(room_name.begin(), room_name.end(),
-		[](auto const& c) -> bool { return !std::isalnum(c); }), room_name.end());
+	utils::Utility::encode(room_name);
 	if (room_name.size() < 3) {
 		spdlog::info("Room name {} is too short | WebSocketChat::handleCreateRequest", room_name);
 		conn->forceClose();
