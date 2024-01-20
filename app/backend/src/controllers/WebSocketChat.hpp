@@ -10,6 +10,8 @@
 
 #include "utils/Utility.hpp"
 
+#include "behaviour_tree/BehaviourTreeParser.hpp"
+
 #include "../room/RoomManager.hpp"
 #include "../room/User.hpp"
 
@@ -28,6 +30,7 @@ public:
 	void handleUserMessage(const drogon::WebSocketConnectionPtr&,
 		std::string&&,
 		const drogon::WebSocketMessageType&);
+	void handleBehaviourTree(const drogon::WebSocketConnectionPtr& wsConnPtr, const std::string& message_data, User& user, std::shared_ptr<Room>& room);
 	void handleUserCommand(const drogon::WebSocketConnectionPtr&, const std::string&, User&, std::shared_ptr<Room>&);
 #pragma endregion
 
@@ -46,6 +49,7 @@ public:
 
 	void handleCreateRequest(const drogon::HttpRequestPtr&,
 		const drogon::WebSocketConnectionPtr&);
+
 
 	void handleJoinRequest(const drogon::HttpRequestPtr&,
 		const drogon::WebSocketConnectionPtr&);
@@ -101,7 +105,6 @@ void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 			return;
 		}
 		std::string& message_data = maybe_message_data.value();
-		utils::Utility::encode(message_data);
 
 		auto& room = RoomManager::instance()->getRoom(user.getChatRoomName());
 		if (room == nullptr) {
@@ -112,6 +115,7 @@ void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 		std::string& message_type = maybe_message_type.value();
 		switch (utils::Utility::hash(message_type)) {
 		case utils::Utility::hash("message"): {
+			utils::Utility::encode(message_data);
 			spdlog::info("Received the following message from {}: {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp(), message_data);
 
 			/*
@@ -142,13 +146,51 @@ void WebSocketChat::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 				}());
 			break;
 		}
+		case utils::Utility::hash("behaviour_tree"): {
+			this->handleBehaviourTree(wsConnPtr, message_data, user, room);
+			break;
+		}
 		case utils::Utility::hash("command"): {
+			//this->handleUserCommand(wsConnPtr, message_data, user, room);
 			break;
 		}
 		}
 	}
 	catch (std::exception& c) {
 		spdlog::error("Invalid JSON from {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
+	}
+}
+
+void WebSocketChat::handleBehaviourTree(const drogon::WebSocketConnectionPtr& wsConnPtr, const std::string& message_data, User& user, std::shared_ptr<Room>& room) {
+	auto maybe_behaviour_tree = behaviour_tree::BehaviourTreeParser::instance().parseXML(message_data);
+	if (!maybe_behaviour_tree.has_value()) {
+		spdlog::error("Invalid behaviour tree from {} | WebSocketChat::handleBehaviourTree", wsConnPtr->peerAddr().toIp());
+		spdlog::error("Behaviour tree: {} | WebSocketChat::handleBehaviourTree", message_data);
+		spdlog::error("Behaviour tree Error: {} | WebSocketChat::handleBehaviourTree", maybe_behaviour_tree.error());
+		return;
+	}
+	auto& behaviour_tree = maybe_behaviour_tree.value();
+
+	auto& car_user = room->getCarUser();
+	if (car_user != nullptr) {
+
+		rapidjson::Document out_json;
+		out_json.SetObject();
+
+		out_json.AddMember("type", "command", out_json.GetAllocator());
+		out_json.AddMember("command", "custom", out_json.GetAllocator());
+		out_json.AddMember("custom_type", "behaviour_tree", out_json.GetAllocator());
+		rapidjson::Value custom;
+		custom.SetString(behaviour_tree->toString().c_str(), out_json.GetAllocator());
+		out_json.AddMember("custom", custom, out_json.GetAllocator());
+		std::string out_json_string = [&out_json] {
+			rapidjson::StringBuffer buffer;
+			rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+			out_json.Accept(writer);
+			return buffer.GetString();
+			}();
+			spdlog::info("Sending behaviour tree to car: {} | WebSocketChat::handleBehaviourTree", out_json_string);
+			car_user->getConnection()->send(out_json_string);
 	}
 }
 
@@ -342,5 +384,8 @@ inline void WebSocketChat::handleJoinRequest(const drogon::HttpRequestPtr& req, 
 	);
 	auto room = RoomManager::instance()->getRoom(room_name);
 	room->addUser(user);
+	if (type == UserType::Car) {
+		room->setCarUser(user);
+	}
 	conn->setContext(user);
 }

@@ -13,9 +13,8 @@
 
 #include <spdlog/spdlog.h>
 
-#include <nlohmann/json.hpp>
-
-using json = nlohmann::json;
+#include <rapidjson/rapidjson.h>
+#include <rapidjson/document.h>
 
 namespace car::system::messaging {
 	// https://stackoverflow.com/a/46711735
@@ -102,9 +101,22 @@ namespace car::system::messaging {
 		}
 
 		void handleMessage(const std::string& message) const {
+			rapidjson::Document message_json;
+			message_json.Parse(message.c_str());
+			if (message_json.HasParseError() || !message_json.IsObject()) {
+				spdlog::error("An error has occurred while handling the message: {}", message);
+				return;
+			}
+			if (!message_json.HasMember("type") || !message_json["type"].IsString()) {
+				spdlog::error("Type does not exist in json", message);
+				return;
+			}
+			const std::string type = message_json["type"].GetString();
+			if (type == "car") {
+				return;
+			}
+
 			try {
-				const json message_json = json::parse(message);
-				const std::string type = message_json.at("type").get<std::string>();
 				switch (hash(type)) {
 				case hash("command"):
 					this->handleCommand(message_json);
@@ -113,7 +125,6 @@ namespace car::system::messaging {
 					spdlog::info("Received status message");
 					break;
 				default:
-					spdlog::info("Received unknown message");
 					break;
 				}
 			}
@@ -122,26 +133,51 @@ namespace car::system::messaging {
 			}
 		}
 
-		void handleCommand(const json& message_json) const {
-			switch (hash(message_json.at("command").get<std::string>())) {
+		void handleCommand(const rapidjson::Value& message_json) const {
+			if (!message_json.HasMember("command") || !message_json["command"].IsString()) {
+				spdlog::error("Command not found or not a string in the JSON.");
+				return;
+			}
+
+			const std::string command = message_json["command"].GetString();
+
+			switch (hash(command)) {
 			case hash("turn"): {
-				float angle = message_json.at("angle").get<float>();
-				this->angle_command_signal(angle);
-				spdlog::info("Turning by {} angle", angle);
+				if (message_json.HasMember("angle") && message_json["angle"].IsFloat()) {
+					float angle = message_json["angle"].GetFloat();
+					angle_command_signal(angle);
+					spdlog::info("Turning by {} angle", angle);
+				}
+				else {
+					spdlog::error("Invalid or missing 'angle' in the JSON for 'turn' command.");
+				}
 				break;
 			}
 			case hash("move"): {
-				int speed = message_json.at("speed").get<int>();
-				this->speed_command_signal(speed);
-				spdlog::info("Moving with {} speed", speed);
+				if (message_json.HasMember("speed") && message_json["speed"].IsInt()) {
+					int speed = message_json["speed"].GetInt();
+					speed_command_signal(speed);
+					spdlog::info("Moving with {} speed", speed);
+				}
+				else {
+					spdlog::error("Invalid or missing 'speed' in the JSON for 'move' command.");
+				}
 				break;
 			}
 			case hash("custom"): {
-				const std::string custom_type = message_json.at("custom_type").get<std::string>();
-				const std::string custom = message_json.at("custom").get<std::string>();
-				this->custom_command_signal(custom_type, custom);
+				if (message_json.HasMember("custom_type") && message_json.HasMember("custom") &&
+					message_json["custom_type"].IsString() && message_json["custom"].IsString()) {
+					const std::string custom_type = message_json["custom_type"].GetString();
+					const std::string custom = message_json["custom"].GetString();
+					custom_command_signal(custom_type, custom);
+				}
+				else {
+					spdlog::error("Invalid or missing 'custom_type' or 'custom' in the JSON for 'custom' command.");
+				}
 				break;
 			}
+			default:
+				spdlog::error("Unknown command: {}", command);
 			}
 		}
 

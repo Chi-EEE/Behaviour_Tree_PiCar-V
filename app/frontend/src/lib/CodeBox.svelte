@@ -4,14 +4,22 @@
 	import { xml } from "@codemirror/lang-xml";
 	import { oneDark } from "@codemirror/theme-one-dark";
 	import { node_hover, xml_schema } from "./CodeBox_Constants";
+	import xmlFormat from 'xml-formatter';
 
-	let value = "";
+	export let websocket: WebSocket;
+
+	let xml_code: string = "";
+
+	function sendXMLCode() {
+		websocket.send(JSON.stringify({ type: "behaviour_tree", data: xmlFormat.minify(xml_code) }));
+	}
 </script>
 
+<button on:mousedown={sendXMLCode}>Click Here!</button>
 <div class="h-full">
 	<CodeMirror
 		class="text-left h-full flex-auto font-mono text-lg font-bold"
-		bind:value
+		bind:value={xml_code}
 		lang={xml(xml_schema)}
 		tabSize={4}
 		theme={oneDark}

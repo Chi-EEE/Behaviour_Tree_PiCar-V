@@ -27,12 +27,12 @@ namespace behaviour_tree
 						return;
 					}
 					auto maybe_behaviour_tree = BehaviourTreeParser::instance().parseXML(custom);
-					if (maybe_behaviour_tree.has_value()) {
+					if (!maybe_behaviour_tree.has_value()) {
 						return;
 					}
 					if (autorun) {
 						std::shared_ptr<BehaviourTree> behaviour_tree = std::move(maybe_behaviour_tree.value());
-						auto context = CarContext(std::move(behaviour_tree), car_system);
+						auto context = CarContext(behaviour_tree, car_system);
 						behaviour_tree->run(context);
 					}
 					//this->addBehaviourTree(std::move(maybe_behaviour_tree.value()));

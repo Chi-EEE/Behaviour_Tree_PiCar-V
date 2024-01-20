@@ -15,7 +15,7 @@ add_requires("etl")
 add_requires("robin-map")
 
 -- Logging and JSON
-add_requires("nlohmann_json")
+add_requires("rapidjson", "nlohmann_json")
 add_requires("pugixml v1.14")
 add_requires("spdlog")
 add_requires("fmt")
@@ -44,7 +44,7 @@ target("raspberry_pi")
      
     add_packages("spdlog")
     add_packages("fmt")
-    add_packages("nlohmann_json")
+    add_packages("rapidjson", "nlohmann_json")
     add_packages("pugixml")
 
     add_packages("etl")

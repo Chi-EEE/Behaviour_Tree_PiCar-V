@@ -21,7 +21,7 @@
 				<LidarStream {room_name} {websocket} />
 			</Pane>
 			<Pane size={20} snapSize={20}>
-				<CodeBox />
+				<CodeBox {websocket} />
 			</Pane>
 		</Splitpanes>
 	</Pane>

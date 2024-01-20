@@ -12,6 +12,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "@tsconfig/svelte": "^5.0.2",
+    "@types/node": "^20.11.5",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.33",
     "postcss-load-config": "^5.0.2",
@@ -31,6 +32,7 @@
     "svelte-codemirror-editor": "^1.2.0",
     "svelte-spa-router": "^4.0.1",
     "svelte-splitpanes": "^0.8.0",
-    "url-pattern": "^1.0.3"
+    "url-pattern": "^1.0.3",
+    "xml-formatter": "^3.6.2"
   }
 }
