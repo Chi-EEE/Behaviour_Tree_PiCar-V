@@ -29,7 +29,7 @@ void RoomWebSocket::handleNewConnection(const drogon::HttpRequestPtr& req,
 	// Since this is the RoomWebSocket, we expect the request to have a room_name parameter
 	std::string room_name = req->getParameter("room_name");
 	if (room_name.size() < 3) {
-		spdlog::info("Room name {} is too short | RoomWebSocket::handleCreateRequest", room_name);
+		spdlog::info("Room name {} is too short | RoomWebSocket::handleNewConnection", room_name);
 		conn->forceClose();
 		return;
 	}
@@ -51,6 +51,7 @@ void RoomWebSocket::handleNewConnection(const drogon::HttpRequestPtr& req,
 	}
 	default: {
 		spdlog::error("Invalid request '{}' from {} | RoomWebSocket::handleNewConnection", request, conn->peerAddr().toIp());
+		conn->send("Invalid request");
 		conn->forceClose();
 	}
 	}
@@ -79,6 +80,7 @@ inline void RoomWebSocket::handleCreateRequest(const drogon::HttpRequestPtr& req
 	RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
 	if (room_manager->hasRoom(encoded_room_name)) {
 		spdlog::error("Room {} already exists | RoomWebSocket::handleCreateRequest", encoded_room_name);
+		conn->send("Room already exists");
 		conn->forceClose();
 		return;
 	}
@@ -103,15 +105,17 @@ inline void RoomWebSocket::handleJoinRequest(const drogon::HttpRequestPtr& req, 
 	RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
 	if (!room_manager->hasRoom(encoded_room_name)) {
 		spdlog::error("Room {} does not exist | RoomWebSocket::handleJoinRequest", encoded_room_name);
+		conn->send("Room does not exist");
 		conn->forceClose();
 		return;
 	}
 	spdlog::info("Joining room {} from {} | RoomWebSocket::handleJoinRequest", encoded_room_name, req->peerAddr().toIp());
 	UserType type = UserType::Default;
+	// TODO: Add a password for this
 	if (req->getParameter("type") == "car") {
 		type = UserType::Car;
 	}
-	auto user = std::make_shared<User>(
+	std::shared_ptr<User> user = std::make_shared<User>(
 		this->chat_rooms.subscribe(encoded_room_name,
 			[conn](const std::string& topic,
 				const std::string& message) {
@@ -124,8 +128,5 @@ inline void RoomWebSocket::handleJoinRequest(const drogon::HttpRequestPtr& req, 
 	);
 	auto room = room_manager->getRoom(encoded_room_name);
 	room->addUser(user);
-	if (type == UserType::Car) {
-		room->setCarUser(user);
-	}
 	conn->setContext(user);
 }

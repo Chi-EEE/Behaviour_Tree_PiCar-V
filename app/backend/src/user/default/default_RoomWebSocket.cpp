@@ -22,13 +22,13 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 			}
 		}
 		if (!maybe_message_type.has_value() || !maybe_message_data.has_value()) {
-			spdlog::info("Invalid JSON from {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
+			spdlog::info("Invalid JSON from {} | RoomWebSocket::handleUserMessage", wsConnPtr->peerAddr().toIp());
 			return;
 		}
 		RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
 		auto& room = room_manager->getRoom(user.getChatRoomName());
 		if (room == nullptr) {
-			spdlog::error("Room {} does not exist | WebSocketChat::handleUserMessage", user.getChatRoomName());
+			spdlog::error("Room {} does not exist | RoomWebSocket::handleUserMessage", user.getChatRoomName());
 			return;
 		}
 
@@ -38,7 +38,7 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 		switch (utils::Utility::hash(message_type)) {
 		case utils::Utility::hash("message"): {
 			utils::Utility::encode(message_data);
-			spdlog::info("Received the following message from {}: {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp(), message_data);
+			spdlog::info("Received the following message from {}: {} | RoomWebSocket::handleUserMessage", wsConnPtr->peerAddr().toIp(), message_data);
 			/*
 			Returns the following JSON:
 			{
@@ -73,7 +73,7 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 		}
 	}
 	catch (std::exception& c) {
-		spdlog::error("Invalid JSON from {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
+		spdlog::error("Invalid JSON from {} | RoomWebSocket::handleUserMessage", wsConnPtr->peerAddr().toIp());
 	}
 }
 

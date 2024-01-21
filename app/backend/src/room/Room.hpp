@@ -16,21 +16,15 @@ public:
 		this->users.push_back(owner);
 	};
 
-	void setCarUser(std::shared_ptr<User> car_user) {
-		bool is_user_in_room = std::any_of(this->users.begin(), this->users.end(), [car_user](const std::shared_ptr<User>& user) {
-			return user->getId() == car_user->getId();
-			});
-		if (is_user_in_room) {
-			this->car_user = car_user;
-		}
-	}
-
 	std::shared_ptr<User> getCarUser() const {
 		return this->car_user;
 	}
 
 	void addUser(std::shared_ptr<User> user) {
 		this->users.push_back(user);
+		if (user->getType() == UserType::Car) {
+			this->setCarUser(user);
+		}
 	}
 
 	void removeUser(User user) {
@@ -56,6 +50,11 @@ public:
 
 	bool isEmpty() const {
 		return this->users.size() == 0;
+	}
+private:
+	// Assume that the user is in the room
+	void setCarUser(std::shared_ptr<User> car_user) {
+		this->car_user = car_user;
 	}
 
 private:
