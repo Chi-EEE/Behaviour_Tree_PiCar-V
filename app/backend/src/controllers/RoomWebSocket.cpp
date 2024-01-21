@@ -56,21 +56,15 @@ void RoomWebSocket::handleConnectionClosed(const drogon::WebSocketConnectionPtr&
 	}
 }
 
-/// <summary>
-/// room_name
-/// type
-/// </summary>
-/// <param name="req"></param>
-/// <param name="conn"></param>
 inline void RoomWebSocket::handleCreateRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
 {
 	std::string room_name = req->getParameter("room_name");
-	utils::Utility::encode(room_name);
 	if (room_name.size() < 3) {
 		spdlog::info("Room name {} is too short | RoomWebSocket::handleCreateRequest", room_name);
 		conn->forceClose();
 		return;
 	}
+	utils::Utility::encode(room_name);
 	RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
 	if (room_manager->hasRoom(room_name)) {
 		spdlog::error("Room {} already exists | RoomWebSocket::handleCreateRequest", room_name);
@@ -89,20 +83,19 @@ inline void RoomWebSocket::handleCreateRequest(const drogon::HttpRequestPtr& req
 		room_name,
 		UserType::Default
 	);
-	auto room = std::make_shared<Room>(user);
-	room_manager->addRoom(room_name, room);
+	room_manager->createRoom(room_name, user);
 	conn->setContext(user);
 }
 
 inline void RoomWebSocket::handleJoinRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
 {
 	std::string room_name = req->getParameter("room_name");
-	utils::Utility::encode(room_name);
 	if (room_name.size() < 3) {
 		spdlog::info("Room name {} is too short | RoomWebSocket::handleCreateRequest", room_name);
 		conn->forceClose();
 		return;
 	}
+	utils::Utility::encode(room_name);
 	RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
 	if (!room_manager->hasRoom(room_name)) {
 		spdlog::error("Room {} does not exist | RoomWebSocket::handleJoinRequest", room_name);

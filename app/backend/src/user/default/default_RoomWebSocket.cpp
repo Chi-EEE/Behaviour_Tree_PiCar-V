@@ -25,8 +25,6 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 			spdlog::info("Invalid JSON from {} | WebSocketChat::handleUserMessage", wsConnPtr->peerAddr().toIp());
 			return;
 		}
-		std::string& message_data = maybe_message_data.value();
-
 		RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
 		auto& room = room_manager->getRoom(user.getChatRoomName());
 		if (room == nullptr) {
@@ -34,7 +32,9 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 			return;
 		}
 
+		std::string& message_data = maybe_message_data.value();
 		std::string& message_type = maybe_message_type.value();
+
 		switch (utils::Utility::hash(message_type)) {
 		case utils::Utility::hash("message"): {
 			utils::Utility::encode(message_data);
@@ -68,7 +68,6 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 			break;
 		}
 		case utils::Utility::hash("command"): {
-			//this->handleUserCommand(wsConnPtr, message_data, user, room);
 			break;
 		}
 		}
@@ -81,9 +80,7 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 void RoomWebSocket::handleBehaviourTree(const drogon::WebSocketConnectionPtr& wsConnPtr, const std::string& message_data, User& user, std::shared_ptr<Room>& room) {
 	auto maybe_behaviour_tree = behaviour_tree::BehaviourTreeParser::instance().parseXML(message_data);
 	if (!maybe_behaviour_tree.has_value()) {
-		spdlog::error("Invalid behaviour tree from {} | RoomWebSocket::handleBehaviourTree", wsConnPtr->peerAddr().toIp());
-		spdlog::error("Behaviour tree: {} | RoomWebSocket::handleBehaviourTree", message_data);
-		spdlog::error("Behaviour tree Error: {} | RoomWebSocket::handleBehaviourTree", maybe_behaviour_tree.error());
+		spdlog::error("Recieved an inavlid behaviour tree from {} | RoomWebSocket::handleBehaviourTree", wsConnPtr->peerAddr().toIp());
 		return;
 	}
 	auto& behaviour_tree = maybe_behaviour_tree.value();
@@ -107,5 +104,8 @@ void RoomWebSocket::handleBehaviourTree(const drogon::WebSocketConnectionPtr& ws
 
 		spdlog::info("Sending behaviour tree to car: {} | RoomWebSocket::handleBehaviourTree", behaviour_command_json_string);
 		car_user->getConnection()->send(behaviour_command_json_string);
+	}
+	else {
+		spdlog::error("Attempt to send behaviour tree to car user but it was not found | RoomWebSocket::handleBehaviourTree");
 	}
 }

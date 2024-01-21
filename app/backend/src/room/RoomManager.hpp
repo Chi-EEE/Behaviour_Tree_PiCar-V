@@ -1,22 +1,3 @@
-//#ifndef ROOMMANAGER_HPP
-//#define ROOMMANAGER_HPP
-//
-//#pragma once
-//
-//#include <atomic>
-//#include <mutex>
-//
-//
-//// https://stackoverflow.com/a/27977363
-//class RoomManager {
-//public:
-//	static RoomManager* instance();
-//
-//
-//private:
-//	RoomManager() {}
-//	static std::atomic<RoomManager*> pinstance;
-//	static std::mutex m_;
 #ifndef ROOMMANAGER_HPP
 #define ROOMMANAGER_HPP
 
@@ -36,7 +17,8 @@ public:
 	void shutdown() override {
 	};
 
-	void addRoom(std::string name, std::shared_ptr<Room> room) {
+	void createRoom(std::string name, std::shared_ptr<User> owner) {
+		std::shared_ptr<Room> room = std::make_shared<Room>(owner);
 		this->rooms[name] = room;
 	}
 
@@ -57,7 +39,7 @@ public:
 	}
 
 private:
-	std::map<std::string, std::shared_ptr<Room>> rooms = {};
+	std::map<std::string, std::shared_ptr<Room>> rooms;
 };
 
 #endif

@@ -1,15 +1,11 @@
 #pragma once
 #include <drogon/HttpController.h>
 
-#include <nlohmann/json.hpp>
-
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
 #include "../room/RoomManager.hpp"
-
-using json = nlohmann::json;
 
 class RoomController : public drogon::HttpController<RoomController>
 {
@@ -32,6 +28,7 @@ void RoomController::getRooms(const drogon::HttpRequestPtr& req,
 	for (const auto& [room_name, room] : room_manager->getRooms())
 	{
 		rapidjson::Value room_json(rapidjson::kObjectType);
+		// TODO: Add room id
 		room_json.AddMember("id", rapidjson::Value().SetString(room_name.c_str(), output.GetAllocator()), output.GetAllocator());
 		room_json.AddMember("name", rapidjson::Value().SetString(room_name.c_str(), output.GetAllocator()), output.GetAllocator());
 		data.PushBack(room_json, output.GetAllocator());

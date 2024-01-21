@@ -1,9 +1,9 @@
 add_rules("mode.debug", "mode.release")
 
-
 -- Logging / Data handling
 add_requires("fmt", "spdlog")
-add_requires("nlohmann_json", "rapidjson", "pugixml v1.14")
+add_requires("rapidjson", "pugixml v1.14")
+add_requires("uuid_v4")
 
 add_requires("robin-map")
 
@@ -26,8 +26,11 @@ target("backend")
     add_defines("BEHAVIOUR_TREE_DISABLE_RUN")
 
     add_packages("fmt", "spdlog")
-    add_packages("nlohmann_json", "rapidjson", "pugixml")
+    add_packages("rapidjson", "pugixml")
+    add_packages("uuid_v4")
+    
     add_packages("robin-map")
+    
     add_packages("drogon")
 
     add_packages("tl_expected")
