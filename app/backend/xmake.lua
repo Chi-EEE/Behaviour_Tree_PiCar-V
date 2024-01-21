@@ -2,7 +2,6 @@ add_rules("mode.debug", "mode.release")
 
 
 -- Logging / Data handling
-add_requires("boost", { configs = {chrono = true} })
 add_requires("fmt", "spdlog")
 add_requires("nlohmann_json", "rapidjson", "pugixml v1.14")
 
@@ -26,7 +25,6 @@ target("backend")
 
     add_defines("BEHAVIOUR_TREE_DISABLE_RUN")
 
-    add_packages("boost")
     add_packages("fmt", "spdlog")
     add_packages("nlohmann_json", "rapidjson", "pugixml")
     add_packages("robin-map")
