@@ -47,20 +47,19 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 				"data": message_data
 			}
 			*/
-			rapidjson::Document out_json;
-			out_json.SetObject();
+			rapidjson::Document user_message_json;
+			user_message_json.SetObject();
 
-			out_json.AddMember("name", rapidjson::Value().SetString(user.getName().c_str(), out_json.GetAllocator()), out_json.GetAllocator());
-			out_json.AddMember("type", "message", out_json.GetAllocator());
+			user_message_json.AddMember("name", rapidjson::Value().SetString(user.getName().c_str(), user_message_json.GetAllocator()), user_message_json.GetAllocator());
+			user_message_json.AddMember("type", "message", user_message_json.GetAllocator());
 
-			out_json.AddMember("data", rapidjson::Value().SetString(message_data.c_str(), out_json.GetAllocator()), out_json.GetAllocator());
+			user_message_json.AddMember("data", rapidjson::Value().SetString(message_data.c_str(), user_message_json.GetAllocator()), user_message_json.GetAllocator());
 
-			this->chat_rooms.publish(user.getChatRoomName(), [&out_json] {
-				rapidjson::StringBuffer buffer;
-				rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-				out_json.Accept(writer);
-				return buffer.GetString();
-				}());
+			rapidjson::StringBuffer buffer;
+			rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+			user_message_json.Accept(writer);
+
+			this->chat_rooms.publish(user.getChatRoomName(), buffer.GetString());
 			break;
 		}
 		case utils::Utility::hash("behaviour_tree"): {
