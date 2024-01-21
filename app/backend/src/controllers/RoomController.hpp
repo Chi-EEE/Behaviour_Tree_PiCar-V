@@ -28,7 +28,8 @@ void RoomController::getRooms(const drogon::HttpRequestPtr& req,
 	output.SetObject();
 	rapidjson::Value data(rapidjson::kArrayType);
 
-	for (const auto& [room_name, room] : RoomManager::instance()->getRooms())
+	RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
+	for (const auto& [room_name, room] : room_manager->getRooms())
 	{
 		rapidjson::Value room_json(rapidjson::kObjectType);
 		room_json.AddMember("id", rapidjson::Value().SetString(room_name.c_str(), output.GetAllocator()), output.GetAllocator());

@@ -7,7 +7,7 @@
 #include <vector>
 #include <memory>
 
-#include "User.hpp"
+#include "../user/User.hpp"
 
 class Room
 {

@@ -10,7 +10,7 @@
 #include "controllers/DynamicController.hpp"
 
 #include "controllers/RoomController.hpp"
-#include "controllers/WebSocketChat.hpp"
+#include "controllers/RoomWebSocket.h"
 
 #include "behaviour_tree/node/task/CarTaskNodeParser.hpp"
 #include "behaviour_tree/BehaviourTreeParser.hpp"
@@ -18,7 +18,7 @@
 const std::string host = "127.0.0.1";
 const int port = 8848;
 
-const std::string url = fmt::format("http://{}:{}", host, port);
+const std::string url = "http://" + host + ":" + std::to_string(port);
 
 int main(int argc, char* argv[])
 {
@@ -40,6 +40,8 @@ int main(int argc, char* argv[])
 			callback(resp);
 		}
 	);
+
+
 	std::vector<std::pair<std::string, int>> ip_addresses = {
 		{host, port},
 		{"0.0.0.0", 8848},
