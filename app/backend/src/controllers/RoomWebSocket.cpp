@@ -25,17 +25,35 @@ void RoomWebSocket::handleNewConnection(const drogon::HttpRequestPtr& req,
 	const drogon::WebSocketConnectionPtr& conn)
 {
 	spdlog::info("New connection from: {} | RoomWebSocket::handleNewConnection", conn->peerAddr().toIp());
-	std::string request = req->getParameter("request");
-	if (request == "create") {
-		this->handleCreateRequest(req, conn);
+
+	// Since this is the RoomWebSocket, we expect the request to have a room_name parameter
+	std::string room_name = req->getParameter("room_name");
+	if (room_name.size() < 3) {
+		spdlog::info("Room name {} is too short | RoomWebSocket::handleCreateRequest", room_name);
+		conn->forceClose();
 		return;
 	}
-	if (request == "join") {
-		this->handleJoinRequest(req, conn);
-		return;
+	// Encode after so that special characters are counted in the length
+	utils::Utility::encode(room_name);
+
+	const std::string request = req->getParameter("request");
+	switch (utils::Utility::hash(request)) {
+	case utils::Utility::hash("create"):
+	{
+		this->handleCreateRequest(req, conn, room_name);
+		break;
 	}
-	spdlog::error("Invalid request '{}' from {} | RoomWebSocket::handleNewConnection", request, conn->peerAddr().toIp());
-	conn->forceClose();
+
+	case utils::Utility::hash("join"):
+	{
+		this->handleJoinRequest(req, conn, room_name);
+		break;
+	}
+	default: {
+		spdlog::error("Invalid request '{}' from {} | RoomWebSocket::handleNewConnection", request, conn->peerAddr().toIp());
+		conn->forceClose();
+	}
+	}
 }
 
 void RoomWebSocket::handleConnectionClosed(const drogon::WebSocketConnectionPtr& conn)
@@ -56,69 +74,55 @@ void RoomWebSocket::handleConnectionClosed(const drogon::WebSocketConnectionPtr&
 	}
 }
 
-inline void RoomWebSocket::handleCreateRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
+inline void RoomWebSocket::handleCreateRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn, const std::string& encoded_room_name)
 {
-	std::string room_name = req->getParameter("room_name");
-	if (room_name.size() < 3) {
-		spdlog::info("Room name {} is too short | RoomWebSocket::handleCreateRequest", room_name);
-		conn->forceClose();
-		return;
-	}
-	utils::Utility::encode(room_name);
 	RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
-	if (room_manager->hasRoom(room_name)) {
-		spdlog::error("Room {} already exists | RoomWebSocket::handleCreateRequest", room_name);
+	if (room_manager->hasRoom(encoded_room_name)) {
+		spdlog::error("Room {} already exists | RoomWebSocket::handleCreateRequest", encoded_room_name);
 		conn->forceClose();
 		return;
 	}
-	spdlog::info("Creating room {} from {} | RoomWebSocket::handleCreateRequest", room_name, req->peerAddr().toIp());
+	spdlog::info("Creating room {} from {} | RoomWebSocket::handleCreateRequest", encoded_room_name, req->peerAddr().toIp());
 	auto user = std::make_shared<User>(
-		this->chat_rooms.subscribe(room_name,
+		this->chat_rooms.subscribe(encoded_room_name,
 			[conn](const std::string& topic,
 				const std::string& message) {
 					(void)topic;
 					conn->send(message);
 			}),
 		conn,
-		room_name,
+		encoded_room_name,
 		UserType::Default
 	);
-	room_manager->createRoom(room_name, user);
+	room_manager->createRoom(encoded_room_name, user);
 	conn->setContext(user);
 }
 
-inline void RoomWebSocket::handleJoinRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn)
+inline void RoomWebSocket::handleJoinRequest(const drogon::HttpRequestPtr& req, const drogon::WebSocketConnectionPtr& conn, const std::string& encoded_room_name)
 {
-	std::string room_name = req->getParameter("room_name");
-	if (room_name.size() < 3) {
-		spdlog::info("Room name {} is too short | RoomWebSocket::handleCreateRequest", room_name);
-		conn->forceClose();
-		return;
-	}
-	utils::Utility::encode(room_name);
 	RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
-	if (!room_manager->hasRoom(room_name)) {
-		spdlog::error("Room {} does not exist | RoomWebSocket::handleJoinRequest", room_name);
+	if (!room_manager->hasRoom(encoded_room_name)) {
+		spdlog::error("Room {} does not exist | RoomWebSocket::handleJoinRequest", encoded_room_name);
 		conn->forceClose();
 		return;
 	}
-	spdlog::info("Joining room {} from {} | RoomWebSocket::handleJoinRequest", room_name, req->peerAddr().toIp());
+	spdlog::info("Joining room {} from {} | RoomWebSocket::handleJoinRequest", encoded_room_name, req->peerAddr().toIp());
 	UserType type = UserType::Default;
 	if (req->getParameter("type") == "car") {
 		type = UserType::Car;
 	}
 	auto user = std::make_shared<User>(
-		this->chat_rooms.subscribe(room_name,
+		this->chat_rooms.subscribe(encoded_room_name,
 			[conn](const std::string& topic,
 				const std::string& message) {
 					(void)topic;
 					conn->send(message);
 			}),
 		conn,
-		room_name,
+		encoded_room_name,
 		type
 	);
-	auto room = room_manager->getRoom(room_name);
+	auto room = room_manager->getRoom(encoded_room_name);
 	room->addUser(user);
 	if (type == UserType::Car) {
 		room->setCarUser(user);

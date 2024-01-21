@@ -41,10 +41,12 @@ public:
 		const drogon::WebSocketConnectionPtr&) override;
 
 	void handleCreateRequest(const drogon::HttpRequestPtr&,
-		const drogon::WebSocketConnectionPtr&);
+		const drogon::WebSocketConnectionPtr&,
+		const std::string& encoded_room_name);
 
 	void handleJoinRequest(const drogon::HttpRequestPtr&,
-		const drogon::WebSocketConnectionPtr&);
+		const drogon::WebSocketConnectionPtr&,
+		const std::string& encoded_room_name);
 
 #pragma region Default User
 	void handleUserMessage(const drogon::WebSocketConnectionPtr&,
