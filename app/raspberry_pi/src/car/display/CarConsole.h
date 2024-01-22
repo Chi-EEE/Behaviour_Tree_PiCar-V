@@ -29,7 +29,6 @@ namespace car::display {
 	class CarConsole
 	{
 	public:
-		inline Component MainComponent(Component main_button, std::function<void()> show_exit_modal);
 		inline Component ExitModalComponent(std::function<void()> hide_exit_modal, std::function<void()> exit);
 
 		CarConsole(std::shared_ptr<CarSystem> car_system, std::shared_ptr<logging::vector_sink_mt> vector_sink);
