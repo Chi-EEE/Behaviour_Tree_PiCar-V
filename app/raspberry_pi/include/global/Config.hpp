@@ -8,18 +8,18 @@
 #include <variant>
 #include <optional>
 
-// See README.md for more information
-#include "nlohmann/json.hpp"
+#include <rapidjson/document.h>
+#include <rapidjson/istreamwrapper.h>
+
+#include <spdlog/spdlog.h>
 
 #define GET_CONFIG_VALUE(x) global::Config::getInstance().x
-
-using json = nlohmann::json;
 
 namespace global
 {
 	/**
 	 * @brief Singleton class for the global configuration
-	 * 
+	 *
 	 */
 	class Config
 	{
@@ -35,7 +35,7 @@ namespace global
 		std::string lidar_port;
 
 		std::string host;
-		std::optional<int> port;
+		std::optional<int> port = std::nullopt;
 
 		std::string name;
 		std::string room;
@@ -46,31 +46,31 @@ namespace global
 		}
 		void load()
 		{
-
 			std::ifstream config_file("settings/config.jsonc");
 			if (!config_file)
 			{
-				std::cerr << "Unable to open 'settings/config.jsonc'\n";
+				spdlog::error("Unable to open 'settings/config.jsonc'");
+				throw new std::runtime_error("Unable to open 'settings/config.jsonc'");
 			}
-			try
-			{
-				json config_json = json::parse(config_file, nullptr, true, true);
-				
-				this->lidar_port = config_json.at("lidar_port").get<std::string>();
-
-				this->host = config_json.at("host").get<std::string>();
-				
-				this->port = std::make_optional<int>(config_json.at("port").get<int>());
-
-				this->name = config_json.at("name").get<std::string>();
-
-				this->room = config_json.at("room").get<std::string>();
+			rapidjson::IStreamWrapper config_stream(config_file);
+			rapidjson::Document config_json;
+			config_json.ParseStream<rapidjson::kParseCommentsFlag>(config_stream);
+			if (config_json.HasParseError()) {
+				spdlog::error("Error parsing config file. Error code: {}", static_cast<int>(config_json.GetParseError()));
+				throw new std::runtime_error("Error parsing config file. Error code: " + std::to_string(static_cast<int>(config_json.GetParseError())));
 			}
-			catch (const std::exception& e)
-			{
-				std::string error = "Error loading JSON from file: " + std::string(e.what());
-				std::cerr << error << '\n';
-				throw std::runtime_error(error);
+			try {
+				this->lidar_port = config_json["lidar_port"].GetString();
+				this->host = config_json["host"].GetString();
+				if (config_json.HasMember("port")) {
+					this->port = std::make_optional<int>(config_json["port"].GetInt());
+				}
+				this->name = config_json["name"].GetString();
+				this->room = config_json["room"].GetString();
+			}
+			catch (const std::exception& e) {
+				spdlog::error("Error accessing JSON values: {}", e.what());
+				throw new std::runtime_error("Error accessing JSON values: " + std::string(e.what()));
 			}
 		}
 	};

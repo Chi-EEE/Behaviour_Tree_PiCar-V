@@ -5,13 +5,14 @@
 
 #include <memory>
 
-#include <nlohmann/json.hpp>
+#include <rapidjson/rapidjson.h>
+#include <rapidjson/document.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/writer.h>
 
 #include "lidar/LidarDevice.cxx"
 #include "messaging/MessagingSystem.cxx"
 #include "movement/MovementSystem.cxx"
-
-using json = nlohmann::json;
 
 using namespace car::system::lidar;
 using namespace car::system::messaging;
