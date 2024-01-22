@@ -185,8 +185,15 @@ namespace car::display {
 			}
 		);
 
-		screen.Loop(main_renderer);
+		std::thread screen_thread([&]
+			{
+				screen.Loop(main_renderer);
+			}
+		);
+		refresh_ui.detach();
+		screen_thread.join();
 
+		spdlog::info("Exiting CarConsole::run()");
 		this->car_system->stop();
 	};
 }
