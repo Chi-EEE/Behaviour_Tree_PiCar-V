@@ -33,6 +33,7 @@ namespace car::system::movement::controller
 	class DeviceMovementController : public AbstractMovementController
 	{
 	public:
+		[[nodiscard]]
 		DeviceMovementController()
 		{
 			gpioInitialise();

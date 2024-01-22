@@ -18,6 +18,7 @@ namespace car::system::lidar
 	class LidarScanner : public LidarDevice
 	{
 	public:
+		[[nodiscard]]
 		static tl::expected<std::unique_ptr<LidarScanner>, nullptr_t> create(const std::string &lidar_port)
 		{
 			auto maybe_lidar = RPLidar::create(lidar_port);
