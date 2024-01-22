@@ -4,9 +4,6 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 	std::string&& message,
 	const drogon::WebSocketMessageType& type)
 {
-	if (type != drogon::WebSocketMessageType::Text) {
-		return;
-	}
 	auto& user = wsConnPtr->getContextRef<User>();
 	try {
 		std::optional<std::string> maybe_message_type;

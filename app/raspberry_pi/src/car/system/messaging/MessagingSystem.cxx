@@ -34,11 +34,19 @@ namespace car::system::messaging {
 		MessagingSystem(const std::string& websocket_url) : websocket_url(websocket_url) {
 		};
 
+		~MessagingSystem() {
+			ix::uninitNetSystem();
+		}
+
 		void initialize()
 		{
 			ix::initNetSystem();
-			this->websocket.setUrl(websocket_url);
-			this->websocket.setOnMessageCallback(
+		}
+
+		void initializeWebSocket() {
+			this->websocket = std::make_unique<ix::WebSocket>();
+			this->websocket->setUrl(websocket_url);
+			this->websocket->setOnMessageCallback(
 				std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1)
 			);
 			this->handle_message_signal.connect([this](const std::string message)
@@ -50,10 +58,12 @@ namespace car::system::messaging {
 
 		void start()
 		{
-			this->websocket.start();
+			initializeWebSocket();
+			this->websocket->start();
 			bool open = false;
 			for (int i = 0; i < 3; i++) {
-				if (this->websocket.getReadyState() == ix::ReadyState::Open) {
+				ix::ReadyState ready_state = this->websocket->getReadyState();
+				if (ready_state == ix::ReadyState::Open) {
 					open = true;
 					break;
 				}
@@ -70,8 +80,8 @@ namespace car::system::messaging {
 		}
 
 		void stop() {
-			this->websocket.stop();
-			ix::uninitNetSystem();
+			this->websocket->stop();
+			this->websocket = nullptr;
 		}
 
 		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() { return this->custom_command_signal; }
@@ -145,7 +155,7 @@ namespace car::system::messaging {
 			case hash("turn"): {
 				if (message_json.HasMember("angle") && message_json["angle"].IsFloat()) {
 					float angle = message_json["angle"].GetFloat();
-					angle_command_signal(angle);
+					this->angle_command_signal(angle);
 					spdlog::info("Turning by {} angle", angle);
 				}
 				else {
@@ -169,7 +179,7 @@ namespace car::system::messaging {
 					message_json["custom_type"].IsString() && message_json["custom"].IsString()) {
 					const std::string custom_type = message_json["custom_type"].GetString();
 					const std::string custom = message_json["custom"].GetString();
-					custom_command_signal(custom_type, custom);
+					this->custom_command_signal(custom_type, custom);
 				}
 				else {
 					spdlog::error("Invalid or missing 'custom_type' or 'custom' in the JSON for 'custom' command.");
@@ -182,11 +192,9 @@ namespace car::system::messaging {
 		}
 
 		void sendMessage(const std::string& message) {
-			this->websocket.send(message);
+			if (this->websocket != nullptr)
+				this->websocket->send(message);
 		}
-
-		~MessagingSystem() {
-		};
 
 		nod::signal<void()> on_websocket_connect_signal;
 		nod::signal<void()> on_websocket_disconnect_signal;
@@ -196,7 +204,7 @@ namespace car::system::messaging {
 		nod::signal<void(const std::string)> handle_message_signal;
 		nod::signal<void(const std::string, const std::string)> custom_command_signal;
 	private:
-		ix::WebSocket websocket;
+		std::unique_ptr<ix::WebSocket> websocket;
 		std::string websocket_url;
 	};
 };

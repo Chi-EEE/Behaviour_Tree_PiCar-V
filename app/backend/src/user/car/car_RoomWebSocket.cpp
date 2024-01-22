@@ -4,12 +4,9 @@ void RoomWebSocket::handleCarMessage(const drogon::WebSocketConnectionPtr& wsCon
 	std::string&& message,
 	const drogon::WebSocketMessageType& type)
 {
-	auto& user = wsConnPtr->getContextRef<User>();
-	if (type != drogon::WebSocketMessageType::Text) {
-		return;
-	}
 	spdlog::debug("Received a message from car: {} | RoomWebSocket::handleCarMessage", wsConnPtr->peerAddr().toIp());
 
+	auto& user = wsConnPtr->getContextRef<User>();
 	try {
 		rapidjson::Document message_json;
 		message_json.Parse(message.c_str());
