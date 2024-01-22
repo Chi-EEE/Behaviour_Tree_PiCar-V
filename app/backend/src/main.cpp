@@ -32,7 +32,9 @@ int main(int argc, char* argv[])
 
 	drogon::app().setDefaultHandler([&](const drogon::HttpRequestPtr& req,
 		std::function<void(const drogon::HttpResponsePtr&)>&& callback) {
-			const std::string redirect_url = url + "/#" + req->getPath();
+			std::string path = req->getPath();
+			utils::Utility::encode(path);
+			const std::string redirect_url = url + "/#" + path;
 			auto resp = drogon::HttpResponse::newHttpResponse();
 			resp->setStatusCode(drogon::k301MovedPermanently);
 			std::string body = R"(<html><head><meta http-equiv="refresh" content="0;url=)" + redirect_url + R"("></head><body><p><a href=")" + redirect_url + R"(">Redirect</a></p></body></html>)";
@@ -41,11 +43,11 @@ int main(int argc, char* argv[])
 		}
 	);
 
-
 	std::vector<std::pair<std::string, int>> ip_addresses = {
 		{host, port},
 		{"0.0.0.0", 8848},
 	};
+
 	for (auto& [host, port] : ip_addresses) {
 		drogon::app().addListener(host, port);
 		spdlog::info("Listening on {}:{}", host, port);
