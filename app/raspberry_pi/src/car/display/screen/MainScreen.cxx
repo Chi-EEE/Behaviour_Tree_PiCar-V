@@ -22,7 +22,7 @@ namespace car::display::screen {
 	class MainScreen {
 	public:
 		MainScreen(std::shared_ptr<CarSystem> car_system, std::function<void()> exit) :
-			car_system(car_system), main_button(car_system), main_exit_modal(exit)
+			car_system(car_system), main_button(car_system, box), main_exit_modal(exit)
 		{
 			auto main_button_component = main_button.element();
 
@@ -89,10 +89,10 @@ namespace car::display::screen {
 	private:
 		std::shared_ptr<CarSystem> car_system;
 
+		Box box;
+
 		MainButton main_button;
 		MainExitModal main_exit_modal;
-
-		Box box;
 
 		Component b;
 

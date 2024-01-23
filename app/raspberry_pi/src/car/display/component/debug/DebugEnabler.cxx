@@ -75,7 +75,7 @@ namespace car::display::component::debug {
 			return Modal(this->component, &display_warn_debug_modal);
 		}
 		
-		const bool& isEnabled() {
+		const bool& isEnabled() const {
 			return this->enabled;
 		}
 	private:

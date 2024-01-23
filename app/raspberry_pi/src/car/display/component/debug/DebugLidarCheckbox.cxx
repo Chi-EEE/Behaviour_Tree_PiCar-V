@@ -15,7 +15,7 @@ namespace car::display::component::debug {
 		static constexpr auto LIDAR_MOTOR_ENABLED_MESSAGE = "Lidar Motor Status: Enabled";
 		static constexpr auto LIDAR_MOTOR_DISABLED_MESSAGE = "Lidar Motor Status: Disconnected";
 	public:
-		Component element() {
+		DebugLidarCheckbox() {
 			auto lidar_motor_checkbox_option = CheckboxOption::Simple();
 			lidar_motor_checkbox_option.on_change = [&]
 				{
@@ -33,7 +33,12 @@ namespace car::display::component::debug {
 					this->lidar_motor_signal(this->lidar_motor_enabled);
 					this->lidar_motor_loading_debounce = false;
 				};
-			return Checkbox(&this->lidar_motor_status, &this->lidar_motor_enabled, lidar_motor_checkbox_option);
+
+			this->lidar_motor_checkbox_component = Checkbox(&this->lidar_motor_status, &this->lidar_motor_enabled, lidar_motor_checkbox_option);
+		}
+
+		Component element() {
+			return this->lidar_motor_checkbox_component;
 		}
 
 		nod::signal<void(bool)>& getLidarMotorSignal() {

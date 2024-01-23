@@ -16,17 +16,12 @@ namespace car::system::logging {
 	public:
 		VectorSink(int max_lines) : max_lines(max_lines)
 		{
-			this->log_messages.reserve(this->max_lines);
-			for (size_t i = 0; i < max_lines; i++)
-			{
-				this->log_messages.push_back("");
-			}
 		}
 
 		void sink_it_(const spdlog::details::log_msg& msg) override {
 			spdlog::memory_buf_t formatted;
 			spdlog::sinks::base_sink<Mutex>::formatter_->format(msg, formatted);
-			if (log_messages.size() < max_lines)
+			if (this->log_messages.size() < this->max_lines)
 			{
 				this->log_messages.push_back(std::string(formatted.data(), formatted.size()));
 			}

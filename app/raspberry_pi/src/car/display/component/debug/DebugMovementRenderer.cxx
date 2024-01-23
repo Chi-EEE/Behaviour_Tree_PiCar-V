@@ -19,11 +19,6 @@ namespace car::display::component::debug {
 		static constexpr auto REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE = "Rear Wheel Direction: Backward";
 	public:
 		DebugMovementRenderer() {
-
-		}
-
-		ftxui::Component element()
-		{
 			this->rear_wheel_speed_slider = Slider("Rear Wheels Speed:", &this->rear_wheels_speed_slider_value, 0, 100, 1);
 			this->rear_left_wheel_speed_slider = Slider("Left Rear Wheel Speed:", &this->rear_left_wheel_speed_slider_value, 0, 100, 1);
 			this->rear_right_wheel_speed_slider = Slider("Right Rear Wheel Speed:", &this->rear_right_wheel_speed_slider_value, 0, 100, 1);
@@ -72,7 +67,10 @@ namespace car::display::component::debug {
 					})
 					}
 			);
+		}
 
+		ftxui::Component element()
+		{
 			return Renderer(this->slider_container, [&] {
 				return
 					hbox({

@@ -13,8 +13,7 @@ using namespace car::system;
 namespace car::display::component::main {
 	class MainButton {
 	public:
-		MainButton(std::shared_ptr<CarSystem> car_system) : car_system(car_system) {}
-		Component element() {
+		MainButton(std::shared_ptr<CarSystem> car_system, Box& box) : car_system(car_system) {
 			auto main_button_lambda = [&] {
 				if (this->main_debounce) return;
 				this->main_debounce = true;
@@ -33,6 +32,8 @@ namespace car::display::component::main {
 				};
 
 			this->main_button = Button(&this->main_button_text, std::move(main_button_lambda), ButtonOption::Animated());
+		}
+		Component element() {
 			return this->main_button;
 		}
 

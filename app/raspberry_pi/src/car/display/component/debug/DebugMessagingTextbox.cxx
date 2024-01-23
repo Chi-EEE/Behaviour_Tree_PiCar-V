@@ -14,11 +14,6 @@ namespace car::display::component::debug {
 	public:
 		DebugMessagingTextbox(nod::signal<void(const std::string)>& handle_message_signal) : handle_message_signal(handle_message_signal)
 		{
-
-		}
-
-		ftxui::Component element()
-		{
 			this->messaging_title = MenuEntry("Simulate the MessagingSystem:") | bold;
 
 			InputOption messaging_textbox_option = InputOption();
@@ -34,7 +29,10 @@ namespace car::display::component::debug {
 					this->messaging_title,
 					this->messaging_textbox,
 					});
+		}
 
+		ftxui::Component element()
+		{
 			return Renderer(this->messaging_container, [&]
 				{
 					return
