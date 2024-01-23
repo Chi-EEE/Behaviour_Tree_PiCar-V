@@ -19,8 +19,8 @@ namespace car::display {
 		SettingsScreen settings_screen(this->car_system);
 		auto settings_screen_container = settings_screen.element();
 
-		//LoggingScreen logging_screen;
-		//auto logging_container = logging_screen.element();
+		LoggingScreen logging_screen(this->vector_sink);
+		auto logging_container = logging_screen.element();
 
 		int selected_tab = 0;
 		std::vector<std::string> tab_titles = {
@@ -31,24 +31,11 @@ namespace car::display {
 
 		auto tab_selection = Toggle(&tab_titles, &selected_tab);
 
-		ftxui::Elements line_elements;
 		auto tab_content = Container::Tab(
 			{
 				main_screen_container,
 				settings_screen_container,
-				Renderer(
-					[&] {
-						// TODO: Improve this so it doesn't create a log of lines
-						line_elements.clear();
-						for (const std::string& message : this->vector_sink->get_log_messages())
-						{
-							line_elements.push_back(paragraph(message));
-							line_elements.push_back(separator());
-						}
-						// TODO: Make the log scrollable
-						return vbox(line_elements) | xflex | vscroll_indicator | frame;
-					}
-				)
+				logging_container,
 			}
 		, &selected_tab);
 
