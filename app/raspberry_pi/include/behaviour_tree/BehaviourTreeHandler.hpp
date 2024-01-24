@@ -8,6 +8,8 @@
 
 #include <nod/nod.hpp>
 
+#include "behaviour_tree/BehaviourContext.hpp"
+
 #include "behaviour_tree/BehaviourTreeParser.hpp"
 #include "behaviour_tree/node/custom/CarCustomNodeParser.hpp"
 #include "CarContext.hpp"
@@ -34,15 +36,19 @@ namespace behaviour_tree
 					auto& behaviour_tree = maybe_behaviour_tree.value();
 					spdlog::info("Behaviour tree parsed successfully | {}", behaviour_tree->toString());
 					if (autorun) {
-						auto context = CarContext(behaviour_tree, car_system);
+						Context context = CarContext(behaviour_tree, car_system);
 						behaviour_tree->start(context);
-						behaviour_tree->tick(context);
+						this->behaviour_context = std::make_unique<BehaviourContext>(BehaviourContext{ behaviour_tree , context});
 					}
 					else {
 						this->addBehaviourTree(behaviour_tree);
 					}
 				}
 			);
+		}
+
+		void tick() {
+			this->behaviour_context->behaviour_tree->tick(this->behaviour_context->context);
 		}
 
 		void addBehaviourTree(std::shared_ptr<BehaviourTree> behaviour_tree) {
@@ -59,6 +65,8 @@ namespace behaviour_tree
 		}
 
 	private:
+		std::unique_ptr<BehaviourContext> behaviour_context;
+
 		std::shared_ptr<car::system::CarSystem> car_system;
 		bool autorun = false;
 
