@@ -20,6 +20,7 @@
 #include "node/composite/Composite.hpp"
 #include "node/composite/Sequence.hpp"
 #include "node/composite/Selector.hpp"
+#include "node/composite/Random.hpp"
 
 #include "node/decorator/Decorator.hpp"
 #include "node/decorator/Repeat.hpp"
@@ -160,6 +161,10 @@ namespace behaviour_tree
 			{
 				return parseComposite(node, index, CompositeType::Selector);
 			}
+			case utils::Utility::hash("Random"):
+			{
+				return parseComposite(node, index, CompositeType::Random);
+			}
 #pragma endregion
 #pragma region Decorator Node
 			case utils::Utility::hash("Repeat"):
@@ -252,6 +257,8 @@ namespace behaviour_tree
 				return std::make_unique<Sequence>(Sequence(name_attribute, std::move(children)));
 			case CompositeType::Selector:
 				return std::make_unique<Selector>(Selector(name_attribute, std::move(children)));
+			case CompositeType::Random:
+				return std::make_unique<Random>(Random(name_attribute, std::move(children)));
 			}
 		}
 

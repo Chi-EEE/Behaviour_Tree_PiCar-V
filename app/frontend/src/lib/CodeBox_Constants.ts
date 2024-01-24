@@ -346,7 +346,11 @@ export const xml_schema = {
             children: common_nodes,
             completion: { type: "keyword" },
         },
-
+        {
+            name: "Random",
+            children: common_nodes,
+            completion: { type: "keyword" },
+        },
         // Decorator
         {
             name: "Invert",

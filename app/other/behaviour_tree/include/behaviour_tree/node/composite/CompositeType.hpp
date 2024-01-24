@@ -9,6 +9,7 @@ namespace behaviour_tree::node::composite
     {
         Sequence,
         Selector,
+        Random,
     };
 }
 
