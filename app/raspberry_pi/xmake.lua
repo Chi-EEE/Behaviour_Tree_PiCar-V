@@ -12,6 +12,7 @@ add_requires("ftxui")
 -- Embedded
 add_requires("etl")
 
+add_requires("effolkronium-random")
 add_requires("robin-map")
 
 -- Logging and JSON
@@ -49,6 +50,7 @@ target("raspberry_pi")
 
     add_packages("etl")
 
+    add_packages("effolkronium-random")
     add_packages("robin-map")
 
     add_packages("tl_expected")
