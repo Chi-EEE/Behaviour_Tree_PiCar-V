@@ -82,6 +82,9 @@ namespace car::system
 		output_json.Accept(writer);
 
 		this->messaging_system->sendMessage(buffer.GetString());
+		for (std::weak_ptr<Plugin>& plugin : this->plugins) {
+			plugin.lock()->update();
+		}
 	}
 
 	void CarSystem::addPlugin(const std::shared_ptr<car::plugin::Plugin> plugin_)

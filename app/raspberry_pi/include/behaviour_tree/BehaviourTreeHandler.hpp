@@ -21,9 +21,10 @@ namespace behaviour_tree
 	{
 	public:
 		void init(std::shared_ptr<car::system::CarSystem> car_system) override {
+			this->car_system = car_system;
 			// The BehaviourTreeParser does not come with a CustomNodeParser since each program can have a different set of Action nodes
 			BehaviourTreeParser::instance().setCustomNodeParser(std::make_unique<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
-			car_system->getCustomCommandSignal().connect([&](std::string custom_command_type, std::string custom)
+			this->car_system->getCustomCommandSignal().connect([&](std::string custom_command_type, std::string custom)
 				{
 					if (custom_command_type != "behaviour_tree") {
 						return;
@@ -35,7 +36,7 @@ namespace behaviour_tree
 					}
 					auto& behaviour_tree = maybe_behaviour_tree.value();
 					spdlog::info("Behaviour tree parsed successfully | {}", behaviour_tree->toString());
-					std::shared_ptr<Context> context = std::make_shared<CarContext>(CarContext(behaviour_tree, car_system));
+					std::shared_ptr<Context> context = std::make_shared<CarContext>(CarContext(behaviour_tree, this->car_system));
 					behaviour_tree->start(context);
 					this->context = context;
 				}
@@ -45,7 +46,9 @@ namespace behaviour_tree
 		void update() override {
 			if (this->context == nullptr)
 				return;
-			this->context->getBehaviourTree()->tick(tick_count, this->context);
+			this->context->getBehaviourTree()->tick(this->tick_count, this->context);
+			++this->tick_count;
+			spdlog::info("Behaviour tree ticked | {}", this->tick_count);
 		}
 
 		void stop() override {
