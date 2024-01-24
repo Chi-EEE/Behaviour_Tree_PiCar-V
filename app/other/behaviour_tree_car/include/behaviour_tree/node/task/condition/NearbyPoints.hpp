@@ -31,7 +31,7 @@ namespace behaviour_tree::node::task::condition
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			CarContext& car_context = static_cast<CarContext&>(context);
-			auto& car_system = car_context.getCarSystem();
+			auto car_system = car_context.getCarSystem();
 			for (auto& measure : car_system->getScanData()) {
 				if (measure.angle > this->getMinAngle() && measure.angle < this->getMaxAngle()) {
 					if (measure.distance < this->getAvgDistance()) {

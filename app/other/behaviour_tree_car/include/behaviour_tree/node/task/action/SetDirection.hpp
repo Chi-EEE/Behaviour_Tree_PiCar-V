@@ -26,7 +26,7 @@ namespace behaviour_tree::node::task::action
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			CarContext& car_context = static_cast<CarContext&>(context);
-			auto& car_system = car_context.getCarSystem();
+			auto car_system = car_context.getCarSystem();
 			switch (this->getDirectionType()) {
 			case DirectionType::Forward:
 			{

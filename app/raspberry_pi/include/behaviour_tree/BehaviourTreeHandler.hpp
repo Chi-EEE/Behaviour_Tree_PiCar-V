@@ -38,14 +38,14 @@ namespace behaviour_tree
 						behaviour_tree->run(context);
 					}
 					else {
-						this->addBehaviourTree(std::move(behaviour_tree));
+						this->addBehaviourTree(behaviour_tree);
 					}
 				}
 			);
 		}
 
-		void addBehaviourTree(std::shared_ptr<BehaviourTree>& behaviour_tree) {
-			this->behaviour_trees.insert({ this->id, std::move(behaviour_tree) });
+		void addBehaviourTree(std::shared_ptr<BehaviourTree> behaviour_tree) {
+			this->behaviour_trees.insert({ this->id, behaviour_tree });
 			this->id++;
 		}
 
