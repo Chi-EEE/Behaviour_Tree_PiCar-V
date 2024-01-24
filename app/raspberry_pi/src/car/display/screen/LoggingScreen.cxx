@@ -43,28 +43,6 @@ namespace car::display::screen {
 				return vbox(std::move(elements)) | vscroll_indicator | frame | border;
 				});
 			return my_custom_menu;
-			//return Renderer(
-			//	[&] {
-			//		int begin = std::max(0, selected_lines - 10);
-			//		int end = std::min(lines.size(), selected_lines + 10)
-			//			Elements elements;
-			//		for (int i = begin; i < end; ++i) {
-			//			Element element = text(lines[i]);
-			//			if (i == selected_line)
-			//				element = element | inverted | selected;
-			//			element.push_back(element);
-			//		}
-			//		//// TODO: Improve this so it doesn't create a log of lines
-			//		//this->line_elements.clear();
-			//		//for (const std::string& message : this->vector_sink->get_log_messages())
-			//		//{
-			//		//	this->line_elements.push_back(text(message));
-			//		//	this->line_elements.push_back(separator());
-			//		//}
-			//		//// TODO: Make the log scrollable
-			//		return vbox(this->line_elements) | xflex | vscroll_indicator | frame;
-			//	}
-			//);
 		}
 
 	private:

@@ -289,6 +289,10 @@ export const range_0_100 = [
     "100",
 ]
 
+export const wheel_type = ["Left", "Right", "Both"]
+
+export const servo_type = ["FrontWheels", "CameraServo1", "CameraServo2"]
+
 export const common_nodes = [
     // Composite
     "Selector",
@@ -362,13 +366,23 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
+            name: "Wait",
+            attributes: ["ms"],
+            completion: { type: "keyword" },
+        },
+        {
             name: "Task",
             children: task_nodes,
             completion: { type: "keyword" },
         },
         {
-            name: "Action:Turn",
+            name: "Action:SetAngle",
             attributes: [
+                {
+                    name: "servo_type",
+                    values: servo_type,
+                    completion: { type: "keyword" },
+                },
                 {
                     name: "angle",
                     values: range_0_180,
@@ -378,8 +392,13 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Action:Move",
+            name: "Action:SetSpeed",
             attributes: [
+                {
+                    name: "wheel_type",
+                    values: wheel_type,
+                    completion: { type: "keyword" },
+                },
                 {
                     name: "speed",
                     values: range_0_100,
@@ -389,8 +408,13 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Action:Direction",
+            name: "Action:SetRearWheelDirection",
             attributes: [
+                {
+                    name: "wheel_type",
+                    values: wheel_type,
+                    completion: { type: "keyword" },
+                },
                 {
                     name: "direction",
                     values: ["Forward", "Backward"],
@@ -436,9 +460,9 @@ const node_information_list = new Map<string, string>([
 
     ["Task", "Runs its action nodes in order"],
 
-    ["Action:Turn", "Turns the car by the given angle"],
-    ["Action:Move", "Moves the car by the given speed"],
-    ["Action:Direction", "Sets the direction of the car"],
+    ["Action:SetAngle", "Turns the car by the given angle"],
+    ["Action:SetSpeed", "Moves the car by the given speed"],
+    ["Action:SetRearWheelDirection", "Sets the direction of the car"],
     ["Action:Stop", "Stops the car from moving"],
 
     ["Condition:NearbyPoints", "Checks if there are nearby points"],
