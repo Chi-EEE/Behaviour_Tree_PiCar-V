@@ -21,10 +21,8 @@ namespace behaviour_tree
 	public:
 		Context(std::shared_ptr<BehaviourTree> behaviour_tree);
 		Status toRoot(const std::string& id);
-		void log(std::string message);
 
 	private:
-		std::vector<std::string> messages;
 		std::shared_ptr<BehaviourTree> behaviour_tree;
 	};
 }

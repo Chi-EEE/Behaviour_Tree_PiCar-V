@@ -16,12 +16,23 @@ namespace behaviour_tree
         }
 
         std::shared_ptr<car::system::CarSystem> getCarSystem() const
-		{
-			return this->car_system;
-		}
+        {
+            return this->car_system;
+        }
+
+        void log(std::string message)
+        {
+            this->messages.push_back(message);
+        }
+
+        void error(std::string message)
+        {
+            this->messages.push_back(message);
+        }
 
     private:
         std::shared_ptr<car::system::CarSystem> car_system;
+        std::vector<std::string> messages;
     };
 }
 

@@ -304,7 +304,6 @@ export const common_nodes = [
 
     // Leaf
     "Fail",
-    "LogMessage",
     "Succeed",
     "Task",
     "ToRoot",
@@ -312,6 +311,9 @@ export const common_nodes = [
 ];
 
 export const task_nodes = [
+    "Action:Wait",
+    "Action:Log",
+    "Action:Error",
     "Action:SetAngle",
     "Action:SetSpeed",
     "Action:SetDirection",
@@ -366,13 +368,23 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Wait",
+            name: "Task",
+            children: task_nodes,
+            completion: { type: "keyword" },
+        },
+        {
+            name: "Action:Wait",
             attributes: ["ms"],
             completion: { type: "keyword" },
         },
         {
-            name: "Task",
-            children: task_nodes,
+            name: "Action:Log",
+            attributes: ["text"],
+            completion: { type: "keyword" },
+        },
+        {
+            name: "Action:Error",
+            attributes: ["text"],
             completion: { type: "keyword" },
         },
         {
@@ -455,10 +467,12 @@ const node_information_list = new Map<string, string>([
     ["ToRoot", "Goes to the given root node id"],
     ["Repeat", "Repeats the child given the amount of times"],
 
-    ["LogMessage", "Logs the given message"],
-    ["Wait", "Waits for the given amount of time"],
 
     ["Task", "Runs its action nodes in order"],
+
+    ["Action:Wait", "Waits for the given amount of time"],
+    ["Action:Log", "Logs the given message"],
+    ["Action:Error", "Logs errors the given message"],
 
     ["Action:SetAngle", "Turns the car by the given angle"],
     ["Action:SetSpeed", "Moves the car by the given speed"],

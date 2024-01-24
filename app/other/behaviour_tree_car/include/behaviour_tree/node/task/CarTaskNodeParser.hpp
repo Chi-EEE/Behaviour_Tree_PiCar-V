@@ -19,6 +19,9 @@
 
 #include "action/Wait.hpp"
 
+#include "action/Log.hpp"
+#include "action/Error.hpp"
+
 #include "action/SetSpeed.hpp"
 #include "action/SetDirection.hpp"
 #include "action/SetAngle.hpp"
@@ -46,6 +49,20 @@ namespace behaviour_tree::node::task
 					task::action::Wait(
 						name,
 						node.attribute("ms").as_int()));
+			}
+			case utils::Utility::hash("Action:Log"):
+			{
+				return std::make_unique<task::action::Log>(
+					task::action::Log(
+						name,
+						node.attribute("text").as_string()));
+			}
+			case utils::Utility::hash("Action:Error"):
+			{
+				return std::make_unique<task::action::Error>(
+					task::action::Error(
+						name,
+						node.attribute("text").as_string()));
 			}
 			case utils::Utility::hash("Action:SetSpeed"):
 			{

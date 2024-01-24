@@ -29,9 +29,7 @@
 #include "node/leaf/Task.hpp"
 #include "node/leaf/Succeed.hpp"
 #include "node/leaf/Fail.hpp"
-#include "node/leaf/LogMessage.hpp"
 #include "node/leaf/ToRoot.hpp"
-#include "node/leaf/Wait.hpp"
 
 #include "node/task/Action.hpp"
 #include "node/task/TaskNodeParser.hpp"
@@ -180,13 +178,6 @@ namespace behaviour_tree
 			case utils::Utility::hash("Fail"):
 			{
 				return std::make_unique<Fail>(Fail(name));
-			}
-			case utils::Utility::hash("LogMessage"):
-			{
-				return std::make_unique<LogMessage>(
-					LogMessage(
-						name,
-						node.attribute("text").as_string()));
 			}
 			case utils::Utility::hash("ToRoot"):
 			{
