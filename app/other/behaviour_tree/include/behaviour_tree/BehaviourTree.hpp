@@ -18,20 +18,20 @@ namespace behaviour_tree
 		{
 		}
 
-		void run(Context& context)
+		void tick(Context& context)
 		{
 			bool found = false;
 			for (auto& root : this->roots)
 			{
 				if (root->getId() == "Main")
 				{
-					root->run(context);
+					root->tick(context);
 					found = true;
 					break;
 				}
 			}
 			if (!found) {
-				this->roots[0]->run(context);
+				this->roots[0]->tick(context);
 			}
 		}
 
@@ -40,7 +40,7 @@ namespace behaviour_tree
 			{
 				if (root->getId() == id)
 				{
-					return root->run(context);
+					return root->tick(context);
 				}
 			}
 			return Status::Failure;

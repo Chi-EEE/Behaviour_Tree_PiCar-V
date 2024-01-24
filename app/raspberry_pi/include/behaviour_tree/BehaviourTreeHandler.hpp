@@ -35,7 +35,7 @@ namespace behaviour_tree
 					spdlog::info("Behaviour tree parsed successfully | {}", behaviour_tree->toString());
 					if (autorun) {
 						auto context = CarContext(behaviour_tree, car_system);
-						behaviour_tree->run(context);
+						behaviour_tree->tick(context);
 					}
 					else {
 						this->addBehaviourTree(behaviour_tree);

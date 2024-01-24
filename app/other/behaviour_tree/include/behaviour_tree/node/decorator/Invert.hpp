@@ -14,9 +14,9 @@ namespace behaviour_tree::node::decorator
 
 		const DecoratorType type() const override { return DecoratorType::Invert; }
 
-		const Status run(Context& context) override
+		const Status tick(Context& context) override
 		{
-			auto status = this->child->run(context);
+			auto status = this->child->tick(context);
 			switch (status)
 			{
 			case Status::Success:

@@ -19,10 +19,10 @@ namespace behaviour_tree
 		{
 		}
 
-		const Status run(Context& context)
+		const Status tick(Context& context)
 		{
 			if (this->child == nullptr) return Status::Success;
-			return this->child->run(context);
+			return this->child->tick(context);
 		}
 
 		const std::string toString() const {

@@ -16,11 +16,11 @@ namespace behaviour_tree::node::decorator
 
 		const DecoratorType type() const override { return DecoratorType::Repeat; }
 
-		const Status run(Context& context) override
+		const Status tick(Context& context) override
 		{
 			for (int i = 0; i < this->count; i++)
 			{
-				auto status = this->child->run(context);
+				auto status = this->child->tick(context);
 				switch (status)
 				{
 				case Status::Success:
