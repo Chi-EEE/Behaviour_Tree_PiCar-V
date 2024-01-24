@@ -11,7 +11,7 @@ namespace behaviour_tree
     class CarContext : public Context
     {
     public:
-        CarContext(std::shared_ptr<BehaviourTree> behaviour_tree, car::system::CarSystem* car_system) : Context(std::move(behaviour_tree)), car_system(std::move(car_system))
+        CarContext(std::shared_ptr<BehaviourTree> behaviour_tree, std::shared_ptr<car::system::CarSystem> car_system) : Context(std::move(behaviour_tree)), car_system(std::move(car_system))
         {
         }
 

@@ -23,7 +23,7 @@ using namespace car::system::messaging;
 using namespace car::system::movement;
 
 namespace car::system {
-	class CarSystem //: public std::enable_shared_from_this<CarSystem>
+	class CarSystem : public std::enable_shared_from_this<CarSystem>
 	{
 	public:
 		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system, std::unique_ptr<MovementSystem> movement_system);

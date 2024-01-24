@@ -20,7 +20,7 @@ namespace behaviour_tree
 	class BehaviourTreeHandler : public car::plugin::Plugin
 	{
 	public:
-		void init(car::system::CarSystem* car_system) override {
+		void init(std::shared_ptr<car::system::CarSystem> car_system) override {
 			// The BehaviourTreeParser does not come with a CustomNodeParser since each program can have a different set of Action nodes
 			BehaviourTreeParser::instance().setCustomNodeParser(std::make_unique<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
 			car_system->getCustomCommandSignal().connect([&](std::string custom_command_type, std::string custom)

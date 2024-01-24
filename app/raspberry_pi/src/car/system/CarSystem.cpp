@@ -87,7 +87,7 @@ namespace car::system
 	void CarSystem::addPlugin(const std::shared_ptr<car::plugin::Plugin> plugin_)
 	{
 		this->plugins.push_back(plugin_);
-		plugin_->init(this);
+		plugin_->init(shared_from_this());
 	}
 
 	void CarSystem::startLidarDevice()

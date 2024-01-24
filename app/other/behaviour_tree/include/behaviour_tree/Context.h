@@ -23,6 +23,7 @@ namespace behaviour_tree
 		std::shared_ptr<BehaviourTree> getBehaviourTree() const { return this->behaviour_tree; };
 		Status UseRoot(const int& tick_count, const std::string& id);
 
+		// Necessary for the class to be a polymorphic
 		virtual void _() = 0;
 	private:
 		std::shared_ptr<BehaviourTree> behaviour_tree;
