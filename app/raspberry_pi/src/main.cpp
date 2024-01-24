@@ -55,7 +55,7 @@ int main()
 	if (!maybe_scanner.has_value())
 	{
 		spdlog::error("Unable to connect to the Lidar Scanner");
-		throw std::exception("Unable to connect to the Lidar Scanner");
+		throw std::runtime_error("Unable to connect to the Lidar Scanner");
 	}
 	std::unique_ptr<LidarScanner>& scanner = maybe_scanner.value();
 
