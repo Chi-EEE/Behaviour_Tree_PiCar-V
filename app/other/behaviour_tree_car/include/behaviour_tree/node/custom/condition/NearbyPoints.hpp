@@ -3,16 +3,16 @@
 
 #pragma once
 
+#include "behaviour_tree/node/custom/Condition.hpp"
+
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 #include "behaviour_tree/CarContext.hpp"
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
-#include "behaviour_tree/node/task/Condition.hpp"
-
 #include "ConditionType.hpp"
 
-namespace behaviour_tree::node::task::condition
+namespace behaviour_tree::node::custom::condition
 {
 	class NearbyPoints : public Condition
 	{
@@ -24,8 +24,6 @@ namespace behaviour_tree::node::task::condition
 			avg_distance(avg_distance)
 		{
 		}
-
-		const ConditionType condition_type() const { return ConditionType::NearbyPoints; }
 
 		const Status run(Context& context) override
 		{

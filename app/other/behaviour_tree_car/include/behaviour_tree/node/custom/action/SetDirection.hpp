@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "behaviour_tree/node/task/Action.hpp"
+#include "behaviour_tree/node/custom/Action.hpp"
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
@@ -13,7 +13,7 @@
 #include "DirectionType.hpp"
 #include "WheelType.hpp"
 
-namespace behaviour_tree::node::task::action
+namespace behaviour_tree::node::custom::action
 {
 	class SetDirection : public Action
 	{

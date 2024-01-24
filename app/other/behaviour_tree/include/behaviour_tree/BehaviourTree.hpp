@@ -35,7 +35,7 @@ namespace behaviour_tree
 			}
 		}
 
-		Status toRoot(Context& context, const std::string& id) {
+		Status UseRoot(Context& context, const std::string& id) {
 			for (auto& root : this->roots)
 			{
 				if (root->getId() == id)

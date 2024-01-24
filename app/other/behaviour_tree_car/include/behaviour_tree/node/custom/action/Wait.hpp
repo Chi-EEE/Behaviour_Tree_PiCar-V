@@ -3,14 +3,14 @@
 
 #pragma once
 
-#include "behaviour_tree/node/task/Action.hpp"
+#include "behaviour_tree/node/custom/Action.hpp"
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 #include "behaviour_tree/CarContext.hpp"
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
-namespace behaviour_tree::node::task::action
+namespace behaviour_tree::node::custom::action
 {
 	class Wait : public Action
 	{

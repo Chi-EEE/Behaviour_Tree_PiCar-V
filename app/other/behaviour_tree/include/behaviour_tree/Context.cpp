@@ -6,7 +6,7 @@ namespace behaviour_tree {
 	{
 	}
 
-	Status Context::toRoot(const std::string& id) {
-		return this->behaviour_tree->toRoot(*this, id);
+	Status Context::UseRoot(const std::string& id) {
+		return this->behaviour_tree->UseRoot(*this, id);
 	}
 }

@@ -9,10 +9,7 @@ namespace behaviour_tree::node::leaf
     {
         Succeed,
         Fail,
-        Task,
-        ToRoot,
-        LogMessage,
-        Wait,
+        UseRoot,
     };
 }
 

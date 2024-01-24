@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace behaviour_tree::node::task::action
+namespace behaviour_tree::node::custom::action
 {
     enum class ServoType
     {

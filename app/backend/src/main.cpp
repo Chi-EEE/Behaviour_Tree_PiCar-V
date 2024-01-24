@@ -12,7 +12,7 @@
 #include "controllers/RoomController.hpp"
 #include "controllers/RoomWebSocket.h"
 
-#include "behaviour_tree/node/task/CarTaskNodeParser.hpp"
+#include "behaviour_tree/node/custom/CarCustomNodeParser.hpp"
 #include "behaviour_tree/BehaviourTreeParser.hpp"
 
 const std::string host = "127.0.0.1";
@@ -22,7 +22,7 @@ const std::string url = "http://" + host + ":" + std::to_string(port);
 
 int main(int argc, char* argv[])
 {
-	behaviour_tree::BehaviourTreeParser::instance().setTaskNodeParser(std::make_unique<behaviour_tree::node::task::CarTaskNodeParser>(behaviour_tree::node::task::CarTaskNodeParser()));
+	behaviour_tree::BehaviourTreeParser::instance().setCustomNodeParser(std::make_unique<behaviour_tree::node::custom::CarCustomNodeParser>(behaviour_tree::node::custom::CarCustomNodeParser()));
 	
 	std::filesystem::path exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path();
 	std::string config_json_path = exe_dir.string() + "/settings/config.json";

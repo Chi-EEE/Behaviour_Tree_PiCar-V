@@ -306,17 +306,18 @@ export const common_nodes = [
     "Fail",
     "Succeed",
     "Task",
-    "ToRoot",
-    "Wait",
-];
+    "UseRoot",
 
-export const task_nodes = [
+    // Task Nodes
     "Action:Wait",
+
     "Action:Log",
     "Action:Error",
+
     "Action:SetAngle",
     "Action:SetSpeed",
     "Action:SetDirection",
+
     "Condition:NearbyPoints",
 ];
 
@@ -363,13 +364,8 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "ToRoot",
+            name: "UseRoot",
             attributes: ["id"],
-            completion: { type: "keyword" },
-        },
-        {
-            name: "Task",
-            children: task_nodes,
             completion: { type: "keyword" },
         },
         {
@@ -464,11 +460,8 @@ const node_information_list = new Map<string, string>([
     ["Repeat", "Repeats the child until it fails"],
     ["Fail", "Always fails"],
     ["Succeed", "Always succeeds"],
-    ["ToRoot", "Goes to the given root node id"],
+    ["UseRoot", "Goes to the given root node id"],
     ["Repeat", "Repeats the child given the amount of times"],
-
-
-    ["Task", "Runs its action nodes in order"],
 
     ["Action:Wait", "Waits for the given amount of time"],
     ["Action:Log", "Logs the given message"],

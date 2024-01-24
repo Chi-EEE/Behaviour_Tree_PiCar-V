@@ -20,7 +20,7 @@ namespace behaviour_tree
 	{
 	public:
 		Context(std::shared_ptr<BehaviourTree> behaviour_tree);
-		Status toRoot(const std::string& id);
+		Status UseRoot(const std::string& id);
 
 	private:
 		std::shared_ptr<BehaviourTree> behaviour_tree;

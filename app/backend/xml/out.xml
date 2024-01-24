@@ -1,31 +1,26 @@
 <Root id="main">
     <Sequence>
-        <Task name="Move">
-            <Action:SetAngle servo_type="FrontWheels" angle="180"/>
-            <Action:SetSpeed wheel_type="Both" speed="50"/>
-            <Action:SetDirection wheel_type="Both" direction_type="Forward"/>
-            <Action:SetDirection wheel_type="Both" direction_type="Backward"/>
-            <Condition:NearbyPoints min_angle="0" max_angle="0" distance="200"/>
-        </Task>
-        <Wait ms="5000"/>
-        <LogMessage text="Waited 5 seconds"/>
-        <ToRoot id="abc"/>
+
+        <Action:SetAngle servo_type="FrontWheels" angle="180"/>
+        <Action:SetSpeed wheel_type="Both" speed="50"/>
+        <Action:SetDirection wheel_type="Both" direction_type="Forward"/>
+        <Action:SetDirection wheel_type="Both" direction_type="Backward"/>
+        <Condition:NearbyPoints min_angle="0" max_angle="0" distance="200"/>
+
+        <Action:Wait ms="5000"/>
+
+        <Action:Log text="Waited 5 seconds"/>
+
+        <UseRoot id="abc"/>
 
         <Invert>
             <Fail />
             <Succeed />
         </Invert>
         <Repeat count="2" break_on_fail="false">
-            <LogMessage text="Hey"/>
+            <Action:Log text="Hey"/>
         </Repeat>
     </Sequence>
-    <!--
-    <Selector>
-    </Selector> -->
-    <!-- <RandomSelector name="Random">
-    </RandomSelector> -->
-    <!-- <RandomSequence name="Random">
-    </RandomSequence> -->
 </Root>
 <Root id="abc">
 

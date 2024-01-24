@@ -1,21 +1,21 @@
-#ifndef BEHAVIOUR_TREE_ERROR_HPP
-#define BEHAVIOUR_TREE_ERROR_HPP
+#ifndef BEHAVIOUR_TREE_LOG_HPP
+#define BEHAVIOUR_TREE_LOG_HPP
 
 #pragma once
 
-#include "behaviour_tree/node/task/Action.hpp"
+#include "behaviour_tree/node/custom/Action.hpp"
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 #include "behaviour_tree/CarContext.hpp"
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
-namespace behaviour_tree::node::task::action
+namespace behaviour_tree::node::custom::action
 {
-    class Error : public Action
+    class Log : public Action
     {
     public:
-        Error(const std::string& name, const std::string& text) : Action(name), text(text)
+        Log(const std::string& name, const std::string& text) : Action(name), text(text)
         {
         }
 
@@ -23,9 +23,9 @@ namespace behaviour_tree::node::task::action
         {
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			CarContext& car_context = static_cast<CarContext&>(context);
-            car_context.error(this->getText());
+            car_context.log(this->getText());
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
-			return Status::Success;
+            return Status::Success;
         }
 
         const std::string& getText() const {
@@ -35,9 +35,9 @@ namespace behaviour_tree::node::task::action
         const std::string toString() const override {
             const std::string& name = this->getName();
             if (name != "")
-                return fmt::format(R"(<Action:Error name="{}" text="{}"/>)", name, this->getText());
+                return fmt::format(R"(<Action:Log name="{}" text="{}"/>)", name, this->getText());
             else
-                return fmt::format(R"(<Action:Error text="{}"/>)", this->getText());
+                return fmt::format(R"(<Action:Log text="{}"/>)", this->getText());
         }
 
     private:
