@@ -18,21 +18,22 @@ namespace behaviour_tree
 		{
 		}
 
-		void tick(Context& context)
+		void start(Context& context)
 		{
-			bool found = false;
 			for (auto& root : this->roots)
 			{
 				if (root->getId() == "Main")
 				{
-					root->tick(context);
-					found = true;
-					break;
+					this->root_to_use = root;
+					return;
 				}
 			}
-			if (!found) {
-				this->roots[0]->tick(context);
-			}
+			this->root_to_use = this->roots[0];
+		}
+
+		void tick(Context& context)
+		{
+			this->root_to_use->tick(context);
 		}
 
 		Status UseRoot(Context& context, const std::string& id) {
@@ -57,6 +58,7 @@ namespace behaviour_tree
 
 	private:
 		std::vector<std::shared_ptr<Root>> roots;
+		std::shared_ptr<Root> root_to_use;
 	};
 }
 
