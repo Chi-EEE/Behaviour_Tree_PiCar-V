@@ -76,11 +76,11 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr& wsCo
 void RoomWebSocket::handleBehaviourTree(const drogon::WebSocketConnectionPtr& wsConnPtr, const std::string& message_data, User& user, std::shared_ptr<Room>& room) {
 	auto maybe_behaviour_tree = behaviour_tree::BehaviourTreeParser::instance().parseXML(message_data);
 	if (!maybe_behaviour_tree.has_value()) {
-		spdlog::error("Recieved an inavlid behaviour tree from {} | {} | RoomWebSocket::handleBehaviourTree", wsConnPtr->peerAddr().toIp(), maybe_behaviour_tree.error());
+		spdlog::error("Received an invalid behaviour tree from {} | {} | RoomWebSocket::handleBehaviourTree", wsConnPtr->peerAddr().toIp(), maybe_behaviour_tree.error());
 		return;
 	}
 	auto& behaviour_tree = maybe_behaviour_tree.value();
-	spdlog::info("Recieved a behaviour tree from {} | {} | RoomWebSocket::handleBehaviourTree", wsConnPtr->peerAddr().toIp(), behaviour_tree->toString());
+	spdlog::info("Received a behaviour tree from {} | {} | RoomWebSocket::handleBehaviourTree", wsConnPtr->peerAddr().toIp(), behaviour_tree->toString());
 
 	auto& car_user = room->getCarUser();
 	if (car_user != nullptr)

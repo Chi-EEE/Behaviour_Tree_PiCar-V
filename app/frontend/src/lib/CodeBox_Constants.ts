@@ -312,9 +312,9 @@ export const common_nodes = [
 ];
 
 export const task_nodes = [
-    "Action:Turn",
-    "Action:Move",
-    "Action:Direction",
+    "Action:SetAngle",
+    "Action:SetSpeed",
+    "Action:SetDirection",
     "Condition:NearbyPoints",
 ];
 
@@ -408,7 +408,7 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Action:SetRearWheelDirection",
+            name: "Action:SetDirection",
             attributes: [
                 {
                     name: "wheel_type",
@@ -416,7 +416,7 @@ export const xml_schema = {
                     completion: { type: "keyword" },
                 },
                 {
-                    name: "direction",
+                    name: "direction_type",
                     values: ["Forward", "Backward"],
                     completion: { type: "keyword" },
                 },
@@ -462,7 +462,7 @@ const node_information_list = new Map<string, string>([
 
     ["Action:SetAngle", "Turns the car by the given angle"],
     ["Action:SetSpeed", "Moves the car by the given speed"],
-    ["Action:SetRearWheelDirection", "Sets the direction of the car"],
+    ["Action:SetDirection", "Sets the direction of the car"],
     ["Action:Stop", "Stops the car from moving"],
 
     ["Condition:NearbyPoints", "Checks if there are nearby points"],

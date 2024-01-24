@@ -1,5 +1,5 @@
-#ifndef BEHAVIOUR_TREE_SETREARWHEELDIRECTION_HPP
-#define BEHAVIOUR_TREE_SETREARWHEELDIRECTION_HPP
+#ifndef BEHAVIOUR_TREE_SETDIRECTION_HPP
+#define BEHAVIOUR_TREE_SETDIRECTION_HPP
 
 #pragma once
 
@@ -15,10 +15,10 @@
 
 namespace behaviour_tree::node::task::action
 {
-	class SetRearWheelDirection : public Action
+	class SetDirection : public Action
 	{
 	public:
-		SetRearWheelDirection(const std::string& name, const WheelType& wheel_type, const DirectionType& direction_type) : Action(name), wheel_type(wheel_type), direction_type(direction_type)
+		SetDirection(const std::string& name, const WheelType& wheel_type, const DirectionType& direction_type) : Action(name), wheel_type(wheel_type), direction_type(direction_type)
 		{
 		}
 
@@ -100,9 +100,9 @@ namespace behaviour_tree::node::task::action
 			}
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Action:SetRearWheelDirection name="{}" direction_type="{}" wheel="{}"/>)", name, direction_type, wheel_type);
+				return fmt::format(R"(<Action:SetDirection name="{}" direction_type="{}" wheel_type="{}"/>)", name, direction_type, wheel_type);
 			else
-				return fmt::format(R"(<Action:SetRearWheelDirection direction_type="{}" wheel="{}"/>)", direction_type, wheel_type);
+				return fmt::format(R"(<Action:SetDirection direction_type="{}" wheel_type="{}"/>)", direction_type, wheel_type);
 		}
 
 		const DirectionType& getDirectionType() const {

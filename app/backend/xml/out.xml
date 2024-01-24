@@ -3,8 +3,8 @@
         <Task name="Move">
             <Action:SetAngle servo_type="FrontWheels" angle="180"/>
             <Action:SetSpeed wheel_type="Both" speed="50"/>
-            <Action:SetRearWheelDirection wheel_type="Both" direction_type="Forward"/>
-            <Action:SetRearWheelDirection wheel_type="Both" direction_type="Backward"/>
+            <Action:SetDirection wheel_type="Both" direction_type="Forward"/>
+            <Action:SetDirection wheel_type="Both" direction_type="Backward"/>
             <Condition:NearbyPoints min_angle="0" max_angle="0" distance="200"/>
         </Task>
         <Wait ms="5000"/>

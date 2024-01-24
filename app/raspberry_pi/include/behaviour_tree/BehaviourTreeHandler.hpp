@@ -28,6 +28,7 @@ namespace behaviour_tree
 					}
 					auto maybe_behaviour_tree = BehaviourTreeParser::instance().parseXML(custom);
 					if (!maybe_behaviour_tree.has_value()) {
+						spdlog::error("Behaviour tree parsing failed | {}", custom);
 						return;
 					}
 					auto& behaviour_tree = maybe_behaviour_tree.value();

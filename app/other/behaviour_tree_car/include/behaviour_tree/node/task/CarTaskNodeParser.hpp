@@ -18,7 +18,7 @@
 #include "behaviour_tree/node/task/TaskNodeParser.hpp"
 
 #include "action/SetSpeed.hpp"
-#include "action/SetRearWheelDirection.hpp"
+#include "action/SetDirection.hpp"
 #include "action/SetAngle.hpp"
 
 #include "condition/NearbyPoints.hpp"
@@ -98,7 +98,7 @@ namespace behaviour_tree::node::task
 					return tl::unexpected(fmt::format("Invalid angle: '{}' | Action:SetAngle", std::to_string(angle)));
 				return std::make_unique<task::action::SetAngle>(task::action::SetAngle(name_attribute, servo_type, angle));
 			}
-			case utils::Utility::hash("Action:SetRearWheelDirection"):
+			case utils::Utility::hash("Action:SetDirection"):
 			{
 				const std::string wheel_type_attribute = node.attribute("wheel_type").as_string();
 				task::action::WheelType wheel_type;
@@ -121,7 +121,7 @@ namespace behaviour_tree::node::task
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format("Invalid wheel_type: '{}' | Action:SetRearWheelDirection", wheel_type_attribute));
+					return tl::unexpected(fmt::format("Invalid wheel_type: '{}' | Action:SetDirection", wheel_type_attribute));
 				}
 				}
 				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
@@ -129,15 +129,15 @@ namespace behaviour_tree::node::task
 				{
 				case utils::Utility::hash("Forward"):
 				{
-					return std::make_unique<task::action::SetRearWheelDirection>(task::action::SetRearWheelDirection(name_attribute, wheel_type, task::action::DirectionType::Forward));
+					return std::make_unique<task::action::SetDirection>(task::action::SetDirection(name_attribute, wheel_type, task::action::DirectionType::Forward));
 				}
 				case utils::Utility::hash("Backward"):
 				{
-					return std::make_unique<task::action::SetRearWheelDirection>(task::action::SetRearWheelDirection(name_attribute, wheel_type, task::action::DirectionType::Backward));
+					return std::make_unique<task::action::SetDirection>(task::action::SetDirection(name_attribute, wheel_type, task::action::DirectionType::Backward));
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format("Invalid direction_type: '{}' | Action:SetRearWheelDirection", direction_type_attribute));
+					return tl::unexpected(fmt::format("Invalid direction_type: '{}' | Action:SetDirection", direction_type_attribute));
 				}
 				}
 			}
