@@ -324,8 +324,13 @@ export const common_nodes = [
 export const xml_schema = {
     elements: [
         {
-            name: "Root",
+            name: "BehaviourTree",
             top: true,
+            children: ["Root"],
+            completion: { type: "keyword" },
+        },
+        {
+            name: "Root",
             attributes: ["id"],
             children: common_nodes,
             completion: { type: "keyword" },

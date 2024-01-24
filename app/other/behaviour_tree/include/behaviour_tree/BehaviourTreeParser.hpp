@@ -94,8 +94,13 @@ namespace behaviour_tree
 
 		tl::expected<std::shared_ptr<BehaviourTree>, std::string> parse(pugi::xml_document& doc)
 		{
+			pugi::xml_node behaviour_tree_node = doc.child("BehaviourTree");
+			if (!behaviour_tree_node)
+			{
+				return tl::unexpected(R"(No "BehaviourTree" node found)");
+			}
 			std::vector<std::shared_ptr<Root>> roots;
-			for (pugi::xml_node node = doc.child("Root"); node; node = node.next_sibling("Root"))
+			for (pugi::xml_node node = behaviour_tree_node.child("Root"); node; node = node.next_sibling("Root"))
 			{
 				auto maybe_root = parseRoot(node, STARTING_INDEX + roots.size());
 				if (!maybe_root.has_value())
@@ -106,7 +111,7 @@ namespace behaviour_tree
 			}
 			if (roots.size() <= 0)
 			{
-				return tl::unexpected(R"(No "Root" node found)");
+				return tl::unexpected(R"(No "Root" nodes found in BehaviourTree)");
 			}
 			return std::make_unique<BehaviourTree>(
 				BehaviourTree(std::move(roots))

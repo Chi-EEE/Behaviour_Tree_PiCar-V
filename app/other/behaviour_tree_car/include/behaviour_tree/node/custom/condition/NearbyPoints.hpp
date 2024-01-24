@@ -10,8 +10,6 @@
 #include "behaviour_tree/CarContext.hpp"
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
-#include "ConditionType.hpp"
-
 namespace behaviour_tree::node::custom::condition
 {
 	class NearbyPoints : public Condition

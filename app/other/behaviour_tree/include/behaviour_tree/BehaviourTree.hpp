@@ -52,7 +52,7 @@ namespace behaviour_tree
 			{
 				out += root->toString();
 			}
-			return out;
+			return fmt::format(R"(<BehaviourTree>{}</BehaviourTree>)", out);
 		}
 
 	private:
