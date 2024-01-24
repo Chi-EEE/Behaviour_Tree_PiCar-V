@@ -15,7 +15,7 @@ using namespace rplidar;
 
 namespace car::system::lidar
 {
-	class LidarScanner : public LidarDevice
+	class LidarScanner final : public LidarDevice
 	{
 	public:
 		[[nodiscard]]
