@@ -14,7 +14,7 @@ namespace behaviour_tree::node::composite
 
 		const CompositeType type() const override { return CompositeType::Sequence; }
 
-		const Status tick(const int& tick_count, Context& context) override
+		const Status tick(const int& tick_count, std::shared_ptr<Context> context) override
 		{
 			for (auto &child : this->children)
 			{

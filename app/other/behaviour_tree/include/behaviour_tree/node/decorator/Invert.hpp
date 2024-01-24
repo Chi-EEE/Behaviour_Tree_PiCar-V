@@ -14,7 +14,7 @@ namespace behaviour_tree::node::decorator
 
 		const DecoratorType type() const override { return DecoratorType::Invert; }
 
-		const Status tick(const int& tick_count, Context& context) override
+		const Status tick(const int& tick_count, std::shared_ptr<Context> context) override
 		{
 			auto status = this->child->tick(tick_count, context);
 			switch (status)

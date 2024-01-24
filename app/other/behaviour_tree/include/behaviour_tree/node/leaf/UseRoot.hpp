@@ -14,9 +14,9 @@ namespace behaviour_tree::node::leaf
 
 		const LeafType type() const override { return LeafType::UseRoot; }
 
-		const Status tick(const int& tick_count, Context& context) override
+		const Status tick(const int& tick_count, std::shared_ptr<Context> context) override
 		{
-			return context.UseRoot(tick_count, this->id);
+			return context->UseRoot(tick_count, this->id);
 		}
 
 		const std::string& getId() const { return this->id; }

@@ -23,11 +23,11 @@ namespace behaviour_tree::node::custom::condition
 		{
 		}
 
-		const Status tick(const int& tick_count, Context& context) override
+		const Status tick(const int& tick_count, std::shared_ptr<Context> context) override
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
-			CarContext& car_context = static_cast<CarContext&>(context);
-			auto car_system = car_context.getCarSystem();
+			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
+			auto car_system = car_context->getCarSystem();
 			for (auto& measure : car_system->getScanData()) {
 				if (measure.angle > this->getMinAngle() && measure.angle < this->getMaxAngle()) {
 					if (measure.distance < this->getAvgDistance()) {

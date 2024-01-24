@@ -8,22 +8,22 @@
 
 #include <nod/nod.hpp>
 
-#include "behaviour_tree/BehaviourContext.hpp"
+#include "../../src/car/plugin/Plugin.cxx"
 
 #include "behaviour_tree/BehaviourTreeParser.hpp"
 #include "behaviour_tree/node/custom/CarCustomNodeParser.hpp"
+
 #include "CarContext.hpp"
 
 namespace behaviour_tree
 {
-	class BehaviourTreeHandler
+	class BehaviourTreeHandler : public car::plugin::Plugin
 	{
 	public:
-		BehaviourTreeHandler(std::shared_ptr<car::system::CarSystem> car_system, nod::signal<void(std::string, std::string)>& custom_command_signal, bool autorun) : car_system(car_system), autorun(autorun)
-		{
+		void init(car::system::CarSystem* car_system) override {
 			// The BehaviourTreeParser does not come with a CustomNodeParser since each program can have a different set of Action nodes
 			BehaviourTreeParser::instance().setCustomNodeParser(std::make_unique<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
-			custom_command_signal.connect([&](std::string custom_command_type, std::string custom)
+			car_system->getCustomCommandSignal().connect([&](std::string custom_command_type, std::string custom)
 				{
 					if (custom_command_type != "behaviour_tree") {
 						return;
@@ -35,23 +35,21 @@ namespace behaviour_tree
 					}
 					auto& behaviour_tree = maybe_behaviour_tree.value();
 					spdlog::info("Behaviour tree parsed successfully | {}", behaviour_tree->toString());
-					if (autorun) {
-						Context context = CarContext(behaviour_tree, car_system);
-						behaviour_tree->start(context);
-						this->behaviour_context = std::make_unique<BehaviourContext>(BehaviourContext{ behaviour_tree , context });
-					}
-					else {
-						this->addBehaviourTree(behaviour_tree);
-					}
+					std::shared_ptr<Context> context = std::make_shared<CarContext>(CarContext(behaviour_tree, car_system));
+					behaviour_tree->start(context);
+					this->context = context;
 				}
 			);
 		}
 
-		void tick() {
-			if (this->behaviour_context == nullptr)
+		void update() override {
+			if (this->context == nullptr)
 				return;
-			// TODO: Add tick time
-			this->behaviour_context->behaviour_tree->tick(0, this->behaviour_context->context);
+			this->context->getBehaviourTree()->tick(tick_count, this->context);
+		}
+
+		void stop() override {
+			this->context = nullptr;
 		}
 
 		void addBehaviourTree(std::shared_ptr<BehaviourTree> behaviour_tree) {
@@ -68,10 +66,11 @@ namespace behaviour_tree
 		}
 
 	private:
-		std::unique_ptr<BehaviourContext> behaviour_context;
+		std::shared_ptr<Context> context;
+
+		int tick_count = 0;
 
 		std::shared_ptr<car::system::CarSystem> car_system;
-		bool autorun = false;
 
 		int id = 0;
 		tsl::robin_map<int, std::shared_ptr<BehaviourTree>> behaviour_trees;

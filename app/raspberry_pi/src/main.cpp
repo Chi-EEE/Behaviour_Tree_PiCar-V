@@ -49,7 +49,7 @@ int main()
 	std::string websocket_url = getWebSocketUrl();
 	spdlog::info("Got websocket url: {}", websocket_url);
 
-	 std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
+	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 
 	//auto maybe_scanner = LidarScanner::create(GET_CONFIG_VALUE(lidar_port));
 	//if (!maybe_scanner.has_value())
@@ -76,7 +76,8 @@ int main()
 			std::move(movement_system)
 		);
 
-	BehaviourTreeHandler behaviour_tree_handler(car_system, car_system->getCustomCommandSignal(), true);
+	std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>();
+	car_system->addPlugin(behaviour_tree_handler);
 
 	// The CarConsole object will display the UI and handle user input:
 	CarConsole car_console(std::move(car_system), vector_sink);

@@ -20,7 +20,7 @@ namespace behaviour_tree::node
 		{
 		}
 
-		virtual const Status tick(const int& tick_count, Context& context) = 0;
+		virtual const Status tick(const int& tick_count, std::shared_ptr<Context> context) = 0;
 
 		virtual const std::string toString() const = 0;
 

@@ -18,7 +18,7 @@ namespace behaviour_tree
 		{
 		}
 
-		void start(Context& context)
+		void start(std::shared_ptr<Context> context)
 		{
 			for (auto& root : this->roots)
 			{
@@ -31,12 +31,12 @@ namespace behaviour_tree
 			this->root_to_use = this->roots[0];
 		}
 
-		void tick(const int& tick_count, Context& context)
+		void tick(const int& tick_count, std::shared_ptr<Context> context)
 		{
 			this->root_to_use->tick(tick_count, context);
 		}
 
-		Status UseRoot(const int& tick_count, Context& context, const std::string& id) {
+		Status UseRoot(const int& tick_count, std::shared_ptr<Context> context, const std::string& id) {
 			for (auto& root : this->roots)
 			{
 				if (root->getId() == id)

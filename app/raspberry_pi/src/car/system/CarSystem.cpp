@@ -84,6 +84,12 @@ namespace car::system
 		this->messaging_system->sendMessage(buffer.GetString());
 	}
 
+	void CarSystem::addPlugin(const std::shared_ptr<car::plugin::Plugin> plugin_)
+	{
+		this->plugins.push_back(plugin_);
+		plugin_->init(this);
+	}
+
 	void CarSystem::startLidarDevice()
 	{
 		this->lidar_device->start();

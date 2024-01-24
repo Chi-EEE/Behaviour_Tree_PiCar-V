@@ -16,12 +16,14 @@ namespace behaviour_tree
 
 namespace behaviour_tree
 {
-	class Context
+	class Context : public std::enable_shared_from_this<Context>
 	{
 	public:
 		Context(std::shared_ptr<BehaviourTree> behaviour_tree);
+		std::shared_ptr<BehaviourTree> getBehaviourTree() const { return this->behaviour_tree; };
 		Status UseRoot(const int& tick_count, const std::string& id);
 
+		virtual void _() = 0;
 	private:
 		std::shared_ptr<BehaviourTree> behaviour_tree;
 	};

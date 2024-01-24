@@ -14,12 +14,16 @@
 #include "messaging/MessagingSystem.cxx"
 #include "movement/MovementSystem.cxx"
 
+#include "../plugin/Plugin.cxx"
+
+using namespace car::plugin;
+
 using namespace car::system::lidar;
 using namespace car::system::messaging;
 using namespace car::system::movement;
 
 namespace car::system {
-	class CarSystem
+	class CarSystem //: public std::enable_shared_from_this<CarSystem>
 	{
 	public:
 		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system, std::unique_ptr<MovementSystem> movement_system);
@@ -30,6 +34,8 @@ namespace car::system {
 		void stop();
 
 		void update();
+
+		void addPlugin(const std::shared_ptr<car::plugin::Plugin> plugin_);
 
 		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() const { return this->messaging_system->getCustomCommandSignal(); }
 		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->messaging_system->getHandleMessageSignal(); }
@@ -59,6 +65,8 @@ namespace car::system {
 		const std::vector<Measure>& getScanData() const { return this->scan_data; }
 
 	private:
+		std::vector<std::weak_ptr<plugin::Plugin>> plugins;
+
 		const std::unique_ptr<LidarDevice> lidar_device;
 		const std::unique_ptr<MessagingSystem> messaging_system;
 		const std::unique_ptr<MovementSystem> movement_system;
