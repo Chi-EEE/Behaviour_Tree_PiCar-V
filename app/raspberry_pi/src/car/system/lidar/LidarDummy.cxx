@@ -18,19 +18,19 @@ namespace car::system::lidar {
 			spdlog::warn("Currently using the LidarDummy");
 		};
 
-		void initialize() const override {};
+		void initialize() const final override {};
 
-		void start() const override {};
+		void start() const final override {};
 
-		std::vector<Measure> scan() const override
+		std::vector<Measure> scan() const final override
 		{
 			std::vector<Measure> measures;
 			return measures;
 		};
 
-		void stop() const override {};
+		void stop() const final override {};
 
-		void disconnect() const override {};
+		void disconnect() const final override {};
 	private:
 
 	};

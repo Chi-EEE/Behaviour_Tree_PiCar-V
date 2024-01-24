@@ -12,9 +12,9 @@ namespace behaviour_tree::node::composite
 	public:
 		Sequence(const std::string &name, std::vector<std::unique_ptr<Node>> children) : Composite(name, std::move(children)) {}
 
-		const CompositeType type() const override { return CompositeType::Sequence; }
+		const CompositeType type() const final override { return CompositeType::Sequence; }
 
-		const Status tick(const int& tick_count, std::shared_ptr<Context> context) override
+		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
 			for (auto &child : this->children)
 			{
@@ -27,7 +27,7 @@ namespace behaviour_tree::node::composite
 			return Status::Success;
 		}
 
-		const std::string toString() const override {
+		const std::string toString() const final override {
 			std::string out;
 			for (auto& child : this->children)
 			{

@@ -12,16 +12,16 @@ namespace behaviour_tree::node::leaf
 	public:
 		UseRoot(const std::string& name, const std::string& id) : Leaf(name), id(id) {}
 
-		const LeafType type() const override { return LeafType::UseRoot; }
+		const LeafType type() const final override { return LeafType::UseRoot; }
 
-		const Status tick(const int& tick_count, std::shared_ptr<Context> context) override
+		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
 			return context->UseRoot(tick_count, this->id);
 		}
 
 		const std::string& getId() const { return this->id; }
 
-		const std::string toString() const override {
+		const std::string toString() const final override {
 			const std::string& name = this->getName();
 			if (name != "")
 				return fmt::format(R"(<UseRoot name="{}" id="{}"/>)", name, this->getId());

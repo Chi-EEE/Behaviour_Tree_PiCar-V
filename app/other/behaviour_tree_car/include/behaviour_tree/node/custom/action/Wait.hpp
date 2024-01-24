@@ -19,7 +19,7 @@ namespace behaviour_tree::node::custom::action
 		{
 		}
 
-		const Status tick(const int& tick_count, std::shared_ptr<Context> context) override
+		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			// TODO;
@@ -29,7 +29,7 @@ namespace behaviour_tree::node::custom::action
 			return Status::Success;
 		}
 
-		const std::string toString() const override {
+		const std::string toString() const final override {
 			const std::string& name = this->getName();
 			if (name != "")
 				return fmt::format(R"(<Action:Wait name="{}" ms="{}"/>)", name, this->getMS());

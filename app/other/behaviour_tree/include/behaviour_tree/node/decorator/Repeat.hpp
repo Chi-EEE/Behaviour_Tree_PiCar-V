@@ -14,9 +14,9 @@ namespace behaviour_tree::node::decorator
 		{
 		}
 
-		const DecoratorType type() const override { return DecoratorType::Repeat; }
+		const DecoratorType type() const final override { return DecoratorType::Repeat; }
 
-		const Status tick(const int& tick_count, std::shared_ptr<Context> context) override
+		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
 			for (int i = 0; i < this->count; i++)
 			{
@@ -35,7 +35,7 @@ namespace behaviour_tree::node::decorator
 			}
 		}
 
-		const std::string toString() const override {
+		const std::string toString() const final override {
 			const std::string& name = this->getName();
 			if (name != "")
 				return fmt::format(R"(<Repeat name="{}" count="{}" break_on_fail="{}">{}</Repeat>)", name, this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
