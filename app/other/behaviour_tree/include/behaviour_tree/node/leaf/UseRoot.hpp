@@ -7,7 +7,7 @@
 
 namespace behaviour_tree::node::leaf
 {
-	class UseRoot : public Leaf
+	class UseRoot final : public Leaf
 	{
 	public:
 		UseRoot(const std::string& name, const std::string& id) : Leaf(name), id(id) {}

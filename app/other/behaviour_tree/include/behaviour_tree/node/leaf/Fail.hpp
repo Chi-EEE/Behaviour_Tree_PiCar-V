@@ -7,7 +7,7 @@
 
 namespace behaviour_tree::node::leaf
 {
-	class Fail : public Leaf
+	class Fail final : public Leaf
 	{
 	public:
 		Fail(const std::string& name) : Leaf(name) {}

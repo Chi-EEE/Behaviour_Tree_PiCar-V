@@ -7,7 +7,7 @@
 
 namespace behaviour_tree::node::decorator
 {
-	class Invert : public Decorator
+	class Invert final : public Decorator
 	{
 	public:
 		Invert(const std::string& name, std::unique_ptr<Node> child) : Decorator(name, std::move(child)) {}

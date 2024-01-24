@@ -12,7 +12,7 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class Log : public Action
+	class Log final : public Action
 	{
 	public:
 		Log(const std::string& name, const std::string& text) : Action(name), text(text)

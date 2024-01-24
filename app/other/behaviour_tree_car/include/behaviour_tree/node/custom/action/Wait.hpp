@@ -12,7 +12,7 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class Wait : public Action
+	class Wait final : public Action
 	{
 	public:
 		Wait(const std::string& name, const int& ms) : Action(name), ms(ms)

@@ -12,7 +12,7 @@
 
 namespace behaviour_tree::node::custom::condition
 {
-	class NearbyPoints : public Condition
+	class NearbyPoints final : public Condition
 	{
 	public:
 		NearbyPoints(const std::string& name, const int& min_angle, const int& max_angle, const int& avg_distance) :

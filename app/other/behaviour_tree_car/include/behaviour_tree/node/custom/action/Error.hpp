@@ -12,7 +12,7 @@
 
 namespace behaviour_tree::node::custom::action
 {
-    class Error : public Action
+    class Error final : public Action
     {
     public:
         Error(const std::string& name, const std::string& text) : Action(name), text(text)

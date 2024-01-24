@@ -7,7 +7,7 @@
 
 namespace behaviour_tree::node::composite
 {
-	class Sequence : public Composite
+	class Sequence final : public Composite
 	{
 	public:
 		Sequence(const std::string &name, std::vector<std::unique_ptr<Node>> children) : Composite(name, std::move(children)) {}

@@ -10,7 +10,7 @@
 #include "LidarDevice.cxx"
 
 namespace car::system::lidar {
-	class LidarDummy : public LidarDevice
+	class LidarDummy final : public LidarDevice
 	{
 	public:
 		LidarDummy()

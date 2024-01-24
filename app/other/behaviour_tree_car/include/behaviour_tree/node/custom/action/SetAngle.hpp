@@ -14,7 +14,7 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class SetAngle : public Action
+	class SetAngle final : public Action
 	{
 	public:
 		SetAngle(const std::string& name, const ServoType& servo_type, const int& angle) : Action(name), servo_type(servo_type), angle(angle)

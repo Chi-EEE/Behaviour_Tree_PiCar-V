@@ -14,7 +14,7 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class SetSpeed : public Action
+	class SetSpeed final : public Action
 	{
 	public:
 		SetSpeed(const std::string& name, const WheelType& wheel_type, const int& speed) : Action(name), wheel_type(wheel_type), speed(speed)

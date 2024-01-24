@@ -15,7 +15,7 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class SetWheelDirection : public Action
+	class SetWheelDirection final : public Action
 	{
 	public:
 		SetWheelDirection(const std::string& name, const WheelType& wheel_type, const DirectionType& direction_type) : Action(name), wheel_type(wheel_type), direction_type(direction_type)
