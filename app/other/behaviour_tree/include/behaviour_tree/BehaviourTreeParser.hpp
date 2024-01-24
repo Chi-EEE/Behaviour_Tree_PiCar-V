@@ -195,13 +195,6 @@ namespace behaviour_tree
 						name,
 						node.attribute("id").as_string()));
 			}
-			case utils::Utility::hash("Wait"):
-			{
-				return std::make_unique<Wait>(
-					Wait(
-						name,
-						node.attribute("ms").as_int()));
-			}
 #pragma endregion
 			default:
 			{

@@ -17,11 +17,15 @@
 
 #include "behaviour_tree/node/task/TaskNodeParser.hpp"
 
+#include "action/Wait.hpp"
+
 #include "action/SetSpeed.hpp"
 #include "action/SetDirection.hpp"
 #include "action/SetAngle.hpp"
 
 #include "condition/NearbyPoints.hpp"
+
+#include "utils/Utility.hpp"
 
 namespace behaviour_tree::node::task
 {
@@ -36,6 +40,13 @@ namespace behaviour_tree::node::task
 			const std::string name = node.name();
 			switch (utils::Utility::hash(name))
 			{
+			case utils::Utility::hash("Action:Wait"):
+			{
+				return std::make_unique<task::action::Wait>(
+					task::action::Wait(
+						name,
+						node.attribute("ms").as_int()));
+			}
 			case utils::Utility::hash("Action:SetSpeed"):
 			{
 				const std::string wheel_type_attribute = node.attribute("wheel_type").as_string();
