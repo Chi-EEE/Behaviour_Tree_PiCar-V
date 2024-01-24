@@ -1,5 +1,5 @@
-#ifndef BEHAVIOUR_TREE_SETDIRECTION_HPP
-#define BEHAVIOUR_TREE_SETDIRECTION_HPP
+#ifndef BEHAVIOUR_TREE_SETWHEELDIRECTION_HPP
+#define BEHAVIOUR_TREE_SETWHEELDIRECTION_HPP
 
 #pragma once
 
@@ -15,14 +15,14 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class SetDirection : public Action
+	class SetWheelDirection : public Action
 	{
 	public:
-		SetDirection(const std::string& name, const WheelType& wheel_type, const DirectionType& direction_type) : Action(name), wheel_type(wheel_type), direction_type(direction_type)
+		SetWheelDirection(const std::string& name, const WheelType& wheel_type, const DirectionType& direction_type) : Action(name), wheel_type(wheel_type), direction_type(direction_type)
 		{
 		}
 
-		const Status tick(Context& context) override
+		const Status tick(const int& tick_count, Context& context) override
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			CarContext& car_context = static_cast<CarContext&>(context);
@@ -100,9 +100,9 @@ namespace behaviour_tree::node::custom::action
 			}
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Action:SetDirection name="{}" direction_type="{}" wheel_type="{}"/>)", name, direction_type, wheel_type);
+				return fmt::format(R"(<Action:SetWheelDirection name="{}" direction_type="{}" wheel_type="{}"/>)", name, direction_type, wheel_type);
 			else
-				return fmt::format(R"(<Action:SetDirection direction_type="{}" wheel_type="{}"/>)", direction_type, wheel_type);
+				return fmt::format(R"(<Action:SetWheelDirection direction_type="{}" wheel_type="{}"/>)", direction_type, wheel_type);
 		}
 
 		const DirectionType& getDirectionType() const {

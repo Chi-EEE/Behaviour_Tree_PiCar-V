@@ -316,7 +316,7 @@ export const common_nodes = [
 
     "Action:SetAngle",
     "Action:SetSpeed",
-    "Action:SetDirection",
+    "Action:SetWheelDirection",
 
     "Condition:NearbyPoints",
 ];
@@ -421,7 +421,7 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Action:SetDirection",
+            name: "Action:SetWheelDirection",
             attributes: [
                 {
                     name: "wheel_type",
@@ -474,7 +474,7 @@ const node_information_list = new Map<string, string>([
 
     ["Action:SetAngle", "Turns the car by the given angle"],
     ["Action:SetSpeed", "Moves the car by the given speed"],
-    ["Action:SetDirection", "Sets the direction of the car"],
+    ["Action:SetWheelDirection", "Sets the direction of the car"],
     ["Action:Stop", "Stops the car from moving"],
 
     ["Condition:NearbyPoints", "Checks if there are nearby points"],

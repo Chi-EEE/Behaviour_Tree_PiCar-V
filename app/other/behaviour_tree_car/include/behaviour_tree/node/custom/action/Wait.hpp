@@ -19,7 +19,7 @@ namespace behaviour_tree::node::custom::action
 		{
 		}
 
-		const Status tick(Context& context) override
+		const Status tick(const int& tick_count, Context& context) override
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			CarContext& car_context = static_cast<CarContext&>(context);

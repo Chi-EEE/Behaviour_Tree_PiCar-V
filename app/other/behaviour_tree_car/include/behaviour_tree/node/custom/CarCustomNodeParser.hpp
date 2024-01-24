@@ -23,7 +23,7 @@
 #include "action/Error.hpp"
 
 #include "action/SetSpeed.hpp"
-#include "action/SetDirection.hpp"
+#include "action/SetWheelDirection.hpp"
 #include "action/SetAngle.hpp"
 
 #include "condition/NearbyPoints.hpp"
@@ -126,7 +126,7 @@ namespace behaviour_tree::node::custom
 					return tl::unexpected(fmt::format(R"(Invalid angle: '{}' | Action:SetAngle:["{}",{}])", angle, name_attribute, index));
 				return std::make_unique<custom::action::SetAngle>(custom::action::SetAngle(name_attribute, servo_type, angle));
 			}
-			case utils::Utility::hash("Action:SetDirection"):
+			case utils::Utility::hash("Action:SetWheelDirection"):
 			{
 				const std::string wheel_type_attribute = node.attribute("wheel_type").as_string();
 				custom::action::WheelType wheel_type;
@@ -149,7 +149,7 @@ namespace behaviour_tree::node::custom
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format(R"(Invalid wheel_type: '{}' | Action:SetDirection:["{}",{}])", wheel_type_attribute, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid wheel_type: '{}' | Action:SetWheelDirection:["{}",{}])", wheel_type_attribute, name_attribute, index));
 				}
 				}
 				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
@@ -157,15 +157,15 @@ namespace behaviour_tree::node::custom
 				{
 				case utils::Utility::hash("Forward"):
 				{
-					return std::make_unique<custom::action::SetDirection>(custom::action::SetDirection(name_attribute, wheel_type, custom::action::DirectionType::Forward));
+					return std::make_unique<custom::action::SetWheelDirection>(custom::action::SetWheelDirection(name_attribute, wheel_type, custom::action::DirectionType::Forward));
 				}
 				case utils::Utility::hash("Backward"):
 				{
-					return std::make_unique<custom::action::SetDirection>(custom::action::SetDirection(name_attribute, wheel_type, custom::action::DirectionType::Backward));
+					return std::make_unique<custom::action::SetWheelDirection>(custom::action::SetWheelDirection(name_attribute, wheel_type, custom::action::DirectionType::Backward));
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format(R"(Invalid direction_type: '{}' | Action:SetDirection:["{}",{}])", direction_type_attribute, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid direction_type: '{}' | Action:SetWheelDirection:["{}",{}])", direction_type_attribute, name_attribute, index));
 				}
 				}
 			}

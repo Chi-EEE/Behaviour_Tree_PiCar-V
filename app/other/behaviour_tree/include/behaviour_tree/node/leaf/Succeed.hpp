@@ -14,7 +14,7 @@ namespace behaviour_tree::node::leaf
 
 		const LeafType type() const override { return LeafType::Succeed; }
 
-		const Status tick(Context& context) override
+		const Status tick(const int& tick_count, Context& context) override
 		{
 			return Status::Success;
 		}

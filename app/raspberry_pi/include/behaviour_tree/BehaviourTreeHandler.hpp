@@ -38,7 +38,7 @@ namespace behaviour_tree
 					if (autorun) {
 						Context context = CarContext(behaviour_tree, car_system);
 						behaviour_tree->start(context);
-						this->behaviour_context = std::make_unique<BehaviourContext>(BehaviourContext{ behaviour_tree , context});
+						this->behaviour_context = std::make_unique<BehaviourContext>(BehaviourContext{ behaviour_tree , context });
 					}
 					else {
 						this->addBehaviourTree(behaviour_tree);
@@ -48,7 +48,10 @@ namespace behaviour_tree
 		}
 
 		void tick() {
-			this->behaviour_context->behaviour_tree->tick(this->behaviour_context->context);
+			if (this->behaviour_context == nullptr)
+				return;
+			// TODO: Add tick time
+			this->behaviour_context->behaviour_tree->tick(0, this->behaviour_context->context);
 		}
 
 		void addBehaviourTree(std::shared_ptr<BehaviourTree> behaviour_tree) {

@@ -14,11 +14,11 @@ namespace behaviour_tree::node::composite
 
 		const CompositeType type() const override { return CompositeType::Sequence; }
 
-		const Status tick(Context& context) override
+		const Status tick(const int& tick_count, Context& context) override
 		{
 			for (auto &child : this->children)
 			{
-				auto status = child->tick(context);
+				auto status = child->tick(tick_count, context);
 				if (status == Status::Failure)
 				{
 					return Status::Failure;

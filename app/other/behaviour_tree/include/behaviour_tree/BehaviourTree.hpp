@@ -31,17 +31,17 @@ namespace behaviour_tree
 			this->root_to_use = this->roots[0];
 		}
 
-		void tick(Context& context)
+		void tick(const int& tick_count, Context& context)
 		{
-			this->root_to_use->tick(context);
+			this->root_to_use->tick(tick_count, context);
 		}
 
-		Status UseRoot(Context& context, const std::string& id) {
+		Status UseRoot(const int& tick_count, Context& context, const std::string& id) {
 			for (auto& root : this->roots)
 			{
 				if (root->getId() == id)
 				{
-					return root->tick(context);
+					return root->tick(tick_count, context);
 				}
 			}
 			return Status::Failure;

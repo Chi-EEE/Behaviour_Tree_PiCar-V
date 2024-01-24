@@ -6,7 +6,7 @@ namespace behaviour_tree {
 	{
 	}
 
-	Status Context::UseRoot(const std::string& id) {
-		return this->behaviour_tree->UseRoot(*this, id);
+	Status Context::UseRoot(const int& tick_count, const std::string& id) {
+		return this->behaviour_tree->UseRoot(tick_count, *this, id);
 	}
 }
