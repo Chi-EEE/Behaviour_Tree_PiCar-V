@@ -14,14 +14,19 @@ namespace behaviour_tree::node::custom::action
 	class Wait final : public Action
 	{
 	public:
-		Wait(const std::string& name, const int& ms, const bool& reset_on_non_consecutive_tick) : Action(name), ms(ms), reset_on_non_consecutive_tick(reset_on_non_consecutive_tick)
+		Wait(const std::string &name, const int &ms, const bool &reset_on_non_consecutive_tick) : Action(name), ms(ms), reset_on_non_consecutive_tick(reset_on_non_consecutive_tick)
 		{
 		}
 
-		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
+		const Status tick(const int &tick_count, std::shared_ptr<Context> context) final override
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
-			if (this->reset_on_non_consecutive_tick && this->previous_tick_count != tick_count && this->previous_tick_count + 1 != tick_count) {
+			if (
+				this->reset_on_non_consecutive_tick && // Only reset if the node is configured to do so
+				this->previous_tick_count != tick_count &&	// Prevent the Wait node from resetting if it is ticked multiple times in the same tick
+				this->previous_tick_count + 1 != tick_count // Prevent the Wait node from resetting if it is ticked consecutively
+			)
+			{
 				this->start = std::chrono::steady_clock::now();
 			}
 			this->previous_tick_count = tick_count;
@@ -35,20 +40,23 @@ namespace behaviour_tree::node::custom::action
 			return Status::Success;
 		}
 
-		const std::string toString() const final override {
-			const std::string& name = this->getName();
-			const std::string& reset_on_non_consecutive_tick_string = this->getResetOnNonConsecutiveTick() ? "true" : "false";
+		const std::string toString() const final override
+		{
+			const std::string &name = this->getName();
+			const std::string &reset_on_non_consecutive_tick_string = this->getResetOnNonConsecutiveTick() ? "true" : "false";
 			if (name != "")
 				return fmt::format(R"(<Action:Wait name="{}" ms="{}" reset_on_non_consecutive_tick="{}"/>)", name, this->getMS(), reset_on_non_consecutive_tick_string);
 			else
 				return fmt::format(R"(<Action:Wait ms="{}" reset_on_non_consecutive_tick="{}"/>)", this->getMS(), reset_on_non_consecutive_tick_string);
 		}
 
-		const int& getMS() const {
+		const int &getMS() const
+		{
 			return this->ms;
 		}
 
-		const bool& getResetOnNonConsecutiveTick() const {
+		const bool &getResetOnNonConsecutiveTick() const
+		{
 			return this->reset_on_non_consecutive_tick;
 		}
 
