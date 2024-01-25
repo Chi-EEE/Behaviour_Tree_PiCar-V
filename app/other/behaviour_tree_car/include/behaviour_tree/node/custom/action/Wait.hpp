@@ -23,7 +23,7 @@ namespace behaviour_tree::node::custom::action
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			if (
 				this->reset_on_non_consecutive_tick && // Only reset if the node is configured to do so
-				this->previous_tick_count != tick_count &&	// Prevent the Wait node from resetting if it is ticked multiple times in the same tick
+				this->previous_tick_count != tick_count &&	// Prevent the Wait node from resetting if it is ticked multiple times in the same tick (e.g. if it is a child of a Repeat node)
 				this->previous_tick_count + 1 != tick_count // Prevent the Wait node from resetting if it is ticked consecutively
 			)
 			{
