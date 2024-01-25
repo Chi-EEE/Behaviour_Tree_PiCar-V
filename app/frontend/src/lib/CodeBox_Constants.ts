@@ -486,7 +486,7 @@ const node_information_list = new Map<string, string>([
 
 // Modified code from: https://codemirror.net/examples/tooltip/
 export const node_hover = hoverTooltip((view, pos, side) => {
-    let { from, to, text } = view.state.doc.lineAt(pos);
+    const { from, to, text } = view.state.doc.lineAt(pos);
     let start = pos,
         end = pos;
     while (start > from && /[\w|:]/.test(text[start - from - 1])) start--;
@@ -499,8 +499,8 @@ export const node_hover = hoverTooltip((view, pos, side) => {
         pos: start,
         end,
         above: true,
-        create(view) {
-            let dom = document.createElement("div");
+        create(_) {
+            const dom = document.createElement("div");
             dom.textContent = node_information;
             return { dom };
         },

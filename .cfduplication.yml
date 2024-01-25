@@ -1,0 +1,2 @@
+IgnorePatterns:
+  - docs\static\doxygen-awesome.css
