@@ -379,7 +379,14 @@ export const xml_schema = {
         },
         {
             name: "Action:Wait",
-            attributes: ["ms"],
+            attributes: [
+                "ms",
+                {
+                    name: "reset_on_non_consecutive_tick",
+                    values: ["true", "false"],
+                    completion: { type: "keyword" },
+                }
+            ],
             completion: { type: "keyword" },
         },
         {
