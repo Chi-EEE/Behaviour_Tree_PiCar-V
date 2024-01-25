@@ -20,6 +20,7 @@ namespace behaviour_tree::node::custom::action
 
 		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
+#ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			if (this->previous_tick_count + 1 != tick_count) {
 				this->start = std::chrono::steady_clock::now();
 			}
@@ -28,6 +29,7 @@ namespace behaviour_tree::node::custom::action
 			{
 				return Status::Running;
 			}
+#endif
 			return Status::Success;
 		}
 
@@ -49,8 +51,8 @@ namespace behaviour_tree::node::custom::action
 		}
 
 	private:
-		std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-		int previous_tick_count = 0;
+		std::chrono::steady_clock::time_point start;
+		int previous_tick_count = -1;
 		const int ms;
 		const bool reset_on_non_consecutive_tick;
 	};
