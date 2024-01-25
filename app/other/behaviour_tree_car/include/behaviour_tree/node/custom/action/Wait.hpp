@@ -3,46 +3,56 @@
 
 #pragma once
 
+#include <chrono>
+
 #include "behaviour_tree/node/custom/Action.hpp"
 
 #include "behaviour_tree/Context.h"
-#ifndef BEHAVIOUR_TREE_DISABLE_RUN
-#include "behaviour_tree/CarContext.hpp"
-#endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
 namespace behaviour_tree::node::custom::action
 {
 	class Wait final : public Action
 	{
 	public:
-		Wait(const std::string& name, const int& ms) : Action(name), ms(ms)
+		Wait(const std::string& name, const int& ms, const bool& reset_on_non_consecutive_tick) : Action(name), ms(ms), reset_on_non_consecutive_tick(reset_on_non_consecutive_tick)
 		{
 		}
 
 		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
-#ifndef BEHAVIOUR_TREE_DISABLE_RUN
-			// TODO;
-			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
-			auto car_system = car_context->getCarSystem();
-#endif // !BEHAVIOUR_TREE_DISABLE_RUN
+			if (this->previous_tick_count + 1 != tick_count) {
+				this->start = std::chrono::steady_clock::now();
+			}
+			this->previous_tick_count = tick_count;
+			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - this->start).count() < this->ms)
+			{
+				return Status::Running;
+			}
 			return Status::Success;
 		}
 
 		const std::string toString() const final override {
 			const std::string& name = this->getName();
+			const std::string& reset_on_non_consecutive_tick_string = this->getResetOnNonConsecutiveTick() ? "true" : "false";
 			if (name != "")
-				return fmt::format(R"(<Action:Wait name="{}" ms="{}"/>)", name, this->getMS());
+				return fmt::format(R"(<Action:Wait name="{}" ms="{}" reset_on_non_consecutive_tick="{}"/>)", name, this->getMS(), reset_on_non_consecutive_tick_string);
 			else
-				return fmt::format(R"(<Action:Wait ms="{}"/>)", this->getMS());
+				return fmt::format(R"(<Action:Wait ms="{}" reset_on_non_consecutive_tick="{}"/>)", this->getMS(), reset_on_non_consecutive_tick_string);
 		}
 
 		const int& getMS() const {
 			return this->ms;
 		}
 
+		const bool& getResetOnNonConsecutiveTick() const {
+			return this->reset_on_non_consecutive_tick;
+		}
+
 	private:
+		std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+		int previous_tick_count = 0;
 		const int ms;
+		const bool reset_on_non_consecutive_tick;
 	};
 }
 

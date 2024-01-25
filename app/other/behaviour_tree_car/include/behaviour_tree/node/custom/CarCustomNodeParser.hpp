@@ -45,10 +45,31 @@ namespace behaviour_tree::node::custom
 			{
 			case utils::Utility::hash("Action:Wait"):
 			{
+				const std::string reset_on_non_consecutive_tick_string = node.attribute("reset_on_non_consecutive_tick").as_string();
+				bool reset_on_non_consecutive_tick = false;
+				switch (utils::Utility::hash(reset_on_non_consecutive_tick_string))
+				{
+					case utils::Utility::hash("true"):
+					{
+						reset_on_non_consecutive_tick = true;
+						break;
+					}
+					case utils::Utility::hash("false"):
+					{
+						reset_on_non_consecutive_tick = false;
+						break;
+					}
+					default:
+					{
+						return tl::unexpected(fmt::format(R"(Invalid reset_on_non_consecutive_tick: '{}' | Action:Wait:["{}",{}])", reset_on_non_consecutive_tick_string, name_attribute, index));
+					}
+				}
 				return std::make_unique<custom::action::Wait>(
 					custom::action::Wait(
 						name_attribute,
-						node.attribute("ms").as_int()));
+						node.attribute("ms").as_int(),
+						reset_on_non_consecutive_tick
+						));
 			}
 			case utils::Utility::hash("Action:Log"):
 			{
