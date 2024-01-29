@@ -15,7 +15,7 @@ namespace car::system::lidar {
 	public:
 		virtual void initialize() const = 0;
 		virtual void start() const = 0;
-		virtual std::vector<Measure> scan() const = 0;
+		virtual std::vector<tl::expected<Measure, std::string>> scan() const = 0;
 		virtual void stop() const = 0;
 		virtual void disconnect() const = 0;
 	};

@@ -48,9 +48,9 @@ namespace car::system::lidar
 			this->lidar->start_motor();
 		};
 
-		std::vector<Measure> scan() const final override
+		std::vector<tl::expected<Measure, std::string>> scan() const final override
 		{
-			std::function<std::vector<Measure>()> scanGenerator = this->lidar->iter_scans();
+			std::function<std::vector<tl::expected<Measure, std::string>>()> scanGenerator = this->lidar->iter_scans();
 			return scanGenerator();
 		};
 

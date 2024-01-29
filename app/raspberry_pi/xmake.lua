@@ -27,6 +27,7 @@ if is_plat("linux", "macosx") then
     add_requires("pca9685")
     add_requires("tb6612")
 end
+add_requires("serial")
 
 -- For Better Programming
 add_requires("tl_expected")
@@ -62,9 +63,11 @@ target("raspberry_pi")
     add_packages("ftxui")
 
     add_packages("opencv")
-    add_packages("rplidar")
+
     add_packages("pca9685")
     add_packages("tb6612")
+
+    add_packages("serial")
 
     add_deps("behaviour_tree")
 

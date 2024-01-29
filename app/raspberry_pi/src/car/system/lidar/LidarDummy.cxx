@@ -22,9 +22,9 @@ namespace car::system::lidar {
 
 		void start() const final override {};
 
-		std::vector<Measure> scan() const final override
+		std::vector<tl::expected<Measure, std::string>> scan() const final override
 		{
-			std::vector<Measure> measures;
+			std::vector<tl::expected<Measure, std::string>> measures;
 			return measures;
 		};
 

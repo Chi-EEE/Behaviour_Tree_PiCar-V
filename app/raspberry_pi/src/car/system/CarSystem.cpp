@@ -66,7 +66,12 @@ namespace car::system
 		output_json.SetObject();
 		rapidjson::Value data_array(rapidjson::kArrayType);
 
-		this->scan_data = this->lidar_device->scan();
+		this->scan_data.clear();
+		for (const auto& maybe_measure : this->lidar_device->scan()) {
+			if (maybe_measure.has_value()) {
+				this->scan_data.push_back(maybe_measure.value());
+			}
+		}
 
 		for (const Measure& measure : this->scan_data) {
 			rapidjson::Value measure_object(rapidjson::kObjectType);

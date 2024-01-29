@@ -1,11 +1,9 @@
-add_requires("serial")
-add_requires("spdlog")
-add_requires("tl_expected")
+add_requires("serial", "spdlog", "tl_expected")
 
 target("rplidar")
-    set_kind("static")
+    set_kind("$(kind)")
+    add_packages("serial", "spdlog", "tl_expected")
+
     add_files("src/*.cpp")
     add_headerfiles("include/(RPLidar.h)")
-    add_includedirs("include")
-    add_packages("serial", "spdlog")
-    add_packages("tl_expected")
+    add_includedirs("include", {public = true})
