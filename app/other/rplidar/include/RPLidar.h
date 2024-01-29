@@ -210,7 +210,7 @@ namespace rplidar
 
 		std::function<tl::expected<Measure, std::string>()> iter_measures(ScanType scanType = NORMAL, int maxBufMeas = 3000);
 
-		std::function<std::vector<Measure>()> iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5);
+		std::function<std::vector<tl::expected<Measure, std::string>>()> iter_scans(ScanType scanType = NORMAL, int maxBufMeas = 3000, int minLen = 5);
 
 	private:
 		std::unique_ptr<serial::Serial> _serial = nullptr;

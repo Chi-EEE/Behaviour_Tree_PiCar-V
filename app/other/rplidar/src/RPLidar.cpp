@@ -591,11 +591,7 @@ namespace rplidar
 				if (scanType == NORMAL)
 				{
 					std::vector<uint8_t> raw = this->_read_response(dsize);
-					auto process_scan_result = _process_scan(raw);
-					if (!process_scan_result.has_value())
-						return tl::make_unexpected(process_scan_result.error());
-					Measure measure = process_scan_result.value();
-					return measure;
+					return _process_scan(raw);
 				}
 				else if (scanType == EXPRESS)
 				{
@@ -640,18 +636,22 @@ namespace rplidar
 	 * @param minLen Minimum number of measures in the scan for it to be yelded.
 	 * @return std::function<std::vector<Measure>()>
 	 */
-	std::function<std::vector<Measure>()> RPLidar::iter_scans(ScanType scanType, int maxBufMeas, int minLen)
+	std::function<std::vector<tl::expected<Measure, std::string>>()> RPLidar::iter_scans(ScanType scanType, int maxBufMeas, int minLen)
 	{
-		std::vector<Measure> scanList;
-		std::function<tl::expected<Measure, std::string>()> measureIterator = this->iter_measures(scanType, maxBufMeas);
+		auto measureIterator = this->iter_measures(scanType, maxBufMeas);
 
 		// Define a lambda function to generate scans
-		auto scanGenerator = [this, scanType, maxBufMeas, minLen, measureIterator]() -> std::vector<Measure>
+		auto scanGenerator = [&]() -> std::vector<tl::expected<Measure, std::string>>
 		{
-			std::vector<Measure> scanList;
-			for (;;)
+			std::vector<tl::expected<Measure, std::string>> scanList;
+			while (true)
 			{
-				Measure measure = measureIterator().value();
+				tl::expected<Measure, std::string> maybe_measure = measureIterator();
+				if (!maybe_measure.has_value()) {
+					scanList.push_back(maybe_measure);
+					continue;
+				}
+				Measure measure = maybe_measure.value();
 				bool newScan = measure.newScan;
 				if (newScan)
 				{

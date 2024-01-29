@@ -23,7 +23,6 @@ add_requires("fmt")
 
 -- SunFounder Car
 add_requires("opencv 4.8.0")
-add_requires("rplidar")
 if is_plat("linux", "macosx") then
     add_requires("pca9685")
     add_requires("tb6612")
@@ -34,6 +33,7 @@ add_requires("tl_expected")
 
 includes("../other/utils/xmake.lua")
 includes("../other/behaviour_tree/xmake.lua", "../other/behaviour_tree_car/xmake.lua")
+includes("../other/rplidar/xmake.lua")
 
 target("raspberry_pi")
     set_kind("binary")
@@ -42,6 +42,7 @@ target("raspberry_pi")
 
     add_deps("utils")
     add_deps("behaviour_tree", "behaviour_tree_car")
+    add_deps("rplidar")
      
     add_packages("spdlog")
     add_packages("fmt")
