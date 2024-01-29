@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "behaviour_tree/node/custom/Condition.hpp"
+#include "behaviour_tree/node/custom/CustomNode.hpp"
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
@@ -12,11 +12,11 @@
 
 namespace behaviour_tree::node::custom::condition
 {
-	class NearbyPoints final : public Condition
+	class NearbyPoints final : public CustomNode
 	{
 	public:
 		NearbyPoints(const std::string& name, const int& min_angle, const int& max_angle, const int& avg_distance) :
-			Condition(name),
+			CustomNode(name),
 			min_angle(min_angle),
 			max_angle(max_angle),
 			avg_distance(avg_distance)
@@ -31,12 +31,12 @@ namespace behaviour_tree::node::custom::condition
 			for (auto& measure : car_system->getScanData()) {
 				if (measure.angle > this->getMinAngle() && measure.angle < this->getMaxAngle()) {
 					if (measure.distance < this->getAvgDistance()) {
-						return Status::Failure;
+						return Status::Success;
 					}
 				}
 			}
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
-			return Status::Success;
+			return Status::Failure;
 		}
 
 		const int& getMinAngle() const {

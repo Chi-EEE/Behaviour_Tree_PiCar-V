@@ -5,16 +5,16 @@
 
 #include <chrono>
 
-#include "behaviour_tree/node/custom/Action.hpp"
+#include "behaviour_tree/node/custom/CustomNode.hpp"
 
 #include "behaviour_tree/Context.h"
 
 namespace behaviour_tree::node::custom::action
 {
-	class Wait final : public Action
+	class Wait final : public CustomNode
 	{
 	public:
-		Wait(const std::string &name, const int &ms, const bool &reset_on_non_consecutive_tick) : Action(name), ms(ms), reset_on_non_consecutive_tick(reset_on_non_consecutive_tick)
+		Wait(const std::string &name, const int &ms, const bool &reset_on_non_consecutive_tick) : CustomNode(name), ms(ms), reset_on_non_consecutive_tick(reset_on_non_consecutive_tick)
 		{
 		}
 

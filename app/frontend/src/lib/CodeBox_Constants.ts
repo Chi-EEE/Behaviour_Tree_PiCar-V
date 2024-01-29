@@ -360,6 +360,14 @@ export const xml_schema = {
         {
             name: "Repeat",
             children: common_nodes,
+            attributes: [
+                "count",
+                {
+                    name: "break_on_fail",
+                    values: ["true", "false"],
+                    completion: { type: "keyword" },
+                }
+            ],
             completion: { type: "keyword" },
         },
 
@@ -473,7 +481,7 @@ const node_information_list = new Map<string, string>([
     ["Selector", "Runs children until one succeeds"],
     ["Sequence", "Runs children until one fails"],
     ["Invert", "Inverts the result of the child"],
-    ["Repeat", "Repeats the child until it fails"],
+
     ["Fail", "Always fails"],
     ["Succeed", "Always succeeds"],
     ["UseRoot", "Goes to the given root node id"],

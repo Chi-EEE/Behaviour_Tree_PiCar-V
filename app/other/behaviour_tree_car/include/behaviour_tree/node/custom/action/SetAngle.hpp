@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "behaviour_tree/node/custom/Action.hpp"
+#include "behaviour_tree/node/custom/CustomNode.hpp"
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
@@ -14,10 +14,10 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class SetAngle final : public Action
+	class SetAngle final : public CustomNode
 	{
 	public:
-		SetAngle(const std::string& name, const ServoType& servo_type, const int& angle) : Action(name), servo_type(servo_type), angle(angle)
+		SetAngle(const std::string& name, const ServoType& servo_type, const int& angle) : CustomNode(name), servo_type(servo_type), angle(angle)
 		{
 		}
 

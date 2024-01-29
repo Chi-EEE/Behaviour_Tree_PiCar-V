@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "behaviour_tree/node/custom/Action.hpp"
+#include "behaviour_tree/node/custom/CustomNode.hpp"
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
@@ -12,10 +12,10 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class Log final : public Action
+	class Log final : public CustomNode
 	{
 	public:
-		Log(const std::string& name, const std::string& text) : Action(name), text(text)
+		Log(const std::string& name, const std::string& text) : CustomNode(name), text(text)
 		{
 		}
 

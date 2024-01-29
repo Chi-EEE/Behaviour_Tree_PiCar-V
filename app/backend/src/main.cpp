@@ -16,7 +16,7 @@
 #include "behaviour_tree/BehaviourTreeParser.hpp"
 
 const std::string host = "127.0.0.1";
-const int port = 8848;
+const int port = 10001;
 
 const std::string url = "http://" + host + ":" + std::to_string(port);
 
@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 
 	std::vector<std::pair<std::string, int>> ip_addresses = {
 		{host, port},
-		{"0.0.0.0", 8848},
+		{"0.0.0.0", port},
 	};
 
 	for (auto& [host, port] : ip_addresses) {

@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "behaviour_tree/node/custom/Action.hpp"
+#include "behaviour_tree/node/custom/CustomNode.hpp"
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
@@ -14,10 +14,10 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class SetSpeed final : public Action
+	class SetSpeed final : public CustomNode
 	{
 	public:
-		SetSpeed(const std::string& name, const WheelType& wheel_type, const int& speed) : Action(name), wheel_type(wheel_type), speed(speed)
+		SetSpeed(const std::string& name, const WheelType& wheel_type, const int& speed) : CustomNode(name), wheel_type(wheel_type), speed(speed)
 		{
 		}
 

@@ -12,8 +12,6 @@
 
 #include "behaviour_tree/BehaviourTree.hpp"
 #include "behaviour_tree/node/custom/CustomNode.hpp"
-#include "behaviour_tree/node/custom/Action.hpp"
-#include "behaviour_tree/node/custom/Condition.hpp"
 
 #include "behaviour_tree/node/custom/CustomNodeParser.hpp"
 
@@ -193,10 +191,10 @@ namespace behaviour_tree::node::custom
 			case utils::Utility::hash("Condition:NearbyPoints"):
 			{
 				const int min_angle = node.attribute("angle").as_int();
-				if (min_angle < 0 || min_angle > 180)
+				if (min_angle < 0 || min_angle > 360)
 					return tl::unexpected(fmt::format(R"(Invalid min_angle: '{}' | Condition:NearbyPoints:["{}",{}])", min_angle, name_attribute, index));
 				const int max_angle = node.attribute("angle").as_int();
-				if (max_angle < 0 || max_angle > 180)
+				if (max_angle < 0 || max_angle > 360)
 					return tl::unexpected(fmt::format(R"(Invalid max_angle: '{}' | Condition:NearbyPoints:["{}",{}])", max_angle, name_attribute, index));
 				const int avg_distance = node.attribute("angle").as_int();
 				if (avg_distance < 0)

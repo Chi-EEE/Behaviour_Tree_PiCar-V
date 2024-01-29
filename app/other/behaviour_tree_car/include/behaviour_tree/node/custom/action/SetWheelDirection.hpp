@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "behaviour_tree/node/custom/Action.hpp"
+#include "behaviour_tree/node/custom/CustomNode.hpp"
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
@@ -15,10 +15,10 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class SetWheelDirection final : public Action
+	class SetWheelDirection final : public CustomNode
 	{
 	public:
-		SetWheelDirection(const std::string& name, const WheelType& wheel_type, const DirectionType& direction_type) : Action(name), wheel_type(wheel_type), direction_type(direction_type)
+		SetWheelDirection(const std::string& name, const WheelType& wheel_type, const DirectionType& direction_type) : CustomNode(name), wheel_type(wheel_type), direction_type(direction_type)
 		{
 		}
 
