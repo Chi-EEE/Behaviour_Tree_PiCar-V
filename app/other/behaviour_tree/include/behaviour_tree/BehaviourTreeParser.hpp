@@ -5,6 +5,7 @@
 
 #include <filesystem>
 #include <string>
+#include <numeric>
 
 #include <tl/expected.hpp>
 #include <pugixml.hpp>
@@ -224,22 +225,22 @@ namespace behaviour_tree
 			}
 			case DecoratorType::Repeat:
 			{
-				const std::string count_string = node.attribute("count").as_string();
+				std::string count_string = node.attribute("count").as_string();
 				// Convert to lower case: https://stackoverflow.com/a/313990
 				std::transform(count_string.begin(), count_string.end(), count_string.begin(),
 					[](unsigned char c) { return std::tolower(c); });
-				int count = 0;
+				unsigned long count = 0;
 				if (count_string == "inf") {
-					count = -1;
+					count = std::numeric_limits<unsigned long>::max();
 				}
 				else {
 					try {
-						count = std::stoi(count_string);
+						count = std::stoll(count_string);
 						if (count < 0) {
 							return tl::unexpected(fmt::format(R"(Invalid count: '{}' | Repeat:["{}",{}])", count_string, name_attribute, index));
 						}
 					}
-					catch (std::exception& _) {
+					catch (const std::exception &_) {
 						return tl::unexpected(fmt::format(R"(Invalid count: '{}' | Repeat:["{}",{}])", count_string, name_attribute, index));
 					}
 				}

@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include <numeric>
+
 #include "Decorator.hpp"
 
 namespace behaviour_tree::node::decorator
@@ -10,7 +12,7 @@ namespace behaviour_tree::node::decorator
 	class Repeat final : public Decorator
 	{
 	public:
-		Repeat(const std::string& name, std::unique_ptr<Node> child, const int& count, const bool& break_on_fail) : Decorator(name, std::move(child)), count(count), break_on_fail(break_on_fail)
+		Repeat(const std::string& name, std::unique_ptr<Node> child, const unsigned long& count, const bool& break_on_fail) : Decorator(name, std::move(child)), count(count), break_on_fail(break_on_fail)
 		{
 		}
 
@@ -18,19 +20,38 @@ namespace behaviour_tree::node::decorator
 
 		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
-			for (int i = 0; i < this->count; i++)
-			{
-				auto status = this->child->tick(tick_count, context);
-				switch (status)
+			if (this->count == std::numeric_limits<unsigned long>::max()) {
+				while (true)
 				{
-				case Status::Success:
-					continue;
-				case Status::Failure:
-					if (this->break_on_fail)
+					auto status = this->child->tick(tick_count, context);
+					switch (status)
 					{
-						return Status::Failure;
+					case Status::Success:
+						continue;
+					case Status::Failure:
+						if (this->break_on_fail)
+						{
+							return Status::Failure;
+						}
+						continue;
 					}
-					continue;
+				}
+			}
+			else {
+				for (int i = 0; i < this->count; i++)
+				{
+					auto status = this->child->tick(tick_count, context);
+					switch (status)
+					{
+					case Status::Success:
+						continue;
+					case Status::Failure:
+						if (this->break_on_fail)
+						{
+							return Status::Failure;
+						}
+						continue;
+					}
 				}
 			}
 		}
@@ -43,7 +64,7 @@ namespace behaviour_tree::node::decorator
 				return fmt::format(R"(<Repeat count="{}" break_on_fail="{}">{}</Repeat>)", this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
 		}
 
-		const int& getCount() const {
+		const unsigned long& getCount() const {
 			return this->count;
 		}
 
@@ -52,7 +73,7 @@ namespace behaviour_tree::node::decorator
 		}
 
 	private:
-		const int count;
+		const unsigned long count;
 		const bool break_on_fail;
 	};
 }

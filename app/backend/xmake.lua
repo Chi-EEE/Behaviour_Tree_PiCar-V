@@ -45,6 +45,8 @@ target("backend")
         add_defines("_WIN32")
     end
 
+    add_defines("NOMINMAX")
+
     -- Could improve this so that it only builds the frontend if it has changed
     after_build_files(function(target)
         import("core.project.config")

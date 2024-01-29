@@ -20,3 +20,5 @@ target("behaviour_tree")
     add_includedirs("include", {public = true})
     add_headerfiles("include/(**.hpp)", "include/(**.h)")
     add_files("include/**.cpp")
+
+    add_defines("NOMINMAX")
