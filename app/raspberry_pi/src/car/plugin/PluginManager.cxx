@@ -27,6 +27,16 @@ namespace car::plugin {
 			}
 		}
 
+		void stop() {
+			for (auto& plugin : this->plugins) {
+				plugin.lock()->stop();
+			}
+		}
+
+		void terminate() {
+			this->stop();
+		}
+
 		void addPlugin(std::shared_ptr<Plugin> plugin) {
 			this->plugins.push_back(plugin);
 		}

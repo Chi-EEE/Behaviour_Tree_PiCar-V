@@ -53,9 +53,7 @@ namespace car::system
 			this->messaging_system->stop();
 			this->lidar_device->stop();
 			this->movement_system->stop();
-			for (auto& plugin : this->plugins) {
-				plugin.lock()->stop();
-			}
+			this->plugin_manager->stop();
 		}
 	}
 
@@ -67,6 +65,7 @@ namespace car::system
 		this->messaging_system->terminate();
 		this->lidar_device->terminate();
 		this->movement_system->terminate();
+		this->plugin_manager->terminate();
 	}
 
 	void CarSystem::update()

@@ -69,8 +69,6 @@ namespace car::system {
 		const std::vector<Measure>& getScanData() const { return this->scan_data; }
 
 	private:
-		std::vector<std::weak_ptr<plugin::Plugin>> plugins;
-
 		const std::unique_ptr<LidarDevice> lidar_device;
 		const std::unique_ptr<MessagingSystem> messaging_system;
 		const std::unique_ptr<MovementSystem> movement_system;

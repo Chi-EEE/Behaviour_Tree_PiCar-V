@@ -81,7 +81,6 @@ namespace car::display {
 		);
 		refresh_ui.detach();
 		screen_thread.join();
-
 	};
 
 	void CarConsole::terminate() {
