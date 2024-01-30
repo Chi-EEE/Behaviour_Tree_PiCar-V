@@ -15,6 +15,8 @@
 #include "car/system/movement/controller/DummyMovementController.cxx"
 #include "car/system/movement/controller/DeviceMovementController.cxx"
 
+#include "car/plugin/PluginManager.cxx"
+
 #include "car/system/logging/VectorSink.cxx"
 
 #include "behaviour_tree/BehaviourTreeHandler.hpp"
@@ -36,6 +38,7 @@ std::string getWebSocketUrl()
 
 int main()
 {
+	using namespace car::plugin;
 	using namespace car::display;
 	using namespace car::system;
 	using namespace car::system::lidar;
@@ -47,7 +50,6 @@ int main()
 	// spdlog::set_level(spdlog::level::off);
 
 	std::string websocket_url = getWebSocketUrl();
-	spdlog::info("Got websocket url: {}", websocket_url);
 
 	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 
@@ -64,6 +66,11 @@ int main()
 	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 	// std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
 
+	std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>();
+
+	std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>();
+	plugin_manager->addPlugin(behaviour_tree_handler);
+
 	std::shared_ptr<car::system::logging::vector_sink_mt> vector_sink = std::make_shared<car::system::logging::vector_sink_mt>(300);
 	auto vector_sink_logger = std::make_shared<spdlog::logger>("CLI", static_cast<std::shared_ptr<spdlog::sinks::sink>>(vector_sink));
 	spdlog::set_default_logger(vector_sink_logger);
@@ -73,11 +80,9 @@ int main()
 			websocket_url,
 			std::move(scanner),
 			std::move(messaging_system),
-			std::move(movement_system)
+			std::move(movement_system),
+			std::move(plugin_manager)
 		);
-
-	std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>();
-	car_system->addPlugin(behaviour_tree_handler);
 
 	// The CarConsole object will display the UI and handle user input:
 	CarConsole car_console(std::move(car_system), vector_sink);

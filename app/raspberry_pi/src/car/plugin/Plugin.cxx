@@ -12,7 +12,7 @@ namespace car::system {
 namespace car::plugin {
 	class Plugin {
     public:
-        virtual void init(std::shared_ptr<car::system::CarSystem> car_system) = 0;
+        virtual void initialize(std::shared_ptr<car::system::CarSystem> car_system) = 0;
         virtual void update() = 0;
         virtual void stop() = 0;
     };

@@ -6,7 +6,12 @@ namespace car::system
 		const std::string& websocket_url,
 		std::unique_ptr<LidarDevice> lidar_device,
 		std::unique_ptr<MessagingSystem> messaging_system,
-		std::unique_ptr<MovementSystem> movement_system) : lidar_device(std::move(lidar_device)), messaging_system(std::move(messaging_system)), movement_system(std::move(movement_system))
+		std::unique_ptr<MovementSystem> movement_system,
+		std::unique_ptr<PluginManager> plugin_manager) : 
+		lidar_device(std::move(lidar_device)), 
+		messaging_system(std::move(messaging_system)), 
+		movement_system(std::move(movement_system)),
+		plugin_manager(std::move(plugin_manager))
 	{
 	}
 
@@ -15,6 +20,7 @@ namespace car::system
 		this->messaging_system->initialize();
 		this->lidar_device->initialize();
 		this->movement_system->initialize();
+		this->plugin_manager->initialize(shared_from_this());
 
 		this->messaging_system->speed_command_signal.connect(
 			[this](const int speed)
@@ -34,9 +40,10 @@ namespace car::system
 	void CarSystem::connectToServer()
 	{
 		if (!this->connectedToServer) {
+			this->connectedToServer = true;
 			this->messaging_system->start();
 			this->lidar_device->start();
-			this->connectedToServer = true;
+			this->movement_system->start();
 		}
 	}
 
@@ -68,15 +75,7 @@ namespace car::system
 		{
 			this->messaging_system->sendMessage(this->lidar_device->getLidarMessage());
 		}
-		for (std::weak_ptr<Plugin>& plugin : this->plugins) {
-			plugin.lock()->update();
-		}
-	}
-
-	void CarSystem::addPlugin(const std::shared_ptr<car::plugin::Plugin> plugin_)
-	{
-		this->plugins.push_back(plugin_);
-		plugin_->init(shared_from_this());
+		this->plugin_manager->update();
 	}
 
 	void CarSystem::startLidarDevice()

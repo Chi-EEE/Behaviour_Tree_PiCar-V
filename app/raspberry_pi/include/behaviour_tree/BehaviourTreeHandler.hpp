@@ -20,7 +20,7 @@ namespace behaviour_tree
 	class BehaviourTreeHandler : public car::plugin::Plugin
 	{
 	public:
-		void init(std::shared_ptr<car::system::CarSystem> car_system) override {
+		void initialize(std::shared_ptr<car::system::CarSystem> car_system) override {
 			this->car_system = car_system;
 			// The BehaviourTreeParser does not come with a CustomNodeParser since each program can have a different set of Action nodes
 			BehaviourTreeParser::instance().setCustomNodeParser(std::make_unique<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
@@ -36,23 +36,27 @@ namespace behaviour_tree
 					}
 					auto& behaviour_tree = maybe_behaviour_tree.value();
 					spdlog::info("Behaviour tree parsed successfully | {}", behaviour_tree->toString());
-					std::shared_ptr<Context> context = std::make_shared<CarContext>(CarContext(behaviour_tree, this->car_system));
-					behaviour_tree->start(context);
-					this->context = context;
+					this->addBehaviourTree(behaviour_tree);
 				}
 			);
 		}
 
 		void update() override {
-			if (this->context == nullptr)
-				return;
-			this->context->getBehaviourTree()->tick(this->tick_count, this->context);
-			++this->tick_count;
-			spdlog::info("Behaviour tree ticked | {}", this->tick_count);
+			if (this->context != nullptr)
+			{
+				this->context->getBehaviourTree()->tick(this->tick_count, this->context);
+				++this->tick_count;
+			}
 		}
 
 		void stop() override {
 			this->context = nullptr;
+		}
+
+		void runBehaviourTree(std::shared_ptr<BehaviourTree> behaviour_tree) {
+			this->tick_count = 0;
+			std::shared_ptr<Context> context = std::make_shared<CarContext>(CarContext(behaviour_tree, this->car_system));
+			this->context = context;
 		}
 
 		void addBehaviourTree(std::shared_ptr<BehaviourTree> behaviour_tree) {
@@ -65,7 +69,11 @@ namespace behaviour_tree
 		}
 
 		std::shared_ptr<BehaviourTree> getBehaviourTree(int id) {
-			return this->behaviour_trees.at(id);
+			return this->behaviour_trees.contains(id) ? this->behaviour_trees[id] : nullptr;
+		}
+
+		const tsl::robin_map<int, std::shared_ptr<BehaviourTree>>& getBehaviourTrees() const {
+			return this->behaviour_trees;
 		}
 
 	private:
