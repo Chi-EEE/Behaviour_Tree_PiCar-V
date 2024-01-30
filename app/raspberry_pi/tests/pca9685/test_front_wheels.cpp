@@ -22,7 +22,7 @@ int setAngle(int &angle, PCA9685 pwm, int channel);
 /**
  * Following method clamps the x to in_min and in_max.
  * Afterwards, it puts the result of that into the range of out_min and out_max
-*/
+ */
 int map(int x, int in_min, int in_max, int out_min, int out_max)
 {
     return ((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min);
@@ -64,7 +64,7 @@ int main()
     std::this_thread::sleep_for(std::chrono::microseconds(static_cast<int>(1000 * 100)));
     cout << "Setting frequency: " << FREQUENCY << endl;
     pwm.setPWMFreq(FREQUENCY);
-    std::this_thread::sleep_for(std::chrono::microseconds(static_cast<int>(1000 * 1000 )));
+    std::this_thread::sleep_for(std::chrono::microseconds(static_cast<int>(1000 * 1000)));
 
     cout << "Returning to HOME position." << endl;
     setAngle(homeh, pwm, chanh);

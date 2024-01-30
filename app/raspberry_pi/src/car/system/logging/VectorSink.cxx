@@ -10,15 +10,18 @@
 #include <spdlog/details/synchronous_factory.h>
 #include <iostream>
 
-namespace car::system::logging {
-	template<typename Mutex>
-	class VectorSink : public spdlog::sinks::base_sink<Mutex> {
+namespace car::system::logging
+{
+	template <typename Mutex>
+	class VectorSink : public spdlog::sinks::base_sink<Mutex>
+	{
 	public:
 		VectorSink(int max_lines) : max_lines(max_lines)
 		{
 		}
 
-		void sink_it_(const spdlog::details::log_msg& msg) override {
+		void sink_it_(const spdlog::details::log_msg &msg) override
+		{
 			spdlog::memory_buf_t formatted;
 			spdlog::sinks::base_sink<Mutex>::formatter_->format(msg, formatted);
 			if (this->log_messages.size() < this->max_lines)
@@ -37,7 +40,8 @@ namespace car::system::logging {
 			this->log_messages.clear();
 		};
 
-		const std::vector<std::string>& get_log_messages() const {
+		const std::vector<std::string> &get_log_messages() const
+		{
 			return this->log_messages;
 		}
 

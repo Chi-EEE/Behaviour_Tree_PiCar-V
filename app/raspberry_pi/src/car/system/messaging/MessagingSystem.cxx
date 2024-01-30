@@ -16,13 +16,14 @@
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
 
-namespace car::system::messaging {
+namespace car::system::messaging
+{
 	// https://stackoverflow.com/a/46711735
 	static constexpr uint32_t hash(const std::string_view s) noexcept
 	{
 		uint32_t hash = 5381;
 
-		for (const char* c = s.data(); c < s.data() + s.size(); ++c)
+		for (const char *c = s.data(); c < s.data() + s.size(); ++c)
 			hash = ((hash << 5) + hash) + (unsigned char)*c;
 
 		return hash;
@@ -31,7 +32,8 @@ namespace car::system::messaging {
 	class MessagingSystem
 	{
 	public:
-		MessagingSystem(const std::string& websocket_url) : websocket_url(websocket_url) {
+		MessagingSystem(const std::string &websocket_url) : websocket_url(websocket_url)
+		{
 		}
 
 		void initialize()
@@ -39,17 +41,14 @@ namespace car::system::messaging {
 			ix::initNetSystem();
 		}
 
-		void initializeWebSocket() {
+		void initializeWebSocket()
+		{
 			this->websocket = std::make_unique<ix::WebSocket>();
 			this->websocket->setUrl(this->websocket_url);
 			this->websocket->setOnMessageCallback(
-				std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1)
-			);
+				std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));
 			this->handle_message_signal.connect([this](const std::string message)
-				{
-					this->handleMessage(message);
-				}
-			);
+												{ this->handleMessage(message); });
 		}
 
 		void start()
@@ -57,15 +56,18 @@ namespace car::system::messaging {
 			initializeWebSocket();
 			this->websocket->start();
 			bool open = false;
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 3; i++)
+			{
 				ix::ReadyState ready_state = this->websocket->getReadyState();
-				if (ready_state == ix::ReadyState::Open) {
+				if (ready_state == ix::ReadyState::Open)
+				{
 					open = true;
 					break;
 				}
 				std::this_thread::sleep_for(std::chrono::milliseconds(i * 3000));
 			}
-			if (!open) {
+			if (!open)
+			{
 				spdlog::error("Could not connect to websocket");
 				return;
 			}
@@ -75,22 +77,25 @@ namespace car::system::messaging {
 			}
 		}
 
-		void stop() {
+		void stop()
+		{
 			this->websocket->stop();
 			this->websocket = nullptr;
 		}
 
-		void terminate() {
+		void terminate()
+		{
 			this->stop();
 			ix::uninitNetSystem();
 		}
 
-		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() { return this->custom_command_signal; }
-		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->handle_message_signal; }
+		nod::signal<void(const std::string, const std::string)> &getCustomCommandSignal() { return this->custom_command_signal; }
+		nod::signal<void(const std::string)> &getHandleMessageSignal() { return this->handle_message_signal; }
 
-		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const
+		void onMessageCallback(const ix::WebSocketMessagePtr &msg) const
 		{
-			switch (msg->type) {
+			switch (msg->type)
+			{
 			case ix::WebSocketMessageType::Open:
 			{
 				spdlog::info("WebSocket connected");
@@ -108,27 +113,32 @@ namespace car::system::messaging {
 				this->handle_message_signal(msg->str);
 			}
 			}
-
 		}
 
-		void handleMessage(const std::string& message) const {
+		void handleMessage(const std::string &message) const
+		{
 			rapidjson::Document message_json;
 			message_json.Parse(message.c_str());
-			if (message_json.HasParseError() || !message_json.IsObject()) {
+			if (message_json.HasParseError() || !message_json.IsObject())
+			{
 				spdlog::error("An error has occurred while handling the message: {}", message);
 				return;
 			}
-			if (!message_json.HasMember("type") || !message_json["type"].IsString()) {
+			if (!message_json.HasMember("type") || !message_json["type"].IsString())
+			{
 				spdlog::error("Type does not exist in json", message);
 				return;
 			}
 			const std::string type = message_json["type"].GetString();
-			if (type == "car") {
+			if (type == "car")
+			{
 				return;
 			}
 
-			try {
-				switch (hash(type)) {
+			try
+			{
+				switch (hash(type))
+				{
 				case hash("command"):
 					this->handleCommand(message_json);
 					break;
@@ -139,50 +149,63 @@ namespace car::system::messaging {
 					break;
 				}
 			}
-			catch (std::exception e) {
+			catch (std::exception e)
+			{
 				spdlog::error("An error has occurred while handling the message: {} | {}", message, e.what());
 			}
 		}
 
-		void handleCommand(const rapidjson::Value& message_json) const {
-			if (!message_json.HasMember("command") || !message_json["command"].IsString()) {
+		void handleCommand(const rapidjson::Value &message_json) const
+		{
+			if (!message_json.HasMember("command") || !message_json["command"].IsString())
+			{
 				spdlog::error("Command not found or not a string in the JSON.");
 				return;
 			}
 
 			const std::string command = message_json["command"].GetString();
 
-			switch (hash(command)) {
-			case hash("turn"): {
-				if (message_json.HasMember("angle") && message_json["angle"].IsFloat()) {
+			switch (hash(command))
+			{
+			case hash("turn"):
+			{
+				if (message_json.HasMember("angle") && message_json["angle"].IsFloat())
+				{
 					float angle = message_json["angle"].GetFloat();
 					this->angle_command_signal(angle);
 					spdlog::info("Turning by {} angle", angle);
 				}
-				else {
+				else
+				{
 					spdlog::error("Invalid or missing 'angle' in the JSON for 'turn' command.");
 				}
 				break;
 			}
-			case hash("move"): {
-				if (message_json.HasMember("speed") && message_json["speed"].IsInt()) {
+			case hash("move"):
+			{
+				if (message_json.HasMember("speed") && message_json["speed"].IsInt())
+				{
 					int speed = message_json["speed"].GetInt();
 					speed_command_signal(speed);
 					spdlog::info("Moving with {} speed", speed);
 				}
-				else {
+				else
+				{
 					spdlog::error("Invalid or missing 'speed' in the JSON for 'move' command.");
 				}
 				break;
 			}
-			case hash("custom"): {
+			case hash("custom"):
+			{
 				if (message_json.HasMember("custom_type") && message_json.HasMember("custom") &&
-					message_json["custom_type"].IsString() && message_json["custom"].IsString()) {
+					message_json["custom_type"].IsString() && message_json["custom"].IsString())
+				{
 					const std::string custom_type = message_json["custom_type"].GetString();
 					const std::string custom = message_json["custom"].GetString();
 					this->custom_command_signal(custom_type, custom);
 				}
-				else {
+				else
+				{
 					spdlog::error("Invalid or missing 'custom_type' or 'custom' in the JSON for 'custom' command.");
 				}
 				break;
@@ -192,7 +215,8 @@ namespace car::system::messaging {
 			}
 		}
 
-		void sendMessage(const std::string& message) {
+		void sendMessage(const std::string &message)
+		{
 			if (this->websocket != nullptr)
 				this->websocket->send(message);
 		}
@@ -204,6 +228,7 @@ namespace car::system::messaging {
 		nod::signal<void(const float)> angle_command_signal;
 		nod::signal<void(const std::string)> handle_message_signal;
 		nod::signal<void(const std::string, const std::string)> custom_command_signal;
+
 	private:
 		std::unique_ptr<ix::WebSocket> websocket;
 		std::string websocket_url;

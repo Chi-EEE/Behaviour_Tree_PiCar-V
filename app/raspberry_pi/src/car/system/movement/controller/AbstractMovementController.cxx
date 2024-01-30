@@ -12,14 +12,14 @@ namespace car::system::movement::controller
         virtual void stop() = 0;
         virtual void terminate() = 0;
 
-        virtual void setRearWheelsSpeed(const int& speed) = 0;
+        virtual void setRearWheelsSpeed(const int &speed) = 0;
 
-        virtual void setRearLeftWheelSpeed(const int& speed) = 0;
-        virtual void setRearRightWheelSpeed(const int& speed) = 0;
+        virtual void setRearLeftWheelSpeed(const int &speed) = 0;
+        virtual void setRearRightWheelSpeed(const int &speed) = 0;
 
-		virtual void setFrontWheelsAngle(const float& angle) = 0;
-		virtual void setCameraServo1Angle(const float& angle) = 0;
-		virtual void setCameraServo2Angle(const float& angle) = 0;
+        virtual void setFrontWheelsAngle(const float &angle) = 0;
+        virtual void setCameraServo1Angle(const float &angle) = 0;
+        virtual void setCameraServo2Angle(const float &angle) = 0;
 
         virtual void setRearWheelsDirectionToForward() = 0;
         virtual void setRearLeftWheelDirectionToForward() = 0;

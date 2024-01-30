@@ -19,11 +19,11 @@ class BackWheels
 {
 public:
     BackWheels(const int &bus_number = 1) : left_wheel(std::make_unique<TB6612>(Motor_A, PWM_A)),
-                                             right_wheel(std::make_unique<TB6612>(Motor_B, PWM_B))
+                                            right_wheel(std::make_unique<TB6612>(Motor_B, PWM_B))
     {
         this->forward_A = true;
         this->forward_B = true;
-        
+
         this->left_wheel->setOffset(false);
         this->right_wheel->setOffset(false);
 
@@ -111,6 +111,7 @@ public:
     }
 
     PCA9685 pca9685;
+
 private:
     std::unique_ptr<TB6612> left_wheel;
     std::unique_ptr<TB6612> right_wheel;

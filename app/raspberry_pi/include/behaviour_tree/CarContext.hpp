@@ -30,7 +30,8 @@ namespace behaviour_tree
             this->messages.push_back(message);
         }
 
-        void _() override {};
+        void _() override{};
+
     private:
         std::shared_ptr<car::system::CarSystem> car_system;
         std::vector<std::string> messages;

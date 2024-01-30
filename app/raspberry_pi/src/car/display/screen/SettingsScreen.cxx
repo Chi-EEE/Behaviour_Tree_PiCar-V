@@ -19,89 +19,93 @@ using namespace car::display::component::debug;
 
 using namespace ftxui;
 
-namespace car::display::screen {
-	class SettingsScreen {
+namespace car::display::screen
+{
+	class SettingsScreen
+	{
 	public:
-		SettingsScreen(std::shared_ptr<CarSystem> car_system) :
-			car_system(car_system),
-			debug_messaging_text_box(DebugMessagingTextbox(car_system->getHandleMessageSignal()))
+		SettingsScreen(std::shared_ptr<CarSystem> car_system) : car_system(car_system),
+																debug_messaging_text_box(DebugMessagingTextbox(car_system->getHandleMessageSignal()))
 		{
-
 		}
 
-		Component element() {
+		Component element()
+		{
 			this->debug_lidar_checkbox.getLidarMotorSignal().connect([&](bool connected)
-				{
+																	 {
 					if (connected) {
 						this->car_system->startLidarDevice();
 					}
 					else {
 						this->car_system->stopLidarDevice();
-					}
-				}
-			);
+					} });
 
 			auto lidar_motor_checkbox_component = this->debug_lidar_checkbox.element();
 
 			this->debug_movement_renderer.getRearWheelDirectionSignal().connect([&](bool direction)
-				{
+																				{
 					if (direction) {
 						this->car_system->setRearWheelsDirectionToForward();
 					}
 					else {
 						this->car_system->setRearWheelsDirectionToBackward();
-					}
-				}
-			);
+					} });
 
 			auto movement_settings_renderer = this->debug_movement_renderer.element();
 
 			auto debug_messaging_text_box_renderer = this->debug_messaging_text_box.element();
 
 			auto settings_container = Container::Vertical(
-				{
-					Renderer([&] {return separatorEmpty(); }),
-					Container::Vertical({
-						this->debug_enabler.getCheckbox(),
-					}) | borderDouble,
-					Container::Vertical(
-						{
-							Renderer([&] {return separatorEmpty(); }),
-							Container::Vertical({
-								lidar_motor_checkbox_component,
-							}) | border,
-							Renderer([&] {return separatorEmpty(); }),
-							Container::Vertical({
-								movement_settings_renderer,
-							}) | border,
-							Renderer([&] {return separatorEmpty(); }),
-							Container::Vertical({
-								debug_messaging_text_box_renderer,
-							}) | border,
-						}
-					) | Maybe(&this->debug_enabler.isEnabled())
-				}
-			);
+				{Renderer([&]
+						  { return separatorEmpty(); }),
+				 Container::Vertical({
+					 this->debug_enabler.getCheckbox(),
+				 }) | borderDouble,
+				 Container::Vertical(
+					 {
+						 Renderer([&]
+								  { return separatorEmpty(); }),
+						 Container::Vertical({
+							 lidar_motor_checkbox_component,
+						 }) | border,
+						 Renderer([&]
+								  { return separatorEmpty(); }),
+						 Container::Vertical({
+							 movement_settings_renderer,
+						 }) | border,
+						 Renderer([&]
+								  { return separatorEmpty(); }),
+						 Container::Vertical({
+							 debug_messaging_text_box_renderer,
+						 }) | border,
+					 }) |
+					 Maybe(&this->debug_enabler.isEnabled())});
 
 			settings_container |= this->debug_enabler.getWarningModal();
 
 			return settings_container;
 		}
 
-		void update() {
-			if (this->debug_enabler.isEnabled()) {
-				if (this->debug_movement_renderer.updateFrontWheels()) {
-					this->car_system->setFrontWheelsAngle({ this->debug_movement_renderer.getFrontWheelsAngleSliderValue() * 1.0f });
+		void update()
+		{
+			if (this->debug_enabler.isEnabled())
+			{
+				if (this->debug_movement_renderer.updateFrontWheels())
+				{
+					this->car_system->setFrontWheelsAngle({this->debug_movement_renderer.getFrontWheelsAngleSliderValue() * 1.0f});
 				}
-				if (this->debug_movement_renderer.updateCameraServo1()) {
-					this->car_system->setCameraServo1Angle({ this->debug_movement_renderer.getCameraServo1AngleSliderValue() * 1.0f });
+				if (this->debug_movement_renderer.updateCameraServo1())
+				{
+					this->car_system->setCameraServo1Angle({this->debug_movement_renderer.getCameraServo1AngleSliderValue() * 1.0f});
 				}
-				if (this->debug_movement_renderer.updateCameraServo2()) {
-					this->car_system->setCameraServo2Angle({ this->debug_movement_renderer.getCameraServo2AngleSliderValue() * 1.0f });
+				if (this->debug_movement_renderer.updateCameraServo2())
+				{
+					this->car_system->setCameraServo2Angle({this->debug_movement_renderer.getCameraServo2AngleSliderValue() * 1.0f});
 				}
-				if (this->debug_movement_renderer.updateRearWheels()) {
-					this->car_system->setRearLeftWheelSpeed({ this->debug_movement_renderer.getRearLeftWheelSpeedSliderValue() });
-					this->car_system->setRearRightWheelSpeed({ this->debug_movement_renderer.getRearRightWheelSpeedSliderValue() });
+				if (this->debug_movement_renderer.updateRearWheels())
+				{
+					this->car_system->setRearLeftWheelSpeed({this->debug_movement_renderer.getRearLeftWheelSpeedSliderValue()});
+					this->car_system->setRearRightWheelSpeed({this->debug_movement_renderer.getRearRightWheelSpeedSliderValue()});
 				}
 			}
 		}

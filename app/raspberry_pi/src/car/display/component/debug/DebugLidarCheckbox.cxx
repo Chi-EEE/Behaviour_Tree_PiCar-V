@@ -9,41 +9,51 @@
 
 using namespace ftxui;
 
-namespace car::display::component::debug {
-	class DebugLidarCheckbox {
+namespace car::display::component::debug
+{
+	class DebugLidarCheckbox
+	{
 	private:
 		static constexpr auto LIDAR_MOTOR_ENABLED_MESSAGE = "Lidar Motor Status: Enabled";
 		static constexpr auto LIDAR_MOTOR_DISABLED_MESSAGE = "Lidar Motor Status: Disconnected";
+
 	public:
-		DebugLidarCheckbox() {
+		DebugLidarCheckbox()
+		{
 			auto lidar_motor_checkbox_option = CheckboxOption::Simple();
 			lidar_motor_checkbox_option.on_change = [&]
+			{
+				if (this->lidar_motor_loading_debounce)
 				{
-					if (this->lidar_motor_loading_debounce) {
-						this->lidar_motor_enabled = !this->lidar_motor_enabled;
-						return;
-					}
-					this->lidar_motor_loading_debounce = true;
-					if (this->lidar_motor_enabled) {
-						this->lidar_motor_status = LIDAR_MOTOR_ENABLED_MESSAGE;
-					}
-					else {
-						this->lidar_motor_status = LIDAR_MOTOR_DISABLED_MESSAGE;
-					}
-					this->lidar_motor_signal(this->lidar_motor_enabled);
-					this->lidar_motor_loading_debounce = false;
-				};
+					this->lidar_motor_enabled = !this->lidar_motor_enabled;
+					return;
+				}
+				this->lidar_motor_loading_debounce = true;
+				if (this->lidar_motor_enabled)
+				{
+					this->lidar_motor_status = LIDAR_MOTOR_ENABLED_MESSAGE;
+				}
+				else
+				{
+					this->lidar_motor_status = LIDAR_MOTOR_DISABLED_MESSAGE;
+				}
+				this->lidar_motor_signal(this->lidar_motor_enabled);
+				this->lidar_motor_loading_debounce = false;
+			};
 
 			this->lidar_motor_checkbox_component = Checkbox(&this->lidar_motor_status, &this->lidar_motor_enabled, lidar_motor_checkbox_option);
 		}
 
-		Component element() {
+		Component element()
+		{
 			return this->lidar_motor_checkbox_component;
 		}
 
-		nod::signal<void(bool)>& getLidarMotorSignal() {
+		nod::signal<void(bool)> &getLidarMotorSignal()
+		{
 			return this->lidar_motor_signal;
 		}
+
 	private:
 		nod::signal<void(bool)> lidar_motor_signal;
 

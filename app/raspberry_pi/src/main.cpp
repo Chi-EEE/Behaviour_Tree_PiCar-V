@@ -53,13 +53,13 @@ int main()
 
 	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 
-	//auto maybe_scanner = LidarScanner::create(GET_CONFIG_VALUE(lidar_port));
-	//if (!maybe_scanner.has_value())
+	// auto maybe_scanner = LidarScanner::create(GET_CONFIG_VALUE(lidar_port));
+	// if (!maybe_scanner.has_value())
 	//{
 	//	spdlog::error("Unable to connect to the Lidar Scanner");
 	//	throw std::runtime_error("Unable to connect to the Lidar Scanner");
-	//}
-	//std::unique_ptr<LidarScanner>& scanner = maybe_scanner.value();
+	// }
+	// std::unique_ptr<LidarScanner>& scanner = maybe_scanner.value();
 
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(websocket_url);
 
@@ -75,14 +75,12 @@ int main()
 	auto vector_sink_logger = std::make_shared<spdlog::logger>("CLI", static_cast<std::shared_ptr<spdlog::sinks::sink>>(vector_sink));
 	spdlog::set_default_logger(vector_sink_logger);
 
-	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>
-		(
-			websocket_url,
-			std::move(scanner),
-			std::move(messaging_system),
-			std::move(movement_system),
-			std::move(plugin_manager)
-		);
+	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
+		websocket_url,
+		std::move(scanner),
+		std::move(messaging_system),
+		std::move(movement_system),
+		std::move(plugin_manager));
 
 	// The CarConsole object will display the UI and handle user input:
 	CarConsole car_console(std::move(car_system), vector_sink);

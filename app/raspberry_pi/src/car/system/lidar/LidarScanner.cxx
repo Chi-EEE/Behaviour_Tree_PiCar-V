@@ -18,8 +18,7 @@ namespace car::system::lidar
 	class LidarScanner final : public LidarDevice
 	{
 	public:
-		[[nodiscard]]
-		static tl::expected<std::unique_ptr<LidarScanner>, nullptr_t> create(const std::string &lidar_port)
+		[[nodiscard]] static tl::expected<std::unique_ptr<LidarScanner>, nullptr_t> create(const std::string &lidar_port)
 		{
 			auto maybe_lidar = RPLidar::create(lidar_port);
 			if (maybe_lidar.has_value())
@@ -31,7 +30,7 @@ namespace car::system::lidar
 				return tl::make_unexpected(nullptr);
 			}
 		}
-		
+
 		LidarScanner(std::unique_ptr<RPLidar> lidar) : lidar(std::move(lidar)){};
 
 		void initialize() const final override

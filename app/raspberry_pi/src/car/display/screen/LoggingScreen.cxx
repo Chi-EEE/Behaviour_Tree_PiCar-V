@@ -11,17 +11,20 @@
 using namespace ftxui;
 using namespace car::system;
 
-namespace car::display::screen {
-	class LoggingScreen {
+namespace car::display::screen
+{
+	class LoggingScreen
+	{
 	public:
-		LoggingScreen(std::shared_ptr<logging::vector_sink_mt> vector_sink) : vector_sink(vector_sink) {
-		};
+		LoggingScreen(std::shared_ptr<logging::vector_sink_mt> vector_sink) : vector_sink(vector_sink){};
 
-		Component element() {
+		Component element()
+		{
 			// https://github.com/ArthurSonzogni/FTXUI/discussions/304
 			menu = Menu(&this->vector_sink->get_log_messages(), &selected_line);
 
-			my_custom_menu = Renderer(menu, [&] {
+			my_custom_menu = Renderer(menu, [&]
+									  {
 				int max_lines_shown = Terminal::Size().dimy - 5;
 				int begin = selected_line - max_lines_shown / 2;
 				int end = selected_line + max_lines_shown / 2;
@@ -40,8 +43,7 @@ namespace car::display::screen {
 						element = element | inverted;
 					elements.push_back(element);
 				}
-				return vbox(std::move(elements)) | vscroll_indicator | frame | border;
-				});
+				return vbox(std::move(elements)) | vscroll_indicator | frame | border; });
 			return my_custom_menu;
 		}
 
@@ -52,7 +54,6 @@ namespace car::display::screen {
 
 		Component menu;
 		Component my_custom_menu;
-
 
 		ftxui::Elements line_elements;
 	};

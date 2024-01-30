@@ -10,30 +10,38 @@
 using namespace ftxui;
 using namespace car::system;
 
-namespace car::display::component::main {
-	class MainButton {
+namespace car::display::component::main
+{
+	class MainButton
+	{
 	public:
-		MainButton(std::shared_ptr<CarSystem> car_system, Box& box) : car_system(car_system) {
-			auto main_button_lambda = [&] {
-				if (this->main_debounce) return;
+		MainButton(std::shared_ptr<CarSystem> car_system, Box &box) : car_system(car_system)
+		{
+			auto main_button_lambda = [&]
+			{
+				if (this->main_debounce)
+					return;
 				this->main_debounce = true;
 				this->button_pressed = !this->button_pressed;
-				if (button_pressed) {
+				if (button_pressed)
+				{
 					this->main_button_text = "Connecting...";
 					this->car_system->connectToServer();
 					this->main_button_text = "Stop Car Application";
 				}
-				else {
+				else
+				{
 					this->main_button_text = "Disconnecting...";
 					this->car_system->disconnectFromServer();
 					this->main_button_text = "Start Car Application";
 				}
 				this->main_debounce = false;
-				};
+			};
 
 			this->main_button = Button(&this->main_button_text, std::move(main_button_lambda), ButtonOption::Animated());
 		}
-		Component element() {
+		Component element()
+		{
 			return this->main_button;
 		}
 

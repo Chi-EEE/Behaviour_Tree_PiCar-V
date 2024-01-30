@@ -8,36 +8,47 @@
 
 #include "Plugin.cxx"
 
-namespace car::system {
+namespace car::system
+{
 	class CarSystem;
 }
 
-namespace car::plugin {
-	class PluginManager {
+namespace car::plugin
+{
+	class PluginManager
+	{
 	public:
-		void initialize(std::shared_ptr<system::CarSystem> car_system) {
-			for (std::weak_ptr<Plugin>& plugin : this->plugins) {
+		void initialize(std::shared_ptr<system::CarSystem> car_system)
+		{
+			for (std::weak_ptr<Plugin> &plugin : this->plugins)
+			{
 				plugin.lock()->initialize(car_system);
 			}
 		}
 
-		void update() {
-			for (std::weak_ptr<Plugin>& plugin : this->plugins) {
+		void update()
+		{
+			for (std::weak_ptr<Plugin> &plugin : this->plugins)
+			{
 				plugin.lock()->update();
 			}
 		}
 
-		void stop() {
-			for (auto& plugin : this->plugins) {
+		void stop()
+		{
+			for (auto &plugin : this->plugins)
+			{
 				plugin.lock()->stop();
 			}
 		}
 
-		void terminate() {
+		void terminate()
+		{
 			this->stop();
 		}
 
-		void addPlugin(std::shared_ptr<Plugin> plugin) {
+		void addPlugin(std::shared_ptr<Plugin> plugin)
+		{
 			this->plugins.push_back(plugin);
 		}
 

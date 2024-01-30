@@ -23,9 +23,9 @@ public:
 
     void setOffset(bool offset);
 
-    const int& getMotorPin() const;
+    const int &getMotorPin() const;
 
-    const int& getPWMPin() const;
+    const int &getPWMPin() const;
 
 private:
     const int motor_pin;

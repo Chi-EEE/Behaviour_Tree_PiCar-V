@@ -33,8 +33,7 @@ namespace car::system::movement::controller
 	class DeviceMovementController : public AbstractMovementController
 	{
 	public:
-		[[nodiscard]]
-		DeviceMovementController()
+		[[nodiscard]] DeviceMovementController()
 		{
 			gpioInitialise();
 			this->pwm = std::make_shared<PCA9685>();
@@ -73,45 +72,46 @@ namespace car::system::movement::controller
 			this->rear_right_wheel->stop();
 		}
 
-		void terminate() final override {
+		void terminate() final override
+		{
 			this->stop();
 			spdlog::info("Terminating all devices");
 			this->pwm->reset();
 			gpioTerminate();
 		}
 
-		void setRearWheelsSpeed(const int& speed) final override
+		void setRearWheelsSpeed(const int &speed) final override
 		{
 			spdlog::info("Both Rear Wheels speed are set to {}", speed);
 			this->rear_left_wheel->setSpeed(speed);
 			this->rear_right_wheel->setSpeed(speed);
 		}
 
-		void setRearLeftWheelSpeed(const int& speed) final override
+		void setRearLeftWheelSpeed(const int &speed) final override
 		{
 			spdlog::info("Left Rear Wheel speed is set to {}", speed);
 			this->rear_left_wheel->setSpeed(speed);
 		}
 
-		void setRearRightWheelSpeed(const int& speed) final override
+		void setRearRightWheelSpeed(const int &speed) final override
 		{
 			spdlog::info("Right Rear Wheel speed is set to {}", speed);
 			this->rear_right_wheel->setSpeed(speed);
 		}
 
-		void setFrontWheelsAngle(const float& angle) final override
+		void setFrontWheelsAngle(const float &angle) final override
 		{
 			spdlog::info("Front Wheels angle is set to {}", angle);
 			this->front_wheels->setAngle(angle);
 		}
 
-		void setCameraServo1Angle(const float& angle) final override
+		void setCameraServo1Angle(const float &angle) final override
 		{
 			spdlog::info("Camera Servo 1 angle is set to {}", angle);
 			this->camera_servo_1->setAngle(angle);
 		}
 
-		void setCameraServo2Angle(const float& angle) final override
+		void setCameraServo2Angle(const float &angle) final override
 		{
 			spdlog::info("Camera Servo 2 angle is set to {}", angle);
 			this->camera_servo_2->setAngle(angle);

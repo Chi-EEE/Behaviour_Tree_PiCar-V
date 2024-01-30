@@ -9,12 +9,13 @@
 
 namespace car::system::movement::devices
 {
-	class Servo {
+	class Servo
+	{
 	private:
 		/**
 		 * Following method clamps the x to in_min and in_max.
 		 * Afterwards, it puts the result of that into the range of out_min and out_max
-		*/
+		 */
 		static int map(int x, int in_min, int in_max, int out_min, int out_max)
 		{
 			return ((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min);
@@ -25,7 +26,8 @@ namespace car::system::movement::devices
 		static constexpr int FREQUENCY = 50;
 
 	public:
-		Servo(std::shared_ptr<PCA9685> pwm, int channel) : pwm(pwm), channel(channel) {
+		Servo(std::shared_ptr<PCA9685> pwm, int channel) : pwm(pwm), channel(channel)
+		{
 		}
 
 		// Some of the code was from: https://github.com/chaoticmachinery/pca9685
@@ -42,10 +44,11 @@ namespace car::system::movement::devices
 		}
 
 		// Some of the code was from: https://github.com/chaoticmachinery/pca9685
-		void setAngle(const int& angle)
+		void setAngle(const int &angle)
 		{
 			const int new_angle = std::clamp(angle, 0, 180);
-			if (new_angle == this->angle) {
+			if (new_angle == this->angle)
+			{
 				return;
 			}
 			this->angle = new_angle;
@@ -53,7 +56,8 @@ namespace car::system::movement::devices
 			this->pwm->setPWM(channel, 0, analog_angle);
 		}
 
-		void reset() {
+		void reset()
+		{
 			this->setAngle(90);
 		}
 
