@@ -36,7 +36,7 @@ namespace car::plugin
 
 		void stop()
 		{
-			for (auto &plugin : this->plugins)
+			for (std::weak_ptr<Plugin>& plugin : this->plugins)
 			{
 				plugin.lock()->stop();
 			}

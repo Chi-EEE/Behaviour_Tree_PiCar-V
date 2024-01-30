@@ -18,7 +18,6 @@
 #include "../system/logging/VectorSink.cxx"
 
 #include "screen/MainScreen.cxx"
-		 "
 #include "screen/SettingsScreen.cxx"
 #include "screen/LoggingScreen.cxx"
 

@@ -10,11 +10,15 @@
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
+#include "../configuration/Configuration.hpp"
+
 #include "lidar/LidarDevice.cxx"
 #include "messaging/MessagingSystem.cxx"
 #include "movement/MovementSystem.cxx"
+
 #include "../plugin/PluginManager.cxx"
 
+using namespace car::configuration;
 using namespace car::plugin;
 using namespace car::system::lidar;
 using namespace car::system::messaging;
@@ -26,7 +30,6 @@ namespace car::system
 	{
 	public:
 		CarSystem(
-			const std::string &websocket_url,
 			std::unique_ptr<LidarDevice> lidar_device,
 			std::unique_ptr<MessagingSystem> messaging_system,
 			std::unique_ptr<MovementSystem> movement_system,
@@ -69,6 +72,8 @@ namespace car::system
 		const std::vector<Measure> &getScanData() const { return this->scan_data; }
 
 	private:
+        const std::unique_ptr<Configuration> configuration;
+
 		const std::unique_ptr<LidarDevice> lidar_device;
 		const std::unique_ptr<MessagingSystem> messaging_system;
 		const std::unique_ptr<MovementSystem> movement_system;

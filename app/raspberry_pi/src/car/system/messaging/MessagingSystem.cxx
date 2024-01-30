@@ -32,7 +32,7 @@ namespace car::system::messaging
 	class MessagingSystem
 	{
 	public:
-		MessagingSystem(const std::string &websocket_url) : websocket_url(websocket_url)
+		MessagingSystem()
 		{
 		}
 

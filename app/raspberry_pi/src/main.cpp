@@ -3,7 +3,7 @@
 
 #include <fmt/format.h>
 
-#include "global/Config.hpp"
+#include "car/configuration/Configuration.hpp"
 
 #include "car/display/CarConsole.h"
 
@@ -21,35 +21,38 @@
 
 #include "behaviour_tree/BehaviourTreeHandler.hpp"
 
-std::string getWebSocketUrl()
+using namespace car::configuration;
+using namespace car::plugin;
+using namespace car::display;
+using namespace car::system;
+using namespace car::system::lidar;
+using namespace car::system::messaging;
+using namespace car::system::movement::controller;
+using namespace behaviour_tree;
+using namespace rplidar;
+
+//std::string getWebSocketUrl()
+//{
+//	std::optional<int> maybe_port = GET_CONFIG_VALUE(port);
+//	std::string host_name;
+//	if (maybe_port.has_value())
+//	{
+//		host_name = fmt::format("{}:{}", GET_CONFIG_VALUE(host), maybe_port.value());
+//	}
+//	else
+//	{
+//		host_name = GET_CONFIG_VALUE(host);
+//	}
+//	return fmt::format("ws://{}/ws/room?request=join&type=car&room_name={}", host_name, GET_CONFIG_VALUE(room));
+//}
+
+int main(int argc, char* argv[])
 {
-	std::optional<int> maybe_port = GET_CONFIG_VALUE(port);
-	std::string host_name;
-	if (maybe_port.has_value())
-	{
-		host_name = fmt::format("{}:{}", GET_CONFIG_VALUE(host), maybe_port.value());
-	}
-	else
-	{
-		host_name = GET_CONFIG_VALUE(host);
-	}
-	return fmt::format("ws://{}/ws/room?request=join&type=car&room_name={}", host_name, GET_CONFIG_VALUE(room));
-}
+	std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
 
-int main()
-{
-	using namespace car::plugin;
-	using namespace car::display;
-	using namespace car::system;
-	using namespace car::system::lidar;
-	using namespace car::system::messaging;
-	using namespace car::system::movement::controller;
-	using namespace behaviour_tree;
-	using namespace rplidar;
+	//std::string websocket_url = getWebSocketUrl();
 
-	// spdlog::set_level(spdlog::level::off);
-
-	std::string websocket_url = getWebSocketUrl();
+	std::unique_ptr<Configuration> configuration = std::make_unique<Configuration>(exe_dir);
 
 	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 
@@ -61,7 +64,7 @@ int main()
 	// }
 	// std::unique_ptr<LidarScanner>& scanner = maybe_scanner.value();
 
-	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(websocket_url);
+	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
 
 	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 	// std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
@@ -76,7 +79,6 @@ int main()
 	spdlog::set_default_logger(vector_sink_logger);
 
 	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
-		websocket_url,
 		std::move(scanner),
 		std::move(messaging_system),
 		std::move(movement_system),

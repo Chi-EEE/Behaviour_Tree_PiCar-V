@@ -57,16 +57,15 @@ namespace car::system::lidar
 			this->lidar->stop_motor();
 		}
 
-		void terminate() const final override
-		{
-			this->lidar->stop();
-			this->lidar->stop_motor();
-			this->lidar->disconnect();
-		}
-
 		void disconnect() const final override
 		{
 			this->lidar->disconnect();
+		}
+
+		void terminate() const final override
+		{
+			this->stop();
+			this->disconnect();
 		}
 
 	private:

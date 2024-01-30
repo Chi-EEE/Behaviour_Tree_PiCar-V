@@ -3,7 +3,6 @@
 namespace car::system
 {
 	CarSystem::CarSystem(
-		const std::string &websocket_url,
 		std::unique_ptr<LidarDevice> lidar_device,
 		std::unique_ptr<MessagingSystem> messaging_system,
 		std::unique_ptr<MovementSystem> movement_system,
@@ -62,6 +61,7 @@ namespace car::system
 	/// </summary>
 	void CarSystem::terminate()
 	{
+		this->connectedToServer = false;
 		this->messaging_system->terminate();
 		this->lidar_device->terminate();
 		this->movement_system->terminate();
