@@ -82,7 +82,9 @@ namespace car::display {
 		refresh_ui.detach();
 		screen_thread.join();
 
-		spdlog::info("Exiting CarConsole::run()");
-		this->car_system->stop();
 	};
+
+	void CarConsole::terminate() {
+		this->car_system->terminate();
+	}
 }

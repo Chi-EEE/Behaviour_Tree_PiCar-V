@@ -32,10 +32,6 @@ namespace car::system::messaging {
 	{
 	public:
 		MessagingSystem(const std::string& websocket_url) : websocket_url(websocket_url) {
-		};
-
-		~MessagingSystem() {
-			ix::uninitNetSystem();
 		}
 
 		void initialize()
@@ -45,7 +41,7 @@ namespace car::system::messaging {
 
 		void initializeWebSocket() {
 			this->websocket = std::make_unique<ix::WebSocket>();
-			this->websocket->setUrl(websocket_url);
+			this->websocket->setUrl(this->websocket_url);
 			this->websocket->setOnMessageCallback(
 				std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1)
 			);
@@ -82,6 +78,11 @@ namespace car::system::messaging {
 		void stop() {
 			this->websocket->stop();
 			this->websocket = nullptr;
+		}
+
+		void terminate() {
+			this->stop();
+			ix::uninitNetSystem();
 		}
 
 		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() { return this->custom_command_signal; }

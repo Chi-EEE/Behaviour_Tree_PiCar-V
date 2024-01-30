@@ -83,5 +83,6 @@ int main()
 	CarConsole car_console(std::move(car_system), vector_sink);
 	car_console.initialize();
 	car_console.run();
+	car_console.terminate();
 	return 0;
 }

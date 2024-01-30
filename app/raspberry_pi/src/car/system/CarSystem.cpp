@@ -10,11 +10,6 @@ namespace car::system
 	{
 	}
 
-	CarSystem::~CarSystem()
-	{
-		this->stop();
-	}
-
 	void CarSystem::initialize()
 	{
 		this->messaging_system->initialize();
@@ -45,13 +40,13 @@ namespace car::system
 		}
 	}
 
-	void CarSystem::stop()
+	void CarSystem::terminate()
 	{
 		if (this->running)
 		{
-			this->messaging_system->stop();
-			this->lidar_device->stop();
-			this->lidar_device->disconnect();
+			this->messaging_system->terminate();
+			this->lidar_device->terminate();
+			this->movement_system->terminate();
 			this->running = false;
 		}
 	}

@@ -27,6 +27,12 @@ namespace car::system::movement
 
 		void stop()
 		{
+			this->movement_controller->stop();
+		}
+
+		void terminate()
+		{
+			this->movement_controller->terminate();
 		}
 
 #pragma region Wheels

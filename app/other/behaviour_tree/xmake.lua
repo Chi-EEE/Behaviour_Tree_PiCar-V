@@ -10,6 +10,8 @@ includes("../utils/xmake.lua")
 target("behaviour_tree")
     set_kind("$(kind)")
     set_languages("cxx17")
+    set_group("other")
+   
     add_deps("utils", {inherit = true})
 
     add_packages("fmt")

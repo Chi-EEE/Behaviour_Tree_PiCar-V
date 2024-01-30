@@ -10,6 +10,7 @@ includes("../behaviour_tree/xmake.lua")
 target("behaviour_tree_car")
     set_kind("headeronly")
     set_languages("cxx17")
+    set_group("other")
 
     add_deps("utils", {inherit = true})
     add_deps("behaviour_tree", {inherit = true})

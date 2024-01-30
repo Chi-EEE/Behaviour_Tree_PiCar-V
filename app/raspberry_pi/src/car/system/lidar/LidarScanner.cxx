@@ -34,8 +34,6 @@ namespace car::system::lidar
 		
 		LidarScanner(std::unique_ptr<RPLidar> lidar) : lidar(std::move(lidar)){};
 
-		~LidarScanner(){};
-
 		void initialize() const final override
 		{
 			this->lidar->reset();
@@ -58,6 +56,13 @@ namespace car::system::lidar
 		{
 			this->lidar->stop();
 			this->lidar->stop_motor();
+		}
+
+		void terminate() const final override
+		{
+			this->lidar->stop();
+			this->lidar->stop_motor();
+			this->lidar->disconnect();
 		}
 
 		void disconnect() const final override

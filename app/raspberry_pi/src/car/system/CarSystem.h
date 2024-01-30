@@ -27,11 +27,10 @@ namespace car::system {
 	{
 	public:
 		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system, std::unique_ptr<MovementSystem> movement_system);
-		~CarSystem();
 
 		void initialize();
 		void start();
-		void stop();
+		void terminate();
 
 		void update();
 

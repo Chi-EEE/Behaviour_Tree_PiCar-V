@@ -36,6 +36,8 @@ namespace car::display {
 
 		void run();
 
+		void terminate();
+
 	private:
 		std::shared_ptr<CarSystem> car_system;
 		std::shared_ptr<logging::vector_sink_mt> vector_sink;

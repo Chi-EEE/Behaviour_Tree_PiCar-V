@@ -12,58 +12,64 @@ namespace car::system::movement::controller
 	class DummyMovementController : public AbstractMovementController
 	{
 	public:
-		void initialize() {};
+		void initialize() final override {};
 
-		void setRearWheelsSpeed(const int& speed) override {
+		void stop() final override {
+			spdlog::info("[DUMMY] Car is stopped");
+		}
+
+		void terminate() final override {};
+
+		void setRearWheelsSpeed(const int& speed) final override {
 			spdlog::info("[DUMMY] Both Rear Wheels speed are set to {}", speed);
 		}
 
-		void setRearLeftWheelSpeed(const int& speed) override
+		void setRearLeftWheelSpeed(const int& speed) final override
 		{
 			spdlog::info("[DUMMY] Left Rear Wheel speed is set to {}", speed);
 		}
 
-		void setRearRightWheelSpeed(const int& speed) override
+		void setRearRightWheelSpeed(const int& speed) final override
 		{
 			spdlog::info("[DUMMY] Right Rear Wheel speed is set to {}", speed);
 		}
 
-		void setFrontWheelsAngle(const float& angle) override
+		void setFrontWheelsAngle(const float& angle) final override
 		{
 			spdlog::info("[DUMMY] Front Wheels angle is set to {}", angle);
 		}
 
-		void setCameraServo1Angle(const float& angle) override
+		void setCameraServo1Angle(const float& angle) final override
 		{
 			spdlog::info("[DUMMY] Camera Servo 1 angle is set to {}", angle);
 		}
 
-		void setCameraServo2Angle(const float& angle) override
+		void setCameraServo2Angle(const float& angle) final override
 		{
 			spdlog::info("[DUMMY] Camera Servo 2 angle is set to {}", angle);
 		}
 
-		void setRearWheelsDirectionToForward() override {
+		void setRearWheelsDirectionToForward() final override {
 			spdlog::info("[DUMMY] Both Rear Wheels are set to move forward");
 		}
 
-		void setRearLeftWheelDirectionToForward() override {
+		void setRearLeftWheelDirectionToForward() final override {
 			spdlog::info("[DUMMY] Left Rear Wheel is set to move forward");
 		}
 
-		void setRearRightWheelDirectionToForward() override {
+		void setRearRightWheelDirectionToForward() final override {
 			spdlog::info("[DUMMY] Right Rear Wheel is set to move forward");
 		}
 
-		void setRearWheelsDirectionToBackward() override {
+		void setRearWheelsDirectionToBackward() final override {
 			spdlog::info("[DUMMY] Both Rear Wheels are set to move backward");
 		}
 
-		void setRearLeftWheelDirectionToBackward() override {
+		void setRearLeftWheelDirectionToBackward() final override {
 			spdlog::info("[DUMMY] Left Rear Wheel is set to move backward");
 		}
 
-		void setRearRightWheelDirectionToBackward() override {
+		void setRearRightWheelDirectionToBackward() final override {
 			spdlog::info("[DUMMY] Right Rear Wheel is set to move backward");
 		}
 
