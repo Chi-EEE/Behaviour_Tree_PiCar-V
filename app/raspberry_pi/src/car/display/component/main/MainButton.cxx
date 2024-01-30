@@ -20,12 +20,12 @@ namespace car::display::component::main {
 				this->button_pressed = !this->button_pressed;
 				if (button_pressed) {
 					this->main_button_text = "Connecting...";
-					this->car_system->start();
+					this->car_system->connectToServer();
 					this->main_button_text = "Stop Car Application";
 				}
 				else {
 					this->main_button_text = "Disconnecting...";
-					this->car_system->stop();
+					this->car_system->disconnectFromServer();
 					this->main_button_text = "Start Car Application";
 				}
 				this->main_debounce = false;

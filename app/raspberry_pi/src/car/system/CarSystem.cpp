@@ -31,57 +31,43 @@ namespace car::system
 		);
 	}
 
-	void CarSystem::start()
+	void CarSystem::connectToServer()
 	{
-		if (!this->running) {
+		if (!this->connectedToServer) {
 			this->messaging_system->start();
 			this->lidar_device->start();
-			this->running = true;
+			this->connectedToServer = true;
 		}
 	}
 
+	void CarSystem::disconnectFromServer() {
+		if (this->connectedToServer) {
+			this->connectedToServer = false;
+			this->messaging_system->stop();
+			this->lidar_device->stop();
+			this->movement_system->stop();
+			for (auto& plugin : this->plugins) {
+				plugin.lock()->stop();
+			}
+		}
+	}
+
+	/// <summary>
+	/// Only devices should be terminated here since deconstructor does not work when the program is terminated by the user.
+	/// </summary>
 	void CarSystem::terminate()
 	{
-		if (this->running)
-		{
-			this->messaging_system->terminate();
-			this->lidar_device->terminate();
-			this->movement_system->terminate();
-			this->running = false;
-		}
+		this->messaging_system->terminate();
+		this->lidar_device->terminate();
+		this->movement_system->terminate();
 	}
 
 	void CarSystem::update()
 	{
-		if (!this->running)
+		if (this->connectedToServer)
 		{
-			return;
+			this->messaging_system->sendMessage(this->lidar_device->getLidarMessage());
 		}
-		rapidjson::Document output_json;
-		output_json.SetObject();
-		rapidjson::Value data_array(rapidjson::kArrayType);
-
-		this->scan_data.clear();
-		for (const auto& maybe_measure : this->lidar_device->scan()) {
-			if (maybe_measure.has_value()) {
-				this->scan_data.push_back(maybe_measure.value());
-			}
-		}
-
-		for (const Measure& measure : this->scan_data) {
-			rapidjson::Value measure_object(rapidjson::kObjectType);
-			measure_object.AddMember("distance", measure.distance, output_json.GetAllocator());
-			measure_object.AddMember("angle", measure.angle, output_json.GetAllocator());
-			data_array.PushBack(measure_object, output_json.GetAllocator());
-		}
-
-		output_json.AddMember("data", data_array, output_json.GetAllocator());
-
-		rapidjson::StringBuffer buffer;
-		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-		output_json.Accept(writer);
-
-		this->messaging_system->sendMessage(buffer.GetString());
 		for (std::weak_ptr<Plugin>& plugin : this->plugins) {
 			plugin.lock()->update();
 		}

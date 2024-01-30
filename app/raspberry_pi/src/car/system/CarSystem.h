@@ -29,7 +29,10 @@ namespace car::system {
 		CarSystem(const std::string& websocket_url, std::unique_ptr<LidarDevice> lidar_device, std::unique_ptr<MessagingSystem> messaging_system, std::unique_ptr<MovementSystem> movement_system);
 
 		void initialize();
-		void start();
+
+		void connectToServer();
+		void disconnectFromServer();
+		
 		void terminate();
 
 		void update();
@@ -72,7 +75,7 @@ namespace car::system {
 
 		std::vector<Measure> scan_data;
 
-		bool running = false;
+		bool connectedToServer = false;
 	};
 }
 
