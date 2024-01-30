@@ -1,17 +1,19 @@
 #include "../../controllers/RoomWebSocket.h"
 
-void RoomWebSocket::handleCarMessage(const drogon::WebSocketConnectionPtr& wsConnPtr,
-	std::string&& message,
-	const drogon::WebSocketMessageType& type)
+void RoomWebSocket::handleCarMessage(const drogon::WebSocketConnectionPtr &wsConnPtr,
+									 std::string &&message,
+									 const drogon::WebSocketMessageType &type)
 {
 	spdlog::debug("Received a message from car: {} | RoomWebSocket::handleCarMessage", wsConnPtr->peerAddr().toIp());
 
-	auto& user = wsConnPtr->getContextRef<User>();
-	try {
+	auto &user = wsConnPtr->getContextRef<User>();
+	try
+	{
 		rapidjson::Document message_json;
 		message_json.Parse(message.c_str());
 
-		if (message_json.HasParseError()) {
+		if (message_json.HasParseError())
+		{
 			spdlog::error("Error parsing JSON: {} | RoomWebSocket::handleCarMessage", message_json.GetParseError());
 			return;
 		}
@@ -19,25 +21,31 @@ void RoomWebSocket::handleCarMessage(const drogon::WebSocketConnectionPtr& wsCon
 		rapidjson::Document car_lidar_scan_output_json;
 		car_lidar_scan_output_json.SetObject();
 
-		if (message_json.HasMember("data") && message_json["data"].IsArray()) {
+		if (message_json.HasMember("data") && message_json["data"].IsArray())
+		{
 			rapidjson::Value new_measure_list(rapidjson::kArrayType);
-			const rapidjson::Value& measure_list = message_json["data"];
-			if (!measure_list.IsArray()) {
+			const rapidjson::Value &measure_list = message_json["data"];
+			if (!measure_list.IsArray())
+			{
 				spdlog::error("Error: 'data' field is not an array. | RoomWebSocket::handleCarMessage");
 				return;
 			}
 			// Check the measure list in case it contains non-object elements
-			for (rapidjson::SizeType i = 0; i < measure_list.Size(); i++) {
-				const rapidjson::Value& measure_object = measure_list[i];
-				if (!measure_object.IsObject()) {
+			for (rapidjson::SizeType i = 0; i < measure_list.Size(); i++)
+			{
+				const rapidjson::Value &measure_object = measure_list[i];
+				if (!measure_object.IsObject())
+				{
 					spdlog::error("Error: 'data' field contains non-object elements. | RoomWebSocket::handleCarMessage");
 					return;
 				}
-				if (!measure_object.HasMember("distance") || !measure_object["distance"].IsDouble()) {
+				if (!measure_object.HasMember("distance") || !measure_object["distance"].IsDouble())
+				{
 					spdlog::error("Error: 'data' field does not contain the 'distance' field or 'distance' field is not a number. | RoomWebSocket::handleCarMessage");
 					return;
 				}
-				if (!measure_object.HasMember("angle") || !measure_object["angle"].IsDouble()) {
+				if (!measure_object.HasMember("angle") || !measure_object["angle"].IsDouble())
+				{
 					spdlog::error("Error: 'data' field does not contain the 'angle' field or 'angle' field is not a number. | RoomWebSocket::handleCarMessage");
 					return;
 				}
@@ -48,7 +56,8 @@ void RoomWebSocket::handleCarMessage(const drogon::WebSocketConnectionPtr& wsCon
 			}
 			car_lidar_scan_output_json.AddMember("data", new_measure_list, car_lidar_scan_output_json.GetAllocator());
 		}
-		else {
+		else
+		{
 			spdlog::error("Error: 'data' field not found in the input JSON. | RoomWebSocket::handleCarMessage");
 			return;
 		}
@@ -63,7 +72,8 @@ void RoomWebSocket::handleCarMessage(const drogon::WebSocketConnectionPtr& wsCon
 
 		this->chat_rooms.publish(user.getChatRoomName(), buffer.GetString());
 	}
-	catch (const std::exception& e) {
+	catch (const std::exception &e)
+	{
 		spdlog::error("Error: {} | RoomWebSocket::handleCarMessage", e.what());
 		return;
 	}

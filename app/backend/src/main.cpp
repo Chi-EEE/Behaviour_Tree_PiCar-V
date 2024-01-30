@@ -20,18 +20,19 @@ const int port = 10001;
 
 const std::string url = "http://" + host + ":" + std::to_string(port);
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	behaviour_tree::BehaviourTreeParser::instance().setCustomNodeParser(std::make_unique<behaviour_tree::node::custom::CarCustomNodeParser>(behaviour_tree::node::custom::CarCustomNodeParser()));
-	
+
 	std::filesystem::path exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path();
 	std::string config_json_path = exe_dir.string() + "/settings/config.json";
 	drogon::app().loadConfigFile(config_json_path);
-	
+
 	spdlog::set_level(spdlog::level::debug);
 
-	drogon::app().setDefaultHandler([&](const drogon::HttpRequestPtr& req,
-		std::function<void(const drogon::HttpResponsePtr&)>&& callback) {
+	drogon::app().setDefaultHandler([&](const drogon::HttpRequestPtr &req,
+										std::function<void(const drogon::HttpResponsePtr &)> &&callback)
+									{
 			std::string path = req->getPath();
 			utils::Utility::encode(path);
 			const std::string redirect_url = url + "/#" + path;
@@ -39,16 +40,15 @@ int main(int argc, char* argv[])
 			resp->setStatusCode(drogon::k301MovedPermanently);
 			std::string body = R"(<html><head><meta http-equiv="refresh" content="0;url=)" + redirect_url + R"("></head><body><p><a href=")" + redirect_url + R"(">Redirect</a></p></body></html>)";
 			resp->setBody(std::move(body));
-			callback(resp);
-		}
-	);
+			callback(resp); });
 
 	std::vector<std::pair<std::string, int>> ip_addresses = {
 		{host, port},
 		{"0.0.0.0", port},
 	};
 
-	for (auto& [host, port] : ip_addresses) {
+	for (auto &[host, port] : ip_addresses)
+	{
 		drogon::app().addListener(host, port);
 		spdlog::info("Listening on {}:{}", host, port);
 	}

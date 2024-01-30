@@ -26,43 +26,43 @@
 class RoomWebSocket : public drogon::WebSocketController<RoomWebSocket>
 {
 public:
-	WS_PATH_LIST_BEGIN
-		WS_PATH_ADD("/ws/room", drogon::Get);
-	WS_PATH_LIST_END;
+    WS_PATH_LIST_BEGIN
+    WS_PATH_ADD("/ws/room", drogon::Get);
+    WS_PATH_LIST_END;
 
-	virtual void handleNewMessage(const drogon::WebSocketConnectionPtr&,
-		std::string&&,
-		const drogon::WebSocketMessageType&) override;
+    virtual void handleNewMessage(const drogon::WebSocketConnectionPtr &,
+                                  std::string &&,
+                                  const drogon::WebSocketMessageType &) override;
 
-	virtual void handleNewConnection(const drogon::HttpRequestPtr&,
-		const drogon::WebSocketConnectionPtr&) override;
+    virtual void handleNewConnection(const drogon::HttpRequestPtr &,
+                                     const drogon::WebSocketConnectionPtr &) override;
 
-	virtual void handleConnectionClosed(
-		const drogon::WebSocketConnectionPtr&) override;
+    virtual void handleConnectionClosed(
+        const drogon::WebSocketConnectionPtr &) override;
 
-	void handleCreateRequest(const drogon::HttpRequestPtr&,
-		const drogon::WebSocketConnectionPtr&,
-		const std::string& encoded_room_name);
+    void handleCreateRequest(const drogon::HttpRequestPtr &,
+                             const drogon::WebSocketConnectionPtr &,
+                             const std::string &encoded_room_name);
 
-	void handleJoinRequest(const drogon::HttpRequestPtr&,
-		const drogon::WebSocketConnectionPtr&,
-		const std::string& encoded_room_name);
+    void handleJoinRequest(const drogon::HttpRequestPtr &,
+                           const drogon::WebSocketConnectionPtr &,
+                           const std::string &encoded_room_name);
 
 #pragma region Default User
-	void handleUserMessage(const drogon::WebSocketConnectionPtr&,
-		std::string&&,
-		const drogon::WebSocketMessageType&);
-	void handleBehaviourTree(const drogon::WebSocketConnectionPtr& wsConnPtr, const std::string& message_data, User& user, std::shared_ptr<Room>& room);
+    void handleUserMessage(const drogon::WebSocketConnectionPtr &,
+                           std::string &&,
+                           const drogon::WebSocketMessageType &);
+    void handleBehaviourTree(const drogon::WebSocketConnectionPtr &wsConnPtr, const std::string &message_data, User &user, std::shared_ptr<Room> &room);
 #pragma endregion
 
 #pragma region Car User
-	void handleCarMessage(const drogon::WebSocketConnectionPtr&,
-		std::string&&,
-		const drogon::WebSocketMessageType&);
+    void handleCarMessage(const drogon::WebSocketConnectionPtr &,
+                          std::string &&,
+                          const drogon::WebSocketMessageType &);
 #pragma endregion
 
 private:
-	drogon::PubSubService<std::string> chat_rooms;
+    drogon::PubSubService<std::string> chat_rooms;
 };
 
 #endif // !ROOM_WEBSOCKET_H

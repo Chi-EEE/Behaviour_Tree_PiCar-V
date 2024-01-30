@@ -11,21 +11,21 @@ class RoomController : public drogon::HttpController<RoomController>
 {
 public:
 	METHOD_LIST_BEGIN
-		ADD_METHOD_TO(RoomController::getRooms, "/api/v1/rooms", drogon::Get);
+	ADD_METHOD_TO(RoomController::getRooms, "/api/v1/rooms", drogon::Get);
 	METHOD_LIST_END
-		void getRooms(const drogon::HttpRequestPtr& req,
-			std::function<void(const drogon::HttpResponsePtr&)>&& callback) const;
+	void getRooms(const drogon::HttpRequestPtr &req,
+				  std::function<void(const drogon::HttpResponsePtr &)> &&callback) const;
 };
 
-void RoomController::getRooms(const drogon::HttpRequestPtr& req,
-	std::function<void(const drogon::HttpResponsePtr&)>&& callback) const
+void RoomController::getRooms(const drogon::HttpRequestPtr &req,
+							  std::function<void(const drogon::HttpResponsePtr &)> &&callback) const
 {
 	rapidjson::Document output;
 	output.SetObject();
 	rapidjson::Value data(rapidjson::kArrayType);
 
-	RoomManager* room_manager = drogon::app().getPlugin<RoomManager>();
-	for (const auto& [room_name, room] : room_manager->getRooms())
+	RoomManager *room_manager = drogon::app().getPlugin<RoomManager>();
+	for (const auto &[room_name, room] : room_manager->getRooms())
 	{
 		rapidjson::Value room_json(rapidjson::kObjectType);
 		// TODO: Add room id

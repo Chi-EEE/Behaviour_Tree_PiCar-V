@@ -3,7 +3,8 @@
 
 #pragma once
 
-enum class UserType {
+enum class UserType
+{
 	Default = 0,
 	Car,
 };
