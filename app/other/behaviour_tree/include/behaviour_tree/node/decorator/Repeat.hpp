@@ -18,7 +18,7 @@ namespace behaviour_tree::node::decorator
 
 		const DecoratorType type() const final override { return DecoratorType::Repeat; }
 
-		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
+		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
 			if (this->count == std::numeric_limits<unsigned long>::max()) {
 				while (true)

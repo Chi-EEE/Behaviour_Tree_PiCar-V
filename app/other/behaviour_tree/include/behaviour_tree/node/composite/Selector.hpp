@@ -14,7 +14,7 @@ namespace behaviour_tree::node::composite
 
 		const CompositeType type() const final override { return CompositeType::Selector; }
 
-		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
+		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
 			for (auto& child : this->children)
 			{

@@ -20,7 +20,23 @@ namespace behaviour_tree::node
 		{
 		}
 
-		virtual const Status tick(const int& tick_count, std::shared_ptr<Context> context) = 0;
+        virtual void start(std::shared_ptr<Context> context) {}
+		virtual const Status run(const int& tick_count, std::shared_ptr<Context> context) = 0;
+        virtual void finish(std::shared_ptr<Context> context) {}
+
+        Status tick(const int& tick_count, std::shared_ptr<Context> context)
+        {
+            if (!this->started) {
+                this->start(context);
+                this->started = true;
+            }
+            Status status = this->tick(tick_count, context);
+            if (status == Status::Success || status == Status::Failure) {
+                this->finish(context);
+                this->started = false;
+            }
+            return status;
+        }
 
 		virtual const std::string toString() const = 0;
 
@@ -31,6 +47,9 @@ namespace behaviour_tree::node
 
 	protected:
 		const std::string name;
+
+    private:
+        bool started = false;
 	};
 }
 

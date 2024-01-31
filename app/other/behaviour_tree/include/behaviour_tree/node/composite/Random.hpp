@@ -18,7 +18,7 @@ namespace behaviour_tree::node::composite
 
 		const CompositeType type() const final override { return CompositeType::Random; }
 
-		const Status tick(const int& tick_count, std::shared_ptr<Context> context) final override
+		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
 			// Random can never be empty from the BehaviourTreeParser
 			return this->children[effolkronium_Random::get(0, static_cast<int>(this->children.size() - 1))]->tick(tick_count, context);
