@@ -3,10 +3,12 @@
 namespace car::system
 {
 	CarSystem::CarSystem(
+		std::unique_ptr<Configuration> configuration,
 		std::unique_ptr<LidarDevice> lidar_device,
 		std::unique_ptr<MessagingSystem> messaging_system,
 		std::unique_ptr<MovementSystem> movement_system,
-		std::unique_ptr<PluginManager> plugin_manager) : lidar_device(std::move(lidar_device)),
+		std::unique_ptr<PluginManager> plugin_manager) : configuration(std::move(configuration)),
+														 lidar_device(std::move(lidar_device)),
 														 messaging_system(std::move(messaging_system)),
 														 movement_system(std::move(movement_system)),
 														 plugin_manager(std::move(plugin_manager))
@@ -75,6 +77,15 @@ namespace car::system
 			this->messaging_system->sendMessage(this->lidar_device->getLidarMessage());
 		}
 		this->plugin_manager->update();
+	}
+
+	void CarSystem::setConfigurationPath(const std::string &path)
+	{
+		this->configuration->setConfigFilePath(path);
+	}
+
+	tl::expected<nullptr_t, std::string> CarSystem::loadConfiguation() {
+		return this->configuration->load();
 	}
 
 	void CarSystem::startLidarDevice()

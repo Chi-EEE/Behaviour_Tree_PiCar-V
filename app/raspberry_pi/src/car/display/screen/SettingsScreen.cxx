@@ -28,7 +28,8 @@ namespace car::display::screen
     {
     public:
         SettingsScreen(std::shared_ptr<CarSystem> car_system) : car_system(car_system),
-                                                                debug_messaging_text_box(DebugMessagingTextbox(car_system->getHandleMessageSignal()))
+                                                                debug_messaging_text_box(DebugMessagingTextbox(car_system->getHandleMessageSignal())),
+                                                                settings_edit_config(car_system)
         {
         }
 
@@ -61,7 +62,10 @@ namespace car::display::screen
             auto settings_container = Container::Vertical(
                 {Renderer([&]
                           { return separatorEmpty(); }),
-                
+                this->settings_edit_config.element(),
+                Container::Vertical({
+
+                }) | borderDouble,
                 Container::Vertical({
                     this->debug_enabler.getCheckbox(),
                 }) | borderDouble,

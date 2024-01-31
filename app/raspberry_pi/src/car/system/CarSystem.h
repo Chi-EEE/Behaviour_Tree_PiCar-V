@@ -30,6 +30,7 @@ namespace car::system
 	{
 	public:
 		CarSystem(
+			std::unique_ptr<Configuration> configuration,
 			std::unique_ptr<LidarDevice> lidar_device,
 			std::unique_ptr<MessagingSystem> messaging_system,
 			std::unique_ptr<MovementSystem> movement_system,
@@ -43,6 +44,10 @@ namespace car::system
 		void terminate();
 
 		void update();
+
+		void setConfigurationPath(const std::string& path);
+
+		tl::expected<nullptr_t, std::string> loadConfiguation();
 
 		nod::signal<void(const std::string, const std::string)> &getCustomCommandSignal() const { return this->messaging_system->getCustomCommandSignal(); }
 		nod::signal<void(const std::string)> &getHandleMessageSignal() { return this->messaging_system->getHandleMessageSignal(); }

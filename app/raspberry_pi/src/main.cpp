@@ -50,9 +50,9 @@ int main(int argc, char* argv[])
 {
 	std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
 
-	//std::string websocket_url = getWebSocketUrl();
-
 	std::unique_ptr<Configuration> configuration = std::make_unique<Configuration>(exe_dir);
+	configuration->setConfigFilePath("settings/config.jsonc");
+	configuration->load();
 
 	std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 
@@ -79,6 +79,7 @@ int main(int argc, char* argv[])
 	spdlog::set_default_logger(vector_sink_logger);
 
 	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
+		std::move(configuration),
 		std::move(scanner),
 		std::move(messaging_system),
 		std::move(movement_system),

@@ -33,22 +33,14 @@ namespace car::configuration
 			this->config_file_path = config_file_path;
 		}
 
-	public:
-		std::string lidar_port;
-
-		std::string host;
-		std::optional<int> port = std::nullopt;
-
-		std::string name;
-		std::string room;
-
-	private:
-		const std::string exe_dir;
-		std::string config_file_path;
+		const std::string& getConfigFilePath() const
+		{
+			return this->config_file_path;
+		}
 
 		tl::expected<nullptr_t, std::string> load()
 		{
-			std::string config_file_path = exe_dir + "/" + config_file_path;
+			std::string config_file_path = exe_dir + "/" + this->config_file_path;
 			std::ifstream config_file(config_file_path);
 			if (!config_file)
 			{
@@ -81,6 +73,19 @@ namespace car::configuration
 			}
 			return nullptr;
 		}
+
+	public:
+		std::string lidar_port;
+
+		std::string host;
+		std::optional<int> port = std::nullopt;
+
+		std::string name;
+		std::string room;
+
+	private:
+		const std::string exe_dir;
+		std::string config_file_path;
 	};
 };
 
