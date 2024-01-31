@@ -3,11 +3,11 @@
 namespace car::system
 {
 	CarSystem::CarSystem(
-		std::unique_ptr<Configuration> configuration,
+		std::shared_ptr<Configuration> configuration,
 		std::unique_ptr<LidarDevice> lidar_device,
 		std::unique_ptr<MessagingSystem> messaging_system,
 		std::unique_ptr<MovementSystem> movement_system,
-		std::unique_ptr<PluginManager> plugin_manager) : configuration(std::move(configuration)),
+		std::unique_ptr<PluginManager> plugin_manager) : configuration(configuration),
 														 lidar_device(std::move(lidar_device)),
 														 messaging_system(std::move(messaging_system)),
 														 movement_system(std::move(movement_system)),

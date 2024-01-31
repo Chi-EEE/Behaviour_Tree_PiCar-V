@@ -83,6 +83,8 @@ target("raspberry_pi")
 
     if is_plat("windows") then
         add_defines("_WIN32")
+    else
+        add_defines("__linux")
     end
 
     set_configdir("$(buildir)/$(plat)/$(arch)/$(mode)")

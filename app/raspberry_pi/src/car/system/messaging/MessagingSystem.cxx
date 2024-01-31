@@ -4,6 +4,7 @@
 #pragma once
 
 #include <functional>
+#include <memory>
 
 #include <ixwebsocket/IXNetSystem.h>
 #include <ixwebsocket/IXWebSocket.h>
@@ -15,6 +16,10 @@
 
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
+
+#include <fmt/format.h>
+
+#include "../../configuration/Configuration.hpp"
 
 namespace car::system::messaging
 {
@@ -32,7 +37,7 @@ namespace car::system::messaging
 	class MessagingSystem
 	{
 	public:
-		MessagingSystem()
+		MessagingSystem(std::shared_ptr<configuration::Configuration> configuration) : configuration(configuration)
 		{
 		}
 
@@ -44,7 +49,8 @@ namespace car::system::messaging
 		void initializeWebSocket()
 		{
 			this->websocket = std::make_unique<ix::WebSocket>();
-			this->websocket->setUrl(this->websocket_url);
+			std::string websocket_url = "";// this->getWebSocketUrl();
+			this->websocket->setUrl(websocket_url);
 			this->websocket->setOnMessageCallback(
 				std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));
 			this->handle_message_signal.connect([this](const std::string message)
@@ -230,6 +236,22 @@ namespace car::system::messaging
 		nod::signal<void(const std::string, const std::string)> custom_command_signal;
 
 	private:
+		// std::string getWebSocketUrl()
+		// {
+		// 	std::optional<int> maybe_port = this->configuration->port;
+		// 	std::string host_name;
+		// 	if (maybe_port.has_value())
+		// 	{
+		// 		host_name = fmt::format("{}:{}", this->configuration->host, maybe_port.value());
+		// 	}
+		// 	else
+		// 	{
+		// 		host_name = this->configuration->host;
+		// 	}
+		// 	return fmt::format("ws://{}/ws/room?request=join&type=car&room_name={}", host_name, this->configuration->room);
+		// }
+		std::shared_ptr<configuration::Configuration> configuration;
+
 		std::unique_ptr<ix::WebSocket> websocket;
 		std::string websocket_url;
 	};

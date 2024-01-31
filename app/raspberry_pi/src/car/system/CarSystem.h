@@ -30,7 +30,7 @@ namespace car::system
 	{
 	public:
 		CarSystem(
-			std::unique_ptr<Configuration> configuration,
+			std::shared_ptr<Configuration> configuration,
 			std::unique_ptr<LidarDevice> lidar_device,
 			std::unique_ptr<MessagingSystem> messaging_system,
 			std::unique_ptr<MovementSystem> movement_system,
@@ -77,7 +77,7 @@ namespace car::system
 		const std::vector<Measure> &getScanData() const { return this->scan_data; }
 
 	private:
-        const std::unique_ptr<Configuration> configuration;
+        const std::shared_ptr<Configuration> configuration;
 
 		const std::unique_ptr<LidarDevice> lidar_device;
 		const std::unique_ptr<MessagingSystem> messaging_system;

@@ -1,8 +1,6 @@
 {
-    "lidar_port": "/dev/ttyUSB0", // For Linux
-    // "lidar_port": "COM3", // For Windows
     "host": "localhost",
     "port": 8848,
     "name": "RaspberryPi",
-    "room": "1"
+    "room": "aaa"
 }
