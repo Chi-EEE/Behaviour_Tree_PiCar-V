@@ -28,7 +28,7 @@ namespace car::system::messaging
 	{
 		uint32_t hash = 5381;
 
-		for (const char *c = s.data(); c < s.data() + s.size(); ++c)
+		for (const char* c = s.data(); c < s.data() + s.size(); ++c)
 			hash = ((hash << 5) + hash) + (unsigned char)*c;
 
 		return hash;
@@ -49,12 +49,12 @@ namespace car::system::messaging
 		void initializeWebSocket()
 		{
 			this->websocket = std::make_unique<ix::WebSocket>();
-			std::string websocket_url = "";// this->getWebSocketUrl();
+			std::string websocket_url = this->getWebSocketUrl();
 			this->websocket->setUrl(websocket_url);
 			this->websocket->setOnMessageCallback(
 				std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));
 			this->handle_message_signal.connect([this](const std::string message)
-												{ this->handleMessage(message); });
+				{ this->handleMessage(message); });
 		}
 
 		void start()
@@ -95,10 +95,10 @@ namespace car::system::messaging
 			ix::uninitNetSystem();
 		}
 
-		nod::signal<void(const std::string, const std::string)> &getCustomCommandSignal() { return this->custom_command_signal; }
-		nod::signal<void(const std::string)> &getHandleMessageSignal() { return this->handle_message_signal; }
+		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() { return this->custom_command_signal; }
+		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->handle_message_signal; }
 
-		void onMessageCallback(const ix::WebSocketMessagePtr &msg) const
+		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const
 		{
 			switch (msg->type)
 			{
@@ -121,7 +121,7 @@ namespace car::system::messaging
 			}
 		}
 
-		void handleMessage(const std::string &message) const
+		void handleMessage(const std::string& message) const
 		{
 			rapidjson::Document message_json;
 			message_json.Parse(message.c_str());
@@ -161,7 +161,7 @@ namespace car::system::messaging
 			}
 		}
 
-		void handleCommand(const rapidjson::Value &message_json) const
+		void handleCommand(const rapidjson::Value& message_json) const
 		{
 			if (!message_json.HasMember("command") || !message_json["command"].IsString())
 			{
@@ -221,7 +221,7 @@ namespace car::system::messaging
 			}
 		}
 
-		void sendMessage(const std::string &message)
+		void sendMessage(const std::string& message)
 		{
 			if (this->websocket != nullptr)
 				this->websocket->send(message);
@@ -236,20 +236,21 @@ namespace car::system::messaging
 		nod::signal<void(const std::string, const std::string)> custom_command_signal;
 
 	private:
-		// std::string getWebSocketUrl()
-		// {
-		// 	std::optional<int> maybe_port = this->configuration->port;
-		// 	std::string host_name;
-		// 	if (maybe_port.has_value())
-		// 	{
-		// 		host_name = fmt::format("{}:{}", this->configuration->host, maybe_port.value());
-		// 	}
-		// 	else
-		// 	{
-		// 		host_name = this->configuration->host;
-		// 	}
-		// 	return fmt::format("ws://{}/ws/room?request=join&type=car&room_name={}", host_name, this->configuration->room);
-		// }
+		std::string getWebSocketUrl()
+		{
+			std::optional<int> maybe_port = this->configuration->port;
+			std::string host_name;
+			if (maybe_port.has_value())
+			{
+				host_name = fmt::format("{}:{}", this->configuration->host, maybe_port.value());
+			}
+			else
+			{
+				host_name = this->configuration->host;
+			}
+			return fmt::format("ws://{}/ws/room?request=join&type=car&room_name={}", host_name, this->configuration->room);
+		}
+
 		std::shared_ptr<configuration::Configuration> configuration;
 
 		std::unique_ptr<ix::WebSocket> websocket;

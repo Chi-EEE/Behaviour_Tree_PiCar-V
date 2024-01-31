@@ -57,7 +57,6 @@ namespace car::configuration
 			}
 			try
 			{
-				this->lidar_port = config_json["lidar_port"].GetString();
 				this->host = config_json["host"].GetString();
 				if (config_json.HasMember("port"))
 				{
@@ -75,8 +74,6 @@ namespace car::configuration
 		}
 
 	public:
-		std::string lidar_port;
-
 		std::string host;
 		std::optional<int> port = std::nullopt;
 
