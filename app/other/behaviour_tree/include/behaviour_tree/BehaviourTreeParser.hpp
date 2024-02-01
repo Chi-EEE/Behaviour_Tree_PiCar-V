@@ -58,7 +58,7 @@ namespace behaviour_tree
 			return instance;
 		}
 
-		void setCustomNodeParser(std::unique_ptr<CustomNodeParser> custom_node_parser)
+		void setCustomNodeParser(std::shared_ptr<CustomNodeParser> custom_node_parser)
 		{
 			this->custom_node_parser = std::move(custom_node_parser);
 		}
@@ -92,7 +92,7 @@ namespace behaviour_tree
 	private:
 		BehaviourTreeParser() {}
 
-		std::unique_ptr<CustomNodeParser> custom_node_parser;
+		std::shared_ptr<CustomNodeParser> custom_node_parser;
 
 		tl::expected<std::shared_ptr<BehaviourTree>, std::string> parse(pugi::xml_document& doc)
 		{
@@ -115,7 +115,7 @@ namespace behaviour_tree
 			{
 				return tl::unexpected(R"(No "Root" nodes found in BehaviourTree)");
 			}
-			return std::make_unique<BehaviourTree>(
+			return std::make_shared<BehaviourTree>(
 				BehaviourTree(std::move(roots))
 			);
 		}
@@ -147,7 +147,7 @@ namespace behaviour_tree
 			);
 		}
 
-		tl::expected<std::unique_ptr<node::Node>, std::string> parseChild(const pugi::xml_node& node, const int& index)
+		tl::expected<std::shared_ptr<node::Node>, std::string> parseChild(const pugi::xml_node& node, const int& index)
 		{
 			const std::string name_attribute = node.attribute("name").as_string();
 			const std::string& node_name = node.name();
@@ -180,15 +180,15 @@ namespace behaviour_tree
 #pragma region Leaf Node
 			case utils::Utility::hash("Succeed"):
 			{
-				return std::make_unique<Succeed>(Succeed(name_attribute));
+				return std::make_shared<Succeed>(Succeed(name_attribute));
 			}
 			case utils::Utility::hash("Fail"):
 			{
-				return std::make_unique<Fail>(Fail(name_attribute));
+				return std::make_shared<Fail>(Fail(name_attribute));
 			}
 			case utils::Utility::hash("UseRoot"):
 			{
-				return std::make_unique<UseRoot>(
+				return std::make_shared<UseRoot>(
 					UseRoot(
 						name_attribute,
 						node.attribute("id").as_string()));
@@ -201,7 +201,7 @@ namespace behaviour_tree
 			}
 		}
 
-		tl::expected<std::unique_ptr<node::decorator::Decorator>, std::string> parseDecorator(const pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
+		tl::expected<std::shared_ptr<node::decorator::Decorator>, std::string> parseDecorator(const pugi::xml_node& node, const int& index, const DecoratorType& decorator_type)
 		{
 			const std::string name_attribute = node.attribute("name").as_string();
 			const pugi::xml_node child = node.first_child();
@@ -218,7 +218,7 @@ namespace behaviour_tree
 			{
 			case DecoratorType::Invert:
 			{
-				return std::make_unique<Invert>(
+				return std::make_shared<Invert>(
 					Invert(
 						name_attribute,
 						std::move(maybe_child_node.value())));
@@ -265,7 +265,7 @@ namespace behaviour_tree
 						return tl::unexpected(fmt::format(R"(Invalid break_on_fail_string: '{}' | Repeat:["{}",{}])", break_on_fail_string, name_attribute, index));
 					}
 				}
-				return std::make_unique<Repeat>(
+				return std::make_shared<Repeat>(
 					Repeat(
 						name_attribute,
 						std::move(maybe_child_node.value()),
@@ -275,10 +275,10 @@ namespace behaviour_tree
 			}
 		}
 
-		tl::expected<std::unique_ptr<Composite>, std::string> parseComposite(const pugi::xml_node& node, const int& index, const CompositeType& composite_type)
+		tl::expected<std::shared_ptr<Composite>, std::string> parseComposite(const pugi::xml_node& node, const int& index, const CompositeType& composite_type)
 		{
 			const std::string name_attribute = node.attribute("name").as_string();
-			std::vector<std::unique_ptr<node::Node>> children;
+			std::vector<std::shared_ptr<node::Node>> children;
 			for (pugi::xml_node child = node.first_child(); child; child = child.next_sibling())
 			{
 				auto maybe_node = parseChild(child, STARTING_INDEX + children.size());
@@ -295,15 +295,15 @@ namespace behaviour_tree
 			switch (composite_type)
 			{
 			case CompositeType::Sequence:
-				return std::make_unique<Sequence>(Sequence(name_attribute, std::move(children)));
+				return std::make_shared<Sequence>(Sequence(name_attribute, std::move(children)));
 			case CompositeType::Selector:
-				return std::make_unique<Selector>(Selector(name_attribute, std::move(children)));
+				return std::make_shared<Selector>(Selector(name_attribute, std::move(children)));
 			case CompositeType::Random:
-				return std::make_unique<Random>(Random(name_attribute, std::move(children)));
+				return std::make_shared<Random>(Random(name_attribute, std::move(children)));
 			}
 		}
 
-		tl::expected<std::unique_ptr<node::custom::CustomNode>, std::string> parseCustomNode(const pugi::xml_node& node, const int& index)
+		tl::expected<std::shared_ptr<node::custom::CustomNode>, std::string> parseCustomNode(const pugi::xml_node& node, const int& index)
 		{
 			return this->custom_node_parser->parseCustomNode(node, index);
 		}

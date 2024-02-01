@@ -35,7 +35,7 @@ namespace behaviour_tree::node::custom
 	public:
 		CarCustomNodeParser() {}
 
-		tl::expected<std::unique_ptr<custom::CustomNode>, std::string> parseCustomNode(const pugi::xml_node& node, const int& index) override
+		tl::expected<std::shared_ptr<custom::CustomNode>, std::string> parseCustomNode(const pugi::xml_node& node, const int& index) override
 		{
 			const std::string name_attribute = node.attribute("node_name").as_string();
 			const std::string node_name = node.name();
@@ -62,7 +62,7 @@ namespace behaviour_tree::node::custom
 						return tl::unexpected(fmt::format(R"(Invalid reset_on_non_consecutive_tick: '{}' | Action:Wait:["{}",{}])", reset_on_non_consecutive_tick_string, name_attribute, index));
 					}
 				}
-				return std::make_unique<custom::action::Wait>(
+				return std::make_shared<custom::action::Wait>(
 					custom::action::Wait(
 						name_attribute,
 						node.attribute("ms").as_int(),
@@ -71,14 +71,14 @@ namespace behaviour_tree::node::custom
 			}
 			case utils::Utility::hash("Action:Log"):
 			{
-				return std::make_unique<custom::action::Log>(
+				return std::make_shared<custom::action::Log>(
 					custom::action::Log(
 						name_attribute,
 						node.attribute("text").as_string()));
 			}
 			case utils::Utility::hash("Action:Error"):
 			{
-				return std::make_unique<custom::action::Error>(
+				return std::make_shared<custom::action::Error>(
 					custom::action::Error(
 						name_attribute,
 						node.attribute("text").as_string()));
@@ -112,7 +112,7 @@ namespace behaviour_tree::node::custom
 				const int speed = node.attribute("speed").as_int();
 				if (speed < 0 || speed > 100)
 					return tl::unexpected(fmt::format(R"(Invalid speed: '{}' | Action:SetSpeed:["{}",{}])", speed, name_attribute, index));
-				return std::make_unique<custom::action::SetSpeed>(custom::action::SetSpeed(name_attribute, wheel_type, speed));
+				return std::make_shared<custom::action::SetSpeed>(custom::action::SetSpeed(name_attribute, wheel_type, speed));
 			}
 			case utils::Utility::hash("Action:SetAngle"):
 			{
@@ -143,7 +143,7 @@ namespace behaviour_tree::node::custom
 				const int angle = node.attribute("angle").as_int();
 				if (angle < 0 || angle > 180)
 					return tl::unexpected(fmt::format(R"(Invalid angle: '{}' | Action:SetAngle:["{}",{}])", angle, name_attribute, index));
-				return std::make_unique<custom::action::SetAngle>(custom::action::SetAngle(name_attribute, servo_type, angle));
+				return std::make_shared<custom::action::SetAngle>(custom::action::SetAngle(name_attribute, servo_type, angle));
 			}
 			case utils::Utility::hash("Action:SetWheelDirection"):
 			{
@@ -176,11 +176,11 @@ namespace behaviour_tree::node::custom
 				{
 				case utils::Utility::hash("Forward"):
 				{
-					return std::make_unique<custom::action::SetWheelDirection>(custom::action::SetWheelDirection(name_attribute, wheel_type, custom::action::DirectionType::Forward));
+					return std::make_shared<custom::action::SetWheelDirection>(custom::action::SetWheelDirection(name_attribute, wheel_type, custom::action::DirectionType::Forward));
 				}
 				case utils::Utility::hash("Backward"):
 				{
-					return std::make_unique<custom::action::SetWheelDirection>(custom::action::SetWheelDirection(name_attribute, wheel_type, custom::action::DirectionType::Backward));
+					return std::make_shared<custom::action::SetWheelDirection>(custom::action::SetWheelDirection(name_attribute, wheel_type, custom::action::DirectionType::Backward));
 				}
 				default:
 				{
@@ -199,7 +199,7 @@ namespace behaviour_tree::node::custom
 				const int avg_distance = node.attribute("angle").as_int();
 				if (avg_distance < 0)
 					return tl::unexpected(fmt::format(R"(Invalid avg_distance: '{}' | Condition:NearbyPoints:["{}",{}])", avg_distance, name_attribute, index));
-				return std::make_unique<custom::condition::NearbyPoints>(
+				return std::make_shared<custom::condition::NearbyPoints>(
 					custom::condition::NearbyPoints(
 						name_attribute,
 						min_angle,

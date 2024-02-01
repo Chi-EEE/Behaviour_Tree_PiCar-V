@@ -12,7 +12,7 @@ namespace behaviour_tree::node::decorator
 	class Decorator : public Node
 	{
 	public:
-		Decorator(const std::string& name, std::unique_ptr<Node> child) : Node(name), child(std::move(child))
+		Decorator(const std::string& name, std::shared_ptr<Node> child) : Node(name), child(std::move(child))
 		{
 		}
 

@@ -14,7 +14,7 @@ namespace behaviour_tree::node::composite
 	class Random final : public Composite
 	{
 	public:
-		Random(const std::string& name, std::vector<std::unique_ptr<Node>> children) : Composite(name, std::move(children)) {}
+		Random(const std::string& name, std::vector<std::shared_ptr<Node>> children) : Composite(name, std::move(children)) {}
 
 		const CompositeType type() const final override { return CompositeType::Random; }
 

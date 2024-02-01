@@ -10,18 +10,29 @@ namespace behaviour_tree::node::composite
 	class Sequence final : public Composite
 	{
 	public:
-		Sequence(const std::string &name, std::vector<std::unique_ptr<Node>> children) : Composite(name, std::move(children)) {}
+		Sequence(const std::string &name, std::vector<std::shared_ptr<Node>> children) : Composite(name, std::move(children)) {}
 
 		const CompositeType type() const final override { return CompositeType::Sequence; }
 
 		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
-			for (auto &child : this->children)
+			return this->run(tick_count, context, 0);
+		}
+
+		const Status run(const int& tick_count, std::shared_ptr<Context> context, const int& start_index) final override
+		{
+			for (int i = start_index; i < this->children.size(); i++)
 			{
+				auto& child = this->children[i];
 				auto status = child->tick(tick_count, context);
 				if (status == Status::Failure)
 				{
 					return Status::Failure;
+				}
+				else if (status == Status::Running)
+				{
+					context->pushNode(std::make_pair(child, i));
+					return Status::Running;
 				}
 			}
 			return Status::Success;

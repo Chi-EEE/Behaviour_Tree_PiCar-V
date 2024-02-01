@@ -12,11 +12,15 @@ namespace behaviour_tree::node::decorator
 	class Repeat final : public Decorator
 	{
 	public:
-		Repeat(const std::string& name, std::unique_ptr<Node> child, const unsigned long& count, const bool& break_on_fail) : Decorator(name, std::move(child)), count(count), break_on_fail(break_on_fail)
+		Repeat(const std::string& name, std::shared_ptr<Node> child, const unsigned long& count, const bool& break_on_fail) : Decorator(name, std::move(child)), count(count), break_on_fail(break_on_fail)
 		{
 		}
 
 		const DecoratorType type() const final override { return DecoratorType::Repeat; }
+
+		void start(std::shared_ptr<Context> context) final override {
+
+		}
 
 		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
@@ -54,6 +58,10 @@ namespace behaviour_tree::node::decorator
 					}
 				}
 			}
+		}
+
+		void finish(std::shared_ptr<Context> context) final override {
+
 		}
 
 		const std::string toString() const final override {

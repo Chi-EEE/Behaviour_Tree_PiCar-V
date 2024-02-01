@@ -10,7 +10,7 @@ namespace behaviour_tree::node::composite
 	class Selector final : public Composite
 	{
 	public:
-		Selector(const std::string& name, std::vector<std::unique_ptr<Node>> children) : Composite(name, std::move(children)) {}
+		Selector(const std::string& name, std::vector<std::shared_ptr<Node>> children) : Composite(name, std::move(children)) {}
 
 		const CompositeType type() const final override { return CompositeType::Selector; }
 

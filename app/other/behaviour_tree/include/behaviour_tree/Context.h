@@ -12,6 +12,10 @@
 namespace behaviour_tree
 {
 	class BehaviourTree;
+	namespace node
+	{
+		class Node;
+	}
 }
 
 namespace behaviour_tree
@@ -20,13 +24,19 @@ namespace behaviour_tree
 	{
 	public:
 		Context(std::shared_ptr<BehaviourTree> behaviour_tree);
-		std::shared_ptr<BehaviourTree> getBehaviourTree() const { return this->behaviour_tree; };
+		void update(const int& tick_count);
 		Status UseRoot(const int& tick_count, const std::string& id);
+
+		std::shared_ptr<BehaviourTree> getBehaviourTree() const { return this->behaviour_tree; };
+
+		void pushNode(std::pair<std::shared_ptr<node::Node>, int> node_trace);
+		void popNode();
 
 		// Necessary for the class to be a polymorphic
 		virtual void _() = 0;
 	private:
 		std::shared_ptr<BehaviourTree> behaviour_tree;
+		std::vector<std::pair<std::shared_ptr<node::Node>, int>> node_trace;
 	};
 }
 
