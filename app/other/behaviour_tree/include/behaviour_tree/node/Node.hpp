@@ -13,7 +13,7 @@
 
 namespace behaviour_tree::node
 {
-	class Node
+	class Node : public std::enable_shared_from_this<Node>
 	{
 	public:
 		Node(const std::string& name) : name(name)
@@ -26,11 +26,16 @@ namespace behaviour_tree::node
 
         Status tick(const int& tick_count, std::shared_ptr<Context> context)
         {
+            return this->tick(tick_count, context, 0);
+        }
+
+        Status tick(const int& tick_count, std::shared_ptr<Context> context, const int& start_index)
+        {
             if (!this->started) {
                 this->start(context);
                 this->started = true;
             }
-            Status status = this->tick(tick_count, context);
+            Status status = this->tick(tick_count, context, start_index);
             if (status == Status::Success || status == Status::Failure) {
                 this->finish(context);
                 this->started = false;

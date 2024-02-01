@@ -6,6 +6,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <variant>
 
 #include "Status.hpp"
 
@@ -15,6 +16,10 @@ namespace behaviour_tree
 	namespace node
 	{
 		class Node;
+		namespace composite
+		{
+			class Composite;
+		}
 	}
 }
 
@@ -29,7 +34,7 @@ namespace behaviour_tree
 
 		std::shared_ptr<BehaviourTree> getBehaviourTree() const { return this->behaviour_tree; };
 
-		void pushNode(std::pair<std::shared_ptr<node::Node>, int> node_trace);
+		void pushNodeTrace(std::pair<std::shared_ptr<node::Node>, int> node_trace);
 		void popNode();
 
 		// Necessary for the class to be a polymorphic

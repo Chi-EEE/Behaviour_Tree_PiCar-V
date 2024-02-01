@@ -16,12 +16,24 @@ namespace behaviour_tree::node::composite
 
 		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
-			for (auto& child : this->children)
+			return this->run(tick_count, context, 0);
+		}
+
+		const Status run(const int& tick_count, std::shared_ptr<Context> context, const int& start_index) final override
+		{
+			for (int i = start_index; i < this->children.size(); i++)
 			{
+				auto& child = this->children[i];
 				auto status = child->tick(tick_count, context);
-				if (status == Status::Success)
-				{
+				switch (status) {
+				case Status::Failure:
+					continue;
+				case Status::Success:
+					context->popNode();
 					return Status::Success;
+				case Status::Running:
+					context->pushNodeTrace(std::make_pair(child, i));
+					return Status::Running;
 				}
 			}
 			return Status::Failure;

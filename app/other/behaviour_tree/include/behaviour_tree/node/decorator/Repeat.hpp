@@ -19,49 +19,30 @@ namespace behaviour_tree::node::decorator
 		const DecoratorType type() const final override { return DecoratorType::Repeat; }
 
 		void start(std::shared_ptr<Context> context) final override {
+			context->pushNodeTrace(std::make_pair(shared_from_this(), 0));
+		}
 
+		void finish(std::shared_ptr<Context> context) final override {
+			context->popNode();
 		}
 
 		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
-			if (this->count == std::numeric_limits<unsigned long>::max()) {
-				while (true)
+			for (int i = 0; i < this->count; i++)
+			{
+				auto status = this->child->tick(tick_count, context);
+				switch (status)
 				{
-					auto status = this->child->tick(tick_count, context);
-					switch (status)
+				case Status::Success:
+					continue;
+				case Status::Failure:
+					if (this->break_on_fail)
 					{
-					case Status::Success:
-						continue;
-					case Status::Failure:
-						if (this->break_on_fail)
-						{
-							return Status::Failure;
-						}
-						continue;
+						return Status::Failure;
 					}
+					continue;
 				}
 			}
-			else {
-				for (int i = 0; i < this->count; i++)
-				{
-					auto status = this->child->tick(tick_count, context);
-					switch (status)
-					{
-					case Status::Success:
-						continue;
-					case Status::Failure:
-						if (this->break_on_fail)
-						{
-							return Status::Failure;
-						}
-						continue;
-					}
-				}
-			}
-		}
-
-		void finish(std::shared_ptr<Context> context) final override {
-
 		}
 
 		const std::string toString() const final override {
