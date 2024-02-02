@@ -309,7 +309,8 @@ export const common_nodes = [
     "UseRoot",
 
     // Task Nodes
-    "Action:Wait",
+    "Action:CountdownWait",
+    "Action:PauseExecution",
 
     "Action:Log",
     "Action:Error",
@@ -386,7 +387,7 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Action:Wait",
+            name: "Action:CountdownWait",
             attributes: [
                 "ms",
                 {
@@ -395,6 +396,11 @@ export const xml_schema = {
                     completion: { type: "keyword" },
                 }
             ],
+            completion: { type: "keyword" },
+        },
+        {
+            name: "Action:PauseExecution",
+            attributes: ["ms"],
             completion: { type: "keyword" },
         },
         {
@@ -480,14 +486,16 @@ const node_information_list = new Map<string, string>([
     ["Root", "Start of every node tree"],
     ["Selector", "Runs children until one succeeds"],
     ["Sequence", "Runs children until one fails"],
+
+    ["UseRoot", "Goes to the given root node id"],
     ["Invert", "Inverts the result of the child"],
+    ["Repeat", "Repeats the child given the amount of times"],
 
     ["Fail", "Always fails"],
     ["Succeed", "Always succeeds"],
-    ["UseRoot", "Goes to the given root node id"],
-    ["Repeat", "Repeats the child given the amount of times"],
 
-    ["Action:Wait", "Waits for the given amount of time"],
+    ["Action:CountdownWait", "Waits for the given amount of time"],
+    ["Action:PauseExecution", "Pauses the execution for the given amount of time"],
     ["Action:Log", "Logs the given message"],
     ["Action:Error", "Logs errors the given message"],
 

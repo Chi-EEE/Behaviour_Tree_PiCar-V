@@ -15,7 +15,8 @@
 
 #include "behaviour_tree/node/custom/CustomNodeParser.hpp"
 
-#include "action/Wait.hpp"
+#include "action/PauseExecution.hpp"
+#include "action/CountdownWait.hpp"
 
 #include "action/Log.hpp"
 #include "action/Error.hpp"
@@ -41,33 +42,41 @@ namespace behaviour_tree::node::custom
 			const std::string node_name = node.name();
 			switch (utils::Utility::hash(node_name))
 			{
-			case utils::Utility::hash("Action:Wait"):
+			case utils::Utility::hash("Action:CountdownWait"):
 			{
 				const std::string reset_on_non_consecutive_tick_string = node.attribute("reset_on_non_consecutive_tick").as_string();
 				bool reset_on_non_consecutive_tick = false;
 				switch (utils::Utility::hash(reset_on_non_consecutive_tick_string))
 				{
-					case utils::Utility::hash("true"):
-					{
-						reset_on_non_consecutive_tick = true;
-						break;
-					}
-					case utils::Utility::hash("false"):
-					{
-						reset_on_non_consecutive_tick = false;
-						break;
-					}
-					default:
-					{
-						return tl::unexpected(fmt::format(R"(Invalid reset_on_non_consecutive_tick: '{}' | Action:Wait:["{}",{}])", reset_on_non_consecutive_tick_string, name_attribute, index));
-					}
+				case utils::Utility::hash("true"):
+				{
+					reset_on_non_consecutive_tick = true;
+					break;
 				}
-				return std::make_shared<custom::action::Wait>(
-					custom::action::Wait(
+				case utils::Utility::hash("false"):
+				{
+					reset_on_non_consecutive_tick = false;
+					break;
+				}
+				default:
+				{
+					return tl::unexpected(fmt::format(R"(Invalid reset_on_non_consecutive_tick: '{}' | Action:CountdownWait:["{}",{}])", reset_on_non_consecutive_tick_string, name_attribute, index));
+				}
+				}
+				return std::make_shared<custom::action::CountdownWait>(
+					custom::action::CountdownWait(
 						name_attribute,
 						node.attribute("ms").as_int(),
 						reset_on_non_consecutive_tick
-						));
+					));
+			}
+			case utils::Utility::hash("Action:PauseExecution"):
+			{
+				return std::make_shared<custom::action::PauseExecution>(
+					custom::action::PauseExecution(
+						name_attribute,
+						node.attribute("ms").as_int()
+					));
 			}
 			case utils::Utility::hash("Action:Log"):
 			{

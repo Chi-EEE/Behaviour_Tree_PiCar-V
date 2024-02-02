@@ -14,6 +14,14 @@ namespace behaviour_tree::node::decorator
 
 		const DecoratorType type() const final override { return DecoratorType::Invert; }
 
+		void start(std::shared_ptr<Context> context) final override {
+			context->pushNodeTrace(std::make_pair(shared_from_this(), 0));
+		}
+
+		void finish(std::shared_ptr<Context> context) final override {
+			context->popNode();
+		}
+
 		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
 			auto status = this->child->tick(tick_count, context);
