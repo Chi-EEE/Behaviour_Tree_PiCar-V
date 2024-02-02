@@ -19,14 +19,10 @@
             <!-- Wait for 1 second before turning -->
             <Action:SetWheelDirection wheel_type="Both" direction_type="Backward"/>
             <Action:SetAngle angle="0" servo_type="FrontWheels"/>
-            <Repeat count="inf" break_on_fail="false">
-                <Action:Wait ms="3000" reset_on_non_consecutive_tick="false"/>
-            </Repeat>
+            <Action:PauseExecution ms="3000"/>
             <Action:SetAngle angle="180" servo_type="FrontWheels"/>
             <Action:SetWheelDirection wheel_type="Both" direction_type="Forward"/>
-            <Repeat count="inf" break_on_fail="false">
-                <Action:Wait ms="3000" reset_on_non_consecutive_tick="false"/>
-            </Repeat>
+            <Action:PauseExecution ms="3000"/>
             <Action:SetAngle angle="90" servo_type="FrontWheels"/>
         </Sequence>
     </Root>
