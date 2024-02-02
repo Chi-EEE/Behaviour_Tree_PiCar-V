@@ -63,19 +63,27 @@ namespace behaviour_tree::node::custom
 					return tl::unexpected(fmt::format(R"(Invalid reset_on_non_consecutive_tick: '{}' | Action:CountdownWait:["{}",{}])", reset_on_non_consecutive_tick_string, name_attribute, index));
 				}
 				}
+				int ms = node.attribute("ms").as_int();
+				if (ms < 0) {
+					return tl::unexpected(fmt::format(R"(Invalid ms: '{}' | Action:PauseExecution:["{}",{}])", ms, name_attribute, index));
+				}
 				return std::make_shared<custom::action::CountdownWait>(
 					custom::action::CountdownWait(
 						name_attribute,
-						node.attribute("ms").as_int(),
+						ms,
 						reset_on_non_consecutive_tick
 					));
 			}
 			case utils::Utility::hash("Action:PauseExecution"):
 			{
+				int ms = node.attribute("ms").as_int();
+				if (ms < 0) {
+					return tl::unexpected(fmt::format(R"(Invalid ms: '{}' | Action:PauseExecution:["{}",{}])", ms, name_attribute, index));
+				}
 				return std::make_shared<custom::action::PauseExecution>(
 					custom::action::PauseExecution(
 						name_attribute,
-						node.attribute("ms").as_int()
+						ms
 					));
 			}
 			case utils::Utility::hash("Action:Log"):
