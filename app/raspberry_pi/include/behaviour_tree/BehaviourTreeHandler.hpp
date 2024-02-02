@@ -44,8 +44,7 @@ namespace behaviour_tree
 		{
 			if (this->context != nullptr)
 			{
-				this->context->update();
-				//this->context->getBehaviourTree()->tick(this->tick_count, this->context);
+				this->context->update(this->tick_count);
 				++this->tick_count;
 			}
 		}
