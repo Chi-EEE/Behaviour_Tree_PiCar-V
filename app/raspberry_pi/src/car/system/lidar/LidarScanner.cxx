@@ -47,8 +47,7 @@ namespace car::system::lidar
 
 		std::vector<tl::expected<Measure, std::string>> scan() const final override
 		{
-			std::function<std::vector<tl::expected<Measure, std::string>>()> scanGenerator = this->lidar->iter_scans();
-			return scanGenerator();
+			return this->lidar->iter_scans()();
 		};
 
 		void stop() const final override

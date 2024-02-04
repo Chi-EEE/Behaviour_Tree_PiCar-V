@@ -14,7 +14,7 @@ namespace behaviour_tree {
 			this->behaviour_tree->tick(tick_count, shared_from_this());
 		}
 		else {
-			for (auto& node_trace = this->node_trace.begin(); node_trace != this->node_trace.end(); ) {
+			for (auto node_trace = this->node_trace.begin(); node_trace != this->node_trace.end(); ) {
 				auto& [node, index] = *node_trace;
 				if (composite::Composite* composite = dynamic_cast<composite::Composite*>(node.get()))
 				{

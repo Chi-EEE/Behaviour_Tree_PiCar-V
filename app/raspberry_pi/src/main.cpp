@@ -39,19 +39,19 @@ int main(int argc, char* argv[])
 	configuration->setConfigFilePath("settings/config.jsonc");
 	configuration->load();
 
-	 std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
+	 //std::unique_ptr<LidarDummy> scanner = std::make_unique<LidarDummy>();
 
-//#ifdef __linux
-//	auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
-//#else
-//	auto maybe_scanner = LidarScanner::create("COM3");
-//#endif
-//	if (!maybe_scanner.has_value())
-//	{
-//		spdlog::error("Unable to connect to the Lidar Scanner");
-//		throw std::runtime_error("Unable to connect to the Lidar Scanner");
-//	}
-//	std::unique_ptr<LidarScanner>& scanner = maybe_scanner.value();
+#ifdef __linux
+	auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
+#else
+	auto maybe_scanner = LidarScanner::create("COM3");
+#endif
+	if (!maybe_scanner.has_value())
+	{
+		spdlog::error("Unable to connect to the Lidar Scanner");
+		throw std::runtime_error("Unable to connect to the Lidar Scanner");
+	}
+	std::unique_ptr<LidarScanner>& scanner = maybe_scanner.value();
 
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(configuration);
 

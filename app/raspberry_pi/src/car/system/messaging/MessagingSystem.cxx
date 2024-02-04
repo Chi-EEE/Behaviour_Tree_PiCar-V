@@ -85,8 +85,10 @@ namespace car::system::messaging
 
 		void stop()
 		{
-			this->websocket->stop();
-			this->websocket = nullptr;
+			if (this->websocket != nullptr) {
+				this->websocket->stop();
+				this->websocket = nullptr;
+			}
 		}
 
 		void terminate()

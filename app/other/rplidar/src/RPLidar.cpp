@@ -641,7 +641,7 @@ namespace rplidar
 		auto measureIterator = this->iter_measures(scanType, maxBufMeas);
 
 		// Define a lambda function to generate scans
-		auto scanGenerator = [&]() -> std::vector<tl::expected<Measure, std::string>>
+		auto scanGenerator = [measureIterator, &minLen]() -> std::vector<tl::expected<Measure, std::string>>
 		{
 			std::vector<tl::expected<Measure, std::string>> scanList;
 			while (true)
