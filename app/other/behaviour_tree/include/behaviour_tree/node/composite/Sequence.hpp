@@ -35,7 +35,7 @@ namespace behaviour_tree::node::composite
 				auto status = child->tick(tick_count, context);
 				switch (status) {
 				case Status::Running:
-					context->pushNodeTrace(std::make_pair(child, i));
+					context->pushNodeTrace(std::make_pair(shared_from_this(), i));
 					return Status::Running;
 				case Status::Success:
 					context->popNode();

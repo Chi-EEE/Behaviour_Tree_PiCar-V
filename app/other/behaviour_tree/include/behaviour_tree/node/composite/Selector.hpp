@@ -32,7 +32,7 @@ namespace behaviour_tree::node::composite
 					context->popNode();
 					return Status::Success;
 				case Status::Running:
-					context->pushNodeTrace(std::make_pair(child, i));
+					context->pushNodeTrace(std::make_pair(shared_from_this(), i));
 					return Status::Running;
 				}
 			}
