@@ -56,7 +56,8 @@ int main(int argc, char* argv[])
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(configuration);
 
 #ifdef __linux
-	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
+	// std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
+	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 #else
 	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 #endif

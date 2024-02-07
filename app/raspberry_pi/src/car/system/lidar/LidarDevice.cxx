@@ -19,7 +19,7 @@ namespace car::system::lidar
 		virtual void initialize() const = 0;
 		virtual void start() const = 0;
 
-		virtual std::vector<tl::expected<Measure, std::string>> scan() const = 0;
+		virtual std::vector<Measure> scan() const = 0;
 
 		std::string getLidarMessage()
 		{
@@ -27,14 +27,7 @@ namespace car::system::lidar
 			output_json.SetObject();
 			rapidjson::Value data_array(rapidjson::kArrayType);
 
-			this->scan_data.clear();
-			for (const auto &maybe_measure : this->scan())
-			{
-				if (maybe_measure.has_value())
-				{
-					this->scan_data.push_back(maybe_measure.value());
-				}
-			}
+			this->scan_data = this->scan();
 
 			for (const Measure &measure : this->scan_data)
 			{

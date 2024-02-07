@@ -636,19 +636,18 @@ namespace rplidar
 	 * @param minLen Minimum number of measures in the scan for it to be yelded.
 	 * @return std::function<std::vector<Measure>()>
 	 */
-	std::function<std::vector<tl::expected<Measure, std::string>>()> RPLidar::iter_scans(ScanType scanType, int maxBufMeas, int minLen)
+	std::function<std::vector<Measure>()> RPLidar::iter_scans(ScanType scanType, int maxBufMeas, int minLen)
 	{
 		auto measureIterator = this->iter_measures(scanType, maxBufMeas);
 
 		// Define a lambda function to generate scans
-		auto scanGenerator = [measureIterator, &minLen]() -> std::vector<tl::expected<Measure, std::string>>
+		auto scanGenerator = [measureIterator, &minLen]() -> std::vector<Measure>
 		{
-			std::vector<tl::expected<Measure, std::string>> scanList;
+			std::vector<Measure> scanList;
 			while (true)
 			{
 				tl::expected<Measure, std::string> maybe_measure = measureIterator();
 				if (!maybe_measure.has_value()) {
-					scanList.push_back(maybe_measure);
 					continue;
 				}
 				Measure measure = maybe_measure.value();

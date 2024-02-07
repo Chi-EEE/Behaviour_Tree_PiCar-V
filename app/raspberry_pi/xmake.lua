@@ -36,6 +36,10 @@ includes("../other/utils/xmake.lua")
 includes("../other/behaviour_tree/xmake.lua", "../other/behaviour_tree_car/xmake.lua")
 includes("../other/rplidar/xmake.lua")
 
+if is_plat("linux") then 
+    add_links("pthread")
+end 
+
 target("raspberry_pi")
     set_kind("binary")
     set_languages("cxx17")
