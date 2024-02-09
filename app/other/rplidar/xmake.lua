@@ -1,7 +1,7 @@
 add_requires("serial", "spdlog", "tl_expected")
 
 target("rplidar")
-    set_kind("$(kind)")
+    set_kind("headeronly")
     set_group("other")
 
     add_packages("serial", "spdlog", "tl_expected")
