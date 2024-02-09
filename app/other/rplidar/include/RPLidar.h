@@ -266,14 +266,6 @@ namespace rplidar
             this->_serial->close();
         }
 
-        void _set_pwm(int pwm)
-        {
-            std::string payload;
-            payload.push_back(static_cast<uint8_t>(pwm & 0xFF));
-            payload.push_back(static_cast<uint8_t>((pwm >> 8) & 0xFF));
-            this->_send_payload_cmd(SET_PWM_BYTE, payload);
-        }
-
         void set_motor_speed(int pwm)
         {
             if (0 <= pwm && pwm <= MAX_MOTOR_PWM)
@@ -314,113 +306,6 @@ namespace rplidar
             // For A1
             this->_serial->setDTR(true);
             this->motor_running = false;
-        }
-
-        /**
-         * @brief Sends `cmd` command with `payload` to the sensor
-         *
-         * @param cmd
-         * @param payload
-         */
-        void _send_payload_cmd(uint8_t cmd, const std::string &payload)
-        {
-            // Calculate the size
-            uint8_t size = static_cast<uint8_t>(payload.size());
-
-            // Construct the request string
-            std::string req;
-            req += static_cast<uint8_t>(SYNC_BYTE);
-            req += static_cast<uint8_t>(cmd);
-            req += static_cast<uint8_t>(size);
-            req += payload;
-
-            // Calculate the checksum
-            uint8_t checksum = 0;
-            for (const uint8_t &c : req)
-            {
-                checksum ^= static_cast<uint8_t>(c);
-            }
-
-            req += static_cast<uint8_t>(checksum);
-
-            this->_serial->write(req);
-            spdlog::debug("Command sent: {}", spdlog::to_hex(req));
-        }
-
-        /**
-         * @brief Sends `cmd` command to the sensor
-         *
-         * @param cmd
-         */
-        void _send_cmd(uint8_t cmd)
-        {
-            std::string req;
-            req += static_cast<uint8_t>(SYNC_BYTE);
-            req += static_cast<uint8_t>(cmd);
-
-            this->_serial->write(req);
-            spdlog::debug("Command sent: {}", spdlog::to_hex(req));
-        }
-
-        /**
-         * @brief Reads descriptor packet
-         *
-         * @return tl::expected<std::tuple<uint8_t, bool, uint8_t>, std::string>
-         */
-        tl::expected<
-            std::tuple<uint8_t, bool, uint8_t>,
-            std::string>
-        _read_descriptor()
-        {
-            // Read descriptor packet
-            std::array<uint8_t, DESCRIPTOR_LEN> descriptor;
-            memset(descriptor.data(), '\0', sizeof(descriptor));
-            this->_serial->read(descriptor.data(), DESCRIPTOR_LEN);
-            spdlog::debug("Received descriptor: {}", spdlog::to_hex(descriptor));
-
-            if (descriptor.size() != DESCRIPTOR_LEN)
-            {
-                return tl::make_unexpected("Descriptor length mismatch");
-            }
-            else if (descriptor[0] != SYNC_BYTE || descriptor[1] != SYNC_BYTE2)
-            {
-                return tl::make_unexpected("Incorrect descriptor starting bytes");
-            }
-
-            bool isSingle = descriptor[5] == 0;
-            return std::make_tuple(descriptor[2], isSingle, descriptor[6]);
-        }
-
-        /**
-         * @brief Reads response packet with length of `dsize` bytes
-         *
-         * @param dsize
-         * @return std::vector<uint8_t>
-         */
-        std::vector<uint8_t> _read_response(int dsize)
-        {
-            spdlog::debug("Trying to read response: {} bytes", dsize);
-
-            std::vector<uint8_t> data;
-            data.reserve(dsize);
-
-            while (this->_serial->available() < dsize)
-            {
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
-            }
-
-            this->_serial->read(data, dsize);
-
-            spdlog::debug("Received data: {}", spdlog::to_hex(data));
-            return data;
-        }
-
-        std::string convertToHexString(uint8_t value)
-        {
-            // Convert a uint8_t to a hexadecimal string
-            std::stringstream stream;
-            stream << std::hex << std::uppercase << std::setw(2) << std::setfill('0') << static_cast<int>(value);
-            return stream.str();
         }
 
         /**
@@ -656,68 +541,6 @@ namespace rplidar
             std::this_thread::sleep_for(std::chrono::milliseconds(2000));
             this->clean_input();
         }
-        tl::expected<Measure, std::string> _process_scan(const std::vector<uint8_t> &raw)
-        {
-            Measure measurementData;
-
-            bool newScan = static_cast<bool>(raw[0] & 0b1);
-            bool inversedNewScan = static_cast<bool>((raw[0] >> 1) & 0b1);
-            int quality = static_cast<int>(raw[0] >> 2);
-
-            if (newScan == inversedNewScan)
-            {
-                return tl::make_unexpected("New scan flags mismatch");
-            }
-
-            int checkBit = static_cast<int>(raw[1] & 0b1);
-            if (checkBit != 1)
-            {
-                return tl::make_unexpected("Check bit not equal to 1");
-            }
-
-            int anglePart1 = static_cast<int>(raw[1] >> 1);
-            int anglePart2 = static_cast<int>(raw[2]) << 7;
-            float angle = (anglePart1 + anglePart2) / 64.0;
-
-            int distancePart1 = static_cast<int>(raw[3]);
-            int distancePart2 = static_cast<int>(raw[4]) << 8;
-            float distance = (distancePart1 + distancePart2) / 4.0;
-
-            measurementData.newScan = newScan;
-            measurementData.quality = quality;
-            measurementData.angle = angle;
-            measurementData.distance = distance;
-
-            return measurementData;
-        }
-
-        /**
-         * @brief Iterate over measures. Note that consumer must be fast enough,
-                otherwise data will be accumulated inside buffer and consumer will get
-                data with increasing lag.
-         *
-         * @param scanType
-         * @param maxBufMeas int or False if you want unlimited buffer
-                    Maximum number of bytes to be stored inside the buffer. Once
-                    numbe exceeds this limit buffer will be emptied out.
-         * @return std::function<Measure()>
-         */
-        Measure _process_express_scan(std::unique_ptr<ExpressPacket> &data, float newAngle, int trame)
-        {
-            Measure measurementData;
-
-            bool newScan = (newAngle < data->start_angle) && (trame == 1);
-
-            float angle = std::fmod((data->start_angle + ((newAngle - data->start_angle) / 32 * trame - data->angle[trame - 1])), 360);
-            float distance = data->distance[trame - 1];
-
-            measurementData.newScan = newScan;
-            measurementData.quality = 0; // Replace this with your actual quality value
-            measurementData.angle = angle;
-            measurementData.distance = distance;
-
-            return measurementData;
-        }
 
         std::function<tl::expected<Measure, std::string>()> iter_measures(ScanType scanType = ScanType::NORMAL, int maxBufMeas = 3000)
         {
@@ -834,6 +657,185 @@ namespace rplidar
                 return scanList;
             };
             return scanGenerator;
+        }
+
+    private:
+        void _set_pwm(int pwm)
+        {
+            std::string payload;
+            payload.push_back(static_cast<uint8_t>(pwm & 0xFF));
+            payload.push_back(static_cast<uint8_t>((pwm >> 8) & 0xFF));
+            this->_send_payload_cmd(SET_PWM_BYTE, payload);
+        }
+
+        /**
+         * @brief Sends `cmd` command with `payload` to the sensor
+         *
+         * @param cmd
+         * @param payload
+         */
+        void _send_payload_cmd(uint8_t cmd, const std::string &payload)
+        {
+            // Calculate the size
+            uint8_t size = static_cast<uint8_t>(payload.size());
+
+            // Construct the request string
+            std::string req;
+            req += static_cast<uint8_t>(SYNC_BYTE);
+            req += static_cast<uint8_t>(cmd);
+            req += static_cast<uint8_t>(size);
+            req += payload;
+
+            // Calculate the checksum
+            uint8_t checksum = 0;
+            for (const uint8_t &c : req)
+            {
+                checksum ^= static_cast<uint8_t>(c);
+            }
+
+            req += static_cast<uint8_t>(checksum);
+
+            this->_serial->write(req);
+            spdlog::debug("Command sent: {}", spdlog::to_hex(req));
+        }
+
+        /**
+         * @brief Sends `cmd` command to the sensor
+         *
+         * @param cmd
+         */
+        void _send_cmd(uint8_t cmd)
+        {
+            std::string req;
+            req += static_cast<uint8_t>(SYNC_BYTE);
+            req += static_cast<uint8_t>(cmd);
+
+            this->_serial->write(req);
+            spdlog::debug("Command sent: {}", spdlog::to_hex(req));
+        }
+
+        /**
+         * @brief Reads descriptor packet
+         *
+         * @return tl::expected<std::tuple<uint8_t, bool, uint8_t>, std::string>
+         */
+        tl::expected<
+            std::tuple<uint8_t, bool, uint8_t>,
+            std::string>
+        _read_descriptor()
+        {
+            // Read descriptor packet
+            std::array<uint8_t, DESCRIPTOR_LEN> descriptor;
+            memset(descriptor.data(), '\0', sizeof(descriptor));
+            this->_serial->read(descriptor.data(), DESCRIPTOR_LEN);
+            spdlog::debug("Received descriptor: {}", spdlog::to_hex(descriptor));
+
+            if (descriptor.size() != DESCRIPTOR_LEN)
+            {
+                return tl::make_unexpected("Descriptor length mismatch");
+            }
+            else if (descriptor[0] != SYNC_BYTE || descriptor[1] != SYNC_BYTE2)
+            {
+                return tl::make_unexpected("Incorrect descriptor starting bytes");
+            }
+
+            bool isSingle = descriptor[5] == 0;
+            return std::make_tuple(descriptor[2], isSingle, descriptor[6]);
+        }
+
+        /**
+         * @brief Reads response packet with length of `dsize` bytes
+         *
+         * @param dsize
+         * @return std::vector<uint8_t>
+         */
+        std::vector<uint8_t> _read_response(int dsize)
+        {
+            spdlog::debug("Trying to read response: {} bytes", dsize);
+
+            std::vector<uint8_t> data;
+            data.reserve(dsize);
+
+            while (this->_serial->available() < dsize)
+            {
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            }
+
+            this->_serial->read(data, dsize);
+
+            spdlog::debug("Received data: {}", spdlog::to_hex(data));
+            return data;
+        }
+
+        std::string convertToHexString(uint8_t value)
+        {
+            // Convert a uint8_t to a hexadecimal string
+            std::stringstream stream;
+            stream << std::hex << std::uppercase << std::setw(2) << std::setfill('0') << static_cast<int>(value);
+            return stream.str();
+        }
+
+        tl::expected<Measure, std::string> _process_scan(const std::vector<uint8_t> &raw)
+        {
+            Measure measurementData;
+
+            bool newScan = static_cast<bool>(raw[0] & 0b1);
+            bool inversedNewScan = static_cast<bool>((raw[0] >> 1) & 0b1);
+            int quality = static_cast<int>(raw[0] >> 2);
+
+            if (newScan == inversedNewScan)
+            {
+                return tl::make_unexpected("New scan flags mismatch");
+            }
+
+            int checkBit = static_cast<int>(raw[1] & 0b1);
+            if (checkBit != 1)
+            {
+                return tl::make_unexpected("Check bit not equal to 1");
+            }
+
+            int anglePart1 = static_cast<int>(raw[1] >> 1);
+            int anglePart2 = static_cast<int>(raw[2]) << 7;
+            float angle = (anglePart1 + anglePart2) / 64.0;
+
+            int distancePart1 = static_cast<int>(raw[3]);
+            int distancePart2 = static_cast<int>(raw[4]) << 8;
+            float distance = (distancePart1 + distancePart2) / 4.0;
+
+            measurementData.newScan = newScan;
+            measurementData.quality = quality;
+            measurementData.angle = angle;
+            measurementData.distance = distance;
+
+            return measurementData;
+        }
+
+        /**
+         * @brief Iterate over measures. Note that consumer must be fast enough,
+                otherwise data will be accumulated inside buffer and consumer will get
+                data with increasing lag.
+         *
+         * @param scanType
+         * @param maxBufMeas int or False if you want unlimited buffer
+                    Maximum number of bytes to be stored inside the buffer. Once
+                    numbe exceeds this limit buffer will be emptied out.
+         * @return std::function<Measure()>
+         */
+        Measure _process_express_scan(std::unique_ptr<ExpressPacket> &data, float newAngle, int trame)
+        {
+            Measure measurementData;
+
+            bool newScan = (newAngle < data->start_angle) && (trame == 1);
+
+            float angle = std::fmod((data->start_angle + ((newAngle - data->start_angle) / 32 * trame - data->angle[trame - 1])), 360);
+            float distance = data->distance[trame - 1];
+
+            measurementData.newScan = newScan;
+            measurementData.quality = 0; // Replace this with your actual quality value
+            measurementData.angle = angle;
+            measurementData.distance = distance;
+
+            return measurementData;
         }
 
     private:
