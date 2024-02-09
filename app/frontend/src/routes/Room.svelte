@@ -25,6 +25,18 @@
     let stream_split_width = 0;
 </script>
 
+<div
+    style="
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    background-color: #BC2731;
+    color: white;
+"
+    class="z-50 p-2 rounded-lg shadow-lg"
+>
+    <button>Exit Room</button>
+</div>
 <Splitpanes
     horizontal={true}
     style="height:100vh;padding:1em;background-color:rgb(20,20,40)"
