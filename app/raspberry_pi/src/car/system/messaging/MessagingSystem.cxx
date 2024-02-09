@@ -119,7 +119,10 @@ namespace car::system::messaging
 			case ix::WebSocketMessageType::Message:
 			{
 				this->handle_message_signal(msg->str);
+                break;
 			}
+            default:
+                break;
 			}
 		}
 

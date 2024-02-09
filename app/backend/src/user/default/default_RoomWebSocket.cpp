@@ -28,7 +28,7 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr &wsCo
 			return;
 		}
 		RoomManager *room_manager = drogon::app().getPlugin<RoomManager>();
-		auto &room = room_manager->getRoom(user.getChatRoomName());
+		auto room = room_manager->getRoom(user.getChatRoomName());
 		if (room == nullptr)
 		{
 			spdlog::error("Room {} does not exist | RoomWebSocket::handleUserMessage", user.getChatRoomName());
@@ -95,7 +95,7 @@ void RoomWebSocket::handleBehaviourTree(const drogon::WebSocketConnectionPtr &ws
 	auto &behaviour_tree = maybe_behaviour_tree.value();
 	spdlog::info("Received a behaviour tree from {} | {} | RoomWebSocket::handleBehaviourTree", wsConnPtr->peerAddr().toIp(), behaviour_tree->toString());
 
-	auto &car_user = room->getCarUser();
+	auto car_user = room->getCarUser();
 	if (car_user != nullptr)
 	{
 		rapidjson::Document behaviour_command_json;

@@ -72,7 +72,7 @@ void RoomWebSocket::handleConnectionClosed(const drogon::WebSocketConnectionPtr 
         std::string room_name = user.getChatRoomName();
 
         RoomManager *room_manager = drogon::app().getPlugin<RoomManager>();
-        auto &room = room_manager->getRoom(room_name);
+        auto room = room_manager->getRoom(room_name);
         room->removeUser(user);
         if (room->isEmpty())
         {
