@@ -1,14 +1,22 @@
-<script lang="ts">
+<script>
     // If this does not work then try preview
     import CodeMirror from "svelte-codemirror-editor";
     import { xml } from "@codemirror/lang-xml";
     import { oneDark } from "@codemirror/theme-one-dark";
-    import { node_hover, xml_schema } from "./CodeBox_Constants";
+    
     import xmlFormat from "xml-formatter";
+    import { xml_schema } from "./CodeBox_Constants";
+    import { node_hover } from "./CodeBox_Constants";
 
-    export let websocket: WebSocket;
+    /**
+     * @type {WebSocket}
+     */
+    export let websocket;
 
-    let xml_code: string = "";
+    /**
+     * @type {string}
+     */
+    let xml_code = "";
 
     function sendXMLCode() {
         websocket.send(

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
     import LidarStream from "../lib/LidarStream.svelte";
     import UrlPattern from "url-pattern";
     import CodeBox from "../lib/CodeBox.svelte";
@@ -7,12 +7,22 @@
     const room_pattern = new UrlPattern("#/room/:room");
     let room_name = room_pattern.match(window.location.hash).room;
 
-    const websocket: WebSocket = new WebSocket(
+    /**
+     * @type {WebSocket}
+     */
+    const websocket = new WebSocket(
         `ws://${location.host}/ws/room?request=create&room_name=${room_name}`,
     );
 
-    let stream_split_height: number = 0;
-    let stream_split_width: number = 0;
+    /**
+     * @type {number}
+     */
+    let stream_split_height = 0;
+
+    /**
+     * @type {number}
+     */
+    let stream_split_width = 0;
 </script>
 
 <Splitpanes

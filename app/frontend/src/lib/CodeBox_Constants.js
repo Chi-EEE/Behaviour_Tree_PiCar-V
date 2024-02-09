@@ -479,7 +479,10 @@ export const xml_schema = {
     attributes: [{ name: "name", global: true }],
 };
 
-const node_information_list = new Map<string, string>([
+/**
+ * @type {Map<string, string>}
+ */
+const node_information_list = new Map([
     ["Root", "Start of every node tree"],
     ["Selector", "Runs children until one succeeds"],
     ["Sequence", "Runs children until one fails"],
