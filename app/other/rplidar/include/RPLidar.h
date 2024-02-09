@@ -322,7 +322,7 @@ namespace rplidar
          * @param cmd
          * @param payload
          */
-        void _send_payload_cmd(uint8_t cmd, const std::string &payload);
+        void _send_payload_cmd(uint8_t cmd, const std::string &payload)
         {
             // Calculate the size
             uint8_t size = static_cast<uint8_t>(payload.size());
@@ -605,9 +605,9 @@ namespace rplidar
 
             uint8_t cmd = SCAN_TYPE[scanType]["byte"];
 
-            spdlog::warn("starting scan process in {} mode", scanType);
+            spdlog::warn("starting scan process in {} mode", static_cast<int>(scanType));
 
-            if (scanType == EXPRESS)
+            if (scanType == ScanType::EXPRESS)
             {
                 // Adjust this part according to your payload format
                 std::string payload = "\x00\x00\x00\x00\x00";
@@ -757,7 +757,7 @@ namespace rplidar
                         std::vector<uint8_t> raw = this->_read_response(dsize);
                         return _process_scan(raw);
                     }
-                    else if (scanType == EXPRESS)
+                    else if (scanType == ScanType::EXPRESS)
                     {
                         if (this->express_trame == 32)
                         {

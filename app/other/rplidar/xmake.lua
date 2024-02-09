@@ -6,6 +6,5 @@ target("rplidar")
 
     add_packages("serial", "spdlog", "tl_expected")
 
-    add_files("src/*.cpp")
     add_headerfiles("include/(RPLidar.h)")
     add_includedirs("include", {public = true})
