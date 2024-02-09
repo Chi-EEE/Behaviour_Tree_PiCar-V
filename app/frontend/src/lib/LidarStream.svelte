@@ -1,39 +1,77 @@
-<script lang="ts">
+<script>
     import { onMount } from "svelte";
 
-    export let room_name: string;
-    export let websocket: WebSocket;
+    /**
+     * @type {string}
+     */
+    export let room_name;
+
+    /**
+     * @type {WebSocket}
+     */
+    export let websocket;
+
+    /**
+     * @type {number}
+     */
+    export let parentWidth;
+
+    /**
+     * @type {number}
+     */
+    export let parentHeight;
 
     const DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH = 200; // 30 cm
 
     class ScanPoint {
-        constructor(angle: number, distance: number) {
+        /**
+         * @param {number} angle
+         * @param {number} distance
+         */
+        constructor(angle, distance) {
             this.angle = angle;
             this.distance = distance;
         }
-
-        readonly angle: number;
-        readonly distance: number;
     }
 
-    let points: Array<ScanPoint> = [];
+    /**
+     * @type {Array<ScanPoint>}
+     */
+    let points = [];
 
-    websocket.addEventListener("message", (event: MessageEvent<any>) => {
-        const json_data = JSON.parse(event.data);
-        if (json_data.type == "car") {
-            points.length = 0;
-            console.log(json_data["data"].length);
-            for (const point of json_data["data"]) {
-                points.push(new ScanPoint(point.angle, point.distance));
+    websocket.addEventListener(
+        "message",
+        /**
+         * @param {MessageEvent<any>} event
+         */
+        (event) => {
+            const json_data = JSON.parse(event.data);
+            if (json_data.type == "car") {
+                points.length = 0;
+                console.log(json_data["data"].length);
+                for (const point of json_data["data"]) {
+                    points.push(new ScanPoint(point.angle, point.distance));
+                }
+                draw();
             }
-            draw();
-        }
-    });
+        },
+    );
 
-    let canvas: HTMLCanvasElement;
-    let context: CanvasRenderingContext2D;
+    /**
+     * @type {HTMLCanvasElement}
+     */
+    let canvas;
 
-    let zoom: number = 0.3;
+    /**
+     * @type {CanvasRenderingContext2D}
+     */
+    let context;
+
+    /**
+     * @type {number}
+     */
+    let zoom = 0.3;
+
     $: sunfounder_car_width = DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH * zoom;
 
     function drawCursor() {
@@ -81,14 +119,49 @@
     }
 
     onMount(async () => {
-        context = canvas.getContext("2d")!!;
+        let _context = canvas.getContext("2d");
+        if (!_context) {
+            throw new Error("Could not get context");
+        }
+        context = _context;
         clear();
         drawCursor();
     });
+
+    /**
+     * @type {number}
+     */
+    let information_tab_height = 0;
+
+    $: {
+        if (canvas) {
+            const width = parentWidth < 0 ? 0 : parentWidth;
+            const height =
+                parentHeight - information_tab_height < 0
+                    ? 0
+                    : parentHeight - information_tab_height;
+            const targetAspectRatio = 16 / 9;
+            const currentAspectRatio = width / height;
+
+            if (currentAspectRatio > targetAspectRatio) {
+                canvas.width = height * targetAspectRatio;
+                canvas.height = height;
+            } else {
+                canvas.width = width;
+                canvas.height = width / targetAspectRatio;
+            }
+        }
+    }
 </script>
+
 <canvas
     id="canvas"
-    class="border-2 border-black"
+    class="border-2 border-black align-middle"
+    style="margin-right: auto;margin-left: auto;display: block;"
     bind:this={canvas}
 />
-<h1>Title: {room_name}</h1>
+{#if parentHeight - information_tab_height > 0}
+    <div bind:clientHeight={information_tab_height}>
+        <h1>Title: {room_name}</h1>
+    </div>
+{/if}
