@@ -7,21 +7,15 @@
     const room_pattern = new UrlPattern("#/room/:room");
     let room_name = room_pattern.match(window.location.hash).room;
 
-    /**
-     * @type {WebSocket}
-     */
+    /** @type {WebSocket} */
     const websocket = new WebSocket(
         `ws://${location.host}/ws/room?request=create&room_name=${room_name}`,
     );
 
-    /**
-     * @type {number}
-     */
+    /** @type {number} */
     let stream_split_height = 0;
 
-    /**
-     * @type {number}
-     */
+    /** @type {number} */
     let stream_split_width = 0;
 </script>
 

@@ -8,9 +8,7 @@
     import { xml_schema } from "./CodeBox_Constants";
     import { node_hover } from "./CodeBox_Constants";
 
-    /**
-     * @type {WebSocket}
-     */
+    /** @type {WebSocket}  */
     export let websocket;
 
     /** @type {string} */
@@ -77,7 +75,7 @@
         style="
             position: absolute;
             bottom: 20px;
-            right: 30px;
+            right: 40px;
             background-color: {send_behaviour_tree_color};
             color: white;
         "
