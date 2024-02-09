@@ -1,24 +1,16 @@
 <script>
     import { onMount } from "svelte";
 
-    /**
-     * @type {string}
-     */
+    /** @type {string} */
     export let room_name;
 
-    /**
-     * @type {WebSocket}
-     */
+    /** @type {WebSocket} */
     export let websocket;
 
-    /**
-     * @type {number}
-     */
+    /** @type {number} */
     export let parentWidth;
 
-    /**
-     * @type {number}
-     */
+    /** @type {number} */
     export let parentHeight;
 
     const DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH = 200; // 30 cm
@@ -57,19 +49,13 @@
         },
     );
 
-    /**
-     * @type {HTMLCanvasElement}
-     */
+    /** @type {HTMLCanvasElement} */
     let canvas;
 
-    /**
-     * @type {CanvasRenderingContext2D}
-     */
+    /** @type {CanvasRenderingContext2D} */
     let context;
 
-    /**
-     * @type {number}
-     */
+    /** @type {number} */
     let zoom = 0.3;
 
     $: sunfounder_car_width = DEFAULT_SUNFOUNDER_CAR_MAX_WIDTH * zoom;
@@ -128,9 +114,7 @@
         drawCursor();
     });
 
-    /**
-     * @type {number}
-     */
+    /** @type {number} */
     let information_tab_height = 0;
 
     $: {
