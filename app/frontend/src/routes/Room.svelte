@@ -3,6 +3,7 @@
     import UrlPattern from "url-pattern";
     import CodeBox from "../lib/CodeBox.svelte";
     import { Pane, Splitpanes } from "svelte-splitpanes";
+    import { push } from "svelte-spa-router";
 
     const room_pattern = new UrlPattern("#/room/:room");
     let room_name = room_pattern.match(window.location.hash).room;
@@ -29,13 +30,18 @@
 "
     class="z-50 p-2 rounded-lg shadow-lg"
 >
-    <button>Exit Room</button>
+    <button
+        on:click={() => {
+            websocket.close();
+            push("/");
+        }}>Exit Room</button
+    >
 </div>
 <Splitpanes
     horizontal={true}
     style="height:100vh;padding:1em;background-color:rgb(20,20,40)"
 >
-    <Pane size={80} minSize={10} snapSize={20}>
+    <Pane size={80} minSize={5}>
         <div
             class="w-full h-full"
             style="background-color:rgb(230,230,230)"
@@ -50,7 +56,7 @@
             />
         </div>
     </Pane>
-    <Pane size={20} minSize={10} snapSize={20}>
+    <Pane size={20} minSize={5}>
         <div class="w-full h-full" style="background-color:rgb(230,230,230)">
             <CodeBox {websocket} />
         </div>
