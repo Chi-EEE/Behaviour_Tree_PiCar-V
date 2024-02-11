@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <string>
 #include <vector>
 #include <tsl/robin_map.h>
 
@@ -20,7 +21,7 @@ namespace behaviour_tree
 	class BehaviourTreeHandler : public car::plugin::Plugin
 	{
 	public:
-		void initialize(std::shared_ptr<car::system::CarSystem> car_system) override
+		void initialize(std::shared_ptr<car::system::CarSystem> car_system) final override
 		{
 			this->car_system = car_system;
 			// The BehaviourTreeParser does not come with a CustomNodeParser since each program can have a different set of Action nodes
@@ -40,7 +41,7 @@ namespace behaviour_tree
 					this->addBehaviourTree(behaviour_tree); });
 		}
 
-		void update() override
+		void update() final override
 		{
 			if (this->context != nullptr)
 			{
@@ -49,9 +50,14 @@ namespace behaviour_tree
 			}
 		}
 
-		void stop() override
+		void stop() final override
 		{
 			this->context = nullptr;
+		}
+
+		std::string getName() final override
+		{
+			return "BehaviourTreeHandler";
 		}
 
 		void runBehaviourTree(std::shared_ptr<BehaviourTree> behaviour_tree)

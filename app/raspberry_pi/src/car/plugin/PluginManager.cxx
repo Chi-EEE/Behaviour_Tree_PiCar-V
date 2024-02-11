@@ -52,6 +52,18 @@ namespace car::plugin
 			this->plugins.push_back(plugin);
 		}
 
+		std::shared_ptr<Plugin> getPlugin(std::string name)
+		{
+			for (std::weak_ptr<Plugin>& plugin : this->plugins)
+			{
+				if (plugin.lock()->getName() == name)
+				{
+					return plugin.lock();
+				}
+			}
+			return nullptr;
+		}
+
 	private:
 		std::vector<std::weak_ptr<Plugin>> plugins;
 	};

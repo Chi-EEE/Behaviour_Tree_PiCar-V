@@ -74,7 +74,7 @@ namespace car::system
 		void setRearLeftWheelDirectionToBackward();
 		void setRearRightWheelDirectionToBackward();
 
-		const std::vector<Measure> &getScanData() const { return this->scan_data; }
+		const std::vector<Measure> getScanData() const { return this->lidar_device->getScanData(); }
 
 	private:
         const std::shared_ptr<Configuration> configuration;
@@ -83,8 +83,6 @@ namespace car::system
 		const std::unique_ptr<MessagingSystem> messaging_system;
 		const std::unique_ptr<MovementSystem> movement_system;
 		const std::unique_ptr<PluginManager> plugin_manager;
-
-		std::vector<Measure> scan_data;
 
 		bool connectedToServer = false;
 	};

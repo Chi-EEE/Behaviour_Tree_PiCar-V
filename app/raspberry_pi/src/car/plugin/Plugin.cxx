@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <string>
 #include <memory>
 
 namespace car::system
@@ -18,6 +19,7 @@ namespace car::plugin
         virtual void initialize(std::shared_ptr<car::system::CarSystem> car_system) = 0;
         virtual void update() = 0;
         virtual void stop() = 0;
+        virtual std::string getName() = 0;
     };
 }
 

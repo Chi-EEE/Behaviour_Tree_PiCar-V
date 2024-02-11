@@ -45,6 +45,11 @@ namespace car::system::lidar
 			return buffer.GetString();
 		};
 
+		std::vector<Measure> getScanData() const
+		{
+			return this->scan_data;
+		}
+
 		virtual void stop() const = 0;
 		virtual void terminate() const = 0;
 		virtual void disconnect() const = 0;

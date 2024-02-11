@@ -37,7 +37,8 @@ namespace car::display::screen
 							 {
 						// TODO: Fix the y size of the canvas
 						auto c = Canvas(box.x_max, box.y_max * 3);
-						for (auto& point : this->car_system->getScanData()) {
+						std::vector<rplidar::Measure> scan_data = this->car_system->getScanData();
+						for (auto& point : scan_data) {
 							const double angle = point.angle;
 							const double distance = point.distance;
 							const double angleInRadians = angle * (3.14159265f / 180.0f);
