@@ -6,6 +6,8 @@
 #include <vector>
 #include <memory>
 
+#include "utils/TypeName.hpp"
+
 #include "Plugin.cxx"
 
 namespace car::system
@@ -20,7 +22,7 @@ namespace car::plugin
 	public:
 		void initialize(std::shared_ptr<system::CarSystem> car_system)
 		{
-			for (std::weak_ptr<Plugin> &plugin : this->plugins)
+			for (std::weak_ptr<Plugin>& plugin : this->plugins)
 			{
 				plugin.lock()->initialize(car_system);
 			}
@@ -28,7 +30,7 @@ namespace car::plugin
 
 		void update()
 		{
-			for (std::weak_ptr<Plugin> &plugin : this->plugins)
+			for (std::weak_ptr<Plugin>& plugin : this->plugins)
 			{
 				plugin.lock()->update();
 			}
@@ -52,16 +54,19 @@ namespace car::plugin
 			this->plugins.push_back(plugin);
 		}
 
-		std::shared_ptr<Plugin> getPlugin(std::string name)
+		template<typename T>
+		std::shared_ptr<T> getPlugin()
 		{
+			static_assert(std::is_base_of<Plugin, T>::value, "T must be a Plugin");
+			std::string type_name = utils::TypeName<T>::get();
 			for (std::weak_ptr<Plugin>& plugin : this->plugins)
 			{
-				if (plugin.lock()->getName() == name)
+				if (plugin.lock()->getName() == type_name)
 				{
 					return plugin.lock();
 				}
+				return nullptr;
 			}
-			return nullptr;
 		}
 
 	private:

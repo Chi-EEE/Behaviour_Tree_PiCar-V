@@ -11,10 +11,13 @@ namespace car::display
 
 	void CarConsole::run()
 	{
-
 		ScreenInteractive screen = ScreenInteractive::Fullscreen();
 
-		std::function<void()> exit = screen.ExitLoopClosure();
+		// Have a bool to exit the screen after it finishes updating the UI
+		std::atomic_bool exit_screen = false;
+		std::function<void()> exit = [&]() {
+			exit_screen.store(true);
+			};
 
 		MainScreen main_screen(this->car_system, exit);
 		auto main_screen_container = main_screen.element();
@@ -57,23 +60,21 @@ namespace car::display
 
 		std::thread refresh_ui([&]
 			{
-				while (true) {
+				do {
 					using namespace std::chrono_literals;
 					std::this_thread::sleep_for(0.05s);
-					if (screen.Active() == nullptr) {
-						break;
-					}
 					screen.Post([&]
 						{
 							settings_screen.update();
 						}
 					);
 					this->car_system->update();
-					if (screen.Active() == nullptr) {
+					screen.Post(Event::Custom);
+					if (exit_screen) {
+						screen.ExitLoopClosure()();
 						break;
 					}
-					screen.Post(Event::Custom);
-				}
+				} while (true);
 			}
 		);
 
