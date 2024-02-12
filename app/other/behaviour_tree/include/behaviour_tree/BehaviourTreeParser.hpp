@@ -151,42 +151,42 @@ namespace behaviour_tree
 		{
 			const std::string name_attribute = node.attribute("name").as_string();
 			const std::string& node_name = node.name();
-			switch (utils::Utility::hash(node_name))
+			switch (utils::hash(node_name))
 			{
 #pragma region Composite Node
-			case utils::Utility::hash("Sequence"):
+			case utils::hash("Sequence"):
 			{
 				return parseComposite(node, index, CompositeType::Sequence);
 			}
-			case utils::Utility::hash("Selector"):
+			case utils::hash("Selector"):
 			{
 				return parseComposite(node, index, CompositeType::Selector);
 			}
-			case utils::Utility::hash("Random"):
+			case utils::hash("Random"):
 			{
 				return parseComposite(node, index, CompositeType::Random);
 			}
 #pragma endregion
 #pragma region Decorator Node
-			case utils::Utility::hash("Repeat"):
+			case utils::hash("Repeat"):
 			{
 				return parseDecorator(node, index, DecoratorType::Repeat);
 			}
-			case utils::Utility::hash("Invert"):
+			case utils::hash("Invert"):
 			{
 				return parseDecorator(node, index, DecoratorType::Invert);
 			}
 #pragma endregion
 #pragma region Leaf Node
-			case utils::Utility::hash("Succeed"):
+			case utils::hash("Succeed"):
 			{
 				return std::make_shared<Succeed>(Succeed(name_attribute));
 			}
-			case utils::Utility::hash("Fail"):
+			case utils::hash("Fail"):
 			{
 				return std::make_shared<Fail>(Fail(name_attribute));
 			}
-			case utils::Utility::hash("UseRoot"):
+			case utils::hash("UseRoot"):
 			{
 				return std::make_shared<UseRoot>(
 					UseRoot(
@@ -248,14 +248,14 @@ namespace behaviour_tree
 				const std::string break_on_fail_string = node.attribute("break_on_fail").as_string();
 
 				bool break_on_fail = false;
-				switch (utils::Utility::hash(break_on_fail_string))
+				switch (utils::hash(break_on_fail_string))
 				{
-					case utils::Utility::hash("true"):
+					case utils::hash("true"):
 					{
 						break_on_fail = true;
 						break;
 					}
-					case utils::Utility::hash("false"):
+					case utils::hash("false"):
 					{
 						break_on_fail = false;
 						break;

@@ -58,16 +58,22 @@ namespace car::plugin
 		std::shared_ptr<T> getPlugin()
 		{
 			static_assert(std::is_base_of<Plugin, T>::value, "T must be a Plugin");
-			std::string type_name = utils::TypeName<T>::get();
+			auto type_name = utils::getStringAfterLastColon(utils::TypeName<T>());
+
 			for (std::weak_ptr<Plugin>& plugin : this->plugins)
 			{
-				if (plugin.lock()->getName() == type_name)
+				if (auto locked_plugin = plugin.lock())
 				{
-					return plugin.lock();
+					if (locked_plugin->getName() == type_name)
+					{
+						return std::static_pointer_cast<T>(locked_plugin);
+					}
 				}
-				return nullptr;
 			}
+
+			return nullptr;
 		}
+
 
 	private:
 		std::vector<std::weak_ptr<Plugin>> plugins;

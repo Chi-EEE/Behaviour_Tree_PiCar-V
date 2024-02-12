@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 										std::function<void(const drogon::HttpResponsePtr &)> &&callback)
 									{
 			std::string path = req->getPath();
-			utils::Utility::encode(path);
+			utils::encode(path);
 			const std::string redirect_url = url + "/#" + path;
 			auto resp = drogon::HttpResponse::newHttpResponse();
 			resp->setStatusCode(drogon::k301MovedPermanently);

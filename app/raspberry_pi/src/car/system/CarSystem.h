@@ -49,20 +49,20 @@ namespace car::system
 
 		tl::expected<nullptr_t, std::string> loadConfiguation();
 
-		nod::signal<void(const std::string, const std::string)> &getCustomCommandSignal() const { return this->messaging_system->getCustomCommandSignal(); }
-		nod::signal<void(const std::string)> &getHandleMessageSignal() { return this->messaging_system->getHandleMessageSignal(); }
+		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() const { return this->messaging_system->getCustomCommandSignal(); }
+		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->messaging_system->getHandleMessageSignal(); }
 
 		void startLidarDevice();
 		void stopLidarDevice();
 
-		void setRearWheelsSpeed(const int &speed);
+		void setRearWheelsSpeed(const int& speed);
 
-		void setRearLeftWheelSpeed(const int &speed);
-		void setRearRightWheelSpeed(const int &speed);
+		void setRearLeftWheelSpeed(const int& speed);
+		void setRearRightWheelSpeed(const int& speed);
 
-		void setFrontWheelsAngle(const float &angle);
-		void setCameraServo1Angle(const float &angle);
-		void setCameraServo2Angle(const float &angle);
+		void setFrontWheelsAngle(const float& angle);
+		void setCameraServo1Angle(const float& angle);
+		void setCameraServo2Angle(const float& angle);
 
 		void setRearWheelsDirectionToForward();
 
@@ -74,10 +74,13 @@ namespace car::system
 		void setRearLeftWheelDirectionToBackward();
 		void setRearRightWheelDirectionToBackward();
 
+		template<typename T>
+		const std::shared_ptr<T> getPlugin() const { return this->plugin_manager->getPlugin<T>(); }
+
 		const std::vector<Measure> getScanData() const { return this->lidar_device->getScanData(); }
 
 	private:
-        const std::shared_ptr<Configuration> configuration;
+		const std::shared_ptr<Configuration> configuration;
 
 		const std::unique_ptr<LidarDevice> lidar_device;
 		const std::unique_ptr<MessagingSystem> messaging_system;

@@ -38,18 +38,18 @@ void RoomWebSocket::handleNewConnection(const drogon::HttpRequestPtr &req,
         return;
     }
     // Encode after so that special characters are counted in the length
-    utils::Utility::encode(room_name);
+    utils::encode(room_name);
 
     const std::string request = req->getParameter("request");
-    switch (utils::Utility::hash(request))
+    switch (utils::hash(request))
     {
-    case utils::Utility::hash("create"):
+    case utils::hash("create"):
     {
         this->handleCreateRequest(req, conn, room_name);
         break;
     }
 
-    case utils::Utility::hash("join"):
+    case utils::hash("join"):
     {
         this->handleJoinRequest(req, conn, room_name);
         break;

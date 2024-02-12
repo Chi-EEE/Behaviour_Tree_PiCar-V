@@ -38,11 +38,11 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr &wsCo
 		std::string &message_data = maybe_message_data.value();
 		std::string &message_type = maybe_message_type.value();
 
-		switch (utils::Utility::hash(message_type))
+		switch (utils::hash(message_type))
 		{
-		case utils::Utility::hash("message"):
+		case utils::hash("message"):
 		{
-			utils::Utility::encode(message_data);
+			utils::encode(message_data);
 			spdlog::info("Received the following message from {}: {} | RoomWebSocket::handleUserMessage", wsConnPtr->peerAddr().toIp(), message_data);
 			/*
 			Returns the following JSON:
@@ -67,12 +67,12 @@ void RoomWebSocket::handleUserMessage(const drogon::WebSocketConnectionPtr &wsCo
 			this->chat_rooms.publish(user.getChatRoomName(), buffer.GetString());
 			break;
 		}
-		case utils::Utility::hash("behaviour_tree"):
+		case utils::hash("behaviour_tree"):
 		{
 			this->handleBehaviourTree(wsConnPtr, message_data, user, room);
 			break;
 		}
-		case utils::Utility::hash("command"):
+		case utils::hash("command"):
 		{
 			break;
 		}

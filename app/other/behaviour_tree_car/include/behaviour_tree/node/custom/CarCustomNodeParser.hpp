@@ -40,20 +40,20 @@ namespace behaviour_tree::node::custom
 		{
 			const std::string name_attribute = node.attribute("node_name").as_string();
 			const std::string node_name = node.name();
-			switch (utils::Utility::hash(node_name))
+			switch (utils::hash(node_name))
 			{
-			case utils::Utility::hash("Action:CountdownWait"):
+			case utils::hash("Action:CountdownWait"):
 			{
 				const std::string reset_on_non_consecutive_tick_string = node.attribute("reset_on_non_consecutive_tick").as_string();
 				bool reset_on_non_consecutive_tick = false;
-				switch (utils::Utility::hash(reset_on_non_consecutive_tick_string))
+				switch (utils::hash(reset_on_non_consecutive_tick_string))
 				{
-				case utils::Utility::hash("true"):
+				case utils::hash("true"):
 				{
 					reset_on_non_consecutive_tick = true;
 					break;
 				}
-				case utils::Utility::hash("false"):
+				case utils::hash("false"):
 				{
 					reset_on_non_consecutive_tick = false;
 					break;
@@ -74,7 +74,7 @@ namespace behaviour_tree::node::custom
 						reset_on_non_consecutive_tick
 					));
 			}
-			case utils::Utility::hash("Action:PauseExecution"):
+			case utils::hash("Action:PauseExecution"):
 			{
 				int ms = node.attribute("ms").as_int();
 				if (ms < 0) {
@@ -86,37 +86,37 @@ namespace behaviour_tree::node::custom
 						ms
 					));
 			}
-			case utils::Utility::hash("Action:Log"):
+			case utils::hash("Action:Log"):
 			{
 				return std::make_shared<custom::action::Log>(
 					custom::action::Log(
 						name_attribute,
 						node.attribute("text").as_string()));
 			}
-			case utils::Utility::hash("Action:Error"):
+			case utils::hash("Action:Error"):
 			{
 				return std::make_shared<custom::action::Error>(
 					custom::action::Error(
 						name_attribute,
 						node.attribute("text").as_string()));
 			}
-			case utils::Utility::hash("Action:SetSpeed"):
+			case utils::hash("Action:SetSpeed"):
 			{
 				const std::string wheel_type_attribute = node.attribute("wheel_type").as_string();
 				custom::action::WheelType wheel_type;
-				switch (utils::Utility::hash(wheel_type_attribute))
+				switch (utils::hash(wheel_type_attribute))
 				{
-				case utils::Utility::hash("Left"):
+				case utils::hash("Left"):
 				{
 					wheel_type = custom::action::WheelType::Left;
 					break;
 				}
-				case utils::Utility::hash("Right"):
+				case utils::hash("Right"):
 				{
 					wheel_type = custom::action::WheelType::Right;
 					break;
 				}
-				case utils::Utility::hash("Both"):
+				case utils::hash("Both"):
 				{
 					wheel_type = custom::action::WheelType::Both;
 					break;
@@ -131,23 +131,23 @@ namespace behaviour_tree::node::custom
 					return tl::unexpected(fmt::format(R"(Invalid speed: '{}' | Action:SetSpeed:["{}",{}])", speed, name_attribute, index));
 				return std::make_shared<custom::action::SetSpeed>(custom::action::SetSpeed(name_attribute, wheel_type, speed));
 			}
-			case utils::Utility::hash("Action:SetAngle"):
+			case utils::hash("Action:SetAngle"):
 			{
 				const std::string servo_type_attribute = node.attribute("servo_type").as_string();
 				custom::action::ServoType servo_type;
-				switch (utils::Utility::hash(servo_type_attribute))
+				switch (utils::hash(servo_type_attribute))
 				{
-				case utils::Utility::hash("FrontWheels"):
+				case utils::hash("FrontWheels"):
 				{
 					servo_type = custom::action::ServoType::FrontWheels;
 					break;
 				}
-				case utils::Utility::hash("CameraServo1"):
+				case utils::hash("CameraServo1"):
 				{
 					servo_type = custom::action::ServoType::CameraServo1;
 					break;
 				}
-				case utils::Utility::hash("CameraServo2"):
+				case utils::hash("CameraServo2"):
 				{
 					servo_type = custom::action::ServoType::CameraServo2;
 					break;
@@ -162,23 +162,23 @@ namespace behaviour_tree::node::custom
 					return tl::unexpected(fmt::format(R"(Invalid angle: '{}' | Action:SetAngle:["{}",{}])", angle, name_attribute, index));
 				return std::make_shared<custom::action::SetAngle>(custom::action::SetAngle(name_attribute, servo_type, angle));
 			}
-			case utils::Utility::hash("Action:SetWheelDirection"):
+			case utils::hash("Action:SetWheelDirection"):
 			{
 				const std::string wheel_type_attribute = node.attribute("wheel_type").as_string();
 				custom::action::WheelType wheel_type;
-				switch (utils::Utility::hash(wheel_type_attribute))
+				switch (utils::hash(wheel_type_attribute))
 				{
-				case utils::Utility::hash("Left"):
+				case utils::hash("Left"):
 				{
 					wheel_type = custom::action::WheelType::Left;
 					break;
 				}
-				case utils::Utility::hash("Right"):
+				case utils::hash("Right"):
 				{
 					wheel_type = custom::action::WheelType::Right;
 					break;
 				}
-				case utils::Utility::hash("Both"):
+				case utils::hash("Both"):
 				{
 					wheel_type = custom::action::WheelType::Both;
 					break;
@@ -189,13 +189,13 @@ namespace behaviour_tree::node::custom
 				}
 				}
 				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
-				switch (utils::Utility::hash(direction_type_attribute))
+				switch (utils::hash(direction_type_attribute))
 				{
-				case utils::Utility::hash("Forward"):
+				case utils::hash("Forward"):
 				{
 					return std::make_shared<custom::action::SetWheelDirection>(custom::action::SetWheelDirection(name_attribute, wheel_type, custom::action::DirectionType::Forward));
 				}
-				case utils::Utility::hash("Backward"):
+				case utils::hash("Backward"):
 				{
 					return std::make_shared<custom::action::SetWheelDirection>(custom::action::SetWheelDirection(name_attribute, wheel_type, custom::action::DirectionType::Backward));
 				}
@@ -205,7 +205,7 @@ namespace behaviour_tree::node::custom
 				}
 				}
 			}
-			case utils::Utility::hash("Condition:NearbyPoints"):
+			case utils::hash("Condition:NearbyPoints"):
 			{
 				const int min_angle = node.attribute("angle").as_int();
 				if (min_angle < 0 || min_angle > 360)
