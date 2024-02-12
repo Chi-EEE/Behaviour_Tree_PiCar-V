@@ -25,25 +25,6 @@ namespace car::display::component::main
 	public:
 		BehaviourTreePanel(std::shared_ptr<CarSystem> car_system) : car_system(car_system)
 		{
-			/*this->elelm = Renderer(Container::Vertical({ this->b }), [&]
-				{ return vbox({
-					  text("Behaviour Tree Queue"),
-					  separator(),
-					  vbox({
-						  hbox({
-							  Button(
-								"X", [&] {}, ButtonOption::Animated())->Render(),
-							  text("Behaviour Tree: ") | vcenter,
-							  separator(),
-							  vbox({
-							  Button(
-				"Info", [&] {}, ButtonOption::Animated())->Render(),
-							  Button(
-				"Start", [&] {}, ButtonOption::Animated())->Render(),
-							}),
-						  }) | border,
-					  }),
-					}); });*/
 			this->elelm = Renderer(Container::Vertical(this->behaviour_tree_list_components, 0), [&] {
 				auto behaviour_tree_handler = this->car_system->getPlugin<behaviour_tree::BehaviourTreeHandler>();
 				this->behaviour_tree_list.clear();
@@ -74,7 +55,7 @@ namespace car::display::component::main
 				return vbox({
 					  text("Behaviour Tree Queue"),
 					  separator(),
-					  vbox(this->behaviour_tree_list_elements),
+					  vbox(std::move(this->behaviour_tree_list_elements)),
 					});
 				}
 			);
