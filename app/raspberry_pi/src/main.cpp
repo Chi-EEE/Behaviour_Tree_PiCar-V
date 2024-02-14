@@ -1,6 +1,10 @@
 #include <optional>
 #include <string>
 
+#ifdef __linux
+#include <unistd.h>
+#endif
+
 #include <fmt/format.h>
 
 #include "car/configuration/Configuration.hpp"
@@ -33,6 +37,12 @@ using namespace rplidar;
 
 int main(int argc, char* argv[])
 {
+#ifdef __linux
+	if (!getuid()) {
+		std::cout << "This program will not work properly unless you are root. Please run this program as root using `sudo`.\n";
+		return;
+	}
+#endif
 	std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
 
 	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(exe_dir);
