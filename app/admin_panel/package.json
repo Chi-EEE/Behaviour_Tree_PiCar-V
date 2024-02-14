@@ -1,11 +1,11 @@
 {
-  "name": "create-svelte-electron-app",
+  "name": "admin_panel",
   "version": "1.2.0",
-  "description": "The boilerplate code to get started creating Cross-platform Desktop Apps with Electron and Svelte as front-end technology.",
+  "description": "The Admin Panel to directly control the Raspberry Pi and connect to the web server for sharing the Raspberry Pi.",
   "private": false,
   "license": "MIT",
   "main": "main.js",
-  "author": "Souleh Shaikh <soulehshaikh99@gmail.com>",
+  "author": "Chi Huu Huynh",
   "build": {
     "icon": "public/favicon.png",
     "productName": "Svelte and Electron App",
