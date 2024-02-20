@@ -4,6 +4,18 @@ const path = require('path');
 const serve = require('electron-serve');
 const loadURL = serve({ directory: 'public' });
 
+const WebSocket = require('ws');
+
+const Config = {
+    http_port: '8080',
+    socket_port: '3030'
+};
+
+// var ni = require('os').networkInterfaces();
+// console.log(ni);
+
+const wss = new WebSocket.Server({ port: Config.socket_port });
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -12,7 +24,7 @@ function isDev() {
     return !app.isPackaged;
 }
 
-function createWindow() {    
+function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 800,
@@ -35,7 +47,7 @@ function createWindow() {
     } else {
         loadURL(mainWindow);
     }
-    
+
     // Uncomment the following line of code when app is ready to be packaged.
     // loadURL(mainWindow);
 
