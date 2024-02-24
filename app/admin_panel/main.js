@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const serve = require('electron-serve');
 const loadURL = serve({ directory: 'public' });
@@ -10,9 +10,6 @@ const Config = {
     http_port: '8080',
     socket_port: '3030'
 };
-
-// var ni = require('os').networkInterfaces();
-// console.log(ni);
 
 const wss = new WebSocket.Server({ port: Config.socket_port });
 
@@ -89,3 +86,9 @@ app.on('activate', function () {
 });
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+const os = require('os')
+
+ipcMain.handle('getLocalIPList', (event, arg) => {
+    return os.networkInterfaces();
+});
