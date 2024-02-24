@@ -1,4 +1,6 @@
 <script>
+    import { Button } from "bits-ui";
+
     export let name;
 
     let ip_list = [];
