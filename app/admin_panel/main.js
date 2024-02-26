@@ -94,7 +94,14 @@ async function startWebSocketServer(_event, args) {
         return { success: false, message: `Port ${args.port} is already in use` };
     }
     try {
-        wss = new WebSocket.Server({ port: args.port });     
+        wss = new WebSocket.Server({ port: args.port });
+        wss.on('connection', (ws) => {
+            ws.on('message', function incoming(message) {
+                console.log('received: %s', message);
+            });
+
+            ws.send('something');
+        });
         return { success: true };
     } catch (_) {
         return { success: false, message: `Unable to start WebSocket Server, Error: ${error}` };
