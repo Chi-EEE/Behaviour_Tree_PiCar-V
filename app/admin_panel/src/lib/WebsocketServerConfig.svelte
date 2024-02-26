@@ -21,7 +21,7 @@
     /** @type {string} */
     let websocketServerPortInputColor = "";
 
-    function toggleWebsocketServer() {
+    async function toggleWebsocketServer() {
         if (!isNumeric(websocketServerPort)) {
             helperText = "Port must be a number";
             websocketServerPortInputColor = "red";
@@ -32,11 +32,20 @@
             websocketServerPortInputColor = "green";
             helperText = "Websocket Server is running";
             toggleWebsocketServerMessage = "Stop Websocket Server";
+            websocket_server_port.set(Number(websocketServerPort));
+            const response = await api.startWebSocketServer({ port: $websocket_server_port });
+            console.log(response);
+            if (!response.success) {
+                websocketServerPortInputColor = "red";
+                helperText = response.message;
+                toggleWebsocketServerMessage = "Start Websocket Server";
+                websocketServerEnabled = false;
+            }
         } else {
             websocketServerPortInputColor = "";
             helperText = "";
             toggleWebsocketServerMessage = "Start Websocket Server";
-            websocket_server_port.set(websocketServerPort);
+            api.closeWebSocketServer();
         }
     }
 </script>
@@ -56,5 +65,7 @@
     <Button class="mt-4" on:click={toggleWebsocketServer}
         >{toggleWebsocketServerMessage}</Button
     >
-    <Helper class="mt-2" color={websocketServerPortInputColor}>{helperText}</Helper>
+    <Helper class="mt-2" color={websocketServerPortInputColor}
+        >{helperText}</Helper
+    >
 </div>

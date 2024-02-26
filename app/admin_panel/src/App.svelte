@@ -9,7 +9,7 @@
 <main>
     <NavigationBar />
     <div class="grid grid-cols-6">
-        <div class="col-span-5 p-2">
+        <div class="col-span-5 p-3">
             <WebsocketServerConfig />
             <hr />
             <br />
@@ -17,8 +17,6 @@
         </div>
         <div class="col-start-6">
             <Card class="p-6">
-                <h1>Local IP List</h1>
-                <br />
                 <IPList />
             </Card>
         </div>

@@ -78,19 +78,40 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
+const tcpPortUsed = require('tcp-port-used');
 const os = require('os')
-
 const WebSocket = require('ws');
 
-/**
- * @type {WebSocket.Server | undefined}
- */
+/**  @type {WebSocket.Server | undefined} */
 let wss = undefined;
 
-ipcMain.handle('getLocalIPList', (event, arg) => {
+function getLocalIPList(_event, _args) {
     return os.networkInterfaces();
-});
+}
 
-ipcMain.handle('startWebSocketServer', (event, arg) => {
-    wss = new WebSocket.Server({ port: arg });
-});
+async function startWebSocketServer(_event, args) {
+    if (await tcpPortUsed.check(args.port)) {
+        return { success: false, message: `Port ${args.port} is already in use` };
+    }
+    try {
+        wss = new WebSocket.Server({ port: args.port });     
+        return { success: true };
+    } catch (_) {
+        return { success: false, message: `Unable to start WebSocket Server, Error: ${error}` };
+    }
+}
+
+function closeWebSocketServer(_event, _args) {
+    if (wss) {
+        wss.close();
+    }
+}
+
+function onClose() {
+    closeWebSocketServer();
+}
+
+app.on('window-all-closed', onClose);
+ipcMain.handle('getLocalIPList', getLocalIPList);
+ipcMain.handle('startWebSocketServer', startWebSocketServer);
+ipcMain.handle('closeWebSocketServer', closeWebSocketServer);

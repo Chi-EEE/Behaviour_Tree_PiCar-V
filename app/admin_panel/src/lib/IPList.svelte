@@ -1,11 +1,8 @@
-
 <script>
-    import { Spinner } from "flowbite-svelte";
+    import { Button, Spinner } from "flowbite-svelte";
     import { copy } from "svelte-copy";
-    
+
     import { websocket_server_port } from "../websocket_server_store";
-        
-    let ip_list = [];
 
     if (api.getLocalIPList === undefined) {
         api.getLocalIPList = async function () {
@@ -15,11 +12,15 @@
         };
     }
 
-    const getIPList = updateIPList();
+    export let getIPList = updateIPList();
+
+    function refreshIPList() {
+        getIPList = updateIPList();
+    }
 
     function updateIPList() {
         return api.getLocalIPList().then((local_ip_list) => {
-            ip_list.length = 0;
+            let ip_list = [];
             console.log(local_ip_list);
             for (const [ip_group_name, ip_group] of Object.entries(
                 local_ip_list,
@@ -38,15 +39,21 @@
                 }
             }
             console.log(ip_list);
+            return ip_list;
         });
-    }    
+    }
 </script>
-<div {...$$restProps}>
+
+<h1>Local IP List</h1>
+<br />
+<Button on:click={refreshIPList}>Refresh IP List</Button>
+<br />
+<div>
     <!-- svelte-ignore missing-declaration -->
     {#await getIPList}
         <p>Loading IP List</p>
         <Spinner />
-    {:then _}
+    {:then ip_list}
         <ul>
             {#each ip_list as ip}
                 <figure class="p-6 border-neutral-100 border-b border-t">
@@ -60,10 +67,14 @@
                     >
                         {ip.address}<b>:{$websocket_server_port}</b>
                     </p>
-                    <button use:copy={`${ip.address}:${$websocket_server_port}`} class="mt-4"> Copy IP </button>
+                    <button
+                        use:copy={`${ip.address}:${$websocket_server_port}`}
+                        class="mt-4"
+                    >
+                        Copy IP
+                    </button>
                 </figure>
             {/each}
         </ul>
     {/await}
-    
 </div>
