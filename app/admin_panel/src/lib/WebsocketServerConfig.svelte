@@ -29,13 +29,15 @@
         }
         websocketServerEnabled = !websocketServerEnabled;
         if (websocketServerEnabled) {
-            websocketServerPortInputColor = "green";
-            helperText = "Websocket Server is running";
-            toggleWebsocketServerMessage = "Stop Websocket Server";
             websocket_server_port.set(Number(websocketServerPort));
-            const response = await api.startWebSocketServer({ port: $websocket_server_port });
-            console.log(response);
-            if (!response.success) {
+            const response = await api.startWebSocketServer({
+                port: $websocket_server_port,
+            });
+            if (response.success) {
+                websocketServerPortInputColor = "green";
+                helperText = "Websocket Server is running";
+                toggleWebsocketServerMessage = "Stop Websocket Server";
+            } else {
                 websocketServerPortInputColor = "red";
                 helperText = response.message;
                 toggleWebsocketServerMessage = "Start Websocket Server";
