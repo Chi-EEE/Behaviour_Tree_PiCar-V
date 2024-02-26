@@ -138,7 +138,7 @@ initialize_authenication_hash();
  */
 async function waitForWSConnection() {
     wss.once('connection', (ws) => {
-        ws.on('close', () => {
+        ws.once('close', () => {
             if (wss === undefined) {
                 return;
             }
