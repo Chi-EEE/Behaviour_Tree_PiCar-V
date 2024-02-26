@@ -3,7 +3,7 @@
     import { Spinner } from "flowbite-svelte";
     import { copy } from "svelte-copy";
     
-    import { local_server_port } from "../local_server_store";
+    import { websocket_server_port } from "../websocket_server_store";
         
     let ip_list = [];
 
@@ -58,9 +58,9 @@
                     <p
                         class="font-normal text-gray-700 dark:text-gray-400 leading-tight"
                     >
-                        {ip.address}<b>:{$local_server_port}</b>
+                        {ip.address}<b>:{$websocket_server_port}</b>
                     </p>
-                    <button use:copy={`${ip.address}:${$local_server_port}`} class="mt-4"> Copy IP </button>
+                    <button use:copy={`${ip.address}:${$websocket_server_port}`} class="mt-4"> Copy IP </button>
                 </figure>
             {/each}
         </ul>

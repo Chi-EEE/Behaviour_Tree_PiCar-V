@@ -4,15 +4,6 @@ const path = require('path');
 const serve = require('electron-serve');
 const loadURL = serve({ directory: 'public' });
 
-const WebSocket = require('ws');
-
-const Config = {
-    http_port: '8080',
-    socket_port: '3030'
-};
-
-const wss = new WebSocket.Server({ port: Config.socket_port });
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -89,6 +80,17 @@ app.on('activate', function () {
 
 const os = require('os')
 
+const WebSocket = require('ws');
+
+/**
+ * @type {WebSocket.Server | undefined}
+ */
+let wss = undefined;
+
 ipcMain.handle('getLocalIPList', (event, arg) => {
     return os.networkInterfaces();
+});
+
+ipcMain.handle('startWebSocketServer', (event, arg) => {
+    wss = new WebSocket.Server({ port: arg });
 });
