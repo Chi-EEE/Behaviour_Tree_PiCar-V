@@ -95,17 +95,76 @@ async function startWebSocketServer(_event, args) {
     }
     try {
         wss = new WebSocket.Server({ port: args.port });
-        wss.on('connection', (ws) => {
-            ws.on('message', function incoming(message) {
-                console.log('received: %s', message);
-            });
-
-            ws.send('something');
-        });
-        return { success: true };
+        waitForWSConnection();
     } catch (_) {
         return { success: false, message: `Unable to start WebSocket Server, Error: ${error}` };
     }
+    return { success: true };
+}
+
+/**
+ * https://stackoverflow.com/a/48161723
+ * @param {string} message 
+ * @returns {Promise<string>}
+ */
+async function sha256(message) {
+    // encode as UTF-8
+    const msgBuffer = new TextEncoder().encode(message);
+
+    // hash the message
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+    // convert ArrayBuffer to Array
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+    // convert bytes to hex string                  
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
+const authenication_code = 'HI';
+
+/** @type {string} */
+let authenication_hash;
+
+async function initialize_authenication_hash() {
+    authenication_hash = await sha256(authenication_code);
+}
+
+initialize_authenication_hash();
+
+/**
+ * This function only allows a single connection to the WebSocket server.
+ */
+async function waitForWSConnection() {
+    wss.once('connection', (ws) => {
+        ws.on('close', () => {
+            if (wss === undefined) {
+                return;
+            }
+            setTimeout(waitForWSConnection);
+        });
+        ws.once('message', async (message) => {
+            try {
+                const hash = await sha256(message);
+                if (hash === authenication_hash) {
+                    ws.on('message', onRaspberryPiMessage);
+                } else {
+                    ws.close();
+                }
+            } catch (error) {
+                console.error("Error while processing message:", error);
+            }
+        });
+    });
+}
+
+/**
+ * 
+ * @param {WebSocket.RawData} message 
+ */
+function onRaspberryPiMessage(message) {
+
 }
 
 function closeWebSocketServer(_event, _args) {
