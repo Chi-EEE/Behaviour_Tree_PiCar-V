@@ -244,16 +244,16 @@ namespace car::system::messaging
 		std::string getWebSocketUrl()
 		{
 			std::optional<int> maybe_port = this->configuration->port;
-			std::string host_name;
+			std::string full_ip_address;
 			if (maybe_port.has_value())
 			{
-				host_name = fmt::format("{}:{}", this->configuration->host, maybe_port.value());
+				full_ip_address = fmt::format("{}:{}", this->configuration->ip_address, maybe_port.value());
 			}
 			else
 			{
-				host_name = this->configuration->host;
+				full_ip_address = this->configuration->ip_address;
 			}
-			return fmt::format("ws://{}/ws/room?request=join&type=car&room_name={}", host_name, this->configuration->room);
+			return fmt::format("ws://{}/ws/room?request=join&type=car&room_name={}", full_ip_address, this->configuration->room);
 		}
 
 		std::shared_ptr<configuration::Configuration> configuration;

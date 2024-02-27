@@ -1,5 +1,5 @@
 {
-    "host": "localhost",
+    "ip_address": "localhost",
     "port": 8848,
     "name": "RaspberryPi",
     "room": "aaa"

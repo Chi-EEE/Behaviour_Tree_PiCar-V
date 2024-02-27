@@ -10,25 +10,19 @@
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/component/loop.hpp>
 
-#include <nod/nod.hpp>
-
 using namespace ftxui;
 
 namespace car::display::startup
 {
-	class CarStartUp
-	{
-	public:
-		CarStartUp();
+    class CarStartUp
+    {
+    public:
+        CarStartUp();
 
-		void initialize();
+        void run();
 
-		void run();
-
-		void terminate();
-
-	private:
-	};
+    private:
+    };
 }
 
 #endif
