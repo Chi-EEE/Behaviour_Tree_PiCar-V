@@ -3,8 +3,6 @@
 
 #pragma once
 
-#include "CarConsole.h"
-
 #include <memory>
 
 #include <ftxui/component/component.hpp>
