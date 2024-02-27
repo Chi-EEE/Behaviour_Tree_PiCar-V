@@ -14,19 +14,19 @@
 
 #include <nod/nod.hpp>
 
-#include "../system/CarSystem.h"
-#include "../system/logging/VectorSink.cxx"
+#include "../../system/CarSystem.h"
+#include "../../system/logging/VectorSink.cxx"
 
 #include "screen/MainScreen.cxx"
 #include "screen/SettingsScreen.cxx"
 #include "screen/LoggingScreen.cxx"
 
 using namespace car::system;
-using namespace car::display::screen;
+using namespace car::display::console::screen;
 
 using namespace ftxui;
 
-namespace car::display
+namespace car::display::console
 {
 	class CarConsole
 	{

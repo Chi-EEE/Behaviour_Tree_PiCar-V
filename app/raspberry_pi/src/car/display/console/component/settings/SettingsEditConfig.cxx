@@ -5,11 +5,11 @@
 
 #include <ftxui/component/component.hpp>
 // TODO: Fix this
-#include "../../../../car/system/CarSystem.h"
+#include "../src/car/system/CarSystem.h"
 
 using namespace ftxui;
 
-namespace car::display::component::settings
+namespace car::display::console::component::settings
 {
 	class SettingsEditConfig
 	{

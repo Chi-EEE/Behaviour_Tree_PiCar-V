@@ -9,9 +9,6 @@ add_requires("nod")
 -- Terminal UI
 add_requires("ftxui")
 
--- Embedded
-add_requires("etl")
-
 add_requires("effolkronium-random")
 add_requires("robin-map")
 
@@ -53,8 +50,6 @@ target("raspberry_pi")
     add_packages("fmt")
     add_packages("rapidjson")
     add_packages("pugixml")
-
-    add_packages("etl")
 
     add_packages("effolkronium-random")
     add_packages("robin-map")

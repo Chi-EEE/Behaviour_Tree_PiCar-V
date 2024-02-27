@@ -9,7 +9,7 @@
 
 using namespace ftxui;
 
-namespace car::display::component::debug
+namespace car::display::console::component::debug
 {
 	class DebugMessagingTextbox
 	{

@@ -7,7 +7,7 @@
 
 #include <ftxui/component/component.hpp>
 
-#include "../../system/CarSystem.h"
+#include "../src/car/system/CarSystem.h"
 
 #include "../component/settings/SettingsEditConfig.cxx"
 
@@ -17,12 +17,12 @@
 #include "../component/debug/DebugMessagingTextbox.cxx"
 
 using namespace car::system;
-using namespace car::display::component::settings;
-using namespace car::display::component::debug;
+using namespace car::display::console::component::settings;
+using namespace car::display::console::component::debug;
 
 using namespace ftxui;
 
-namespace car::display::screen
+namespace car::display::console::screen
 {
     class SettingsScreen
     {

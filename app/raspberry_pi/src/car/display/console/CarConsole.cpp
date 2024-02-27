@@ -1,6 +1,6 @@
 #include "CarConsole.h"
 
-namespace car::display
+namespace car::display::console
 {
 	CarConsole::CarConsole(std::shared_ptr<CarSystem> car_system, std::shared_ptr<logging::vector_sink_mt> vector_sink) : car_system(std::move(car_system)), vector_sink(vector_sink) {};
 

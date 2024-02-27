@@ -6,12 +6,12 @@
 #include <ftxui/component/component.hpp>
 #include <spdlog/spdlog.h>
 
-#include "../../system/logging/VectorSink.cxx"
+#include "../src/car/system/logging/VectorSink.cxx"
 
 using namespace ftxui;
 using namespace car::system;
 
-namespace car::display::screen
+namespace car::display::console::screen
 {
 	class LoggingScreen
 	{

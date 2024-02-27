@@ -9,7 +9,7 @@
 
 #include "car/configuration/Configuration.hpp"
 
-#include "car/display/CarConsole.h"
+#include "car/display/console/CarConsole.h"
 
 #include "car/system/CarSystem.h"
 
@@ -27,7 +27,7 @@
 
 using namespace car::configuration;
 using namespace car::plugin;
-using namespace car::display;
+using namespace car::display::console;
 using namespace car::system;
 using namespace car::system::lidar;
 using namespace car::system::messaging;

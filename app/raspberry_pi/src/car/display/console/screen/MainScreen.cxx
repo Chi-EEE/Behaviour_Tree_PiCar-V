@@ -7,17 +7,17 @@
 
 #include <ftxui/component/component.hpp>
 
-#include "../../system/CarSystem.h"
+#include "../src/car/system/CarSystem.h"
 
 #include "../component/main/MainButton.cxx"
 #include "../component/main/MainExitModal.cxx"
 
 using namespace car::system;
-using namespace car::display::component::main;
+using namespace car::display::console::component::main;
 
 using namespace ftxui;
 
-namespace car::display::screen
+namespace car::display::console::screen
 {
 	class MainScreen
 	{

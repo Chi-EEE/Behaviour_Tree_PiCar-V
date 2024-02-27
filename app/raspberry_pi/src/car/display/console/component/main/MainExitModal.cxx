@@ -5,12 +5,12 @@
 
 #include <ftxui/component/component.hpp>
 
-#include "../../../system/CarSystem.h"
+#include "../src/car/system/CarSystem.h"
 
 using namespace ftxui;
 using namespace car::system;
 
-namespace car::display::component::main
+namespace car::display::console::component::main
 {
 	class MainExitModal
 	{
