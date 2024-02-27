@@ -1,5 +1,5 @@
 <script>
-    import { Button, Spinner } from "flowbite-svelte";
+    import { Button, Spinner, Tooltip } from "flowbite-svelte";
     import { copy } from "svelte-copy";
 
     import { websocket_server_port } from "../websocket_server_store";
@@ -47,6 +47,8 @@
 <h1>Local IP List</h1>
 <br />
 <Button on:click={refreshIPList}>Refresh IP List</Button>
+<Button id="copy_ip_address">Info</Button>
+<Tooltip triggeredBy="#copy_ip_address">Please determine the appropriate IP Address based on the Raspberry Pi's network connection.</Tooltip>
 <br />
 <div>
     <!-- svelte-ignore missing-declaration -->
