@@ -35,9 +35,9 @@ namespace behaviour_tree::node::custom::action
         const std::string toString() const final override {
             const std::string& name = this->getName();
             if (name != "")
-                return fmt::format(R"(<Action:Error name="{}" text="{}"/>)", name, this->getText());
+                return fmt::format(R"(<Action:Error name='{}' text='{}'/>)", name, this->getText());
             else
-                return fmt::format(R"(<Action:Error text="{}"/>)", this->getText());
+                return fmt::format(R"(<Action:Error text='{}'/>)", this->getText());
         }
 
     private:

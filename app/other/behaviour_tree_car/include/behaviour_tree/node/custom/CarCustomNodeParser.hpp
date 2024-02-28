@@ -60,12 +60,12 @@ namespace behaviour_tree::node::custom
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format(R"(Invalid reset_on_non_consecutive_tick: '{}' | Action:CountdownWait:["{}",{}])", reset_on_non_consecutive_tick_string, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid reset_on_non_consecutive_tick: '{}' | Action:CountdownWait:['{}',{}])", reset_on_non_consecutive_tick_string, name_attribute, index));
 				}
 				}
 				int ms = node.attribute("ms").as_int();
 				if (ms < 0) {
-					return tl::unexpected(fmt::format(R"(Invalid ms: '{}' | Action:PauseExecution:["{}",{}])", ms, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid ms: '{}' | Action:PauseExecution:['{}',{}])", ms, name_attribute, index));
 				}
 				return std::make_shared<custom::action::CountdownWait>(
 					custom::action::CountdownWait(
@@ -78,7 +78,7 @@ namespace behaviour_tree::node::custom
 			{
 				int ms = node.attribute("ms").as_int();
 				if (ms < 0) {
-					return tl::unexpected(fmt::format(R"(Invalid ms: '{}' | Action:PauseExecution:["{}",{}])", ms, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid ms: '{}' | Action:PauseExecution:['{}',{}])", ms, name_attribute, index));
 				}
 				return std::make_shared<custom::action::PauseExecution>(
 					custom::action::PauseExecution(
@@ -123,12 +123,12 @@ namespace behaviour_tree::node::custom
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format(R"(Invalid wheel_type: '{}' | Action:SetSpeed:["{}",{}])", wheel_type_attribute, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid wheel_type: '{}' | Action:SetSpeed:['{}',{}])", wheel_type_attribute, name_attribute, index));
 				}
 				}
 				const int speed = node.attribute("speed").as_int();
 				if (speed < 0 || speed > 100)
-					return tl::unexpected(fmt::format(R"(Invalid speed: '{}' | Action:SetSpeed:["{}",{}])", speed, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid speed: '{}' | Action:SetSpeed:['{}',{}])", speed, name_attribute, index));
 				return std::make_shared<custom::action::SetSpeed>(custom::action::SetSpeed(name_attribute, wheel_type, speed));
 			}
 			case utils::hash("Action:SetAngle"):
@@ -154,12 +154,12 @@ namespace behaviour_tree::node::custom
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format(R"(Invalid servo_type: '{}' | Action:SetAngle:["{}",{}])", servo_type_attribute, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid servo_type: '{}' | Action:SetAngle:['{}',{}])", servo_type_attribute, name_attribute, index));
 				}
 				}
 				const int angle = node.attribute("angle").as_int();
 				if (angle < 0 || angle > 180)
-					return tl::unexpected(fmt::format(R"(Invalid angle: '{}' | Action:SetAngle:["{}",{}])", angle, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid angle: '{}' | Action:SetAngle:['{}',{}])", angle, name_attribute, index));
 				return std::make_shared<custom::action::SetAngle>(custom::action::SetAngle(name_attribute, servo_type, angle));
 			}
 			case utils::hash("Action:SetWheelDirection"):
@@ -185,7 +185,7 @@ namespace behaviour_tree::node::custom
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format(R"(Invalid wheel_type: '{}' | Action:SetWheelDirection:["{}",{}])", wheel_type_attribute, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid wheel_type: '{}' | Action:SetWheelDirection:['{}',{}])", wheel_type_attribute, name_attribute, index));
 				}
 				}
 				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
@@ -201,7 +201,7 @@ namespace behaviour_tree::node::custom
 				}
 				default:
 				{
-					return tl::unexpected(fmt::format(R"(Invalid direction_type: '{}' | Action:SetWheelDirection:["{}",{}])", direction_type_attribute, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid direction_type: '{}' | Action:SetWheelDirection:['{}',{}])", direction_type_attribute, name_attribute, index));
 				}
 				}
 			}
@@ -209,13 +209,13 @@ namespace behaviour_tree::node::custom
 			{
 				const int min_angle = node.attribute("angle").as_int();
 				if (min_angle < 0 || min_angle > 360)
-					return tl::unexpected(fmt::format(R"(Invalid min_angle: '{}' | Condition:NearbyPoints:["{}",{}])", min_angle, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid min_angle: '{}' | Condition:NearbyPoints:['{}',{}])", min_angle, name_attribute, index));
 				const int max_angle = node.attribute("angle").as_int();
 				if (max_angle < 0 || max_angle > 360)
-					return tl::unexpected(fmt::format(R"(Invalid max_angle: '{}' | Condition:NearbyPoints:["{}",{}])", max_angle, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid max_angle: '{}' | Condition:NearbyPoints:['{}',{}])", max_angle, name_attribute, index));
 				const int avg_distance = node.attribute("angle").as_int();
 				if (avg_distance < 0)
-					return tl::unexpected(fmt::format(R"(Invalid avg_distance: '{}' | Condition:NearbyPoints:["{}",{}])", avg_distance, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid avg_distance: '{}' | Condition:NearbyPoints:['{}',{}])", avg_distance, name_attribute, index));
 				return std::make_shared<custom::condition::NearbyPoints>(
 					custom::condition::NearbyPoints(
 						name_attribute,
@@ -225,7 +225,7 @@ namespace behaviour_tree::node::custom
 			}
 			default:
 			{
-				return tl::unexpected(fmt::format(R"(Invalid custom node type: '{}' | {}:["{}",{}])", node_name, node_name, name_attribute, index));
+				return tl::unexpected(fmt::format(R"(Invalid custom node type: '{}' | {}:['{}',{}])", node_name, node_name, name_attribute, index));
 			}
 			}
 		}

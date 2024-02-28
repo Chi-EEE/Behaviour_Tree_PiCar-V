@@ -45,9 +45,9 @@ namespace behaviour_tree::node::custom::action
 			const std::string &name = this->getName();
 			const std::string &reset_on_non_consecutive_tick_string = this->getResetOnNonConsecutiveTick() ? "true" : "false";
 			if (name != "")
-				return fmt::format(R"(<Action:CountdownWait name="{}" ms="{}" reset_on_non_consecutive_tick="{}"/>)", name, this->getMS(), reset_on_non_consecutive_tick_string);
+				return fmt::format(R"(<Action:CountdownWait name='{}' ms='{}' reset_on_non_consecutive_tick='{}'/>)", name, this->getMS(), reset_on_non_consecutive_tick_string);
 			else
-				return fmt::format(R"(<Action:CountdownWait ms="{}" reset_on_non_consecutive_tick="{}"/>)", this->getMS(), reset_on_non_consecutive_tick_string);
+				return fmt::format(R"(<Action:CountdownWait ms='{}' reset_on_non_consecutive_tick='{}'/>)", this->getMS(), reset_on_non_consecutive_tick_string);
 		}
 
 		const int &getMS() const

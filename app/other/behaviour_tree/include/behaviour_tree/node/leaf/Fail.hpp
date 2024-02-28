@@ -22,7 +22,7 @@ namespace behaviour_tree::node::leaf
 		const std::string toString() const final override {
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Fail name="{}"/>)", name);
+				return fmt::format(R"(<Fail name='{}'/>)", name);
 			else
 				return fmt::format(R"(<Fail/>)");
 		}

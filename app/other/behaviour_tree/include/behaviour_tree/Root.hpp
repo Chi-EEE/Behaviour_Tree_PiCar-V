@@ -29,7 +29,7 @@ namespace behaviour_tree
 			const std::string& id = this->getId();
 			std::string child_string = this->child != nullptr ? this->child->toString() : "";
 			if (id != "")
-				return fmt::format(R"(<Root id="{}">{}</Root>)", id, child_string);
+				return fmt::format(R"(<Root id='{}'>{}</Root>)", id, child_string);
 			else
 				return fmt::format(R"(<Root>{}</Root>)", child_string);
 		}

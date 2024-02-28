@@ -46,9 +46,9 @@ namespace behaviour_tree::node::custom::action
 		{
 			const std::string &name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Action:PauseExecution name="{}" ms="{}"/>)", name, this->getMS());
+				return fmt::format(R"(<Action:PauseExecution name='{}' ms='{}'/>)", name, this->getMS());
 			else
-				return fmt::format(R"(<Action:PauseExecution ms="{}"/>)", this->getMS());
+				return fmt::format(R"(<Action:PauseExecution ms='{}'/>)", this->getMS());
 		}
 
 		const int &getMS() const

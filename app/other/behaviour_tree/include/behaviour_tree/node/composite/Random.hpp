@@ -37,7 +37,7 @@ namespace behaviour_tree::node::composite
 			}
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Random name="{}">{}</Random>)", name, out);
+				return fmt::format(R"(<Random name='{}'>{}</Random>)", name, out);
 			else
 				return fmt::format(R"(<Random>{}</Random>)", out);
 		}

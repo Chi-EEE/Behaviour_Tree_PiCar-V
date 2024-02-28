@@ -57,9 +57,9 @@ namespace behaviour_tree::node::custom::action
 			}
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Action:SetAngle name="{}" servo_type="{}" angle="{}"/>)", name, servo_type, this->getAngle());
+				return fmt::format(R"(<Action:SetAngle name='{}' servo_type='{}' angle='{}'/>)", name, servo_type, this->getAngle());
 			else
-				return fmt::format(R"(<Action:SetAngle servo_type="{}" angle="{}"/>)", servo_type, this->getAngle());
+				return fmt::format(R"(<Action:SetAngle servo_type='{}' angle='{}'/>)", servo_type, this->getAngle());
 		}
 
 		const ServoType& getServoType() const

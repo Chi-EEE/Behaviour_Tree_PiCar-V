@@ -100,9 +100,9 @@ namespace behaviour_tree::node::custom::action
 			}
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Action:SetWheelDirection name="{}" direction_type="{}" wheel_type="{}"/>)", name, direction_type, wheel_type);
+				return fmt::format(R"(<Action:SetWheelDirection name='{}' direction_type='{}' wheel_type='{}'/>)", name, direction_type, wheel_type);
 			else
-				return fmt::format(R"(<Action:SetWheelDirection direction_type="{}" wheel_type="{}"/>)", direction_type, wheel_type);
+				return fmt::format(R"(<Action:SetWheelDirection direction_type='{}' wheel_type='{}'/>)", direction_type, wheel_type);
 		}
 
 		const DirectionType& getDirectionType() const {

@@ -24,9 +24,9 @@ namespace behaviour_tree::node::leaf
 		const std::string toString() const final override {
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<UseRoot name="{}" id="{}"/>)", name, this->getId());
+				return fmt::format(R"(<UseRoot name='{}' id='{}'/>)", name, this->getId());
 			else
-				return fmt::format(R"(<UseRoot id="{}"/>)", this->getId());
+				return fmt::format(R"(<UseRoot id='{}'/>)", this->getId());
 		}
 
 	private:
