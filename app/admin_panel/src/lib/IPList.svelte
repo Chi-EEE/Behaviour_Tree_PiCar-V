@@ -7,7 +7,7 @@
     if (api.getLocalIPList === undefined) {
         api.getLocalIPList = async function () {
             return new Promise((resolve) => {
-                resolve();
+                resolve([]);
             });
         };
     }
