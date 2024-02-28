@@ -8,8 +8,7 @@
   } from "flowbite-svelte";
 
   let btnClass =
-    "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2";
-  let myLink = "/";
+    "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2"
 </script>
 
 <Navbar>
@@ -18,7 +17,7 @@
       <a href="#/">Home</a>
     </NavLi>
     <NavLi>
-      <a href="#/">Home</a>
+      <a href="#/websocket">Manage Websockets</a>
     </NavLi>
   </NavUl>
   <NavHamburger class="lg:hidden" />

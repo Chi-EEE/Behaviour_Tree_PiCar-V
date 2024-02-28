@@ -1,24 +1,43 @@
 <script>
-    import { Card } from "flowbite-svelte";
+  import { Renderer, Container, Ticker, Text } from "svelte-pixi";
 
-    import WebsocketServerConfig from "../lib/WebsocketServerConfig.svelte";
-    import IPList from "../lib/IPList.svelte";
-    import NavigationBar from "../lib/NavigationBar.svelte";
+  let renderer;
+  let stage;
+
+  import NavigationBar from "../lib/NavigationBar.svelte";
+  import DraggableCircle from "../lib/DraggableCircle.svelte";
 </script>
 
 <main>
-    <NavigationBar />
-    <div class="grid grid-cols-6">
-        <div class="col-span-5 p-3">
-            <WebsocketServerConfig />
-            <hr />
-            <br />
-            <h1>The Raspberry Pi is not connected to the Websocket Server</h1>
-        </div>
-        <div class="col-start-6">
-            <Card class="p-6">
-                <IPList />
-            </Card>
-        </div>
-    </div>
+  <NavigationBar />
+
+  <Renderer
+    bind:instance={renderer}
+    bind:stage
+    width={400}
+    height={400}
+    antialias
+  >
+    <!-- use our own ticker to control the render loop -->
+    <Ticker
+      on:tick={() => {
+        renderer.render(stage);
+      }}
+    >
+      <!--
+    the root container is referred to as the "stage", child components
+    can access it with getStage()
+  -->
+      <Container bind:instance={stage}>
+        <Text
+          x={200}
+          y={300}
+          text="Click and drag"
+          style={{ fill: "white" }}
+          anchor={0.5}
+        />
+        <DraggableCircle x={200} y={200} />
+      </Container>
+    </Ticker>
+  </Renderer>
 </main>
