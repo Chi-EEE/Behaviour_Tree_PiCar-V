@@ -1,6 +1,6 @@
 <script>
   import { Renderer, Container, Ticker, Text } from "svelte-pixi";
-  import { Button, Card } from "flowbite-svelte";
+  import { Banner, Button, Card } from "flowbite-svelte";
   import { ArrowRightOutline } from "flowbite-svelte-icons";
 
   let renderer;
@@ -13,22 +13,18 @@
 <main>
   <NavigationBar />
   <div class="py-6">
-    <Card
-      class="w-screen px-3 flex items-start justify-start"
-      style="max-width:100%;"
-    >
-      <img src="RaspberryPi.png" class="item-body w-12" />
-      <h2 class="m-1">Raspberry Pi not connected to Admin Panel</h2>
-      <p class="m-2">
-        Currently, the Raspberry Pi is not connected to the Admin Panel's
-        websocket server. Please view the Websocket Tab or the button below for
-        instructions on how to connect the Raspberry Pi to the Admin Panel.
+    <Banner class="border-4 content-center items-center" position="absolute" bannerType="cta">
+      <img src="RaspberryPi.png" class="item-body m-2 w-12" />
+      <h2 class="px-4">Not Connected!</h2>
+      <p>
+        Connect the Raspberry Pi to the Admin Panel's websocket server by
+        following instructions in the Websocket Tab or using the button.
       </p>
-      <Button href="#/websocket" class="w-fit">
+      <Button href="#/websocket" class="w-fit ml-3">
         View Instructions
         <ArrowRightOutline />
       </Button>
-    </Card>
+    </Banner>
   </div>
   <Renderer
     bind:instance={renderer}
