@@ -7,7 +7,7 @@
             <Action:SetWheelDirection wheel_type='Both' direction_type='Backward'/>
             <Condition:NearbyPoints min_angle='0' max_angle='0' distance='200'/>
 
-            <Action:Wait ms='5000'/>
+            <Action:PauseExecution ms='5000'/>
 
             <Action:Log text='Waited 5 seconds'/>
 
