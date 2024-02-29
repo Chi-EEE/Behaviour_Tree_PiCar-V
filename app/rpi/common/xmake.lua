@@ -1,42 +1,25 @@
 add_rules("mode.debug", "mode.release")
 
-add_repositories("local-repo repository")
-
--- Messaging System
 add_requires("ixwebsocket", {configs = {use_tls = true, ssl = "mbedtls"}})
-add_requires("nod")
-
-add_requires("effolkronium-random")
-add_requires("robin-map")
-
--- Logging and JSON
-add_requires("rapidjson")
-add_requires("pugixml v1.14")
-add_requires("spdlog")
-add_requires("fmt")
+add_requires("cxxopts", "fmt", "rapidjson", "robin-map", "spdlog", "tl_expected", "nod")
+add_requires("serial")
+add_requires("effolkronium-random", "pugixml")
 
 -- SunFounder Car
-add_requires("opencv 4.8.0")
 if is_plat("linux", "macosx") then
     add_requires("pca9685", {configs = {shared = true}})
     add_requires("tb6612")
 end
-add_requires("serial")
 
--- For Better Programming
-add_requires("tl_expected")
-
-add_requires("cxxopts")
-
-includes("../other/utils/xmake.lua")
-includes("../other/behaviour_tree/xmake.lua", "../other/behaviour_tree_car/xmake.lua")
-includes("../other/rplidar/xmake.lua")
+includes("../../other/utils/xmake.lua")
+includes("../../other/behaviour_tree/xmake.lua", "../../other/behaviour_tree_car/xmake.lua")
+includes("../../other/rplidar/xmake.lua")
 
 if is_plat("linux") then 
     add_links("pthread")
 end 
 
-target("raspberry_pi_common")
+target("rpi_common")
     set_kind("$(kind)")
     set_languages("cxx17")
 
@@ -44,27 +27,13 @@ target("raspberry_pi_common")
     add_deps("behaviour_tree", "behaviour_tree_car")
     add_deps("rplidar")
      
-    add_packages("spdlog")
-    add_packages("fmt")
-    add_packages("rapidjson")
-    add_packages("pugixml")
-
-    add_packages("effolkronium-random")
-    add_packages("robin-map")
-
-    add_packages("tl_expected")
-    
-    add_packages("cxxopts")
-
     add_packages("ixwebsocket")
-    add_packages("nod")
-
-    add_packages("opencv")
+    add_packages("cxxopts", "fmt", "rapidjson", "robin-map", "spdlog", "tl_expected", "nod")
+    add_packages("serial")
+    add_packages("effolkronium-random", "pugixml")
 
     add_packages("pca9685")
     add_packages("tb6612")
-
-    add_packages("serial")
 
     add_deps("behaviour_tree")
 
