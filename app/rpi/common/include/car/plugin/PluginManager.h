@@ -6,6 +6,7 @@
 #include <vector>
 #include <memory>
 
+#include "utils/Utility.hpp"
 #include "utils/TypeName.hpp"
 
 #include "Plugin.h"
@@ -58,7 +59,8 @@ namespace car::plugin
 		std::shared_ptr<T> getPlugin()
 		{
 			static_assert(std::is_base_of<Plugin, T>::value, "T must be a Plugin");
-			auto type_name = utils::getStringAfterLastColon(utils::TypeName<T>());
+            std::string type_name = std::string(utils::TypeName<T>());
+			type_name = utils::getStringAfterLastColon(type_name);
 
 			for (std::weak_ptr<Plugin>& plugin : this->plugins)
 			{

@@ -3,6 +3,7 @@
 #define SERVO_H
 
 #include <algorithm>
+#include <memory>
 
 #include <PCA9685.h>
 

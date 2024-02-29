@@ -7,13 +7,17 @@ add_requires("cxxopts", "fmt", "rapidjson", "robin-map", "spdlog", "tl_expected"
 add_requires("serial")
 add_requires("effolkronium-random", "pugixml")
 
+if is_plat("linux", "macosx") then
+    add_requires("pca9685", {configs = {shared = true}})
+    add_requires("tb6612")
+end
+
 add_requires("daemonpp-fork")
 
 includes("../common/xmake.lua")
 
 target("rpi_daemon")
     set_kind("binary")
-    set_default(false)
 
     set_languages("cxx17")
     

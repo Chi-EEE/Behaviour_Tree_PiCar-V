@@ -5,7 +5,6 @@ add_requires("cxxopts", "fmt", "rapidjson", "robin-map", "spdlog", "tl_expected"
 add_requires("serial")
 add_requires("effolkronium-random", "pugixml")
 
--- SunFounder Car
 if is_plat("linux", "macosx") then
     add_requires("pca9685", {configs = {shared = true}})
     add_requires("tb6612")

@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
 #ifdef __linux
 	if (!getuid()) {
 		std::cout << "This program will not work properly unless you are root. Please run this program as root using `sudo`.\n";
-		return;
+		return EXIT_FAILURE;
 	}
 #endif
 	cxxopts::Options options("Route Navigator", "Program to run the Raspberry Pi Application");
@@ -124,5 +124,5 @@ int main(int argc, char* argv[])
 			car_system->update();
 		} while (true);
 	}
-	return 0;
+	return EXIT_SUCCESS;
 	}

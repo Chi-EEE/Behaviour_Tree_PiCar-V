@@ -1,3 +1,4 @@
+#include <iostream>
 #include <chrono>
 #include <daemonpp/daemon.hpp>
 
@@ -12,7 +13,7 @@ public:
     void on_reload(const INIReader reader) override {}
 };
 
-int test(int argc, const char* argv[]) {
+int main(int argc, const char* argv[]) {
     my_daemon dmn;
     dmn.set_name("my_daemon");
     dmn.set_update_duration(std::chrono::seconds(3));

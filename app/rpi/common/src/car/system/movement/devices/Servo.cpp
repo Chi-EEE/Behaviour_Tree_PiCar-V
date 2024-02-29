@@ -2,6 +2,7 @@
 #include "car/system/movement/devices/Servo.h"
 
 #include <algorithm>
+#include <memory>
 
 #include <PCA9685.h>
 #include <spdlog/spdlog.h>
