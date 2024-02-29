@@ -1,7 +1,7 @@
 package("daemonpp-fork")
     set_base("daemonpp")
 
-    add_patches("2023.05.01", path.join(os.scriptdir(), "patches", "2023.05.01", "add_inih.patch"), "3a2c3aa8cddf6d961e0823d5d4c429e9e03fa9c66b622235221070cea8d902a5")
+    add_patches("2023.05.01", path.join(os.scriptdir(), "patches", "2023.05.01", "add_inih.patch"), "8af0d2a28484a8174a6c41a2c58705bc7032268b60f19d162c8fe8eb12c39af8")
 
     add_deps("inih")
 
