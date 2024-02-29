@@ -7,7 +7,9 @@ using namespace daemonpp;
 class my_daemon : public daemon
 {
 public:
-    void on_start(const INIReader reader) override {}
+    void on_start(const INIReader reader) override {
+        std::cout << "on_start" << std::endl;
+    }
     void on_update() override {}
     void on_stop() override {}
     void on_reload(const INIReader reader) override {}

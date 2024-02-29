@@ -1,3 +1,10 @@
+set_project("rpi_daemon")
+
+local description = [[Raspberry Pi Daemon]]
+set_description(description)
+
+set_version("1")
+
 add_rules("mode.debug", "mode.release")
 
 set_allowedplats("linux")
@@ -28,6 +35,25 @@ target("rpi_daemon")
     add_packages("daemonpp-fork")
 
     add_headerfiles("src/**.h")
-    add_files("src/**.cpp", "src/**.cxx")
+    add_files("src/**.cpp")
 
     add_deps("rpi_common", {public = true})
+    
+    local dir = "$(buildir)/$(plat)/$(arch)/$(mode)"
+    set_configdir(dir)
+    add_configfiles("(systemd/**)", { onlycopy = true })
+
+    after_build(function (target) 
+        io.replace(dir .. "/systemd/rpi_daemon.conf", "@PROJECT_NAME@", target:name(), {plain = true})
+        io.replace(dir .. "/systemd/rpi_daemon.conf", "@PROJECT_VERSION@", target:version(), {plain = true})
+        io.replace(dir .. "/systemd/rpi_daemon.conf", "@PROJECT_DESCRIPTION@", description, {plain = true})
+
+        io.replace(dir .. "/systemd/rpi_daemon.service", "@PROJECT_NAME@", target:name(), {plain = true})
+        io.replace(dir .. "/systemd/rpi_daemon.service", "@PROJECT_VERSION@", target:version(), {plain = true})
+        io.replace(dir .. "/systemd/rpi_daemon.service", "@PROJECT_DESCRIPTION@", description, {plain = true})
+
+        os.cp(target:targetfile(), "/usr/bin/")
+        os.cp(dir .. "/systemd/rpi_daemon.service", "/etc/systemd/system/")
+        os.cp(dir .. "/systemd/rpi_daemon.conf", "/etc/systemd/system/")
+    end)
+    
