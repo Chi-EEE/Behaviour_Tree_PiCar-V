@@ -1,6 +1,7 @@
 {
     "editor.detectIndentation": false,
     "files.associations": {
+        "*.embeddedhtml": "html",
         "algorithm": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
@@ -72,7 +73,9 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "mutex": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "condition_variable": "cpp",
+        "csignal": "cpp"
     },
     "material-icon-theme.folders.associations": {
         "admin_panel": "Admin",
