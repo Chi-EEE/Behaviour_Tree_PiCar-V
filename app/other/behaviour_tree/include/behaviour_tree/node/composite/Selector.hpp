@@ -47,7 +47,7 @@ namespace behaviour_tree::node::composite
 			}
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Selector name="{}">{}</Selector>)", name, out);
+				return fmt::format(R"(<Selector name='{}'>{}</Selector>)", name, out);
 			else
 				return fmt::format(R"(<Selector>{}</Selector>)", out);
 		}

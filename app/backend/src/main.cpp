@@ -8,6 +8,7 @@
 
 // Controllers must be included before main
 #include "controllers/DynamicController.hpp"
+#include "controllers/AdminController.hpp"
 
 #include "controllers/RoomController.hpp"
 #include "controllers/RoomWebSocket.h"
@@ -29,6 +30,9 @@ int main(int argc, char *argv[])
 	drogon::app().loadConfigFile(config_json_path);
 
 	spdlog::set_level(spdlog::level::debug);
+
+	constexpr int EIGHT_HOURS = 8 * 60 * 60;
+	drogon::app().enableSession(EIGHT_HOURS, drogon::Cookie::SameSite::kStrict);
 
 	drogon::app().setDefaultHandler([&](const drogon::HttpRequestPtr &req,
 										std::function<void(const drogon::HttpResponsePtr &)> &&callback)

@@ -9,9 +9,6 @@ add_requires("nod")
 -- Terminal UI
 add_requires("ftxui")
 
--- Embedded
-add_requires("etl")
-
 add_requires("effolkronium-random")
 add_requires("robin-map")
 
@@ -31,6 +28,8 @@ add_requires("serial")
 
 -- For Better Programming
 add_requires("tl_expected")
+
+add_requires("cxxopts")
 
 includes("../other/utils/xmake.lua")
 includes("../other/behaviour_tree/xmake.lua", "../other/behaviour_tree_car/xmake.lua")
@@ -54,12 +53,12 @@ target("raspberry_pi")
     add_packages("rapidjson")
     add_packages("pugixml")
 
-    add_packages("etl")
-
     add_packages("effolkronium-random")
     add_packages("robin-map")
 
     add_packages("tl_expected")
+    
+    add_packages("cxxopts")
 
     add_packages("ixwebsocket")
     add_packages("nod")

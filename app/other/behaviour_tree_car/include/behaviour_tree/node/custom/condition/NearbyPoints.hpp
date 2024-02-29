@@ -54,9 +54,9 @@ namespace behaviour_tree::node::custom::condition
 		const std::string toString() const final override {
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Condition:NearbyPoints name="{}" min_angle="{}" max_angle="{}" avg_distance="{}"/>)", name, this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
+				return fmt::format(R"(<Condition:NearbyPoints name='{}' min_angle='{}' max_angle='{}' avg_distance='{}'/>)", name, this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
 			else
-				return fmt::format(R"(<Condition:NearbyPoints min_angle="{}" max_angle="{}" avg_distance="{}"/>)", this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
+				return fmt::format(R"(<Condition:NearbyPoints min_angle='{}' max_angle='{}' avg_distance='{}'/>)", this->getMinAngle(), this->getMaxAngle(), this->getAvgDistance());
 		}
 
 	private:

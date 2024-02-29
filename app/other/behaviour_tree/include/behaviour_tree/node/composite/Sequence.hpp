@@ -55,7 +55,7 @@ namespace behaviour_tree::node::composite
 			}
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Sequence name="{}">{}</Sequence>)", name, out);
+				return fmt::format(R"(<Sequence name='{}'>{}</Sequence>)", name, out);
 			else
 				return fmt::format(R"(<Sequence>{}</Sequence>)", out);
 		}

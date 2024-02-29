@@ -48,9 +48,9 @@ namespace behaviour_tree::node::decorator
 		const std::string toString() const final override {
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Repeat name="{}" count="{}" break_on_fail="{}">{}</Repeat>)", name, this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
+				return fmt::format(R"(<Repeat name='{}' count='{}' break_on_fail='{}'>{}</Repeat>)", name, this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
 			else
-				return fmt::format(R"(<Repeat count="{}" break_on_fail="{}">{}</Repeat>)", this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
+				return fmt::format(R"(<Repeat count='{}' break_on_fail='{}'>{}</Repeat>)", this->getCount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
 		}
 
 		const unsigned long& getCount() const {

@@ -119,6 +119,7 @@
 
     $: {
         if (canvas) {
+            draw();
             const width = parentWidth < 0 ? 0 : parentWidth;
             const height =
                 parentHeight - information_tab_height < 0

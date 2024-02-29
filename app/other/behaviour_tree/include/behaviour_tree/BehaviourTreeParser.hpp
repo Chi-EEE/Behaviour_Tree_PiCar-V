@@ -69,7 +69,7 @@ namespace behaviour_tree
 			pugi::xml_parse_result result = doc.load_string(xml.c_str());
 			if (!result)
 			{
-				return tl::unexpected("XML parsed with errors");
+				return tl::unexpected("XML parse error: " + std::string(result.description()));
 			}
 			return parse(doc);
 		}
@@ -134,13 +134,13 @@ namespace behaviour_tree
 			}
 			if (child_count != 1)
 			{
-				return tl::unexpected(fmt::format(R"(Root node must have only at most one child | Root:["{}",{}])", id, index));
+				return tl::unexpected(fmt::format(R"(Root node must have only at most one child | Root:['{}',{}])", id, index));
 			}
 			const pugi::xml_node child = node.first_child();
 			auto maybe_child_node = parseChild(child, STARTING_INDEX);
 			if (!maybe_child_node.has_value())
 			{
-				return tl::unexpected(fmt::format(R"({}<-Root:["{}",{}])", maybe_child_node.error(), id, index));
+				return tl::unexpected(fmt::format(R"({}<-Root:['{}',{}])", maybe_child_node.error(), id, index));
 			}
 			return std::make_shared<Root>(
 				Root(id, std::move(maybe_child_node.value()))
@@ -207,7 +207,7 @@ namespace behaviour_tree
 			const pugi::xml_node child = node.first_child();
 			if (!child)
 			{
-				return tl::unexpected(fmt::format(R"(Decorator node must have a child | {}:["{}",{}])", std::string(node.name()), name_attribute, index));
+				return tl::unexpected(fmt::format(R"(Decorator node must have a child | {}:['{}',{}])", std::string(node.name()), name_attribute, index));
 			}
 			auto maybe_child_node = parseChild(child, STARTING_INDEX);
 			if (!maybe_child_node.has_value())
@@ -237,11 +237,11 @@ namespace behaviour_tree
 					try {
 						count = std::stoll(count_string);
 						if (count < 0) {
-							return tl::unexpected(fmt::format(R"(Invalid count: '{}' | Repeat:["{}",{}])", count_string, name_attribute, index));
+							return tl::unexpected(fmt::format(R"(Invalid count: '{}' | Repeat:['{}',{}])", count_string, name_attribute, index));
 						}
 					}
 					catch (const std::exception &_) {
-						return tl::unexpected(fmt::format(R"(Invalid count: '{}' | Repeat:["{}",{}])", count_string, name_attribute, index));
+						return tl::unexpected(fmt::format(R"(Invalid count: '{}' | Repeat:['{}',{}])", count_string, name_attribute, index));
 					}
 				}
 
@@ -262,7 +262,7 @@ namespace behaviour_tree
 					}
 					default:
 					{
-						return tl::unexpected(fmt::format(R"(Invalid break_on_fail_string: '{}' | Repeat:["{}",{}])", break_on_fail_string, name_attribute, index));
+						return tl::unexpected(fmt::format(R"(Invalid break_on_fail_string: '{}' | Repeat:['{}',{}])", break_on_fail_string, name_attribute, index));
 					}
 				}
 				return std::make_shared<Repeat>(
@@ -284,13 +284,13 @@ namespace behaviour_tree
 				auto maybe_node = parseChild(child, STARTING_INDEX + children.size());
 				if (!maybe_node.has_value())
 				{
-					return tl::unexpected(fmt::format(R"({}<-{}:["{}",{}])", maybe_node.error(), std::string(node.name()), name_attribute, index));
+					return tl::unexpected(fmt::format(R"({}<-{}:['{}',{}])", maybe_node.error(), std::string(node.name()), name_attribute, index));
 				}
 				children.push_back(std::move(maybe_node.value()));
 			}
 			if (children.size() <= 0)
 			{
-				return tl::unexpected(fmt::format(R"(Composite node must have at least one child | {}:["{}",{}])", std::string(node.name()), name_attribute, index));
+				return tl::unexpected(fmt::format(R"(Composite node must have at least one child | {}:['{}',{}])", std::string(node.name()), name_attribute, index));
 			}
 			switch (composite_type)
 			{

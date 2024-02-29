@@ -57,7 +57,7 @@ namespace car::configuration
 			}
 			try
 			{
-				this->host = config_json["host"].GetString();
+				this->ip_address = config_json["ip_address"].GetString();
 				if (config_json.HasMember("port"))
 				{
 					this->port = std::make_optional<int>(config_json["port"].GetInt());
@@ -74,7 +74,7 @@ namespace car::configuration
 		}
 
 	public:
-		std::string host;
+		std::string ip_address;
 		std::optional<int> port = std::nullopt;
 
 		std::string name;

@@ -1,0 +1,74 @@
+{
+  "name": "admin_panel",
+  "version": "1.2.0",
+  "description": "The Admin Panel to directly control the Raspberry Pi and connect to the web server for sharing the Raspberry Pi.",
+  "private": false,
+  "license": "MIT",
+  "main": "main.js",
+  "author": "Chi Huu Huynh",
+  "build": {
+    "icon": "public/favicon.png",
+    "productName": "Svelte and Electron App",
+    "files": [
+      "public/**/*",
+      "main.js",
+      "preload.js"
+    ],
+    "win": {},
+    "linux": {},
+    "mac": {}
+  },
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs",
+    "dev": "rollup -c -w --bundleConfigAsCjs",
+    "start": "sirv public --no-clear",
+    "electron": "wait-on http://localhost:8080 && electron .",
+    "electron-dev": "concurrently \"pnpm run dev\" \"pnpm run electron\"",
+    "preelectron-pack": "pnpm run build",
+    "electron-pack": "electron-builder"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "electron": "^29.1.0",
+    "electron-builder": "^24.12.0",
+    "flowbite-svelte-icons": "1.4.0",
+    "postcss": "^8.4.35",
+    "postcss-load-config": "^5.0.3",
+    "rollup": "^4.12.0",
+    "rollup-plugin-css-only": "^4.5.2",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "rollup-plugin-svelte": "^7.1.6",
+    "sirv-cli": "^2.0.2",
+    "svelte": "^4.2.12",
+    "svelte-copy": "^1.4.1",
+    "svelte-spa-router": "^4.0.1",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss": "^3.4.1",
+    "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "@codemirror/lang-xml": "^6.0.2",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@codemirror/view": "^6.23.0",
+    "electron-serve": "^1.3.0",
+    "flowbite": "^2.3.0",
+    "flowbite-svelte": "^0.44.24",
+    "pixi.js": "^7.4.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte-pixi": "^0.1.3",
+    "tcp-port-used": "^1.0.2",
+    "ws": "^8.16.0"
+  },
+  "dependencyGroupComments": {
+    "1": "flowbite: UI components",
+    "2": "codemirror: Code editor",
+    "3": "pixi.js: 2D rendering engine",
+    "4": "ws & tcp-port-used: For web socket connection"
+  }
+}
