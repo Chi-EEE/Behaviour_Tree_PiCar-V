@@ -1,0 +1,127 @@
+diff --git a/include/daemon.hpp b/include/daemon.hpp
+index b3db060..929c794 100644
+--- a/include/daemon.hpp
++++ b/include/daemon.hpp
+@@ -15,7 +15,7 @@
+ #include <atomic>
+ #include <condition_variable>
+ #include "dlog.hpp"
+-#include "dconfig.hpp"
++#include <INIReader.hpp>
+ 
+ namespace daemonpp {
+   class daemon {
+@@ -74,7 +74,7 @@ namespace daemonpp {
+ 
+           // Mark as running (better to have it before on_start() as user may call stop() inside on_start()).
+           m_is_running = true;
+-          on_start(dconfig::from_file(m_config_file));
++          on_start(INIReader(m_config_file));
+           while(m_is_running.load())
+           {
+             on_update();
+@@ -107,10 +107,10 @@ namespace daemonpp {
+          * @scenarios:
+          *  - when systems starts
+          *  - when your run `$ systemctl start your_daemon` manually
+-         * @param cfg: Installed daemon config file
++         * @param INIReader: Installed daemon config file
+          * Initialize your code here...
+          */
+-        virtual void on_start(const dconfig& cfg) = 0;
++        virtual void on_start(const INIReader) = 0;
+ 
+         /**
+          * @brief Called every DURATION which was set by set_update_duration(DURATION).
+@@ -134,7 +134,7 @@ namespace daemonpp {
+          *  - when you run `$ systemctl daemon-reload` after you have changed your .conf or .service files (after reinstalling your daemon with `$ sudo make install` for example)
+          * Reinitialize your code here...
+          */
+-        virtual void on_reload(const dconfig& cfg) = 0;
++        virtual void on_reload(const INIReader) = 0;
+ 
+     private:
+         static void signal_handler(std::int32_t sig) {
+@@ -150,7 +150,7 @@ namespace daemonpp {
+             // daemon.service handler: ExecReload=/bin/kill -s SIGHUP $MAINPID
+             // When daemon is reloaded due updates in .service or .conf, system sends SIGHUB signal.
+             case SIGHUP: {
+-              instance->on_reload(dconfig::from_file(instance->m_config_file));
++              instance->on_reload(INIReader(instance->m_config_file));
+               break;
+             }
+             default:
+diff --git a/include/dconfig.hpp b/include/dconfig.hpp
+deleted file mode 100644
+index bce8f3a..0000000
+--- a/include/dconfig.hpp
++++ /dev/null
+@@ -1,68 +0,0 @@
+-//
+-// Created by bader on 4/21/23.
+-//
+-
+-#pragma once
+-#include <fstream>
+-#include <cstring>
+-#include <string>
+-#include <vector>
+-#include <sstream>
+-#include <iostream>
+-#include <algorithm>
+-#include <map>
+-#include "dlog.hpp"
+-
+-// TODO: better config parsing
+-namespace daemonpp
+-{
+-  struct dconfig {
+-      std::map<std::string, std::string> values;
+-
+-      std::string get(const std::string& key) const {
+-        auto it = values.find(key);
+-        if(it != values.end())
+-          return it->second;
+-        return "";
+-      }
+-  
+-      static dconfig from_file(const std::string& filename){
+-          dconfig cfg;
+-          if(filename.empty()) return cfg;
+-          auto split = [](const std::string& str, char delim) {
+-              std::vector<std::string> parts;
+-              std::stringstream oss{str};
+-              std::string part;
+-              while(std::getline(oss, part, delim)){
+-                parts.push_back(part);
+-              }
+-              return parts;
+-          };
+-          auto trim = [](std::string &s) {
+-            s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
+-                return !std::isspace(ch);
+-            }));
+-            s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
+-                return !std::isspace(ch);
+-            }).base(), s.end());
+-          };
+-          
+-          std::ifstream ifs{filename};
+-          std::string line;
+-          while(std::getline(ifs, line)){
+-            trim(line);
+-            if(line.empty()) continue;
+-            if(line[0] == '#') continue; // skip comments
+-            auto parts = split(line, '=');
+-            std::string key = parts[0];
+-            std::string value = parts[1];
+-            trim(key);
+-            trim(value);
+-            cfg.values[key] = value;
+-          }
+-          ifs.close();
+-          return cfg;
+-      }
+-
+-   };
+-} 
