@@ -4,10 +4,33 @@ Full-Stack Application used by Users to control a SunFounder Pi-Car
 
 ## Description
 
-The application contains the following inside the app directory: 
-- backend: The server behind the frontend, it allows the users and car to communicate to eachother.
-- frontend: The frontend of the application, allows users to see the UI of the car,
-- raspberry-pi: The code for the raspberry pi, it allows the raspberry pi to communicate to the server and handle messages from it
+The application contains the following inside the `app` directory: 
+
+- **backend**
+    - The server behind the **frontend**.
+    
+    - Allows users and **rpi** to communicate to eachother.
+
+- **frontend**
+    - Main user interface for sending behaviour trees to the 
+    **backend**.
+
+- **rpi**
+    - Allows the raspberry pi to communicate to the **backend** and handle messages from it. 
+
+    - There are 3 sub-projects in this project which handle different aspects of the raspberry pi.
+
+- **admin_panel**
+    - Soon to be main user interface for directly controlling **rpi** and communicating with the **backend**.
+    
+    - (still in development)
+
+- **other**
+    - Many sub-projects which support the main projects: **backend** & **rpi**.
+
+    - The code to handle the **behaviour_tree** are contained in the `behaviour_tree` & `behaviour_tree_car` projects.
+
+    - The code which controls the RPLidar is here aswell in the `rplidar` directory, it was ported from Python with the help of ChatGPT.
 
 ## Getting Started
 
@@ -16,14 +39,17 @@ The application contains the following inside the app directory:
 * [XMake](https://xmake.io/#/guide/installation) - Buildsystem for C++
 * [Node.js](https://nodejs.org/en) - Used to build the frontend
 * [pnpm](https://pnpm.io/installation) - Used to cache the dependencies from npm
+* [Electron](https://www.electronjs.org/) - Used to bundle html and js files into a desktop app
 
 ### Executing program
 
-To build the backend / raspberry_pi folder, you would have to run the following command:
+To build the **backend** / **rpi** folder, you would have to run the following command:
 ```
 xmake
 ```
 This will automatically install all the dependencies from the folder and build the executable file.
+
+If you want to build the **admin_panel**, view the README.md in it's directory for instructions.
 
 ## Authors
 

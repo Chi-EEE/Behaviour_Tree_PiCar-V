@@ -24,6 +24,6 @@ sudo apt dist-upgrade
 or
 `sudo apt update && sudo apt upgrade && sudo apt dist-upgrade`
 
-Afterwards run `chmod +x ./raspberry_pi` on the new executable
+Afterwards run `chmod +x ./rpi_tui` on the new executable
 
 Use [CyberDuck](https://cyberduck.io/) to copy the raspberry_pi folder.
