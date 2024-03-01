@@ -20,13 +20,14 @@
 
 namespace car::system::messaging
 {
-    MessagingSystem::MessagingSystem(std::shared_ptr<configuration::Configuration> configuration) : configuration(configuration)
+    MessagingSystem::MessagingSystem()
     {
     }
 
-    void MessagingSystem::initialize()
+    void MessagingSystem::initialize(std::shared_ptr<configuration::Configuration> configuration)
     {
         ix::initNetSystem();
+        this->setConfiguration(configuration);
     }
 
     void MessagingSystem::initializeWebSocket()
@@ -79,6 +80,11 @@ namespace car::system::messaging
     {
         this->stop();
         ix::uninitNetSystem();
+    }
+
+    void MessagingSystem::setConfiguration(std::shared_ptr<configuration::Configuration> configuration)
+    {
+        this->configuration = configuration;
     }
 
     void MessagingSystem::onMessageCallback(const ix::WebSocketMessagePtr &msg) const

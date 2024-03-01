@@ -9,6 +9,8 @@
 
 #include "car/system/CarSystem.h"
 
+#include "../../../configuration/JsonConfiguration.cxx"
+
 #include "../component/settings/SettingsEditConfig.cxx"
 
 #include "../component/debug/DebugEnabler.cxx"
@@ -27,9 +29,9 @@ namespace car::display::console::screen
     class SettingsScreen
     {
     public:
-        SettingsScreen(std::shared_ptr<CarSystem> car_system) : car_system(car_system),
+        SettingsScreen(std::shared_ptr<CarSystem> car_system, std::shared_ptr<JsonConfiguration> json_configuration) : car_system(car_system),
                                                                 debug_messaging_text_box(DebugMessagingTextbox(car_system->getHandleMessageSignal())),
-                                                                settings_edit_config(car_system)
+                                                                settings_edit_config(car_system, json_configuration)
         {
         }
 

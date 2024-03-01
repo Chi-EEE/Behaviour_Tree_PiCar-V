@@ -216,8 +216,8 @@ namespace car::display::console::component::debug
 		int camera_servo_2_angle_slider_angle = DEFAULT_FRONT_WHEEL_ANGLE;
 
 		bool rear_wheel_direction_debounce = false;
-		std::string rear_wheel_direction_status = REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE;
-		bool rear_wheel_direction = false;
+		std::string rear_wheel_direction_status = REAR_WHEEL_DIRECTION_FORWARD_MESSAGE;
+		bool rear_wheel_direction = true;
 
 		Component rear_wheel_speed_slider;
 		Component rear_left_wheel_speed_slider;

@@ -11,7 +11,7 @@ using namespace ftxui;
 
 namespace car::display::console
 {
-	CarConsole::CarConsole(std::shared_ptr<CarSystem> car_system, std::shared_ptr<logging::vector_sink_mt> vector_sink) : car_system(std::move(car_system)), vector_sink(vector_sink) {};
+	CarConsole::CarConsole(std::shared_ptr<CarSystem> car_system, std::shared_ptr<JsonConfiguration> json_configuration, std::shared_ptr<logging::vector_sink_mt> vector_sink) : car_system(std::move(car_system)), json_configuration(std::move(json_configuration)), vector_sink(vector_sink) {};
 
 	void CarConsole::initialize()
 	{
@@ -30,8 +30,8 @@ namespace car::display::console
 
 		MainScreen main_screen(this->car_system, exit);
 		auto main_screen_container = main_screen.element();
-
-		SettingsScreen settings_screen(this->car_system);
+		
+		SettingsScreen settings_screen(this->car_system, this->json_configuration);
 		auto settings_screen_container = settings_screen.element();
 
 		LoggingScreen logging_screen(this->vector_sink);

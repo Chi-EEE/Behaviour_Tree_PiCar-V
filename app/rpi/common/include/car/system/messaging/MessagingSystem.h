@@ -33,13 +33,15 @@ namespace car::system::messaging
 	class MessagingSystem
 	{
 	public:
-		MessagingSystem(std::shared_ptr<configuration::Configuration> configuration);
+		MessagingSystem();
 
-		void initialize();
+		void initialize(std::shared_ptr<configuration::Configuration> configuration);
 		void initializeWebSocket();
 		void start();
 		void stop();
 		void terminate();
+
+		void setConfiguration(std::shared_ptr<configuration::Configuration> configuration);
 
 		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() { return this->custom_command_signal; }
 		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->handle_message_signal; }

@@ -26,9 +26,6 @@ namespace car::configuration
 		{
 		}
 
-		JsonConfiguration(JsonConfiguration const &) = delete;
-		JsonConfiguration &operator=(JsonConfiguration const &) = delete;
-
 		void setConfigFilePath(std::string config_file_path)
 		{
 			this->config_file_path = config_file_path;

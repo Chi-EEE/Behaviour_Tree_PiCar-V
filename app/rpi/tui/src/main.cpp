@@ -53,14 +53,21 @@ int main(int argc, char *argv[])
 #endif
 	std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
 
-	JsonConfiguration json_configuration = JsonConfiguration(exe_dir);
-	json_configuration.setConfigFilePath("settings/config.jsonc");
+	std::shared_ptr<JsonConfiguration> json_configuration = std::make_shared<JsonConfiguration>(JsonConfiguration(exe_dir));
+	json_configuration->setConfigFilePath("settings/config.jsonc");
+	
+	auto maybe_configuration = json_configuration->loadConfiguration();
+	if (!maybe_configuration.has_value())
+	{
+		spdlog::error("Unable to load the configuration file: {}", maybe_configuration.error());
+		return EXIT_FAILURE;
+	}
 
-	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(json_configuration.loadConfiguration());
+	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(maybe_configuration.value());
 
 	std::unique_ptr<LidarDevice> scanner = getLidarDevice(true);
 
-	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
+	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
 
 #ifdef __linux
 	// std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
@@ -69,7 +76,7 @@ int main(int argc, char *argv[])
 	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 #endif
 
-	std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>();
+	std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>(BehaviourTreeHandler());
 
 	std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>();
 	plugin_manager->addPlugin(behaviour_tree_handler);
@@ -86,10 +93,11 @@ int main(int argc, char *argv[])
 	spdlog::set_default_logger(vector_sink_logger);
 
 	// The CarConsole object will display the UI and handle user input:
-	CarConsole car_console(std::move(car_system), vector_sink);
+	CarConsole car_console(std::move(car_system), std::move(json_configuration), vector_sink);
 	car_console.initialize();
 	car_console.run();
 	car_console.terminate();
+	return EXIT_SUCCESS;
 }
 
 std::unique_ptr<LidarDevice> getLidarDevice(bool dummy)

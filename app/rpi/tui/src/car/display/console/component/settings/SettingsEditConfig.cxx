@@ -22,13 +22,12 @@ namespace car::display::console::component::settings
 		Component element()
 		{
 			InputOption option;
-			this->placeholder = "settings/config.jsonc";
 			this->input_settings_file_path = Input(&this->settings_file_path, &this->placeholder, option);
 			this->load_button = Button("Load", [&]()
 				{
 					this->json_configuration->setConfigFilePath(this->settings_file_path);
 					auto maybe_configuration = this->json_configuration->loadConfiguration();
-					if (!maybe_configuration.has_value()) {
+					if (maybe_configuration.has_value()) {
 						this->car_system->setConfiguration(std::make_shared<Configuration>(maybe_configuration.value()));
 					} else {
 						this->settings_file_path = "";
@@ -53,8 +52,8 @@ namespace car::display::console::component::settings
 		std::shared_ptr<system::CarSystem> car_system;
 		std::shared_ptr<configuration::JsonConfiguration> json_configuration;
 
-		std::string placeholder;
-		std::string settings_file_path;
+		std::string placeholder = "settings/config.jsonc";
+		std::string settings_file_path = "settings/config.jsonc";
 
 		Component input_settings_file_path;
 		Component load_button;

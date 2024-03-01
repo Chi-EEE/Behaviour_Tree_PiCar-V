@@ -28,3 +28,6 @@ target("rpi_tui")
     add_files("src/**.cpp", "src/**.cxx")
 
     add_deps("rpi_common", {public = true})
+
+    set_configdir("$(buildir)/$(plat)/$(arch)/$(mode)")
+    add_configfiles("settings/config.jsonc", {onlycopy = true, prefixdir = "settings"})

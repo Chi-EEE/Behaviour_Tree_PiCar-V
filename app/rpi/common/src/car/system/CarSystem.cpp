@@ -32,7 +32,7 @@ namespace car::system
 
 	void CarSystem::initialize()
 	{
-		this->messaging_system->initialize();
+		this->messaging_system->initialize(this->configuration);
 		this->lidar_device->initialize();
 		this->movement_system->initialize();
 		this->plugin_manager->initialize(shared_from_this());
