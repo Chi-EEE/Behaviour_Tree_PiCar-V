@@ -66,7 +66,7 @@ target("rpi_daemon")
         print("removing directory /" .. conf_install_dir .. " ..") 
     end)
 
-    after_build(function (target) 
+    on_config(function (target) 
         io.replace(dir .. "/systemd/rpi_daemon.conf", "@PROJECT_NAME@", target:name(), {plain = true})
         io.replace(dir .. "/systemd/rpi_daemon.conf", "@PROJECT_VERSION@", target:version(), {plain = true})
         io.replace(dir .. "/systemd/rpi_daemon.conf", "@PROJECT_DESCRIPTION@", description, {plain = true})
