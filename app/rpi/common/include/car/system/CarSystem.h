@@ -32,6 +32,7 @@ namespace car::system
 			std::unique_ptr<PluginManager> plugin_manager);
 
 		void initialize();
+		void reload();
 
 		void connectToServer();
 		void disconnectFromServer();

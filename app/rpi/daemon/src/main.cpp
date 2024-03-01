@@ -26,8 +26,6 @@ using namespace car::plugin;
 
 std::unique_ptr<LidarDevice> getLidarDevice(bool dummy);
 
-static std::string s_exe_dir;
-
 class rpi_daemon : public daemon
 {
 public:
@@ -40,25 +38,73 @@ public:
         }
         dlog::info("Starting rpi_daemon\n");
 
-        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration(s_exe_dir));
-        configuration->setConfigFilePath("settings/config.jsonc");
-        configuration->load();
-        
+        std::string ip_address = reader.GetString("host", "ip_address", "");
+        std::optional<int> port = std::nullopt;
+        if (reader.HasValue("host", "port"))
+        {
+            port = reader.GetInteger("host", "port", 0);
+        }
+        std::string rpi_name = reader.GetString("rpi", "name", "");
+        std::string room_name = reader.GetString("room", "name", "");
+
+        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
+            ip_address,
+            port,
+            rpi_name,
+            room_name,
+        });
+
         std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(true);
-        std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem(configuration));
-        std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(DeviceMovementController());
+        std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
+        std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>(DeviceMovementController()));
         std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>(PluginManager());
 
-        this->car_system = std::make_unique<CarSystem>();
+        this->car_system = std::make_unique<CarSystem>(
+            configuration,
+            std::move(lidar_device),
+            std::move(messaging_system),
+            std::move(movement_system),
+            std::move(plugin_manager));
     }
+
     void on_update() override
     {
+        this->car_system->update();
     }
+
     void on_stop() override
     {
+        dlog::info("Stopping rpi_daemon\n");
+		this->car_system->terminate();
     }
+
     void on_reload(const INIReader reader) override
     {
+        if (reader.ParseError() < 0)
+        {
+            dlog::alert("Could not load 'rpi_daemon.service'\n");
+            return;
+        }
+        dlog::info("Reloading rpi_daemon\n");
+        
+        std::string ip_address = reader.GetString("host", "ip_address", "");
+        std::optional<int> port = std::nullopt;
+        if (reader.HasValue("host", "port"))
+        {
+            port = reader.GetInteger("host", "port", 0);
+        }
+        std::string rpi_name = reader.GetString("rpi", "name", "");
+        std::string room_name = reader.GetString("room", "name", "");
+
+        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
+            ip_address,
+            port,
+            rpi_name,
+            room_name,
+        });
+
+        this->car_system->setConfiguration(std::move(configuration));
+        this->car_system->reload();
     }
 
 private:
@@ -67,8 +113,6 @@ private:
 
 int main(int argc, const char *argv[])
 {
-    s_exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
-
     rpi_daemon dmn;
     dmn.set_name("rpi_daemon");
     dmn.set_update_duration(std::chrono::milliseconds(500));
