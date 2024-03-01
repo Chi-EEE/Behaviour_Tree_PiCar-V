@@ -10,13 +10,13 @@
 			"path": "app/frontend"
 		},
 		{
-			"path": "app/raspberry_pi"
+			"path": "app/rpi"
 		}
 	],
 	"settings": {
 		"typescript.validate.enable": false,
 		"javascript.validate.enable": false,
-		"xmake.workingDirectory": "${workspaceRoot}/raspberry_pi",
+		"xmake.workingDirectory": "${workspaceRoot}/rpi",
 		"files.associations": {
 			"iostream": "cpp",
 			"vector": "cpp",
