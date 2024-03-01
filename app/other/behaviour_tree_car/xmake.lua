@@ -23,3 +23,7 @@ target("behaviour_tree_car")
     add_headerfiles("include/(**.hpp)")
 
     add_defines("NOMINMAX")
+
+    on_install(function (target) end)
+    on_uninstall(function (target) end)
+    

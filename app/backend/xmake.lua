@@ -77,21 +77,5 @@ target("backend")
         print("Completed copying svelte files...")
     end)
 
--- From xmake sample code:
--- for _, file in ipairs(os.files("tests/test_*.cpp")) do
---     local name = path.basename(file)
---     target(name)
---         set_kind("binary")
---         set_default(false)
---         add_packages("boost")
---         add_packages("fmt", "spdlog")
---         add_packages("nlohmann_json")
---         add_packages("oatpp", "oatpp-websocket")
---         add_packages("tl_expected")
---         add_files("tests/" .. name .. ".cpp")
---         add_files("src/controller/**.cc")
---         -- add_tests("default")
---         -- add_tests("args", {runargs = {"foo", "bar"}})
---         -- add_tests("pass_output", {trim_output = true, runargs = "foo", pass_outputs = "hello foo"})
---         -- add_tests("fail_output", {fail_outputs = {"hello2 .*", "hello xmake"}})
--- end
+    on_install(function (target) end)
+    on_uninstall(function (target) end)

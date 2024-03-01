@@ -3,3 +3,7 @@ target("utils")
     
     add_includedirs("include", {public = true})
     add_headerfiles("include/(**.hpp)")
+
+    on_install(function (target) end)
+    on_uninstall(function (target) end)
+    
