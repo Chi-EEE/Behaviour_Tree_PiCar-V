@@ -7,8 +7,8 @@
   "main": "main.js",
   "author": "Chi Huu Huynh",
   "build": {
-    "icon": "public/favicon.png",
-    "productName": "Svelte and Electron App",
+    "icon": "public/Sunfounder-PiCar.png",
+    "productName": "Admin Panel for Raspberry Pi",
     "files": [
       "public/**/*",
       "main.js",
