@@ -5,6 +5,7 @@ add_requires("fmt", "spdlog")
 add_requires("rapidjson", "pugixml v1.14")
 add_requires("uuid_v4")
 
+add_requires("access_private")
 add_requires("effolkronium-random")
 add_requires("robin-map")
 
@@ -30,6 +31,7 @@ target("backend")
     add_packages("rapidjson", "pugixml")
     add_packages("uuid_v4")
     
+    add_packages("access_private")
     add_packages("effolkronium-random")
     add_packages("robin-map")
     

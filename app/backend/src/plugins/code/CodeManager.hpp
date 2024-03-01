@@ -22,11 +22,13 @@ constexpr int PASSCODE_LENGTH = 3;
 class CodeManager : public drogon::Plugin<CodeManager>
 {
 public:
-	void initAndStart(const Json::Value& config) override {
+	void initAndStart(const Json::Value& config) override
+	{
 		this->raspberry_pi_connection_codes.resize(std::pow(10, CODE_LENGTH));
 		this->raspberry_pi_connection_code_list.resize(std::pow(10, CODE_LENGTH));
-		for (int i = 0; i < this->raspberry_pi_connection_codes.size(); i++) {
-			std::shared_ptr<RaspberryPiConnectionCode> admin_code = std::make_shared<RaspberryPiConnectionCode>(i, nullptr);
+		for (int i = 0; i < this->raspberry_pi_connection_codes.size(); i++)
+		{
+			std::shared_ptr<RaspberryPiConnectionCode> admin_code = std::make_shared<RaspberryPiConnectionCode>(RaspberryPiConnectionCode{ i });
 			this->raspberry_pi_connection_codes[i] = admin_code;
 			this->raspberry_pi_connection_code_list[i] = admin_code;
 		}
@@ -35,16 +37,20 @@ public:
 
 	void shutdown() override {}
 
-	std::shared_ptr<RaspberryPiConnectionCode> getRaspberryPiConnectionCode(drogon::SessionPtr session) {
+	std::shared_ptr<RaspberryPiConnectionCode> getRaspberryPiConnectionCode(drogon::SessionPtr session)
+	{
 		const trantor::Date now = trantor::Date::date();
 		std::shared_ptr<RaspberryPiConnectionCode> raspberry_pi_connection_code = nullptr;
 		// BEWARE: This can loop forever if there are no valid admin codes
-		while (true) {
+		while (true)
+		{
 			raspberry_pi_connection_code = this->raspberry_pi_connection_codes.front();
-			if (raspberry_pi_connection_code->session == nullptr) {
+			if (raspberry_pi_connection_code->session == nullptr)
+			{
 				break;
 			}
-			if (raspberry_pi_connection_code->time < now) {
+			if (raspberry_pi_connection_code->time < now)
+			{
 				break;
 			}
 			this->raspberry_pi_connection_codes.pop_front();
@@ -62,9 +68,11 @@ public:
 		return raspberry_pi_connection_code;
 	}
 
-	std::optional<drogon::SessionPtr> useRaspberryPiConnectionCode(int code, int passcode) {
+	std::optional<drogon::SessionPtr> useRaspberryPiConnectionCode(int code, int passcode)
+	{
 		std::shared_ptr<RaspberryPiConnectionCode> raspberry_pi_connection_code = this->raspberry_pi_connection_code_list[code];
-		if (raspberry_pi_connection_code->passcode != passcode) {
+		if (raspberry_pi_connection_code->passcode != passcode)
+		{
 			return std::nullopt;
 		}
 		drogon::SessionPtr session = raspberry_pi_connection_code->session;
