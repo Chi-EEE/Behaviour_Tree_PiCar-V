@@ -38,14 +38,14 @@ public:
         }
         dlog::info("Starting rpi_daemon\n");
 
-        std::string ip_address = reader.GetString("host", "ip_address", "");
+        std::string ip_address = reader.GetString("Host", "ip_address", "");
         std::optional<int> port = std::nullopt;
-        if (reader.HasValue("host", "port"))
+        if (reader.HasValue("Host", "port"))
         {
-            port = reader.GetInteger("host", "port", 0);
+            port = reader.GetInteger("Host", "port", 0);
         }
-        std::string rpi_name = reader.GetString("rpi", "name", "");
-        std::string room_name = reader.GetString("room", "name", "");
+        std::string rpi_name = reader.GetString("RaspberryPi", "name", "");
+        std::string room_name = reader.GetString("Room", "name", "");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
             ip_address,
@@ -87,11 +87,11 @@ public:
         }
         dlog::info("Reloading rpi_daemon\n");
         
-        std::string ip_address = reader.GetString("host", "ip_address", "");
+        std::string ip_address = reader.GetString("Host", "ip_address", "");
         std::optional<int> port = std::nullopt;
-        if (reader.HasValue("host", "port"))
+        if (reader.HasValue("Host", "port"))
         {
-            port = reader.GetInteger("host", "port", 0);
+            port = reader.GetInteger("Host", "port", 0);
         }
         std::string rpi_name = reader.GetString("rpi", "name", "");
         std::string room_name = reader.GetString("room", "name", "");
