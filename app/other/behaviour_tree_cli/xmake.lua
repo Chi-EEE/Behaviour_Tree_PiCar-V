@@ -18,3 +18,7 @@ target("behaviour_tree_cli")
     add_defines("BEHAVIOUR_TREE_DISABLE_RUN")
 
     add_files("src/*.cpp")
+
+    on_install(function (target) end)
+    on_uninstall(function (target) end)
+    

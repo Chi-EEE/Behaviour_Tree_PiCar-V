@@ -47,8 +47,9 @@ target("rpi_common")
         add_defines("__linux")
     end
 
-    set_configdir("$(buildir)/$(plat)/$(arch)/$(mode)")
-    add_configfiles("settings/config.jsonc", {onlycopy = true, prefixdir = "settings"})
+    on_install(function (target) end)
+    on_uninstall(function (target) end)
+
 target_end()
     
 if is_plat("linux") then

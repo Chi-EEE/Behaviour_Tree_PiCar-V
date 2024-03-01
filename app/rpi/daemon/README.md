@@ -14,8 +14,8 @@ This will only work for Linux.
 ## View Logs
 `systemctl status rpi_daemon.service`
 
-## Start / Stop / Restart Daemon
-`sudo systemctl [start/stop/restart] rpi_daemon`
+## Reload Daemon
+`sudo systemctl reload rpi_daemon`
 
 ## Uninstall Raspberry Pi Daemon
 `xmake uninstall --admin rpi_daemon`

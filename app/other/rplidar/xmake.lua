@@ -8,3 +8,7 @@ target("rplidar")
 
     add_headerfiles("include/(RPLidar.h)")
     add_includedirs("include", {public = true})
+
+    on_install(function (target) end)
+    on_uninstall(function (target) end)
+    

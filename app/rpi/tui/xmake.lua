@@ -31,3 +31,6 @@ target("rpi_tui")
 
     set_configdir("$(buildir)/$(plat)/$(arch)/$(mode)")
     add_configfiles("settings/config.jsonc", {onlycopy = true, prefixdir = "settings"})
+
+    on_install(function (target) end)
+    on_uninstall(function (target) end)
