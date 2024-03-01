@@ -5,7 +5,10 @@ The app to directly control the Sunfounder PiCar.
 ## Install Packages:
 `pnpm i`
 
-## Build EXE:
+## Run:
+`pnpm run electron`
+
+## Build EXE to export:
 `pnpm run preelectron-pack`  
 AND  
 `pnpm run electron-pack`
