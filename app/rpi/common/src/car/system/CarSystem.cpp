@@ -50,6 +50,11 @@ namespace car::system
 			});
 	}
 
+	void CarSystem::reload()
+	{
+		this->messaging_system->setConfiguration(this->configuration);
+	}
+
 	void CarSystem::connectToServer()
 	{
 		if (!this->connectedToServer)

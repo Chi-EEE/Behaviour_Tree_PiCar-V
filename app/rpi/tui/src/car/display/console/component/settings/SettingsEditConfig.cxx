@@ -29,6 +29,7 @@ namespace car::display::console::component::settings
 					auto maybe_configuration = this->json_configuration->loadConfiguration();
 					if (maybe_configuration.has_value()) {
 						this->car_system->setConfiguration(std::make_shared<Configuration>(maybe_configuration.value()));
+						this->car_system->reload();
 					} else {
 						this->settings_file_path = "";
 						this->placeholder = maybe_configuration.error();
