@@ -30,7 +30,7 @@ target("rpi_daemon")
     
     add_packages("ixwebsocket")
     add_packages("cxxopts", "fmt", "rapidjson", "robin-map", "spdlog", "tl_expected", "nod")
-    add_packages("serial")
+    add_packages("serial", "pca9685", "tb6612")
     add_packages("effolkronium-random", "pugixml")
     add_packages("daemonpp-fork")
 

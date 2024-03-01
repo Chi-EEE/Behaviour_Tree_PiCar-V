@@ -40,9 +40,7 @@ namespace car::system
 
 		void update();
 
-		void setConfigurationPath(const std::string& path);
-
-		tl::expected<nullptr_t, std::string> loadConfiguation();
+		void setConfiguration(std::shared_ptr<Configuration> configuration);
 
 		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() const { return this->messaging_system->getCustomCommandSignal(); }
 		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->messaging_system->getHandleMessageSignal(); }
@@ -75,7 +73,7 @@ namespace car::system
 		const std::vector<Measure> getScanData() const { return this->lidar_device->getScanData(); }
 
 	private:
-		const std::shared_ptr<Configuration> configuration;
+		std::shared_ptr<Configuration> configuration;
 
 		const std::unique_ptr<LidarDevice> lidar_device;
 		const std::unique_ptr<MessagingSystem> messaging_system;

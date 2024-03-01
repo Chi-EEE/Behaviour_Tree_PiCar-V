@@ -94,13 +94,9 @@ namespace car::system
 		this->plugin_manager->update();
 	}
 
-	void CarSystem::setConfigurationPath(const std::string &path)
+	void CarSystem::setConfiguration(std::shared_ptr<Configuration> configuration)
 	{
-		this->configuration->setConfigFilePath(path);
-	}
-
-	tl::expected<nullptr_t, std::string> CarSystem::loadConfiguation() {
-		return this->configuration->load();
+		this->configuration = configuration;
 	}
 
 	void CarSystem::startLidarDevice()
