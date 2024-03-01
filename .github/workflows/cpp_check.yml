@@ -23,12 +23,10 @@ jobs:
 
       - name: Update cpp_check Branch
         run: |
-          git checkout main
           git fetch origin
           git checkout cpp_check
-          git pull
-          git merge origin/main
-          git push origin cpp_check
+          git reset --hard origin/main
+          git push -f origin cpp_check
 
       - name: Checkout
         uses: actions/checkout@v3
