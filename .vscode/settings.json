@@ -2,6 +2,7 @@
     "editor.detectIndentation": false,
     "files.associations": {
         "*.embeddedhtml": "html",
+        "*.service": "ini",
         "algorithm": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
