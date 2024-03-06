@@ -41,7 +41,7 @@ namespace behaviour_tree
 		virtual void _() = 0;
 	private:
 		std::shared_ptr<BehaviourTree> behaviour_tree;
-		std::vector<std::pair<std::shared_ptr<node::Node>, int>> node_trace;
+		std::vector<std::pair<std::shared_ptr<node::Node>, int>> node_trace_list;
 	};
 }
 

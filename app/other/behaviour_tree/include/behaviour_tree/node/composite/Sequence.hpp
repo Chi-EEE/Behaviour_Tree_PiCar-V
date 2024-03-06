@@ -33,14 +33,15 @@ namespace behaviour_tree::node::composite
 			{
 				auto& child = this->children[i];
 				auto status = child->tick(tick_count, context);
+				context->pushNodeTrace(std::make_pair(shared_from_this(), i));
 				switch (status) {
 				case Status::Running:
-					context->pushNodeTrace(std::make_pair(shared_from_this(), i));
 					return Status::Running;
 				case Status::Success:
 					context->popNode();
 					continue;
 				case Status::Failure:
+					context->popNode();
 					return Status::Failure;
 				}
 			}

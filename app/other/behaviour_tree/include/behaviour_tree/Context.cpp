@@ -10,32 +10,40 @@ namespace behaviour_tree {
 
 	void Context::update(const int& tick_count)
 	{
-		if (this->node_trace.size() == 0) {
+		if (this->node_trace_list.size() == 0) {
 			this->behaviour_tree->tick(tick_count, shared_from_this());
 		}
 		else {
-			for (auto node_trace = this->node_trace.begin(); node_trace != this->node_trace.end(); ) {
-				auto& [node, index] = *node_trace;
-				if (composite::Composite* composite = dynamic_cast<composite::Composite*>(node.get()))
-				{
-					auto status = composite->tick(tick_count, shared_from_this(), index);
-					if (status == Status::Success || status == Status::Failure) {
-						node_trace = this->node_trace.erase(node_trace);
-					}
-					else {
-						break;
-					}
+			bool ignore = false;
+
+			auto tick_node_trace = [this, &tick_count, &ignore](const auto& node_trace) {
+				if (ignore) {
+					return false;
+				}
+
+				auto& [node, index] = node_trace;
+
+				Status status;
+				if (auto* composite = dynamic_cast<composite::Composite*>(node.get())) {
+					status = composite->tick(tick_count, shared_from_this(), index);
 				}
 				else {
-					auto status = node->tick(tick_count, shared_from_this());
-					if (status == Status::Success || status == Status::Failure) {
-						node_trace = this->node_trace.erase(node_trace);
-					}
-					else {
-						break;
-					}
+					status = node->tick(tick_count, shared_from_this());
 				}
-			}
+				
+				if (status == Status::Success || status == Status::Failure) {
+					return true;
+				}
+				else {
+					ignore = true;
+					return false;
+				}
+				};
+
+			this->node_trace_list.erase(
+				std::remove_if(this->node_trace_list.begin(), this->node_trace_list.end(), tick_node_trace),
+				this->node_trace_list.end()
+			);
 		}
 	}
 
@@ -45,11 +53,11 @@ namespace behaviour_tree {
 
 	void Context::pushNodeTrace(std::pair<std::shared_ptr<node::Node>, int> node_trace)
 	{
-		this->node_trace.push_back(node_trace);
+		this->node_trace_list.push_back(node_trace);
 	}
 
 	void Context::popNode()
 	{
-		this->node_trace.pop_back();
+		this->node_trace_list.pop_back();
 	}
 }
