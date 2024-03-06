@@ -14,6 +14,14 @@ namespace behaviour_tree::node::composite
 
 		const CompositeType type() const final override { return CompositeType::Selector; }
 
+		void start(std::shared_ptr<Context> context) final override {
+			this->previous_start_index = -1;
+		}
+
+		void finish(std::shared_ptr<Context> context) final override {
+
+		}
+
 		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
 			return this->run(tick_count, context, 0);
@@ -25,16 +33,19 @@ namespace behaviour_tree::node::composite
 			{
 				auto& child = this->children[i];
 				auto status = child->tick(tick_count, context);
-				context->pushNodeTrace(std::make_pair(shared_from_this(), i));
+				if (this->previous_start_index != i) {
+					context->pushNodeTrace(std::make_pair(shared_from_this(), i));
+				}
 				switch (status) {
+				case Status::Running:
+					this->previous_start_index = i;
+					return Status::Running;
 				case Status::Failure:
 					context->popNode();
 					continue;
 				case Status::Success:
 					context->popNode();
 					return Status::Success;
-				case Status::Running:
-					return Status::Running;
 				}
 			}
 			return Status::Failure;
@@ -52,6 +63,9 @@ namespace behaviour_tree::node::composite
 			else
 				return fmt::format(R"(<Selector>{}</Selector>)", out);
 		}
+
+	private:
+		int previous_start_index = -1;
 	};
 }
 
