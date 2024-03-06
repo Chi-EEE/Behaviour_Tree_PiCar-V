@@ -188,7 +188,7 @@ int main(int argc, const char* argv[])
 	car_system->initialize();
 
 	std::cout << "Press any key to exit the loop." << std::endl;
-	while (!_kbhit()) {
+	while (!kbhit()) {
 		car_system->update();
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
