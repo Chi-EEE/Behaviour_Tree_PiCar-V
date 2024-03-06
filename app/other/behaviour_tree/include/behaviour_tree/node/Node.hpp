@@ -35,7 +35,7 @@ namespace behaviour_tree::node
                 this->start(context);
                 this->started = true;
             }
-            Status status = this->tick(tick_count, context, start_index);
+            Status status = this->run(tick_count, context);
             if (status == Status::Success || status == Status::Failure) {
                 this->finish(context);
                 this->started = false;
