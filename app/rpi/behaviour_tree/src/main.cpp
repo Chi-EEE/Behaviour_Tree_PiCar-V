@@ -3,8 +3,6 @@
 #include <filesystem>
 #include <memory>
 
-#include <conio.h>
-
 #include <cxxopts.hpp>
 
 #include "car/system/CarSystem.h"
@@ -189,7 +187,7 @@ int main(int argc, const char* argv[])
 
 	car_system->initialize();
 
-	std::cout << "Press ESC to exit the loop." << std::endl;
+	std::cout << "Press any key to exit the loop." << std::endl;
 	while (!_kbhit()) {
 		car_system->update();
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
