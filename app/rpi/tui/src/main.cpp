@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 
     std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(maybe_configuration.value());
 
-    const bool dummy = false;
+    const bool dummy = true;
 
     std::unique_ptr<LidarDevice> scanner = getLidarDevice(dummy);
 
