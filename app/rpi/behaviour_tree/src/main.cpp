@@ -174,7 +174,6 @@ int main(int argc, const char* argv[])
 
 	std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>(BehaviourTreeHandler());
 	behaviour_tree_handler->setBehaviourTree(behaviour_tree);
-	behaviour_tree_handler->start();
 
 	std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>();
 	plugin_manager->addPlugin(behaviour_tree_handler);
@@ -187,6 +186,8 @@ int main(int argc, const char* argv[])
 		std::move(plugin_manager));
 
 	car_system->initialize();
+
+	behaviour_tree_handler->start();
 
 	std::cout << "Press any key to exit the loop." << std::endl;
 	while (!kbhit()) {

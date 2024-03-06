@@ -38,6 +38,8 @@ namespace car::configuration
 
 		tl::expected<Configuration, std::string> loadConfiguration()
 		{
+			assert(this->config_file_path != "");
+
 			std::string config_file_path = exe_dir + "/" + this->config_file_path;
 			std::ifstream config_file(config_file_path);
 			if (!config_file)
