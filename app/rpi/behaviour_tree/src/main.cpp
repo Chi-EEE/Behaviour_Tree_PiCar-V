@@ -113,33 +113,35 @@ int main(int argc, const char* argv[])
 	}
 	else {
 		behaviour_tree_string = R"(<BehaviourTree>
-	    <Root id='main'>
-	        <Sequence>
-	            <Action:SetAngle servo_type='FrontWheels' angle='180'/>
-	            <Action:SetSpeed wheel_type='Both' speed='50'/>
-	            <Action:SetWheelDirection wheel_type='Both' direction_type='Forward'/>
-	            <Action:SetWheelDirection wheel_type='Both' direction_type='Backward'/>
-	            <Condition:NearbyPoints min_angle='0' max_angle='0' distance='200'/>
-	
-	            <Action:PauseExecution ms='5000'/>
-	
-	            <Action:Log text='Waited 5 seconds'/>
-	
-	            <UseRoot id='abc'/>
-	
-	            <Invert>
-	                <Fail />
-	                <Succeed />
-	            </Invert>
-	            <Repeat count='2' break_on_fail='false'>
-	                <Action:Log text='Hey'/>
-	            </Repeat>
-	        </Sequence>
-	    </Root>
-	    <Root id='abc'>
-	
-	    </Root>
-	</BehaviourTree>)";
+    <Root id='main'>
+        <Sequence>
+            <Action:SetAngle servo_type='FrontWheels' angle='180'/>
+            <Action:SetSpeed wheel_type='Both' speed='50'/>
+            <Action:SetWheelDirection wheel_type='Both' direction_type='Forward'/>
+            <Action:SetWheelDirection wheel_type='Both' direction_type='Backward'/>
+            <Invert>
+                <Condition:NearbyPoints min_angle='0' max_angle='0' distance='200'/>
+            </Invert>
+
+            <Action:PauseExecution ms='5000'/>
+
+            <Action:Log text='Waited 5 seconds'/>
+
+            <UseRoot id='abc'/>
+
+            <Invert>
+                <Fail />
+                <Succeed />
+            </Invert>
+            <Repeat count='2' break_on_fail='false'>
+                <Action:Log text='Hey'/>
+            </Repeat>
+        </Sequence>
+    </Root>
+    <Root id='abc'>
+
+    </Root>
+</BehaviourTree>)";
 	}
 
 	const bool dummy = true;

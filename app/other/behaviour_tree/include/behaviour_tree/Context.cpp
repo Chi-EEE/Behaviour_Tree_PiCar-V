@@ -16,7 +16,7 @@ namespace behaviour_tree {
 		else {
 			bool ignore = false;
 
-			auto tick_node_trace = [this, &tick_count, &ignore](const auto& node_trace) {
+			auto tick_node_trace = [this, &tick_count, &ignore](const auto& node_trace) mutable {
 				if (ignore) {
 					return false;
 				}
@@ -40,8 +40,9 @@ namespace behaviour_tree {
 				}
 				};
 
+			auto new_node_trace_list_end = std::remove_if(this->node_trace_list.begin(), this->node_trace_list.end(), tick_node_trace);
 			this->node_trace_list.erase(
-				std::remove_if(this->node_trace_list.begin(), this->node_trace_list.end(), tick_node_trace),
+				new_node_trace_list_end,
 				this->node_trace_list.end()
 			);
 		}

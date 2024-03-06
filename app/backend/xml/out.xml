@@ -5,7 +5,9 @@
             <Action:SetSpeed wheel_type='Both' speed='50'/>
             <Action:SetWheelDirection wheel_type='Both' direction_type='Forward'/>
             <Action:SetWheelDirection wheel_type='Both' direction_type='Backward'/>
-            <Condition:NearbyPoints min_angle='0' max_angle='0' distance='200'/>
+            <Invert>
+                <Condition:NearbyPoints min_angle='0' max_angle='0' distance='200'/>
+            </Invert>
 
             <Action:PauseExecution ms='5000'/>
 
