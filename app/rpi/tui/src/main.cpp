@@ -65,13 +65,13 @@ int main(int argc, char *argv[])
 
     std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(maybe_configuration.value());
 
-    const bool dummy = true;
-
-    std::unique_ptr<LidarDevice> scanner = getLidarDevice(dummy);
+    std::unique_ptr<LidarDevice> scanner = getLidarDevice(true);
 
     std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
 
 #ifdef __linux
+    constexpr bool dummy = false;
+    
     std::unique_ptr<MovementSystem> movement_system;
     if (!dummy)
     {
