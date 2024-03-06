@@ -45,79 +45,88 @@ std::unique_ptr<LidarDevice> getLidarDevice(bool dummy);
 int main(int argc, char *argv[])
 {
 #ifdef __linux
-	if (getuid())
-	{
-		std::cout << "This program will not work properly unless you are root. Please run this program as root using `sudo`.\n";
-		return EXIT_FAILURE;
-	}
+    if (getuid())
+    {
+        std::cout << "This program will not work properly unless you are root. Please run this program as root using `sudo`.\n";
+        return EXIT_FAILURE;
+    }
 #endif
-	std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
+    std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
 
-	std::shared_ptr<JsonConfiguration> json_configuration = std::make_shared<JsonConfiguration>(JsonConfiguration(exe_dir));
-	json_configuration->setConfigFilePath("settings/config.jsonc");
-	
-	auto maybe_configuration = json_configuration->loadConfiguration();
-	if (!maybe_configuration.has_value())
-	{
-		spdlog::error("Unable to load the configuration file: {}", maybe_configuration.error());
-		return EXIT_FAILURE;
-	}
+    std::shared_ptr<JsonConfiguration> json_configuration = std::make_shared<JsonConfiguration>(JsonConfiguration(exe_dir));
+    json_configuration->setConfigFilePath("settings/config.jsonc");
 
-	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(maybe_configuration.value());
+    auto maybe_configuration = json_configuration->loadConfiguration();
+    if (!maybe_configuration.has_value())
+    {
+        spdlog::error("Unable to load the configuration file: {}", maybe_configuration.error());
+        return EXIT_FAILURE;
+    }
 
-	std::unique_ptr<LidarDevice> scanner = getLidarDevice(true);
+    std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(maybe_configuration.value());
 
-	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
+    const bool dummy = false;
+
+    std::unique_ptr<LidarDevice> scanner = getLidarDevice(dummy);
+
+    std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
 
 #ifdef __linux
-	// std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
-	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
+    std::unique_ptr<MovementSystem> movement_system;
+    if (!dummy)
+    {
+        movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
+    }
+    else
+    {
+        movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
+    }
 #else
-	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
+    std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 #endif
 
-	std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>(BehaviourTreeHandler());
+    std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>(BehaviourTreeHandler());
 
-	std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>();
-	plugin_manager->addPlugin(behaviour_tree_handler);
+    std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>();
+    plugin_manager->addPlugin(behaviour_tree_handler);
 
-	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
-		configuration,
-		std::move(scanner),
-		std::move(messaging_system),
-		std::move(movement_system),
-		std::move(plugin_manager));
+    std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
+        configuration,
+        std::move(scanner),
+        std::move(messaging_system),
+        std::move(movement_system),
+        std::move(plugin_manager));
 
-	std::shared_ptr<car::system::logging::vector_sink_mt> vector_sink = std::make_shared<car::system::logging::vector_sink_mt>(300);
-	auto vector_sink_logger = std::make_shared<spdlog::logger>("CLI", static_cast<std::shared_ptr<spdlog::sinks::sink>>(vector_sink));
-	spdlog::set_default_logger(vector_sink_logger);
+    std::shared_ptr<car::system::logging::vector_sink_mt> vector_sink = std::make_shared<car::system::logging::vector_sink_mt>(300);
+    auto vector_sink_logger = std::make_shared<spdlog::logger>("CLI", static_cast<std::shared_ptr<spdlog::sinks::sink>>(vector_sink));
+    spdlog::set_default_logger(vector_sink_logger);
 
-	// The CarConsole object will display the UI and handle user input:
-	CarConsole car_console(std::move(car_system), std::move(json_configuration), vector_sink);
-	car_console.initialize();
-	car_console.run();
-	car_console.terminate();
-	return EXIT_SUCCESS;
+    // The CarConsole object will display the UI and handle user input:
+    CarConsole car_console(std::move(car_system), std::move(json_configuration), vector_sink);
+    car_console.initialize();
+    car_console.run();
+    car_console.terminate();
+    return EXIT_SUCCESS;
 }
 
 std::unique_ptr<LidarDevice> getLidarDevice(bool dummy)
 {
-	if (dummy)
-	{
-		return std::make_unique<LidarDummy>();
-	}
-	else
-	{
+    if (dummy)
+    {
+        return std::make_unique<LidarDummy>();
+    }
+    else
+    {
 #ifdef __linux
-		auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
+        auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
 #else
-		auto maybe_scanner = LidarScanner::create("COM3");
+        auto maybe_scanner = LidarScanner::create("COM3");
 #endif
-		if (!maybe_scanner.has_value())
-		{
-			spdlog::error("Unable to connect to the Lidar Scanner");
-			throw std::runtime_error("Unable to connect to the Lidar Scanner");
-		}
-		return std::move(maybe_scanner.value());
-	}
+        if (!maybe_scanner.has_value())
+        {
+            spdlog::error("Unable to connect to the Lidar Scanner");
+            throw std::runtime_error("Unable to connect to the Lidar Scanner");
+        }
+        return std::move(maybe_scanner.value());
+    }
 }

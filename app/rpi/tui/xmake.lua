@@ -7,7 +7,7 @@ add_requires("effolkronium-random", "pugixml")
 add_requires("ftxui")
 
 if is_plat("linux", "macosx") then
-    add_requires("pca9685", {configs = {shared = true}})
+    add_requires("pca9685")
     add_requires("tb6612")
 end
 
