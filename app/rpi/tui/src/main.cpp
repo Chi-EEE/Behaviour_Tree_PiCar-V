@@ -45,7 +45,7 @@ std::unique_ptr<LidarDevice> getLidarDevice(bool dummy);
 int main(int argc, char *argv[])
 {
 #ifdef __linux
-	if (!getuid())
+	if (getuid())
 	{
 		std::cout << "This program will not work properly unless you are root. Please run this program as root using `sudo`.\n";
 		return EXIT_FAILURE;
