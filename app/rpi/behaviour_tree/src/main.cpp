@@ -41,8 +41,6 @@ using namespace behaviour_tree;
 #include <termios.h>
 #endif
 
-constexpr int ESC = 27;
-
 #ifndef _WIN32
 // From: https://gist.github.com/vsajip/1864660
 int kbhit(void)
@@ -84,27 +82,9 @@ int main(int argc, const char* argv[])
 		return EXIT_FAILURE;
 	}
 #endif
-
 	BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
 
-	cxxopts::Options options("Behaviour Tree CLI", "Program to parse Behaviour Tree");
-
-	options.add_options()
-		("behaviour_tree", "Behaviour Tree XML to run", cxxopts::value<std::string>());
-
-	auto cli_result = options.parse(argc, argv);
-
-	std::string behaviour_tree_string = cli_result["behaviour_tree"].as<std::string>();
-
-	auto behaviour_tree_result = BehaviourTreeParser::instance().parseXML(behaviour_tree_string);
-
-	if (!behaviour_tree_result.has_value())
-	{
-		spdlog::error("Unable to parse the Behaviour Tree: {}", behaviour_tree_result.error());
-		return EXIT_FAILURE;
-	}
-
-	std::shared_ptr<BehaviourTree> behaviour_tree = behaviour_tree_result.value();
+	std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
 
 	std::string ip_address = "";
 	int port = 0;
@@ -118,35 +98,91 @@ int main(int argc, const char* argv[])
 		room_name,
 		});
 
+
+
+	constexpr bool test = true;
+
+	std::string behaviour_tree_string;
+	if (!test) {
+		cxxopts::Options options("Behaviour Tree CLI", "Program to parse Behaviour Tree");
+
+		options.add_options()
+			("behaviour_tree", "Behaviour Tree XML to run", cxxopts::value<std::string>());
+
+		auto cli_result = options.parse(argc, argv);
+
+		behaviour_tree_string = cli_result["behaviour_tree"].as<std::string>();
+	}
+	else {
+		behaviour_tree_string = R"(<BehaviourTree>
+	    <Root id='main'>
+	        <Sequence>
+	            <Action:SetAngle servo_type='FrontWheels' angle='180'/>
+	            <Action:SetSpeed wheel_type='Both' speed='50'/>
+	            <Action:SetWheelDirection wheel_type='Both' direction_type='Forward'/>
+	            <Action:SetWheelDirection wheel_type='Both' direction_type='Backward'/>
+	            <Condition:NearbyPoints min_angle='0' max_angle='0' distance='200'/>
+	
+	            <Action:PauseExecution ms='5000'/>
+	
+	            <Action:Log text='Waited 5 seconds'/>
+	
+	            <UseRoot id='abc'/>
+	
+	            <Invert>
+	                <Fail />
+	                <Succeed />
+	            </Invert>
+	            <Repeat count='2' break_on_fail='false'>
+	                <Action:Log text='Hey'/>
+	            </Repeat>
+	        </Sequence>
+	    </Root>
+	    <Root id='abc'>
+	
+	    </Root>
+	</BehaviourTree>)";
+	}
+
 	const bool dummy = true;
 
-	std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(dummy);
+	std::unique_ptr<LidarDevice> scanner = getLidarDevice(dummy);
+
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
 
-	std::unique_ptr<MovementSystem> movement_system;
 #ifdef __linux
+	std::unique_ptr<MovementSystem> movement_system;
 	if (!dummy)
 	{
-		movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>(DeviceMovementController()));
+		movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
 	}
 	else
 	{
-		movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>(DummyMovementController()));
+		movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 	}
 #else
-	movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>(DummyMovementController()));
+	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 #endif
 
-	std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>(PluginManager());
-	std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>(BehaviourTreeHandler());
+	auto behaviour_tree_result = BehaviourTreeParser::instance().parseXML(behaviour_tree_string);
 
+	if (!behaviour_tree_result.has_value())
+	{
+		spdlog::error("Unable to parse the Behaviour Tree: {}", behaviour_tree_result.error());
+		return EXIT_FAILURE;
+	}
+
+	std::shared_ptr<BehaviourTree> behaviour_tree = behaviour_tree_result.value();
+
+	std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>(BehaviourTreeHandler());
 	behaviour_tree_handler->setBehaviourTree(behaviour_tree);
 
+	std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>();
 	plugin_manager->addPlugin(behaviour_tree_handler);
 
-	std::unique_ptr<CarSystem> car_system = std::make_unique<CarSystem>(
+	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
 		configuration,
-		std::move(lidar_device),
+		std::move(scanner),
 		std::move(messaging_system),
 		std::move(movement_system),
 		std::move(plugin_manager));
@@ -154,14 +190,7 @@ int main(int argc, const char* argv[])
 	car_system->initialize();
 
 	std::cout << "Press ESC to exit the loop." << std::endl;
-	char key;
-	while (true) {
-		if (_kbhit()) {
-			key = getchar();
-			if (key == ESC) {
-				break;
-			}
-		}
+	while (!_kbhit()) {
 		car_system->update();
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
