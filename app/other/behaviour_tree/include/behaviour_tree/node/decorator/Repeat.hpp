@@ -31,10 +31,13 @@ namespace behaviour_tree::node::decorator
 				this->count++;
 				if (this->count >= this->amount)
 					return Status::Success;
+				return Status::Running;
 			case Status::Running:
 				return Status::Running;
 			case Status::Failure:
-				return Status::Failure;
+				if (this->break_on_fail)
+					return Status::Failure;
+				return Status::Running;
 			}
 		}
 
