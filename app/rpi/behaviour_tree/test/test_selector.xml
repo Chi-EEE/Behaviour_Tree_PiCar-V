@@ -1,0 +1,10 @@
+<!-- TEST | { 'outputs': ['1'] } -->
+<BehaviourTree repeat='false'>
+    <Root id='main'>
+        <Selector>
+            <Action:Print text='1'/>
+            <Action:Print text='2'/>
+            <Action:Print text='3'/>
+        </Selector>
+    </Root>
+</BehaviourTree>

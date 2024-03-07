@@ -1,5 +1,5 @@
-#ifndef BEHAVIOUR_TREE_LOG_HPP
-#define BEHAVIOUR_TREE_LOG_HPP
+#ifndef BEHAVIOUR_TREE_PRINT_HPP
+#define BEHAVIOUR_TREE_PRINT_HPP
 
 #pragma once
 
@@ -13,10 +13,10 @@
 
 namespace behaviour_tree::node::custom::action
 {
-	class Log final : public CustomNode
+	class Print final : public CustomNode
 	{
 	public:
-		Log(const std::string& name, const std::string& text) : CustomNode(name), text(text)
+		Print(const std::string& name, const std::string& text) : CustomNode(name), text(text)
 		{
 		}
 
@@ -24,7 +24,6 @@ namespace behaviour_tree::node::custom::action
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
-			car_context->log(this->getText());
 			std::cout << this->getText() << std::endl;
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 			return Status::Success;
@@ -37,9 +36,9 @@ namespace behaviour_tree::node::custom::action
 		const std::string toString() const final override {
 			const std::string& name = this->getName();
 			if (name != "")
-				return fmt::format(R"(<Action:Log name='{}' text='{}'/>)", name, this->getText());
+				return fmt::format(R"(<Action:Print name='{}' text='{}'/>)", name, this->getText());
 			else
-				return fmt::format(R"(<Action:Log text='{}'/>)", this->getText());
+				return fmt::format(R"(<Action:Print text='{}'/>)", this->getText());
 		}
 
 	private:

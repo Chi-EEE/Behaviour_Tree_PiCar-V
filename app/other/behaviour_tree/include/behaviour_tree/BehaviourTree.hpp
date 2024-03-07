@@ -14,7 +14,7 @@ namespace behaviour_tree
 	class BehaviourTree
 	{
 	public:
-		BehaviourTree(std::vector<std::shared_ptr<Root>> roots) : roots(std::move(roots))
+		BehaviourTree(bool repeat, std::vector<std::shared_ptr<Root>> roots) : repeat(repeat), roots(std::move(roots))
 		{
 		}
 
@@ -57,6 +57,7 @@ namespace behaviour_tree
 		}
 
 	private:
+		bool repeat;
 		std::vector<std::shared_ptr<Root>> roots;
 		std::shared_ptr<Root> root_to_use;
 	};

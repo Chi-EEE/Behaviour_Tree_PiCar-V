@@ -36,3 +36,16 @@ target("rpi_behaviour_tree")
 
     on_install(function (target) end)
     on_uninstall(function (target) end)
+
+    
+    for _, file in ipairs(os.files("test/test_*.xml")) do
+        local name = path.basename(file)
+        target(name)
+            set_kind("phony")
+            on_build(function()
+                local content = io.readfile(file)
+                print(file)
+                print(content)
+                print(content:match("TEST ?| ?({.*})"))
+            end)
+    end

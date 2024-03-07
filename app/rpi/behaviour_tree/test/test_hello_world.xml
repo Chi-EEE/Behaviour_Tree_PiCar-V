@@ -1,0 +1,6 @@
+<!-- TEST | { outputs: ['Hello World'] } -->
+<BehaviourTree repeat='false'>
+    <Root id='main'>
+        <Action:Print text='Hello World'/>
+    </Root>
+</BehaviourTree>

@@ -1,0 +1,10 @@
+<!-- TEST | { 'outputs': ['1', '2', '3'] } -->
+<BehaviourTree repeat='false'>
+    <Root id='main'>
+        <Sequence>
+            <Action:Print text='1'/>
+            <Action:Print text='2'/>
+            <Action:Print text='3'/>
+        </Sequence>
+    </Root>
+</BehaviourTree>

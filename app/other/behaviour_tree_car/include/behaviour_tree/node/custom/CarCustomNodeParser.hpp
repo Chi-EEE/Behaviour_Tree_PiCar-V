@@ -18,8 +18,7 @@
 #include "action/PauseExecution.hpp"
 #include "action/CountdownWait.hpp"
 
-#include "action/Log.hpp"
-#include "action/Error.hpp"
+#include "action/Print.hpp"
 
 #include "action/SetSpeed.hpp"
 #include "action/SetWheelDirection.hpp"
@@ -86,17 +85,10 @@ namespace behaviour_tree::node::custom
 						ms
 					));
 			}
-			case utils::hash("Action:Log"):
+			case utils::hash("Action:Print"):
 			{
-				return std::make_shared<custom::action::Log>(
-					custom::action::Log(
-						name_attribute,
-						node.attribute("text").as_string()));
-			}
-			case utils::hash("Action:Error"):
-			{
-				return std::make_shared<custom::action::Error>(
-					custom::action::Error(
+				return std::make_shared<custom::action::Print>(
+					custom::action::Print(
 						name_attribute,
 						node.attribute("text").as_string()));
 			}

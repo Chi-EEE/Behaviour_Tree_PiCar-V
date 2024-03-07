@@ -1,3 +1,4 @@
+<!-- {"Waited 5 seconds" "Hey" "Hey"} -->
 <BehaviourTree>
     <Root id='main'>
         <Sequence>
@@ -11,7 +12,7 @@
 
             <Action:PauseExecution ms='5000'/>
 
-            <Action:Log text='Waited 5 seconds'/>
+            <Action:Print text='Waited 5 seconds'/>
 
             <UseRoot id='abc'/>
 
@@ -20,7 +21,7 @@
                 <Succeed />
             </Invert>
             <Repeat amount='2' break_on_fail='false'>
-                <Action:Log text='Hey'/>
+                <Action:Print text='Hey'/>
             </Repeat>
         </Sequence>
     </Root>

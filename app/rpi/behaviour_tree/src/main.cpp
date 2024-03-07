@@ -82,8 +82,6 @@ int main(int argc, const char* argv[])
 #endif
 	BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
 
-	std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
-
 	std::string ip_address = "";
 	int port = 0;
 	std::string rpi_name = "";
@@ -96,72 +94,21 @@ int main(int argc, const char* argv[])
 		room_name,
 		});
 
-	constexpr bool test = true;
+	cxxopts::Options options("Behaviour Tree CLI", "Program to parse Behaviour Tree");
 
-	std::string behaviour_tree_string;
-	if (!test) {
-		cxxopts::Options options("Behaviour Tree CLI", "Program to parse Behaviour Tree");
+	options.add_options()
+		("behaviour_tree", "Behaviour Tree XML to run", cxxopts::value<std::string>());
 
-		options.add_options()
-			("behaviour_tree", "Behaviour Tree XML to run", cxxopts::value<std::string>());
+	auto cli_result = options.parse(argc, argv);
 
-		auto cli_result = options.parse(argc, argv);
-
-		behaviour_tree_string = cli_result["behaviour_tree"].as<std::string>();
-	}
-	else {
-		behaviour_tree_string = R"(<BehaviourTree>
-    <Root id='main'>
-        <Sequence>
-            <Action:SetAngle servo_type='FrontWheels' angle='180'/>
-            <Action:SetSpeed wheel_type='Both' speed='50'/>
-            <Action:SetWheelDirection wheel_type='Both' direction_type='Forward'/>
-            <Action:SetWheelDirection wheel_type='Both' direction_type='Backward'/>
-            <Invert>
-                <Condition:NearbyPoints min_angle='0' max_angle='0' distance='200'/>
-            </Invert>
-
-            <Action:PauseExecution ms='5000'/>
-
-            <Action:Log text='Waited 5 seconds'/>
-
-            <UseRoot id='abc'/>
-
-            <Invert>
-                <Fail />
-                <Succeed />
-            </Invert>
-            <Repeat amount='2' break_on_fail='false'>
-                <Action:Log text='Hey'/>
-            </Repeat>
-        </Sequence>
-    </Root>
-    <Root id='abc'>
-
-    </Root>
-</BehaviourTree>)";
-	}
-
-	const bool dummy = true;
-
-	std::unique_ptr<LidarDevice> scanner = getLidarDevice(dummy);
+	std::unique_ptr<LidarDevice> scanner = std::make_unique<LidarDummy>(LidarDummy());
 
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
 
-#ifdef __linux
-	std::unique_ptr<MovementSystem> movement_system;
-	if (!dummy)
-	{
-		movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
-	}
-	else
-	{
-		movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
-	}
-#else
 	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
-#endif
 
+	std::string behaviour_tree_string = cli_result["behaviour_tree"].as<std::string>();
+	
 	auto behaviour_tree_result = BehaviourTreeParser::instance().parseXML(behaviour_tree_string);
 
 	if (!behaviour_tree_result.has_value())
@@ -197,26 +144,4 @@ int main(int argc, const char* argv[])
 	car_system->terminate();
 
 	return 0;
-}
-
-std::unique_ptr<LidarDevice> getLidarDevice(bool dummy)
-{
-	if (dummy)
-	{
-		return std::make_unique<LidarDummy>();
-	}
-	else
-	{
-#ifdef __linux
-		auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
-#else
-		auto maybe_scanner = LidarScanner::create("COM3");
-#endif
-		if (!maybe_scanner.has_value())
-		{
-			spdlog::error("Unable to connect to the Lidar Scanner");
-			throw std::runtime_error("Unable to connect to the Lidar Scanner");
-		}
-		return std::move(maybe_scanner.value());
-	}
 }

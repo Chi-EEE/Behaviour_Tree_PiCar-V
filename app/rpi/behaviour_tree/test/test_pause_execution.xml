@@ -1,0 +1,9 @@
+<!-- TEST | { 'outputs': ['Hello World'] } -->
+<BehaviourTree repeat='false'>
+    <Root id='main'>
+        <Sequence>
+            <Action:PauseExecution ms='1000'/>
+            <Action:Print text='Hello World'/>
+        </Sequence>
+    </Root>
+</BehaviourTree>
