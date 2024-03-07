@@ -20,15 +20,11 @@ namespace behaviour_tree::node::custom::action
 
 		void start(std::shared_ptr<Context> context) final override {
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
-			context->pushNodeTrace(std::make_pair(shared_from_this(), 0));
 			this->start_time = std::chrono::steady_clock::now();
 #endif
 		}
 
 		void finish(std::shared_ptr<Context> context) final override {
-#ifndef BEHAVIOUR_TREE_DISABLE_RUN
-			context->popNode();
-#endif
 		}
 
 		const Status run(const int &tick_count, std::shared_ptr<Context> context) final override

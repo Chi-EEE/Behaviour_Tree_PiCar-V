@@ -14,37 +14,25 @@ namespace behaviour_tree {
 			this->behaviour_tree->tick(tick_count, shared_from_this());
 		}
 		else {
-			bool ignore = false;
-
-			auto tick_node_trace = [this, &tick_count, &ignore](const auto& node_trace) mutable {
-				if (ignore) {
-					return false;
-				}
-
-				auto& [node, index] = node_trace;
+			std::vector<std::pair<std::shared_ptr<node::Node>, int>> node_trace_list_copy = this->node_trace_list;
+			std::vector<std::pair<std::shared_ptr<node::Node>, int>>::iterator i = node_trace_list_copy.begin();
+			while (i != node_trace_list_copy.end()) {
+				std::shared_ptr<node::Node> node = i->first;
+				int index = i->second;
 
 				Status status;
-				if (auto* composite = dynamic_cast<composite::Composite*>(node.get())) {
+				if (std::shared_ptr<composite::Composite> composite = std::dynamic_pointer_cast<composite::Composite>(node)) {
 					status = composite->tick(tick_count, shared_from_this(), index);
 				}
 				else {
 					status = node->tick(tick_count, shared_from_this());
 				}
-				
-				if (status == Status::Success || status == Status::Failure) {
-					return true;
-				}
-				else {
-					ignore = true;
-					return false;
-				}
-				};
 
-			auto new_node_trace_list_end = std::remove_if(this->node_trace_list.begin(), this->node_trace_list.end(), tick_node_trace);
-			this->node_trace_list.erase(
-				new_node_trace_list_end,
-				this->node_trace_list.end()
-			);
+				if (status == Status::Running) {
+					break;
+				}
+				++i;
+			}
 		}
 	}
 

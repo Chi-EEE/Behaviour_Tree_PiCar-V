@@ -7,6 +7,7 @@
 
 #include "behaviour_tree/Context.h"
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
+#include <iostream>
 #include "behaviour_tree/CarContext.hpp"
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
@@ -24,6 +25,7 @@ namespace behaviour_tree::node::custom::action
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
 			car_context->log(this->getText());
+			std::cout << this->getText() << std::endl;
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 			return Status::Success;
 		}

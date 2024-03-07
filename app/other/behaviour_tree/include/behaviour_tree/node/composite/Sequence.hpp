@@ -31,11 +31,11 @@ namespace behaviour_tree::node::composite
 		{
 			for (int i = start_index; i < this->children.size(); i++)
 			{
-				auto& child = this->children[i];
-				auto status = child->tick(tick_count, context);
 				if (this->previous_start_index != i) {
 					context->pushNodeTrace(std::make_pair(shared_from_this(), i));
 				}
+				auto& child = this->children[i];
+				auto status = child->tick(tick_count, context);
 				switch (status) {
 				case Status::Running:
 					this->previous_start_index = i;

@@ -225,23 +225,23 @@ namespace behaviour_tree
 			}
 			case DecoratorType::Repeat:
 			{
-				std::string count_string = node.attribute("count").as_string();
+				std::string amount_string = node.attribute("amount").as_string();
 				// Convert to lower case: https://stackoverflow.com/a/313990
-				std::transform(count_string.begin(), count_string.end(), count_string.begin(),
+				std::transform(amount_string.begin(), amount_string.end(), amount_string.begin(),
 					[](unsigned char c) { return std::tolower(c); });
 				unsigned long count = 0;
-				if (count_string == "inf") {
+				if (amount_string == "inf") {
 					count = std::numeric_limits<unsigned long>::max();
 				}
 				else {
 					try {
-						count = std::stoll(count_string);
+						count = std::stoll(amount_string);
 						if (count < 0) {
-							return tl::unexpected(fmt::format(R"(Invalid count: '{}' | Repeat:['{}',{}])", count_string, name_attribute, index));
+							return tl::unexpected(fmt::format(R"(Invalid amount: '{}' | Repeat:['{}',{}])", amount_string, name_attribute, index));
 						}
 					}
 					catch (const std::exception &_) {
-						return tl::unexpected(fmt::format(R"(Invalid count: '{}' | Repeat:['{}',{}])", count_string, name_attribute, index));
+						return tl::unexpected(fmt::format(R"(Invalid amount: '{}' | Repeat:['{}',{}])", amount_string, name_attribute, index));
 					}
 				}
 

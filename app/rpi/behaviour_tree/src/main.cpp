@@ -96,8 +96,6 @@ int main(int argc, const char* argv[])
 		room_name,
 		});
 
-
-
 	constexpr bool test = true;
 
 	std::string behaviour_tree_string;
@@ -133,7 +131,7 @@ int main(int argc, const char* argv[])
                 <Fail />
                 <Succeed />
             </Invert>
-            <Repeat count='2' break_on_fail='false'>
+            <Repeat amount='2' break_on_fail='false'>
                 <Action:Log text='Hey'/>
             </Repeat>
         </Sequence>

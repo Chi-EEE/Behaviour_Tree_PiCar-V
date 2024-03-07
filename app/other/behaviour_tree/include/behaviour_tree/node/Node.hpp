@@ -28,13 +28,8 @@ namespace behaviour_tree::node
 
         Status tick(const int& tick_count, std::shared_ptr<Context> context)
         {
-            return this->tick(tick_count, context, 0);
-        }
-
-        Status tick(const int& tick_count, std::shared_ptr<Context> context, const int& start_index)
-        {
             assert(context != nullptr);
-            
+
             if (!this->started) {
                 this->start(context);
                 this->started = true;
@@ -57,7 +52,6 @@ namespace behaviour_tree::node
 	protected:
 		const std::string name;
 
-    private:
         bool started = false;
 	};
 }
