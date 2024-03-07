@@ -30,7 +30,9 @@ namespace behaviour_tree::node::decorator
 			case Status::Success:
 				this->count++;
 				if (this->count >= this->amount)
+				{
 					return Status::Success;
+				}
 				return Status::Running;
 			case Status::Running:
 				return Status::Running;
@@ -57,10 +59,15 @@ namespace behaviour_tree::node::decorator
 			return this->break_on_fail;
 		}
 
+		const unsigned long& getCount() const {
+			return this->count;
+		}
+
 	private:
-		unsigned long count = 0;
 		const unsigned long amount;
 		const bool break_on_fail;
+	
+		unsigned long count = 0;
 	};
 }
 

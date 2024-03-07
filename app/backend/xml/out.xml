@@ -19,7 +19,7 @@
                 <Fail />
                 <Succeed />
             </Invert>
-            <Repeat count='2' break_on_fail='false'>
+            <Repeat amount='2' break_on_fail='false'>
                 <Action:Log text='Hey'/>
             </Repeat>
         </Sequence>

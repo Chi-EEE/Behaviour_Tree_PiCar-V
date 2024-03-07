@@ -15,7 +15,6 @@
 
 #include "BehaviourTree.hpp"
 #include "Root.hpp"
-#include "Context.h"
 #include "node/Node.hpp"
 
 #include "node/composite/Composite.hpp"
@@ -116,7 +115,7 @@ namespace behaviour_tree
 				return tl::unexpected(R"(No "Root" nodes found in BehaviourTree)");
 			}
 			return std::make_shared<BehaviourTree>(
-				BehaviourTree(std::move(roots))
+				BehaviourTree(behaviour_tree_node.attribute("repeat").as_bool(true), std::move(roots))
 			);
 		}
 

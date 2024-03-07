@@ -42,11 +42,12 @@ namespace behaviour_tree
 
 		void update() final override
 		{
-			if (this->context != nullptr)
+			if (this->context == nullptr)
 			{
-				this->context->update(this->tick_count);
-				++this->tick_count;
+				return;
 			}
+			this->context->update(this->tick_count);
+			++this->tick_count;
 		}
 
 		void start()
