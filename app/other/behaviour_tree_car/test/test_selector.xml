@@ -1,4 +1,4 @@
-<!-- TEST | { 'outputs': ['1'] } -->
+<!-- Test={ 'outputs': ['1'] } -->
 <BehaviourTree repeat='false'>
     <Root id='main'>
         <Selector>

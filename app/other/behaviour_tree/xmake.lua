@@ -1,9 +1,9 @@
 add_rules("mode.debug", "mode.release")
 
-add_requires("fmt")
-add_requires("tl_expected")
-add_requires("pugixml")
-add_requires("effolkronium-random")
+local a = includes("config.lua")
+print(a)
+
+add_requires(behaviour_tree_packages)
 
 includes("../utils/xmake.lua")
 
@@ -14,10 +14,7 @@ target("behaviour_tree")
    
     add_deps("utils", {inherit = true})
 
-    add_packages("fmt")
-    add_packages("tl_expected")
-    add_packages("pugixml")
-    add_packages("effolkronium-random")
+    add_packages(behaviour_tree_packages)
 
     add_includedirs("include", {public = true})
     add_headerfiles("include/(**.hpp)", "include/(**.h)")
@@ -27,3 +24,5 @@ target("behaviour_tree")
 
     on_install(function (target) end)
     on_uninstall(function (target) end)
+
+return {behaviour_tree_packages = behaviour_tree_packages}

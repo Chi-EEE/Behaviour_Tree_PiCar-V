@@ -1,4 +1,4 @@
-<!-- TEST | { 'outputs': ['1', '2', '3'] } -->
+<!-- Test={ 'outputs': ['1', '2', '3'] } -->
 <BehaviourTree repeat='false'>
     <Root id='main'>
         <Sequence>

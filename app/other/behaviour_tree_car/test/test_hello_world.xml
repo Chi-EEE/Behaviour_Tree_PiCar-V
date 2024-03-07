@@ -1,4 +1,4 @@
-<!-- TEST | { outputs: ['Hello World'] } -->
+<!-- Test={ outputs: ['Hello World'] } -->
 <BehaviourTree repeat='false'>
     <Root id='main'>
         <Action:Print text='Hello World'/>

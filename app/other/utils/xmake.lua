@@ -1,5 +1,6 @@
 target("utils")
     set_kind("headeronly")
+    set_group("other")
     
     add_includedirs("include", {public = true})
     add_headerfiles("include/(**.hpp)")
