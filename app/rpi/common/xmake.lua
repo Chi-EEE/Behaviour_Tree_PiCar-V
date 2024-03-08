@@ -26,10 +26,10 @@ target("rpi_common")
     add_deps("behaviour_tree", "behaviour_tree_car")
     add_deps("rplidar")
      
-    add_packages("ixwebsocket")
-    add_packages("fmt", "rapidjson", "robin-map", "spdlog", "tl_expected", "nod")
-    add_packages("serial", "pca9685", "tb6612")
-    add_packages("effolkronium-random", "pugixml")
+    add_packages("ixwebsocket", {public = true})
+    add_packages("fmt", "rapidjson", "robin-map", "spdlog", "tl_expected", "nod", {public = true})
+    add_packages("serial", "pca9685", "tb6612", {public = true})
+    add_packages("effolkronium-random", "pugixml", {public = true})
 
     add_deps("behaviour_tree")
 

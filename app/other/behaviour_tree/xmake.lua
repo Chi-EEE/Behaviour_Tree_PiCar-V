@@ -1,9 +1,6 @@
 add_rules("mode.debug", "mode.release")
 
-local a = includes("config.lua")
-print(a)
-
-add_requires(behaviour_tree_packages)
+add_requires("fmt", "tl_expected", "pugixml", "effolkronium-random")
 
 includes("../utils/xmake.lua")
 
@@ -12,9 +9,9 @@ target("behaviour_tree")
     set_languages("cxx17")
     set_group("other")
    
-    add_deps("utils", {inherit = true})
+    add_deps("utils", {public = true})
 
-    add_packages(behaviour_tree_packages)
+    add_packages("fmt", "tl_expected", "pugixml", "effolkronium-random", {public = true})
 
     add_includedirs("include", {public = true})
     add_headerfiles("include/(**.hpp)", "include/(**.h)")
