@@ -1,4 +1,3 @@
-<!-- Test={ 'outputs': ['1'] } -->
 <BehaviourTree repeat='false'>
     <Root id='main'>
         <Selector>

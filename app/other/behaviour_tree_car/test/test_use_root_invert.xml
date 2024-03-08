@@ -1,8 +1,13 @@
 <BehaviourTree repeat='false'>
     <Root id='main'>
         <Sequence>
-            <Action:PauseExecution ms='1000'/>
+            <Invert>
+                <UseRoot id='test'/>
+            </Invert>
             <Action:Print text='Succeed'/>
         </Sequence>
+    </Root>
+    <Root id='test'>
+        <Fail/>
     </Root>
 </BehaviourTree>

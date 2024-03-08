@@ -1,0 +1,10 @@
+<BehaviourTree repeat='false'>
+    <Root id='main'>
+        <Repeat amount='5' break_on_fail='true'>
+            <Sequence>
+                <Action:Print text='1' />
+                <Fail/>
+            </Sequence>
+        </Repeat>
+    </Root>
+</BehaviourTree>

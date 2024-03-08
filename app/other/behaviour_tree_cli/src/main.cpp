@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 
 	std::string behaviour_tree = cli_result["behaviour_tree"].as<std::string>();
 
-	auto behaviour_tree_result = BehaviourTreeParser::instance().parseXML(behaviour_tree);
+    auto behaviour_tree_result = BehaviourTreeParser::instance().parseXML(behaviour_tree);
 
     rapidjson::Document json_output_doc;
     json_output_doc.SetObject();

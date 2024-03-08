@@ -1,11 +1,11 @@
 <BehaviourTree repeat='false'>
     <Root id='main'>
         <Sequence>
-            <Sequence>
+            <Selector>
                 <Action:Print text='1'/>
                 <Action:Print text='2'/>
                 <Action:Print text='3'/>
-            </Sequence>
+            </Selector>
             <Action:Print text='4'/>
             <Action:Print text='5'/>
             <Action:Print text='6'/>

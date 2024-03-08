@@ -1,0 +1,8 @@
+<BehaviourTree repeat='false'>
+    <Root id='main'>
+        <UseRoot id='test'/>
+    </Root>
+    <Root id='test'>
+        <Action:Print text='Succeed'/>
+    </Root>
+</BehaviourTree>

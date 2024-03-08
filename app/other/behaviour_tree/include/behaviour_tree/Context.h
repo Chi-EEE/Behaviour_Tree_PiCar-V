@@ -39,7 +39,7 @@ namespace behaviour_tree
 		void popNode();
 
 		// Necessary for the class to be a polymorphic
-		virtual void _() = 0;
+		virtual void _() {};
 	private:
 		std::shared_ptr<BehaviourTree> behaviour_tree;
 		std::vector<std::pair<std::shared_ptr<node::Node>, int>> node_trace_list;

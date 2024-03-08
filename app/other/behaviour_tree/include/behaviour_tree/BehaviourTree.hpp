@@ -31,9 +31,14 @@ namespace behaviour_tree
 			this->root_to_use = this->roots[0];
 		}
 
-		void tick(const int& tick_count, std::shared_ptr<Context> context)
+		Status tick(const int& tick_count, std::shared_ptr<Context> context)
 		{
-			this->root_to_use->tick(tick_count, context);
+			const Status status = this->root_to_use->tick(tick_count, context);
+			if (status != Status::Running)
+			{
+				this->cycles++;
+			}
+			return status;
 		}
 
 		Status UseRoot(const int& tick_count, std::shared_ptr<Context> context, const std::string& id) {
@@ -47,6 +52,14 @@ namespace behaviour_tree
 			return Status::Failure;
 		}
 
+		bool canRun() const {
+			if (this->repeat)
+			{
+				return true;
+			}
+			return this->cycles < 1;
+		}
+
 		const std::string toString() const {
 			std::string out;
 			for (auto& root : this->roots)
@@ -57,9 +70,11 @@ namespace behaviour_tree
 		}
 
 	private:
-		bool repeat;
-		std::vector<std::shared_ptr<Root>> roots;
+		int cycles = 0;
 		std::shared_ptr<Root> root_to_use;
+
+		const std::vector<std::shared_ptr<Root>> roots;
+		const bool repeat;
 	};
 }
 

@@ -1,0 +1,11 @@
+<BehaviourTree repeat='false'>
+    <Root id='main'>
+        <Repeat amount='5'>
+            <Sequence>
+                <Action:Print text='1' />
+                <Action:Print text='2' />
+                <Action:Print text='3' />
+            </Sequence>
+        </Repeat>
+    </Root>
+</BehaviourTree>

@@ -1,8 +1,9 @@
 <BehaviourTree repeat='false'>
     <Root id='main'>
-        <Sequence>
-            <Action:PauseExecution ms='1000'/>
+        <Random>
             <Action:Print text='Succeed'/>
-        </Sequence>
+            <Action:Print text='Succeed'/>
+            <Action:Print text='Succeed'/>
+        </Random>
     </Root>
 </BehaviourTree>
