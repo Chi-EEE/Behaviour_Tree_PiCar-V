@@ -14,7 +14,7 @@ namespace behaviour_tree
 	class BehaviourTree
 	{
 	public:
-		BehaviourTree(bool repeat, std::vector<std::shared_ptr<Root>> roots) : repeat(repeat), roots(std::move(roots))
+		BehaviourTree(unsigned int cycle_limit, std::vector<std::shared_ptr<Root>> roots) : cycle_limit(cycle_limit), roots(std::move(roots))
 		{
 		}
 
@@ -53,11 +53,11 @@ namespace behaviour_tree
 		}
 
 		bool canRun() const {
-			if (this->repeat)
+			if (this->cycle_limit <= 0)
 			{
 				return true;
 			}
-			return this->cycles < 1;
+			return this->cycles < this->cycle_limit;
 		}
 
 		void incrementCycle() {
@@ -78,7 +78,7 @@ namespace behaviour_tree
 		std::shared_ptr<Root> root_to_use;
 
 		const std::vector<std::shared_ptr<Root>> roots;
-		const bool repeat;
+		const unsigned int cycle_limit;
 	};
 }
 
