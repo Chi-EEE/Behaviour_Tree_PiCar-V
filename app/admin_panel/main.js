@@ -6,6 +6,7 @@ const loadURL = serve({ directory: 'public' });
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
+/** @type {BrowserWindow | undefined} */
 let mainWindow;
 
 function isDev() {
@@ -82,95 +83,126 @@ const tcpPortUsed = require('tcp-port-used');
 const os = require('os')
 const WebSocket = require('ws');
 
-/**  @type {WebSocket.Server | undefined} */
-let wss = undefined;
+/**
+ * @param {number} min 
+ * @param {number} max 
+ * @returns {number}
+ */
+function getRandomInt(min, max) {
+    return min + (Math.floor(Math.random() * max) - min);
+}
 
 function getLocalIPList(_event, _args) {
     return os.networkInterfaces();
 }
+
+class Code {
+    constructor() {
+    }
+
+    get() {
+        return this._code;
+    }
+
+    generate() {
+        this._code = getRandomInt(0, 9999);
+        mainWindow.webContents.send('update-code', this._code);
+        console.log("Code:", this._code);
+    }
+}
+
+class WebSocketServer {
+    constructor() {
+        /** @type {WebSocket.Server | undefined} */
+        this._wss = undefined;
+        /** @type {Code} */
+        this._code = new Code();
+    }
+
+    /**
+     * Call this function to start the WebSocket server.
+     * @param {number} port 
+     */
+    connect(port) {
+        this._wss = new WebSocket.Server({ port: port });
+    }
+
+    /**
+     * Call this function to close the WebSocket server.
+     */
+    close() {
+        if (this._wss !== undefined) {
+            this._wss.close();
+        }
+    }
+
+    /** @type {WebSocket.RawData} */
+    onRaspberryPiMessage(message) {
+        
+    }
+
+    /**
+     * This function only allows a single connection to the WebSocket server.
+     */
+    async waitForWSConnection() {
+        this._code.generate();
+        this._wss.once('connection', (ws) => {
+            ws.once('close', () => {
+                if (wss === undefined) {
+                    return;
+                }
+                this._code.generate();
+                setTimeout(waitForWSConnection);
+            });
+    
+            let connected = false;
+            
+            ws.once('message', async (message) => {
+                try {
+                    const inputted_code = Number(message);
+                    if (this._code.get() === inputted_code) {
+                        connected = true;
+                        ws.on('message', this.onRaspberryPiMessage);
+                    } else {
+                        ws.close();
+                    }
+                } catch (error) {
+                    console.error("Error while processing message:", error);
+                }
+            });
+    
+            // Close the connection if the client does not send any message within 5 seconds.
+            setTimeout(() => {
+                if (connected || wss === undefined) {
+                    return;
+                }
+                if (ws.readyState !== ws.CLOSED) {
+                    ws.close();
+                }
+            }, 5000);
+        });
+    }
+}
+
+const websocket_server = new WebSocketServer();
+
+// ================== IPC Handlers ==================
 
 async function startWebSocketServer(_event, args) {
     if (await tcpPortUsed.check(args.port)) {
         return { success: false, message: `Port ${args.port} is already in use` };
     }
     try {
-        wss = new WebSocket.Server({ port: args.port });
-        waitForWSConnection();
-    } catch (_) {
+        websocket_server.connect(args.port);
+        websocket_server.waitForWSConnection();
+        return { success: true };
+    } catch (error) {
         return { success: false, message: `Unable to start WebSocket Server, Error: ${error}` };
     }
-    return { success: true };
-}
-
-/**
- * https://stackoverflow.com/a/48161723
- * @param {string} message 
- * @returns {Promise<string>}
- */
-async function sha256(message) {
-    // encode as UTF-8
-    const msgBuffer = new TextEncoder().encode(message);
-
-    // hash the message
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-
-    // convert ArrayBuffer to Array
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-
-    // convert bytes to hex string                  
-    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    return hashHex;
-}
-
-const authenication_code = 'HI';
-
-/** @type {string} */
-let authenication_hash;
-
-async function initialize_authenication_hash() {
-    authenication_hash = await sha256(authenication_code);
-}
-
-initialize_authenication_hash();
-
-/**
- * This function only allows a single connection to the WebSocket server.
- */
-async function waitForWSConnection() {
-    wss.once('connection', (ws) => {
-        ws.once('close', () => {
-            if (wss === undefined) {
-                return;
-            }
-            setTimeout(waitForWSConnection);
-        });
-        ws.once('message', async (message) => {
-            try {
-                const hash = await sha256(message);
-                if (hash === authenication_hash) {
-                    ws.on('message', onRaspberryPiMessage);
-                } else {
-                    ws.close();
-                }
-            } catch (error) {
-                console.error("Error while processing message:", error);
-            }
-        });
-    });
-}
-
-/**
- * 
- * @param {WebSocket.RawData} message 
- */
-function onRaspberryPiMessage(message) {
-
 }
 
 function closeWebSocketServer(_event, _args) {
-    if (wss) {
-        wss.close();
-    }
+    websocket_server.close();
 }
 
 function onClose() {
