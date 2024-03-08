@@ -22,11 +22,9 @@ int main(int argc, const char* argv[])
 
 	auto cli_result = options.parse(argc, argv);
 
-	std::string test_file_string = cli_result["test_file"].as<std::string>();
+	std::string test_file_path = cli_result["test_file"].as<std::string>();
 	
-	std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
-	
-	auto behaviour_tree_result = BehaviourTreeParser::instance().parseFileXML(exe_dir + "/" + test_file_string);
+	auto behaviour_tree_result = BehaviourTreeParser::instance().parseFileXML(test_file_path);
 
 	if (!behaviour_tree_result.has_value())
 	{

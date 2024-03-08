@@ -7,6 +7,8 @@ includes("../behaviour_tree/xmake.lua", "../behaviour_tree_car/xmake.lua")
 target("behaviour_tree_cli")
     set_kind("binary")
     set_languages("cxx17")
+    set_group("other")
+    set_default(false)
 
     add_packages("cxxopts", "rapidjson")
 
