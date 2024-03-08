@@ -496,13 +496,11 @@ const node_information_list = new Map([
 
     ["Action:CountdownWait", "Waits for the given amount of time"],
     ["Action:PauseExecution", "Pauses the execution for the given amount of time"],
-    ["Action:Log", "Logs the given message"],
-    ["Action:Error", "Logs errors the given message"],
+    ["Action:Print", "Prints the given message"],
 
     ["Action:SetAngle", "Turns the car by the given angle"],
     ["Action:SetSpeed", "Moves the car by the given speed"],
     ["Action:SetWheelDirection", "Sets the direction of the car"],
-    ["Action:Stop", "Stops the car from moving"],
 
     ["Condition:NearbyPoints", "Checks if there are nearby points"],
 ]);

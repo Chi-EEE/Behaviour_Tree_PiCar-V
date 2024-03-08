@@ -67,6 +67,9 @@
         .cm-editor {
             height: 100% !important;
         }
+        .cm-editor * {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New" !important;
+        }
         .cm-scroller {
             height: 100% !important;
         }
