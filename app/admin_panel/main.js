@@ -154,6 +154,7 @@ class WebSocketServer {
                 ws.send({'success': false, 'message': 'Please wait at least 3 seconds before connecting again.'})
                 ws.close();
                 setTimeout(waitForWSConnection);
+                return;
             } else {
                 this.ws_rate_limit_map.delete(remoteAddress);
             }
