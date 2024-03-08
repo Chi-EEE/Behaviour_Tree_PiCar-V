@@ -55,4 +55,6 @@ target("behaviour_tree_test")
         add_tests("test_repeat_sequence", {runargs = {"--test_file", "test/test_repeat_sequence.xml"}, run_timeout = 1000, pass_outputs = "123123123123123"})
         add_tests("test_repeat_selector", {runargs = {"--test_file", "test/test_repeat_selector.xml"}, run_timeout = 1000, pass_outputs = "11111"})
         add_tests("test_repeat_break_on_fail", {runargs = {"--test_file", "test/test_repeat_break_on_fail.xml"}, run_timeout = 1000, pass_outputs = "1"})
+        add_tests("test_sequence_double_repeat", {runargs = {"--test_file", "test/test_sequence_double_repeat.xml"}, run_timeout = 1000, pass_outputs = "!SucceedSucceedSucceedSucceedSucceed!SucceedSucceedSucceedSucceedSucceed"})
+        add_tests("test_sequence_repeat_double", {runargs = {"--test_file", "test/test_sequence_repeat_double.xml"}, run_timeout = 1000, pass_outputs = "!SucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceedSucceed!"})
     end

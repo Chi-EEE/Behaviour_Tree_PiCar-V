@@ -1,0 +1,14 @@
+<BehaviourTree repeat='false'>
+    <Root id='main'>
+        <Sequence>
+            <Action:Print text='!'/>
+            <Repeat amount='5'>
+                <Action:Print text='Succeed'/>
+            </Repeat>
+            <Action:Print text='!'/>
+            <Repeat amount='5'>
+                <Action:Print text='Succeed'/>
+            </Repeat>
+        </Sequence>
+    </Root>
+</BehaviourTree>
