@@ -1,12 +1,13 @@
 <script>
     import { Label, Input, Button, Helper } from "flowbite-svelte";
 
-    import { websocket_server_port } from "../websocket_server_store";
+    import { websocket_server_port, websocket_server_connected } from "../websocket_server_store";
 
+    /** @type {number} */
     let websocketServerPort = $websocket_server_port;
 
     /** @type {boolean} */
-    let websocketServerEnabled = false;
+    let websocketServerEnabled = $websocket_server_connected;
 
     /** @type {string} */
     let toggleWebsocketServerMessage = "Start Websocket Server";
@@ -21,6 +22,20 @@
     /** @type {string} */
     let websocketServerPortInputColor = "";
 
+    function displayWebsocketServerStatus() {
+        if (websocketServerEnabled) {
+            websocketServerPortInputColor = "green";
+            helperText = "Websocket Server is running";
+            toggleWebsocketServerMessage = "Stop Websocket Server";
+        } else {
+            websocketServerPortInputColor = "";
+            helperText = "";
+            toggleWebsocketServerMessage = "Start Websocket Server";
+        }
+    }
+
+    displayWebsocketServerStatus();
+    
     async function toggleWebsocketServer() {
         if (!isNumeric(websocketServerPort)) {
             helperText = "Port must be a number";
@@ -37,11 +52,13 @@
                 websocketServerPortInputColor = "green";
                 helperText = "Websocket Server is running";
                 toggleWebsocketServerMessage = "Stop Websocket Server";
+                websocket_server_connected.set(true);
             } else {
                 websocketServerPortInputColor = "red";
                 helperText = response.message;
                 toggleWebsocketServerMessage = "Start Websocket Server";
                 websocketServerEnabled = false;
+                websocket_server_connected.set(false);
             }
         } else {
             websocketServerPortInputColor = "";
