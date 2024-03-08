@@ -114,6 +114,10 @@ class WebSocketServer {
     constructor() {
         /** @type {WebSocket.Server | undefined} */
         this._wss = undefined;
+
+        /** @type {Map<string, number>} */
+        this.ws_rate_limit_map = new Map();
+
         /** @type {Code} */
         this._code = new Code();
     }
@@ -144,11 +148,21 @@ class WebSocketServer {
      * This function only allows a single connection to the WebSocket server.
      */
     async waitForWSConnection() {
-        this._wss.once('connection', (ws) => {
+        this._wss.once('connection', (ws, req) => {
+            const remoteAddress = req.socket.remoteAddress;
+            if (this.ws_rate_limit_map.has(remoteAddress) && Date.now() < this.ws_rate_limit_map.get("remoteAddress") + 3000) {
+                ws.send({'success': false, 'message': 'Please wait at least 3 seconds before connecting again.'})
+                ws.close();
+                setTimeout(waitForWSConnection);
+            } else {
+                this.ws_rate_limit_map.delete(remoteAddress);
+            }
+            
             ws.once('close', () => {
                 if (wss === undefined) {
                     return;
                 }
+                this.ws_rate_limit_map.set(remoteAddress, Date.now());
                 setTimeout(waitForWSConnection);
             });
     
