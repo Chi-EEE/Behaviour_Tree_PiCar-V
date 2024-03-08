@@ -4,7 +4,7 @@
             <Action:Print text='!'/>
             <Repeat amount='5'>
                 <Repeat amount='5'>
-                    <Action:Print text='Succeed'/>
+                    <Action:Print text='1'/>
                 </Repeat>
             </Repeat>
             <Action:Print text='!'/>

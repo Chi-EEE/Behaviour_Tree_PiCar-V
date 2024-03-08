@@ -1,7 +1,7 @@
 <BehaviourTree repeat='false'>
     <Root id='main'>
         <Repeat amount='5'>
-            <Action:Print text='Succeed'/>
+            <Action:Print text='1'/>
         </Repeat>
     </Root>
 </BehaviourTree>

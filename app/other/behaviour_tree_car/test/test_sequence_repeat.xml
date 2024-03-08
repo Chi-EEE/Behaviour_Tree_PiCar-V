@@ -3,7 +3,7 @@
         <Sequence>
             <Action:Print text='!'/>
             <Repeat amount='5'>
-                <Action:Print text='Succeed'/>
+                <Action:Print text='1'/>
             </Repeat>
             <Action:Print text='!'/>
         </Sequence>
