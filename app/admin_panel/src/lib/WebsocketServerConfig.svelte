@@ -52,6 +52,7 @@
         port: $websocket_server_port,
       });
       if (response.success) {
+        console.log(response.code)
         websocketServerPortInputColor = "green";
         helperText = "Websocket Server is running";
         toggleWebsocketServerMessage = "Stop Websocket Server";
@@ -70,7 +71,7 @@
       api.closeWebSocketServer();
     }
   }
-  window.api.onUpdateCode((value) => {
+  window.api.onMessage((value) => {
     console.log(value);
   });
 </script>

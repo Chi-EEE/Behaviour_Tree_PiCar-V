@@ -98,6 +98,7 @@ function getLocalIPList(_event, _args) {
 
 class Code {
     constructor() {
+        this._code = 0;
     }
 
     get() {
@@ -106,8 +107,6 @@ class Code {
 
     generate() {
         this._code = getRandomInt(0, 9999);
-        mainWindow.webContents.send('update-code', this._code);
-        console.log("Code:", this._code);
     }
 }
 
@@ -136,33 +135,39 @@ class WebSocketServer {
         }
     }
 
-    /** @type {WebSocket.RawData} */
-    onRaspberryPiMessage(message) {
-        
+    code() {
+        this._code.generate();
+        return this._code.get();
     }
 
     /**
      * This function only allows a single connection to the WebSocket server.
      */
     async waitForWSConnection() {
-        this._code.generate();
         this._wss.once('connection', (ws) => {
             ws.once('close', () => {
                 if (wss === undefined) {
                     return;
                 }
-                this._code.generate();
                 setTimeout(waitForWSConnection);
             });
     
-            let connected = false;
+            // Close the connection if the client does not send any message within 5 seconds.
+            const timer = setTimeout(() => {
+                if (wss === undefined) {
+                    return;
+                }
+                if (ws.readyState !== ws.CLOSED) {
+                    ws.close();
+                }
+            }, 5000);
             
             ws.once('message', async (message) => {
                 try {
                     const inputted_code = Number(message);
                     if (this._code.get() === inputted_code) {
-                        connected = true;
-                        ws.on('message', this.onRaspberryPiMessage);
+                        clearTimeout(timer);
+                        ws.on('message', (message) => {mainWindow.webContents.send('onMessage', toString(message))});
                     } else {
                         ws.close();
                     }
@@ -170,16 +175,6 @@ class WebSocketServer {
                     console.error("Error while processing message:", error);
                 }
             });
-    
-            // Close the connection if the client does not send any message within 5 seconds.
-            setTimeout(() => {
-                if (connected || wss === undefined) {
-                    return;
-                }
-                if (ws.readyState !== ws.CLOSED) {
-                    ws.close();
-                }
-            }, 5000);
         });
     }
 }
@@ -195,7 +190,7 @@ async function startWebSocketServer(_event, args) {
     try {
         websocket_server.connect(args.port);
         websocket_server.waitForWSConnection();
-        return { success: true };
+        return { success: true, code: websocket_server.code() };
     } catch (error) {
         return { success: false, message: `Unable to start WebSocket Server, Error: ${error}` };
     }
