@@ -24,6 +24,8 @@ target("rpi_daemon")
     add_files("src/**.cpp")
 
     add_deps("rpi_common", {public = true})
+
+    add_defines("__linux")
     
     local dir = "$(buildir)/$(plat)/$(arch)/$(mode)"
     set_configdir(dir)
