@@ -18,7 +18,7 @@ namespace behaviour_tree
 		{
 		}
 
-		void start(std::shared_ptr<Context> context)
+		void start()
 		{
 			for (auto& root : this->roots)
 			{
@@ -58,6 +58,10 @@ namespace behaviour_tree
 				return true;
 			}
 			return this->cycles < 1;
+		}
+
+		void incrementCycle() {
+			this->cycles++;
 		}
 
 		const std::string toString() const {

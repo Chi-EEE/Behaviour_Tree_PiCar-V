@@ -38,6 +38,8 @@ namespace behaviour_tree
 		void pushNodeTrace(std::pair<std::shared_ptr<node::Node>, int> node_trace);
 		void popNode();
 
+		bool canRun() const;
+
 		// Necessary for the class to be a polymorphic
 		virtual void _() {};
 	private:

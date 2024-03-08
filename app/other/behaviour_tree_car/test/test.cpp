@@ -37,12 +37,10 @@ int main(int argc, const char* argv[])
 	std::shared_ptr<BehaviourTree> behaviour_tree = behaviour_tree_result.value();
 
 	std::shared_ptr<Context> context = std::make_shared<Context>(Context(behaviour_tree));
-
-	behaviour_tree->start(context);
 	
 	int tick_count = 0;
-	while (behaviour_tree->canRun()) {
-		behaviour_tree->tick(tick_count, context);
+	while (context->canRun()) {
+		context->update(tick_count);
 		tick_count++;
 	}
 
