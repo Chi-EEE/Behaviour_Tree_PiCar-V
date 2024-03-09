@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 {
 	BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
 	
-	cxxopts::Options options("Behaviour Tree CLI", "Program to parse Behaviour Tree");
+	cxxopts::Options options("Behaviour Tree Validator", "Program to validate Behaviour Tree");
 
 	options.add_options()
 		("behaviour_tree", "Behaviour Tree XML to validate", cxxopts::value<std::string>());
