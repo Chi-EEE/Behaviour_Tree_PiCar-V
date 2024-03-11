@@ -115,11 +115,11 @@ class WebSocketServer {
         /** @type {WebSocket.Server | undefined} */
         this._wss = undefined;
 
-        /** @type {Map<string, number>} */
-        this.ws_rate_limit_map = new Map();
-
         /** @type {Code} */
         this._code = new Code();
+
+        /** @type {boolean} */
+        this._connected = false;
     }
 
     /**
@@ -148,47 +148,32 @@ class WebSocketServer {
      * This function only allows a single connection to the WebSocket server.
      */
     async waitForWSConnection() {
-        this._wss.once('connection', (ws, req) => {
-            const remoteAddress = req.socket.remoteAddress;
-            if (this.ws_rate_limit_map.has(remoteAddress) && Date.now() < this.ws_rate_limit_map.get("remoteAddress") + 3000) {
-                ws.send({'success': false, 'message': 'Please wait at least 3 seconds before connecting again.'})
-                ws.close();
-                setTimeout(waitForWSConnection);
+        this._wss.on('connection', (ws, req) => {
+            if (this._connected) {
+                ws.close(1000, { 'success': false, 'message': 'Another connection is already established.' });
                 return;
-            } else {
-                this.ws_rate_limit_map.delete(remoteAddress);
             }
-            
+
+            const code = req.headers['code'];
+            if (Number(code) !== this._code.get()) {
+                ws.close(1000, { 'success': false, 'message': 'Invalid code.' });
+                console.log(`Invalid code: ${code} !== ${this._code.get()}`);
+                return;
+            }
+
+            this._connected = true;
+            console.log(`WebSocket connection established from ${req.socket.remoteAddress} with url: ${req.url}`);
+
             ws.once('close', () => {
-                if (wss === undefined) {
+                if (this._wss === undefined) {
                     return;
                 }
-                this.ws_rate_limit_map.set(remoteAddress, Date.now());
-                setTimeout(waitForWSConnection);
+                this._connected = false;
+                console.log('WebSocket connection closed');
             });
-    
-            // Close the connection if the client does not send any message within 5 seconds.
-            const timer = setTimeout(() => {
-                if (wss === undefined) {
-                    return;
-                }
-                if (ws.readyState !== ws.CLOSED) {
-                    ws.close();
-                }
-            }, 5000);
-            
-            ws.once('message', async (message) => {
-                try {
-                    const inputted_code = Number(message);
-                    if (this._code.get() === inputted_code) {
-                        clearTimeout(timer);
-                        ws.on('message', (message) => {mainWindow.webContents.send('onMessage', toString(message))});
-                    } else {
-                        ws.close();
-                    }
-                } catch (error) {
-                    console.error("Error while processing message:", error);
-                }
+
+            ws.on('message', async (message) => {
+                mainWindow.webContents.send('onMessage', message.toString());
             });
         });
     }
