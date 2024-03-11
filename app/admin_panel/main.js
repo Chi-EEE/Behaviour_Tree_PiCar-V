@@ -150,19 +150,21 @@ class WebSocketServer {
     async waitForWSConnection() {
         this._wss.on('connection', (ws, req) => {
             if (this._connected) {
-                ws.close(1000, { 'success': false, 'message': 'Another connection is already established.' });
+                const message = JSON.stringify({ 'success': false, 'message': 'Another connection is already established.' });
+                ws.close(4000, message);
                 return;
             }
 
             const code = req.headers['code'];
             if (Number(code) !== this._code.get()) {
-                ws.close(1000, { 'success': false, 'message': 'Invalid code.' });
+                const message = JSON.stringify({ 'success': false, 'message': 'Invalid code.' });
+                ws.close(4000, message);
                 console.log(`Invalid code: ${code} !== ${this._code.get()}`);
                 return;
             }
 
             this._connected = true;
-            console.log(`WebSocket connection established from ${req.socket.remoteAddress} with url: ${req.url}`);
+            console.log(`WebSocket connection established from ${req.socket.remoteAddress}`);
 
             ws.once('close', () => {
                 if (this._wss === undefined) {
