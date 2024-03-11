@@ -64,9 +64,8 @@ namespace car::configuration
 				{
 					port = std::make_optional<int>(config_json["port"].GetInt());
 				}
-				std::string name = config_json["name"].GetString();
-				std::string room = config_json["room"].GetString();
-				return Configuration{ip_address, port, name, room};
+				std::string code = config_json["code"].GetString();
+				return Configuration{ip_address, port, code};
 			}
 			catch (const std::exception &e)
 			{

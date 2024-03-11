@@ -14,8 +14,7 @@ namespace car::configuration
 	{
 		std::string ip_address;
 		std::optional<int> port = std::nullopt;
-		std::string name;
-		std::string room;
+        std::string code;
 	};
 };
 

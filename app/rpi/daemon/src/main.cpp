@@ -44,14 +44,12 @@ public:
         {
             port = reader.GetInteger("Host", "port", 0);
         }
-        std::string rpi_name = reader.GetString("RaspberryPi", "name", "");
-        std::string room_name = reader.GetString("Room", "name", "");
+        std::string code = reader.GetString("Host", "code", "");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
             ip_address,
             port,
-            rpi_name,
-            room_name,
+            code,
         });
 
         std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(true);
@@ -93,14 +91,10 @@ public:
         {
             port = reader.GetInteger("Host", "port", 0);
         }
-        std::string rpi_name = reader.GetString("rpi", "name", "");
-        std::string room_name = reader.GetString("room", "name", "");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
             ip_address,
             port,
-            rpi_name,
-            room_name,
         });
 
         this->car_system->setConfiguration(std::move(configuration));

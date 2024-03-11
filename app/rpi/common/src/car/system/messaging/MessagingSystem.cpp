@@ -35,6 +35,8 @@ namespace car::system::messaging
         this->websocket = std::make_unique<ix::WebSocket>();
         std::string websocket_url = this->getWebSocketUrl();
         this->websocket->setUrl(websocket_url);
+        this->websocket->setExtraHeaders(
+            {{std::string("code"), this->configuration->code}});
         this->websocket->setOnMessageCallback(
             std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));
         this->handle_message_signal.connect([this](const std::string message)
@@ -218,7 +220,7 @@ namespace car::system::messaging
         if (this->websocket != nullptr)
             this->websocket->send(message);
     }
-    
+
     std::string MessagingSystem::getWebSocketUrl()
     {
         std::optional<int> maybe_port = this->configuration->port;
@@ -231,6 +233,6 @@ namespace car::system::messaging
         {
             full_ip_address = this->configuration->ip_address;
         }
-        return fmt::format("ws://{}/ws/room?request=join&type=car&room_name={}", full_ip_address, this->configuration->room);
+        return fmt::format("ws://{}?code={}", full_ip_address);
     }
 };
