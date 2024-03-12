@@ -55,15 +55,18 @@ namespace car::system
 		this->messaging_system->setConfiguration(this->configuration);
 	}
 
-	void CarSystem::connectToServer()
+	tl::expected<nullptr_t, std::string> CarSystem::connectToServer()
 	{
 		if (!this->connectedToServer)
 		{
 			this->connectedToServer = true;
-			this->messaging_system->start();
+			auto messaging_system_result = this->messaging_system->start();
+			if (!messaging_system_result.has_value())
+				return tl::make_unexpected(messaging_system_result.error());
 			this->lidar_device->start();
 			this->movement_system->start();
 		}
+		return nullptr;
 	}
 
 	void CarSystem::disconnectFromServer()

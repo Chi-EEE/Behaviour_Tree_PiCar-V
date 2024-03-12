@@ -25,7 +25,7 @@ namespace behaviour_tree
 			this->car_system = car_system;
 			// The BehaviourTreeParser does not come with a CustomNodeParser since each program can have a different set of Action nodes
 			BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
-			this->car_system->getCustomCommandSignal().connect([&](std::string custom_command_type, std::string custom)
+			this->car_system->getMessagingSystem()->getCustomCommandSignal().connect([&](std::string custom_command_type, std::string custom)
 				{
 					if (custom_command_type != "behaviour_tree") {
 						return;

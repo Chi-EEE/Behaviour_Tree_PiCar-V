@@ -9,8 +9,9 @@
 
 #include "car/system/CarSystem.h"
 
-#include "../component/main/MainButton.cxx"
+#include "../component/main/ConnectButton.cxx"
 #include "../component/main/MainExitModal.cxx"
+#include "../component/main/MainErrorModal.cxx"
 
 using namespace car::system;
 using namespace car::display::console::component::main;
@@ -22,14 +23,26 @@ namespace car::display::console::screen
 	class MainScreen
 	{
 	public:
-		MainScreen(std::shared_ptr<CarSystem> car_system, std::function<void()> exit) : car_system(car_system), main_button(car_system, box), main_exit_modal(exit)
+		MainScreen(std::shared_ptr<CarSystem> car_system, std::function<void()> exit) : car_system(car_system), connect_button(car_system, box), main_exit_modal(exit), main_error_modal()
 		{
-			auto main_button_component = this->main_button.element();
+			auto connect_button_component = this->connect_button.element();
 
 			auto main_exit_modal_component = this->main_exit_modal.element();
+			auto main_error_modal_component = this->main_error_modal.element();
 
 			auto show_exit_modal = [&]
 				{ this->main_exit_modal.exit_modal_shown = true; };
+
+			std::function<void(std::string)> on_connect_failure = [&](std::string error_message) {
+				this->main_error_modal.setErrorMessage(error_message);
+				this->main_error_modal.exit_modal_shown = true;
+				};
+
+			this->connect_button.on_connect_failure = on_connect_failure;
+
+			this->car_system->getMessagingSystem()->getDisconnectSignal().connect([&](std::string disconnect_message) {
+				spdlog::info(disconnect_message);
+				});
 
 			this->main_screen =
 				Container::Vertical({
@@ -49,7 +62,7 @@ namespace car::display::console::screen
 						Renderer([&]
 								 { return separator(); }),
 						Container::Horizontal({
-							main_button_component | flex,
+							connect_button_component | flex,
 							Renderer([&]
 									 { return separator(); }),
 							Button("Quit", std::move(show_exit_modal), ButtonOption::Animated()) | flex,
@@ -57,9 +70,10 @@ namespace car::display::console::screen
 					}) |
 				xflex;
 
-			this->main_component = this->main_screen | border | flex | reflect(this->box);
+							this->main_component = this->main_screen | border | flex | reflect(this->box);
 
-			this->main_component |= Modal(main_exit_modal_component, &main_exit_modal.exit_modal_shown);
+							this->main_component |= Modal(main_exit_modal_component, &main_exit_modal.exit_modal_shown);
+							this->main_component |= Modal(main_error_modal_component, &main_error_modal.exit_modal_shown);
 		}
 
 		Component element()
@@ -72,8 +86,9 @@ namespace car::display::console::screen
 
 		Box box;
 
-		MainButton main_button;
+		ConnectButton connect_button;
 		MainExitModal main_exit_modal;
+		MainErrorModal main_error_modal;
 
 		Component info;
 

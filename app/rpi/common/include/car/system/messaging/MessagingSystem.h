@@ -37,7 +37,7 @@ namespace car::system::messaging
 
 		void initialize(std::shared_ptr<configuration::Configuration> configuration);
 		void initializeWebSocket();
-		void start();
+		tl::expected<nullptr_t, std::string> start();
 		void stop();
 		void terminate();
 
@@ -45,14 +45,18 @@ namespace car::system::messaging
 
 		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() { return this->custom_command_signal; }
 		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->handle_message_signal; }
+		nod::signal<void()>& getConnectSignal() { return this->on_connect_signal; }
+		nod::signal<void(const std::string)>& getDisconnectSignal() { return this->on_disconnect_signal; }
 
 		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const;
 		void handleMessage(const std::string& message) const;
 		void handleCommand(const rapidjson::Value& message_json) const;
 		void sendMessage(const std::string& message);
 
-		nod::signal<void()> on_websocket_connect_signal;
-		nod::signal<void()> on_websocket_disconnect_signal;
+		nod::signal<void(const ix::WebSocketMessagePtr& msg)> on_websocket_message_signal;
+
+		nod::signal<void()> on_connect_signal;
+		nod::signal<void(std::string)> on_disconnect_signal;
 
 		nod::signal<void(const int)> speed_command_signal;
 		nod::signal<void(const float)> angle_command_signal;
@@ -60,8 +64,6 @@ namespace car::system::messaging
 		nod::signal<void(const std::string, const std::string)> custom_command_signal;
 
 	private:
-		std::string getWebSocketUrl();
-
 		std::shared_ptr<configuration::Configuration> configuration;
 
 		std::unique_ptr<ix::WebSocket> websocket;

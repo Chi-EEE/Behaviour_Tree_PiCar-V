@@ -106,7 +106,7 @@ class Code {
     }
 
     generate() {
-        this._code = getRandomInt(0, 9999);
+        this._code = getRandomInt(0, 99999);
     }
 }
 
@@ -150,21 +150,20 @@ class WebSocketServer {
     async waitForWSConnection() {
         this._wss.on('connection', (ws, req) => {
             if (this._connected) {
-                const message = JSON.stringify({ 'success': false, 'message': 'Another connection is already established.' });
-                ws.close(4000, message);
+                ws.close(4000, "Another connection is already established.");
                 return;
             }
 
             const code = req.headers['code'];
             if (Number(code) !== this._code.get()) {
-                const message = JSON.stringify({ 'success': false, 'message': 'Invalid code.' });
-                ws.close(4000, message);
+                ws.close(4000, "Invalid code.");
                 console.log(`Invalid code: ${code} !== ${this._code.get()}`);
                 return;
             }
 
             this._connected = true;
             console.log(`WebSocket connection established from ${req.socket.remoteAddress}`);
+            mainWindow.webContents.send('onConnect');
 
             ws.once('close', () => {
                 if (this._wss === undefined) {
@@ -172,7 +171,8 @@ class WebSocketServer {
                 }
                 this._connected = false;
                 console.log('WebSocket connection closed');
-            });
+                mainWindow.webContents.send('onDisconnect');
+        });
 
             ws.on('message', async (message) => {
                 mainWindow.webContents.send('onMessage', message.toString());
@@ -210,3 +210,4 @@ app.on('window-all-closed', onClose);
 ipcMain.handle('getLocalIPList', getLocalIPList);
 ipcMain.handle('startWebSocketServer', startWebSocketServer);
 ipcMain.handle('closeWebSocketServer', closeWebSocketServer);
+ipcMain.handle('isConnected', () => websocket_server._connected);

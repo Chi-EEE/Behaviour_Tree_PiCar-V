@@ -28,6 +28,8 @@ namespace car::system::messaging
 	{
 		ix::initNetSystem();
 		this->setConfiguration(configuration);
+		this->handle_message_signal.connect([this](const std::string message)
+			{ this->handleMessage(message); });
 	}
 
 	void MessagingSystem::initializeWebSocket()
@@ -42,24 +44,53 @@ namespace car::system::messaging
 
 		this->websocket->setOnMessageCallback(
 			std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));
-
-		this->handle_message_signal.connect([this](const std::string message)
-			{ this->handleMessage(message); });
 	}
 
-	void MessagingSystem::start()
+	tl::expected<nullptr_t, std::string> MessagingSystem::start()
 	{
 		initializeWebSocket();
+
 		this->websocket->start();
-		bool open = false;
-		while (this->websocket->getReadyState() == ix::ReadyState::Connecting);
-		if (this->websocket->getReadyState() == ix::ReadyState::Open)
+
+		bool wait_for_first_message = true;
+		std::optional<std::string> error_message = std::nullopt;
+		auto connection = this->on_websocket_message_signal.connect([this, &wait_for_first_message, &error_message](const ix::WebSocketMessagePtr& msg)
+			{
+				const ix::WebSocketMessageType message_type = msg->type;
+				switch (message_type)
+				{
+				case ix::WebSocketMessageType::Open:
+				case ix::WebSocketMessageType::Ping:
+				case ix::WebSocketMessageType::Pong:
+				case ix::WebSocketMessageType::Fragment:
+					break;
+				case ix::WebSocketMessageType::Message:
+				{
+					wait_for_first_message = false;
+					break;
+				}
+				case ix::WebSocketMessageType::Close:
+				{
+					wait_for_first_message = false;
+					error_message = std::make_optional<std::string>(std::string(msg->closeInfo.reason));
+					break;
+				}
+				}
+			}
+		);
+
+		while (wait_for_first_message) {};
+
+		connection.disconnect();
+		
+		if (error_message.has_value())
 		{
-			spdlog::info("Connected to websocket");
+			const std::string error = fmt::format("Could not connect to websocket, please check the status of the websocket server. Reason: {}", error_message.value());
+			spdlog::error(error);
+			return tl::make_unexpected(error);
 		}
-		else {
-			spdlog::error("Could not connect to websocket");
-		}
+		
+		return nullptr;
 	}
 
 	void MessagingSystem::stop()
@@ -84,18 +115,19 @@ namespace car::system::messaging
 
 	void MessagingSystem::onMessageCallback(const ix::WebSocketMessagePtr& msg) const
 	{
+		this->on_websocket_message_signal(msg);
 		switch (msg->type)
 		{
 		case ix::WebSocketMessageType::Open:
 		{
-			spdlog::info("WebSocket connected");
-			this->on_websocket_connect_signal();
+			spdlog::info("Connected to the Websocket Server.");
+			this->on_connect_signal();
 			break;
 		}
 		case ix::WebSocketMessageType::Close:
 		{
-			spdlog::info("WebSocket disconnected because {}", msg->closeInfo.reason);
-			this->on_websocket_disconnect_signal();
+			spdlog::info("Disconnected from the Websocket Server; Reason: {}", msg->closeInfo.reason);
+			this->on_disconnect_signal(msg->closeInfo.reason);
 			break;
 		}
 		case ix::WebSocketMessageType::Message:

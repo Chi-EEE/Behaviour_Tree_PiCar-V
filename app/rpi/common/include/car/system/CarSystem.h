@@ -34,7 +34,7 @@ namespace car::system
 		void initialize();
 		void reload();
 
-		void connectToServer();
+		tl::expected<nullptr_t, std::string> connectToServer();
 		void disconnectFromServer();
 
 		void terminate();
@@ -43,8 +43,9 @@ namespace car::system
 
 		void setConfiguration(std::shared_ptr<Configuration> configuration);
 
-		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() const { return this->messaging_system->getCustomCommandSignal(); }
-		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->messaging_system->getHandleMessageSignal(); }
+		MessagingSystem* getMessagingSystem() const {
+			return this->messaging_system.get();
+		}
 
 		void startLidarDevice();
 		void stopLidarDevice();
