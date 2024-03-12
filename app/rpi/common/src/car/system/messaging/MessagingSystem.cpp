@@ -35,7 +35,7 @@ namespace car::system::messaging
 		this->websocket = std::make_unique<ix::WebSocket>();
 		this->websocket->disableAutomaticReconnection();
 
-		this->websocket->setUrl(this->getWebSocketUrl());
+		this->websocket->setUrl("ws://" + this->configuration->host);
 		ix::WebSocketHttpHeaders headers;
 		headers["code"] = this->configuration->code;
 		this->websocket->setExtraHeaders(headers);
@@ -212,20 +212,5 @@ namespace car::system::messaging
 	{
 		if (this->websocket != nullptr)
 			this->websocket->send(message);
-	}
-
-	std::string MessagingSystem::getWebSocketUrl()
-	{
-		std::optional<int> maybe_port = this->configuration->port;
-		std::string full_ip_address;
-		if (maybe_port.has_value())
-		{
-			full_ip_address = fmt::format("{}:{}", this->configuration->ip_address, maybe_port.value());
-		}
-		else
-		{
-			full_ip_address = this->configuration->ip_address;
-		}
-		return fmt::format("ws://{}", full_ip_address);
 	}
 };

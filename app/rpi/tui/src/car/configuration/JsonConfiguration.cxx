@@ -31,7 +31,7 @@ namespace car::configuration
 			this->config_file_path = config_file_path;
 		}
 
-		const std::string &getConfigFilePath() const
+		const std::string& getConfigFilePath() const
 		{
 			return this->config_file_path;
 		}
@@ -58,16 +58,11 @@ namespace car::configuration
 			}
 			try
 			{
-				std::string ip_address = config_json["ip_address"].GetString();
-				std::optional<int> port = std::nullopt;
-				if (config_json.HasMember("port"))
-				{
-					port = std::make_optional<int>(config_json["port"].GetInt());
-				}
+				std::string host = config_json["host"].GetString();
 				std::string code = config_json["code"].GetString();
-				return Configuration{ip_address, port, code};
+				return Configuration{ host, code };
 			}
-			catch (const std::exception &e)
+			catch (const std::exception& e)
 			{
 				std::string error_message = fmt::format(R"(Error accessing JSON values: "{}")", e.what());
 				return tl::make_unexpected(error_message);

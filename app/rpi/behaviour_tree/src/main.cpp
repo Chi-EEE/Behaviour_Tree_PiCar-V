@@ -82,12 +82,12 @@ int main(int argc, const char* argv[])
 #endif
 	BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
 
-	std::string ip_address = "";
-	int port = 0;
+	std::string host = "";
+	std::string code = "";
 
 	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
-		ip_address,
-		port,
+		host,
+		code,
 		});
 
 	cxxopts::Options options("Behaviour Tree CLI", "Program to parse Behaviour Tree");
