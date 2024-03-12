@@ -94,7 +94,7 @@ namespace car::system::messaging
 		}
 		case ix::WebSocketMessageType::Close:
 		{
-			spdlog::info("WebSocket disconnected because {}", msg->errorInfo.reason);
+			spdlog::info("WebSocket disconnected because {}", msg->closeInfo.reason);
 			this->on_websocket_disconnect_signal();
 			break;
 		}
