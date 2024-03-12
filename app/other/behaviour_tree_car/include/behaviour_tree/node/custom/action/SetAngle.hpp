@@ -25,16 +25,17 @@ namespace behaviour_tree::node::custom::action
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
 			auto car_system = car_context->getCarSystem();
+			const MovementSystem* movement_system = car_system->getMovementSystem();
 			switch (this->getServoType())
 			{
 			case ServoType::FrontWheels:
-				car_system->setFrontWheelsAngle(this->getAngle());
+				movement_system->setFrontWheelsAngle(this->getAngle());
 				break;
 			case ServoType::CameraServo1:
-				car_system->setCameraServo1Angle(this->getAngle());
+				movement_system->setCameraServo1Angle(this->getAngle());
 				break;
 			case ServoType::CameraServo2:
-				car_system->setCameraServo2Angle(this->getAngle());
+				movement_system->setCameraServo2Angle(this->getAngle());
 				break;
 			}
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN

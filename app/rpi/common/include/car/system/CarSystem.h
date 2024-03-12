@@ -43,31 +43,17 @@ namespace car::system
 
 		void setConfiguration(std::shared_ptr<Configuration> configuration);
 
+		LidarDevice* getLidarDevice() const {
+			return this->lidar_device.get();
+		}
+
 		MessagingSystem* getMessagingSystem() const {
 			return this->messaging_system.get();
 		}
 
-		void startLidarDevice();
-		void stopLidarDevice();
-
-		void setRearWheelsSpeed(const int& speed);
-
-		void setRearLeftWheelSpeed(const int& speed);
-		void setRearRightWheelSpeed(const int& speed);
-
-		void setFrontWheelsAngle(const float& angle);
-		void setCameraServo1Angle(const float& angle);
-		void setCameraServo2Angle(const float& angle);
-
-		void setRearWheelsDirectionToForward();
-
-		void setRearLeftWheelDirectionToForward();
-		void setRearRightWheelDirectionToForward();
-
-		void setRearWheelsDirectionToBackward();
-
-		void setRearLeftWheelDirectionToBackward();
-		void setRearRightWheelDirectionToBackward();
+		MovementSystem* getMovementSystem() const {
+			return this->movement_system.get();
+		}
 
 		template<typename T>
 		const std::shared_ptr<T> getPlugin() const { return this->plugin_manager->getPlugin<T>(); }

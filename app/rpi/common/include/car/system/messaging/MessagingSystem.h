@@ -53,7 +53,7 @@ namespace car::system::messaging
 		void handleCommand(const rapidjson::Value& message_json) const;
 		void sendMessage(const std::string& message);
 
-		nod::signal<void(const ix::WebSocketMessagePtr& msg)> on_websocket_message_signal;
+		nod::signal<void(const ix::WebSocketMessage msg)> on_websocket_message_signal;
 
 		nod::signal<void()> on_connect_signal;
 		nod::signal<void(std::string)> on_disconnect_signal;

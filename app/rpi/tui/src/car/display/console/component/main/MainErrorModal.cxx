@@ -40,7 +40,7 @@ namespace car::display::console::component::main
 
 		void setErrorMessage(std::string message)
 		{
-			this->error_element = text("Error: " + message);
+			this->error_element = text("Error: " + std::move(message));
 		}
 
 		bool exit_modal_shown = false;
