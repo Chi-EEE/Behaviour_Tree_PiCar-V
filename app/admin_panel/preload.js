@@ -11,6 +11,8 @@ const WINDOW_API = {
     
     onConnection: (/** @type {(string) => void} */ callback) => ipcRenderer.on('onConnection', (_event, /** @type {string} */ value) => callback(value)),
     onDisconnection: (/** @type {(string) => void} */ callback) => ipcRenderer.on('onDisconnection', (_event, /** @type {string} */ value) => callback(value)),
+
+    connectToRaspberryPi: (/** @type {string} */ uuid) => ipcRenderer.invoke("connectToRaspberryPi", uuid),
 }
 
 contextBridge.exposeInMainWorld("api", WINDOW_API)

@@ -75,18 +75,6 @@
             websocket_server_connected.set(false);
         }
     }
-    window.api.onConnection((value) => {
-        value = JSON.parse(value);
-        console.log(value.uuid);
-    });
-    window.api.onDisconnection((value) => {
-        value = JSON.parse(value);
-        console.log(value.uuid);
-    });
-    window.api.onMessage((value) => {
-        value = JSON.parse(value);
-        console.log(value);
-    });
 </script>
 
 <div class="mb-6">

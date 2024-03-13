@@ -118,8 +118,11 @@ class WebSocketServer {
         /** @type {Code} */
         this._code = new Code();
 
-        /** @type {boolean} */
-        this._connected = false;
+        /** @type {Map<string, WebSocket>} */
+        this._raspberry_pi_clients = new Map();
+
+        /** @type {WebSocket | undefined} */
+        this._client = undefined;
     }
 
     /**
@@ -147,9 +150,13 @@ class WebSocketServer {
     /**
      * This function only allows a single connection to the WebSocket server.
      */
-    async waitForWSConnection() {
+    async createConnection() {
         this._wss.on('connection', (ws, req) => {
+            // console.log(req.headers)
+            // console.log(req.socket.remoteAddress)
             const uuid = crypto.randomUUID();
+            this._raspberry_pi_clients.set(uuid, ws);
+           
             ws.send(JSON.stringify({ uuid: uuid }));
 
             mainWindow.webContents.send('onConnection', JSON.stringify({ uuid: uuid }));
@@ -158,11 +165,13 @@ class WebSocketServer {
                 if (this._wss === undefined) {
                     return;
                 }
-                console.log('WebSocket connection closed');
-                mainWindow.webContents.send('onDisconnection');
+                mainWindow.webContents.send('onDisconnection', JSON.stringify({ uuid: uuid }));
             });
 
             ws.on('message', async (message) => {
+                if (this._client === ws) {
+                    return;
+                }
                 mainWindow.webContents.send('onMessage', message.toString());
             });
         });
@@ -179,7 +188,7 @@ async function startWebSocketServer(_event, args) {
     }
     try {
         websocket_server.connect(args.port);
-        websocket_server.waitForWSConnection();
+        websocket_server.createConnection();
         return { success: true, code: websocket_server.code() };
     } catch (error) {
         return { success: false, message: `Unable to start WebSocket Server, Error: ${error}` };
@@ -194,8 +203,19 @@ function onClose() {
     closeWebSocketServer();
 }
 
+function connectToRaspberryPi(_event, args) {
+    const uuid = args.uuid;
+    if (websocket_server._raspberry_pi_clients.has(uuid)) {
+        websocket_server._client = websocket_server._raspberry_pi_clients.get(uuid);
+        return { success: true, message: `Connected to Raspberry Pi with UUID: ${uuid}` };
+    } else {
+        return { success: false, message: `Raspberry Pi with UUID: ${uuid} not found` };
+    }
+}
+
+
 app.on('window-all-closed', onClose);
 ipcMain.handle('getLocalIPList', getLocalIPList);
 ipcMain.handle('startWebSocketServer', startWebSocketServer);
 ipcMain.handle('closeWebSocketServer', closeWebSocketServer);
-ipcMain.handle('isConnected', () => websocket_server._connected);
+ipcMain.handle('connectToRaspberryPi', connectToRaspberryPi);
