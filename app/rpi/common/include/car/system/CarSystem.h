@@ -39,6 +39,7 @@ namespace car::system
 
 		tl::expected<nullptr_t, std::string> tryConnect();
 		void disconnect();
+		const bool isConnected() const { return this->connectedToServer; }
 
 		void terminate();
 

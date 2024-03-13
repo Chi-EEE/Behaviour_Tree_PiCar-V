@@ -39,6 +39,8 @@ public:
         dlog::info("Starting rpi_daemon\n");
 
         std::string host = reader.GetString("Host", "ip_address", "");
+
+        this->interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "interval", 1));
         std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
@@ -57,10 +59,20 @@ public:
             std::move(messaging_system),
             std::move(movement_system),
             std::move(plugin_manager));
+
+        this->car_system->start();
     }
 
     void on_update() override
     {
+        std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
+        if (!this->car_system->isConnected() && now - last_connected >= interval) {
+            auto connection_result = this->car_system->tryConnect();
+            if (!connection_result.has_value()) {
+                dlog::error(connection_result.error());
+            }
+            last_connected = now;
+        }
         this->car_system->update();
     }
 
@@ -86,13 +98,15 @@ public:
             host,
             car_name,
         });
-
+        
         this->car_system->setConfiguration(std::move(configuration));
         this->car_system->reload();
     }
 
 private:
     std::unique_ptr<CarSystem> car_system;
+    std::chrono::seconds interval = std::chrono::seconds(1);
+    std::chrono::time_point<std::chrono::steady_clock> last_connected = std::chrono::steady_clock::time_point::min();
 };
 
 int main(int argc, const char *argv[])
