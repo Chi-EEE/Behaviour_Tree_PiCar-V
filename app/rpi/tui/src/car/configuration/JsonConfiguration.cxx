@@ -59,8 +59,8 @@ namespace car::configuration
 			try
 			{
 				std::string host = config_json["host"].GetString();
-				std::string code = config_json["code"].GetString();
-				return Configuration{ host, code };
+				std::string car_name = config_json["car_name"].GetString();
+				return Configuration{ host, car_name };
 			}
 			catch (const std::exception& e)
 			{

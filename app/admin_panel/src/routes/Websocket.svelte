@@ -16,7 +16,9 @@
             <hr />
             <br />
             {#each $raspberry_pi_uuid_list as uuid}
-                <p>{uuid}</p>
+            <Card>
+                <h1>{uuid}</h1>
+            </Card>
             {/each}
         </div>
         <div class="col-start-6">

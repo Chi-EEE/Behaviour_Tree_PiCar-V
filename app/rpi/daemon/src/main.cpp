@@ -38,18 +38,12 @@ public:
         }
         dlog::info("Starting rpi_daemon\n");
 
-        std::string ip_address = reader.GetString("Host", "ip_address", "");
-        std::optional<int> port = std::nullopt;
-        if (reader.HasValue("Host", "port"))
-        {
-            port = reader.GetInteger("Host", "port", 0);
-        }
-        std::string code = reader.GetString("Host", "code", "");
+        std::string host = reader.GetString("Host", "ip_address", "");
+        std::string car_name = reader.GetString("Host", "car_name", "");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
-            ip_address,
-            port,
-            code,
+            host,
+            car_name,
         });
 
         std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(true);

@@ -12,6 +12,7 @@ namespace car::configuration
 {
 	struct Configuration
 	{
+		std::string car_name;
 		std::string host;
         std::string code;
 	};
