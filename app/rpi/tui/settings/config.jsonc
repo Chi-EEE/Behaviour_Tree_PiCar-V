@@ -1,5 +1,4 @@
 {
-    "ip_address": "localhost",
-    "port": 8848,
-    "code": ""
+    "host": "127.0.0.1:3000",
+    "car_name": "Car 1"
 }

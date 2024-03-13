@@ -239,6 +239,12 @@ namespace car::system::messaging
 					condition.notify_one();
 					break;
 				}
+				case ix::WebSocketMessageType::Error:
+				{
+					error_message.append(msg->errorInfo.reason.c_str());
+					condition.notify_one();
+					break;
+				}
 				}
 			}
 		);
