@@ -122,7 +122,9 @@ private:
 
     bool attempted_to_reconnect = false;
     std::chrono::seconds connection_interval = std::chrono::seconds(1);
-    std::chrono::time_point<std::chrono::steady_clock> last_connected = std::chrono::steady_clock::time_point::min();
+
+    // This is initialized as 0
+    std::chrono::time_point<std::chrono::steady_clock> last_connected;
 };
 
 // From: https://github.com/jeremy-rifkin/cpptrace/blob/c35392d20bbd6fc8faaa0d4b0b8b8576a5c76f77/src/cpptrace.cpp#L378ss
