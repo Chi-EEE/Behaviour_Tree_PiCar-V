@@ -1,4 +1,4 @@
-<BehaviourTree repeat='false'>
+<BehaviourTree cycle_limit='1'>
     <Root id='main'>
         <Random>
             <Action:Print text='Succeed'/>
