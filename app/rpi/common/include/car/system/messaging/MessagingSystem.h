@@ -38,10 +38,11 @@ namespace car::system::messaging
 
 		void initialize(std::shared_ptr<configuration::Configuration> configuration);
 		void initializeWebSocket();
-		tl::expected<nullptr_t, std::string> start();
+		tl::expected<nullptr_t, std::string> tryConnect();
 		void stop();
 		void terminate();
 
+		// Necessary for the reloading the configuration
 		void setConfiguration(std::shared_ptr<configuration::Configuration> configuration);
 
 		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() { return this->custom_command_signal; }

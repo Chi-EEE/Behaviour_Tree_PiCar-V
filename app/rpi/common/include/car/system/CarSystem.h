@@ -34,8 +34,11 @@ namespace car::system
 		void initialize();
 		void reload();
 
-		tl::expected<nullptr_t, std::string> connectToServer();
-		void disconnectFromServer();
+		void start();
+		void stop();
+
+		tl::expected<nullptr_t, std::string> tryConnect();
+		void disconnect();
 
 		void terminate();
 

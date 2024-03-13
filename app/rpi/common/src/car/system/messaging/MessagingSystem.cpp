@@ -34,7 +34,7 @@ namespace car::system::messaging
 
 	void MessagingSystem::initializeWebSocket()
 	{
-		this->websocket = std::make_unique<ix::WebSocket>();
+		this->websocket = std::make_unique<ix::WebSocket>(ix::WebSocket());
 		this->websocket->disableAutomaticReconnection();
 
 		this->websocket->setUrl("ws://" + this->configuration->host);
@@ -43,7 +43,7 @@ namespace car::system::messaging
 		this->websocket->setExtraHeaders(headers);
 	}
 
-	tl::expected<nullptr_t, std::string> MessagingSystem::start()
+	tl::expected<nullptr_t, std::string> MessagingSystem::tryConnect()
 	{
 		initializeWebSocket();
 
