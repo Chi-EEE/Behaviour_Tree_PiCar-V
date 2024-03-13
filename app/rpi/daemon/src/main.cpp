@@ -39,7 +39,7 @@ public:
         dlog::info("Starting rpi_daemon\n");
 
         std::string host = reader.GetString("Host", "ip_address", "");
-        std::string car_name = reader.GetString("Host", "car_name", "");
+        std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
             host,
@@ -79,16 +79,12 @@ public:
         }
         dlog::info("Reloading rpi_daemon\n");
         
-        std::string ip_address = reader.GetString("Host", "ip_address", "");
-        std::optional<int> port = std::nullopt;
-        if (reader.HasValue("Host", "port"))
-        {
-            port = reader.GetInteger("Host", "port", 0);
-        }
+        std::string host = reader.GetString("Host", "host", "");
+        std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
-            ip_address,
-            port,
+            host,
+            car_name,
         });
 
         this->car_system->setConfiguration(std::move(configuration));
