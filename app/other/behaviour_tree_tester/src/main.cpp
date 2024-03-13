@@ -15,7 +15,7 @@ int main(int argc, const char* argv[])
 {
 	BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
 
-	cxxopts::Options options("Behaviour Tree Tester", "Program to test Behaviour Trees");
+	cxxopts::Options options("Behaviour Tree Tester", "Program to test Behaviour Trees (Does not use CarSystem)");
 
 	options.add_options()
 		("test_file", "Behaviour Tree Test File", cxxopts::value<std::string>());

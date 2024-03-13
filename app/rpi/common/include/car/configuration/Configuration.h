@@ -12,10 +12,8 @@ namespace car::configuration
 {
 	struct Configuration
 	{
-		std::string ip_address;
-		std::optional<int> port = std::nullopt;
-		std::string name;
-		std::string room;
+		std::string host;
+		std::string car_name;
 	};
 };
 

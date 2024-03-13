@@ -34,8 +34,12 @@ namespace car::system
 		void initialize();
 		void reload();
 
-		void connectToServer();
-		void disconnectFromServer();
+		void start();
+		void stop();
+
+		tl::expected<nullptr_t, std::string> tryConnect();
+		void disconnect();
+		const bool isConnected() const { return this->connectedToServer; }
 
 		void terminate();
 
@@ -43,30 +47,17 @@ namespace car::system
 
 		void setConfiguration(std::shared_ptr<Configuration> configuration);
 
-		nod::signal<void(const std::string, const std::string)>& getCustomCommandSignal() const { return this->messaging_system->getCustomCommandSignal(); }
-		nod::signal<void(const std::string)>& getHandleMessageSignal() { return this->messaging_system->getHandleMessageSignal(); }
+		LidarDevice* getLidarDevice() const {
+			return this->lidar_device.get();
+		}
 
-		void startLidarDevice();
-		void stopLidarDevice();
+		MessagingSystem* getMessagingSystem() const {
+			return this->messaging_system.get();
+		}
 
-		void setRearWheelsSpeed(const int& speed);
-
-		void setRearLeftWheelSpeed(const int& speed);
-		void setRearRightWheelSpeed(const int& speed);
-
-		void setFrontWheelsAngle(const float& angle);
-		void setCameraServo1Angle(const float& angle);
-		void setCameraServo2Angle(const float& angle);
-
-		void setRearWheelsDirectionToForward();
-
-		void setRearLeftWheelDirectionToForward();
-		void setRearRightWheelDirectionToForward();
-
-		void setRearWheelsDirectionToBackward();
-
-		void setRearLeftWheelDirectionToBackward();
-		void setRearRightWheelDirectionToBackward();
+		MovementSystem* getMovementSystem() const {
+			return this->movement_system.get();
+		}
 
 		template<typename T>
 		const std::shared_ptr<T> getPlugin() const { return this->plugin_manager->getPlugin<T>(); }

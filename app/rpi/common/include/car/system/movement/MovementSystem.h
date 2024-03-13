@@ -36,62 +36,62 @@ namespace car::system::movement
 		}
 
 #pragma region Wheels
-		void setRearWheelsSpeed(const int &speed)
+		void setRearWheelsSpeed(const int &speed) const
 		{
 			this->movement_controller->setRearWheelsSpeed(speed);
 		}
 
-		void setRearLeftWheelSpeed(const int &speed)
+		void setRearLeftWheelSpeed(const int &speed) const
 		{
 			this->movement_controller->setRearLeftWheelSpeed(speed);
 		}
 
-		void setRearRightWheelSpeed(const int &speed)
+		void setRearRightWheelSpeed(const int &speed) const
 		{
 			this->movement_controller->setRearRightWheelSpeed(speed);
 		}
 
-		void setFrontWheelsAngle(const float &angle)
+		void setFrontWheelsAngle(const float &angle) const
 		{
 			this->movement_controller->setFrontWheelsAngle(angle);
 		}
 
-		void setCameraServo1Angle(const float &angle)
+		void setCameraServo1Angle(const float &angle) const
 		{
 			this->movement_controller->setCameraServo1Angle(angle);
 		}
 
-		void setCameraServo2Angle(const float &angle)
+		void setCameraServo2Angle(const float &angle) const
 		{
 			this->movement_controller->setCameraServo2Angle(angle);
 		}
 
-		void setRearWheelsDirectionToForward()
+		void setRearWheelsDirectionToForward() const
 		{
 			this->movement_controller->setRearWheelsDirectionToForward();
 		}
 
-		void setRearLeftWheelDirectionToForward()
+		void setRearLeftWheelDirectionToForward() const
 		{
 			this->movement_controller->setRearLeftWheelDirectionToForward();
 		}
 
-		void setRearRightWheelDirectionToForward()
+		void setRearRightWheelDirectionToForward() const
 		{
 			this->movement_controller->setRearRightWheelDirectionToForward();
 		}
 
-		void setRearWheelsDirectionToBackward()
+		void setRearWheelsDirectionToBackward() const
 		{
 			this->movement_controller->setRearWheelsDirectionToBackward();
 		}
 
-		void setRearLeftWheelDirectionToBackward()
+		void setRearLeftWheelDirectionToBackward() const
 		{
 			this->movement_controller->setRearLeftWheelDirectionToBackward();
 		}
 
-		void setRearRightWheelDirectionToBackward()
+		void setRearRightWheelDirectionToBackward() const
 		{
 			this->movement_controller->setRearRightWheelDirectionToBackward();
 		}

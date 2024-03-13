@@ -1,7 +1,10 @@
 <script>
     import { Label, Input, Button, Helper } from "flowbite-svelte";
 
-    import { websocket_server_port, websocket_server_connected } from "../websocket_server_store";
+    import {
+        websocket_server_port,
+        websocket_server_connected,
+    } from "../websocket_server_store";
 
     /** @type {number} */
     let websocketServerPort = $websocket_server_port;
@@ -35,7 +38,7 @@
     }
 
     displayWebsocketServerStatus();
-    
+
     async function toggleWebsocketServer() {
         if (!isNumeric(websocketServerPort)) {
             helperText = "Port must be a number";
@@ -43,28 +46,33 @@
             return;
         }
         websocketServerEnabled = !websocketServerEnabled;
-        if (websocketServerEnabled) {
-            websocket_server_port.set(Number(websocketServerPort));
-            const response = await api.startWebSocketServer({
-                port: $websocket_server_port,
-            });
-            if (response.success) {
-                websocketServerPortInputColor = "green";
-                helperText = "Websocket Server is running";
-                toggleWebsocketServerMessage = "Stop Websocket Server";
-                websocket_server_connected.set(true);
-            } else {
-                websocketServerPortInputColor = "red";
-                helperText = response.message;
-                toggleWebsocketServerMessage = "Start Websocket Server";
-                websocketServerEnabled = false;
-                websocket_server_connected.set(false);
-            }
-        } else {
+        if (!websocketServerEnabled) {
+            // Stop Websocket Server
             websocketServerPortInputColor = "";
             helperText = "";
             toggleWebsocketServerMessage = "Start Websocket Server";
             api.closeWebSocketServer();
+            websocketServerEnabled = false;
+            websocket_server_connected.set(false);
+            return;
+        }
+        websocket_server_port.set(Number(websocketServerPort));
+        const response = await api.startWebSocketServer({
+            port: $websocket_server_port,
+        });
+        if (response.success) {
+            websocketServerPortInputColor = "green";
+            helperText = "Websocket Server is running";
+            toggleWebsocketServerMessage = "Stop Websocket Server";
+            websocket_server_connected.set(true);
+            console.log(response.code);
+        } else {
+            // Error: Websocket Server is already running
+            websocketServerPortInputColor = "red";
+            helperText = response.message;
+            toggleWebsocketServerMessage = "Start Websocket Server";
+            websocketServerEnabled = false;
+            websocket_server_connected.set(false);
         }
     }
 </script>

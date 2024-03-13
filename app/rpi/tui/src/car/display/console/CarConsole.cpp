@@ -16,6 +16,7 @@ namespace car::display::console
 	void CarConsole::initialize()
 	{
 		this->car_system->initialize();
+		this->car_system->start();
 	};
 
 	void CarConsole::run()
@@ -100,6 +101,7 @@ namespace car::display::console
 
 	void CarConsole::terminate()
 	{
+		this->car_system->stop();
 		this->car_system->terminate();
 	}
 }

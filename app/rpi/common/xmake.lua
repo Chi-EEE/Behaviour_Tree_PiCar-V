@@ -2,7 +2,7 @@ add_rules("mode.debug", "mode.release")
 
 add_requires("ixwebsocket", {configs = {use_tls = true, ssl = "mbedtls"}})
 add_requires("fmt", "rapidjson", "robin-map", "spdlog", "tl_expected", "nod")
-add_requires("serial")
+add_requires("serial", "opencv")
 add_requires("effolkronium-random", "pugixml")
 
 if is_plat("linux", "macosx") then
@@ -28,7 +28,7 @@ target("rpi_common")
      
     add_packages("ixwebsocket", {public = true})
     add_packages("fmt", "rapidjson", "robin-map", "spdlog", "tl_expected", "nod", {public = true})
-    add_packages("serial", "pca9685", "tb6612", {public = true})
+    add_packages("serial", "opencv", "pca9685", "tb6612", {public = true})
     add_packages("effolkronium-random", "pugixml", {public = true})
 
     add_deps("behaviour_tree")

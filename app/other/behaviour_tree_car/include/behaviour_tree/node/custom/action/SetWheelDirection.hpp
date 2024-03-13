@@ -27,23 +27,24 @@ namespace behaviour_tree::node::custom::action
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
 			auto car_system = car_context->getCarSystem();
+			const MovementSystem* movement_system = car_system->getMovementSystem();
 			switch (this->getDirectionType()) {
 			case DirectionType::Forward:
 			{
 				switch (this->getWheelType()) {
 				case WheelType::Left:
 				{
-					car_system->setRearLeftWheelDirectionToForward();
+					movement_system->setRearLeftWheelDirectionToForward();
 					break;
 				}
 				case WheelType::Right:
 				{
-					car_system->setRearRightWheelDirectionToForward();
+					movement_system->setRearRightWheelDirectionToForward();
 					break;
 				}
 				case WheelType::Both:
 				{
-					car_system->setRearWheelsDirectionToForward();
+					movement_system->setRearWheelsDirectionToForward();
 					break;
 				}
 				}
@@ -54,17 +55,17 @@ namespace behaviour_tree::node::custom::action
 				switch (this->getWheelType()) {
 				case WheelType::Left:
 				{
-					car_system->setRearLeftWheelDirectionToBackward();
+					movement_system->setRearLeftWheelDirectionToBackward();
 					break;
 				}
 				case WheelType::Right:
 				{
-					car_system->setRearRightWheelDirectionToBackward();
+					movement_system->setRearRightWheelDirectionToBackward();
 					break;
 				}
 				case WheelType::Both:
 				{
-					car_system->setRearWheelsDirectionToBackward();
+					movement_system->setRearWheelsDirectionToBackward();
 					break;
 				}
 				}

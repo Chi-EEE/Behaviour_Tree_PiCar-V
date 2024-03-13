@@ -4,7 +4,7 @@ add_requires("cxxopts", "rapidjson")
 
 includes("../behaviour_tree/xmake.lua", "../behaviour_tree_car/xmake.lua")
 
-target("behaviour_tree_cli")
+target("behaviour_tree_validator")
     set_kind("binary")
     set_languages("cxx17")
     set_group("other")
