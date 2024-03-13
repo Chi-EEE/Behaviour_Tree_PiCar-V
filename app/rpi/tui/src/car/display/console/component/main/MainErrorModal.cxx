@@ -18,15 +18,15 @@ namespace car::display::console::component::main
 		MainErrorModal() {}
 		Component element()
 		{
-			auto hide_exit_modal = [&]
+			auto hide_error_modal = [&]
 				{ 
-					this->exit_modal_shown = false;
+					this->error_modal_shown = false;
 				};
 
 			this->error_element = text("Error: Something went wrong. Please try again later.");
 
 			this->main_error_modal = Container::Vertical({
-				Button("Ok", std::move(hide_exit_modal), ButtonOption::Animated()),
+				Button("Ok", std::move(hide_error_modal), ButtonOption::Animated()),
 				});
 
 			this->main_error_modal |= Renderer([&](Element inner)
@@ -45,7 +45,7 @@ namespace car::display::console::component::main
 			this->error_element = text("Error: " + std::move(message));
 		}
 
-		bool exit_modal_shown = false;
+		bool error_modal_shown = false;
 
 	private:
 		Component main_error_modal;
