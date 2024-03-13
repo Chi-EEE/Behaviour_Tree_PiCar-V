@@ -26,7 +26,7 @@ namespace car::display::console::component::main
 					if (this->button_pressed)
 					{
 						this->main_button_text = "Attempting to connect to Websocket Server...";
-						auto connection_result = this->car_system->connectToServer();
+						auto connection_result = this->car_system->connect();
 						if (!connection_result.has_value()) {
 							this->button_pressed = false;
 							this->main_button_text = "Start Car Application";
@@ -39,7 +39,7 @@ namespace car::display::console::component::main
 					else
 					{
 						this->main_button_text = "Disconnecting from the Websocket Server...";
-						this->car_system->disconnectFromServer();
+						this->car_system->disconnect();
 						this->main_button_text = "Start Car Application";
 					}
 					this->main_debounce = false;
