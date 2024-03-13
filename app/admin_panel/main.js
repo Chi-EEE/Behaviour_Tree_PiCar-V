@@ -149,30 +149,19 @@ class WebSocketServer {
      */
     async waitForWSConnection() {
         this._wss.on('connection', (ws, req) => {
-            if (this._connected) {
-                ws.close(4000, "Another connection is already established.");
-                return;
-            }
-
-            const code = req.headers['code'];
-            if (Number(code) !== this._code.get()) {
-                ws.close(4000, "Invalid code.");
-                console.log(`Invalid code: ${code} !== ${this._code.get()}`);
-                return;
-            }
-
-            this._connected = true;
-            console.log(`WebSocket connection established from ${req.socket.remoteAddress}`);
-            mainWindow.webContents.send('onConnect');
+            const uuid = crypto.randomUUID();
+            
+            console.log(`WebSocket connection established from`);
+            console.log(req);
+            mainWindow.webContents.send('onConnect', { uuid: uuid });
 
             ws.once('close', () => {
                 if (this._wss === undefined) {
                     return;
                 }
-                this._connected = false;
                 console.log('WebSocket connection closed');
                 mainWindow.webContents.send('onDisconnect');
-        });
+            });
 
             ws.on('message', async (message) => {
                 mainWindow.webContents.send('onMessage', message.toString());

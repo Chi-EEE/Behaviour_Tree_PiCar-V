@@ -2,7 +2,6 @@
   import CodeBox from "../lib/CodeBox.svelte";
   import NavigationBar from "../lib/NavigationBar.svelte";
   import RaspberryPiConnectBanner from "../lib/RaspberryPiConnectBanner.svelte";
-  import { Pane, Splitpanes } from "svelte-splitpanes";
 
   import { connected } from "../websocket_server_store";
 </script>
