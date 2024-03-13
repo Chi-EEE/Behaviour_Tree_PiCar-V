@@ -41,25 +41,22 @@ namespace car::system::messaging
 		ix::WebSocketHttpHeaders headers;
 		headers["code"] = this->configuration->code;
 		this->websocket->setExtraHeaders(headers);
-
-		this->websocket->setOnMessageCallback(
-			std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));
 	}
 
 	tl::expected<nullptr_t, std::string> MessagingSystem::start()
 	{
 		initializeWebSocket();
 
-		auto websocket_init_result = this->websocket->connect(1);
+		auto maybe_uuid = this->getFirstMessage();
 
-		if (!websocket_init_result.success)
-		{
-			this->websocket->stop();
-			this->websocket->close();
-			const std::string error_message = "Could not connect to websocket, please check the status of the websocket server.";
-			spdlog::error(error_message);
-			return tl::make_unexpected(error_message);
+		if (!maybe_uuid.has_value()) {
+			return tl::make_unexpected(maybe_uuid.error());
 		}
+
+		this->websocket->setOnMessageCallback(
+			std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));
+
+		this->uuid = maybe_uuid.value();
 
 		return nullptr;
 	}
@@ -214,5 +211,48 @@ namespace car::system::messaging
 	{
 		if (this->websocket != nullptr)
 			this->websocket->send(message);
+	}
+
+	tl::expected<std::string, std::string> MessagingSystem::getFirstMessage()
+	{
+		std::string error_message;
+		std::string uuid;
+		std::condition_variable condition;
+
+		this->websocket->setOnMessageCallback([&](const ix::WebSocketMessagePtr& msg)
+			{
+				switch (msg->type) {
+				case ix::WebSocketMessageType::Close:
+				{
+					rapidjson::Document error_json;
+					error_json.Parse(msg->closeInfo.reason.c_str());
+					error_message.append(error_json["message"].GetString());
+					condition.notify_one();
+					break;
+				}
+				case ix::WebSocketMessageType::Message:
+				{
+					rapidjson::Document msg_json;
+					msg_json.Parse(msg->str.c_str());
+					// Using append instead of assign to avoid copying the string
+					uuid.append(msg_json["uuid"].GetString());
+					condition.notify_one();
+					break;
+				}
+				}
+			}
+		);
+
+		this->websocket->start();
+
+		std::mutex mutex;
+		std::unique_lock<std::mutex> lock(mutex);
+		condition.wait(lock);
+
+		if (!error_message.empty()) {
+			return tl::make_unexpected(error_message);
+		}
+
+		return uuid;
 	}
 };

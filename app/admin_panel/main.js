@@ -150,17 +150,16 @@ class WebSocketServer {
     async waitForWSConnection() {
         this._wss.on('connection', (ws, req) => {
             const uuid = crypto.randomUUID();
-            
-            console.log(`WebSocket connection established from`);
-            console.log(req);
-            mainWindow.webContents.send('onConnect', { uuid: uuid });
+            ws.send(JSON.stringify({ uuid: uuid }));
+
+            mainWindow.webContents.send('onConnection', JSON.stringify({ uuid: uuid }));
 
             ws.once('close', () => {
                 if (this._wss === undefined) {
                     return;
                 }
                 console.log('WebSocket connection closed');
-                mainWindow.webContents.send('onDisconnect');
+                mainWindow.webContents.send('onDisconnection');
             });
 
             ws.on('message', async (message) => {

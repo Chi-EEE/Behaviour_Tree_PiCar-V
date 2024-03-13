@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <atomic>
 #include <functional>
 #include <memory>
 
@@ -49,6 +50,7 @@ namespace car::system::messaging
 		nod::signal<void(const std::string)>& getDisconnectSignal() { return this->on_disconnect_signal; }
 
 		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const;
+		std::string getUUID() const { return this->uuid; }
 		void handleMessage(const std::string& message) const;
 		void handleCommand(const rapidjson::Value& message_json) const;
 		void sendMessage(const std::string& message);
@@ -64,10 +66,14 @@ namespace car::system::messaging
 		nod::signal<void(const std::string, const std::string)> custom_command_signal;
 
 	private:
+		tl::expected<std::string, std::string> getFirstMessage();
+
 		std::shared_ptr<configuration::Configuration> configuration;
 
 		std::unique_ptr<ix::WebSocket> websocket;
 		std::string websocket_url;
+
+		std::string uuid;
 	};
 };
 
