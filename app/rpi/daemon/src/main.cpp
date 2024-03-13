@@ -7,6 +7,8 @@
 
 #include <cpptrace/cpptrace.hpp>
 
+#include <fmt/format.h>
+
 #include "car/system/CarSystem.h"
 
 #include "car/system/lidar/LidarScanner.h"
@@ -26,7 +28,7 @@ using namespace car::system::movement::controller;
 using namespace car::configuration;
 using namespace car::plugin;
 
-std::unique_ptr<LidarDevice> getLidarDevice(bool dummy);
+std::unique_ptr<LidarDevice> getLidarDevice();
 
 class rpi_daemon : public daemon
 {
@@ -50,7 +52,7 @@ public:
             car_name,
         });
 
-        std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(false);
+        std::unique_ptr<LidarDevice> lidar_device = getLidarDevice();
         std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
         std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>(DeviceMovementController()));
         std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>(PluginManager());
@@ -68,9 +70,11 @@ public:
     void on_update() override
     {
         std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
-        if (!this->car_system->isConnected() && now - last_connected >= connection_interval) {
+        if (!this->car_system->isConnected() && now - last_connected >= connection_interval)
+        {
             auto connection_result = this->car_system->tryConnect();
-            if (!connection_result.has_value()) {
+            if (!connection_result.has_value())
+            {
                 dlog::error(connection_result.error());
             }
             last_connected = now;
@@ -81,7 +85,7 @@ public:
     void on_stop() override
     {
         dlog::info("Stopping rpi_daemon\n");
-		this->car_system->terminate();
+        this->car_system->terminate();
     }
 
     void on_reload(const INIReader reader) override
@@ -92,7 +96,7 @@ public:
             return;
         }
         dlog::info("Reloading rpi_daemon\n");
-        
+
         std::string host = reader.GetString("Host", "host", "");
         std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
@@ -100,7 +104,7 @@ public:
             host,
             car_name,
         });
-        
+
         this->car_system->setConfiguration(std::move(configuration));
         this->car_system->reload();
     }
@@ -111,10 +115,31 @@ private:
     std::chrono::time_point<std::chrono::steady_clock> last_connected = std::chrono::steady_clock::time_point::min();
 };
 
-void handleTerminate()
+// From: https://github.com/jeremy-rifkin/cpptrace/blob/c35392d20bbd6fc8faaa0d4b0b8b8576a5c76f77/src/cpptrace.cpp#L378ss
+[[noreturn]] void terminate_handler()
 {
-    cpptrace::print_trace();
-    std::abort();
+    try
+    {
+        auto ptr = std::current_exception();
+        if (ptr == nullptr)
+        {
+            dlog::alert("terminate called without an active exception\n");
+        }
+        else
+        {
+            std::rethrow_exception(ptr);
+        }
+    }
+    catch (cpptrace::exception &e)
+    {
+        dlog::alert(fmt::format("Terminate called after throwing an instance of {}: {}\n", cpptrace::demangle(typeid(e).name()), e.message()));
+        // e.trace().print(std::cerr, isatty(stderr_fileno));
+    }
+    catch (std::exception &e)
+    {
+        dlog::alert(fmt::format("Terminate called after throwing an instance of {}: {}\n", cpptrace::demangle(typeid(e).name()), e.what()));
+        // print_terminate_trace();
+    }
 }
 
 int main(int argc, const char *argv[])
@@ -126,7 +151,7 @@ int main(int argc, const char *argv[])
         return EXIT_FAILURE;
     }
 #endif
-    std::set_terminate(handleTerminate);
+    std::set_terminate(terminate_handler);
     rpi_daemon dmn;
     dmn.set_name("rpi_daemon");
     dmn.set_update_duration(std::chrono::milliseconds(500));
@@ -135,24 +160,17 @@ int main(int argc, const char *argv[])
     return 0;
 }
 
-std::unique_ptr<LidarDevice> getLidarDevice(bool dummy)
+std::unique_ptr<LidarDevice> getLidarDevice()
 {
-    if (dummy)
-    {
-        return std::make_unique<LidarDummy>();
-    }
-    else
-    {
 #ifdef __linux
-        auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
+    auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
 #else
-        auto maybe_scanner = LidarScanner::create("COM3");
+    auto maybe_scanner = LidarScanner::create("COM3");
 #endif
-        if (!maybe_scanner.has_value())
-        {
-            spdlog::error("Unable to connect to the Lidar Scanner");
-            throw std::runtime_error("Unable to connect to the Lidar Scanner");
-        }
+    if (maybe_scanner.has_value())
+    {
         return std::move(maybe_scanner.value());
     }
+    dlog::error("Unable to connect to the Lidar Scanner, defaulting to LidarDummy\n");
+    return std::make_unique<LidarDummy>();
 }
