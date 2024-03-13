@@ -35,7 +35,7 @@ namespace car::display::console::screen
 
 			std::function<void(std::string)> on_connect_failure = [&](std::string error_message) {
 				this->main_error_modal.setErrorMessage(error_message);
-				this->main_error_modal.exit_modal_shown = true;
+				this->main_error_modal.error_modal_shown = true;
 				};
 
 			this->connect_button.on_connect_failure = on_connect_failure;
