@@ -111,6 +111,13 @@ private:
 
 int main(int argc, const char *argv[])
 {
+#ifdef __linux
+    if (getuid())
+    {
+        std::cout << "This program will not work properly unless you are root. Please run this program as root using `sudo`.\n";
+        return EXIT_FAILURE;
+    }
+#endif
     rpi_daemon dmn;
     dmn.set_name("rpi_daemon");
     dmn.set_update_duration(std::chrono::milliseconds(500));

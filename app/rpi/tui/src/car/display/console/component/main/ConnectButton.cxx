@@ -26,7 +26,7 @@ namespace car::display::console::component::main
 					if (this->button_pressed)
 					{
 						this->main_button_text = "Attempting to connect to Websocket Server...";
-						auto connection_result = this->car_system->connect();
+						auto connection_result = this->car_system->tryConnect();
 						if (!connection_result.has_value()) {
 							this->button_pressed = false;
 							this->main_button_text = "Start Car Application";

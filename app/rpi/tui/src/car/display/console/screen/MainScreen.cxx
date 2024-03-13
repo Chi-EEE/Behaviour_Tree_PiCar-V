@@ -73,7 +73,7 @@ namespace car::display::console::screen
 							this->main_component = this->main_screen | border | flex | reflect(this->box);
 
 							this->main_component |= Modal(main_exit_modal_component, &main_exit_modal.exit_modal_shown);
-							this->main_component |= Modal(main_error_modal_component, &main_error_modal.exit_modal_shown);
+							this->main_component |= Modal(main_error_modal_component, &main_error_modal.error_modal_shown);
 		}
 
 		Component element()
