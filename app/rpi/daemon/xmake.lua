@@ -9,7 +9,8 @@ add_rules("mode.debug", "mode.release")
 
 set_allowedplats("linux")
 
-add_requires("daemonpp-fork")
+add_requires("cpptrace")
+add_requires("daemonpp-fork", {system = false})
 
 includes("../common/xmake.lua")
 
@@ -18,6 +19,7 @@ target("rpi_daemon")
 
     set_languages("cxx17")
     
+    add_packages("cpptrace")
     add_packages("daemonpp-fork")
 
     add_headerfiles("src/**.h")

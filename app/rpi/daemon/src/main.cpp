@@ -5,6 +5,8 @@
 
 #include <daemonpp/daemon.hpp>
 
+#include <cpptrace/cpptrace.hpp>
+
 #include "car/system/CarSystem.h"
 
 #include "car/system/lidar/LidarScanner.h"
@@ -40,7 +42,7 @@ public:
 
         std::string host = reader.GetString("Host", "host", "");
 
-        this->interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "interval", 1));
+        this->connection_interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "connection_interval", 1));
         std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
@@ -48,7 +50,7 @@ public:
             car_name,
         });
 
-        std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(true);
+        std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(false);
         std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
         std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>(DeviceMovementController()));
         std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>(PluginManager());
@@ -66,7 +68,7 @@ public:
     void on_update() override
     {
         std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
-        if (!this->car_system->isConnected() && now - last_connected >= interval) {
+        if (!this->car_system->isConnected() && now - last_connected >= connection_interval) {
             auto connection_result = this->car_system->tryConnect();
             if (!connection_result.has_value()) {
                 dlog::error(connection_result.error());
@@ -105,9 +107,15 @@ public:
 
 private:
     std::unique_ptr<CarSystem> car_system;
-    std::chrono::seconds interval = std::chrono::seconds(1);
+    std::chrono::seconds connection_interval = std::chrono::seconds(1);
     std::chrono::time_point<std::chrono::steady_clock> last_connected = std::chrono::steady_clock::time_point::min();
 };
+
+void handleTerminate()
+{
+    cpptrace::print_trace();
+    std::abort();
+}
 
 int main(int argc, const char *argv[])
 {
@@ -118,6 +126,7 @@ int main(int argc, const char *argv[])
         return EXIT_FAILURE;
     }
 #endif
+    std::set_terminate(handleTerminate);
     rpi_daemon dmn;
     dmn.set_name("rpi_daemon");
     dmn.set_update_duration(std::chrono::milliseconds(500));
