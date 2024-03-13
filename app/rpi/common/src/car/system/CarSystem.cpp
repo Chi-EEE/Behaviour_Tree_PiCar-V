@@ -71,13 +71,12 @@ namespace car::system
 	tl::expected<nullptr_t, std::string> CarSystem::tryConnect()
 	{
 		assert(!this->connectedToServer);
-		this->connectedToServer = true;
 		auto messaging_system_result = this->messaging_system->tryConnect();
 		if (!messaging_system_result.has_value())
 		{
-			this->connectedToServer = false;
 			return tl::make_unexpected(messaging_system_result.error());
 		}
+		this->connectedToServer = true;
 		return nullptr;
 	}
 

@@ -45,21 +45,25 @@ namespace car::system
 
 		void update();
 
+		const std::shared_ptr<Configuration> getConfiguration() const { return this->configuration; };
 		void setConfiguration(std::shared_ptr<Configuration> configuration);
 
-		LidarDevice* getLidarDevice() const {
+		LidarDevice *getLidarDevice() const
+		{
 			return this->lidar_device.get();
 		}
 
-		MessagingSystem* getMessagingSystem() const {
+		MessagingSystem *getMessagingSystem() const
+		{
 			return this->messaging_system.get();
 		}
 
-		MovementSystem* getMovementSystem() const {
+		MovementSystem *getMovementSystem() const
+		{
 			return this->movement_system.get();
 		}
 
-		template<typename T>
+		template <typename T>
 		const std::shared_ptr<T> getPlugin() const { return this->plugin_manager->getPlugin<T>(); }
 
 		const std::vector<Measure> getScanData() const { return this->lidar_device->getScanData(); }

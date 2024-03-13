@@ -70,14 +70,22 @@ public:
     void on_update() override
     {
         std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
-        if (!this->car_system->isConnected() && now - last_connected >= connection_interval)
+        if (!this->car_system->isConnected() && now - this->last_connected >= this->connection_interval)
         {
+            if (!this->attempted_to_reconnect) {
+                this->attempted_to_reconnect = true;
+                dlog::info(fmt::format("Attempting to connect to the WS Server at {}", this->car_system->getConfiguration()->host));
+            }
             auto connection_result = this->car_system->tryConnect();
             if (!connection_result.has_value())
             {
-                dlog::error(connection_result.error());
+                dlog::notice(connection_result.error());
+            } else {
+                dlog::info("Connected to the WS Server.");
             }
-            last_connected = now;
+            this->last_connected = now;
+        } else {
+            this->attempted_to_reconnect = false;
         }
         this->car_system->update();
     }
@@ -111,6 +119,8 @@ public:
 
 private:
     std::unique_ptr<CarSystem> car_system;
+
+    bool attempted_to_reconnect = false;
     std::chrono::seconds connection_interval = std::chrono::seconds(1);
     std::chrono::time_point<std::chrono::steady_clock> last_connected = std::chrono::steady_clock::time_point::min();
 };
