@@ -41,34 +41,55 @@ namespace car::system::messaging
 		ix::WebSocketHttpHeaders headers;
 		headers["code"] = this->configuration->code;
 		this->websocket->setExtraHeaders(headers);
-
-		/*this->websocket->setOnMessageCallback(
-			std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));*/
 	}
 
 	tl::expected<nullptr_t, std::string> MessagingSystem::start()
 	{
 		initializeWebSocket();
 
+		std::atomic<bool> success(true);
+		std::condition_variable condition;
+
+		this->websocket->setOnMessageCallback([&condition, &success](const ix::WebSocketMessagePtr& msg) {
+			if (msg->type == ix::WebSocketMessageType::Message) {
+				condition.notify_one();
+			}
+			else if (msg->type == ix::WebSocketMessageType::Close) {
+				success.store(false);
+				condition.notify_one();
+			}
+			}
+		);
+
 		this->websocket->start();
 
 		while (this->websocket->getReadyState() == ix::ReadyState::Connecting) {};
 
-		if (this->websocket->getReadyState() != ix::ReadyState::Open)
+		const auto ready_state = this->websocket->getReadyState();
+		if (ready_state != ix::ReadyState::Open)
 		{
+			this->websocket->stop();
+			this->websocket->close();
 			const std::string error_message = "Could not connect to websocket, please check the status of the websocket server.";
 			spdlog::error(error_message);
 			return tl::make_unexpected(error_message);
 		}
 
-		const ix::WebSocketInitResult websocket_init_result = this->websocket->connect(1);
+		std::mutex mutex;
+		std::unique_lock<std::mutex> lock(mutex);
+		condition.wait(lock);
 
-		if (!websocket_init_result.success)
+		if (!success)
 		{
-			const std::string error_message = "Could not connect to websocket, please check the status of the websocket server.";
+			this->websocket->stop();
+			this->websocket->close();
+			const std::string error_message = "Could not connect to websocket";
 			spdlog::error(error_message);
 			return tl::make_unexpected(error_message);
 		}
+
+		this->websocket->setOnMessageCallback(
+			std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));
 
 		return nullptr;
 	}

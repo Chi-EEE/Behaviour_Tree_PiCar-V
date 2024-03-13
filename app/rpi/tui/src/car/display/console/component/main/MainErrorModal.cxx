@@ -19,7 +19,9 @@ namespace car::display::console::component::main
 		Component element()
 		{
 			auto hide_exit_modal = [&]
-				{ this->exit_modal_shown = false; };
+				{ 
+					this->exit_modal_shown = false;
+				};
 
 			this->error_element = text("Error: Something went wrong. Please try again later.");
 
