@@ -38,7 +38,7 @@ public:
         }
         dlog::info("Starting rpi_daemon\n");
 
-        std::string host = reader.GetString("Host", "ip_address", "");
+        std::string host = reader.GetString("Host", "host", "");
 
         this->interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "interval", 1));
         std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
