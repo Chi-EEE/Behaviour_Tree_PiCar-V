@@ -40,7 +40,7 @@ using namespace car::display::console;
 using namespace car::configuration;
 using namespace car::plugin;
 
-std::unique_ptr<LidarDevice> getLidarDevice(bool dummy);
+std::unique_ptr<LidarDevice> getLidarDevice();
 
 int main(int argc, char *argv[])
 {
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 
     std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(maybe_configuration.value());
 
-    std::unique_ptr<LidarDevice> scanner = getLidarDevice(true);
+    std::unique_ptr<LidarDevice> scanner = getLidarDevice();
 
     std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
 
@@ -109,24 +109,21 @@ int main(int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
-std::unique_ptr<LidarDevice> getLidarDevice(bool dummy)
+std::unique_ptr<LidarDevice> getLidarDevice()
 {
-    if (dummy)
+#ifdef __linux
+    auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
+#else
+    auto maybe_scanner = LidarScanner::create("COM3");
+#endif
+    if (maybe_scanner.has_value())
     {
-        return std::make_unique<LidarDummy>();
+        spdlog::info("Found and using Lidar Scanner\n");
+        return std::move(maybe_scanner.value());
     }
     else
     {
-#ifdef __linux
-        auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
-#else
-        auto maybe_scanner = LidarScanner::create("COM3");
-#endif
-        if (!maybe_scanner.has_value())
-        {
-            spdlog::error("Unable to connect to the Lidar Scanner");
-            throw std::runtime_error("Unable to connect to the Lidar Scanner");
-        }
-        return std::move(maybe_scanner.value());
+        spdlog::warn("Unable to connect to the Lidar Scanner, defaulting to LidarDummy\n");
+        return std::make_unique<LidarDummy>();
     }
 }
