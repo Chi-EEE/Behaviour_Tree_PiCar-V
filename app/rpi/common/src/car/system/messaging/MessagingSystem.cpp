@@ -125,9 +125,9 @@ namespace car::system::messaging
 		const std::string type = message_json["type"].GetString();
 		try
 		{
-			switch (hash(type))
+			switch (utils::hash(type))
 			{
-			case hash("command"):
+			case utils::hash("command"):
 				if (!message_json.HasMember("command") || !message_json["command"].IsString())
 				{
 					return;

@@ -15,6 +15,8 @@
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
 
+#include "utils/Utility.hpp"
+
 #include "car/configuration/Configuration.h"
 
 namespace car::system::messaging
