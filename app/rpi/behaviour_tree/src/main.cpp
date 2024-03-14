@@ -71,7 +71,7 @@ int kbhit(void)
 
 std::unique_ptr<LidarDevice> getLidarDevice(bool dummy);
 
-int main(int argc, const char* argv[])
+int main(int argc, const char *argv[])
 {
 #ifdef __linux
 	if (getuid())
@@ -85,12 +85,11 @@ int main(int argc, const char* argv[])
 	std::string host = "";
 	std::string code = "";
 
-	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(host, code);
+	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{host, code});
 
 	cxxopts::Options options("Behaviour Tree CLI", "Program to parse Behaviour Tree");
 
-	options.add_options()
-		("behaviour_tree", "Behaviour Tree XML to run", cxxopts::value<std::string>());
+	options.add_options()("behaviour_tree", "Behaviour Tree XML to run", cxxopts::value<std::string>());
 
 	auto cli_result = options.parse(argc, argv);
 
@@ -130,7 +129,8 @@ int main(int argc, const char* argv[])
 	behaviour_tree_handler->startBehaviourTree();
 
 	std::cout << "Press any key to exit the loop." << std::endl;
-	while (!kbhit()) {
+	while (!kbhit())
+	{
 		car_system->update();
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}

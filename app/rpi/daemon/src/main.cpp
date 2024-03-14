@@ -50,10 +50,7 @@ public:
 
         spdlog::info("Started daemon with host: " + host + " and car_name: " + car_name + "\n");
 
-        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
-            host,
-            car_name,
-        });
+        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{host, car_name});
         this->any_configuration_empty = host.empty() || car_name.empty();
         if (this->any_configuration_empty)
         {
@@ -67,14 +64,14 @@ public:
         std::unique_ptr<LidarDevice> lidar_device = getLidarDevice();
         spdlog::info("Created the LidarDevice");
 
-        std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
+        std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
         spdlog::info("Created the MessengingSystem");
 
         std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
         // std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
         spdlog::info("Created the MovementSystem");
 
-        std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>(PluginManager());
+        std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>();
         spdlog::info("Created the PluginManager");
 
         spdlog::info("Creating the Car System");
