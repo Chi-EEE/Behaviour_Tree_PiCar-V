@@ -3,7 +3,26 @@
 #include <memory>
 #include <spdlog/spdlog.h>
 
-int main()
+#include "LidarScanner.h"
+
+int main() {
+    using namespace car::system::lidar;
+    auto maybe_lidar_scanner = LidarScanner::create("COM3");
+    if (!maybe_lidar_scanner.has_value()) {
+        std::cout << "Unable to open lidar\n";
+        return EXIT_FAILURE;
+    }
+    auto &lidar_scanner = maybe_lidar_scanner.value();
+    lidar_scanner->start();
+    for (int i = 0; i < 10; i++)
+    {
+        std::cout << lidar_scanner->getLidarMessage() << std::endl;
+    }
+    lidar_scanner->terminate();
+    return EXIT_SUCCESS;
+}
+
+int test()
 {
     using namespace rplidar;
     spdlog::set_level(spdlog::level::off);
@@ -18,26 +37,8 @@ int main()
     auto &lidar = lidar_result.value();
     std::cout << "Connected to lidar\n";
 
-    // auto info_result = lidar->get_info();
-    // if (!info_result.has_value())
-    // {
-    //     std::cout << "Unable to get value of get_info() " << info_result.error();
-    //     return 0;
-    // }
-    // auto &info = info_result.value();
-    // std::cout << fmt::format("model: {}, firmware: ({}, {}), hardware: {}, serialnumber: {}\n", info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);
-
-    // auto health_result = lidar->get_health();
-    // if (!health_result.has_value())
-    // {
-    //     std::cout << "Unable to get value of get_health() "<< health_result.error();
-    //     return 0;
-    // }
-    // auto &health = health_result.value();
-    // std::cout << fmt::format("({}, {})\n", health.status, health.errorCode);
-
     std::function<std::vector<Measure>()> scanGenerator = lidar->iter_scans();
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 100; i++)
     {
         std::vector<Measure> scan = scanGenerator();
         std::cout << "Got " << scan.size() << " Measures!\n";

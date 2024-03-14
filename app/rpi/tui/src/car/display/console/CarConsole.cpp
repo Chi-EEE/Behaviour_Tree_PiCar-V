@@ -72,7 +72,7 @@ namespace car::display::console
 			{
 				do {
 					using namespace std::chrono_literals;
-					std::this_thread::sleep_for(std::chrono::milliseconds(500));
+					std::this_thread::sleep_for(std::chrono::milliseconds(5));
 					screen.Post([&]
 						{
 							settings_screen.update();

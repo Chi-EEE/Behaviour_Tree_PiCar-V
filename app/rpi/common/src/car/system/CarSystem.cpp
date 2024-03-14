@@ -50,7 +50,7 @@ namespace car::system
 	void CarSystem::start()
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
-		this->lidar_device->start();
+		//this->lidar_device->start();
 		this->movement_system->start();
 		this->started = true;
 	}
@@ -74,6 +74,7 @@ namespace car::system
 		{
 			return tl::make_unexpected(messaging_system_result.error());
 		}
+		this->lidar_device->start();
 		this->connectedToServer = true;
 		return nullptr;
 	}
@@ -85,6 +86,7 @@ namespace car::system
 		assert(this->connectedToServer && "Car System is not connected to the WS Server.");
 		this->connectedToServer = false;
 		this->messaging_system->stop();
+		this->lidar_device->stop();
 	}
 
 	/// <summary>
