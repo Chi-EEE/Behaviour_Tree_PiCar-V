@@ -21,4 +21,4 @@ This will only work for Linux.
 `xmake uninstall --admin rpi_daemon`
 
 ## Speedrun
-`xmake && xmake install --admin rpi_daemon && sudo systemctl daemon-reload && sudo systemctl start rpi_daemon`
+`xmake && sudo systemctl stop rpi_daemon && xmake install --admin rpi_daemon && sudo systemctl daemon-reload && sudo systemctl start rpi_daemon`

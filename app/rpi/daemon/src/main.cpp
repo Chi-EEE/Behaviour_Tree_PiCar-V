@@ -55,7 +55,8 @@ public:
             car_name,
         });
         this->any_configuration_empty = host.empty() || car_name.empty();
-        if (this->any_configuration_empty) {
+        if (this->any_configuration_empty)
+        {
             spdlog::warn("A property in the configuration is empty, this daemon will not run with an empty property.");
         }
 
@@ -108,12 +109,12 @@ public:
             if (!this->attempted_to_reconnect)
             {
                 this->attempted_to_reconnect = true;
-                dlog::info(fmt::format(R"(Going to repeatedly attempt to connect to the WS Server "{}" at {} second intervals.)", this->car_system->getConfiguration()->host, this->connection_interval.count()));
+                dlog::notice(fmt::format(R"(Going to repeatedly attempt to connect to the WS Server "{}" at {} second intervals.)", this->car_system->getConfiguration()->host, this->connection_interval.count()));
             }
             auto connection_result = this->car_system->tryConnect();
             if (!connection_result.has_value())
             {
-                dlog::notice(connection_result.error());
+                dlog::info(connection_result.error());
             }
             else
             {
@@ -145,7 +146,7 @@ public:
 
     void on_stop() override
     {
-        dlog::info("Stopping rpi_daemon\n");
+        dlog::notice("Terminating the Daemon");
         this->car_system->terminate();
     }
 
@@ -166,7 +167,8 @@ public:
             car_name,
         });
         this->any_configuration_empty = host.empty() || car_name.empty();
-        if (this->any_configuration_empty) {
+        if (this->any_configuration_empty)
+        {
             spdlog::warn("A property in the configuration is empty, this daemon will not run with an empty property.");
         }
 
@@ -272,8 +274,12 @@ std::unique_ptr<LidarDevice> getLidarDevice()
 #endif
     if (maybe_scanner.has_value())
     {
+        spdlog::info("Found and using Lidar Scanner\n");
         return std::move(maybe_scanner.value());
     }
-    dlog::error("Unable to connect to the Lidar Scanner, defaulting to LidarDummy\n");
-    return std::make_unique<LidarDummy>();
+    else
+    {
+        spdlog::warn("Unable to connect to the Lidar Scanner, defaulting to LidarDummy\n");
+        return std::make_unique<LidarDummy>();
+    }
 }
