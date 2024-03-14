@@ -47,6 +47,8 @@ public:
         this->connection_interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "connection_interval", 1));
         std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
+        dlog::info("Started daemon with host: " + host + " and car_name: " + car_name + "\n");
+
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
             host,
             car_name,
@@ -67,27 +69,61 @@ public:
         this->car_system->start();
     }
 
-    void on_update() override
+    void update()
     {
         std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
         if (!this->car_system->isConnected() && now - this->last_connected >= this->connection_interval)
         {
-            if (!this->attempted_to_reconnect) {
+            if (!this->attempted_to_reconnect)
+            {
                 this->attempted_to_reconnect = true;
-                dlog::info(fmt::format("Attempting to connect to the WS Server at {}", this->car_system->getConfiguration()->host));
+                auto configuration = this->car_system->getConfiguration();
+                if (configuration->car_name.empty() || configuration->host.empty())
+                {
+                    dlog::error("Car name or host is empty, cannot connect to the WS Server.");
+                    return;
+                }
+                else
+                {
+                    dlog::info(fmt::format(R"(Attempting to connect to the WS Server at "{}")", configuration->host));
+                    return;
+                }
             }
             auto connection_result = this->car_system->tryConnect();
             if (!connection_result.has_value())
             {
                 dlog::notice(connection_result.error());
-            } else {
+            }
+            else
+            {
                 dlog::info("Connected to the WS Server.");
             }
             this->last_connected = now;
-        } else {
+        }
+        else
+        {
             this->attempted_to_reconnect = false;
         }
         this->car_system->update();
+    }
+
+    void on_update() override
+    {
+        try
+        {
+            this->update();
+        }
+        catch (cpptrace::exception &e)
+        {
+            dlog::error("Error: " + std::string(e.message()) + "\n");
+            std::ostringstream buffer;
+            e.trace().print(buffer, cpptrace::isatty(cpptrace::stderr_fileno));
+            dlog::error(buffer.str());
+        }
+        catch (std::exception &e)
+        {
+            dlog::error("Error: " + std::string(e.what()) + "\n");
+        }
     }
 
     void on_stop() override
@@ -103,10 +139,10 @@ public:
             dlog::alert("Could not load 'rpi_daemon.service'\n");
             return;
         }
-        dlog::info("Reloading rpi_daemon\n");
-
         std::string host = reader.GetString("Host", "host", "");
         std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
+
+        dlog::info(fmt::format(R"(Reloading daemon with host: "{}" and car_name: "{}"\n)", host, car_name));
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
             host,
@@ -114,6 +150,8 @@ public:
         });
 
         this->car_system->setConfiguration(std::move(configuration));
+        this->attempted_to_reconnect = false;
+
         this->car_system->reload();
     }
 
@@ -127,33 +165,6 @@ private:
     std::chrono::time_point<std::chrono::steady_clock> last_connected;
 };
 
-// From: https://github.com/jeremy-rifkin/cpptrace/blob/c35392d20bbd6fc8faaa0d4b0b8b8576a5c76f77/src/cpptrace.cpp#L378ss
-[[noreturn]] void terminate_handler()
-{
-    try
-    {
-        auto ptr = std::current_exception();
-        if (ptr == nullptr)
-        {
-            dlog::alert("terminate called without an active exception\n");
-        }
-        else
-        {
-            std::rethrow_exception(ptr);
-        }
-    }
-    catch (cpptrace::exception &e)
-    {
-        dlog::alert(fmt::format("Terminate called after throwing an instance of {}: {}\n", cpptrace::demangle(typeid(e).name()), e.message()));
-        // e.trace().print(std::cerr, isatty(stderr_fileno));
-    }
-    catch (std::exception &e)
-    {
-        dlog::alert(fmt::format("Terminate called after throwing an instance of {}: {}\n", cpptrace::demangle(typeid(e).name()), e.what()));
-        // print_terminate_trace();
-    }
-}
-
 int main(int argc, const char *argv[])
 {
 #ifdef __linux
@@ -163,7 +174,6 @@ int main(int argc, const char *argv[])
         return EXIT_FAILURE;
     }
 #endif
-    std::set_terminate(terminate_handler);
     rpi_daemon dmn;
     dmn.set_name("rpi_daemon");
     dmn.set_update_duration(std::chrono::milliseconds(500));
