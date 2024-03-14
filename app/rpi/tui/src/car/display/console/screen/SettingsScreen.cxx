@@ -30,7 +30,7 @@ namespace car::display::console::screen
 	{
 	public:
 		SettingsScreen(std::shared_ptr<CarSystem> car_system, std::shared_ptr<JsonConfiguration> json_configuration) : car_system(car_system),
-			debug_messaging_text_box(DebugMessagingTextbox(car_system->getMessagingSystem()->getHandleMessageSignal())),
+			debug_messaging_text_box(DebugMessagingTextbox(car_system->getMessagingSystem()->getMessageSignal())),
 			settings_edit_config(car_system, json_configuration)
 		{
 		}

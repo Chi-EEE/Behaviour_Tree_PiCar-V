@@ -8,6 +8,8 @@
 
 #include <nod/nod.hpp>
 
+#include "utils/Utility.hpp"
+
 #include "car/plugin/Plugin.h"
 
 #include "behaviour_tree/BehaviourTreeParser.hpp"
@@ -25,19 +27,62 @@ namespace behaviour_tree
 			this->car_system = car_system;
 			// The BehaviourTreeParser does not come with a CustomNodeParser since each program can have a different set of Action nodes
 			BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
-			this->car_system->getMessagingSystem()->getCustomCommandSignal().connect([&](std::string custom_command_type, std::string custom)
+			this->car_system->getMessagingSystem()->getCommandSignal().connect(std::bind(&BehaviourTreeHandler::handleCommand, this, std::placeholders::_1, std::placeholders::_2));
+		}
+
+		void handleCommand(const std::string message, const rapidjson::Value &message_json)
+		{
+			if (message_json["command"].GetString() != "behaviour_tree")
+			{
+				return;
+			}
+			if (!message_json.HasMember("action") || !message_json["action"].IsString())
+			{
+				spdlog::error(R"(The property "action" does not exist in the given json.)");
+				return;
+			}
+			switch (utils::hash(message_json["action"].GetString()))
+			{
+				case utils::hash("set"):
 				{
-					if (custom_command_type != "behaviour_tree") {
-						return;
-					}
-					auto maybe_behaviour_tree = BehaviourTreeParser::instance().parseXML(custom);
-					if (!maybe_behaviour_tree.has_value()) {
-						spdlog::error("Behaviour tree parsing failed | {} | {}", maybe_behaviour_tree.error(), custom);
-						return;
-					}
-					auto& behaviour_tree = maybe_behaviour_tree.value();
-					spdlog::info("Behaviour tree parsed successfully | {}", behaviour_tree->toString());
-					this->setBehaviourTree(behaviour_tree); });
+					this->setBehaviourTree(message_json);
+					break;
+				}
+				case utils::hash("start"):
+				{
+					this->startBehaviourTree();
+					break;
+				} 
+			};
+		}
+
+		void setBehaviourTree(const rapidjson::Value &message_json)
+		{
+			if (!message_json.HasMember("data") || !message_json["data"].IsString())
+			{
+				spdlog::error(R"(The property "data" does not exist in the given json.)");
+				return;
+			}
+			auto maybe_behaviour_tree = BehaviourTreeParser::instance().parseXML(message_json["data"].GetString());
+			if (!maybe_behaviour_tree.has_value())
+			{
+				spdlog::error(R"(Unable to parse the given behaviour tree | {})", maybe_behaviour_tree.error());
+				return;
+			}
+			auto &behaviour_tree = maybe_behaviour_tree.value();
+
+			spdlog::info("Behaviour tree parsed successfully | {}", behaviour_tree->toString());
+			this->_setBehaviourTree(behaviour_tree);
+		}
+
+		void startBehaviourTree()
+		{
+			assert(this->behaviour_tree != nullptr);
+			assert(this->car_system != nullptr);
+
+			this->tick_count = 0;
+			std::shared_ptr<Context> context = std::make_shared<CarContext>(CarContext(this->behaviour_tree, this->car_system));
+			this->context = context;
 		}
 
 		void update() final override
@@ -50,16 +95,6 @@ namespace behaviour_tree
 			++this->tick_count;
 		}
 
-		void start()
-		{
-			assert(this->behaviour_tree != nullptr);
-			assert(this->car_system != nullptr);
-            
-			this->tick_count = 0;
-			std::shared_ptr<Context> context = std::make_shared<CarContext>(CarContext(this->behaviour_tree, this->car_system));
-			this->context = context;
-		}
-
 		void stop() final override
 		{
 			this->context = nullptr;
@@ -70,13 +105,14 @@ namespace behaviour_tree
 			return "BehaviourTreeHandler";
 		}
 
-		void setBehaviourTree(std::shared_ptr<BehaviourTree> behaviour_tree) {
+		void _setBehaviourTree(std::shared_ptr<BehaviourTree> behaviour_tree)
+		{
 			this->behaviour_tree = behaviour_tree;
 		}
 
 	private:
 		std::shared_ptr<BehaviourTree> behaviour_tree;
-		
+
 		std::shared_ptr<Context> context;
 
 		int tick_count = 0;
