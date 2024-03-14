@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 #endif
     std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
 
-    std::shared_ptr<JsonConfiguration> json_configuration = std::make_shared<JsonConfiguration>(JsonConfiguration(exe_dir));
+    std::shared_ptr<JsonConfiguration> json_configuration = std::make_shared<JsonConfiguration>(exe_dir);
     json_configuration->setConfigFilePath("settings/config.jsonc");
 
     auto maybe_configuration = json_configuration->loadConfiguration();
@@ -65,9 +65,9 @@ int main(int argc, char *argv[])
 
     std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(maybe_configuration.value());
 
-    std::unique_ptr<LidarDevice> scanner = getLidarDevice();
+    std::unique_ptr<LidarDevice> lidar_device = getLidarDevice();
 
-    std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
+    std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
 
 #ifdef __linux
     constexpr bool dummy = false;
@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
 
     std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
         configuration,
-        std::move(scanner),
+        std::move(lidar_device),
         std::move(messaging_system),
         std::move(movement_system),
         std::move(plugin_manager));

@@ -1,0 +1,5 @@
+includes("../other/rplidar/xmake.lua")
+target("lLidar")
+    set_kind("binary")
+    add_files("test.cpp")
+    add_deps("rplidar")

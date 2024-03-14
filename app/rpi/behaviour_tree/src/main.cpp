@@ -80,15 +80,12 @@ int main(int argc, const char* argv[])
 		return EXIT_FAILURE;
 	}
 #endif
-	BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));
+	BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>());
 
 	std::string host = "";
 	std::string code = "";
 
-	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
-		host,
-		code,
-		});
+	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(host, code);
 
 	cxxopts::Options options("Behaviour Tree CLI", "Program to parse Behaviour Tree");
 
@@ -97,14 +94,14 @@ int main(int argc, const char* argv[])
 
 	auto cli_result = options.parse(argc, argv);
 
-	std::unique_ptr<LidarDevice> scanner = std::make_unique<LidarDummy>(LidarDummy());
+	std::unique_ptr<LidarDevice> lidar_device = std::make_unique<LidarDummy>();
 
-	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
+	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
 
 	std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
 
 	std::string behaviour_tree_string = cli_result["behaviour_tree"].as<std::string>();
-	
+
 	auto behaviour_tree_result = BehaviourTreeParser::instance().parseXML(behaviour_tree_string);
 
 	if (!behaviour_tree_result.has_value())
@@ -123,7 +120,7 @@ int main(int argc, const char* argv[])
 
 	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
 		configuration,
-		std::move(scanner),
+		std::move(lidar_device),
 		std::move(messaging_system),
 		std::move(movement_system),
 		std::move(plugin_manager));

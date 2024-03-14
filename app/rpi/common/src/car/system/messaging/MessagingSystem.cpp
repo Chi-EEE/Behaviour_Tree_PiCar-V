@@ -63,9 +63,11 @@ namespace car::system::messaging
 
 	void MessagingSystem::stop()
 	{
-		assert(this->websocket != nullptr);
-		this->websocket->stop();
-		this->websocket = nullptr;
+		if (this->websocket != nullptr)
+		{
+			this->websocket->stop();
+			this->websocket = nullptr;
+		}
 	}
 
 	void MessagingSystem::terminate()

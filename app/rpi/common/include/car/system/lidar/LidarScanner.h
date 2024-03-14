@@ -30,13 +30,10 @@ namespace car::system::lidar
 			}
 		}
 
-		LidarScanner(std::unique_ptr<RPLidar> lidar) : lidar(std::move(lidar)){};
+		LidarScanner(std::unique_ptr<RPLidar> lidar) : lidar(std::move(lidar)), scan_generator(this->lidar->iter_scans()) {};
 
 		void initialize() const final override
 		{
-			this->lidar->reset();
-			this->lidar->stop();
-			this->lidar->stop_motor();
 		};
 
 		void start() const final override
@@ -46,7 +43,7 @@ namespace car::system::lidar
 
 		std::vector<Measure> scan() const final override
 		{
-			return this->lidar->iter_scans()();
+			return this->scan_generator();
 		};
 
 		void stop() const final override
@@ -68,6 +65,7 @@ namespace car::system::lidar
 
 	private:
 		std::unique_ptr<RPLidar> lidar;
+		std::function<std::vector<Measure>()> scan_generator;
 	};
 }
 
