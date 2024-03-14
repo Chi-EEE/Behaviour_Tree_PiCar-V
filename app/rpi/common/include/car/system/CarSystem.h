@@ -21,6 +21,7 @@ using namespace car::system::movement;
 
 namespace car::system
 {
+	// Make sure this is stored as a shared_ptr
 	class CarSystem : public std::enable_shared_from_this<CarSystem>
 	{
 	public:
@@ -76,6 +77,8 @@ namespace car::system
 		const std::unique_ptr<MovementSystem> movement_system;
 		const std::unique_ptr<PluginManager> plugin_manager;
 
+		bool initialized = false;
+		bool started = false;
 		bool connectedToServer = false;
 	};
 }

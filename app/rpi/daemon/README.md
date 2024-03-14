@@ -19,3 +19,6 @@ This will only work for Linux.
 
 ## Uninstall Raspberry Pi Daemon
 `xmake uninstall --admin rpi_daemon`
+
+## Speedrun
+`xmake && xmake install --admin rpi_daemon && sudo systemctl daemon-reload && sudo systemctl start rpi_daemon`

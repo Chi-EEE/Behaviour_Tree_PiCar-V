@@ -9,6 +9,8 @@
 
 #include <fmt/format.h>
 
+#include <spdlog/sinks/callback_sink.h>
+
 #include "car/system/CarSystem.h"
 
 #include "car/system/lidar/LidarScanner.h"
@@ -37,39 +39,58 @@ public:
     {
         if (reader.ParseError() < 0)
         {
-            dlog::alert("Could not load 'rpi_daemon.service'\n");
+            spdlog::critical("Could not load 'rpi_daemon.service'\n");
             return;
         }
-        dlog::info("Starting rpi_daemon\n");
 
         std::string host = reader.GetString("Host", "host", "");
 
         this->connection_interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "connection_interval", 1));
         std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
-        dlog::info("Started daemon with host: " + host + " and car_name: " + car_name + "\n");
+        spdlog::info("Started daemon with host: " + host + " and car_name: " + car_name + "\n");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
             host,
             car_name,
         });
+        spdlog::info("Created the Configuration");
+
+        spdlog::info("Starting to create the Sub Systems");
 
         std::unique_ptr<LidarDevice> lidar_device = getLidarDevice();
-        std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
-        std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>(DeviceMovementController()));
-        std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>(PluginManager());
+        spdlog::info("Created the LidarDevice");
 
-        this->car_system = std::make_unique<CarSystem>(
+        std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>(MessagingSystem());
+        spdlog::info("Created the MessengingSystem");
+
+        std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
+        // std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
+        spdlog::info("Created the MovementSystem");
+    
+        std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>(PluginManager());
+        spdlog::info("Created the PluginManager");
+
+        spdlog::info("Creating the Car System");
+        this->car_system = std::make_shared<CarSystem>(
             configuration,
             std::move(lidar_device),
             std::move(messaging_system),
             std::move(movement_system),
             std::move(plugin_manager));
 
+        spdlog::info("Initializing the Car System");
+        this->car_system->initialize();
+        spdlog::info("Completed initializing the Car System");
+
+        spdlog::info("Starting up the Car System");
         this->car_system->start();
+        spdlog::info("Completed starting the Car System");
+
+        spdlog::info("Completed starting up Daemon");
     }
 
-    void update()
+    inline void update()
     {
         std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
         if (!this->car_system->isConnected() && now - this->last_connected >= this->connection_interval)
@@ -156,7 +177,7 @@ public:
     }
 
 private:
-    std::unique_ptr<CarSystem> car_system;
+    std::shared_ptr<CarSystem> car_system;
 
     bool attempted_to_reconnect = false;
     std::chrono::seconds connection_interval = std::chrono::seconds(1);
@@ -164,6 +185,34 @@ private:
     // This is initialized as 0
     std::chrono::time_point<std::chrono::steady_clock> last_connected;
 };
+
+// From: https://github.com/jeremy-rifkin/cpptrace/blob/c35392d20bbd6fc8faaa0d4b0b8b8576a5c76f77/src/cpptrace.cpp#L378ss
+[[noreturn]] void terminate_handler()
+{
+    try
+    {
+        auto ptr = std::current_exception();
+        if (ptr == nullptr)
+        {
+            dlog::alert("terminate called without an active exception\n");
+        }
+        else
+        {
+            std::rethrow_exception(ptr);
+        }
+    }
+    catch (cpptrace::exception &e)
+    {
+        dlog::alert(fmt::format("Terminate called after throwing an instance of {}: {}\n", cpptrace::demangle(typeid(e).name()), e.message()));
+        std::ostringstream buffer;
+        e.trace().print(buffer, cpptrace::isatty(cpptrace::stderr_fileno));
+        dlog::error(buffer.str());
+    }
+    catch (std::exception &e)
+    {
+        dlog::alert(fmt::format("Terminate called after throwing an instance of {}: {}\n", cpptrace::demangle(typeid(e).name()), e.what()));
+    }
+}
 
 int main(int argc, const char *argv[])
 {
@@ -174,6 +223,32 @@ int main(int argc, const char *argv[])
         return EXIT_FAILURE;
     }
 #endif
+    std::set_terminate(terminate_handler);
+    auto dlog_logger = spdlog::callback_logger_mt("Daemon", [&](const spdlog::details::log_msg &msg)
+                                                  {
+        std::string msg_str = std::string(msg.payload.data(), msg.payload.size());
+        switch (msg.level)
+        {
+            case spdlog::level::level_enum::trace:
+            case spdlog::level::level_enum::info:
+                dlog::info(msg_str);
+                break;
+            case spdlog::level::level_enum::warn:
+                dlog::warning(msg_str);
+                break;
+            case spdlog::level::level_enum::critical:
+                dlog::critical(msg_str);
+                break;
+            case spdlog::level::level_enum::debug:
+                dlog::debug(msg_str);
+                break;
+            case spdlog::level::level_enum::err:
+                dlog::error(msg_str);
+                break;
+            default:
+                break;
+        } });
+    spdlog::set_default_logger(dlog_logger);
     rpi_daemon dmn;
     dmn.set_name("rpi_daemon");
     dmn.set_update_duration(std::chrono::milliseconds(500));

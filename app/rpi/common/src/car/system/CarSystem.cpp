@@ -32,6 +32,7 @@ namespace car::system
 
 	void CarSystem::initialize()
 	{
+		assert(!this->initialized && "Car System is already initialized.");
 		this->messaging_system->initialize(this->configuration);
 		this->lidar_device->initialize();
 		this->movement_system->initialize();
@@ -48,21 +49,29 @@ namespace car::system
 			{
 				this->getMovementSystem()->setFrontWheelsAngle(angle);
 			});
+	
+		this->initialized = true;
 	}
 
 	void CarSystem::reload()
 	{
+		assert(this->initialized && "Car System has not been initialized yet.");
+		assert(this->started && "Car System has not been started yet.");
 		this->messaging_system->setConfiguration(this->configuration);
 	}
 
 	void CarSystem::start()
 	{
+		assert(this->initialized && "Car System has not been initialized yet.");
 		this->lidar_device->start();
 		this->movement_system->start();
+		this->started = true;
 	}
 
 	void CarSystem::stop()
 	{
+		assert(this->initialized && "Car System has not been initialized yet.");
+		assert(this->started && "Car System has not been started yet.");
 		this->lidar_device->stop();
 		this->movement_system->stop();
 		this->plugin_manager->stop();
@@ -70,7 +79,9 @@ namespace car::system
 
 	tl::expected<nullptr_t, std::string> CarSystem::tryConnect()
 	{
-		assert(!this->connectedToServer);
+		assert(this->initialized && "Car System has not been initialized yet.");
+		assert(this->started && "Car System has not been started yet.");
+		assert(!this->connectedToServer && "Car System is already connected to the WS Server.");
 		auto messaging_system_result = this->messaging_system->tryConnect();
 		if (!messaging_system_result.has_value())
 		{
@@ -82,7 +93,9 @@ namespace car::system
 
 	void CarSystem::disconnect()
 	{
-		assert(this->connectedToServer);
+		assert(this->initialized && "Car System has not been initialized yet.");
+		assert(this->started && "Car System has not been started yet.");
+		assert(this->connectedToServer && "Car System is not connected to the WS Server.");
 		this->connectedToServer = false;
 		this->messaging_system->stop();
 	}
