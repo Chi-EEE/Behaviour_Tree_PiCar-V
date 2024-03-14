@@ -54,6 +54,11 @@ public:
             host,
             car_name,
         });
+        this->any_configuration_empty = host.empty() || car_name.empty();
+        if (this->any_configuration_empty) {
+            spdlog::warn("A property in the configuration is empty, this daemon will not run with an empty property.");
+        }
+
         spdlog::info("Created the Configuration");
 
         spdlog::info("Starting to create the Sub Systems");
@@ -67,7 +72,7 @@ public:
         std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
         // std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
         spdlog::info("Created the MovementSystem");
-    
+
         std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>(PluginManager());
         spdlog::info("Created the PluginManager");
 
@@ -92,23 +97,18 @@ public:
 
     inline void update()
     {
+        if (this->any_configuration_empty)
+        {
+            return;
+        }
+
         std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
         if (!this->car_system->isConnected() && now - this->last_connected >= this->connection_interval)
         {
             if (!this->attempted_to_reconnect)
             {
                 this->attempted_to_reconnect = true;
-                auto configuration = this->car_system->getConfiguration();
-                if (configuration->car_name.empty() || configuration->host.empty())
-                {
-                    dlog::error("Car name or host is empty, cannot connect to the WS Server.");
-                    return;
-                }
-                else
-                {
-                    dlog::info(fmt::format(R"(Attempting to connect to the WS Server at "{}")", configuration->host));
-                    return;
-                }
+                dlog::info(fmt::format(R"(Going to repeatedly attempt to connect to the WS Server "{}" at {} second intervals.)", this->car_system->getConfiguration()->host, this->connection_interval.count()));
             }
             auto connection_result = this->car_system->tryConnect();
             if (!connection_result.has_value())
@@ -120,10 +120,6 @@ public:
                 dlog::info("Connected to the WS Server.");
             }
             this->last_connected = now;
-        }
-        else
-        {
-            this->attempted_to_reconnect = false;
         }
         this->car_system->update();
     }
@@ -169,8 +165,13 @@ public:
             host,
             car_name,
         });
+        this->any_configuration_empty = host.empty() || car_name.empty();
+        if (this->any_configuration_empty) {
+            spdlog::warn("A property in the configuration is empty, this daemon will not run with an empty property.");
+        }
 
         this->car_system->setConfiguration(std::move(configuration));
+
         this->attempted_to_reconnect = false;
 
         this->car_system->reload();
@@ -179,7 +180,12 @@ public:
 private:
     std::shared_ptr<CarSystem> car_system;
 
+    // To check if any configuration is empty
+    bool any_configuration_empty = false;
+
+    // To print out reconnect message once
     bool attempted_to_reconnect = false;
+
     std::chrono::seconds connection_interval = std::chrono::seconds(1);
 
     // This is initialized as 0
