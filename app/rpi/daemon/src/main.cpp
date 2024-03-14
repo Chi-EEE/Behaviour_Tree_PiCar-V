@@ -259,7 +259,7 @@ int main(int argc, const char *argv[])
     spdlog::set_default_logger(dlog_logger);
     rpi_daemon dmn;
     dmn.set_name("rpi_daemon");
-    dmn.set_update_duration(std::chrono::milliseconds(500));
+    dmn.set_update_duration(std::chrono::milliseconds(5));
     dmn.set_cwd("/");
     dmn.run(argc, argv);
     return 0;
