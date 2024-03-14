@@ -37,19 +37,6 @@ namespace car::system
 		this->lidar_device->initialize();
 		this->movement_system->initialize();
 		this->plugin_manager->initialize(shared_from_this());
-
-		this->messaging_system->speed_command_signal.connect(
-			[this](const int speed)
-			{
-				this->getMovementSystem()->setRearWheelsSpeed(speed);
-			});
-
-		this->messaging_system->angle_command_signal.connect(
-			[this](const float angle)
-			{
-				this->getMovementSystem()->setFrontWheelsAngle(angle);
-			});
-	
 		this->initialized = true;
 	}
 
