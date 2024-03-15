@@ -41,9 +41,13 @@ namespace car::system::messaging
 		nod::signal<void(const std::string)>& getDisconnectSignal() { return this->on_disconnect_signal; }
 
 		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const;
+		void onDisconnect(const std::string);
+
 		std::string getUUID() const { return this->uuid; }
 		void handleMessage(const std::string& message) const;
 		void sendMessage(const std::string& message);
+
+		const bool isConnected() const { return this->connected; }
 
 		nod::signal<void()> on_connect_signal;
 		nod::signal<void(std::string)> on_disconnect_signal;
@@ -60,6 +64,8 @@ namespace car::system::messaging
 		std::string websocket_url;
 
 		std::string uuid;
+
+		bool connected = false;
 	};
 };
 

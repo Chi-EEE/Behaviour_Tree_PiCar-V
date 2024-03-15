@@ -101,7 +101,7 @@ public:
         }
 
         std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
-        const bool CAN_CONNECT = !this->car_system->isConnected() && now - this->last_connected >= this->connection_interval;
+        const bool CAN_CONNECT = !this->car_system->getMessagingSystem()->isConnected() && now - this->last_connected >= this->connection_interval;
         if (CAN_CONNECT)
         {
             this->connect(now);

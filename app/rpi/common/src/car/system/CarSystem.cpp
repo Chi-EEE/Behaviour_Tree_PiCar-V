@@ -68,14 +68,13 @@ namespace car::system
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
 		assert(this->started && "Car System has not been started yet.");
-		assert(!this->connectedToServer && "Car System is already connected to the WS Server.");
+		assert(!this->messaging_system->isConnected() && "Car System is already connected to the WS Server.");
 		auto messaging_system_result = this->messaging_system->tryConnect();
 		if (!messaging_system_result.has_value())
 		{
 			return tl::make_unexpected(messaging_system_result.error());
 		}
 		this->lidar_device->start();
-		this->connectedToServer = true;
 		return nullptr;
 	}
 
@@ -83,8 +82,7 @@ namespace car::system
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
 		assert(this->started && "Car System has not been started yet.");
-		assert(this->connectedToServer && "Car System is not connected to the WS Server.");
-		this->connectedToServer = false;
+		assert(this->messaging_system->isConnected() && "Car System is not connected to the WS Server.");
 		this->messaging_system->stop();
 		this->lidar_device->stop();
 	}
@@ -94,7 +92,6 @@ namespace car::system
 	/// </summary>
 	void CarSystem::terminate()
 	{
-		this->connectedToServer = false;
 		this->messaging_system->terminate();
 		this->lidar_device->terminate();
 		this->movement_system->terminate();
@@ -103,7 +100,7 @@ namespace car::system
 
 	void CarSystem::update()
 	{
-		if (this->connectedToServer)
+		if (this->messaging_system->isConnected())
 		{
 			this->messaging_system->sendMessage(this->lidar_device->getLidarMessage());
 		}

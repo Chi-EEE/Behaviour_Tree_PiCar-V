@@ -29,7 +29,9 @@ namespace car::system::messaging
 		ix::initNetSystem();
 		this->setConfiguration(configuration);
 		this->message_signal.connect([this](const std::string message)
-			{ this->handleMessage(message); });
+									 { this->handleMessage(message); });
+		this->on_disconnect_signal.connect([this](const std::string message)
+										   { this->onDisconnect(message); });
 	}
 
 	void MessagingSystem::initializeWebSocket()
@@ -49,7 +51,8 @@ namespace car::system::messaging
 
 		auto maybe_uuid = this->getFirstMessage();
 
-		if (!maybe_uuid.has_value()) {
+		if (!maybe_uuid.has_value())
+		{
 			return tl::make_unexpected(maybe_uuid.error());
 		}
 
@@ -57,6 +60,8 @@ namespace car::system::messaging
 			std::bind(&MessagingSystem::onMessageCallback, this, std::placeholders::_1));
 
 		this->uuid = maybe_uuid.value();
+
+		this->connected = true;
 
 		return nullptr;
 	}
@@ -81,7 +86,7 @@ namespace car::system::messaging
 		this->configuration = configuration;
 	}
 
-	void MessagingSystem::onMessageCallback(const ix::WebSocketMessagePtr& msg) const
+	void MessagingSystem::onMessageCallback(const ix::WebSocketMessagePtr &msg) const
 	{
 		switch (msg->type)
 		{
@@ -107,7 +112,12 @@ namespace car::system::messaging
 		}
 	}
 
-	void MessagingSystem::handleMessage(const std::string& message) const
+	void MessagingSystem::onDisconnect(const std::string message)
+	{
+		this->connected = false;
+	}
+
+	void MessagingSystem::handleMessage(const std::string &message) const
 	{
 		rapidjson::Document message_json;
 		message_json.Parse(message.c_str());
@@ -146,7 +156,7 @@ namespace car::system::messaging
 		}
 	}
 
-	void MessagingSystem::sendMessage(const std::string& message)
+	void MessagingSystem::sendMessage(const std::string &message)
 	{
 		if (this->websocket != nullptr)
 			this->websocket->send(message);
@@ -158,8 +168,8 @@ namespace car::system::messaging
 		std::string uuid;
 		std::condition_variable condition;
 
-		this->websocket->setOnMessageCallback([&](const ix::WebSocketMessagePtr& msg)
-			{
+		this->websocket->setOnMessageCallback([&](const ix::WebSocketMessagePtr &msg)
+											  {
 				switch (msg->type) {
 				case ix::WebSocketMessageType::Close:
 				{
@@ -184,9 +194,7 @@ namespace car::system::messaging
 					condition.notify_one();
 					break;
 				}
-				}
-			}
-		);
+				} });
 
 		this->websocket->start();
 
@@ -194,7 +202,8 @@ namespace car::system::messaging
 		std::unique_lock<std::mutex> lock(mutex);
 		condition.wait(lock);
 
-		if (!error_message.empty()) {
+		if (!error_message.empty())
+		{
 			return tl::make_unexpected(error_message);
 		}
 
