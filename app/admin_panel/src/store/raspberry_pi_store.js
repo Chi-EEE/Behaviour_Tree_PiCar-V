@@ -9,3 +9,21 @@ async function main() {
     await api.unselectRaspberryPi();
 }
 main();
+
+window.api.onConnection((value) => {
+    value = JSON.parse(value);
+    console.log(value);
+    raspberry_pi_uuid_list.update((list) => {
+        list.push(value.uuid);
+        return list;
+    });
+});
+
+window.api.onDisconnection((value) => {
+    value = JSON.parse(value);
+    console.log(value);
+    raspberry_pi_uuid_list.update((list) => {
+        list = list.filter((uuid) => uuid !== value.uuid);
+        return list;
+    });
+});

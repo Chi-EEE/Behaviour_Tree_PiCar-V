@@ -11,8 +11,8 @@ const WINDOW_API = {
 
     onMessage: (/** @type {(string) => void} */ callback) => ipcRenderer.on('onMessage', (_event, /** @type {string} */ value) => callback(value)),
     
-    onConnection: (/** @type {(string) => void} */ callback) => ipcRenderer.on('onConnection', (_event, /** @type {string} */ value) => callback(value)),
-    onDisconnection: (/** @type {(string) => void} */ callback) => ipcRenderer.on('onDisconnection', (_event, /** @type {string} */ value) => callback(value)),
+    onConnection: (/** @type {(any) => void} */ callback) => ipcRenderer.on('onConnection', (_event, /** @type {any} */ args) => callback(args)),
+    onDisconnection: (/** @type {(any) => void} */ callback) => ipcRenderer.on('onDisconnection', (_event, /** @type {any} */ args) => callback(args)),
 
     selectRaspberryPi: (/** @type {string} */ uuid) => ipcRenderer.invoke("selectRaspberryPi", uuid),
     unselectRaspberryPi: () => ipcRenderer.invoke("unselectRaspberryPi"),
