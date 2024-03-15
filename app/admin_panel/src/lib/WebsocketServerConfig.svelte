@@ -38,13 +38,14 @@
     websocket_server_connection_state.subscribe(displayWebsocketServerStatus);
 
     async function toggleWebsocketServer() {
-        if (!isNumeric(websocketServerPort)) {
+        const websocketServerPortNumber = websocketServerPort * 1;
+        if (typeof websocketServerPortNumber !== "number") {
             helperText = "Port must be a number";
             websocketServerPortInputColor = "red";
             return;
         }
         if (!$websocket_server_connection_state) {
-            websocket_server_port.set(Number(websocketServerPort));
+            websocket_server_port.set(websocketServerPortNumber);
             const response = await api.startWebSocketServer({
                 port: $websocket_server_port,
             });
