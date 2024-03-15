@@ -76,13 +76,11 @@
     </style>
     <div
         style="
-            position: absolute;
-            bottom: 20px;
             right: 40px;
             background-color: {send_behaviour_tree_color};
             color: white;
         "
-        class="p-2 rounded-lg shadow-lg"
+        class="p-2 rounded-lg shadow-lg relative inset-0"
     >
         <button on:mousedown={sendXMLCode} style="cursor:{send_behaviour_tree_cursor}">{send_behaviour_tree_text}</button>
     </div>

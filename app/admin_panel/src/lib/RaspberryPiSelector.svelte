@@ -30,7 +30,7 @@
     </h1>
     <div class="grid-cols-3 grid my-2">
         <div
-            class="content-center col-start-1 col-span-2 grid grid-cols-2 gap-2 p-3 border-2 border-gray-200 dark:border-gray-700"
+            class="content-center col-start-1 col-span-2 grid grid-cols-2 gap-2 p-3 border-2 rounded border-gray-200 dark:border-gray-700"
         >
             {#each $raspberry_pi_uuid_list as uuid}
                 <Card>

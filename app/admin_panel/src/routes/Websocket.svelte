@@ -19,9 +19,7 @@
             <RaspberryPiSelector />
         </div>
         <div class="col-start-6">
-            <Card class="p-6">
-                <IPList />
-            </Card>
+            <IPList />
         </div>
     </div>
 </main>
