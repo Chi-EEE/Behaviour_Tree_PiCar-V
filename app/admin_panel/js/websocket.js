@@ -141,6 +141,7 @@ class WebSocketServer {
                 if (this._wss === undefined) {
                     return;
                 }
+                this._raspberry_pi_map.delete(uuid);
                 global.mainWindow.webContents.send('onDisconnection', JSON.stringify({ uuid: uuid }));
             });
 
