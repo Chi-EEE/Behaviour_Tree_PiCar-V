@@ -1,5 +1,5 @@
 <script>
-    import { Card } from "flowbite-svelte";
+    import { Button, Card } from "flowbite-svelte";
 
     import WebsocketServerConfig from "../lib/WebsocketServerConfig.svelte";
     import IPList from "../lib/IPList.svelte";
@@ -15,10 +15,19 @@
             <WebsocketServerConfig />
             <hr />
             <br />
+            <h1 class="text-2xl font-bold">Raspberry Pi UUID List</h1>
             {#each $raspberry_pi_uuid_list as uuid}
-            <Card>
-                <h1>{uuid}</h1>
-            </Card>
+                <Card>
+                    <Button
+                        on:click={() => {
+                            api.selectRaspberryPi({uuid: uuid}).then((response)=>{
+                                console.log(response);
+                            });
+                        }}
+                    >
+                        {uuid}
+                    </Button>
+                </Card>
             {/each}
         </div>
         <div class="col-start-6">

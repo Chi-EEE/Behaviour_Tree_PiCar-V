@@ -55,6 +55,7 @@
     "@codemirror/theme-one-dark": "^6.1.2",
     "@codemirror/view": "^6.23.0",
     "electron-serve": "^1.3.0",
+    "electron-store": "^8.2.0",
     "flowbite": "^2.3.0",
     "flowbite-svelte": "^0.44.24",
     "pixi.js": "^7.4.0",

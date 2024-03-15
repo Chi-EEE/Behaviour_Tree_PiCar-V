@@ -131,20 +131,20 @@ class WebSocketServer {
 
             ws.send(JSON.stringify({ uuid: uuid }));
 
-            mainWindow.webContents.send('onConnection', JSON.stringify({ uuid: uuid }));
+            global.mainWindow.webContents.send('onConnection', JSON.stringify({ uuid: uuid }));
 
             ws.once('close', () => {
                 if (this._wss === undefined) {
                     return;
                 }
-                mainWindow.webContents.send('onDisconnection', JSON.stringify({ uuid: uuid }));
+                global.mainWindow.webContents.send('onDisconnection', JSON.stringify({ uuid: uuid }));
             });
 
             ws.on('message', async (message) => {
-                if (uuid !== this._selected_raspberry_pi.uuid) {
+                if (uuid !== this.getSelectedRaspberryPi()?.uuid) {
                     return;
                 }
-                mainWindow.webContents.send('onMessage', message.toString());
+                global.mainWindow.webContents.send('onMessage', message.toString());
             });
         });
     }
