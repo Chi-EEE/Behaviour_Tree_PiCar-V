@@ -15,7 +15,7 @@
             <WebsocketServerConfig />
             <hr />
             <br />
-            <h1 class="text-2xl font-bold">Raspberry Pi UUID List</h1>
+            <h1 class="text-gray-900 dark:text-white text-2xl font-bold">Raspberry Pi UUID List</h1>
             {#each $raspberry_pi_uuid_list as uuid}
                 <Card>
                     <Button

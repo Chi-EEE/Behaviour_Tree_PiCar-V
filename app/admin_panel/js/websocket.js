@@ -65,7 +65,11 @@ class WebSocketServer {
      */
     close() {
         if (this._wss !== undefined) {
+            for (const ws of this._raspberry_pi_map.values()) {
+                ws.close();
+            }
             this._wss.close();
+            this._wss = undefined;
         }
     }
 

@@ -55,7 +55,7 @@
                 toggleWebsocketServerMessage = "Start Websocket Server";
             }
         } else {
-            api.closeWebSocketServer();
+            await api.closeWebSocketServer();
             websocket_server_connection_state.set(false);
         }
     }
