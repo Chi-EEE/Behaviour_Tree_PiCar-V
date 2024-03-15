@@ -126,7 +126,7 @@ public:
         }
         else
         {
-            dlog::info("Connected to the WS Server.");
+            dlog::notice(fmt::format(R"(Connected to the Websocket Server; UUID: "{}")", this->car_system->getMessagingSystem()->getUUID()));
         }
         this->last_connected = now;
     }

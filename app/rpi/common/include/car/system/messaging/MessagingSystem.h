@@ -37,7 +37,6 @@ namespace car::system::messaging
 
 		nod::signal<void(const std::string, const rapidjson::Value&)>& getCommandSignal() { return this->command_signal; }
 		nod::signal<void(const std::string)>& getMessageSignal() { return this->message_signal; }
-		nod::signal<void()>& getConnectSignal() { return this->on_connect_signal; }
 		nod::signal<void(const std::string)>& getDisconnectSignal() { return this->on_disconnect_signal; }
 
 		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const;
@@ -49,7 +48,6 @@ namespace car::system::messaging
 
 		const bool isConnected() const { return this->connected; }
 
-		nod::signal<void()> on_connect_signal;
 		nod::signal<void(std::string)> on_disconnect_signal;
 
 		nod::signal<void(const std::string)> message_signal;

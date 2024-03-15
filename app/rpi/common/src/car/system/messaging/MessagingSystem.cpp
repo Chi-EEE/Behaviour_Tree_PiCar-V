@@ -90,12 +90,6 @@ namespace car::system::messaging
 	{
 		switch (msg->type)
 		{
-		case ix::WebSocketMessageType::Open:
-		{
-			spdlog::info("Connected to the Websocket Server.");
-			this->on_connect_signal();
-			break;
-		}
 		case ix::WebSocketMessageType::Close:
 		{
 			spdlog::info("Disconnected from the Websocket Server; Reason: {}", msg->closeInfo.reason);
