@@ -1,11 +1,12 @@
 <script>
-    import { Button, Card } from "flowbite-svelte";
+    import { Card } from "flowbite-svelte";
 
-    import WebsocketServerConfig from "../lib/WebsocketServerConfig.svelte";
-    import IPList from "../lib/IPList.svelte";
     import NavigationBar from "../lib/NavigationBar.svelte";
 
-    import { raspberry_pi_uuid_list } from "../websocket_server_store";
+    import IPList from "../lib/IPList.svelte";
+
+    import WebsocketServerConfig from "../lib/WebsocketServerConfig.svelte";
+    import RaspberryPiSelector from "../lib/RaspberryPiSelector.svelte";
 </script>
 
 <main>
@@ -15,20 +16,7 @@
             <WebsocketServerConfig />
             <hr />
             <br />
-            <h1 class="text-gray-900 dark:text-white text-2xl font-bold mb-2">Raspberry Pi UUID List</h1>
-            {#each $raspberry_pi_uuid_list as uuid}
-                <Card>
-                    <Button
-                        on:click={() => {
-                            api.selectRaspberryPi({uuid: uuid}).then((response)=>{
-                                console.log(response);
-                            });
-                        }}
-                    >
-                        {uuid}
-                    </Button>
-                </Card>
-            {/each}
+            <RaspberryPiSelector />
         </div>
         <div class="col-start-6">
             <Card class="p-6">

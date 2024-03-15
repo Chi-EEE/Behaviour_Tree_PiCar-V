@@ -3,7 +3,7 @@
   import NavigationBar from "../lib/NavigationBar.svelte";
   import RaspberryPiConnectBanner from "../lib/RaspberryPiConnectBanner.svelte";
 
-  import { websocket_server_connection_state } from "../websocket_server_store";
+  import { websocket_server_connection_state } from "../store/websocket_store";
 </script>
 
 <main>

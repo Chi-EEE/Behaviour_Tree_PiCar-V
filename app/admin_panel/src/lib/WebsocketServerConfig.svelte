@@ -5,7 +5,11 @@
         websocket_server_connection_state,
         websocket_server_port,
         websocket_server_code,
-    } from "../websocket_server_store";
+    } from "../store/websocket_store";
+
+    import {
+        raspberry_pi_uuid_list,
+    } from "../store/raspberry_pi_store";
 
     /** @type {number} */
     let websocketServerPort = $websocket_server_port;
@@ -57,6 +61,7 @@
         } else {
             await api.closeWebSocketServer();
             websocket_server_connection_state.set(false);
+            raspberry_pi_uuid_list.set([]);
         }
     }
 </script>
