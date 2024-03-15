@@ -13,6 +13,7 @@ This will only work for Linux.
 
 ## View Logs
 `systemctl status rpi_daemon.service`
+`journalctl -u rpi_daemon`
 
 ## Reload Daemon
 `sudo systemctl reload rpi_daemon`
