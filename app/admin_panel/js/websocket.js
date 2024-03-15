@@ -23,6 +23,12 @@ class Code {
     }
 }
 
+/**
+ * @typedef {Object} RaspberryPi
+ * @property {string} uuid -- Universally Unique Identifier
+ * @property {WebSocket} ws -- WebSocket connection
+ */
+
 class WebSocketServer {
     constructor() {
         /** @type {WebSocket.Server | undefined} */
@@ -35,10 +41,10 @@ class WebSocketServer {
         this._code = new Code();
 
         /** @type {Map<string, WebSocket>} */
-        this._raspberry_pi_clients = new Map();
+        this._raspberry_pi_map = new Map();
 
-        /** @type {WebSocket | undefined} */
-        this._client = undefined;
+        /** @type {RaspberryPi | undefined} */
+        this._selected_raspberry_pi = undefined;
     }
 
     /**
@@ -50,6 +56,10 @@ class WebSocketServer {
         this._port = port;
     }
 
+    isConnected() {
+        return this._wss !== undefined;
+    }
+
     /**
      * Call this function to close the WebSocket server.
      */
@@ -59,24 +69,65 @@ class WebSocketServer {
         }
     }
 
+    /**
+     * 
+     * @returns {number}
+     */
     generateCode() {
         this._code.generate();
         return this._code.get();
     }
 
+    /**
+     * 
+     * @returns {number}
+     */
     getCode() {
         return this._code.get();
     }
 
     /**
-     * This function only allows a single connection to the WebSocket server.
+     * 
+     * @returns {number}
      */
-    async createConnection() {
+    getPort() {
+        return this._port;
+    }
+
+    /**
+     * 
+     * @returns {Map<string, WebSocket>}
+     */
+    getRaspberryPiMap() {
+        return this._raspberry_pi_map;
+    }
+    
+    /**
+     * 
+     * @returns {RaspberryPi | undefined}
+     */
+    getSelectedRaspberryPi() {
+        return this._selected_raspberry_pi;
+    }
+
+    /**
+     * Select a Raspberry Pi to send / receive messages from.
+     * @param {string} uuid 
+     * @returns 
+     */
+    selectRaspberryPi(uuid) {
+        if (this._raspberry_pi_map.has(uuid)) {
+            this._selected_raspberry_pi = { uuid: uuid, ws: this._raspberry_pi_map.get(uuid) };
+            return { success: true, message: `Connected to Raspberry Pi with UUID: ${uuid}` };
+        } else {
+            return { success: false, message: `Raspberry Pi with UUID: ${uuid} not found` };
+        }
+    }
+
+    async startConnections() {
         this._wss.on('connection', (ws, req) => {
-            // console.log(req.headers)
-            // console.log(req.socket.remoteAddress)
             const uuid = crypto.randomUUID();
-            this._raspberry_pi_clients.set(uuid, ws);
+            this._raspberry_pi_map.set(uuid, ws);
 
             ws.send(JSON.stringify({ uuid: uuid }));
 
@@ -90,7 +141,7 @@ class WebSocketServer {
             });
 
             ws.on('message', async (message) => {
-                if (uuid !== this._client.uuid) {
+                if (uuid !== this._selected_raspberry_pi.uuid) {
                     return;
                 }
                 mainWindow.webContents.send('onMessage', message.toString());

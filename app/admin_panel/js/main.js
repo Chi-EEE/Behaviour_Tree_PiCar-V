@@ -83,7 +83,7 @@ app.on('activate', function () {
 
 const { websocket_server } = require('./websocket');
 const { closeWebSocketServer } = require('./websocket_events');
-const { connectRaspberryPi, disconnectRaspberryPi, getRaspberryPi } = require('./raspberry_pi');
+const { selectRaspberryPi, unselectRaspberryPi, getRaspberryPiList, getSelectedRaspberryPi } = require('./raspberry_pi');
 const { getLocalIPList } = require('./device');
 
 function onClose() {

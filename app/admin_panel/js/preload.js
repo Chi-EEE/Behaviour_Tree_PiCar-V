@@ -14,9 +14,10 @@ const WINDOW_API = {
     onConnection: (/** @type {(string) => void} */ callback) => ipcRenderer.on('onConnection', (_event, /** @type {string} */ value) => callback(value)),
     onDisconnection: (/** @type {(string) => void} */ callback) => ipcRenderer.on('onDisconnection', (_event, /** @type {string} */ value) => callback(value)),
 
-    connectRaspberryPi: (/** @type {string} */ uuid) => ipcRenderer.invoke("connectRaspberryPi", uuid),
-    disconnectRaspberryPi: () => ipcRenderer.invoke("disconnectRaspberryPi"),
-    getRaspberryPi: () => ipcRenderer.invoke("getRaspberryPi"),
+    selectRaspberryPi: (/** @type {string} */ uuid) => ipcRenderer.invoke("selectRaspberryPi", uuid),
+    unselectRaspberryPi: () => ipcRenderer.invoke("unselectRaspberryPi"),
+    getRaspberryPiList: () => ipcRenderer.invoke("getRaspberryPiList"),
+    getSelectedRaspberryPi: () => ipcRenderer.invoke("getSelectedRaspberryPi"),
 }
 
 contextBridge.exposeInMainWorld("api", WINDOW_API)

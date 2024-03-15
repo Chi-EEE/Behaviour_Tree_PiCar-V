@@ -13,10 +13,6 @@
     /** @type {string} */
     let toggleWebsocketServerMessage = "Start Websocket Server";
 
-    function isNumeric(value) {
-        return /^-?\d+$/.test(value);
-    }
-
     /** @type {string} */
     let helperText = "";
 
@@ -57,7 +53,6 @@
                 websocketServerPortInputColor = "red";
                 helperText = response.message;
                 toggleWebsocketServerMessage = "Start Websocket Server";
-                websocket_server_connection_state.set(false);
             }
         } else {
             api.closeWebSocketServer();

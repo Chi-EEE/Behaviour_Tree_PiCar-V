@@ -9,7 +9,7 @@ async function startWebSocketServer(_event, args) {
     }
     try {
         websocket_server.connect(args.port);
-        websocket_server.createConnection();
+        websocket_server.startConnections();
         return { success: true, code: websocket_server.generateCode() };
     } catch (error) {
         return { success: false, message: `Unable to start WebSocket Server, Error: ${error}` };
@@ -21,8 +21,8 @@ function closeWebSocketServer(_event, _args) {
 }
 
 function getWebSocketServer(_event, _args) {
-    if (websocket_server._wss !== undefined) {
-        return { success: true, code: websocket_server.getCode(), port: websocket_server._port };
+    if (websocket_server.isConnected()) {
+        return { success: true, code: websocket_server.getCode(), port: websocket_server.getPort() };
     }
     else {
         return { success: false };
