@@ -14,6 +14,7 @@ async function main() {
         websocket_server_connection_state.set(true);
         websocket_server_port.set(websocket_server_result.port);
         websocket_server_code.set(websocket_server_result.code);
+        raspberry_pi_uuid_list.set(await api.getRaspberryPiList());
     }
 }
 main();
