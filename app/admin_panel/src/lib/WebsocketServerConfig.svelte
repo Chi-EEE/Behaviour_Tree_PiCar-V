@@ -4,6 +4,7 @@
     import {
         websocket_server_port,
         websocket_server_connected,
+        websocket_server_code,
     } from "../websocket_server_store";
 
     /** @type {number} */
@@ -65,7 +66,7 @@
             helperText = "Websocket Server is running";
             toggleWebsocketServerMessage = "Stop Websocket Server";
             websocket_server_connected.set(true);
-            console.log(response.code);
+            websocket_server_code.set(response.code);
         } else {
             // Error: Websocket Server is already running
             websocketServerPortInputColor = "red";

@@ -82,12 +82,12 @@ app.on('activate', function () {
 // ================== IPC Handlers ==================
 
 const { websocket_server } = require('./websocket');
-const { closeWebSocket } = require('./websocket_events');
+const { closeWebSocketServer } = require('./websocket_events');
 const { connectRaspberryPi, disconnectRaspberryPi, getRaspberryPi } = require('./raspberry_pi');
 const { getLocalIPList } = require('./device');
 
 function onClose() {
-    closeWebSocket();
+    closeWebSocketServer();
 }
 
 app.on('window-all-closed', onClose);

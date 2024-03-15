@@ -3,7 +3,7 @@ const tcpPortUsed = require('tcp-port-used');
 
 const { websocket_server } = require('./websocket');
 
-async function startWebSocket(_event, args) {
+async function startWebSocketServer(_event, args) {
     if (await tcpPortUsed.check(args.port)) {
         return { success: false, message: `Port ${args.port} is already in use` };
     }
@@ -16,11 +16,11 @@ async function startWebSocket(_event, args) {
     }
 }
 
-function closeWebSocket(_event, _args) {
+function closeWebSocketServer(_event, _args) {
     websocket_server.close();
 }
 
-function getWebSocket(_event, _args) {
+function getWebSocketServer(_event, _args) {
     if (websocket_server._wss !== undefined) {
         return { success: true, code: websocket_server.getCode(), port: websocket_server._port };
     }
@@ -29,12 +29,12 @@ function getWebSocket(_event, _args) {
     }
 }
 
-ipcMain.handle('startWebSocketServer', startWebSocket);
-ipcMain.handle('closeWebSocketServer', closeWebSocket);
-ipcMain.handle('getWebSocketServer', getWebSocket);
+ipcMain.handle('startWebSocketServer', startWebSocketServer);
+ipcMain.handle('closeWebSocketServer', closeWebSocketServer);
+ipcMain.handle('getWebSocketServer', getWebSocketServer);
 
 module.exports = {
-    startWebSocket: startWebSocket,
-    closeWebSocket: closeWebSocket,
-    getWebSocket: getWebSocket
+    startWebSocketServer: startWebSocketServer,
+    closeWebSocketServer: closeWebSocketServer,
+    getWebSocketServer: getWebSocketServer
 }
