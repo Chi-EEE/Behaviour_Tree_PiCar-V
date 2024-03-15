@@ -101,25 +101,34 @@ public:
         }
 
         std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
-        if (!this->car_system->isConnected() && now - this->last_connected >= this->connection_interval)
+        const bool CAN_CONNECT = !this->car_system->isConnected() && now - this->last_connected >= this->connection_interval;
+        if (CAN_CONNECT)
+        {
+            this->connect(now);
+        }
+        this->car_system->update();
+    }
+
+    inline void connect(std::chrono::time_point<std::chrono::steady_clock> &now)
+    {
+        if (!this->attempted_to_reconnect)
+        {
+            dlog::notice(fmt::format(R"(Going to repeatedly attempt to connect to the WS Server "{}" at {} second intervals.)", this->car_system->getConfiguration()->host, this->connection_interval.count()));
+        }
+        auto connection_result = this->car_system->tryConnect();
+        if (!connection_result.has_value())
         {
             if (!this->attempted_to_reconnect)
             {
                 this->attempted_to_reconnect = true;
-                dlog::notice(fmt::format(R"(Going to repeatedly attempt to connect to the WS Server "{}" at {} second intervals.)", this->car_system->getConfiguration()->host, this->connection_interval.count()));
-            }
-            auto connection_result = this->car_system->tryConnect();
-            if (!connection_result.has_value())
-            {
                 dlog::info(connection_result.error());
             }
-            else
-            {
-                dlog::info("Connected to the WS Server.");
-            }
-            this->last_connected = now;
         }
-        this->car_system->update();
+        else
+        {
+            dlog::info("Connected to the WS Server.");
+        }
+        this->last_connected = now;
     }
 
     void on_update() override
