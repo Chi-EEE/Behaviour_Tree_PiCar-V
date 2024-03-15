@@ -4,15 +4,14 @@
   "description": "The Admin Panel to directly control the Raspberry Pi and connect to the web server for sharing the Raspberry Pi.",
   "private": false,
   "license": "MIT",
-  "main": "main.js",
+  "main": "js/main.js",
   "author": "Chi Huu Huynh",
   "build": {
     "icon": "public/Sunfounder-PiCar.png",
     "productName": "Admin Panel for Raspberry Pi",
     "files": [
       "public/**/*",
-      "main.js",
-      "preload.js"
+      "js/**/*.js"
     ],
     "win": {},
     "linux": {},
