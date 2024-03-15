@@ -4,9 +4,9 @@
 </script>
 
 <Banner
-  class="border-2 rounded-lg dark:bg-gray-700 border-gray-500 dark:border-gray-600"
-  position="absolute"
-  bannerType="signup"
+  class="border-2 z-20 flex-auto p-1 fixed bottom-3 rounded-lg bg-white dark:bg-gray-700 border-gray-500 dark:border-gray-600"
+  bannerType="info"
+  style="left:50%; transform: translateX(-50%);"
 >
   <div class="flex flex-col justify-center items-center w-full md:flex-row">
     <img src="RaspberryPi.png" class="w-12 whitespace-nowrap" />
