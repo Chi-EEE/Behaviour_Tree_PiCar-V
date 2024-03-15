@@ -3,12 +3,12 @@
   import NavigationBar from "../lib/NavigationBar.svelte";
   import RaspberryPiConnectBanner from "../lib/RaspberryPiConnectBanner.svelte";
 
-  import { websocket_server_connected } from "../websocket_server_store";
+  import { websocket_server_connection_state } from "../websocket_server_store";
 </script>
 
 <main>
   <NavigationBar />
-  {#if $websocket_server_connected}
+  {#if $websocket_server_connection_state}
     <RaspberryPiConnectBanner />
   {/if}
   <div class="py-6">

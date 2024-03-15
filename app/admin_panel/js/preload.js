@@ -2,8 +2,10 @@ const { ipcRenderer, contextBridge } = require('electron')
 
 const WINDOW_API = {
     getLocalIPList: () => ipcRenderer.invoke("getLocalIPList"),
+
     startWebSocketServer: (/** @type {number} */ port) => ipcRenderer.invoke("startWebSocketServer", port),
     closeWebSocketServer: () => ipcRenderer.invoke("closeWebSocketServer"),
+    getWebSocketServer: () => ipcRenderer.invoke("getWebSocketServer"),
 
     isConnected: () => ipcRenderer.invoke("isConnected"),
 
@@ -14,8 +16,7 @@ const WINDOW_API = {
 
     connectRaspberryPi: (/** @type {string} */ uuid) => ipcRenderer.invoke("connectRaspberryPi", uuid),
     disconnectRaspberryPi: () => ipcRenderer.invoke("disconnectRaspberryPi"),
-    
-    getRaspberryPi: () => ipcRenderer.invoke("disconnectRaspberryPi"),
+    getRaspberryPi: () => ipcRenderer.invoke("getRaspberryPi"),
 }
 
 contextBridge.exposeInMainWorld("api", WINDOW_API)
