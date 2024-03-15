@@ -28,7 +28,7 @@
     <h1 class="text-gray-900 dark:text-white text-2xl font-bold">
         Raspberry Pi UUID List
     </h1>
-    <div class="grid-cols-3 grid mt-2 mb-2">
+    <div class="grid-cols-3 grid my-2">
         <div
             class="content-center col-start-1 col-span-2 grid grid-cols-2 gap-2 p-3 border-2 border-gray-200 dark:border-gray-700"
         >
