@@ -34,6 +34,7 @@ namespace behaviour_tree
 		{
 			if (message_json["command"].GetString() != "behaviour_tree")
 			{
+				spdlog::error(R"(The property "command" does not match "behaviour_tree", {})", message_json["command"].GetString());
 				return;
 			}
 			if (!message_json.HasMember("action") || !message_json["action"].IsString())

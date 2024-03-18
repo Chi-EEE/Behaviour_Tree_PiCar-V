@@ -136,11 +136,13 @@ namespace car::system::messaging
 			case utils::hash("command"):
 				if (!message_json.HasMember("command") || !message_json["command"].IsString())
 				{
+					spdlog::error("Command does not exist in json", message);
 					return;
 				}
 				this->command_signal(message, message_json);
 				return;
 			default:
+				spdlog::info("Got unknown command: {}", type);	
 				return;
 			}
 		}

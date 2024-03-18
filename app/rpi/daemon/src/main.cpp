@@ -19,9 +19,13 @@
 #include "car/system/movement/controller/DummyMovementController.h"
 #include "car/system/movement/controller/DeviceMovementController.h"
 
+#include "behaviour_tree/BehaviourTreeHandler.hpp"
+
 #include "car/plugin/PluginManager.h"
 
 using namespace daemonpp;
+
+using namespace behaviour_tree;
 
 using namespace car::system;
 using namespace car::system::lidar;
@@ -71,8 +75,14 @@ public:
         // std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
         spdlog::info("Created the MovementSystem");
 
+        std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>(BehaviourTreeHandler());
+        spdlog::info("Created the BehaviourTreeHandler");
+
         std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>();
         spdlog::info("Created the PluginManager");
+
+        plugin_manager->addPlugin(behaviour_tree_handler);
+        spdlog::info("Added the BehaviourTreeHandler to the PluginManager");
 
         spdlog::info("Creating the Car System");
         this->car_system = std::make_shared<CarSystem>(
