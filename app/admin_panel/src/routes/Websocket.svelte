@@ -1,8 +1,4 @@
 <script>
-    import { Card } from "flowbite-svelte";
-
-    import NavigationBar from "../lib/NavigationBar.svelte";
-
     import IPList from "../lib/IPList.svelte";
 
     import WebsocketServerConfig from "../lib/WebsocketServerConfig.svelte";
@@ -10,7 +6,6 @@
 </script>
 
 <main>
-    <NavigationBar />
     <div class="grid grid-cols-6">
         <div class="col-span-5 p-3">
             <WebsocketServerConfig />

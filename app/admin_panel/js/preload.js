@@ -18,6 +18,9 @@ const WINDOW_API = {
     unselectRaspberryPi: () => ipcRenderer.invoke("unselectRaspberryPi"),
     getRaspberryPiList: () => ipcRenderer.invoke("getRaspberryPiList"),
     getSelectedRaspberryPi: () => ipcRenderer.invoke("getSelectedRaspberryPi"),
+
+    sendBehaviourTree: (/** @type {any} */ args) => ipcRenderer.invoke("sendBehaviourTree", args),
+    startBehaviourTree: () => ipcRenderer.invoke("startBehaviourTree"),
 }
 
 contextBridge.exposeInMainWorld("api", WINDOW_API)

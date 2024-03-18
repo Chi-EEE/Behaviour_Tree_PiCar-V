@@ -105,7 +105,7 @@ class WebSocketServer {
     getRaspberryPiMap() {
         return this._raspberry_pi_map;
     }
-    
+
     /**
      * 
      * @returns {RaspberryPi | undefined}
@@ -152,6 +152,38 @@ class WebSocketServer {
                 global.mainWindow.webContents.send('onMessage', message.toString());
             });
         });
+    }
+
+    /**
+     * @param {string} behaviour_tree
+     */
+    sendBehaviourTree(behaviour_tree) {
+        if (this._wss === undefined) {
+            return;
+        }
+        if (this._selected_raspberry_pi === undefined) {
+            return;
+        }
+        this._selected_raspberry_pi.ws.send(JSON.stringify({
+            type: 'command',
+            command: 'behaviour_tree',
+            action: 'set',
+            behaviour_tree: behaviour_tree
+        }));
+    }
+
+    startBehaviourTree() {
+        if (this._wss === undefined) {
+            return;
+        }
+        if (this._selected_raspberry_pi === undefined) {
+            return;
+        }
+        this._selected_raspberry_pi.ws.send(JSON.stringify({
+            type: 'command',
+            command: 'behaviour_tree',
+            action: 'start',
+        }));
     }
 }
 
