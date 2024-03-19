@@ -124,7 +124,7 @@ namespace car::system::messaging
 
 		if (!message_json.HasMember("type") || !message_json["type"].IsString())
 		{
-			spdlog::error("Type does not exist in json", message);
+			spdlog::error("Type does not exist in json: {}", message);
 			return;
 		}
 

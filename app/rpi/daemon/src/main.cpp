@@ -43,7 +43,7 @@ public:
     {
         if (reader.ParseError() < 0)
         {
-            spdlog::critical("Could not load 'rpi_daemon.service'\n");
+            dlog::critical("Could not load 'rpi_daemon.service'\n");
             return;
         }
 
@@ -52,39 +52,39 @@ public:
         this->connection_interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "connection_interval", 1));
         std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
-        spdlog::info("Started daemon with host: " + host + " and car_name: " + car_name + "\n");
+        dlog::info("Started daemon with host: " + host + " and car_name: " + car_name + "\n");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{host, car_name});
         this->any_configuration_empty = host.empty() || car_name.empty();
         if (this->any_configuration_empty)
         {
-            spdlog::warn("A property in the configuration is empty, this daemon will not run with an empty property.");
+            dlog::warning("A property in the configuration is empty, this daemon will not run with an empty property.");
         }
 
-        spdlog::info("Created the Configuration");
+        dlog::info("Created the Configuration");
 
-        spdlog::info("Starting to create the Sub Systems");
+        dlog::info("Starting to create the Sub Systems");
 
         std::unique_ptr<LidarDevice> lidar_device = getLidarDevice();
-        spdlog::info("Created the LidarDevice");
+        dlog::info("Created the LidarDevice");
 
         std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
-        spdlog::info("Created the MessengingSystem");
+        dlog::info("Created the MessengingSystem");
 
         std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
         // std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
-        spdlog::info("Created the MovementSystem");
+        dlog::info("Created the MovementSystem");
 
-        std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>(BehaviourTreeHandler());
-        spdlog::info("Created the BehaviourTreeHandler");
+        std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>();
+        dlog::info("Created the BehaviourTreeHandler");
 
         std::unique_ptr<PluginManager> plugin_manager = std::make_unique<PluginManager>();
-        spdlog::info("Created the PluginManager");
+        dlog::info("Created the PluginManager");
 
         plugin_manager->addPlugin(behaviour_tree_handler);
-        spdlog::info("Added the BehaviourTreeHandler to the PluginManager");
+        dlog::info("Added the BehaviourTreeHandler to the PluginManager");
 
-        spdlog::info("Creating the Car System");
+        dlog::info("Creating the Car System");
         this->car_system = std::make_shared<CarSystem>(
             configuration,
             std::move(lidar_device),
@@ -92,25 +92,25 @@ public:
             std::move(movement_system),
             std::move(plugin_manager));
 
-        spdlog::info("Initializing the Car System");
+        dlog::info("Initializing the Car System");
         this->car_system->initialize();
-        spdlog::info("Completed initializing the Car System");
+        dlog::info("Completed initializing the Car System");
 
-        spdlog::info("Starting up the Car System");
+        dlog::info("Starting up the Car System");
         this->car_system->start();
-        spdlog::info("Completed starting the Car System");
+        dlog::info("Completed starting the Car System");
 
-        spdlog::info("Completed starting up Daemon");
+        dlog::info("Completed starting up Daemon");
     }
 
-    inline void update()
+    void update()
     {
         if (this->any_configuration_empty)
         {
             return;
         }
 
-        std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
+        const std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
         const bool CAN_CONNECT = !this->car_system->getMessagingSystem()->isConnected() && now - this->last_connected >= this->connection_interval;
         if (CAN_CONNECT)
         {
@@ -119,7 +119,7 @@ public:
         this->car_system->update();
     }
 
-    inline void connect(std::chrono::time_point<std::chrono::steady_clock> &now)
+    void connect(const std::chrono::time_point<std::chrono::steady_clock> &now)
     {
         if (!this->attempted_to_reconnect)
         {
@@ -185,7 +185,7 @@ public:
         this->any_configuration_empty = host.empty() || car_name.empty();
         if (this->any_configuration_empty)
         {
-            spdlog::warn("A property in the configuration is empty, this daemon will not run with an empty property.");
+            dlog::warning("A property in the configuration is empty, this daemon will not run with an empty property.");
         }
 
         this->car_system->setConfiguration(std::move(configuration));
@@ -290,12 +290,12 @@ std::unique_ptr<LidarDevice> getLidarDevice()
 #endif
     if (maybe_scanner.has_value())
     {
-        spdlog::info("Found and using Lidar Scanner\n");
+        dlog::info("Found and using Lidar Scanner\n");
         return std::move(maybe_scanner.value());
     }
     else
     {
-        spdlog::warn("Unable to connect to the Lidar Scanner, defaulting to LidarDummy\n");
+        dlog::warning("Unable to connect to the Lidar Scanner, defaulting to LidarDummy\n");
         return std::make_unique<LidarDummy>();
     }
 }

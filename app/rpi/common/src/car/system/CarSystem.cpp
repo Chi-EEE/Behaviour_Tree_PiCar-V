@@ -102,7 +102,8 @@ namespace car::system
 	{
 		if (this->messaging_system->isConnected())
 		{
-			this->messaging_system->sendMessage(this->lidar_device->getLidarMessage());
+			const std::string lidar_message = this->lidar_device->getLidarMessage();
+			this->messaging_system->sendMessage(lidar_message);
 		}
 		this->plugin_manager->update();
 	}

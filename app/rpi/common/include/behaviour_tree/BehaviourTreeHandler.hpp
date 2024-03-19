@@ -30,7 +30,7 @@ namespace behaviour_tree
 			this->car_system->getMessagingSystem()->getCommandSignal().connect(std::bind(&BehaviourTreeHandler::handleCommand, this, std::placeholders::_1, std::placeholders::_2));
 		}
 
-		void handleCommand(const std::string message, const rapidjson::Value &message_json)
+		void handleCommand(const std::string message, const rapidjson::Document& message_json)
 		{
 			if (message_json["command"].GetString() != "behaviour_tree")
 			{
@@ -80,9 +80,8 @@ namespace behaviour_tree
 		{
 			assert(this->behaviour_tree != nullptr);
 			assert(this->car_system != nullptr);
-
 			this->tick_count = 0;
-			std::shared_ptr<Context> context = std::make_shared<CarContext>(CarContext(this->behaviour_tree, this->car_system));
+			std::shared_ptr<Context> context = std::make_shared<CarContext>(this->behaviour_tree, this->car_system);
 			this->context = context;
 		}
 

@@ -23,25 +23,26 @@ namespace car::plugin
 	public:
 		void initialize(std::shared_ptr<system::CarSystem> car_system)
 		{
-			for (std::weak_ptr<Plugin>& plugin : this->plugins)
+			for (std::shared_ptr<Plugin>& plugin : this->plugins)
 			{
-				plugin.lock()->initialize(car_system);
+				plugin->initialize(car_system);
 			}
 		}
 
 		void update()
 		{
-			for (std::weak_ptr<Plugin>& plugin : this->plugins)
+			spdlog::info("Updating plugins: {}", this->plugins.size());
+			for (std::shared_ptr<Plugin>& plugin : this->plugins)
 			{
-				plugin.lock()->update();
+				plugin->update();
 			}
 		}
 
 		void stop()
 		{
-			for (std::weak_ptr<Plugin>& plugin : this->plugins)
+			for (std::shared_ptr<Plugin>& plugin : this->plugins)
 			{
-				plugin.lock()->stop();
+				plugin->stop();
 			}
 		}
 
@@ -62,14 +63,11 @@ namespace car::plugin
             std::string type_name = std::string(utils::TypeName<T>());
 			type_name = utils::getStringAfterLastColon(type_name);
 
-			for (std::weak_ptr<Plugin>& plugin : this->plugins)
+			for (std::shared_ptr<Plugin>& plugin : this->plugins)
 			{
-				if (auto locked_plugin = plugin.lock())
+				if (plugin->getName() == type_name)
 				{
-					if (locked_plugin->getName() == type_name)
-					{
-						return std::static_pointer_cast<T>(locked_plugin);
-					}
+					return plugin;
 				}
 			}
 
@@ -78,7 +76,7 @@ namespace car::plugin
 
 
 	private:
-		std::vector<std::weak_ptr<Plugin>> plugins;
+		std::vector<std::shared_ptr<Plugin>> plugins;
 	};
 }
 
