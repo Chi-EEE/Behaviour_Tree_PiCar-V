@@ -87,6 +87,7 @@ namespace behaviour_tree
 			this->tick_count = 0;
 			std::shared_ptr<Context> context = std::make_shared<CarContext>(this->behaviour_tree, this->car_system);
 			this->context = context;
+			spdlog::info("Starting the behaviour tree");
 		}
 
 		void update() final override
