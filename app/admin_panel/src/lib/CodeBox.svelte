@@ -8,7 +8,7 @@
     import { xml_schema } from "./CodeBox_Constants";
     import { node_hover } from "./CodeBox_Constants";
 
-    import { behaviour_tree_xml_code } from "../store/code_store";
+    import { behaviour_tree_xml_code } from "../store/home_store";
 
     /** @type {string} */
     let send_behaviour_tree_text = "Send Behaviour Tree";
