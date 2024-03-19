@@ -8,8 +8,7 @@
     import { xml_schema } from "./CodeBox_Constants";
     import { node_hover } from "./CodeBox_Constants";
 
-    /** @type {string} */
-    let xml_code = "";
+    import { behaviour_tree_xml_code } from "../store/code_store";
 
     /** @type {string} */
     let send_behaviour_tree_text = "Send Behaviour Tree";
@@ -61,7 +60,7 @@
     </div>
     <CodeMirror
         class="text-left h-full flex-auto font-mono text-lg font-bold"
-        bind:value={xml_code}
+        bind:value={$behaviour_tree_xml_code}
         lang={xml(xml_schema)}
         tabSize={4}
         theme={oneDark}

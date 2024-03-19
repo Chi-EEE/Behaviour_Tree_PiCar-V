@@ -324,6 +324,9 @@ export const xml_schema = {
             name: "BehaviourTree",
             top: true,
             children: ["Root"],
+            attributes: [
+                "cycle_limit",
+            ],
             completion: { type: "keyword" },
         },
         {
