@@ -17,12 +17,22 @@
     let send_behaviour_tree_color = "#50AA34";
 
     /** @type {boolean} */
-    let debounce = false;
+    let send_behaviour_tree_debounce = false;
+
+    /** @type {string} */
+    let start_behaviour_tree_text = "Start Behaviour Tree";
+
+    /** @type {string} */
+    let start_behaviour_tree_color = "#89AAFF"
+
+    /** @type {boolean} */
+    let start_behaviour_tree_debounce = false;
+
     async function sendBehaviourTree() {
-        if (debounce) {
+        if (send_behaviour_tree_debounce) {
             return;
         }
-        debounce = true;
+        send_behaviour_tree_debounce = true;
         try {
             await api.sendBehaviourTree({ data: xmlFormat.minify($behaviour_tree_xml_code) });
             send_behaviour_tree_text = "Sent Behaviour Tree!";
@@ -34,12 +44,28 @@
         setTimeout(() => {
             send_behaviour_tree_text = "Send Behaviour Tree";
             send_behaviour_tree_color = "#50AA34";
-            debounce = false;
+            send_behaviour_tree_debounce = false;
         }, 1000);
     }
 
     async function startBehaviourTree() {
-        await api.startBehaviourTree();
+        if (start_behaviour_tree_debounce) {
+            return;
+        }
+        start_behaviour_tree_debounce = true;
+        try {
+            await api.startBehaviourTree();
+            start_behaviour_tree_text = "Started Behaviour Tree!";
+            start_behaviour_tree_color = "#4277FF";
+        } catch (error) {
+            start_behaviour_tree_text = "Unable to start Behaviour Tree!";
+            start_behaviour_tree_color = "#AA3434";
+        }
+        setTimeout(() => {
+            start_behaviour_tree_text = "Start Behaviour Tree";
+            start_behaviour_tree_color = "#89AAFF";
+            start_behaviour_tree_debounce = false;
+        }, 1000);
     }
 </script>
 
@@ -54,8 +80,8 @@
         <button
             on:mousedown={startBehaviourTree}
             class="p-2 rounded-lg shadow-lg relative inset-0"
-            style="background-color: blue; color: white; width: 100%; border: none;"
-            >Start Behaviour Tree</button
+            style="background-color: {start_behaviour_tree_color}; color: white; width: 100%; border: none;"
+            >{start_behaviour_tree_text}</button
         >
     </div>
     <CodeMirror
