@@ -190,9 +190,9 @@ public:
 
         this->car_system->setConfiguration(std::move(configuration));
 
-        this->attempted_to_reconnect = false;
-
         this->car_system->reload();
+    
+        this->attempted_to_reconnect = false;
     }
 
 private:

@@ -21,6 +21,9 @@ This will only work for Linux.
 ## Reload Daemon
 `sudo systemctl reload rpi_daemon`
 
+## Change Config
+`sudo nano /etc/rpi_daemon/rpi_daemon.conf`
+
 ## Uninstall Raspberry Pi Daemon
 `xmake uninstall --admin rpi_daemon`
 

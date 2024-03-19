@@ -50,7 +50,7 @@ namespace car::system
 	void CarSystem::start()
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
-		//this->lidar_device->start();
+		// this->lidar_device->start(); // Starting LidarDevice in connect instead.
 		this->movement_system->start();
 		this->started = true;
 	}

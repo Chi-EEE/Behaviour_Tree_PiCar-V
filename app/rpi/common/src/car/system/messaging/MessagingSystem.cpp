@@ -36,7 +36,7 @@ namespace car::system::messaging
 
 	void MessagingSystem::initializeWebSocket()
 	{
-		this->websocket = std::make_unique<ix::WebSocket>(/*ix::WebSocket() // Cannot add this because of Linux*/);
+		this->websocket = std::make_unique<ix::WebSocket>();
 		this->websocket->disableAutomaticReconnection();
 
 		this->websocket->setUrl("ws://" + this->configuration->host);
