@@ -19,17 +19,13 @@
 
     /** @type {boolean} */
     let debounce = false;
-    async function sendXMLCode() {
+    async function sendBehaviourTree() {
         if (debounce) {
             return;
         }
         debounce = true;
         try {
-            await api.sendBehaviourTree(
-                JSON.stringify({
-                    data: xmlFormat.minify(xml_code),
-                }),
-            );
+            await api.sendBehaviourTree({ data: xmlFormat.minify(xml_code) });
             send_behaviour_tree_text = "Sent Behaviour Tree!";
             send_behaviour_tree_color = "#3457AA";
         } catch (error) {
@@ -51,7 +47,7 @@
 <div class="h-full">
     <div class="grid grid-cols-2 gap-2">
         <button
-            on:mousedown={sendXMLCode}
+            on:mousedown={sendBehaviourTree}
             class="p-2 rounded-lg shadow-lg relative inset-0"
             style="background-color: {send_behaviour_tree_color}; color: white; width: 100%; border: none;"
             >{send_behaviour_tree_text}</button
