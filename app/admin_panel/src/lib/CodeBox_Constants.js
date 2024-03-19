@@ -309,8 +309,7 @@ export const common_nodes = [
     "Action:CountdownWait",
     "Action:PauseExecution",
 
-    "Action:Log",
-    "Action:Error",
+    "Action:Print",
 
     "Action:SetAngle",
     "Action:SetSpeed",
@@ -401,12 +400,7 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Action:Log",
-            attributes: ["text"],
-            completion: { type: "keyword" },
-        },
-        {
-            name: "Action:Error",
+            name: "Action:Print",
             attributes: ["text"],
             completion: { type: "keyword" },
         },

@@ -168,7 +168,7 @@ class WebSocketServer {
             type: 'command',
             command: 'behaviour_tree',
             action: 'set',
-            behaviour_tree: behaviour_tree
+            data: behaviour_tree
         }));
     }
 
