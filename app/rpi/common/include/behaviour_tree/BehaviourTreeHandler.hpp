@@ -32,9 +32,10 @@ namespace behaviour_tree
 
 		void handleCommand(const std::string message, const rapidjson::Document& message_json)
 		{
-			if (message_json["command"].GetString() != "behaviour_tree")
+			const std::string command = message_json["command"].GetString();
+			if (command != "behaviour_tree")
 			{
-				spdlog::error(R"(The property "command" does not match "behaviour_tree", {})", message_json["command"].GetString());
+				spdlog::error(R"(The property "command" does not match "behaviour_tree", {})", command);
 				return;
 			}
 			if (!message_json.HasMember("action") || !message_json["action"].IsString())
@@ -42,7 +43,8 @@ namespace behaviour_tree
 				spdlog::error(R"(The property "action" does not exist in the given json.)");
 				return;
 			}
-			switch (utils::hash(message_json["action"].GetString()))
+			const std::string action = message_json["action"].GetString();
+			switch (utils::hash(action))
 			{
 				case utils::hash("set"):
 				{
@@ -53,7 +55,10 @@ namespace behaviour_tree
 				{
 					this->startBehaviourTree();
 					break;
-				} 
+				}
+				default:
+					spdlog::error(R"(The property "action" does not match "set" or "start", {})", action);
+					break;
 			};
 		}
 
@@ -71,7 +76,6 @@ namespace behaviour_tree
 				return;
 			}
 			auto &behaviour_tree = maybe_behaviour_tree.value();
-
 			spdlog::info("Behaviour tree parsed successfully | {}", behaviour_tree->toString());
 			this->_setBehaviourTree(behaviour_tree);
 		}
