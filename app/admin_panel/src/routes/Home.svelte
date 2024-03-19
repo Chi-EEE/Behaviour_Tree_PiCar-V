@@ -12,6 +12,7 @@
     } from "../store/home_store";
 
     import { Pane, Splitpanes } from "svelte-splitpanes";
+    import SaveBehaviourTreeModal from "../lib/SaveBehaviourTreeModal.svelte";
 
     /** @type {number} */
     let stream_split_height = 0;
@@ -39,6 +40,7 @@
     {#if $websocket_server_connection_state === false}
         <RaspberryPiConnectBanner />
     {/if}
+    <SaveBehaviourTreeModal />
     <Splitpanes style="height:100%;padding:1em;background-color:rgb(20,20,40)" on:resize={onSideResize}>
         <Pane size={side_pane_size_0}>
             <Splitpanes horizontal={true} on:resize={onMainResize}>
