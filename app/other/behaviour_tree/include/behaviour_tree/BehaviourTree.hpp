@@ -70,7 +70,7 @@ namespace behaviour_tree
 			{
 				out += root->toString();
 			}
-			return fmt::format(R"(<BehaviourTree>{}</BehaviourTree>)", out);
+			return fmt::format(R"(<BehaviourTree cycle_limit='{}'>{}</BehaviourTree>)", this->cycle_limit, out);
 		}
 
 	private:

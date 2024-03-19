@@ -99,8 +99,12 @@ namespace behaviour_tree
 			{
 				return;
 			}
-			this->context->update(this->tick_count);
-			++this->tick_count;
+			if (this->context->canRun()) {
+				this->context->update(this->tick_count);
+				this->tick_count++;
+			} else {
+				this->context = nullptr;
+			}
 		}
 
 		void stop() final override
