@@ -82,12 +82,15 @@ namespace behaviour_tree
 
 		void startBehaviourTree()
 		{
-			assert(this->behaviour_tree != nullptr);
 			assert(this->car_system != nullptr);
+			if (this->behaviour_tree == nullptr) {
+				spdlog::error("The Behaviour tree has not been set");
+				return;
+			}
 			this->tick_count = 0;
 			std::shared_ptr<Context> context = std::make_shared<CarContext>(this->behaviour_tree, this->car_system);
 			this->context = context;
-			spdlog::info("Starting the behaviour tree");
+			spdlog::info("Starting the Saved Behaviour tree");
 		}
 
 		void update() final override

@@ -23,11 +23,12 @@ namespace behaviour_tree::node::custom::action
 
 		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
 		{
-#ifndef BEHAVIOUR_TREE_DISABLE_RUN
-			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
-#else
+// #ifndef BEHAVIOUR_TREE_DISABLE_RUN
+// 			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
+// #else
+// 			std::cout << this->getText();
+// #endif
 			std::cout << this->getText();
-#endif
 			return Status::Success;
 		}
 
