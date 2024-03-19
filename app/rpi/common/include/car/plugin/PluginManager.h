@@ -31,7 +31,6 @@ namespace car::plugin
 
 		void update()
 		{
-			spdlog::info("Updating plugins: {}", this->plugins.size());
 			for (std::shared_ptr<Plugin>& plugin : this->plugins)
 			{
 				plugin->update();
