@@ -62,7 +62,7 @@ namespace behaviour_tree
 			};
 		}
 
-		void setBehaviourTree(const rapidjson::Value &message_json)
+		void setBehaviourTree(const rapidjson::Document &message_json)
 		{
 			if (!message_json.HasMember("data") || !message_json["data"].IsString())
 			{
