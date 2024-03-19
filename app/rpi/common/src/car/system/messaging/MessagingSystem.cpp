@@ -128,7 +128,7 @@ namespace car::system::messaging
 			return;
 		}
 
-		spdlog::info("Got message: {}", message);
+		spdlog::info("Received message: {}", message);
 
 		const std::string type = message_json["type"].GetString();
 		try
