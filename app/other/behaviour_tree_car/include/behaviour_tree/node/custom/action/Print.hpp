@@ -28,7 +28,7 @@ namespace behaviour_tree::node::custom::action
 // #else
 // 			std::cout << this->getText();
 // #endif
-			std::cout << this->getText();
+			spdlog::info(this->getText());
 			return Status::Success;
 		}
 
