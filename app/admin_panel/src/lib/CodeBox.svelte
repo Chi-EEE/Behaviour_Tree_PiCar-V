@@ -24,7 +24,7 @@
         }
         debounce = true;
         try {
-            await api.sendBehaviourTree({ data: xmlFormat.minify(xml_code) });
+            await api.sendBehaviourTree({ data: xmlFormat.minify($behaviour_tree_xml_code) });
             send_behaviour_tree_text = "Sent Behaviour Tree!";
             send_behaviour_tree_color = "#3457AA";
         } catch (error) {

@@ -15,7 +15,7 @@
 </script>
 
 <main style="height: 92vh">
-    {#if $websocket_server_connection_state}
+    {#if $websocket_server_connection_state === false}
         <RaspberryPiConnectBanner />
     {/if}
     <Splitpanes style="height:100%;padding:1em;background-color:rgb(20,20,40)">
