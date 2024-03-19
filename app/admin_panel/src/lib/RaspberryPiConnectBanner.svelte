@@ -15,7 +15,7 @@
     </h2>
     <p class="text-gray-500 dark:text-gray-400">
       Connect the Raspberry Pi to the Admin Panel's websocket server by
-      following instructions in the Websocket Tab or using the button.
+      following instructions in the Websocket Tab.
     </p>
     <Button href="#/websocket" class="w-fit ml-3">
       View Instructions
