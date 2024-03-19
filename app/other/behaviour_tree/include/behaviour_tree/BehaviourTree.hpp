@@ -64,6 +64,10 @@ namespace behaviour_tree
 			this->cycles++;
 		}
 
+		void resetCycles() {
+			this->cycles = 0;
+		}
+
 		const std::string toString() const {
 			std::string out;
 			for (auto& root : this->roots)

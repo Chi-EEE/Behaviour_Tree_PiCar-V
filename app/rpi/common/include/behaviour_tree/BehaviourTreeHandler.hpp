@@ -87,6 +87,7 @@ namespace behaviour_tree
 				spdlog::error("The Behaviour tree has not been set");
 				return;
 			}
+			this->behaviour_tree->resetCycles();
 			this->tick_count = 0;
 			std::shared_ptr<Context> context = std::make_shared<CarContext>(this->behaviour_tree, this->car_system);
 			this->context = context;
