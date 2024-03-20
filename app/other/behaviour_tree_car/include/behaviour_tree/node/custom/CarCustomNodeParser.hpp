@@ -23,7 +23,7 @@
 #include "action/SetWheelDirection.hpp"
 #include "action/SetAngle.hpp"
 
-#include "condition/NearbyPoints.hpp"
+#include "condition/SuccessOnAverageNearbyScan.hpp"
 
 #include "utils/Utility.hpp"
 
@@ -164,23 +164,23 @@ namespace behaviour_tree::node::custom
 				}
 				}
 			}
-			case utils::hash("Condition:NearbyPoints"):
+			case utils::hash("Condition:SuccessOnAverageNearbyScan"):
 			{
-				const int min_angle = node.attribute("angle").as_int();
+				const int min_angle = node.attribute("min_angle").as_int();
 				if (min_angle < 0 || min_angle > 360)
-					return tl::unexpected(fmt::format(R"(Invalid min_angle: '{}' | Condition:NearbyPoints:['{}',{}])", min_angle, name_attribute, index));
-				const int max_angle = node.attribute("angle").as_int();
+					return tl::unexpected(fmt::format(R"(Invalid min_angle: '{}' | Condition:SuccessOnAverageNearbyScan:['{}',{}])", min_angle, name_attribute, index));
+				const int max_angle = node.attribute("max_angle").as_int();
 				if (max_angle < 0 || max_angle > 360)
-					return tl::unexpected(fmt::format(R"(Invalid max_angle: '{}' | Condition:NearbyPoints:['{}',{}])", max_angle, name_attribute, index));
-				const int avg_distance = node.attribute("angle").as_int();
-				if (avg_distance < 0)
-					return tl::unexpected(fmt::format(R"(Invalid avg_distance: '{}' | Condition:NearbyPoints:['{}',{}])", avg_distance, name_attribute, index));
-				return std::make_shared<custom::condition::NearbyPoints>(
-					custom::condition::NearbyPoints(
+					return tl::unexpected(fmt::format(R"(Invalid max_angle: '{}' | Condition:SuccessOnAverageNearbyScan:['{}',{}])", max_angle, name_attribute, index));
+				const double cm = node.attribute("cm").as_double();
+				if (cm < 0)
+					return tl::unexpected(fmt::format(R"(Invalid cm: '{}' | Condition:SuccessOnAverageNearbyScan:['{}',{}])", cm, name_attribute, index));
+				return std::make_shared<custom::condition::SuccessOnAverageNearbyScan>(
+					custom::condition::SuccessOnAverageNearbyScan(
 						name_attribute,
 						min_angle,
 						max_angle,
-						avg_distance));
+						cm));
 			}
 			default:
 			{

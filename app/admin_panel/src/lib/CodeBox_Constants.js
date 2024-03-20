@@ -314,7 +314,7 @@ export const common_nodes = [
     "Action:SetSpeed",
     "Action:SetWheelDirection",
 
-    "Condition:NearbyPoints",
+    "Condition:SuccessOnAverageNearbyScan",
 ];
 
 export const xml_schema = {
@@ -443,7 +443,7 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Condition:NearbyPoints",
+            name: "Condition:SuccessOnAverageNearbyScan",
             attributes: [
                 {
                     name: "min_angle",
@@ -485,7 +485,7 @@ const node_information_list = new Map([
     ["Action:SetSpeed", "Moves the car by the given speed"],
     ["Action:SetWheelDirection", "Sets the direction of the car"],
 
-    ["Condition:NearbyPoints", "Checks if there are nearby points"],
+    ["Condition:SuccessOnAverageNearbyScan", "Checks if there are nearby points"],
 ]);
 
 // Modified code from: https://codemirror.net/examples/tooltip/

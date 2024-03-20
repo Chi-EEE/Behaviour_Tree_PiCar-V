@@ -8,7 +8,7 @@
     <Root id='MoveIfNoObstacles'>
         <Sequence>
             <Invert>
-                <Condition:NearbyPoints min_angle='0' max_angle='90' distance='100'/>
+                <Condition:SuccessOnAverageNearbyScan min_angle='0' max_angle='90' distance='100'/>
             </Invert>
             <!-- Move forwards if there is no obstacle in front -->
             <Action:SetSpeed speed='100' wheel_type='Both'/>
