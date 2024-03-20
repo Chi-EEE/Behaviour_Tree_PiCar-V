@@ -75,7 +75,7 @@
     }
 </script>
 
-<div class="h-full">
+<div class="h-full grid grid-rows-2 gap-1">
     <div class="grid grid-cols-3 gap-2">
         <button
             on:mousedown={sendBehaviourTree}

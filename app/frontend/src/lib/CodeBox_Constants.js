@@ -456,7 +456,7 @@ export const xml_schema = {
                     values: range_0_180,
                     completion: { type: "keyword" },
                 },
-                "distance",
+                "cm",
             ],
             completion: { type: "keyword" },
         },
