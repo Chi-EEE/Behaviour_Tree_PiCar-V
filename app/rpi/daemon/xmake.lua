@@ -32,6 +32,7 @@ target("rpi_daemon")
     local dir = "$(buildir)/$(plat)/$(arch)/$(mode)"
     set_configdir(dir)
     add_configfiles("(systemd/**)", { onlycopy = true })
+    add_configfiles("install/(**)", { onlycopy = true })
 
     local conf_install_dir = "etc/rpi_daemon"
     local install_files = {
