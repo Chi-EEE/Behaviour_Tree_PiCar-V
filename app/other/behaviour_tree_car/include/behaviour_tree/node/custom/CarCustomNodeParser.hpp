@@ -16,7 +16,6 @@
 #include "behaviour_tree/node/custom/CustomNodeParser.hpp"
 
 #include "action/PauseExecution.hpp"
-#include "action/CountdownWait.hpp"
 
 #include "action/Print.hpp"
 
@@ -41,38 +40,6 @@ namespace behaviour_tree::node::custom
 			const std::string node_name = node.name();
 			switch (utils::hash(node_name))
 			{
-			case utils::hash("Action:CountdownWait"):
-			{
-				const std::string reset_on_non_consecutive_tick_string = node.attribute("reset_on_non_consecutive_tick").as_string();
-				bool reset_on_non_consecutive_tick = false;
-				switch (utils::hash(reset_on_non_consecutive_tick_string))
-				{
-				case utils::hash("true"):
-				{
-					reset_on_non_consecutive_tick = true;
-					break;
-				}
-				case utils::hash("false"):
-				{
-					reset_on_non_consecutive_tick = false;
-					break;
-				}
-				default:
-				{
-					return tl::unexpected(fmt::format(R"(Invalid reset_on_non_consecutive_tick: '{}' | Action:CountdownWait:['{}',{}])", reset_on_non_consecutive_tick_string, name_attribute, index));
-				}
-				}
-				int ms = node.attribute("ms").as_int();
-				if (ms < 0) {
-					return tl::unexpected(fmt::format(R"(Invalid ms: '{}' | Action:PauseExecution:['{}',{}])", ms, name_attribute, index));
-				}
-				return std::make_shared<custom::action::CountdownWait>(
-					custom::action::CountdownWait(
-						name_attribute,
-						ms,
-						reset_on_non_consecutive_tick
-					));
-			}
 			case utils::hash("Action:PauseExecution"):
 			{
 				int ms = node.attribute("ms").as_int();
