@@ -21,6 +21,7 @@ const WINDOW_API = {
 
     sendBehaviourTree: (/** @type {any} */ args) => ipcRenderer.invoke("sendBehaviourTree", args),
     startBehaviourTree: () => ipcRenderer.invoke("startBehaviourTree"),
+    stopBehaviourTree: () => ipcRenderer.invoke("stopBehaviourTree"),
 }
 
 contextBridge.exposeInMainWorld("api", WINDOW_API)

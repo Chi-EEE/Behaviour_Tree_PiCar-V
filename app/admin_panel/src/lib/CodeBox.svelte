@@ -23,7 +23,7 @@
     let start_behaviour_tree_text = "Start Behaviour Tree";
 
     /** @type {string} */
-    let start_behaviour_tree_color = "#89AAFF"
+    let start_behaviour_tree_color = "#89AAFF";
 
     /** @type {boolean} */
     let start_behaviour_tree_debounce = false;
@@ -34,7 +34,9 @@
         }
         send_behaviour_tree_debounce = true;
         try {
-            await api.sendBehaviourTree({ data: xmlFormat.minify($behaviour_tree_xml_code) });
+            await api.sendBehaviourTree({
+                data: xmlFormat.minify($behaviour_tree_xml_code),
+            });
             send_behaviour_tree_text = "Sent Behaviour Tree!";
             send_behaviour_tree_color = "#3457AA";
         } catch (error) {
@@ -67,10 +69,14 @@
             start_behaviour_tree_debounce = false;
         }, 1000);
     }
+
+    async function stopBehaviourTree() {
+        await api.stopBehaviourTree();
+    }
 </script>
 
 <div class="h-full">
-    <div class="grid grid-cols-2 gap-2">
+    <div class="grid grid-cols-3 gap-2">
         <button
             on:mousedown={sendBehaviourTree}
             class="p-2 rounded-lg shadow-lg relative inset-0"
@@ -82,6 +88,12 @@
             class="p-2 rounded-lg shadow-lg relative inset-0"
             style="background-color: {start_behaviour_tree_color}; color: white; width: 100%; border: none;"
             >{start_behaviour_tree_text}</button
+        >
+        <button
+            on:mousedown={stopBehaviourTree}
+            class="p-2 rounded-lg shadow-lg relative inset-0"
+            style="background-color: #FF352F; color: white; width: 100%; border: none;"
+            >Stop Behaviour Tree</button
         >
     </div>
     <CodeMirror

@@ -306,7 +306,6 @@ export const common_nodes = [
     "UseRoot",
 
     // Task Nodes
-    "Action:CountdownWait",
     "Action:PauseExecution",
 
     "Action:Print",
@@ -383,18 +382,6 @@ export const xml_schema = {
         {
             name: "UseRoot",
             attributes: ["id"],
-            completion: { type: "keyword" },
-        },
-        {
-            name: "Action:CountdownWait",
-            attributes: [
-                "ms",
-                {
-                    name: "reset_on_non_consecutive_tick",
-                    values: ["true", "false"],
-                    completion: { type: "keyword" },
-                }
-            ],
             completion: { type: "keyword" },
         },
         {
@@ -491,7 +478,6 @@ const node_information_list = new Map([
     ["Fail", "Always fails"],
     ["Succeed", "Always succeeds"],
 
-    ["Action:CountdownWait", "Waits for the given amount of time"],
     ["Action:PauseExecution", "Pauses the execution for the given amount of time"],
     ["Action:Print", "Prints the given message"],
 

@@ -31,6 +31,8 @@ namespace behaviour_tree::node::decorator
 				return Status::Failure;
 			case Status::Failure:
 				return Status::Success;
+            case Status::Running:
+                return Status::Running;
 			}
 		}
 

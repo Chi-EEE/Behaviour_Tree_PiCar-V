@@ -185,6 +185,20 @@ class WebSocketServer {
             action: 'start',
         }));
     }
+
+    stopBehaviourTree() {
+        if (this._wss === undefined) {
+            return;
+        }
+        if (this._selected_raspberry_pi === undefined) {
+            return;
+        }
+        this._selected_raspberry_pi.ws.send(JSON.stringify({
+            type: 'command',
+            command: 'behaviour_tree',
+            action: 'stop',
+        }));
+    }
 }
 
 module.exports = { websocket_server: new WebSocketServer() };
