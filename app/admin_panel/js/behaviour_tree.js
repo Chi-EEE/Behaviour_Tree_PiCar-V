@@ -10,10 +10,16 @@ function startBehaviourTree(_event, _args) {
     websocket_server.startBehaviourTree();
 }
 
+function stopBehaviourTree(_event, _args) {
+    websocket_server.stopBehaviourTree()
+}
+
 ipcMain.handle('sendBehaviourTree', sendBehaviourTree);
 ipcMain.handle('startBehaviourTree', startBehaviourTree);
+ipcMain.handle('stopBehaviourTree', stopBehaviourTree);
 
 module.exports = {
     sendBehaviourTree: sendBehaviourTree,
     startBehaviourTree: startBehaviourTree,
+    stopBehaviourTree: stopBehaviourTree,
 }
