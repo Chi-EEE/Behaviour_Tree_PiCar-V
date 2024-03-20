@@ -15,3 +15,7 @@ Or use the single command:
 ```bash.sh
 sudo chmod +x ./install_script.sh && systemctl stop rpi_daemon && sudo ./install_script.sh install && sudo systemctl daemon-reload && sudo systemctl start rpi_daemon
 ```
+
+## View Logs
+`systemctl status rpi_daemon.service`
+`journalctl -u rpi_daemon`
