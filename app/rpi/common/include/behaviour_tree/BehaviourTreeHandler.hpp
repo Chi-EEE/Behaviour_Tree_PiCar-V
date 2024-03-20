@@ -56,6 +56,11 @@ namespace behaviour_tree
 					this->startBehaviourTree();
 					break;
 				}
+				case utils::hash("stop"):
+				{
+					this->stopBehaviourTree();
+					break;
+				}
 				default:
 					spdlog::error(R"(The property "action" does not match "set" or "start", {})", action);
 					break;
@@ -91,7 +96,14 @@ namespace behaviour_tree
 			this->tick_count = 0;
 			std::shared_ptr<Context> context = std::make_shared<CarContext>(this->behaviour_tree, this->car_system);
 			this->context = context;
-			spdlog::info("Starting the Saved Behaviour tree");
+			spdlog::info("Starting the given Behaviour tree");
+		}
+
+		void stopBehaviourTree()
+		{
+			assert(this->car_system != nullptr);
+			this->context = nullptr;
+			spdlog::info("Stopped any Behaviour Tree context");
 		}
 
 		void update() final override

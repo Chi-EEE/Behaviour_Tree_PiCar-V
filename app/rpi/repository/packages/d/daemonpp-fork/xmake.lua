@@ -1,7 +1,7 @@
 package("daemonpp-fork")
     set_base("daemonpp")
     set_policy("package.install_locally", true)
-    set_policy("package.install_always", true)
+    -- set_policy("package.install_always", true)
 
     add_patches("2023.05.01", path.join(os.scriptdir(), "patches", "2023.05.01", "add_inih.patch"), "8af0d2a28484a8174a6c41a2c58705bc7032268b60f19d162c8fe8eb12c39af8")
 
