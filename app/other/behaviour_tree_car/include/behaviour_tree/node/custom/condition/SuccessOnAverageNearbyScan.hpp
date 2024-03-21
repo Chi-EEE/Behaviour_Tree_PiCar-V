@@ -13,7 +13,7 @@
 
 namespace behaviour_tree::node::custom::condition
 {
-	constexpr double CM_TO_DISTANCE = 6.666666666666666666666666666666666666666666666e-1;
+	constexpr double CM_TO_DISTANCE = 6.666666666666666666666666666666666666666666666;
 	class SuccessOnAverageNearbyScan final : public CustomNode
 	{
 	public:

@@ -1,0 +1,23 @@
+<BehaviourTree cycle_limit="0">
+    <Root>
+        <Selector>
+            <Sequence>
+                <!-- Enable Fail to stop the Car from Moving -->
+                <Fail/>
+                <UseRoot id="stop"/>
+            </Sequence>
+            <Sequence>
+                <Action:SetWheelDirection direction_type="Forward" wheel_type="Both"/>
+                <Action:SetAngle angle="90" servo_type="FrontWheels"/>
+                <Action:SetSpeed speed="30" wheel_type="Both"/>
+            </Sequence>
+        </Selector>
+    </Root>
+    <Root id="stop">
+        <Sequence>
+            <Action:SetWheelDirection direction_type="Forward" wheel_type="Both"/>
+            <Action:SetAngle angle="90" servo_type="FrontWheels"/>
+            <Action:SetSpeed speed="0" wheel_type="Both"/>
+        </Sequence>
+    </Root>
+</BehaviourTree>

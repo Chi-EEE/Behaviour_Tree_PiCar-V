@@ -1,0 +1,41 @@
+<BehaviourTree cycle_limit="0">
+    <Root>
+        <Selector>
+            <Sequence>
+                <Fail/>
+                <UseRoot id="stop"/>
+            </Sequence>
+            <Sequence>
+                <Condition:SuccessOnAverageNearbyScan cm="100" min_angle="0" max_angle="180"/>
+                <Action:Print text="100"/>
+            </Sequence>
+            <Sequence>
+                <Condition:SuccessOnAverageNearbyScan cm="80" min_angle="0" max_angle="180"/>
+                <Action:Print text="80"/>
+            </Sequence>
+            <Sequence>
+                <Condition:SuccessOnAverageNearbyScan cm="60" min_angle="0" max_angle="180"/>
+                <Action:Print text="60"/>
+            </Sequence>
+            <Sequence>
+                <Condition:SuccessOnAverageNearbyScan cm="40" min_angle="0" max_angle="180"/>
+                <Action:Print text="40"/>
+            </Sequence>
+            <Sequence>
+                <Condition:SuccessOnAverageNearbyScan cm="20" min_angle="0" max_angle="180"/>
+                <Action:Print text="20"/>
+            </Sequence>
+            <Sequence>
+                <Condition:SuccessOnAverageNearbyScan cm="0" min_angle="0" max_angle="180"/>
+                <Action:Print text="0"/>
+            </Sequence>
+        </Selector>
+    </Root>
+    <Root id="stop">
+        <Sequence>
+            <Action:SetWheelDirection direction_type="Forward" wheel_type="Both"/>
+            <Action:SetAngle angle="90" servo_type="FrontWheels"/>
+            <Action:SetSpeed speed="0" wheel_type="Both"/>
+        </Sequence>
+    </Root>
+</BehaviourTree>
