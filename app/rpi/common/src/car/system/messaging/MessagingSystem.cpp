@@ -41,7 +41,6 @@ namespace car::system::messaging
 
 		this->websocket->setUrl("ws://" + this->configuration->host);
 		ix::WebSocketHttpHeaders headers;
-		headers["car_name"] = this->configuration->car_name;
 		this->websocket->setExtraHeaders(headers);
 	}
 

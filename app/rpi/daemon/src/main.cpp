@@ -51,12 +51,11 @@ public:
         std::string host = reader.GetString("Host", "host", "");
 
         this->connection_interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "connection_interval", 1));
-        std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
-        dlog::info("Started daemon with host: " + host + " and car_name: " + car_name + "\n");
+        dlog::info("Started daemon with host: " + host + "\n");
 
-        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{host, car_name});
-        this->any_configuration_empty = host.empty() || car_name.empty();
+        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{host});
+        this->any_configuration_empty = host.empty();
         if (this->any_configuration_empty)
         {
             dlog::warning("A property in the configuration is empty, this daemon will not run with an empty property.");
@@ -175,15 +174,14 @@ public:
             return;
         }
         std::string host = reader.GetString("Host", "host", "");
-        std::string car_name = reader.GetString("RaspberryPi", "car_name", "");
 
-        dlog::info(fmt::format(R"(Reloading daemon with host: "{}" and car_name: "{}"\n)", host, car_name));
+        dlog::info(fmt::format(R"(Reloading daemon with host: "{}"\n)", host));
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
             host,
-            car_name,
         });
-        this->any_configuration_empty = host.empty() || car_name.empty();
+        
+        this->any_configuration_empty = host.empty();
         if (this->any_configuration_empty)
         {
             dlog::warning("A property in the configuration is empty, this daemon will not run with an empty property.");
