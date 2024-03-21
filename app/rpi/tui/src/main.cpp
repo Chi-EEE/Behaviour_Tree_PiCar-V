@@ -41,16 +41,10 @@ using namespace car::configuration;
 using namespace car::plugin;
 
 std::unique_ptr<LidarDevice> getLidarDevice();
+std::unique_ptr<AbstractMovementController> getMovementController();
 
 int main(int argc, char *argv[])
 {
-#ifdef __linux
-    if (getuid())
-    {
-        std::cout << "This program will not work properly unless you are root. Please run this program as root using `sudo`.\n";
-        return EXIT_FAILURE;
-    }
-#endif
     std::string exe_dir = std::filesystem::weakly_canonical(std::filesystem::path(argv[0])).parent_path().string();
 
     std::shared_ptr<JsonConfiguration> json_configuration = std::make_shared<JsonConfiguration>(exe_dir);
@@ -69,21 +63,9 @@ int main(int argc, char *argv[])
 
     std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
 
-#ifdef __linux
-    constexpr bool dummy = false;
-    
-    std::unique_ptr<MovementSystem> movement_system;
-    if (!dummy)
-    {
-        movement_system = std::make_unique<MovementSystem>(std::make_unique<DeviceMovementController>());
-    }
-    else
-    {
-        movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
-    }
-#else
-    std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::make_unique<DummyMovementController>());
-#endif
+    std::unique_ptr<AbstractMovementController> movement_controller = getMovementController();
+
+    std::unique_ptr<MovementSystem> movement_system = std::make_unique<MovementSystem>(std::move(movement_controller));
 
     std::shared_ptr<BehaviourTreeHandler> behaviour_tree_handler = std::make_shared<BehaviourTreeHandler>(BehaviourTreeHandler());
 
@@ -126,4 +108,20 @@ std::unique_ptr<LidarDevice> getLidarDevice()
         spdlog::warn("Unable to connect to the Lidar Scanner, defaulting to LidarDummy\n");
         return std::make_unique<LidarDummy>();
     }
+}
+
+std::unique_ptr<AbstractMovementController> getMovementController() {
+    #ifdef _WIN32
+    return std::make_unique<DummyMovementController>();
+    #else
+    if (getuid()) {
+        spdlog::info("Since this program is not run as root, the DeviceMovementController will not be used. The DummyMovementController will be used instead.");
+        return std::make_unique<DummyMovementController>();
+    }
+    if (gpioInitialise() < 0) {
+        spdlog::info("Unable to initialise gpio, using DummyMovementController instead.");
+        return std::make_unique<DummyMovementController>();
+    }
+    return std::make_unique<DeviceMovementController>();
+    #endif
 }

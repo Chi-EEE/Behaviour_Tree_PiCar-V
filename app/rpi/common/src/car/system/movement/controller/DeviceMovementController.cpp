@@ -20,7 +20,6 @@ namespace car::system::movement::controller
 {
     [[nodiscard]] DeviceMovementController::DeviceMovementController()
     {
-        gpioInitialise();
         this->pwm = std::make_shared<PCA9685>();
         this->rear_left_wheel = std::make_unique<RearWheel>(
             this->pwm,

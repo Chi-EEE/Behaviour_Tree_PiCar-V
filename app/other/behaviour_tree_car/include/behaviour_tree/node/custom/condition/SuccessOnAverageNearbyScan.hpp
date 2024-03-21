@@ -55,11 +55,11 @@ namespace behaviour_tree::node::custom::condition
 			return this->max_angle;
 		}
 
-		const int& getAverageDistanceUnit() const {
+		const double& getAverageDistanceUnit() const {
 			return this->average_distance_unit;
 		}
 
-		const int& getCM() const {
+		const double& getCM() const {
 			return this->cm;
 		}
 
