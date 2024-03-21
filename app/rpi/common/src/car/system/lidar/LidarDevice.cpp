@@ -5,7 +5,7 @@
 
 namespace car::system::lidar
 {
-    std::string LidarDevice::getLidarMessage()
+    rapidjson::Document LidarDevice::getLidarJson()
     {
         rapidjson::Document output_json;
         output_json.SetObject();
@@ -22,10 +22,7 @@ namespace car::system::lidar
         }
 
         output_json.AddMember("data", data_array, output_json.GetAllocator());
-
-        rapidjson::StringBuffer buffer;
-        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-        output_json.Accept(writer);
-        return buffer.GetString();
+        
+        return output_json;
     };
 }

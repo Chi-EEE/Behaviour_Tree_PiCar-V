@@ -8,6 +8,7 @@
 #include "car/configuration/Configuration.h"
 
 #include "car/system/lidar/LidarDevice.h"
+#include "car/system/camera/CameraDevice.h"
 #include "car/system/messaging/MessagingSystem.h"
 #include "car/system/movement/MovementSystem.h"
 
@@ -16,6 +17,7 @@
 using namespace car::configuration;
 using namespace car::plugin;
 using namespace car::system::lidar;
+using namespace car::system::camera;
 using namespace car::system::messaging;
 using namespace car::system::movement;
 
@@ -28,6 +30,7 @@ namespace car::system
 		CarSystem(
 			std::shared_ptr<Configuration> configuration,
 			std::unique_ptr<LidarDevice> lidar_device,
+			std::unique_ptr<CameraDevice> camera_device,
 			std::unique_ptr<MessagingSystem> messaging_system,
 			std::unique_ptr<MovementSystem> movement_system,
 			std::unique_ptr<PluginManager> plugin_manager);
@@ -72,6 +75,7 @@ namespace car::system
 		std::shared_ptr<Configuration> configuration;
 
 		const std::unique_ptr<LidarDevice> lidar_device;
+		const std::unique_ptr<CameraDevice> camera_device;
 		const std::unique_ptr<MessagingSystem> messaging_system;
 		const std::unique_ptr<MovementSystem> movement_system;
 		const std::unique_ptr<PluginManager> plugin_manager;

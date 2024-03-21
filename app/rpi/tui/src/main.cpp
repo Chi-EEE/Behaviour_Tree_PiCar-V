@@ -32,6 +32,7 @@ using namespace rplidar;
 
 using namespace car::system;
 using namespace car::system::lidar;
+using namespace car::system::camera;
 using namespace car::system::messaging;
 using namespace car::system::movement::controller;
 
@@ -59,6 +60,8 @@ int main(int argc, char *argv[])
 
     std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(maybe_configuration.value());
 
+    std::unique_ptr<CameraDevice> camera_device = std::make_unique<CameraDevice>();
+
     std::unique_ptr<LidarDevice> lidar_device = getLidarDevice();
 
     std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
@@ -75,6 +78,7 @@ int main(int argc, char *argv[])
     std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
         configuration,
         std::move(lidar_device),
+        std::move(camera_device),
         std::move(messaging_system),
         std::move(movement_system),
         std::move(plugin_manager));

@@ -5,6 +5,8 @@
 
 #include <vector>
 
+#include <rapidjson/document.h>
+
 #include <RPLidar.h>
 
 using namespace rplidar;
@@ -19,7 +21,7 @@ namespace car::system::lidar
 
 		virtual std::vector<Measure> scan() const = 0;
 
-		std::string getLidarMessage();
+		rapidjson::Document getLidarJson();
 
 		std::vector<Measure> getScanData() const
 		{
