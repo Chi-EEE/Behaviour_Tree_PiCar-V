@@ -31,17 +31,23 @@ namespace behaviour_tree::node::custom::condition
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
 			auto car_system = car_context->getCarSystem();
-			double total_distance = 0.0f;
+			double total_distance = 0.0;
 			int angles_between_count = 0;
-			for (auto& measure : car_system->getScanData()) {
-				if (measure.angle > this->getMinAngle() && measure.angle < this->getMaxAngle()) {
+			for (auto &measure : car_system->getScanData())
+			{
+				if (measure.angle > this->getMinAngle() && measure.angle < this->getMaxAngle())
+				{
 					total_distance += measure.distance;
 					++angles_between_count;
 				}
 			}
-			double average_distance_unit = total_distance / angles_between_count;
-			if (average_distance_unit < this->getAverageDistanceUnit()) {
-				return Status::Success;
+			if (angles_between_count > 0)
+			{
+				double average_distance_unit = total_distance / angles_between_count;
+				if (average_distance_unit < this->getAverageDistanceUnit())
+				{
+					return Status::Success;
+				}
 			}
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 			return Status::Failure;

@@ -114,8 +114,9 @@ namespace behaviour_tree
             {
                 return tl::unexpected(R"(No "Root" nodes found in BehaviourTree)");
             }
+            const int cycle_limit = behaviour_tree_node.attribute("cycle_limit").as_int(0);
             return std::make_shared<BehaviourTree>(
-                BehaviourTree(behaviour_tree_node.attribute("cycle_limit").as_int(0), std::move(roots)));
+                BehaviourTree(cycle_limit, std::move(roots)));
         }
 
     private:
