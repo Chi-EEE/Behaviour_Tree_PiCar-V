@@ -113,13 +113,13 @@ namespace car::system
 			output_json.SetObject();
 
 			rapidjson::Document lidar_json = this->lidar_device->getLidarJson();
-			output_json.AddMember("data", "lidar_data", lidar_json.GetAllocator());
+			output_json.AddMember("lidar_data", lidar_json, lidar_json.GetAllocator());
 
 			std::string camera_data = this->camera_device->getCameraData();
 
 			rapidjson::Value camera_data_json;
-			camera_data_json.SetString(camera_data.c_str(), lidar_json.GetAllocator());
-			output_json.AddMember("camera_data", camera_data_json, lidar_json.GetAllocator());
+			camera_data_json.SetString(camera_data.c_str(), output_json.GetAllocator());
+			output_json.AddMember("camera_data", camera_data_json, output_json.GetAllocator());
 
 			rapidjson::StringBuffer buffer;
 			rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);

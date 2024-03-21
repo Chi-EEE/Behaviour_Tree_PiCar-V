@@ -21,6 +21,9 @@ namespace car::system::camera
         }
 		
 		std::string getCameraData() const {
+			if (!this->camera->isOpened()) {
+				return "";
+			}
 			cv::Mat frame;
 			(*this->camera) >> frame;
 			if (frame.empty()) {
