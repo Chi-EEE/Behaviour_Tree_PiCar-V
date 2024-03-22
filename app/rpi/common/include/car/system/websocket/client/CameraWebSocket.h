@@ -14,17 +14,18 @@ namespace car::system::websocket::client
 	class CameraWebSocket
 	{
 	public:
-		CameraWebSocket();
+		CameraWebSocket(std::shared_ptr<configuration::Configuration> configuration);
 		~CameraWebSocket();
 
 		void initialize(std::shared_ptr<configuration::Configuration> configuration);
-		void restart(std::shared_ptr<configuration::Configuration> configuration);
+		void reload(std::shared_ptr<configuration::Configuration> configuration);
+		void restart();
 		void start();
 		void stop();
 		void terminate();
 
 	private:
-		std::shared_ptr<configuration::Configuration> configuration;
+		std::shared_ptr<configuration::Configuration> configuration_;
 
 		std::unique_ptr<ix::WebSocket> websocket_;
 	};

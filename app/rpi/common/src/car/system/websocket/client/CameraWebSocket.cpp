@@ -1,24 +1,28 @@
 #include "car/system/websocket/client/CameraWebSocket.h"
 
+#include <fmt/format.h>
+
 namespace car::system::websocket::client
 {
-	void CameraWebSocket::initialize(std::shared_ptr<configuration::Configuration> configuration)
+	CameraWebSocket::CameraWebSocket(std::shared_ptr<configuration::Configuration> configuration) : configuration_(configuration), websocket_(std::make_unique<ix::WebSocket>())
 	{
-		this->configuration = configuration;
+		this->websocket_->disableAutomaticReconnection();
 	}
 
-	void CameraWebSocket::restart(std::shared_ptr<configuration::Configuration> configuration)
+	void CameraWebSocket::reload(std::shared_ptr<configuration::Configuration> configuration)
 	{
-		this->configuration = configuration;
+		this->configuration_ = configuration;
+	}
+
+	void CameraWebSocket::restart()
+	{
 		this->start();
 		this->stop();
 	}
 
 	void CameraWebSocket::start()
 	{
-		this->websocket_ = std::make_unique<ix::WebSocket>();
-		this->websocket_->disableAutomaticReconnection();
-		this->websocket_->setUrl("ws://" + this->configuration->host);
+		this->websocket_->setUrl(fmt::format("ws://{host}/camera", fmt::arg("host", this->configuration_->host)));
 		ix::WebSocketHttpHeaders headers;
 		this->websocket_->setExtraHeaders(headers);
 	}

@@ -5,6 +5,8 @@
 
 #include <memory>
 
+#include <ixwebsocket/IXWebSocket.h>
+
 #include "car/configuration/Configuration.h"
 
 namespace car::system::websocket::client
@@ -12,7 +14,7 @@ namespace car::system::websocket::client
 	class LidarWebSocket
 	{
 	public:
-		LidarWebSocket();
+		LidarWebSocket(std::shared_ptr<configuration::Configuration> configuration);
 		~LidarWebSocket();
 
 		void initialize(std::shared_ptr<configuration::Configuration> configuration);
@@ -20,6 +22,11 @@ namespace car::system::websocket::client
 		void connect();
 		void disconnect();
 		void terminate();
+
+	private:
+		std::shared_ptr<configuration::Configuration> configuration_;
+
+		std::unique_ptr<ix::WebSocket> websocket_;
 	};
 }
 

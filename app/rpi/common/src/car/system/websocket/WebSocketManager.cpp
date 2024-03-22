@@ -33,7 +33,12 @@ namespace car::system::websocket
 
 	void WebSocketManager::connect()
 	{
-		this->general_websocket_->connect();
+		auto maybe_success = this->general_websocket_->tryStart();
+		if (!maybe_success.has_value()) {
+			// TODO:
+			return;
+		}
+		const std::string uuid = this->general_websocket_->getUUID();
 		this->camera_websocket_->connect();
 		this->lidar_websocket_->connect();
 	}
