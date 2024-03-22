@@ -29,10 +29,10 @@ namespace car::system::movement::devices
 		void ready();
 
 	private:
-		std::shared_ptr<PCA9685> pwm;
+		std::shared_ptr<PCA9685> pwm_;
 		std::unique_ptr<TB6612> motor;
 
-		int speed;
+		int speed_;
 	};
 } // namespace car::system::movement::wheels
 

@@ -7,8 +7,7 @@
 
 #include "car/configuration/Configuration.h"
 
-#include "car/system/lidar/LidarDevice.h"
-#include "car/system/camera/CameraDevice.h"
+#include "car/system/device/DeviceManager.h"
 #include "car/system/messaging/MessagingSystem.h"
 #include "car/system/movement/MovementSystem.h"
 
@@ -16,8 +15,7 @@
 
 using namespace car::configuration;
 using namespace car::plugin;
-using namespace car::system::lidar;
-using namespace car::system::camera;
+using namespace car::system::device;
 using namespace car::system::messaging;
 using namespace car::system::movement;
 
@@ -29,8 +27,7 @@ namespace car::system
 	public:
 		CarSystem(
 			std::shared_ptr<Configuration> configuration,
-			std::unique_ptr<LidarDevice> lidar_device,
-			std::unique_ptr<CameraDevice> camera_device,
+			std::unique_ptr<DeviceManager> device_manager,
 			std::unique_ptr<MessagingSystem> messaging_system,
 			std::unique_ptr<MovementSystem> movement_system,
 			std::unique_ptr<PluginManager> plugin_manager);
@@ -48,37 +45,34 @@ namespace car::system
 
 		void update();
 
-		const std::shared_ptr<Configuration> getConfiguration() const { return this->configuration; };
+		const std::shared_ptr<Configuration> getConfiguration() const { return this->configuration_; };
 		void setConfiguration(std::shared_ptr<Configuration> configuration);
 
-		LidarDevice *getLidarDevice() const
+		DeviceManager *getDeviceManager() const
 		{
-			return this->lidar_device.get();
+			return this->device_manager_.get();
 		}
 
 		MessagingSystem *getMessagingSystem() const
 		{
-			return this->messaging_system.get();
+			return this->messaging_system_.get();
 		}
 
 		MovementSystem *getMovementSystem() const
 		{
-			return this->movement_system.get();
+			return this->movement_system_.get();
 		}
 
 		template <typename T>
-		const std::shared_ptr<T> getPlugin() const { return this->plugin_manager->getPlugin<T>(); }
-
-		const std::vector<Measure> getScanData() const { return this->lidar_device->getScanData(); }
+		const std::shared_ptr<T> getPlugin() const { return this->plugin_manager_->getPlugin<T>(); }
 
 	private:
-		std::shared_ptr<Configuration> configuration;
+		std::shared_ptr<Configuration> configuration_;
 
-		const std::unique_ptr<LidarDevice> lidar_device;
-		const std::unique_ptr<CameraDevice> camera_device;
-		const std::unique_ptr<MessagingSystem> messaging_system;
-		const std::unique_ptr<MovementSystem> movement_system;
-		const std::unique_ptr<PluginManager> plugin_manager;
+		const std::unique_ptr<DeviceManager> device_manager_;
+		const std::unique_ptr<MessagingSystem> messaging_system_;
+		const std::unique_ptr<MovementSystem> movement_system_;
+		const std::unique_ptr<PluginManager> plugin_manager_;
 
 		bool initialized = false;
 		bool started = false;

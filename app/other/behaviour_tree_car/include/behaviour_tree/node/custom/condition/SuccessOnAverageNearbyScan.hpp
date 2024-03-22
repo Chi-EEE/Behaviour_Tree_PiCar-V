@@ -33,7 +33,7 @@ namespace behaviour_tree::node::custom::condition
 			auto car_system = car_context->getCarSystem();
 			double total_distance = 0.0;
 			int angles_between_count = 0;
-			for (auto &measure : car_system->getScanData())
+			for (auto &measure : car_system->getDeviceManager()->getLidarDevice()->getScanData())
 			{
 				if (measure.angle > this->getMinAngle() && measure.angle < this->getMaxAngle())
 				{

@@ -28,42 +28,51 @@ namespace car::system::messaging
 
 		void initialize(std::shared_ptr<configuration::Configuration> configuration);
 		void initializeWebSocket();
-		tl::expected<nullptr_t, std::string> tryConnect();
+		const tl::expected<nullptr_t, std::string> tryConnect();
 		void stop();
 		void terminate();
 
 		// Necessary for the reloading the configuration
 		void setConfiguration(std::shared_ptr<configuration::Configuration> configuration);
 
-		nod::signal<void(const std::string, const rapidjson::Document&)>& getCommandSignal() { return this->command_signal; }
-		nod::signal<void(const std::string)>& getMessageSignal() { return this->message_signal; }
-		nod::signal<void(const std::string)>& getDisconnectSignal() { return this->on_disconnect_signal; }
+		nod::signal<void(const std::string, const rapidjson::Document&)>& getCommandSignal() { return this->command_signal_; }
+		nod::signal<void(const std::string)>& getMessageSignal() { return this->message_signal_; }
+		nod::signal<void(const std::string)>& getDisconnectSignal() { return this->on_disconnect_signal_; }
 
 		void onMessageCallback(const ix::WebSocketMessagePtr& msg) const;
 		void onDisconnect(const std::string);
 
-		std::string getUUID() const { return this->uuid; }
+		const std::string getUUID() const { return this->uuid_; }
 		void handleMessage(const std::string& message) const;
 		void sendMessage(const std::string& message);
+		void sendBinary(const std::string& message);
 
-		const bool isConnected() const { return this->connected; }
+		struct FirstMessageStruct
+		{
+			std::string error_message;
+			std::string uuid;
+			std::condition_variable condition;
+		};
+		void onFirstMessage(const ix::WebSocketMessagePtr& msg, FirstMessageStruct& first_message_struct);
 
-		nod::signal<void(std::string)> on_disconnect_signal;
+		const bool isConnected() const { return this->connected_; }
 
-		nod::signal<void(const std::string)> message_signal;
-		nod::signal<void(const std::string, const rapidjson::Document&)> command_signal;
+		nod::signal<void(std::string)> on_disconnect_signal_;
+
+		nod::signal<void(const std::string)> message_signal_;
+		nod::signal<void(const std::string, const rapidjson::Document&)> command_signal_;
 
 	private:
 		tl::expected<std::string, std::string> getFirstMessage();
 
-		std::shared_ptr<configuration::Configuration> configuration;
+		std::shared_ptr<configuration::Configuration> configuration_;
 
-		std::unique_ptr<ix::WebSocket> websocket;
-		std::string websocket_url;
+		std::unique_ptr<ix::WebSocket> websocket_;
+		std::string websocket_url_;
 
-		std::string uuid;
+		std::string uuid_;
 
-		bool connected = false;
+		bool connected_ = false;
 	};
 };
 

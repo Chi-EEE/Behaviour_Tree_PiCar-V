@@ -39,7 +39,7 @@ namespace car::display::console::screen
 		{
 			this->debug_lidar_checkbox.getLidarMotorSignal().connect([&](bool connected)
 				{
-					const LidarDevice* lidar_device = this->car_system->getLidarDevice();
+					lidar::LidarDevice* lidar_device = this->car_system->getDeviceManager()->getLidarDevice();
 					if (connected) {
 						lidar_device->start();
 					}

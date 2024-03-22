@@ -11,43 +11,44 @@
 
 namespace car::system::movement::devices
 {
-    RearWheel::RearWheel(std::shared_ptr<PCA9685> pwm, std::unique_ptr<TB6612> motor) : pwm(pwm),
-                                                                             motor(std::move(motor))
+    RearWheel::RearWheel(std::shared_ptr<PCA9685> pwm, std::unique_ptr<TB6612> motor) : pwm_(pwm),
+                                                                             motor_(std::move(motor))
     {
-        this->motor->setOffset(false);
-        this->speed = 0;
+        this->motor_->setOffset(false);
+        this->speed_ = 0;
     }
 
     void RearWheel::forward()
     {
-        this->motor->forward();
+        this->motor_->forward();
     }
 
     void RearWheel::backward()
     {
-        this->motor->backward();
+        this->motor_->backward();
     }
 
     void RearWheel::stop()
     {
-        this->motor->stop();
+        this->motor_->stop();
     }
 
     int RearWheel::getSpeed() const
     {
-        return this->speed;
+        return this->speed_;
     }
 
     void RearWheel::setSpeed(const int &speed)
     {
         const int new_speed = std::clamp(speed, 0, 100);
-        if (new_speed == this->speed)
+        // This is to prevent the motor from being set to the same speed and causing a PWM signal to be sent again
+        if (new_speed == this->speed_)
         {
             return;
         }
-        this->speed = new_speed;
+        this->speed_ = new_speed;
         const int pulse_wide = (this->speed / 100.0f) * 4095;
-        this->pwm->setPWM(this->motor->getPWMPin(), 0, pulse_wide);
+        this->pwm_->setPWM(this->motor_->getPWMPin(), 0, pulse_wide);
     }
 
     void RearWheel::ready()

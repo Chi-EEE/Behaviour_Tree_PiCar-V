@@ -8,8 +8,11 @@
 #include <rapidjson/writer.h>
 
 #include "car/configuration/Configuration.h"
-#include "car/system/lidar/LidarDevice.h"
-#include "car/system/camera/CameraDevice.h"
+
+#include "car/system/device/DeviceManager.h"
+#include "car/system/device/lidar/LidarDevice.h"
+#include "car/system/device/camera/CameraDevice.h"
+
 #include "car/system/messaging/MessagingSystem.h"
 #include "car/system/movement/MovementSystem.h"
 
@@ -19,27 +22,24 @@ namespace car::system
 {
 	CarSystem::CarSystem(
 		std::shared_ptr<Configuration> configuration,
-		std::unique_ptr<LidarDevice> lidar_device,
-		std::unique_ptr<CameraDevice> camera_device,
+		std::unique_ptr<DeviceManager> device_manager,
 		std::unique_ptr<MessagingSystem> messaging_system,
 		std::unique_ptr<MovementSystem> movement_system,
-		std::unique_ptr<PluginManager> plugin_manager) : configuration(configuration),
-		lidar_device(std::move(lidar_device)),
-		camera_device(std::move(camera_device)),
-		messaging_system(std::move(messaging_system)),
-		movement_system(std::move(movement_system)),
-		plugin_manager(std::move(plugin_manager))
+		std::unique_ptr<PluginManager> plugin_manager) : configuration_(configuration),
+		device_manager_(std::move(device_manager)),
+		messaging_system_(std::move(messaging_system)),
+		movement_system_(std::move(movement_system)),
+		plugin_manager_(std::move(plugin_manager))
 	{
 	}
 
 	void CarSystem::initialize()
 	{
 		assert(!this->initialized && "Car System is already initialized.");
-		this->messaging_system->initialize(this->configuration);
-		this->lidar_device->initialize();
-		this->camera_device->initialize();
-		this->movement_system->initialize();
-		this->plugin_manager->initialize(shared_from_this());
+		this->messaging_system_->initialize(this->configuration_);
+		this->device_manager_->initialize();
+		this->movement_system_->initialize();
+		this->plugin_manager_->initialize(shared_from_this());
 		this->initialized = true;
 	}
 
@@ -47,14 +47,14 @@ namespace car::system
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
 		assert(this->started && "Car System has not been started yet.");
-		this->messaging_system->setConfiguration(this->configuration);
+		this->messaging_system_->setConfiguration(this->configuration_);
 	}
 
 	void CarSystem::start()
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
 		// this->lidar_device->start(); // Starting LidarDevice in connect instead.
-		this->movement_system->start();
+		this->movement_system_->start();
 		this->started = true;
 	}
 
@@ -62,24 +62,22 @@ namespace car::system
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
 		assert(this->started && "Car System has not been started yet.");
-		this->lidar_device->stop();
-		this->camera_device->stop();
-		this->movement_system->stop();
-		this->plugin_manager->stop();
+		this->device_manager_->stop();
+		this->movement_system_->stop();
+		this->plugin_manager_->stop();
 	}
 
 	tl::expected<nullptr_t, std::string> CarSystem::tryConnect()
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
 		assert(this->started && "Car System has not been started yet.");
-		assert(!this->messaging_system->isConnected() && "Car System is already connected to the WS Server.");
-		auto messaging_system_result = this->messaging_system->tryConnect();
+		assert(!this->messaging_system_->isConnected() && "Car System is already connected to the WS Server.");
+		auto messaging_system_result = this->messaging_system_->tryConnect();
 		if (!messaging_system_result.has_value())
 		{
 			return tl::make_unexpected(messaging_system_result.error());
 		}
-		this->camera_device->start();
-		this->lidar_device->start();
+		this->device_manager_->start();
 		return nullptr;
 	}
 
@@ -88,9 +86,8 @@ namespace car::system
 		assert(this->initialized && "Car System has not been initialized yet.");
 		assert(this->started && "Car System has not been started yet.");
 		//assert(this->messaging_system->isConnected() && "Car System is not connected to the WS Server."); The connect bool is set to false when it disconnects from the websocket
-		this->messaging_system->stop();
-		this->lidar_device->stop();
-		this->camera_device->stop();
+		this->messaging_system_->stop();
+		this->device_manager_->stop();
 	}
 
 	/// <summary>
@@ -98,41 +95,20 @@ namespace car::system
 	/// </summary>
 	void CarSystem::terminate()
 	{
-		this->messaging_system->terminate();
-		this->lidar_device->terminate();
-		this->camera_device->terminate();
-		this->movement_system->terminate();
-		this->plugin_manager->terminate();
+		this->messaging_system_->terminate();
+		this->device_manager_->terminate();
+		this->movement_system_->terminate();
+		this->plugin_manager_->terminate();
 	}
 
 	void CarSystem::update()
 	{
-		if (this->messaging_system->isConnected())
-		{
-			rapidjson::Document output_json;
-			output_json.SetObject();
-
-			rapidjson::Document lidar_json = this->lidar_device->getLidarJson();
-			output_json.AddMember("lidar_data", lidar_json, lidar_json.GetAllocator());
-
-			std::string camera_data = this->camera_device->getCameraData();
-
-			rapidjson::Value camera_data_json;
-			camera_data_json.SetString(camera_data.c_str(), output_json.GetAllocator());
-			output_json.AddMember("camera_data", camera_data_json, output_json.GetAllocator());
-
-			rapidjson::StringBuffer buffer;
-			rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-			output_json.Accept(writer);
-			
-			std::string output_string = buffer.GetString();
-			this->messaging_system->sendMessage(output_string);
-		}
-		this->plugin_manager->update();
+		//this->messaging_system_->update();
+		this->plugin_manager_->update();
 	}
 
 	void CarSystem::setConfiguration(std::shared_ptr<Configuration> configuration)
 	{
-		this->configuration = configuration;
+		this->configuration_ = configuration;
 	}
 }

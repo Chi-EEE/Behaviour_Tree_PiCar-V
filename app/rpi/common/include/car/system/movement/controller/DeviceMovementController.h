@@ -64,12 +64,12 @@ namespace car::system::movement::controller
 	private:
 		std::shared_ptr<PCA9685> pwm;
 
-		std::unique_ptr<Servo> front_wheels;
-		std::unique_ptr<Servo> camera_servo_1;
-		std::unique_ptr<Servo> camera_servo_2;
+		std::unique_ptr<Servo> front_wheels_;
+		std::unique_ptr<Servo> camera_servo_1_;
+		std::unique_ptr<Servo> camera_servo_2_;
 
-		std::unique_ptr<RearWheel> rear_left_wheel;
-		std::unique_ptr<RearWheel> rear_right_wheel;
+		std::unique_ptr<RearWheel> rear_left_wheel_;
+		std::unique_ptr<RearWheel> rear_right_wheel_;
 	};
 } // namespace car::system::movement::controller
 

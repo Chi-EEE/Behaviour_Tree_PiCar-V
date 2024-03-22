@@ -49,7 +49,7 @@ namespace car::display::console::screen
 					Renderer([&]()
 							 {
 							auto c = Canvas(this->box.x_max, this->box.y_max * 3);
-							std::vector<rplidar::Measure> scan_data = this->car_system->getScanData();
+							std::vector<rplidar::Measure> scan_data = this->car_system->getDeviceManager()->getLidarDevice()->getScanData();
 							for (auto& point : scan_data) {
 								const double angle = point.angle;
 								const double distance = point.distance;
