@@ -31,7 +31,7 @@ namespace behaviour_tree
 			this->root_to_use = this->roots[0];
 		}
 
-		Status tick(const int& tick_count, std::shared_ptr<Context> context)
+		Status tick(const int tick_count, std::shared_ptr<Context> context)
 		{
 			const Status status = this->root_to_use->tick(tick_count, context);
 			if (status != Status::Running)
@@ -41,7 +41,7 @@ namespace behaviour_tree
 			return status;
 		}
 
-		Status UseRoot(const int& tick_count, std::shared_ptr<Context> context, const std::string& id) {
+		Status UseRoot(const int tick_count, std::shared_ptr<Context> context, const std::string& id) {
 			for (auto& root : this->roots)
 			{
 				if (root->getId() == id)

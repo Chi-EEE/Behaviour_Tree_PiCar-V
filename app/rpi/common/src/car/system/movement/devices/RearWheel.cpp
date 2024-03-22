@@ -38,7 +38,7 @@ namespace car::system::movement::devices
         return this->speed_;
     }
 
-    void RearWheel::setSpeed(const int &speed)
+    void RearWheel::setSpeed(const int speed)
     {
         const int new_speed = std::clamp(speed, 0, 100);
         // This is to prevent the motor from being set to the same speed and causing a PWM signal to be sent again

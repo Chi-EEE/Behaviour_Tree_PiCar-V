@@ -34,7 +34,7 @@ namespace car::system::movement::devices
 		int getAngle() const;
 
 		// Some of the code was from: https://github.com/chaoticmachinery/pca9685
-		void setAngle(const int &angle);
+		void setAngle(const int angle);
 
 		void reset();
 

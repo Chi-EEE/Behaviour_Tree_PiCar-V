@@ -17,7 +17,7 @@ namespace behaviour_tree::node::composite
 		{
 		}
 
-		Status tick(const int& tick_count, std::shared_ptr<Context> context, const int& start_index)
+		Status tick(const int tick_count, std::shared_ptr<Context> context, const int start_index)
 		{
 			assert(context != nullptr);
 
@@ -33,7 +33,7 @@ namespace behaviour_tree::node::composite
 			return status;
 		}
 
-		virtual const Status run(const int& tick_count, std::shared_ptr<Context> context, const int& start_index) = 0;
+		virtual const Status run(const int tick_count, std::shared_ptr<Context> context, const int start_index) = 0;
 		virtual const CompositeType type() const = 0;
 
 	protected:

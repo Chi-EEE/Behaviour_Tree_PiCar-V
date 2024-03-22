@@ -22,7 +22,7 @@ namespace behaviour_tree::node::decorator
 			context->popNode();
 		}
 
-		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
+		const Status run(const int tick_count, std::shared_ptr<Context> context) final override
 		{
 			auto status = this->child->tick(tick_count, context);
 			switch (status)

@@ -23,10 +23,10 @@ namespace behaviour_tree::node
 		}
 
         virtual void start(std::shared_ptr<Context> context) {}
-		virtual const Status run(const int& tick_count, std::shared_ptr<Context> context) = 0;
+		virtual const Status run(const int tick_count, std::shared_ptr<Context> context) = 0;
         virtual void finish(std::shared_ptr<Context> context) {}
 
-        Status tick(const int& tick_count, std::shared_ptr<Context> context)
+        Status tick(const int tick_count, std::shared_ptr<Context> context)
         {
             assert(context != nullptr);
 

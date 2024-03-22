@@ -14,7 +14,7 @@ namespace behaviour_tree::node::custom::action
 	class PauseExecution final : public CustomNode
 	{
 	public:
-		PauseExecution(const std::string &name, const int &ms) : CustomNode(name), ms(ms)
+		PauseExecution(const std::string &name, const int ms) : CustomNode(name), ms(ms)
 		{
 		}
 
@@ -27,7 +27,7 @@ namespace behaviour_tree::node::custom::action
 		void finish(std::shared_ptr<Context> context) final override {
 		}
 
-		const Status run(const int &tick_count, std::shared_ptr<Context> context) final override
+		const Status run(const int tick_count, std::shared_ptr<Context> context) final override
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - this->start_time).count() < this->ms)
@@ -47,7 +47,7 @@ namespace behaviour_tree::node::custom::action
 				return fmt::format(R"(<Action:PauseExecution ms='{}'/>)", this->getMS());
 		}
 
-		const int &getMS() const
+		const int getMS() const
 		{
 			return this->ms;
 		}

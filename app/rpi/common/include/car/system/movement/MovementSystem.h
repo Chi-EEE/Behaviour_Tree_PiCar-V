@@ -36,32 +36,32 @@ namespace car::system::movement
 		}
 
 #pragma region Wheels
-		void setRearWheelsSpeed(const int &speed) const
+		void setRearWheelsSpeed(const int speed) const
 		{
 			this->movement_controller->setRearWheelsSpeed(speed);
 		}
 
-		void setRearLeftWheelSpeed(const int &speed) const
+		void setRearLeftWheelSpeed(const int speed) const
 		{
 			this->movement_controller->setRearLeftWheelSpeed(speed);
 		}
 
-		void setRearRightWheelSpeed(const int &speed) const
+		void setRearRightWheelSpeed(const int speed) const
 		{
 			this->movement_controller->setRearRightWheelSpeed(speed);
 		}
 
-		void setFrontWheelsAngle(const float &angle) const
+		void setFrontWheelsAngle(const float angle) const
 		{
 			this->movement_controller->setFrontWheelsAngle(angle);
 		}
 
-		void setCameraServo1Angle(const float &angle) const
+		void setCameraServo1Angle(const float angle) const
 		{
 			this->movement_controller->setCameraServo1Angle(angle);
 		}
 
-		void setCameraServo2Angle(const float &angle) const
+		void setCameraServo2Angle(const float angle) const
 		{
 			this->movement_controller->setCameraServo2Angle(angle);
 		}

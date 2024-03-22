@@ -9,32 +9,32 @@ namespace car::system::movement::controller
         spdlog::info("[DUMMY] Car is stopped");
     }
 
-    void DummyMovementController::setRearWheelsSpeed(const int &speed)
+    void DummyMovementController::setRearWheelsSpeed(const int speed)
     {
         spdlog::info("[DUMMY] Both Rear Wheels speed are set to {}", speed);
     }
 
-    void DummyMovementController::setRearLeftWheelSpeed(const int &speed)
+    void DummyMovementController::setRearLeftWheelSpeed(const int speed)
     {
         spdlog::info("[DUMMY] Left Rear Wheel speed is set to {}", speed);
     }
 
-    void DummyMovementController::setRearRightWheelSpeed(const int &speed)
+    void DummyMovementController::setRearRightWheelSpeed(const int speed)
     {
         spdlog::info("[DUMMY] Right Rear Wheel speed is set to {}", speed);
     }
 
-    void DummyMovementController::setFrontWheelsAngle(const float &angle)
+    void DummyMovementController::setFrontWheelsAngle(const float angle)
     {
         spdlog::info("[DUMMY] Front Wheels angle is set to {}", angle);
     }
 
-    void DummyMovementController::setCameraServo1Angle(const float &angle)
+    void DummyMovementController::setCameraServo1Angle(const float angle)
     {
         spdlog::info("[DUMMY] Camera Servo 1 angle is set to {}", angle);
     }
 
-    void DummyMovementController::setCameraServo2Angle(const float &angle)
+    void DummyMovementController::setCameraServo2Angle(const float angle)
     {
         spdlog::info("[DUMMY] Camera Servo 2 angle is set to {}", angle);
     }

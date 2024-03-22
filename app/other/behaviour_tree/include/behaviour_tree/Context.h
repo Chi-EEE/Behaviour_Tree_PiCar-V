@@ -30,8 +30,8 @@ namespace behaviour_tree
 	{
 	public:
 		Context(std::shared_ptr<BehaviourTree> behaviour_tree);
-		void update(const int& tick_count);
-		Status UseRoot(const int& tick_count, const std::string& id);
+		void update(const int tick_count);
+		Status UseRoot(const int tick_count, const std::string& id);
 
 		std::shared_ptr<BehaviourTree> getBehaviourTree() const { return this->behaviour_tree; };
 

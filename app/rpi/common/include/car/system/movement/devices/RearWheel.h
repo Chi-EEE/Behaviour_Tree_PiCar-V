@@ -24,7 +24,7 @@ namespace car::system::movement::devices
 
 		int getSpeed() const;
 
-		void setSpeed(const int &speed);
+		void setSpeed(const int speed);
 
 		void ready();
 

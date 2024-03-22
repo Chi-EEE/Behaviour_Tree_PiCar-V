@@ -17,11 +17,11 @@ namespace behaviour_tree::node::custom::action
 	class SetSpeed final : public CustomNode
 	{
 	public:
-		SetSpeed(const std::string& name, const WheelType& wheel_type, const int& speed) : CustomNode(name), wheel_type(wheel_type), speed(speed)
+		SetSpeed(const std::string& name, const WheelType& wheel_type, const int speed) : CustomNode(name), wheel_type(wheel_type), speed(speed)
 		{
 		}
 
-		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
+		const Status run(const int tick_count, std::shared_ptr<Context> context) final override
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
@@ -70,7 +70,7 @@ namespace behaviour_tree::node::custom::action
 			return this->wheel_type;
 		}
 
-		const int& getSpeed() const
+		const int getSpeed() const
 		{
 			return this->speed;
 		}

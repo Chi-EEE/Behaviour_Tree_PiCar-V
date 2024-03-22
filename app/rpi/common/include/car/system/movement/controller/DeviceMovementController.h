@@ -37,17 +37,17 @@ namespace car::system::movement::controller
 
 		void terminate() final override;
 
-		void setRearWheelsSpeed(const int &speed) final override;
+		void setRearWheelsSpeed(const int speed) final override;
 
-		void setRearLeftWheelSpeed(const int &speed) final override;
+		void setRearLeftWheelSpeed(const int speed) final override;
 
-		void setRearRightWheelSpeed(const int &speed) final override;
+		void setRearRightWheelSpeed(const int speed) final override;
 
-		void setFrontWheelsAngle(const float &angle) final override;
+		void setFrontWheelsAngle(const float angle) final override;
 
-		void setCameraServo1Angle(const float &angle) final override;
+		void setCameraServo1Angle(const float angle) final override;
 
-		void setCameraServo2Angle(const float &angle) final override;
+		void setCameraServo2Angle(const float angle) final override;
 
 		void setRearWheelsDirectionToForward() final override;
 

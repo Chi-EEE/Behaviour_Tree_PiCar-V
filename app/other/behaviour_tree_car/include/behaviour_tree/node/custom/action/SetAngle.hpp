@@ -17,11 +17,11 @@ namespace behaviour_tree::node::custom::action
 	class SetAngle final : public CustomNode
 	{
 	public:
-		SetAngle(const std::string& name, const ServoType& servo_type, const int& angle) : CustomNode(name), servo_type(servo_type), angle(angle)
+		SetAngle(const std::string& name, const ServoType& servo_type, const int angle) : CustomNode(name), servo_type(servo_type), angle(angle)
 		{
 		}
 
-		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override {
+		const Status run(const int tick_count, std::shared_ptr<Context> context) final override {
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
 			auto car_system = car_context->getCarSystem();
@@ -68,7 +68,7 @@ namespace behaviour_tree::node::custom::action
 			return this->servo_type;
 		}
 
-		const int& getAngle() const {
+		const int getAngle() const {
 			return this->angle;
 		}
 

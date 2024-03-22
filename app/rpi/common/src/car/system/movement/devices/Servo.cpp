@@ -27,7 +27,7 @@ namespace car::system::movement::devices
     }
 
     // Some of the code was from: https://github.com/chaoticmachinery/pca9685
-    void Servo::setAngle(const int &angle)
+    void Servo::setAngle(const int angle)
     {
         const int new_angle = std::clamp(angle, 0, 180);
         if (new_angle == this->angle_)

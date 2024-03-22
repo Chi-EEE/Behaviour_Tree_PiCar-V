@@ -18,12 +18,12 @@ namespace behaviour_tree::node::composite
 			this->previous_start_index = -1;
 		}
 
-		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
+		const Status run(const int tick_count, std::shared_ptr<Context> context) final override
 		{
 			return this->run(tick_count, context, 0);
 		}
 
-		const Status run(const int& tick_count, std::shared_ptr<Context> context, const int& start_index) final override
+		const Status run(const int tick_count, std::shared_ptr<Context> context, const int start_index) final override
 		{
 			for (int i = start_index; i < this->children.size(); i++)
 			{

@@ -9,7 +9,7 @@ namespace behaviour_tree {
 		this->behaviour_tree->start();
 	}
 
-	void Context::update(const int& tick_count)
+	void Context::update(const int tick_count)
 	{
 		if (this->node_trace_list.size() == 0) {
 			this->behaviour_tree->tick(tick_count, shared_from_this());
@@ -40,7 +40,7 @@ namespace behaviour_tree {
 		}
 	}
 
-	Status Context::UseRoot(const int& tick_count, const std::string& id) {
+	Status Context::UseRoot(const int tick_count, const std::string& id) {
 		return this->behaviour_tree->UseRoot(tick_count, shared_from_this(), id);
 	}
 

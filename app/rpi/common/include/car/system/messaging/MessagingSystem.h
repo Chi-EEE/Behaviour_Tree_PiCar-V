@@ -8,7 +8,6 @@
 
 #include <ixwebsocket/IXNetSystem.h>
 #include <ixwebsocket/IXWebSocket.h>
-#include <ixwebsocket/IXUserAgent.h>
 
 #include <nod/nod.hpp>
 

@@ -95,5 +95,6 @@
     },
     "material-icon-theme.folders.associations": {
         "admin_panel": "Admin",
+        "websocket": "Messages",
     }
 }

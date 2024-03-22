@@ -17,7 +17,7 @@ namespace behaviour_tree::node::custom::condition
 	class SuccessOnAverageNearbyScan final : public CustomNode
 	{
 	public:
-		SuccessOnAverageNearbyScan(const std::string& name, const int& min_angle, const int& max_angle, const double& cm) :
+		SuccessOnAverageNearbyScan(const std::string& name, const int min_angle, const int max_angle, const double& cm) :
 			CustomNode(name),
 			min_angle(min_angle),
 			max_angle(max_angle),
@@ -26,7 +26,7 @@ namespace behaviour_tree::node::custom::condition
 		{
 		}
 
-		const Status run(const int& tick_count, std::shared_ptr<Context> context) final override
+		const Status run(const int tick_count, std::shared_ptr<Context> context) final override
 		{
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
 			std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
@@ -53,11 +53,11 @@ namespace behaviour_tree::node::custom::condition
 			return Status::Failure;
 		}
 
-		const int& getMinAngle() const {
+		const int getMinAngle() const {
 			return this->min_angle;
 		}
 
-		const int& getMaxAngle() const {
+		const int getMaxAngle() const {
 			return this->max_angle;
 		}
 

@@ -1,13 +1,20 @@
-#include "car/system/device/camera/CameraDevice.h"
+#include "car/system/device/CameraDevice.h"
 
-namespace car::system::device::camera
+namespace car::system::device
 {
-	void CameraDevice::initialize() {
-		this->camera_ = std::make_unique<cv::VideoCapture>();
-	};
+	tl::expected<std::unique_ptr<CameraDevice>, std::string> CameraDevice::create(std::shared_ptr<configuration::Configuration> configuration)
+	{
+		try {
+			std::unique_ptr<cv::VideoCapture> video_capture = std::make_unique<cv::VideoCapture>();
+			return std::make_unique<CameraDevice>(std::move(video_capture), configuration->camera_index);
+		}
+		catch (const std::exception& e) {
+			return tl::make_unexpected(e.what());
+		}
+	}
 
 	void CameraDevice::start() {
-		this->connected_ = this->camera_->open(0);
+		this->connected_ = this->camera_->open(this->camera_index_);
 	}
 
 	void CameraDevice::update() {

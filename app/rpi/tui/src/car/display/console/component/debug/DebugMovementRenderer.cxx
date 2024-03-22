@@ -169,27 +169,27 @@ namespace car::display::console::component::debug
 			return this->rear_wheel_direction_signal;
 		}
 
-		const int &getFrontWheelsAngleSliderValue() const
+		const int getFrontWheelsAngleSliderValue() const
 		{
 			return this->front_wheels_angle_slider_value;
 		}
 
-		const int &getCameraServo1AngleSliderValue() const
+		const int getCameraServo1AngleSliderValue() const
 		{
 			return this->camera_servo_1_angle_slider_angle;
 		}
 
-		const int &getCameraServo2AngleSliderValue() const
+		const int getCameraServo2AngleSliderValue() const
 		{
 			return this->camera_servo_2_angle_slider_angle;
 		}
 
-		const int &getRearLeftWheelSpeedSliderValue() const
+		const int getRearLeftWheelSpeedSliderValue() const
 		{
 			return this->rear_left_wheel_speed_slider_value;
 		}
 
-		const int &getRearRightWheelSpeedSliderValue() const
+		const int getRearRightWheelSpeedSliderValue() const
 		{
 			return this->rear_right_wheel_speed_slider_value;
 		}

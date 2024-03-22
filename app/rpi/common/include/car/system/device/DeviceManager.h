@@ -3,24 +3,34 @@
 
 #pragma once
 
-#include "camera/CameraDevice.h"
-#include "lidar/LidarDevice.h"
+#include <memory>
+
+#include <tl/expected.hpp>
+
+#include "car/configuration/Configuration.h"
+
+#include "CameraDevice.h"
+#include "LidarDevice.h"
+
+using namespace car::configuration;
 
 namespace car::system::device
 {
 	class DeviceManager {
 	public:
-		DeviceManager(std::unique_ptr<camera::CameraDevice> camera_device, std::unique_ptr<lidar::LidarDevice> lidar_device) :
+		[[nodiscard]] static tl::expected<std::unique_ptr<DeviceManager>, std::string> create(std::shared_ptr<Configuration> configuration);
+
+		DeviceManager(std::unique_ptr<CameraDevice> camera_device, std::unique_ptr<LidarDevice> lidar_device) :
 			camera_device_(std::move(camera_device)),
 			lidar_device_(std::move(lidar_device))
 		{
 		}
 
-		camera::CameraDevice* getCameraDevice() {
+		CameraDevice* getCameraDevice() {
 			return this->camera_device_.get();
 		}
 
-		lidar::LidarDevice* getLidarDevice() {
+		LidarDevice* getLidarDevice() {
 			return this->lidar_device_.get();
 		}
 
@@ -31,10 +41,10 @@ namespace car::system::device
 		void terminate();
 
 	private:
-		bool initialized_ = false;
+		bool is_initialized_ = false;
 
-		std::unique_ptr<lidar::LidarDevice> lidar_device_;
-		std::unique_ptr<camera::CameraDevice> camera_device_;
+		std::unique_ptr<LidarDevice> lidar_device_;
+		std::unique_ptr<CameraDevice> camera_device_;
 	};
 }
 

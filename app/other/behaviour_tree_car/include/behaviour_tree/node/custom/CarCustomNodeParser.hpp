@@ -34,7 +34,7 @@ namespace behaviour_tree::node::custom
 	public:
 		CarCustomNodeParser() {}
 
-		tl::expected<std::shared_ptr<custom::CustomNode>, std::string> parseCustomNode(const pugi::xml_node& node, const int& index) override
+		tl::expected<std::shared_ptr<custom::CustomNode>, std::string> parseCustomNode(const pugi::xml_node& node, const int index) override
 		{
 			const std::string name_attribute = node.attribute("node_name").as_string();
 			const std::string node_name = node.name();

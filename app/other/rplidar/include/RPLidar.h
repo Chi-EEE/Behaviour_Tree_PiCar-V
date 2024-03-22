@@ -231,7 +231,7 @@ namespace rplidar
     class RPLidar
     {
     public:
-        static tl::expected<std::unique_ptr<RPLidar>, nullptr_t> create(const std::string &port, uint32_t baudrate = 115200U)
+        static tl::expected<std::unique_ptr<RPLidar>, std::string> create(const std::string &port, uint32_t baudrate = 115200U) noexcept
         {
             try
             {
@@ -243,7 +243,7 @@ namespace rplidar
             }
             catch (std::exception &e)
             {
-                return tl::make_unexpected(nullptr);
+                return tl::make_unexpected(e.what());
             }
         }
 

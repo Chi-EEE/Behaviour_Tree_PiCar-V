@@ -19,7 +19,7 @@ namespace behaviour_tree
 		{
 		}
 
-		const Status tick(const int& tick_count, std::shared_ptr<Context>& context)
+		const Status tick(const int tick_count, std::shared_ptr<Context>& context)
 		{
 			if (this->child == nullptr) return Status::Success;
 			return this->child->tick(tick_count, context);

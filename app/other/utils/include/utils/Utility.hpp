@@ -9,7 +9,7 @@
 
 namespace utils {
 	// https://stackoverflow.com/a/46931770
-	static std::vector<std::string> split(const std::string& s, const int& from_index, const int& to_index, char delim) {
+	static std::vector<std::string> split(const std::string& s, const int from_index, const int to_index, char delim) {
 		std::vector<std::string> result;
 		std::stringstream ss(s);
 		std::string item;
