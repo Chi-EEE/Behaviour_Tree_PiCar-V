@@ -7,8 +7,8 @@
 
 #include "car/system/CarSystem.h"
 
-#include "car/system/lidar/LidarScanner.h"
-#include "car/system/lidar/LidarDummy.h"
+#include "car/system/device/lidar/LidarScanner.h"
+#include "car/system/device/lidar/LidarDummy.h"
 
 #include "car/system/movement/controller/DummyMovementController.h"
 #include "car/system/movement/controller/DeviceMovementController.h"
@@ -21,7 +21,7 @@
 #include "behaviour_tree/BehaviourTreeHandler.hpp"
 
 using namespace car::system;
-using namespace car::system::lidar;
+using namespace car::system::device::lidar;
 using namespace car::system::movement::controller;
 
 using namespace car::configuration;

@@ -30,7 +30,7 @@ namespace car::system::movement::devices
 
 	private:
 		std::shared_ptr<PCA9685> pwm_;
-		std::unique_ptr<TB6612> motor;
+		std::unique_ptr<TB6612> motor_;
 
 		int speed_;
 	};

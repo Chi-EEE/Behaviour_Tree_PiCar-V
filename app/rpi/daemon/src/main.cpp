@@ -13,8 +13,8 @@
 
 #include "car/system/CarSystem.h"
 
-#include "car/system/lidar/LidarScanner.h"
-#include "car/system/lidar/LidarDummy.h"
+#include "car/system/device/lidar/LidarScanner.h"
+#include "car/system/device/lidar/LidarDummy.h"
 
 #include "car/system/movement/controller/DummyMovementController.h"
 #include "car/system/movement/controller/DeviceMovementController.h"
@@ -28,7 +28,8 @@ using namespace daemonpp;
 using namespace behaviour_tree;
 
 using namespace car::system;
-using namespace car::system::lidar;
+using namespace car::system::device;
+using namespace car::system::device::lidar;
 using namespace car::system::movement::controller;
 
 using namespace car::configuration;

@@ -47,7 +47,7 @@ namespace car::system::movement::devices
             return;
         }
         this->speed_ = new_speed;
-        const int pulse_wide = (this->speed / 100.0f) * 4095;
+        const int pulse_wide = (this->speed_ / 100.0f) * 4095;
         this->pwm_->setPWM(this->motor_->getPWMPin(), 0, pulse_wide);
     }
 
