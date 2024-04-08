@@ -1,32 +1,31 @@
-#ifndef LIDARDEVICE_H
-#define LIDARDEVICE_H
+#ifndef LIDARSCANNER_H
+#define LIDARSCANNER_H
 
 #pragma once
 
+#include "LidarDevice.h"
+
 #include <memory>
 #include <variant>
-#include <vector>
-
-#include <tl/expected.hpp>
 
 #include <RPLidar.h>
+#include <tl/expected.hpp>
 
 #include "car/configuration/Configuration.h"
 
 using namespace rplidar;
 
-namespace car::system::device
+namespace car::system::device::lidar
 {
-	class DeviceManager;
-	class LidarDevice
+	class LidarScanner final : public LidarDevice
 	{
 	public:
-		[[nodiscard]] static tl::expected<std::unique_ptr<LidarDevice>, std::string> create(std::shared_ptr<configuration::Configuration> configuration) noexcept
+		[[nodiscard]] static tl::expected<std::unique_ptr<LidarScanner>, std::string> create(std::shared_ptr<configuration::Configuration> configuration) noexcept
 		{
 			auto maybe_lidar = RPLidar::create(configuration->lidar_port);
 			if (maybe_lidar.has_value())
 			{
-				return std::make_unique<LidarDevice>(configuration, std::move(maybe_lidar.value()));
+				return std::make_unique<LidarScanner>(configuration, std::move(maybe_lidar.value()));
 			}
 			else
 			{
@@ -34,48 +33,45 @@ namespace car::system::device
 			}
 		}
 
-		LidarDevice(std::shared_ptr<configuration::Configuration> configuration, std::unique_ptr<RPLidar> lidar) : configuration_(configuration), lidar_(std::move(lidar)) {
+		// Do not call this constructor directly. Use the create method instead.
+		LidarScanner(std::shared_ptr<configuration::Configuration> configuration, std::unique_ptr<RPLidar> lidar) : configuration_(configuration), lidar_(std::move(lidar)) {
 		}
 
-		void start()
+		void start() final override
 		{
 			this->lidar_->start_motor();
 			this->scan_generator_ = this->lidar_->iter_scans();
 		};
 
-		void stop()
+		void stop() final override
 		{
 			this->scan_generator_ = nullptr;
 			this->lidar_->stop();
 			this->lidar_->stop_motor();
 		}
 
-		std::vector<Measure> getScanData() const { return this->scan_data_; }
-	
 	private:
-		void initialize()
+		void initialize() final override
 		{
 		};
 
-		void update()
+		void update() final override
 		{
 			assert(std::holds_alternative<std::function<std::vector<Measure>()>>(this->scan_generator_) && "LidarScanner::scan() called before start()");
 			const auto& scan_generator = std::get<std::function<std::vector<Measure>()>>(this->scan_generator_);
-			this->scan_data_ = scan_generator();
+			this->setScanData(scan_generator());
 		};
 
-		void disconnect()
+		void disconnect() final override
 		{
 			this->lidar_->disconnect();
 		}
 
-		void terminate()
+		void terminate() final override
 		{
 			this->stop();
 			this->disconnect();
 		}
-
-		friend class DeviceManager;
 
 	private:
 		std::shared_ptr<configuration::Configuration> configuration_;

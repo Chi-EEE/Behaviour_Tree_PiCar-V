@@ -12,7 +12,7 @@
 #include "car/configuration/Configuration.h"
 
 #include "car/system/device/DeviceManager.h"
-#include "car/system/device/LidarDevice.h"
+#include "car/system/device/lidar/LidarDevice.h"
 #include "car/system/device/CameraDevice.h"
 
 #include "car/system/messaging/MessagingSystem.h"
@@ -126,13 +126,15 @@ namespace car::system
 
 			output_json.AddMember("lidar", data_array, output_json.GetAllocator());
 
-			output_json.AddMember("frame_buffer_base64", frame_buffer_base64, output_json.GetAllocator());
+			output_json.AddMember("frame_buffer_base64", rapidjson::Value().SetString(frame_buffer_base64.c_str(), output_json.GetAllocator()), output_json.GetAllocator());
 
 			rapidjson::StringBuffer buffer;
 			rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 			output_json.Accept(writer);
 
-			this->messaging_system_->sendMessage(buffer.GetString());
+			std::string output_json_string = buffer.GetString();
+			spdlog::info("Sending message: {}", output_json_string);
+			this->messaging_system_->sendMessage(output_json_string);
 		}
 		this->plugin_manager_->update();
 	}

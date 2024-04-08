@@ -4,7 +4,7 @@ namespace car::system::device {
 	tl::expected<std::unique_ptr<DeviceManager>, std::string> DeviceManager::create(std::shared_ptr<Configuration> configuration)
 	{
 		std::unique_ptr<CameraDevice> camera_device = nullptr;
-		std::unique_ptr<LidarDevice> lidar_device = nullptr;
+		std::unique_ptr<lidar::LidarDevice> lidar_device = nullptr;
 		if (configuration->use_camera) {
 			auto maybe_camera_device = CameraDevice::create(configuration);
 			if (!maybe_camera_device)
@@ -14,7 +14,7 @@ namespace car::system::device {
 			camera_device = std::move(maybe_camera_device.value());
 		}
 		if (configuration->use_lidar) {
-			auto maybe_lidar_device = LidarDevice::create(configuration);
+			auto maybe_lidar_device = lidar::LidarScanner::create(configuration);
 			if (!maybe_lidar_device)
 			{
 				return tl::make_unexpected(maybe_lidar_device.error());
@@ -35,6 +35,7 @@ namespace car::system::device {
 		}
 		this->lidar_device_->initialize();
 		//this->camera_device_->initialize();
+		this->is_initialized_ = true;
 	}
 
 	void DeviceManager::start()
