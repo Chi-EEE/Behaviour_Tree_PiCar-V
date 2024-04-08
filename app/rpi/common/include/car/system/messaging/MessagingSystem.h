@@ -44,7 +44,6 @@ namespace car::system::messaging
 		const std::string getUUID() const { return this->uuid_; }
 		void handleMessage(const std::string& message) const;
 		void sendMessage(const std::string& message);
-		void sendBinary(const std::string& message);
 
 		struct FirstMessageStruct
 		{

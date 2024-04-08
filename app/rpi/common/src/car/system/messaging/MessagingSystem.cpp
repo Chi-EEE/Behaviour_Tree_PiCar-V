@@ -156,12 +156,6 @@ namespace car::system::messaging
             this->websocket_->send(message);
     }
 
-    void MessagingSystem::sendBinary(const std::string &message)
-    {
-        if (this->websocket_ != nullptr)
-            this->websocket_->sendBinary(message);
-    }
-
     tl::expected<std::string, std::string> MessagingSystem::getFirstMessage()
     {
         FirstMessageStruct first_message_struct;
@@ -186,7 +180,7 @@ namespace car::system::messaging
             return tl::make_unexpected(first_message_struct.error_message);
         }
 
-        return uuid_;
+        return first_message_struct.uuid;
     }
 
     void MessagingSystem::onFirstMessage(const ix::WebSocketMessagePtr &msg, FirstMessageStruct &first_message_struct)

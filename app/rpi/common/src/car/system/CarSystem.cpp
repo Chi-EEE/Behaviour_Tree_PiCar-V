@@ -7,6 +7,8 @@
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
+#include <tobiaslocker_base64/base64.hpp>
+
 #include "car/configuration/Configuration.h"
 
 #include "car/system/device/DeviceManager.h"
@@ -103,7 +105,35 @@ namespace car::system
 
 	void CarSystem::update()
 	{
-		//this->messaging_system_->update();
+		this->device_manager_->update();
+		if (this->messaging_system_->isConnected())
+		{
+			rapidjson::Document output_json;
+			output_json.SetObject();
+
+			std::string frame_buffer_base64 = base64::to_base64(this->device_manager_->getCameraDevice()->getFrameBuffer());
+			auto scan_data = this->device_manager_->getLidarDevice()->getScanData();
+
+			rapidjson::Value data_array(rapidjson::kArrayType);
+
+			for (const Measure& measure : scan_data)
+			{
+				rapidjson::Value measure_object(rapidjson::kObjectType);
+				measure_object.AddMember("distance", measure.distance, output_json.GetAllocator());
+				measure_object.AddMember("angle", measure.angle, output_json.GetAllocator());
+				data_array.PushBack(measure_object, output_json.GetAllocator());
+			}
+
+			output_json.AddMember("lidar", data_array, output_json.GetAllocator());
+
+			output_json.AddMember("frame_buffer_base64", frame_buffer_base64, output_json.GetAllocator());
+
+			rapidjson::StringBuffer buffer;
+			rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+			output_json.Accept(writer);
+
+			this->messaging_system_->sendMessage(buffer.GetString());
+		}
 		this->plugin_manager_->update();
 	}
 

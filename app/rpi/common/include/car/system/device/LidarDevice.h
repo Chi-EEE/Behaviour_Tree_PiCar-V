@@ -30,7 +30,7 @@ namespace car::system::device
 			}
 			else
 			{
-				return tl::make_unexpected(nullptr);
+				return tl::make_unexpected(maybe_lidar.error());
 			}
 		}
 
