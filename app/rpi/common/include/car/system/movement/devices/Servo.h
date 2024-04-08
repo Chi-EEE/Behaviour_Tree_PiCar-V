@@ -40,9 +40,9 @@ namespace car::system::movement::devices
 
 	private:
 		const std::shared_ptr<PCA9685> pwm;
-		const int channel;
+		const int channel_;
 
-		int angle;
+		int angle_;
 	};
 } // namespace car::system::movement::wheels
 

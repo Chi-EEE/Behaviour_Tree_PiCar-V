@@ -36,7 +36,7 @@ namespace car::system::movement::devices
         }
         this->angle_ = new_angle;
         int analog_angle = getAnalogAngle();
-        this->pwm_->setPWM(channel, 0, analog_angle);
+        this->pwm_->setPWM(this->channel_, 0, analog_angle);
     }
 
     void Servo::reset()
