@@ -8,8 +8,7 @@
 #include "car/configuration/Configuration.h"
 
 #include "car/system/device/DeviceManager.h"
-//#include "car/system/messaging/MessagingSystem.h"
-#include "car/system/websocket/WebSocketManager.h"
+#include "car/system/messaging/MessagingSystem.h"
 #include "car/system/movement/MovementSystem.h"
 
 #include "car/plugin/PluginManager.h"
@@ -17,7 +16,7 @@
 using namespace car::configuration;
 using namespace car::plugin;
 using namespace car::system::device;
-using namespace car::system::websocket;
+using namespace car::system::messaging;
 using namespace car::system::movement;
 
 namespace car::system
@@ -26,12 +25,10 @@ namespace car::system
 	class CarSystem : public std::enable_shared_from_this<CarSystem>
 	{
 	public:
-		[[nodiscard]] static tl::expected<std::shared_ptr<CarSystem>, std::string> create(std::shared_ptr<Configuration> configuration);
-
 		CarSystem(
 			std::shared_ptr<Configuration> configuration,
 			std::unique_ptr<DeviceManager> device_manager,
-			std::unique_ptr<WebSocketManager> websocket_manager,
+			std::unique_ptr<MessagingSystem> messaging_system,
 			std::unique_ptr<MovementSystem> movement_system,
 			std::unique_ptr<PluginManager> plugin_manager);
 
@@ -56,9 +53,9 @@ namespace car::system
 			return this->device_manager_.get();
 		}
 
-		WebSocketManager *getWebSocketManager() const
+		MessagingSystem *getMessagingSystem() const
 		{
-			return this->websocket_manager_.get();
+			return this->messaging_system_.get();
 		}
 
 		MovementSystem *getMovementSystem() const
@@ -73,7 +70,7 @@ namespace car::system
 		std::shared_ptr<Configuration> configuration_;
 
 		const std::unique_ptr<DeviceManager> device_manager_;
-		const std::unique_ptr<WebSocketManager> websocket_manager_;
+		const std::unique_ptr<MessagingSystem> messaging_system_;
 		const std::unique_ptr<MovementSystem> movement_system_;
 		const std::unique_ptr<PluginManager> plugin_manager_;
 

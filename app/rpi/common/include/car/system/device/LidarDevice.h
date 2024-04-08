@@ -23,9 +23,15 @@ namespace car::system::device
 	public:
 		[[nodiscard]] static tl::expected<std::unique_ptr<LidarDevice>, std::string> create(std::shared_ptr<configuration::Configuration> configuration) noexcept
 		{
-			return RPLidar::create(configuration->lidar_port).and_then([&](auto&& lidar) {
-				return std::make_unique<LidarDevice>(configuration, std::move(lidar));
-				});
+			auto maybe_lidar = RPLidar::create(configuration->lidar_port);
+			if (maybe_lidar.has_value())
+			{
+				return std::make_unique<LidarDevice>(configuration, std::move(maybe_lidar.value()));
+			}
+			else
+			{
+				return tl::make_unexpected(nullptr);
+			}
 		}
 
 		LidarDevice(std::shared_ptr<configuration::Configuration> configuration, std::unique_ptr<RPLidar> lidar) : configuration_(configuration), lidar_(std::move(lidar)) {

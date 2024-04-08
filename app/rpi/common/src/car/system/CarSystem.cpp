@@ -10,8 +10,8 @@
 #include "car/configuration/Configuration.h"
 
 #include "car/system/device/DeviceManager.h"
-#include "car/system/device/lidar/LidarDevice.h"
-#include "car/system/device/camera/CameraDevice.h"
+#include "car/system/device/LidarDevice.h"
+#include "car/system/device/CameraDevice.h"
 
 #include "car/system/messaging/MessagingSystem.h"
 #include "car/system/movement/MovementSystem.h"
@@ -20,24 +20,14 @@
 
 namespace car::system
 {
-	static tl::expected<std::shared_ptr<CarSystem>, std::string> create(std::shared_ptr<Configuration> configuration)
-	{
-		auto device_manager = device::DeviceManager::create(configuration);
-		auto messaging_system = std::make_unique<messaging::MessagingSystem>();
-		auto movement_system = std::make_unique<movement::MovementSystem>();
-		auto plugin_manager = std::make_unique<plugin::PluginManager>();
-
-		return std::make_shared<CarSystem>(configuration, std::move(device_manager), std::move(messaging_system), std::move(movement_system), std::move(plugin_manager));
-	}
-
 	CarSystem::CarSystem(
 		std::shared_ptr<Configuration> configuration,
 		std::unique_ptr<DeviceManager> device_manager,
-		std::unique_ptr<WebSocketManager> websocket_manager,
+		std::unique_ptr<MessagingSystem> messaging_system,
 		std::unique_ptr<MovementSystem> movement_system,
 		std::unique_ptr<PluginManager> plugin_manager) : configuration_(configuration),
 		device_manager_(std::move(device_manager)),
-		websocket_manager_(std::move(websocket_manager)),
+		messaging_system_(std::move(messaging_system)),
 		movement_system_(std::move(movement_system)),
 		plugin_manager_(std::move(plugin_manager))
 	{
@@ -46,7 +36,7 @@ namespace car::system
 	void CarSystem::initialize()
 	{
 		assert(!this->initialized && "Car System is already initialized.");
-		this->websocket_manager_->initialize(this->configuration_);
+		this->messaging_system_->initialize(this->configuration_);
 		this->device_manager_->initialize();
 		this->movement_system_->initialize();
 		this->plugin_manager_->initialize(shared_from_this());
@@ -57,7 +47,7 @@ namespace car::system
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
 		assert(this->started && "Car System has not been started yet.");
-		this->websocket_manager_->setConfiguration(this->configuration_);
+		this->messaging_system_->setConfiguration(this->configuration_);
 	}
 
 	void CarSystem::start()
@@ -81,8 +71,8 @@ namespace car::system
 	{
 		assert(this->initialized && "Car System has not been initialized yet.");
 		assert(this->started && "Car System has not been started yet.");
-		assert(!this->websocket_manager_->isConnected() && "Car System is already connected to the WS Server.");
-		auto messaging_system_result = this->websocket_manager_->tryConnect();
+		assert(!this->messaging_system_->isConnected() && "Car System is already connected to the WS Server.");
+		auto messaging_system_result = this->messaging_system_->tryConnect();
 		if (!messaging_system_result.has_value())
 		{
 			return tl::make_unexpected(messaging_system_result.error());
@@ -96,7 +86,7 @@ namespace car::system
 		assert(this->initialized && "Car System has not been initialized yet.");
 		assert(this->started && "Car System has not been started yet.");
 		//assert(this->messaging_system->isConnected() && "Car System is not connected to the WS Server."); The connect bool is set to false when it disconnects from the websocket
-		this->websocket_manager_->stop();
+		this->messaging_system_->stop();
 		this->device_manager_->stop();
 	}
 
@@ -105,7 +95,7 @@ namespace car::system
 	/// </summary>
 	void CarSystem::terminate()
 	{
-		this->websocket_manager_->terminate();
+		this->messaging_system_->terminate();
 		this->device_manager_->terminate();
 		this->movement_system_->terminate();
 		this->plugin_manager_->terminate();
