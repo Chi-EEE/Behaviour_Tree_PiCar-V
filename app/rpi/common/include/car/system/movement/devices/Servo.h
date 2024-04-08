@@ -39,7 +39,7 @@ namespace car::system::movement::devices
 		void reset();
 
 	private:
-		const std::shared_ptr<PCA9685> pwm;
+		const std::shared_ptr<PCA9685> pwm_;
 		const int channel_;
 
 		int angle_;
