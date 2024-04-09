@@ -3,7 +3,12 @@
     import CodeBox from "../lib/CodeBox.svelte";
     import RaspberryPiConnectBanner from "../lib/RaspberryPiConnectBanner.svelte";
 
-    import { websocket_server_connection_state } from "../store/websocket_store";
+    import {
+        websocket_server_connection_state,
+        frame_buffer,
+        lidar,
+    } from "../store/websocket_store";
+
     import {
         main_pane_size_0_store,
         main_pane_size_1_store,
@@ -34,6 +39,39 @@
         side_pane_size_0_store.set(event.detail[0].size);
         side_pane_size_1_store.set(event.detail[1].size);
     }
+
+    function b64toBlob(b64Data, contentType = "", sliceSize = 512) {
+        const byteCharacters = atob(b64Data);
+        const byteArrays = [];
+
+        for (
+            let offset = 0;
+            offset < byteCharacters.length;
+            offset += sliceSize
+        ) {
+            const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+
+        const blob = new Blob(byteArrays, { type: contentType });
+        return blob;
+    }
+
+    let live_feed;
+    frame_buffer.subscribe((value) => {
+        if (live_feed) {
+            const blob = b64toBlob(value, "image/jpeg");
+            const image_url = URL.createObjectURL(blob);
+            live_feed.src = image_url;
+        }
+    });
 </script>
 
 <main style="height: 92vh">
@@ -41,7 +79,10 @@
         <RaspberryPiConnectBanner />
     {/if}
     <SaveBehaviourTreeModal />
-    <Splitpanes style="height:100%;padding:1em;background-color:rgb(20,20,40)" on:resize={onSideResize}>
+    <Splitpanes
+        style="height:100%;padding:1em;background-color:rgb(20,20,40)"
+        on:resize={onSideResize}
+    >
         <Pane size={side_pane_size_0}>
             <Splitpanes horizontal={true} on:resize={onMainResize}>
                 <Pane size={main_pane_size_0} minSize={5}>
@@ -51,7 +92,8 @@
                         bind:clientWidth={stream_split_width}
                         bind:clientHeight={stream_split_height}
                     >
-                        <!--  -->
+                        <!-- svelte-ignore a11y-missing-attribute -->
+                        <img class="w-full h-full" bind:this={live_feed} />
                     </div>
                 </Pane>
                 <Pane size={main_pane_size_1} minSize={7.5}>

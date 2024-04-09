@@ -14,7 +14,11 @@ async function main() {
 }
 main();
 
+export const lidar = writable([]);
+export const frame_buffer = writable("");
+
 window.api.onMessage((value) => {
     value = JSON.parse(value);
-    console.log(value);
+    lidar.set(value.lidar);
+    frame_buffer.set(value.frame_buffer);
 });
