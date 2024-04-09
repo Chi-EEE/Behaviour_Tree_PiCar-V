@@ -67,6 +67,8 @@
         "variant": "cpp",
         "bitset": "cpp",
         "unordered_set": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "complex": "cpp",
+        "set": "cpp"
     }
 }

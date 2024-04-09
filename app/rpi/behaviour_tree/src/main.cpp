@@ -69,8 +69,6 @@ int kbhit(void)
 }
 #endif
 
-std::unique_ptr<LidarDevice> getLidarDevice(bool dummy);
-
 int main(int argc, const char *argv[])
 {
 #ifdef __linux
@@ -82,10 +80,7 @@ int main(int argc, const char *argv[])
 #endif
 	BehaviourTreeParser::instance().setCustomNodeParser(std::make_shared<node::custom::CarCustomNodeParser>());
 
-	std::string host = "";
-	std::string code = "";
-
-	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{host, code});
+	std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{});
 
 	cxxopts::Options options("Behaviour Tree CLI", "Program to parse Behaviour Tree");
 
@@ -93,7 +88,18 @@ int main(int argc, const char *argv[])
 
 	auto cli_result = options.parse(argc, argv);
 
+	auto maybe_camera_device = CameraDevice::create(configuration);
+	if (!maybe_camera_device.has_value())
+	{
+		spdlog::error("Unable to create the camera device: {}", maybe_camera_device.error());
+	}
+	std::unique_ptr<CameraDevice> camera_device = std::move(maybe_camera_device.value());
+	spdlog::info("Created the CameraDevice");
+
 	std::unique_ptr<LidarDevice> lidar_device = std::make_unique<LidarDummy>();
+	spdlog::info("Created the LidarDevice");
+
+	std::unique_ptr<DeviceManager> device_manager = std::make_unique<DeviceManager>(std::move(camera_device), std::move(lidar_device));
 
 	std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
 
@@ -119,7 +125,7 @@ int main(int argc, const char *argv[])
 
 	std::shared_ptr<CarSystem> car_system = std::make_shared<CarSystem>(
 		configuration,
-		std::move(lidar_device),
+		std::move(device_manager),
 		std::move(messaging_system),
 		std::move(movement_system),
 		std::move(plugin_manager));

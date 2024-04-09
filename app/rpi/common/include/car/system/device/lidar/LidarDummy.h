@@ -19,11 +19,9 @@ namespace car::system::device::lidar
 		};
 
 		void start() final override {};
-		void stop() final override {};
-
-	protected:
-		void initialize() final override {};
 		void update() final override {};
+		void stop() final override {};
+		void initialize() final override {};
 		void terminate() final override {};
 		void disconnect() final override {};
 

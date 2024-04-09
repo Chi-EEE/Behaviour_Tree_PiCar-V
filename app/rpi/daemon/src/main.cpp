@@ -35,7 +35,7 @@ using namespace car::system::movement::controller;
 using namespace car::configuration;
 using namespace car::plugin;
 
-std::unique_ptr<LidarDevice> getLidarDevice();
+std::unique_ptr<LidarDevice> getLidarDevice(std::shared_ptr<Configuration> configuration);
 std::unique_ptr<AbstractMovementController> getMovementController();
 
 class rpi_daemon : public daemon
@@ -56,6 +56,7 @@ public:
         dlog::info("Started daemon with host: " + host + "\n");
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{host});
+        configuration->lidar_port = "/dev/ttyUSB0";
         this->any_configuration_empty = host.empty();
         if (this->any_configuration_empty)
         {
@@ -66,8 +67,18 @@ public:
 
         dlog::info("Starting to create the Sub Systems");
 
-        std::unique_ptr<LidarDevice> lidar_device = getLidarDevice();
+        auto maybe_camera_device = CameraDevice::create(configuration);
+        if (!maybe_camera_device.has_value())
+        {
+            spdlog::error("Unable to create the camera device: {}", maybe_camera_device.error());
+        }
+        std::unique_ptr<CameraDevice> camera_device = std::move(maybe_camera_device.value());
+        dlog::info("Created the CameraDevice");
+
+        std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(configuration);
         dlog::info("Created the LidarDevice");
+
+        std::unique_ptr<DeviceManager> device_manager = std::make_unique<DeviceManager>(std::move(camera_device), std::move(lidar_device));
 
         std::unique_ptr<MessagingSystem> messaging_system = std::make_unique<MessagingSystem>();
         dlog::info("Created the MessengingSystem");
@@ -88,7 +99,7 @@ public:
         dlog::info("Creating the Car System");
         this->car_system = std::make_shared<CarSystem>(
             configuration,
-            std::move(lidar_device),
+            std::move(device_manager),
             std::move(messaging_system),
             std::move(movement_system),
             std::move(plugin_manager));
@@ -274,13 +285,9 @@ int main(int argc, const char *argv[])
     return 0;
 }
 
-std::unique_ptr<LidarDevice> getLidarDevice()
+std::unique_ptr<LidarDevice> getLidarDevice(std::shared_ptr<Configuration> configuration)
 {
-#ifdef __linux
-    auto maybe_scanner = LidarScanner::create("/dev/ttyUSB0");
-#else
-    auto maybe_scanner = LidarScanner::create("COM3");
-#endif
+    auto maybe_scanner = LidarScanner::create(configuration);
     if (maybe_scanner.has_value())
     {
         dlog::info("Found and using Lidar Scanner\n");

@@ -23,16 +23,16 @@ namespace car::system::device::lidar
 		std::vector<Measure> getScanData() const { return this->scan_data_; }
 
 		virtual void start() = 0;
+		virtual void update() = 0;
 		virtual void stop() = 0;
 
-	protected:
 		virtual void initialize() = 0;
-		virtual void update() = 0;
 		virtual void terminate() = 0;
 		virtual void disconnect() = 0;
 
-		friend class DeviceManager;
 	protected:
+		friend class DeviceManager;
+
 		void setScanData(const std::vector<Measure>& scan_data)
 		{
 			this->scan_data_ = scan_data;

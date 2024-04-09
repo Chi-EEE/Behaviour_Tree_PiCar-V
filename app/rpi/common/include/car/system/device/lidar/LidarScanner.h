@@ -43,6 +43,13 @@ namespace car::system::device::lidar
 			this->scan_generator_ = this->lidar_->iter_scans();
 		};
 
+		void update() final override
+		{
+			assert(std::holds_alternative<std::function<std::vector<Measure>()>>(this->scan_generator_) && "LidarScanner::scan() called before start()");
+			const auto& scan_generator = std::get<std::function<std::vector<Measure>()>>(this->scan_generator_);
+			this->setScanData(scan_generator());
+		};
+
 		void stop() final override
 		{
 			this->scan_generator_ = nullptr;
@@ -50,16 +57,8 @@ namespace car::system::device::lidar
 			this->lidar_->stop_motor();
 		}
 
-	private:
 		void initialize() final override
 		{
-		};
-
-		void update() final override
-		{
-			assert(std::holds_alternative<std::function<std::vector<Measure>()>>(this->scan_generator_) && "LidarScanner::scan() called before start()");
-			const auto& scan_generator = std::get<std::function<std::vector<Measure>()>>(this->scan_generator_);
-			this->setScanData(scan_generator());
 		};
 
 		void disconnect() final override
