@@ -16,4 +16,5 @@ main();
 
 window.api.onMessage((value) => {
     value = JSON.parse(value);
+    console.log(value);
 });

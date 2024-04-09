@@ -126,7 +126,7 @@ namespace car::system
 
 			output_json.AddMember("lidar", data_array, output_json.GetAllocator());
 
-			output_json.AddMember("frame_buffer_base64", rapidjson::Value().SetString(frame_buffer_base64.c_str(), output_json.GetAllocator()), output_json.GetAllocator());
+			output_json.AddMember("frame_buffer", rapidjson::Value().SetString(frame_buffer_base64.c_str(), output_json.GetAllocator()), output_json.GetAllocator());
 
 			rapidjson::StringBuffer buffer;
 			rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
