@@ -40,6 +40,7 @@
         side_pane_size_1_store.set(event.detail[1].size);
     }
 
+    // From: https://stackoverflow.com/a/16245768
     function b64toBlob(b64Data, contentType = "", sliceSize = 512) {
         const byteCharacters = atob(b64Data);
         const byteArrays = [];
