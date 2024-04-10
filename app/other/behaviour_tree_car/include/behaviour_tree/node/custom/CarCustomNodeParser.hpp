@@ -22,6 +22,7 @@
 #include "action/SetSpeed.hpp"
 #include "action/SetWheelDirection.hpp"
 #include "action/SetAngle.hpp"
+#include "action/TurnAround.hpp"
 
 #include "condition/SuccessOnAverageNearbyScan.hpp"
 
@@ -181,6 +182,25 @@ namespace behaviour_tree::node::custom
 						min_angle,
 						max_angle,
 						cm));
+			}
+			case utils::hash("Action:TurnAround"):
+			{
+				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
+				switch (utils::hash(direction_type_attribute))
+				{
+				case utils::hash("Clockwise"):
+				{
+					return std::make_shared<custom::action::TurnAround>(custom::action::TurnAround(name_attribute, custom::action::ClockDirectionType::Clockwise));
+				}
+				case utils::hash("AntiClockwise"):
+				{
+					return std::make_shared<custom::action::TurnAround>(custom::action::TurnAround(name_attribute, custom::action::ClockDirectionType::AntiClockwise));
+				}
+				default:
+				{
+					return tl::unexpected(fmt::format(R"(Invalid direction_type: '{}' | Action:TurnAround:['{}',{}])", direction_type_attribute, name_attribute, index));
+				}
+				}
 			}
 			default:
 			{

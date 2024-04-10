@@ -10,8 +10,8 @@
 #include "behaviour_tree/CarContext.hpp"
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
-#include "DirectionType.hpp"
-#include "WheelType.hpp"
+#include "enum/DirectionType.hpp"
+#include "enum/WheelType.hpp"
 
 namespace behaviour_tree::node::custom::action
 {

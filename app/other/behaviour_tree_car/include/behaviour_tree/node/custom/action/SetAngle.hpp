@@ -10,7 +10,7 @@
 #include "behaviour_tree/CarContext.hpp"
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
-#include "ServoType.hpp"
+#include "enum/ServoType.hpp"
 
 namespace behaviour_tree::node::custom::action
 {
