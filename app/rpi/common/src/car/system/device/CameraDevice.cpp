@@ -18,7 +18,7 @@ namespace car::system::device
 	}
 
 	void CameraDevice::update() {
-		if (!this->camera_->isOpened()) {
+		if (!this->connected_ || !this->camera_->isOpened()) {
 			this->frame_buffer_ = "";
 			return;
 		}

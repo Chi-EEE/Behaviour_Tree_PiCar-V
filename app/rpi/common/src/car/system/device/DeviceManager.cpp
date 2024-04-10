@@ -55,8 +55,17 @@ namespace car::system::device {
 		{
 			return;
 		}
-		this->lidar_device_->update();
-		this->camera_device_->update();
+
+		std::thread lidar_thread([&]() {
+			this->lidar_device_->update();
+			});
+
+		std::thread camera_thread([&]() {
+			this->camera_device_->update();
+			});
+
+		lidar_thread.join();
+		camera_thread.join();
 	}
 
 	void DeviceManager::stop()

@@ -39,6 +39,8 @@ namespace car::system::device::lidar
 		}
 
 		std::vector<Measure> scan_data_;
+
+		std::mutex scan_data_mutex_;
 	};
 }
 
