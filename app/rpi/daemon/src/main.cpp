@@ -113,6 +113,10 @@ public:
         dlog::info("Completed starting the Car System");
 
         dlog::info("Completed starting up Daemon");
+        if (this->any_configuration_empty)
+        {
+            dlog::warning("Reminder: A property in the configuration is empty, this daemon will not run with an empty property.");
+        }
     }
 
     void update()
