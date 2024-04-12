@@ -112,11 +112,10 @@ std::unique_ptr<lidar::LidarDevice> getLidarDevice()
 	Configuration configuration;
 #ifdef __linux
 	configuration.lidar_port = "/dev/ttyUSB0";
-	auto maybe_scanner = LidarScanner::create(std::make_shared<Configuration>(configuration));
 #else
 	configuration.lidar_port = "COM3";
-	auto maybe_scanner = LidarScanner::create(std::make_shared<Configuration>(configuration));
 #endif
+	auto maybe_scanner = LidarScanner::create(std::make_shared<Configuration>(configuration));
 	if (maybe_scanner.has_value())
 	{
 		spdlog::info("Found and using Lidar Scanner\n");
