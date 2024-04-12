@@ -49,14 +49,18 @@ public:
             return;
         }
 
-        std::string host = reader.GetString("Host", "host", "");
-
         this->connection_interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "connection_interval", 1));
 
-        dlog::info("Started daemon with host: " + host + "\n");
+        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{});
+        
+        const std::string host = reader.GetString("RaspberryPi", "host", "");
+        dlog::info(fmt::format("Started daemon with host: {}", host));
+        configuration->host = host;
 
-        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{host});
-        configuration->lidar_port = "/dev/ttyUSB0";
+        const std::string lidar_port = reader.GetString("RaspberryPi", "lidar_port", "");
+        dlog::info(fmt::format("Using lidar port: {}", lidar_port));
+        configuration->lidar_port = lidar_port;
+        
         this->any_configuration_empty = host.empty();
         if (this->any_configuration_empty)
         {
