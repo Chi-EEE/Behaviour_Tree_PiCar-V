@@ -67,6 +67,8 @@ namespace car::system
 		const std::shared_ptr<T> getPlugin() const { return this->plugin_manager_->getPlugin<T>(); }
 
 	private:
+		void sendData();
+
 		std::shared_ptr<Configuration> configuration_;
 
 		const std::unique_ptr<DeviceManager> device_manager_;

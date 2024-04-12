@@ -105,35 +105,39 @@ namespace car::system
 		this->device_manager_->update();
 		if (this->messaging_system_->isConnected() && this->device_manager_->isRunning())
 		{
-			rapidjson::Document output_json;
-			output_json.SetObject();
-
-			std::string frame_buffer_base64 = base64::to_base64(this->device_manager_->getCameraDevice()->getFrameBuffer());
-			auto scan_data = this->device_manager_->getLidarDevice()->getScanData();
-
-			rapidjson::Value data_array(rapidjson::kArrayType);
-
-			for (const Measure& measure : scan_data)
-			{
-				rapidjson::Value measure_object(rapidjson::kObjectType);
-				measure_object.AddMember("distance", measure.distance, output_json.GetAllocator());
-				measure_object.AddMember("angle", measure.angle, output_json.GetAllocator());
-				data_array.PushBack(measure_object, output_json.GetAllocator());
-			}
-
-			output_json.AddMember("lidar", data_array, output_json.GetAllocator());
-
-			output_json.AddMember("frame_buffer", rapidjson::Value().SetString(frame_buffer_base64.c_str(), output_json.GetAllocator()), output_json.GetAllocator());
-
-			rapidjson::StringBuffer buffer;
-			rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-			output_json.Accept(writer);
-
-			std::string output_json_string = buffer.GetString();
-			spdlog::info("Sending message: {}", output_json_string);
-			this->messaging_system_->sendMessage(output_json_string);
 		}
 		this->plugin_manager_->update();
+	}
+
+	void CarSystem::sendData()
+	{
+		rapidjson::Document output_json;
+		output_json.SetObject();
+
+		std::string frame_buffer_base64 = base64::to_base64(this->device_manager_->getCameraDevice()->getFrameBuffer());
+		auto scan_data = this->device_manager_->getLidarDevice()->getScanData();
+
+		rapidjson::Value data_array(rapidjson::kArrayType);
+
+		for (const Measure& measure : scan_data)
+		{
+			rapidjson::Value measure_object(rapidjson::kObjectType);
+			measure_object.AddMember("distance", measure.distance, output_json.GetAllocator());
+			measure_object.AddMember("angle", measure.angle, output_json.GetAllocator());
+			data_array.PushBack(measure_object, output_json.GetAllocator());
+		}
+
+		output_json.AddMember("lidar", data_array, output_json.GetAllocator());
+
+		output_json.AddMember("frame_buffer", rapidjson::Value().SetString(frame_buffer_base64.c_str(), output_json.GetAllocator()), output_json.GetAllocator());
+
+		rapidjson::StringBuffer buffer;
+		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+		output_json.Accept(writer);
+
+		std::string output_json_string = buffer.GetString();
+		spdlog::info("Sending message: {}", output_json_string);
+		this->messaging_system_->sendMessage(output_json_string);
 	}
 
 	void CarSystem::setConfiguration(std::shared_ptr<Configuration> configuration)
