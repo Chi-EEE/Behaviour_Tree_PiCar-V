@@ -15,6 +15,11 @@
 
 using namespace car::configuration;
 
+namespace car::system
+{
+	class CarSystem;
+}
+
 namespace car::system::device
 {
 	class DeviceManager {
@@ -35,14 +40,21 @@ namespace car::system::device
 			return this->lidar_device_.get();
 		}
 
-		void initialize();
+		const bool isRunning() const {
+			return this->is_running_;
+		}
+
+		void initialize(std::shared_ptr<system::CarSystem> car_system);
 		void start();
 		void update();
 		void stop();
 		void terminate();
 
 	private:
+		std::shared_ptr<car::system::CarSystem> car_system;
+
 		bool is_initialized_ = false;
+		bool is_running_ = false;
 
 		std::unique_ptr<lidar::LidarDevice> lidar_device_;
 		std::unique_ptr<CameraDevice> camera_device_;

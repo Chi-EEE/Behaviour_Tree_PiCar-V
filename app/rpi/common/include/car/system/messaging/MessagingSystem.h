@@ -35,6 +35,7 @@ namespace car::system::messaging
 		void setConfiguration(std::shared_ptr<configuration::Configuration> configuration);
 
 		nod::signal<void(const std::string, const rapidjson::Document&)>& getCommandSignal() { return this->command_signal_; }
+		nod::signal<void(const std::string, const rapidjson::Document&)>& getSelectionSignal() { return this->selection_signal_; }
 		nod::signal<void(const std::string)>& getMessageSignal() { return this->message_signal_; }
 		nod::signal<void(const std::string)>& getDisconnectSignal() { return this->on_disconnect_signal_; }
 
@@ -59,6 +60,7 @@ namespace car::system::messaging
 
 		nod::signal<void(const std::string)> message_signal_;
 		nod::signal<void(const std::string, const rapidjson::Document&)> command_signal_;
+		nod::signal<void(const std::string, const rapidjson::Document&)> selection_signal_;
 
 	private:
 		tl::expected<std::string, std::string> getFirstMessage();

@@ -39,7 +39,7 @@ namespace car::system
 	{
 		assert(!this->initialized && "Car System is already initialized.");
 		this->messaging_system_->initialize(this->configuration_);
-		this->device_manager_->initialize();
+		this->device_manager_->initialize(shared_from_this());
 		this->movement_system_->initialize();
 		this->plugin_manager_->initialize(shared_from_this());
 		this->initialized = true;
@@ -78,7 +78,6 @@ namespace car::system
 		{
 			return tl::make_unexpected(messaging_system_result.error());
 		}
-		this->device_manager_->start();
 		return nullptr;
 	}
 
@@ -88,7 +87,6 @@ namespace car::system
 		assert(this->started && "Car System has not been started yet.");
 		//assert(this->messaging_system->isConnected() && "Car System is not connected to the WS Server."); The connect bool is set to false when it disconnects from the websocket
 		this->messaging_system_->stop();
-		this->device_manager_->stop();
 	}
 
 	/// <summary>
@@ -105,7 +103,7 @@ namespace car::system
 	void CarSystem::update()
 	{
 		this->device_manager_->update();
-		if (this->messaging_system_->isConnected())
+		if (this->messaging_system_->isConnected() && this->device_manager_->isRunning())
 		{
 			rapidjson::Document output_json;
 			output_json.SetObject();

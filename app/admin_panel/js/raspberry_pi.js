@@ -7,12 +7,7 @@ function unselectRaspberryPi(_event, _args) {
 
 function selectRaspberryPi(_event, args) {
     const uuid = args.uuid;
-    if (websocket_server._raspberry_pi_map.has(uuid)) {
-        websocket_server._selected_raspberry_pi = { uuid: uuid, ws: websocket_server._raspberry_pi_map.get(uuid) };
-        return { success: true, message: `Connected to Raspberry Pi with UUID: ${uuid}` };
-    } else {
-        return { success: false, message: `Raspberry Pi with UUID: ${uuid} not found` };
-    }
+    return websocket_server.selectRaspberryPi(uuid);
 }
 
 function getRaspberryPiList(_event, _args) {

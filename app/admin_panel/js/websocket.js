@@ -121,7 +121,14 @@ class WebSocketServer {
      */
     selectRaspberryPi(uuid) {
         if (this._raspberry_pi_map.has(uuid)) {
-            this._selected_raspberry_pi = { uuid: uuid, ws: this._raspberry_pi_map.get(uuid) };
+            if (this._selected_raspberry_pi) {
+                const ws = this._selected_raspberry_pi.ws;
+                ws.send(JSON.stringify({ type: "selection", selected: false }));
+                this._selected_raspberry_pi = undefined;
+            }
+            const ws = this._raspberry_pi_map.get(uuid);
+            this._selected_raspberry_pi = { uuid: uuid, ws: ws };
+            ws.send(JSON.stringify({ type: "selection", selected: true }));
             return { success: true, message: `Connected to Raspberry Pi with UUID: ${uuid}` };
         } else {
             return { success: false, message: `Raspberry Pi with UUID: ${uuid} not found` };

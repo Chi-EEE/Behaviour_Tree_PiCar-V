@@ -39,16 +39,16 @@ namespace car::system::device::lidar
 
 		void start() final override
 		{
-			std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
 			this->running = true;
 			this->lidar_->start_motor();
+			std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
 			this->scan_generator_ = this->lidar_->iter_scans();
 		};
 
 		void update() final override
 		{
-			std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
 			if (this->running) {
+				std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
 				const auto& scan_generator = std::get<std::function<std::vector<Measure>()>>(this->scan_generator_);
 				this->setScanData(scan_generator());
 			}
@@ -56,8 +56,8 @@ namespace car::system::device::lidar
 
 		void stop() final override
 		{
-			std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
 			this->running = false;
+			std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
 			this->scan_generator_ = nullptr;
 			this->lidar_->stop();
 			this->lidar_->stop_motor();
@@ -69,10 +69,10 @@ namespace car::system::device::lidar
 
 		void disconnect() final override
 		{
-			std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
 			this->running = false;
-			this->lidar_->disconnect();
+			std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
 			this->scan_generator_ = nullptr;
+			this->lidar_->disconnect();
 		}
 
 		void terminate() final override
@@ -82,7 +82,7 @@ namespace car::system::device::lidar
 		}
 
 	private:
-		bool running = false;
+		std::atomic_bool running = false;
 
 		std::shared_ptr<configuration::Configuration> configuration_;
 

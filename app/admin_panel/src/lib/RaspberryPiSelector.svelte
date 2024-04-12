@@ -13,9 +13,11 @@
         if (selected_uuid === "") {
             return;
         }
+        console.log(selected_uuid);
         const selection_result = await api.selectRaspberryPi({
             uuid: selected_uuid,
         });
+        console.log(selection_result);
         if (selection_result.success) {
             selected_raspberry_pi_uuid.set(selected_uuid);
         } else {
