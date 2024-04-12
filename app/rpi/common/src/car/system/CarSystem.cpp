@@ -105,6 +105,7 @@ namespace car::system
 		this->device_manager_->update();
 		if (this->messaging_system_->isConnected() && this->device_manager_->isRunning())
 		{
+			this->sendData();
 		}
 		this->plugin_manager_->update();
 	}
