@@ -68,7 +68,7 @@
     let live_feed;
     frame_buffer.subscribe((value) => {
         if (live_feed) {
-            const blob = b64toBlob(value, "image/avif");
+            const blob = b64toBlob(value, "image/jpeg");
             const image_url = URL.createObjectURL(blob);
             live_feed.src = image_url;
         }
