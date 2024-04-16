@@ -26,6 +26,7 @@
 
 #include "condition/SucceedOnAverageNearbyScan.hpp"
 #include "condition/SucceedOnAnyNearbyScan.hpp"
+#include "condition/SucceedOnAverageColour.hpp"
 
 #include "utils/Utility.hpp"
 
@@ -206,6 +207,19 @@ namespace behaviour_tree::node::custom
 						max_angle,
 						cm));
 			}
+            case utils::hash("Condition:SucceedOnAverageColour"):
+            {
+				const std::string hex = node.attribute("hex").as_string();
+				const double percentage = node.attribute("percentage").as_double();
+				if (percentage < 0)
+					return tl::unexpected(fmt::format(R"(Invalid percentage: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", percentage, name_attribute, index));
+                return std::make_shared<custom::condition::SucceedOnAnyNearbyScan>(
+					custom::condition::SucceedOnAnyNearbyScan(
+						name_attribute,
+						hex,
+						percentage
+                        ));
+            }
 			// case utils::hash("Action:TurnAround"):
 			// {
 			// 	const std::string direction_type_attribute = node.attribute("direction_type").as_string();
