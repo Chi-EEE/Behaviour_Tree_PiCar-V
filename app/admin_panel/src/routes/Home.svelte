@@ -68,7 +68,7 @@
     let live_feed;
     frame_buffer.subscribe((value) => {
         if (live_feed) {
-            const blob = b64toBlob(value, "image/jpeg");
+            const blob = b64toBlob(value, "image/webp");
             const image_url = URL.createObjectURL(blob);
             live_feed.src = image_url;
         }
@@ -94,7 +94,11 @@
                         bind:clientHeight={stream_split_height}
                     >
                         <!-- svelte-ignore a11y-missing-attribute -->
-                        <img class="w-full h-full" bind:this={live_feed} />
+                        <img
+                            class="w-full h-full"
+                            src="Warning.png"
+                            bind:this={live_feed}
+                        />
                     </div>
                 </Pane>
                 <Pane size={main_pane_size_1} minSize={7.5}>
