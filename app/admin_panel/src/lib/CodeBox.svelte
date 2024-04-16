@@ -75,7 +75,7 @@
     }
 </script>
 
-<div class="h-full grid grid-rows-2 gap-1">
+<div class="h-full m-1">
     <div class="grid grid-cols-3 gap-2">
         <button
             on:mousedown={sendBehaviourTree}
@@ -106,7 +106,7 @@
     />
     <style>
         .cm-editor {
-            height: 100% !important;
+            height: 90% !important;
         }
         .cm-editor * {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,

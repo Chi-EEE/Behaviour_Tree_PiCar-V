@@ -110,11 +110,6 @@ int main(int argc, char* argv[])
 std::unique_ptr<lidar::LidarDevice> getLidarDevice()
 {
 	Configuration configuration;
-#ifdef __linux
-	configuration.lidar_port = "/dev/ttyUSB0";
-#else
-	configuration.lidar_port = "COM3";
-#endif
 	auto maybe_scanner = LidarScanner::create(std::make_shared<Configuration>(configuration));
 	if (maybe_scanner.has_value())
 	{
