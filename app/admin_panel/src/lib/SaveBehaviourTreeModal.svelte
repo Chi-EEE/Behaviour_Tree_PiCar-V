@@ -11,7 +11,8 @@
     import {
         show_behaviour_tree_save_modal,
         behaviour_tree_save_modal_code,
-    } from "../store/behaviour_tree_code_store";
+        behaviour_tree_list,
+    } from "../store/behaviour_tree_store";
 
     let behaviour_tree_name = "";
 </script>
@@ -50,6 +51,7 @@
                     code: $behaviour_tree_save_modal_code,
                 };
                 api.saveBehaviourTree(behaviour_tree_save_state);
+                behaviour_tree_list.set([...$behaviour_tree_list, behaviour_tree_save_state]);
             }}>Yes</Button
         >
         <Button color="alternative">No</Button>

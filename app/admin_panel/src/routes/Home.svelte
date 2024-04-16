@@ -111,7 +111,7 @@
                 </Pane>
             </Splitpanes>
         </Pane>
-        <Pane size={side_pane_size_1} minSize={13} maxSize={80}>
+        <Pane size={side_pane_size_1} minSize={17} maxSize={80}>
             <BehaviourTreeHandler />
         </Pane>
     </Splitpanes>

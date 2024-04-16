@@ -6,7 +6,7 @@
 
     import { node_hover, xml_schema } from "./CodeBox_Constants";
 
-    import { behaviour_tree_xml_code } from "../store/behaviour_tree_code_store";
+    import { behaviour_tree_xml_code } from "../store/behaviour_tree_store";
     import CodeMessagingBar from "./CodeMessagingBar.svelte";
 </script>
 
