@@ -9,6 +9,7 @@
     import { node_hover } from "./CodeBox_Constants";
 
     import { behaviour_tree_xml_code } from "../store/behaviour_tree_code_store";
+    import { selected_raspberry_pi_uuid } from "../store/raspberry_pi_store";
 
     /** @type {string} */
     let send_behaviour_tree_text = "Send Behaviour Tree";
@@ -81,18 +82,21 @@
             on:mousedown={sendBehaviourTree}
             class="p-2 rounded-lg shadow-lg relative inset-0"
             style="background-color: {send_behaviour_tree_color}; color: white; width: 100%; border: none;"
+            disabled={$selected_raspberry_pi_uuid === ""}
             >{send_behaviour_tree_text}</button
         >
         <button
             on:mousedown={startBehaviourTree}
             class="p-2 rounded-lg shadow-lg relative inset-0"
             style="background-color: {start_behaviour_tree_color}; color: white; width: 100%; border: none;"
+            disabled={$selected_raspberry_pi_uuid === ""}
             >{start_behaviour_tree_text}</button
         >
         <button
             on:mousedown={stopBehaviourTree}
             class="p-2 rounded-lg shadow-lg relative inset-0"
             style="background-color: #FF352F; color: white; width: 100%; border: none;"
+            disabled={$selected_raspberry_pi_uuid === ""}
             >Stop Behaviour Tree</button
         >
     </div>
