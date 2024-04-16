@@ -65,6 +65,8 @@ public:
         const std::string lidar_port = reader.GetString("RaspberryPi", "lidar_port", default_lidar_port);
         dlog::info(fmt::format("Using lidar port: {}", lidar_port));
         configuration->lidar_port = lidar_port;
+
+        configuration->behaviour_tree_update_ms_interval = std::chrono::milliseconds(reader.GetInteger("RaspberryPi", "behaviour_tree_update_ms_interval", 100));
         
         this->any_configuration_empty = host.empty();
         if (this->any_configuration_empty)

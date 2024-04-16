@@ -124,7 +124,7 @@ namespace behaviour_tree
 			{
                 const std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
                 // TODO:
-                if (this->last_connected >= this->car_system->getConfiguration()->behaviour_tree_update_ms_interval) {
+                if (now - this->last_connected >= this->car_system->getConfiguration()->behaviour_tree_update_ms_interval) {
                     this->context->update(this->tick_count);
                     this->tick_count++;
                     this->last_connected = now;
