@@ -81,21 +81,21 @@
         <button
             on:mousedown={sendBehaviourTree}
             class="p-2 rounded-lg shadow-lg relative inset-0"
-            style="background-color: {send_behaviour_tree_color}; color: white; width: 100%; border: none;"
+            style="background-color: {send_behaviour_tree_color}; color: white; width: 100%; border: none;{$selected_raspberry_pi_uuid === "" ? "cursor: not-allowed;" : ""}"
             disabled={$selected_raspberry_pi_uuid === ""}
             >{send_behaviour_tree_text}</button
         >
         <button
             on:mousedown={startBehaviourTree}
             class="p-2 rounded-lg shadow-lg relative inset-0"
-            style="background-color: {start_behaviour_tree_color}; color: white; width: 100%; border: none;"
+            style="background-color: {start_behaviour_tree_color}; color: white; width: 100%; border: none; {$selected_raspberry_pi_uuid === "" ? "cursor: not-allowed;" : ""}"
             disabled={$selected_raspberry_pi_uuid === ""}
             >{start_behaviour_tree_text}</button
         >
         <button
             on:mousedown={stopBehaviourTree}
             class="p-2 rounded-lg shadow-lg relative inset-0"
-            style="background-color: #FF352F; color: white; width: 100%; border: none;"
+            style="background-color: #FF352F; color: white; width: 100%; border: none; {$selected_raspberry_pi_uuid === "" ? "cursor: not-allowed;" : ""}"
             disabled={$selected_raspberry_pi_uuid === ""}
             >Stop Behaviour Tree</button
         >
