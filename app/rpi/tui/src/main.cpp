@@ -46,7 +46,7 @@ using namespace car::display::console;
 using namespace car::configuration;
 using namespace car::plugin;
 
-std::unique_ptr<LidarDevice> getLidarDevice();
+std::unique_ptr<LidarDevice> getLidarDevice(std::shared_ptr<Configuration> configuration);
 std::unique_ptr<AbstractMovementController> getMovementController();
 
 int main(int argc, char* argv[])
@@ -73,7 +73,7 @@ int main(int argc, char* argv[])
 	}
 
 	std::unique_ptr<CameraDevice> camera_device = std::move(maybe_camera_device.value());
-	std::unique_ptr<LidarDevice> lidar_device = getLidarDevice();
+	std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(configuration);
 
 	std::unique_ptr<DeviceManager> device_manager = std::make_unique<DeviceManager>(std::move(camera_device), std::move(lidar_device));
 
@@ -107,10 +107,9 @@ int main(int argc, char* argv[])
 	return EXIT_SUCCESS;
 }
 
-std::unique_ptr<lidar::LidarDevice> getLidarDevice()
+std::unique_ptr<lidar::LidarDevice> getLidarDevice(std::shared_ptr<Configuration> configuration)
 {
-	Configuration configuration;
-	auto maybe_scanner = LidarScanner::create(std::make_shared<Configuration>(configuration));
+	auto maybe_scanner = LidarScanner::create(configuration);
 	if (maybe_scanner.has_value())
 	{
 		spdlog::info("Found and using Lidar Scanner\n");

@@ -137,7 +137,6 @@ namespace car::system
 		output_json.Accept(writer);
 
 		std::string output_json_string = buffer.GetString();
-		spdlog::info("Sending message: {}", output_json_string);
 		this->messaging_system_->sendMessage(output_json_string);
 	}
 

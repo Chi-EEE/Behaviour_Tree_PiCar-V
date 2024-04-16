@@ -57,7 +57,12 @@ public:
         dlog::info(fmt::format("Started daemon with host: {}", host));
         configuration->host = host;
 
-        const std::string lidar_port = reader.GetString("RaspberryPi", "lidar_port", "");
+#ifdef __linux
+        const std::string default_lidar_port = "/dev/ttyUSB0";
+#else
+        const std::string default_lidar_port = "COM3";
+#endif
+        const std::string lidar_port = reader.GetString("RaspberryPi", "lidar_port", default_lidar_port);
         dlog::info(fmt::format("Using lidar port: {}", lidar_port));
         configuration->lidar_port = lidar_port;
         
