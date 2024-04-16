@@ -61,11 +61,13 @@ namespace car::configuration
                 Configuration configuration{};
                 configuration.host = config_json["host"].GetString();
                 configuration.lidar_port = config_json["lidar_port"].GetString();
+                if (configuration.lidar_port.empty()) {
 #ifdef __linux
-                configuration.lidar_port = "/dev/ttyUSB0";
+                    configuration.lidar_port = "/dev/ttyUSB0";
 #else
-                configuration.lidar_port = "COM3";
+                    configuration.lidar_port = "COM3";
 #endif
+                }
                 return configuration;
             }
             catch (const std::exception &e)

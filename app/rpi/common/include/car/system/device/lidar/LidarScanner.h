@@ -56,11 +56,13 @@ namespace car::system::device::lidar
 
 		void stop() final override
 		{
-			this->running = false;
-			std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
-			this->scan_generator_ = nullptr;
-			this->lidar_->stop();
-			this->lidar_->stop_motor();
+			if (this->running) {
+				this->running = false;
+				std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
+				this->scan_generator_ = nullptr;
+				this->lidar_->stop();
+				this->lidar_->stop_motor();
+			}
 		}
 
 		void initialize() final override
@@ -69,10 +71,12 @@ namespace car::system::device::lidar
 
 		void disconnect() final override
 		{
-			this->running = false;
-			std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
-			this->scan_generator_ = nullptr;
-			this->lidar_->disconnect();
+			if (this->running) {
+				this->running = false;
+				std::lock_guard<std::mutex> lock(this->scan_data_mutex_);
+				this->scan_generator_ = nullptr;
+				this->lidar_->disconnect();
+			}
 		}
 
 		void terminate() final override
