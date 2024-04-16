@@ -31,7 +31,7 @@ namespace car::system::device
 			return;
 		}
 		std::vector<uchar> buf;
-		cv::imencode(".webp", frame, buf);
+		cv::imencode(".avif", frame, buf);
 		this->frame_buffer_ = std::string(reinterpret_cast<const char*>(buf.data()), buf.size());
 	}
 
