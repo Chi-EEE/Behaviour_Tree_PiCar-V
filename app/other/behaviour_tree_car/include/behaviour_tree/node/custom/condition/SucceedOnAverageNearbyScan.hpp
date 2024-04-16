@@ -1,5 +1,5 @@
-#ifndef BEHAVIOUR_TREE_SUCCESS_ON_AVERAGE_NEARBY_SCAN_HPP
-#define BEHAVIOUR_TREE_SUCCESS_ON_AVERAGE_NEARBY_SCAN_HPP
+#ifndef BEHAVIOUR_TREE_SUCCEED_ON_AVERAGE_NEARBY_SCAN_HPP
+#define BEHAVIOUR_TREE_SUCCEED_ON_AVERAGE_NEARBY_SCAN_HPP
 
 #pragma once
 
@@ -14,10 +14,10 @@
 namespace behaviour_tree::node::custom::condition
 {
     constexpr double CM_TO_DISTANCE = 15.151515151515151515151515151515151515151515151515151515;
-    class SuccessOnAverageNearbyScan final : public CustomNode
+    class SucceedOnAverageNearbyScan final : public CustomNode
     {
     public:
-        SuccessOnAverageNearbyScan(const std::string &name, const int min_angle, const int max_angle, const double cm, const int smallest_measure_amount_used) : CustomNode(name),
+        SucceedOnAverageNearbyScan(const std::string &name, const int min_angle, const int max_angle, const double cm, const int smallest_measure_amount_used) : CustomNode(name),
                                                                                                                                                                  min_angle(min_angle),
                                                                                                                                                                  max_angle(max_angle),
                                                                                                                                                                  cm(cm),
@@ -92,9 +92,9 @@ namespace behaviour_tree::node::custom::condition
         {
             const std::string &name = this->getName();
             if (name != "")
-                return fmt::format(R"(<Condition:SuccessOnAverageNearbyScan name='{}' min_angle='{}' max_angle='{}' cm='{}' smallest_measure_amount_used='{}'/>)", name, this->getMinAngle(), this->getMaxAngle(), this->getCentimeters(), this->getSmallestMeasureAmountUsed());
+                return fmt::format(R"(<Condition:SucceedOnAverageNearbyScan name='{}' min_angle='{}' max_angle='{}' cm='{}' smallest_measure_amount_used='{}'/>)", name, this->getMinAngle(), this->getMaxAngle(), this->getCentimeters(), this->getSmallestMeasureAmountUsed());
             else
-                return fmt::format(R"(<Condition:SuccessOnAverageNearbyScan min_angle='{}' max_angle='{}' cm='{}' smallest_measure_amount_used='{}'/>)", this->getMinAngle(), this->getMaxAngle(), this->getCentimeters(), this->getSmallestMeasureAmountUsed());
+                return fmt::format(R"(<Condition:SucceedOnAverageNearbyScan min_angle='{}' max_angle='{}' cm='{}' smallest_measure_amount_used='{}'/>)", this->getMinAngle(), this->getMaxAngle(), this->getCentimeters(), this->getSmallestMeasureAmountUsed());
         }
 
     private:

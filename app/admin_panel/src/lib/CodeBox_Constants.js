@@ -677,7 +677,8 @@ export const common_nodes = [
     "Action:SetSpeed",
     "Action:SetWheelDirection",
 
-    "Condition:SuccessOnAverageNearbyScan",
+    "Condition:SucceedOnAverageNearbyScan",
+    "Condition:SucceedOnAnyNearbyScan",
 ];
 
 export const xml_schema = {
@@ -806,7 +807,7 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Condition:SuccessOnAverageNearbyScan",
+            name: "Condition:SucceedOnAverageNearbyScan",
             attributes: [
                 {
                     name: "min_angle",
@@ -820,6 +821,23 @@ export const xml_schema = {
                 },
                 "cm",
                 "smallest_measure_amount_used",
+            ],
+            completion: { type: "keyword" },
+        },
+        {
+            name: "Condition:SucceedOnAllNearbyScan",
+            attributes: [
+                {
+                    name: "min_angle",
+                    values: range_0_360,
+                    completion: { type: "keyword" },
+                },
+                {
+                    name: "max_angle",
+                    values: range_0_360,
+                    completion: { type: "keyword" },
+                },
+                "cm",
             ],
             completion: { type: "keyword" },
         },
@@ -849,7 +867,8 @@ const node_information_list = new Map([
     ["Action:SetSpeed", "Moves the car by the given speed"],
     ["Action:SetWheelDirection", "Sets the direction of the car"],
 
-    ["Condition:SuccessOnAverageNearbyScan", "Checks if there are nearby points"],
+    ["Condition:SucceedOnAverageNearbyScan", "Checks the average distance between two angles and succeeds if the average is below the specified cm"],
+    ["Condition:SucceedOnAnyNearbyScan", "Checks the distance of all nearby points and succeeds if any is below the specified cm"],
 ]);
 
 // Modified code from: https://codemirror.net/examples/tooltip/

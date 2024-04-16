@@ -19,7 +19,7 @@
 
     <Root id="Front">
         <Sequence>
-            <Condition:SuccessOnAverageNearbyScan min_angle="45" max_angle="135" cm="33"/>
+            <Condition:SucceedOnAverageNearbyScan min_angle="45" max_angle="135" cm="33"/>
             <Action:SetWheelDirection direction_type="Backward" wheel_type="Both"/>
             <Action:SetAngle angle="180" servo_type="FrontWheels"/>
             <Action:SetSpeed speed="60" wheel_type="Both"/>
@@ -28,7 +28,7 @@
     
     <Root id="Behind">
         <Sequence>
-            <Condition:SuccessOnAverageNearbyScan min_angle="225" max_angle="315" cm="33"/>
+            <Condition:SucceedOnAverageNearbyScan min_angle="225" max_angle="315" cm="33"/>
             <Action:SetWheelDirection direction_type="Forward" wheel_type="Both"/>
             <Action:SetAngle angle="90" servo_type="FrontWheels"/>
             <Action:SetSpeed speed="100" wheel_type="Both"/>
@@ -37,8 +37,8 @@
     
     <Root id="Left">
         <Sequence>
-            <Condition:SuccessOnAverageNearbyScan min_angle="0" max_angle="45" cm="33"/>
-            <Condition:SuccessOnAverageNearbyScan min_angle="315" max_angle="360" cm="33"/>
+            <Condition:SucceedOnAverageNearbyScan min_angle="0" max_angle="45" cm="33"/>
+            <Condition:SucceedOnAverageNearbyScan min_angle="315" max_angle="360" cm="33"/>
             <Action:SetWheelDirection direction_type="Forward" wheel_type="Both"/>
             <Action:SetAngle angle="180" servo_type="FrontWheels"/>
             <Action:SetSpeed speed="60" wheel_type="Both"/>
@@ -47,7 +47,7 @@
     
     <Root id="Right">
         <Sequence>
-            <Condition:SuccessOnAverageNearbyScan min_angle="135" max_angle="225" cm="33"/>
+            <Condition:SucceedOnAverageNearbyScan min_angle="135" max_angle="225" cm="33"/>
             <Action:SetWheelDirection direction_type="Forward" wheel_type="Both"/>
             <Action:SetAngle angle="0" servo_type="FrontWheels"/>
             <Action:SetSpeed speed="60" wheel_type="Both"/>

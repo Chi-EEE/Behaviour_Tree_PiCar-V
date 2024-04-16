@@ -2,7 +2,7 @@
     <Root>
         <Selector>
             <Sequence>
-                <Condition:SuccessOnAverageNearbyScan min_angle="45" max_angle="135" cm="33"/>
+                <Condition:SucceedOnAverageNearbyScan min_angle="45" max_angle="135" cm="33"/>
                 <Action:SetWheelDirection direction_type="Backward" wheel_type="Both"/>
                 <Action:SetSpeed speed="50" wheel_type="Both"/>
                 <Action:SetAngle angle="270" servo_type="FrontWheels"/>

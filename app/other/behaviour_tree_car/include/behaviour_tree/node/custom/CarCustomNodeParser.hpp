@@ -24,7 +24,8 @@
 #include "action/SetAngle.hpp"
 #include "action/TurnAround.hpp"
 
-#include "condition/SuccessOnAverageNearbyScan.hpp"
+#include "condition/SucceedOnAverageNearbyScan.hpp"
+#include "condition/SucceedOnAnyNearbyScan.hpp"
 
 #include "utils/Utility.hpp"
 
@@ -165,27 +166,45 @@ namespace behaviour_tree::node::custom
 				}
 				}
 			}
-			case utils::hash("Condition:SuccessOnAverageNearbyScan"):
+			case utils::hash("Condition:SucceedOnAverageNearbyScan"):
 			{
 				const int min_angle = node.attribute("min_angle").as_int();
 				if (min_angle < 0 || min_angle > 360)
-					return tl::unexpected(fmt::format(R"(Invalid min_angle: '{}' | Condition:SuccessOnAverageNearbyScan:['{}',{}])", min_angle, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid min_angle: '{}' | Condition:SucceedOnAverageNearbyScan:['{}',{}])", min_angle, name_attribute, index));
 				const int max_angle = node.attribute("max_angle").as_int();
 				if (max_angle < 0 || max_angle > 360)
-					return tl::unexpected(fmt::format(R"(Invalid max_angle: '{}' | Condition:SuccessOnAverageNearbyScan:['{}',{}])", max_angle, name_attribute, index));
+					return tl::unexpected(fmt::format(R"(Invalid max_angle: '{}' | Condition:SucceedOnAverageNearbyScan:['{}',{}])", max_angle, name_attribute, index));
 				const double cm = node.attribute("cm").as_double();
 				if (cm < 0)
-					return tl::unexpected(fmt::format(R"(Invalid cm: '{}' | Condition:SuccessOnAverageNearbyScan:['{}',{}])", cm, name_attribute, index));
-                const int measures_used = node.attribute("measures_used").as_int();
-				if (measures_used < 0)
-					return tl::unexpected(fmt::format(R"(Invalid measures_used: '{}' | Condition:SuccessOnAverageNearbyScan:['{}',{}])", measures_used, name_attribute, index));
-                return std::make_shared<custom::condition::SuccessOnAverageNearbyScan>(
-					custom::condition::SuccessOnAverageNearbyScan(
+					return tl::unexpected(fmt::format(R"(Invalid cm: '{}' | Condition:SucceedOnAverageNearbyScan:['{}',{}])", cm, name_attribute, index));
+                const int minimum_measure_amount_used = node.attribute("minimum_measure_amount_used").as_int();
+				if (minimum_measure_amount_used < 0)
+					return tl::unexpected(fmt::format(R"(Invalid minimum_measure_amount_used: '{}' | Condition:SucceedOnAverageNearbyScan:['{}',{}])", minimum_measure_amount_used, name_attribute, index));
+                return std::make_shared<custom::condition::SucceedOnAverageNearbyScan>(
+					custom::condition::SucceedOnAverageNearbyScan(
 						name_attribute,
 						min_angle,
 						max_angle,
 						cm,
-                        measures_used));
+                        minimum_measure_amount_used));
+			}
+			case utils::hash("Condition:SucceedOnAnyNearbyScan"):
+			{
+				const int min_angle = node.attribute("min_angle").as_int();
+				if (min_angle < 0 || min_angle > 360)
+					return tl::unexpected(fmt::format(R"(Invalid min_angle: '{}' | Condition:SucceedOnAnyNearbyScan:['{}',{}])", min_angle, name_attribute, index));
+				const int max_angle = node.attribute("max_angle").as_int();
+				if (max_angle < 0 || max_angle > 360)
+					return tl::unexpected(fmt::format(R"(Invalid max_angle: '{}' | Condition:SucceedOnAnyNearbyScan:['{}',{}])", max_angle, name_attribute, index));
+				const double cm = node.attribute("cm").as_double();
+				if (cm < 0)
+					return tl::unexpected(fmt::format(R"(Invalid cm: '{}' | Condition:SucceedOnAnyNearbyScan:['{}',{}])", cm, name_attribute, index));
+                return std::make_shared<custom::condition::SucceedOnAnyNearbyScan>(
+					custom::condition::SucceedOnAnyNearbyScan(
+						name_attribute,
+						min_angle,
+						max_angle,
+						cm));
 			}
 			// case utils::hash("Action:TurnAround"):
 			// {

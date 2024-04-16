@@ -6,27 +6,27 @@
                 <UseRoot id="stop"/>
             </Sequence>
             <Sequence>
-                <Condition:SuccessOnAverageNearbyScan cm="100" min_angle="0" max_angle="180"/>
+                <Condition:SucceedOnAverageNearbyScan cm="100" min_angle="0" max_angle="180"/>
                 <Action:Print text="100"/>
             </Sequence>
             <Sequence>
-                <Condition:SuccessOnAverageNearbyScan cm="80" min_angle="0" max_angle="180"/>
+                <Condition:SucceedOnAverageNearbyScan cm="80" min_angle="0" max_angle="180"/>
                 <Action:Print text="80"/>
             </Sequence>
             <Sequence>
-                <Condition:SuccessOnAverageNearbyScan cm="60" min_angle="0" max_angle="180"/>
+                <Condition:SucceedOnAverageNearbyScan cm="60" min_angle="0" max_angle="180"/>
                 <Action:Print text="60"/>
             </Sequence>
             <Sequence>
-                <Condition:SuccessOnAverageNearbyScan cm="40" min_angle="0" max_angle="180"/>
+                <Condition:SucceedOnAverageNearbyScan cm="40" min_angle="0" max_angle="180"/>
                 <Action:Print text="40"/>
             </Sequence>
             <Sequence>
-                <Condition:SuccessOnAverageNearbyScan cm="20" min_angle="0" max_angle="180"/>
+                <Condition:SucceedOnAverageNearbyScan cm="20" min_angle="0" max_angle="180"/>
                 <Action:Print text="20"/>
             </Sequence>
             <Sequence>
-                <Condition:SuccessOnAverageNearbyScan cm="0" min_angle="0" max_angle="180"/>
+                <Condition:SucceedOnAverageNearbyScan cm="0" min_angle="0" max_angle="180"/>
                 <Action:Print text="0"/>
             </Sequence>
         </Selector>
