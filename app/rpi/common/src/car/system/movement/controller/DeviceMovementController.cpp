@@ -66,76 +66,76 @@ namespace car::system::movement::controller
 
     void DeviceMovementController::setRearWheelsSpeed(const int speed)
     {
-        spdlog::info("Both Rear Wheels speed are set to {}", speed);
+        // spdlog::info("Both Rear Wheels speed are set to {}", speed);
         this->rear_left_wheel_->setSpeed(speed);
         this->rear_right_wheel_->setSpeed(speed);
     }
 
     void DeviceMovementController::setRearLeftWheelSpeed(const int speed)
     {
-        spdlog::info("Left Rear Wheel speed is set to {}", speed);
+        // spdlog::info("Left Rear Wheel speed is set to {}", speed);
         this->rear_left_wheel_->setSpeed(speed);
     }
 
     void DeviceMovementController::setRearRightWheelSpeed(const int speed)
     {
-        spdlog::info("Right Rear Wheel speed is set to {}", speed);
+        // spdlog::info("Right Rear Wheel speed is set to {}", speed);
         this->rear_right_wheel_->setSpeed(speed);
     }
 
     void DeviceMovementController::setFrontWheelsAngle(const float angle)
     {
-        spdlog::info("Front Wheels angle is set to {}", angle);
+        // spdlog::info("Front Wheels angle is set to {}", angle);
         this->front_wheels_->setAngle(angle);
     }
 
     void DeviceMovementController::setCameraServo1Angle(const float angle)
     {
-        spdlog::info("Camera Servo 1 angle is set to {}", angle);
+        // spdlog::info("Camera Servo 1 angle is set to {}", angle);
         this->camera_servo_1_->setAngle(angle);
     }
 
     void DeviceMovementController::setCameraServo2Angle(const float angle)
     {
-        spdlog::info("Camera Servo 2 angle is set to {}", angle);
+        // spdlog::info("Camera Servo 2 angle is set to {}", angle);
         this->camera_servo_2_->setAngle(angle);
     }
 
     void DeviceMovementController::setRearWheelsDirectionToForward()
     {
-        spdlog::info("Both Rear Wheels are set to move forward");
+        // spdlog::info("Both Rear Wheels are set to move forward");
         this->rear_left_wheel_->forward();
         this->rear_right_wheel_->forward();
     }
 
     void DeviceMovementController::setRearLeftWheelDirectionToForward()
     {
-        spdlog::info("Left Rear Wheel is set to move forward");
+        // spdlog::info("Left Rear Wheel is set to move forward");
         this->rear_left_wheel_->forward();
     }
 
     void DeviceMovementController::setRearRightWheelDirectionToForward()
     {
-        spdlog::info("Right Rear Wheel is set to move forward");
+        // spdlog::info("Right Rear Wheel is set to move forward");
         this->rear_right_wheel_->forward();
     }
 
     void DeviceMovementController::setRearWheelsDirectionToBackward()
     {
-        spdlog::info("Both Rear Wheels are set to move backward");
+        // spdlog::info("Both Rear Wheels are set to move backward");
         this->rear_left_wheel_->backward();
         this->rear_right_wheel_->backward();
     }
 
     void DeviceMovementController::setRearLeftWheelDirectionToBackward()
     {
-        spdlog::info("Left Rear Wheel is set to move backward");
+        // spdlog::info("Left Rear Wheel is set to move backward");
         this->rear_left_wheel_->backward();
     }
 
     void DeviceMovementController::setRearRightWheelDirectionToBackward()
     {
-        spdlog::info("Right Rear Wheel is set to move backward");
+        // spdlog::info("Right Rear Wheel is set to move backward");
         this->rear_right_wheel_->backward();
     }
 } // namespace car::system::movement::controller

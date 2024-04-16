@@ -122,8 +122,13 @@ namespace behaviour_tree
 			}
 			if (this->context->canRun())
 			{
-				this->context->update(this->tick_count);
-				this->tick_count++;
+                const std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
+                // TODO:
+                if (this->last_connected >= this->car_system->getConfiguration()->behaviour_tree_update_ms_interval) {
+                    this->context->update(this->tick_count);
+                    this->tick_count++;
+                    this->last_connected = now;
+                }
 			}
 			else
 			{
@@ -147,13 +152,15 @@ namespace behaviour_tree
 		}
 
 	private:
-		std::shared_ptr<BehaviourTree> behaviour_tree;
-
+		std::shared_ptr<car::system::CarSystem> car_system;
+		
+        std::shared_ptr<BehaviourTree> behaviour_tree;
 		std::shared_ptr<Context> context;
 
 		int tick_count = 0;
-
-		std::shared_ptr<car::system::CarSystem> car_system;
+        
+        // This is initialized as 0
+        std::chrono::time_point<std::chrono::steady_clock> last_connected;
 	};
 } // namespace behaviour_tree
 

@@ -49,7 +49,7 @@ public:
             return;
         }
 
-        this->connection_interval = std::chrono::seconds(reader.GetUnsigned("RaspberryPi", "connection_interval", 1));
+        this->connection_ms_interval = std::chrono::milliseconds(reader.GetUnsigned("RaspberryPi", "connection_ms_interval", 1000));
 
         std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{});
         
@@ -135,7 +135,7 @@ public:
         }
 
         const std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
-        const bool CAN_CONNECT = !this->car_system->getMessagingSystem()->isConnected() && now - this->last_connected >= this->connection_interval;
+        const bool CAN_CONNECT = !this->car_system->getMessagingSystem()->isConnected() && now - this->last_connected >= this->connection_ms_interval;
         if (CAN_CONNECT)
         {
             this->connect(now);
@@ -147,7 +147,7 @@ public:
     {
         if (!this->attempted_to_reconnect)
         {
-            dlog::notice(fmt::format(R"(Going to repeatedly attempt to connect to the WS Server "{}" at {} second intervals.)", this->car_system->getConfiguration()->host, this->connection_interval.count()));
+            dlog::notice(fmt::format(R"(Going to repeatedly attempt to connect to the WS Server "{}" at {} second intervals.)", this->car_system->getConfiguration()->host, this->connection_ms_interval.count()));
         }
         auto connection_result = this->car_system->tryConnect();
         if (!connection_result.has_value())
@@ -227,7 +227,7 @@ private:
     // To print out reconnect message once
     bool attempted_to_reconnect = false;
 
-    std::chrono::seconds connection_interval = std::chrono::seconds(1);
+    std::chrono::milliseconds connection_ms_interval = std::chrono::milliseconds(1000);
 
     // This is initialized as 0
     std::chrono::time_point<std::chrono::steady_clock> last_connected;

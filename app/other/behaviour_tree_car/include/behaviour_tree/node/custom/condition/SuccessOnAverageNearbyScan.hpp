@@ -44,6 +44,7 @@ namespace behaviour_tree::node::custom::condition
 			if (angles_between_count > 0)
 			{
 				double average_distance_unit = total_distance / angles_between_count;
+                spdlog::info("Average Distance: {}; Average Distance Unit: {}", average_distance_unit, this->getAverageDistanceUnit());
 				if (average_distance_unit < this->getAverageDistanceUnit())
 				{
 					return Status::Success;

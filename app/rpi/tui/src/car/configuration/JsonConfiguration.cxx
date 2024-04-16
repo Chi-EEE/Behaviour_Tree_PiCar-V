@@ -68,6 +68,7 @@ namespace car::configuration
                     configuration.lidar_port = "COM3";
 #endif
                 }
+                configuration.behaviour_tree_update_ms_interval = config_json["behaviour_tree_update_ms_interval"].GetInt();
                 return configuration;
             }
             catch (const std::exception &e)

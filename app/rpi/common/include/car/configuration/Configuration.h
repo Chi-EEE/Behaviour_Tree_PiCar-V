@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <chrono>
 #include <optional>
 #include <string>
 
@@ -19,6 +20,8 @@ namespace car::configuration
 
 		std::string lidar_port = "";
 		bool use_lidar = true;
+
+        std::chrono::milliseconds behaviour_tree_update_ms_interval = std::chrono::milliseconds(100);
 	};
 };
 
