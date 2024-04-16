@@ -20,7 +20,7 @@ namespace car::system::device
 
 	void CameraDevice::update() {
 		std::lock_guard<std::mutex> lock(this->camera_mutex_);
-		if (!this->connected_ || !this->camera_->isOpened()) {
+		if (!this->connected_ || this->camera_ == nullptr || !this->camera_->isOpened()) {
 			this->frame_buffer_ = "";
 			return;
 		}
@@ -42,6 +42,7 @@ namespace car::system::device
 	void CameraDevice::stop() {
 		std::lock_guard<std::mutex> lock(this->camera_mutex_);
 		this->camera_->release();
+        this->connected_ = false;
 	}
 
 	void CameraDevice::disconnect() {
