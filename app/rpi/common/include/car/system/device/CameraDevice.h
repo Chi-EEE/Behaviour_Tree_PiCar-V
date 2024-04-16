@@ -16,7 +16,7 @@ namespace car::system::device
 	class CameraDevice
 	{
 	public:
-		CameraDevice(std::unique_ptr<cv::VideoCapture> camera, int camera_index) : camera_(std::move(camera)), camera_index_(camera_index) {}
+		CameraDevice(int camera_index) : camera_index_(camera_index) {}
 
 		CameraDevice(const CameraDevice&) = delete;
 		CameraDevice& operator=(const CameraDevice&) = delete;
@@ -46,6 +46,8 @@ namespace car::system::device
 
 		bool connected_ = false;
 		std::string frame_buffer_;
+
+		std::mutex camera_mutex_;
 	};
 }
 

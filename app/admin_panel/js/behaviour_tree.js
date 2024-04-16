@@ -17,7 +17,7 @@ function stopBehaviourTree(_event, _args) {
 
 function getBehaviourTreeList() {
     const store = getStore();
-    return store.behaviour_tree_list;
+    return store.get("behaviour_tree_list");
 }
 
 /**

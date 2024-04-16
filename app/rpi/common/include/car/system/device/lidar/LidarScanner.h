@@ -94,6 +94,8 @@ namespace car::system::device::lidar
 
 		std::unique_ptr<RPLidar> lidar_;
 		std::variant<std::function<std::vector<Measure>()>, nullptr_t> scan_generator_ = nullptr;
+	
+		std::mutex scan_data_mutex_;
 	};
 }
 

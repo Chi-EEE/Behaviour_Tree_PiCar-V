@@ -6,6 +6,7 @@ const schema = {
     }
 }
 
+/** @returns {Store} */
 function getStore() {
     const store = new Store(schema);
     return store;

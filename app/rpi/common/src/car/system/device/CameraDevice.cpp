@@ -5,8 +5,7 @@ namespace car::system::device
 	tl::expected<std::unique_ptr<CameraDevice>, std::string> CameraDevice::create(std::shared_ptr<configuration::Configuration> configuration)
 	{
 		try {
-			std::unique_ptr<cv::VideoCapture> video_capture = std::make_unique<cv::VideoCapture>();
-			return std::make_unique<CameraDevice>(std::move(video_capture), configuration->camera_index);
+			return std::make_unique<CameraDevice>(configuration->camera_index);
 		}
 		catch (const std::exception& e) {
 			return tl::make_unexpected(e.what());
@@ -14,10 +13,13 @@ namespace car::system::device
 	}
 
 	void CameraDevice::start() {
+		std::lock_guard<std::mutex> lock(this->camera_mutex_);
+		this->camera_ = std::make_unique<cv::VideoCapture>();
 		this->connected_ = this->camera_->open(this->camera_index_);
 	}
 
 	void CameraDevice::update() {
+		std::lock_guard<std::mutex> lock(this->camera_mutex_);
 		if (!this->connected_ || !this->camera_->isOpened()) {
 			this->frame_buffer_ = "";
 			return;
@@ -38,6 +40,7 @@ namespace car::system::device
 	}
 
 	void CameraDevice::stop() {
+		std::lock_guard<std::mutex> lock(this->camera_mutex_);
 		this->camera_->release();
 	}
 
