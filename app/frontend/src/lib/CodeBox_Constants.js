@@ -457,6 +457,7 @@ export const xml_schema = {
                     completion: { type: "keyword" },
                 },
                 "cm",
+                "smallest_measure_amount_used",
             ],
             completion: { type: "keyword" },
         },

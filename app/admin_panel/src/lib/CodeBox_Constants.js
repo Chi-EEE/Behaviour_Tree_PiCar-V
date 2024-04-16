@@ -818,7 +818,8 @@ export const xml_schema = {
                     values: range_0_360,
                     completion: { type: "keyword" },
                 },
-                "cm", // Every unit is 0.15 cms
+                "cm",
+                "smallest_measure_amount_used",
             ],
             completion: { type: "keyword" },
         },

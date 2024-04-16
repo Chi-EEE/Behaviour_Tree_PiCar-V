@@ -176,32 +176,36 @@ namespace behaviour_tree::node::custom
 				const double cm = node.attribute("cm").as_double();
 				if (cm < 0)
 					return tl::unexpected(fmt::format(R"(Invalid cm: '{}' | Condition:SuccessOnAverageNearbyScan:['{}',{}])", cm, name_attribute, index));
-				return std::make_shared<custom::condition::SuccessOnAverageNearbyScan>(
+                const int measures_used = node.attribute("measures_used").as_int();
+				if (measures_used < 0)
+					return tl::unexpected(fmt::format(R"(Invalid measures_used: '{}' | Condition:SuccessOnAverageNearbyScan:['{}',{}])", measures_used, name_attribute, index));
+                return std::make_shared<custom::condition::SuccessOnAverageNearbyScan>(
 					custom::condition::SuccessOnAverageNearbyScan(
 						name_attribute,
 						min_angle,
 						max_angle,
-						cm));
+						cm,
+                        measures_used));
 			}
-			case utils::hash("Action:TurnAround"):
-			{
-				const std::string direction_type_attribute = node.attribute("direction_type").as_string();
-				switch (utils::hash(direction_type_attribute))
-				{
-				case utils::hash("Clockwise"):
-				{
-					return std::make_shared<custom::action::TurnAround>(custom::action::TurnAround(name_attribute, custom::action::ClockDirectionType::Clockwise));
-				}
-				case utils::hash("AntiClockwise"):
-				{
-					return std::make_shared<custom::action::TurnAround>(custom::action::TurnAround(name_attribute, custom::action::ClockDirectionType::AntiClockwise));
-				}
-				default:
-				{
-					return tl::unexpected(fmt::format(R"(Invalid direction_type: '{}' | Action:TurnAround:['{}',{}])", direction_type_attribute, name_attribute, index));
-				}
-				}
-			}
+			// case utils::hash("Action:TurnAround"):
+			// {
+			// 	const std::string direction_type_attribute = node.attribute("direction_type").as_string();
+			// 	switch (utils::hash(direction_type_attribute))
+			// 	{
+			// 	case utils::hash("Clockwise"):
+			// 	{
+			// 		return std::make_shared<custom::action::TurnAround>(custom::action::TurnAround(name_attribute, custom::action::ClockDirectionType::Clockwise));
+			// 	}
+			// 	case utils::hash("AntiClockwise"):
+			// 	{
+			// 		return std::make_shared<custom::action::TurnAround>(custom::action::TurnAround(name_attribute, custom::action::ClockDirectionType::AntiClockwise));
+			// 	}
+			// 	default:
+			// 	{
+			// 		return tl::unexpected(fmt::format(R"(Invalid direction_type: '{}' | Action:TurnAround:['{}',{}])", direction_type_attribute, name_attribute, index));
+			// 	}
+			// 	}
+			// }
 			default:
 			{
 				return tl::unexpected(fmt::format(R"(Invalid custom node type: '{}' | {}:['{}',{}])", node_name, node_name, name_attribute, index));
