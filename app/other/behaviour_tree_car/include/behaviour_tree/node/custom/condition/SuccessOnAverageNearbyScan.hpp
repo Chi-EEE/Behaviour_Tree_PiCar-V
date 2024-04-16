@@ -13,7 +13,7 @@
 
 namespace behaviour_tree::node::custom::condition
 {
-	constexpr double CM_TO_DISTANCE = 6.666666666666666666666666666666666666666666666;
+	constexpr double CM_TO_DISTANCE = 15.151515151515151515151515151515151515151515151515151515;
 	class SuccessOnAverageNearbyScan final : public CustomNode
 	{
 	public:
@@ -35,6 +35,7 @@ namespace behaviour_tree::node::custom::condition
 			int angles_between_count = 0;
 			for (auto &measure : car_system->getDeviceManager()->getLidarDevice()->getScanData())
 			{
+                spdlog::info("{} : {}", measure.angle, measure.distance);
 				if (measure.angle > this->getMinAngle() && measure.angle < this->getMaxAngle())
 				{
 					total_distance += measure.distance;
