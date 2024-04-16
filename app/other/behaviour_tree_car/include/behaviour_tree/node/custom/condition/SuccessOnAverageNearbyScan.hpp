@@ -35,7 +35,6 @@ namespace behaviour_tree::node::custom::condition
 			int angles_between_count = 0;
 			for (auto &measure : car_system->getDeviceManager()->getLidarDevice()->getScanData())
 			{
-                spdlog::info("{} : {}", measure.angle, measure.distance);
 				if (measure.angle > this->getMinAngle() && measure.angle < this->getMaxAngle())
 				{
 					total_distance += measure.distance;

@@ -12,7 +12,7 @@ sudo systemctl start rpi_daemon # Start the new Daemon
 ```
 
 Or use the single command:
-```bash.sh
+```bash
 sudo chmod +x ./install_script.sh && systemctl stop rpi_daemon && sudo ./install_script.sh install && sudo systemctl daemon-reload && sudo systemctl start rpi_daemon
 ```
 

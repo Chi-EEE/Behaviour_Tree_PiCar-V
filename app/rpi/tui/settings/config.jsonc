@@ -1,5 +1,5 @@
 {
-    "host": "127.0.0.1:3000",
+    "host": "",
     "lidar_port": "",
     "behaviour_tree_update_ms_interval": 1000
 }
