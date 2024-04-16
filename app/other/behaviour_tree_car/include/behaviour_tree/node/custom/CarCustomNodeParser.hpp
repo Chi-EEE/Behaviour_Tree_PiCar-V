@@ -211,7 +211,7 @@ namespace behaviour_tree::node::custom
             {
 				const std::string hex = node.attribute("hex").as_string();
 				const double percentage = node.attribute("percentage").as_double();
-				if (percentage < 0)
+				if (percentage < 0 || percentage > 100)
 					return tl::unexpected(fmt::format(R"(Invalid percentage: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", percentage, name_attribute, index));
                 return std::make_shared<custom::condition::SucceedOnAnyNearbyScan>(
 					custom::condition::SucceedOnAnyNearbyScan(
