@@ -85,7 +85,6 @@ public:
         dlog::info("Created the CameraDevice");
 
         std::unique_ptr<LidarDevice> lidar_device = getLidarDevice(configuration);
-        dlog::info("Created the LidarDevice");
 
         std::unique_ptr<DeviceManager> device_manager = std::make_unique<DeviceManager>(std::move(camera_device), std::move(lidar_device));
 
@@ -308,7 +307,7 @@ std::unique_ptr<LidarDevice> getLidarDevice(std::shared_ptr<Configuration> confi
     }
     else
     {
-        dlog::warning("Unable to connect to the Lidar Scanner, defaulting to LidarDummy\n");
+        dlog::warning(fmt::format("Unable to connect to the Lidar Scanner [{}], defaulting to LidarDummy; Error: {}\n", configuration->lidar_port, maybe_scanner.error()));
         return std::make_unique<LidarDummy>();
     }
 }
