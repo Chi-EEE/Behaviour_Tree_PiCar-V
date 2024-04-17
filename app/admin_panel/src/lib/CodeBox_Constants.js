@@ -1,6 +1,7 @@
 import { hoverTooltip } from "@codemirror/view";
 
 export const range_0_180 = [
+    "0",
     "1",
     "2",
     "3",
@@ -184,6 +185,7 @@ export const range_0_180 = [
 ];
 
 export const range_0_360 = [
+    "0",
     "1",
     "2",
     "3",
@@ -547,6 +549,7 @@ export const range_0_360 = [
 ];
 
 export const range_0_100 = [
+    "0",
     "1",
     "2",
     "3",
@@ -657,6 +660,7 @@ export const common_nodes = [
     // Composite
     "Selector",
     "Sequence",
+    "Random",
 
     // Decorator
     "Invert",
@@ -668,18 +672,20 @@ export const common_nodes = [
     "Task",
     "UseRoot",
 
-    // Task Nodes
     "Action:PauseExecution",
 
     "Action:Print",
 
     "Action:Drive",
+    "Action:Turn",
+
     "Action:SetAngle",
     "Action:SetSpeed",
     "Action:SetWheelDirection",
 
     "Condition:SucceedOnAverageNearbyScan",
     "Condition:SucceedOnAnyNearbyScan",
+    "Condition:SucceedOnAverageColour",
 ];
 
 export const xml_schema = {
@@ -776,6 +782,17 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
+            name: "Action:Turn",
+            attributes: [
+                {
+                    name: "angle",
+                    values: range_0_180,
+                    completion: { type: "keyword" },
+                },
+            ],
+            completion: { type: "keyword" },
+        },
+        {
             name: "Action:SetAngle",
             attributes: [
                 {
@@ -842,7 +859,7 @@ export const xml_schema = {
             completion: { type: "keyword" },
         },
         {
-            name: "Condition:SucceedOnAllNearbyScan",
+            name: "Condition:SucceedOnAnyNearbyScan",
             attributes: [
                 {
                     name: "min_angle",
@@ -858,6 +875,18 @@ export const xml_schema = {
             ],
             completion: { type: "keyword" },
         },
+        {
+            name: "Condition:SucceedOnAverageColour",
+            attributes: [
+                "hex_colour",
+                {
+                    name: "tolerance",
+                    values: range_0_100,
+                    completion: { type: "keyword" },
+                },
+            ],
+            completion: { type: "keyword" },
+        }
     ],
     attributes: [{ name: "name", global: true }],
 };
@@ -869,6 +898,7 @@ const node_information_list = new Map([
     ["Root", "Start of every node tree"],
     ["Selector", "Runs children until one succeeds"],
     ["Sequence", "Runs children until one fails"],
+    ["Random", "Runs a random child"],
 
     ["UseRoot", "Goes to the given root node id"],
     ["Invert", "Inverts the result of the child"],
@@ -881,12 +911,15 @@ const node_information_list = new Map([
     ["Action:Print", "Prints the given message"],
 
     ["Action:Drive", "Set the speed and direction of the car"],
+    ["Action:Turn", "Turns the car by the given angle"],
+
     ["Action:SetAngle", "Turns the car by the given angle"],
     ["Action:SetSpeed", "Moves the car by the given speed"],
     ["Action:SetWheelDirection", "Sets the direction of the car"],
 
     ["Condition:SucceedOnAverageNearbyScan", "Checks the average distance between two angles and succeeds if the average is below the specified cm"],
     ["Condition:SucceedOnAnyNearbyScan", "Checks the distance of all nearby points and succeeds if any is below the specified cm"],
+    ["Condition:SucceedOnAverageColour", "Checks the average colour of the camera and succeeds if the colour is within the tolerance"],
 ]);
 
 // Modified code from: https://codemirror.net/examples/tooltip/
