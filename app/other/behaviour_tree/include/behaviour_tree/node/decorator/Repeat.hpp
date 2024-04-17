@@ -12,7 +12,7 @@ namespace behaviour_tree::node::decorator
 	class Repeat final : public Decorator
 	{
 	public:
-		Repeat(const std::string& name, std::shared_ptr<Node> child, const unsigned long& amount, const bool& break_on_fail) : Decorator(name, std::move(child)), amount(amount), break_on_fail(break_on_fail)
+		Repeat(const std::string& name, std::shared_ptr<Node> child, const unsigned long amount, const bool break_on_fail) : Decorator(name, std::move(child)), amount(amount), break_on_fail(break_on_fail)
 		{
 		}
 
@@ -51,15 +51,15 @@ namespace behaviour_tree::node::decorator
 				return fmt::format(R"(<Repeat amount='{}' break_on_fail='{}'>{}</Repeat>)", this->getAmount(), this->getBreakOnFail() ? "true" : "false", this->child->toString());
 		}
 
-		const unsigned long& getAmount() const {
+		const unsigned long getAmount() const {
 			return this->amount;
 		}
 
-		const bool& getBreakOnFail() const {
+		const bool getBreakOnFail() const {
 			return this->break_on_fail;
 		}
 
-		const unsigned long& getCount() const {
+		const unsigned long getCount() const {
 			return this->count;
 		}
 

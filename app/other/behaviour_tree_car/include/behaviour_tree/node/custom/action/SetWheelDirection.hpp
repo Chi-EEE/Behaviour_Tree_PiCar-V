@@ -18,7 +18,7 @@ namespace behaviour_tree::node::custom::action
 	class SetWheelDirection final : public CustomNode
 	{
 	public:
-		SetWheelDirection(const std::string& name, const WheelType& wheel_type, const DirectionType& direction_type) : CustomNode(name), wheel_type(wheel_type), direction_type(direction_type)
+		SetWheelDirection(const std::string& name, const WheelType wheel_type, const DirectionType direction_type) : CustomNode(name), wheel_type(wheel_type), direction_type(direction_type)
 		{
 		}
 
@@ -106,11 +106,11 @@ namespace behaviour_tree::node::custom::action
 				return fmt::format(R"(<Action:SetWheelDirection direction_type='{}' wheel_type='{}'/>)", direction_type, wheel_type);
 		}
 
-		const DirectionType& getDirectionType() const {
+		const DirectionType getDirectionType() const {
 			return this->direction_type;
 		}
 
-		const WheelType& getWheelType() const
+		const WheelType getWheelType() const
 		{
 			return this->wheel_type;
 		}

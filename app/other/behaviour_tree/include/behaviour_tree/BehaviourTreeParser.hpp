@@ -199,7 +199,7 @@ namespace behaviour_tree
             }
         }
 
-        tl::expected<std::shared_ptr<node::decorator::Decorator>, std::string> parseDecorator(const pugi::xml_node &node, const int index, const DecoratorType &decorator_type)
+        tl::expected<std::shared_ptr<node::decorator::Decorator>, std::string> parseDecorator(const pugi::xml_node &node, const int index, const DecoratorType decorator_type)
         {
             const std::string name_attribute = node.attribute("name").as_string();
             const pugi::xml_node child = node.first_child();
@@ -261,7 +261,7 @@ namespace behaviour_tree
             }
         }
 
-        tl::expected<std::shared_ptr<Composite>, std::string> parseComposite(const pugi::xml_node &node, const int index, const CompositeType &composite_type)
+        tl::expected<std::shared_ptr<Composite>, std::string> parseComposite(const pugi::xml_node &node, const int index, const CompositeType composite_type)
         {
             const std::string name_attribute = node.attribute("name").as_string();
             std::vector<std::shared_ptr<node::Node>> children;

@@ -17,7 +17,7 @@ namespace behaviour_tree::node::custom::action
 	class SetSpeed final : public CustomNode
 	{
 	public:
-		SetSpeed(const std::string& name, const WheelType& wheel_type, const int speed) : CustomNode(name), wheel_type(wheel_type), speed(speed)
+		SetSpeed(const std::string& name, const WheelType wheel_type, const int speed) : CustomNode(name), wheel_type(wheel_type), speed(speed)
 		{
 		}
 
@@ -65,7 +65,7 @@ namespace behaviour_tree::node::custom::action
 				return fmt::format(R"(<Action:SetSpeed wheel_type='{}' speed='{}'/>)", wheel_type, this->getSpeed());
 		}
 
-		const WheelType& getWheelType() const
+		const WheelType getWheelType() const
 		{
 			return this->wheel_type;
 		}

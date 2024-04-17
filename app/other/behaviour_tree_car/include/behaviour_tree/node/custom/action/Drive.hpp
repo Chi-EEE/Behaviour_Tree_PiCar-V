@@ -17,7 +17,7 @@ namespace behaviour_tree::node::custom::action
     class Drive final : public CustomNode
     {
     public:
-        Drive(const std::string &name, const int speed, const DirectionType &direction_type) : CustomNode(name), speed(speed), direction_type(direction_type)
+        Drive(const std::string &name, const int speed, const DirectionType direction_type) : CustomNode(name), speed(speed), direction_type(direction_type)
         {
         }
 
@@ -69,7 +69,7 @@ namespace behaviour_tree::node::custom::action
             return this->speed;
         }
 
-        const DirectionType &getDirectionType() const
+        const DirectionType getDirectionType() const
         {
             return this->direction_type;
         }

@@ -17,7 +17,7 @@ namespace behaviour_tree::node::custom::action
 	class TurnAround final : public CustomNode
 	{
 	public:
-		TurnAround(const std::string& name, const ClockDirectionType& clock_direction_type) : CustomNode(name), clock_direction_type(clock_direction_type)
+		TurnAround(const std::string& name, const ClockDirectionType clock_direction_type) : CustomNode(name), clock_direction_type(clock_direction_type)
 		{
 		}
 
@@ -54,7 +54,7 @@ namespace behaviour_tree::node::custom::action
 				return fmt::format(R"(<Action:TurnAround clock_direction_type='{}'/>)", clock_direction_type);
 		}
 
-		const ClockDirectionType& getClockDirectionType() const
+		const ClockDirectionType getClockDirectionType() const
 		{
 			return this->clock_direction_type;
 		}

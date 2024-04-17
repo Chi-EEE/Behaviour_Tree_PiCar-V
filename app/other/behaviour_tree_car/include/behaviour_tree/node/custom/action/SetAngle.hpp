@@ -17,7 +17,7 @@ namespace behaviour_tree::node::custom::action
 	class SetAngle final : public CustomNode
 	{
 	public:
-		SetAngle(const std::string& name, const ServoType& servo_type, const int angle) : CustomNode(name), servo_type(servo_type), angle(angle)
+		SetAngle(const std::string& name, const ServoType servo_type, const int angle) : CustomNode(name), servo_type(servo_type), angle(angle)
 		{
 		}
 
@@ -63,7 +63,7 @@ namespace behaviour_tree::node::custom::action
 				return fmt::format(R"(<Action:SetAngle servo_type='{}' angle='{}'/>)", servo_type, this->getAngle());
 		}
 
-		const ServoType& getServoType() const
+		const ServoType getServoType() const
 		{
 			return this->servo_type;
 		}
