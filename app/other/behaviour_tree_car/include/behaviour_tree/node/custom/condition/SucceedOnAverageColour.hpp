@@ -35,7 +35,7 @@ namespace behaviour_tree::node::custom::condition
             {
                 return tl::unexpected(fmt::format(R"(Invalid hex: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", hex, name_attribute, index));
             }
-            for (int i = 1; i < hex.size())
+            for (int i = 1; i < hex.size(); i++)
             {
                 if (!std::isxdigit(hex[i]))
                 {
