@@ -22,6 +22,14 @@ namespace behaviour_tree::node::custom::action
         {
         }
 
+        const static tl::expected<std::shared_ptr<Print>, std::string> parse(const pugi::xml_node &node, const int index, const std::string &name_attribute)
+        {
+            return std::make_shared<Print>(
+                Print(
+                    name_attribute,
+                    node.attribute("text").as_string()));
+        }
+
         const Status run(const int tick_count, std::shared_ptr<Context> context) final override
         {
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN

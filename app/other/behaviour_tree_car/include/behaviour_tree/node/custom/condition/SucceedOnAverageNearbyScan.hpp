@@ -27,6 +27,37 @@ namespace behaviour_tree::node::custom::condition
         {
         }
 
+        const static tl::expected<std::shared_ptr<SucceedOnAverageNearbyScan>, std::string> parse(const pugi::xml_node &node, const int index, const std::string &name_attribute)
+        {
+            const int min_angle = node.attribute("min_angle").as_int();
+            if (min_angle < 0 || min_angle > 360)
+            {
+                return tl::unexpected(fmt::format(R"(Invalid min_angle: '{}' | Condition:SucceedOnAverageNearbyScan:['{}',{}])", min_angle, name_attribute, index));
+            }
+            const int max_angle = node.attribute("max_angle").as_int();
+            if (max_angle < 0 || max_angle > 360)
+            {
+                return tl::unexpected(fmt::format(R"(Invalid max_angle: '{}' | Condition:SucceedOnAverageNearbyScan:['{}',{}])", max_angle, name_attribute, index));
+            }
+            const double cm = node.attribute("cm").as_double();
+            if (cm < 0)
+            {
+                return tl::unexpected(fmt::format(R"(Invalid cm: '{}' | Condition:SucceedOnAverageNearbyScan:['{}',{}])", cm, name_attribute, index));
+            }
+            const int minimum_measure_amount_used = node.attribute("minimum_measure_amount_used").as_int();
+            if (minimum_measure_amount_used < 0)
+            {
+                return tl::unexpected(fmt::format(R"(Invalid minimum_measure_amount_used: '{}' | Condition:SucceedOnAverageNearbyScan:['{}',{}])", minimum_measure_amount_used, name_attribute, index));
+            }
+            return std::make_shared<SucceedOnAverageNearbyScan>(
+                SucceedOnAverageNearbyScan(
+                    name_attribute,
+                    min_angle,
+                    max_angle,
+                    cm,
+                    minimum_measure_amount_used));
+        }
+
         const Status run(const int tick_count, std::shared_ptr<Context> context) final override
         {
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN

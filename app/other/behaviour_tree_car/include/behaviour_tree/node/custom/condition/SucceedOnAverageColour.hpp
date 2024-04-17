@@ -22,6 +22,21 @@ namespace behaviour_tree::node::custom::condition
         {
         }
 
+        const static tl::expected<std::shared_ptr<SucceedOnAverageColour>, std::string> parse(const pugi::xml_node &node, const int index, const std::string &name_attribute)
+        {
+            const std::string hex = node.attribute("hex").as_string();
+            const double percentage = node.attribute("percentage").as_double();
+            if (percentage < 0 || percentage > 100)
+            {
+                return tl::unexpected(fmt::format(R"(Invalid percentage: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", percentage, name_attribute, index));
+            }
+            return std::make_shared<SucceedOnAverageColour>(
+                SucceedOnAverageColour(
+                    name_attribute,
+                    hex,
+                    percentage));
+        }
+
         const Status run(const int tick_count, std::shared_ptr<Context> context) final override
         {
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
