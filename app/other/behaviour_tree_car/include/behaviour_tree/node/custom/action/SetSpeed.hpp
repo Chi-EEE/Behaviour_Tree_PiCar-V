@@ -49,7 +49,8 @@ namespace behaviour_tree::node::custom::action
 				default:
 				{
 					result = tl::unexpected(fmt::format(R"(Invalid wheel_type: '{}' | Action:SetSpeed:['{}',{}])", wheel_type_attribute, name_attribute, index));
-				}
+                    break;
+                }
 				};
 				return result;
 			}();
