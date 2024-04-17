@@ -6,27 +6,16 @@ Full-Stack Application used by Users to control a SunFounder Pi-Car
 
 The application contains the following inside the `app` directory: 
 
-- **backend**
-    - The server behind the **frontend**.
-    
-    - Allows users and **rpi** to communicate to eachother.
-
-- **frontend**
-    - Main user interface for sending behaviour trees to the 
-    **backend**.
-
 - **rpi**
     - Allows the raspberry pi to communicate to the **backend** and handle messages from it. 
 
     - There are 3 sub-projects in this project which handle different aspects of the raspberry pi.
 
 - **admin_panel**
-    - Soon to be main user interface for directly controlling **rpi** and communicating with the **backend**.
-    
-    - (still in development)
+    - Main user interface for directly controlling **rpi**.
 
 - **other**
-    - Many sub-projects which support the main projects: **backend** & **rpi**.
+    - Many sub-projects which support the main project: **rpi**.
 
     - The code to handle the **behaviour_tree** are contained in the `behaviour_tree` & `behaviour_tree_car` projects.
 
