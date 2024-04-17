@@ -1,6 +1,6 @@
 <script>
     import BehaviourTreeHandler from "../lib/BehaviourTreeHandler.svelte";
-    import CodeBox from "../lib/CodeBox.svelte";
+    import CodeBox from "../lib/home/CodeBox.svelte";
     import RaspberryPiConnectBanner from "../lib/RaspberryPiConnectBanner.svelte";
 
     import {

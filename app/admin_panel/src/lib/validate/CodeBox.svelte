@@ -4,14 +4,14 @@
     import { xml } from "@codemirror/lang-xml";
     import { oneDark } from "@codemirror/theme-one-dark";
 
-    import { node_hover, xml_schema } from "./CodeBox_Constants";
+    import { node_hover, xml_schema } from "../CodeBox_Constants";
 
-    import { behaviour_tree_xml_code } from "../store/behaviour_tree_store";
-    import CodeMessagingBar from "./CodeMessagingBar.svelte";
+    import { behaviour_tree_xml_code } from "../../store/behaviour_tree_store";
+    import CodeButton from "./CodeButton.svelte";
 </script>
 
 <div class="h-full m-1">
-    <CodeMessagingBar/>
+    <CodeButton/>
     <CodeMirror
         class="text-left h-full flex-auto font-mono text-lg font-bold"
         bind:value={$behaviour_tree_xml_code}

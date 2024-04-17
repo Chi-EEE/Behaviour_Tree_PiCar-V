@@ -22,3 +22,10 @@ private
 
 # Desktop Services Store on macOS
 .DS_Store
+
+# Allow following inside of resources directory
+!resources/win32/x64/behaviour_tree_validator.exe
+!resources/win32/x64/behaviour_tree.lib
+
+!resources/win32/x86/behaviour_tree_validator.exe
+!resources/win32/x86/behaviour_tree.lib

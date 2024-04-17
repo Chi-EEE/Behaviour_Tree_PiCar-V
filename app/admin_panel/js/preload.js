@@ -25,7 +25,9 @@ const WINDOW_API = {
     
     getBehaviourTreeList: () => ipcRenderer.invoke("getBehaviourTreeList"),
     saveBehaviourTree: (/** @type {any} */ args) => ipcRenderer.invoke("saveBehaviourTree", args),
-    removeBehaviourTree: (/** @type {any} */ args) => ipcRenderer.invoke("removeBehaviourTree", args)
+    removeBehaviourTree: (/** @type {any} */ args) => ipcRenderer.invoke("removeBehaviourTree", args),
+
+    validateBehaviourTree : (/** @type {any} */ args) => ipcRenderer.invoke("validateBehaviourTree", args)
 }
 
 contextBridge.exposeInMainWorld("api", WINDOW_API)

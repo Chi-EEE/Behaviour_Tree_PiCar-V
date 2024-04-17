@@ -19,6 +19,9 @@
     <NavLi>
       <a href="#/websocket">Manage Websockets</a>
     </NavLi>
+    <NavLi>
+      <a href="#/validate">Validate Behaviour Tree</a>
+    </NavLi>
   </NavUl>
   <NavHamburger class="lg:hidden" />
   <DarkMode {btnClass} />

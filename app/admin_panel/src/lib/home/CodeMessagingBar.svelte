@@ -1,7 +1,7 @@
 <script>
-    import { selected_raspberry_pi_uuid } from "../store/raspberry_pi_store";
+    import { selected_raspberry_pi_uuid } from "../../store/raspberry_pi_store";
     import xmlFormat from "xml-formatter";
-    import { behaviour_tree_xml_code } from "../store/behaviour_tree_store";
+    import { behaviour_tree_xml_code } from "../../store/behaviour_tree_store";
 
     /** @type {string} */
     let send_behaviour_tree_text = "Send Behaviour Tree";

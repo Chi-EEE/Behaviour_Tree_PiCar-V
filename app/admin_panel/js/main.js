@@ -80,7 +80,7 @@ const { websocket_server } = require('./websocket');
 const { closeWebSocketServer } = require('./websocket_events');
 const { selectRaspberryPi, unselectRaspberryPi, getRaspberryPiList, getSelectedRaspberryPi } = require('./raspberry_pi');
 const { getLocalIPList } = require('./device');
-const { sendBehaviourTree, startBehaviourTree, stopBehaviourTree, getBehaviourTreeList, saveBehaviourTree, removeBehaviourTree } = require('./behaviour_tree');
+const { sendBehaviourTree, startBehaviourTree, stopBehaviourTree, getBehaviourTreeList, saveBehaviourTree, removeBehaviourTree, validateBehaviourTree } = require('./behaviour_tree');
 
 function onClose() {
     closeWebSocketServer();
