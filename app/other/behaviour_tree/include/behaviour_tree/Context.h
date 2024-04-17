@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <variant>
+#include <unordered_map>
 
 #include "Status.hpp"
 
@@ -40,11 +41,16 @@ namespace behaviour_tree
 
 		bool canRun() const;
 
+        void setBlackboard(const std::string& key, const int value);
+        int getBlackboard(const std::string& key) const;
+
 		// Necessary for the class to be a polymorphic
 		virtual void _() {};
 	private:
 		std::shared_ptr<BehaviourTree> behaviour_tree;
 		std::vector<std::pair<std::shared_ptr<node::Node>, int>> node_trace_list;
+
+        std::unordered_map<std::string, int> blackboard;
 	};
 }
 

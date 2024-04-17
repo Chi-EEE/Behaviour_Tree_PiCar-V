@@ -57,4 +57,14 @@ namespace behaviour_tree {
 	bool Context::canRun() const {
 		return this->behaviour_tree->canRun();
 	}
+
+    void Context::setBlackboard(const std::string &key, const int value)
+    {
+        this->blackboard[key] = value;
+    }
+
+    int Context::getBlackboard(const std::string &key) const
+    {
+        return this->blackboard.at(key);
+    }
 }
