@@ -20,6 +20,7 @@
 #include "action/Print.hpp"
 
 #include "action/Drive.hpp"
+#include "action/Turn.hpp"
 #include "action/SetSpeed.hpp"
 #include "action/SetWheelDirection.hpp"
 #include "action/SetAngle.hpp"
@@ -49,6 +50,8 @@ namespace behaviour_tree::node::custom
                 return custom::action::Print::parse(node, index, name_attribute);
             case utils::hash("Action:Drive"):
                 return custom::action::Drive::parse(node, index, name_attribute);
+            case utils::hash("Action:Turn"):
+                return custom::action::Turn::parse(node, index, name_attribute);
             case utils::hash("Action:SetSpeed"):
                 return custom::action::SetSpeed::parse(node, index, name_attribute);
             case utils::hash("Action:SetAngle"):
