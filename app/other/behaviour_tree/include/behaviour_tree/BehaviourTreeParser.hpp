@@ -103,7 +103,7 @@ namespace behaviour_tree
             std::vector<std::shared_ptr<Root>> roots;
             for (pugi::xml_node node = behaviour_tree_node.child("Root"); node; node = node.next_sibling("Root"))
             {
-                auto maybe_root = parseRoot(node, STARTING_INDEX + roots.size());
+                const auto maybe_root = parseRoot(node, STARTING_INDEX + roots.size());
                 if (!maybe_root.has_value())
                 {
                     return tl::unexpected(maybe_root.error());
@@ -136,7 +136,7 @@ namespace behaviour_tree
                 return tl::unexpected(fmt::format(R"(Root node must have only at most one child | Root:['{}',{}])", id, index));
             }
             const pugi::xml_node child = node.first_child();
-            auto maybe_child_node = parseChild(child, STARTING_INDEX);
+            const auto maybe_child_node = parseChild(child, STARTING_INDEX);
             if (!maybe_child_node.has_value())
             {
                 return tl::unexpected(fmt::format(R"({}<-Root:['{}',{}])", maybe_child_node.error(), id, index));
@@ -207,7 +207,7 @@ namespace behaviour_tree
             {
                 return tl::unexpected(fmt::format(R"(Decorator node must have a child | {}:['{}',{}])", std::string(node.name()), name_attribute, index));
             }
-            auto maybe_child_node = parseChild(child, STARTING_INDEX);
+            const auto maybe_child_node = parseChild(child, STARTING_INDEX);
             if (!maybe_child_node.has_value())
             {
                 return tl::unexpected(maybe_child_node.error());
