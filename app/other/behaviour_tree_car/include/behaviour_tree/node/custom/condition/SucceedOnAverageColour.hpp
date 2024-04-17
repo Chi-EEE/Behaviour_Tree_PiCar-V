@@ -18,28 +18,28 @@ namespace behaviour_tree::node::custom::condition
     class SucceedOnAverageColour final : public CustomNode
     {
     public:
-        SucceedOnAverageColour(const std::string &name, const std::string hex, const double percentage) : CustomNode(name),
-                                                                                                          hex(hex),
+        SucceedOnAverageColour(const std::string &name, const std::string hex_colour, const double percentage) : CustomNode(name),
+                                                                                                          hex_colour(hex_colour),
                                                                                                           percentage(percentage)
         {
         }
 
         const static tl::expected<std::shared_ptr<SucceedOnAverageColour>, std::string> parse(const pugi::xml_node &node, const int index, const std::string &name_attribute)
         {
-            std::string hex = node.attribute("hex").as_string();
-            if (!hex.compare(0, 1, "#"))
+            std::string hex_colour = node.attribute("hex_colour").as_string();
+            if (!hex_colour.compare(0, 1, "#"))
             {
-                hex = "#" + hex;
+                hex_colour = "#" + hex_colour;
             }
-            if (hex.size() != 7)
+            if (hex_colour.size() != 7)
             {
-                return tl::unexpected(fmt::format(R"(Invalid hex: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", hex, name_attribute, index));
+                return tl::unexpected(fmt::format(R"(Invalid hex_colour: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", hex_colour, name_attribute, index));
             }
-            for (int i = 1; i < hex.size(); i++)
+            for (int i = 1; i < hex_colour.size(); i++)
             {
-                if (!std::isxdigit(hex[i]))
+                if (!std::isxdigit(hex_colour[i]))
                 {
-                    return tl::unexpected(fmt::format(R"(Invalid hex: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", hex, name_attribute, index));
+                    return tl::unexpected(fmt::format(R"(Invalid hex_colour: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", hex_colour, name_attribute, index));
                 }
             }
             const double percentage = node.attribute("percentage").as_double();
@@ -50,7 +50,7 @@ namespace behaviour_tree::node::custom::condition
             return std::make_shared<SucceedOnAverageColour>(
                 SucceedOnAverageColour(
                     name_attribute,
-                    hex,
+                    hex_colour,
                     percentage));
         }
 
@@ -73,8 +73,8 @@ namespace behaviour_tree::node::custom::condition
             cv::Scalar avg_color = cv::mean(frame);
             std::string avg_color_hex = fmt::format("#{:02x}{:02x}{:02x}", static_cast<int>(avg_color[2]), static_cast<int>(avg_color[1]), static_cast<int>(avg_color[0]));
 
-            int color_diff = calculateColorDifference(avg_color_hex, hex);
-            int max_color_diff = calculateMaxColorDifference(percentage);
+            int color_diff = calculateColorDifference(avg_color_hex, this->hex_colour);
+            int max_color_diff = calculateMaxColorDifference(this->percentage);
 
             if (color_diff <= max_color_diff)
             {
@@ -130,9 +130,9 @@ namespace behaviour_tree::node::custom::condition
         }
 #endif // !BEHAVIOUR_TREE_DISABLE_RUNss
 
-        const std::string getHex() const
+        const std::string getHexColour() const
         {
-            return this->hex;
+            return this->hex_colour;
         }
 
         const double getPercentage() const
@@ -144,13 +144,13 @@ namespace behaviour_tree::node::custom::condition
         {
             const std::string &name = this->getName();
             if (name != "")
-                return fmt::format(R"(<Condition:SucceedOnAverageColour name='{}' hex='{}' percentage='{}'/>)", name, this->getHex(), this->getPercentage());
+                return fmt::format(R"(<Condition:SucceedOnAverageColour name='{}' hex_colour='{}' percentage='{}'/>)", name, this->getHexColour(), this->getPercentage());
             else
-                return fmt::format(R"(<Condition:SucceedOnAverageColour hex='{}' percentage='{}'/>)", this->getHex(), this->getPercentage());
+                return fmt::format(R"(<Condition:SucceedOnAverageColour hex_colour='{}' percentage='{}'/>)", this->getHexColour(), this->getPercentage());
         }
 
     private:
-        const std::string hex;
+        const std::string hex_colour;
         const double percentage;
     };
 }
