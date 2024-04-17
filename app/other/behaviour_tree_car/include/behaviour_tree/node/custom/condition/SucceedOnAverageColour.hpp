@@ -27,6 +27,21 @@ namespace behaviour_tree::node::custom::condition
         const static tl::expected<std::shared_ptr<SucceedOnAverageColour>, std::string> parse(const pugi::xml_node &node, const int index, const std::string &name_attribute)
         {
             const std::string hex = node.attribute("hex").as_string();
+            if (!hex.compare(0, 1, "#"))
+            {
+                hex = "#" + hex;
+            }
+            if (hex.size() != 7)
+            {
+                return tl::unexpected(fmt::format(R"(Invalid hex: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", hex, name_attribute, index));
+            }
+            for (int i = 1; i < hex.size())
+            {
+                if (!std::isxdigit(hex[i]))
+                {
+                    return tl::unexpected(fmt::format(R"(Invalid hex: '{}' | Condition:SucceedOnAverageColour:['{}',{}])", hex, name_attribute, index));
+                }
+            }
             const double percentage = node.attribute("percentage").as_double();
             if (percentage < 0 || percentage > 100)
             {
@@ -41,13 +56,14 @@ namespace behaviour_tree::node::custom::condition
 
         const Status run(const int tick_count, std::shared_ptr<Context> context) final override
         {
-        // Following made by ChatGPT
+            // Following made by ChatGPT
 #ifndef BEHAVIOUR_TREE_DISABLE_RUN
             std::shared_ptr<CarContext> car_context = std::dynamic_pointer_cast<CarContext>(context);
             auto car_system = car_context->getCarSystem();
 
             std::string frame_buffer = car_system->getDeviceManager()->getCameraDevice()->getFrameBuffer();
-            cv::Mat frame = cv::imdecode(cv::Mat(frame_buffer), cv::IMREAD_COLOR);
+            std::vector<uchar> buffer(frame_buffer.begin(), frame_buffer.end());
+            cv::Mat frame = cv::imdecode(buffer, cv::IMREAD_COLOR);
             if (frame.empty())
             {
                 spdlog::error("Failed to decode frame buffer");
