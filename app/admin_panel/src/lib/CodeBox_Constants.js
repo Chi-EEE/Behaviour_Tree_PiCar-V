@@ -673,6 +673,7 @@ export const common_nodes = [
 
     "Action:Print",
 
+    "Action:Drive",
     "Action:SetAngle",
     "Action:SetSpeed",
     "Action:SetWheelDirection",
@@ -756,6 +757,22 @@ export const xml_schema = {
         {
             name: "Action:Print",
             attributes: ["text"],
+            completion: { type: "keyword" },
+        },
+        {
+            name: "Action:Drive",
+            attributes: [
+                {
+                    name: "speed",
+                    values: range_0_100,
+                    completion: { type: "keyword" },
+                },
+                {
+                    name: "direction_type",
+                    values: ["Forward", "Backward"],
+                    completion: { type: "keyword" },
+                },
+            ],
             completion: { type: "keyword" },
         },
         {
@@ -863,6 +880,7 @@ const node_information_list = new Map([
     ["Action:PauseExecution", "Pauses the execution for the given amount of time"],
     ["Action:Print", "Prints the given message"],
 
+    ["Action:Drive", "Set the speed and direction of the car"],
     ["Action:SetAngle", "Turns the car by the given angle"],
     ["Action:SetSpeed", "Moves the car by the given speed"],
     ["Action:SetWheelDirection", "Sets the direction of the car"],
