@@ -256,6 +256,8 @@ namespace behaviour_tree
                         count,
                         node.attribute("break_on_fail").as_bool(false)));
             }
+            default:
+                return tl::unexpected(fmt::format(R"(Got an invalid Decorator node type | {}:['{}',{}])", std::string(node.name()), name_attribute, index));
             }
         }
 
@@ -284,6 +286,8 @@ namespace behaviour_tree
                 return std::make_shared<Selector>(Selector(name_attribute, std::move(children)));
             case CompositeType::Random:
                 return std::make_shared<Random>(Random(name_attribute, std::move(children)));
+            default:
+                return tl::unexpected(fmt::format(R"(Got an invalid Composite node type | {}:['{}',{}])", std::string(node.name()), name_attribute, index));
             }
         }
 
