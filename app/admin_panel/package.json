@@ -9,7 +9,7 @@
     "build": {
         "appId": "com.chi_eee.behaviour-tree-picar-v-admin-panel",
         "productName": "Behaviour Tree PiCar-V Admin Panel",
-        "icon": "public/Sunfounder-PiCar.png",
+        "icon": "public/favicon.png",
         "files": [
             "public/**/*",
             "js/**/*.js"
