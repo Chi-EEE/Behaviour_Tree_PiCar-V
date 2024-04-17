@@ -37,7 +37,7 @@ namespace behaviour_tree::node::custom::condition
             return this->hex;
         }
 
-        const std::string getPercentage() const
+        const double getPercentage() const
         {
             return this->percentage;
         }

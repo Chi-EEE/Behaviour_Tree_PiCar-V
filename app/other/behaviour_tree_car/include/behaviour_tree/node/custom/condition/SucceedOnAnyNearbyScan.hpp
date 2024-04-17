@@ -11,9 +11,10 @@
 #include <spdlog/spdlog.h>
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
+#include "behaviour_tree/global/distance.h"
+
 namespace behaviour_tree::node::custom::condition
 {
-    constexpr double CM_TO_DISTANCE = 15.151515151515151515151515151515151515151515151515151515;
     class SucceedOnAnyNearbyScan final : public CustomNode
     {
     public:
@@ -21,7 +22,7 @@ namespace behaviour_tree::node::custom::condition
                                                                                                                      min_angle(min_angle),
                                                                                                                      max_angle(max_angle),
                                                                                                                      cm(cm),
-                                                                                                                     minimum_distance_unit(cm * CM_TO_DISTANCE)
+                                                                                                                     minimum_distance_unit(cm * global::CM_TO_DISTANCE)
         {
         }
 

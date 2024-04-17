@@ -1,0 +1,10 @@
+#ifndef BEHAVIOUR_TREE_GLOBAL_DISTANCE_H
+#define BEHAVIOUR_TREE_GLOBAL_DISTANCE_H
+
+#pragma once
+
+namespace behaviour_tree::global {
+    constexpr double CM_TO_DISTANCE = 15.151515151515151515151515151515151515151515151515151515;
+}
+
+#endif
