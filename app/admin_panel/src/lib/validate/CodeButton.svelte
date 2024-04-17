@@ -17,17 +17,22 @@
         }
         validate_behaviour_tree_debounce = true;
         try {
-            const result = await api.validateBehaviourTree({
+            validate_behaviour_tree_text = "Validating Behaviour Tree";
+            validate_behaviour_tree_color = "#4C23FF";
+            const result = JSON.parse(await api.validateBehaviourTree({
                 data: xmlFormat.minify($behaviour_tree_xml_code),
-            });
-            console.log(result);
-            validate_behaviour_tree_text = "Sent Behaviour Tree!";
-            validate_behaviour_tree_color = "#3457AA";
-        } catch (error) {
-            console.log(error)
-            validate_behaviour_tree_text = "Unable to send Behaviour Tree!";
-            validate_behaviour_tree_color = "#AA3434";
-        }
+            }));
+            if (result.success) {
+                validate_behaviour_tree_text = "The Behaviour Tree is valid!";
+                validate_behaviour_tree_color = "#34A83B";
+            } else {
+                validate_behaviour_tree_text = result.message;
+                validate_behaviour_tree_color = "#AA3434";
+            }
+        } catch (error) { 
+                validate_behaviour_tree_text = error;
+                validate_behaviour_tree_color = "#AA3434";
+            }
         setTimeout(() => {
             validate_behaviour_tree_text = "Validate Behaviour Tree";
             validate_behaviour_tree_color = "#4C9CFF";

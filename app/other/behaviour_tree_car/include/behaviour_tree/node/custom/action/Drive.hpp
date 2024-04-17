@@ -104,9 +104,9 @@ namespace behaviour_tree::node::custom::action
                 break;
             }
             if (name != "")
-                return fmt::format(R"(<Action:Drive name='{}' speed='{}' direction_type='{}'/>)", name, this->getSpeed());
+                return fmt::format(R"(<Action:Drive name='{}' speed='{}' direction_type='{}'/>)", name, this->getSpeed(), direction_type);
             else
-                return fmt::format(R"(<Action:Drive speed='{}' direction_type='{}'/>)", this->getSpeed());
+                return fmt::format(R"(<Action:Drive speed='{}' direction_type='{}'/>)", this->getSpeed(), direction_type);
         }
 
         const int getSpeed() const

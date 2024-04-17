@@ -59,7 +59,7 @@ async function removeBehaviourTree(_event, args) {
 async function validateBehaviourTree(_event, args) {
     /** @type {string} */
     let code = args.data;
-    code = code.replace(new RegExp('"|\n'), "'");
+    code = code.replace(new RegExp('\"', "g"), "'");
     const behaviour_tree_validator = path.join(resources_dir, Os.platform(), Os.arch(), 'behaviour_tree_validator.exe');
     if (!fs.existsSync(behaviour_tree_validator)) {
         return JSON.stringify({ success: false, error: `The current platform / architecture is not supported.` });
