@@ -23,6 +23,11 @@ namespace car::system::messaging
 	{
 	}
 
+    /**
+     * @brief Initializes the use of Websockets and initializes the Signals
+     * 
+     * @param configuration 
+     */
 	void MessagingSystem::initialize(std::shared_ptr<configuration::Configuration> configuration)
 	{
 		ix::initNetSystem();
@@ -33,6 +38,10 @@ namespace car::system::messaging
 			{ this->onDisconnect(message); });
 	}
 
+    /**
+     * @brief Creates a new Websocket object for use
+     * 
+     */
 	void MessagingSystem::initializeWebSocket()
 	{
 		this->websocket_ = std::make_unique<ix::WebSocket>();
@@ -43,6 +52,11 @@ namespace car::system::messaging
 		this->websocket_->setExtraHeaders(headers);
 	}
 
+    /**
+     * @brief Attempts to connect to the Websocket server and retrieves the first message from the Websocket (Should be UUID)
+     * 
+     * @return const tl::expected<nullptr_t, std::string>
+     */
 	const tl::expected<nullptr_t, std::string> MessagingSystem::tryConnect()
 	{
 		this->initializeWebSocket();
@@ -107,6 +121,11 @@ namespace car::system::messaging
 		this->connected_ = false;
 	}
 
+    /**
+     * @brief Sends out signals depending on the type of message
+     * 
+     * @param message 
+     */
 	void MessagingSystem::handleMessage(const std::string& message) const
 	{
 		rapidjson::Document message_json;
@@ -168,6 +187,11 @@ namespace car::system::messaging
 			this->websocket_->send(message);
 	}
 
+    /**
+     * @brief Waits and retrieves the first message when connecting to a websocket
+     * 
+     * @return tl::expected<std::string, std::string> 
+     */
 	tl::expected<std::string, std::string> MessagingSystem::getFirstMessage()
 	{
 		FirstMessageStruct first_message_struct;
@@ -196,6 +220,12 @@ namespace car::system::messaging
 		return first_message_struct.uuid;
 	}
 
+    /**
+     * @brief Actually retrieves the First Message from the Websocket to put into FirstMessageStruct
+     * 
+     * @param msg 
+     * @param first_message_struct 
+     */
 	void MessagingSystem::onFirstMessage(const ix::WebSocketMessagePtr& msg, FirstMessageStruct& first_message_struct)
 	{
 		switch (msg->type)
