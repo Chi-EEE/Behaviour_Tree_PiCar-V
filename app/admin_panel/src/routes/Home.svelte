@@ -1,13 +1,10 @@
 <script>
     import BehaviourTreeHandler from "../lib/BehaviourTreeHandler.svelte";
+    import Stream from "../lib/home/Stream.svelte";
     import CodeBox from "../lib/home/CodeBox.svelte";
     import RaspberryPiConnectBanner from "../lib/RaspberryPiConnectBanner.svelte";
 
-    import {
-        websocket_server_connection_state,
-        frame_buffer,
-        lidar,
-    } from "../store/websocket_store";
+    import { websocket_server_connection_state } from "../store/websocket_store";
 
     import {
         main_pane_size_0_store,
@@ -39,40 +36,6 @@
         side_pane_size_0_store.set(event.detail[0].size);
         side_pane_size_1_store.set(event.detail[1].size);
     }
-
-    // From: https://stackoverflow.com/a/16245768
-    function b64toBlob(b64Data, contentType = "", sliceSize = 512) {
-        const byteCharacters = atob(b64Data);
-        const byteArrays = [];
-
-        for (
-            let offset = 0;
-            offset < byteCharacters.length;
-            offset += sliceSize
-        ) {
-            const slice = byteCharacters.slice(offset, offset + sliceSize);
-
-            const byteNumbers = new Array(slice.length);
-            for (let i = 0; i < slice.length; i++) {
-                byteNumbers[i] = slice.charCodeAt(i);
-            }
-
-            const byteArray = new Uint8Array(byteNumbers);
-            byteArrays.push(byteArray);
-        }
-
-        const blob = new Blob(byteArrays, { type: contentType });
-        return blob;
-    }
-
-    let live_feed;
-    frame_buffer.subscribe((value) => {
-        if (live_feed) {
-            const blob = b64toBlob(value, "image/jpeg");
-            const image_url = URL.createObjectURL(blob);
-            live_feed.src = image_url;
-        }
-    });
 </script>
 
 <main style="height: 92vh">
@@ -93,12 +56,7 @@
                         bind:clientWidth={stream_split_width}
                         bind:clientHeight={stream_split_height}
                     >
-                        <!-- svelte-ignore a11y-missing-attribute -->
-                        <img
-                            class="w-full h-full"
-                            src="Warning.png"
-                            bind:this={live_feed}
-                        />
+                        <Stream />
                     </div>
                 </Pane>
                 <Pane size={main_pane_size_1} minSize={7.5}>
