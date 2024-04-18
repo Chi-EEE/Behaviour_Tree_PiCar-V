@@ -58,6 +58,7 @@
     let lidar_context_ = null;
 
     /**
+     * @description From: https://stackoverflow.com/a/69123384
      * @param {string} color Hex value format: #ffffff or ffffff
      * @param {number} decimal lighten or darken decimal value, example 0.5 to lighten by 50% or 1.5 to darken by 50%.
      * @returns {string} Hex value of the new color
