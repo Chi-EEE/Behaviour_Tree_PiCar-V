@@ -16,7 +16,7 @@ namespace car::system::device
 	class CameraDevice
 	{
 	public:
-		CameraDevice(int camera_index) : camera_index_(camera_index) {}
+		CameraDevice(std::shared_ptr<configuration::Configuration> configuration) : configuration(configuration) {}
 
 		CameraDevice(const CameraDevice&) = delete;
 		CameraDevice& operator=(const CameraDevice&) = delete;
@@ -40,7 +40,7 @@ namespace car::system::device
 		friend class DeviceManager;
 
 	private:
-		int camera_index_ = 0;
+		std::shared_ptr<configuration::Configuration> configuration;
 
 		std::unique_ptr<cv::VideoCapture> camera_;
 
@@ -48,6 +48,8 @@ namespace car::system::device
 		std::string frame_buffer_;
 
 		std::mutex camera_mutex_;
+	
+		std::chrono::steady_clock::time_point last;
 	};
 }
 

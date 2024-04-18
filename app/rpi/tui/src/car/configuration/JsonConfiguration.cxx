@@ -60,6 +60,11 @@ namespace car::configuration
             {
                 Configuration configuration{};
                 configuration.host = config_json["host"].GetString();
+              
+                configuration.camera_index = config_json["camera_index"].GetInt();
+                configuration.camera_fps = config_json["camera_fps"].GetInt();
+                configuration.use_camera = config_json["use_camera"].GetBool();
+              
                 configuration.lidar_port = config_json["lidar_port"].GetString();
                 if (configuration.lidar_port.empty()) {
 #ifdef __linux
@@ -68,6 +73,8 @@ namespace car::configuration
                     configuration.lidar_port = "COM3";
 #endif
                 }
+                configuration.use_lidar = config_json["use_lidar"].GetBool();
+
                 configuration.behaviour_tree_update_ms_interval = std::chrono::milliseconds(config_json["behaviour_tree_update_ms_interval"].GetInt());
                 return configuration;
             }

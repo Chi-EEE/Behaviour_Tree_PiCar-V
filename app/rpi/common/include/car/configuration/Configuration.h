@@ -16,6 +16,7 @@ namespace car::configuration
 		std::string host = "127.0.0.1:3000";
 
 		int camera_index = 0;
+        int camera_fps = 60;
 		bool use_camera = true;
 
 		std::string lidar_port = "";

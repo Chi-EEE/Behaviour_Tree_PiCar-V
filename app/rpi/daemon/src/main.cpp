@@ -57,14 +57,18 @@ public:
         dlog::info(fmt::format("Started daemon with host: {}", host));
         configuration->host = host;
 
+        configuration->camera_index = reader.GetString("Camera", "camera_index", 0);
+        configuration->camera_fps = reader.GetString("Camera", "camera_fps", 60);
+        configuration->use_camera = reader.GetBool("Camera", "use_camera", true);
 #ifdef __linux
         const std::string default_lidar_port = "/dev/ttyUSB0";
 #else
         const std::string default_lidar_port = "COM3";
 #endif
-        const std::string lidar_port = reader.GetString("RaspberryPi", "lidar_port", default_lidar_port);
+        const std::string lidar_port = reader.GetString("Lidar", "lidar_port", default_lidar_port);
         dlog::info(fmt::format("Using lidar port: {}", lidar_port));
         configuration->lidar_port = lidar_port;
+        configuration->use_lidar = reader.GetBool("Lidar", "use_lidar", true);
 
         configuration->behaviour_tree_update_ms_interval = std::chrono::milliseconds(reader.GetInteger("RaspberryPi", "behaviour_tree_update_ms_interval", 100));
         
