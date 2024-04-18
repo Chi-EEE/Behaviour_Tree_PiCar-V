@@ -26,10 +26,8 @@ jobs:
 
       - name: Generate Doxygen pdf
         run: |
-          sudo apt-get install texlive-latex-base
-          # sudo apt-get install texlive-fonts-recommended
-          # sudo apt-get install texlive-fonts-extra
-          sudo apt-get install texlive-latex-extra
+          sudo apt-get update -y
+          sudo apt-get install -y doxygen-latex
           cd docs/raspberry_pi/latex
           sudo make
 
