@@ -8,6 +8,8 @@
 
     const lidar_wall_colour = "#0061FF";
     const offset_angle = 45;
+    const fps = 30;
+    const fps_interval = 1000 / fps;
     let lidar_bar_height_size = 20000;
 
     /**
@@ -53,7 +55,14 @@
 
     function handleLiveFeed(/** @type {HTMLImageElement} */ live_feed) {
         live_feed_ = live_feed;
+        let before = 0;
         frame_buffer.subscribe((value) => {
+            const now = Date.now();
+            const elapsed = now - before;
+            if (elapsed < fps_interval) {
+                return;
+            }
+            before = Date.now();
             const blob = b64toBlob(value, "image/jpeg");
             const image_url = URL.createObjectURL(blob);
             live_feed.src = image_url;
@@ -122,7 +131,14 @@
     }
 
     function subscribeLidarDrawing() {
+        let before = 0;
         return lidar.subscribe((/** @type {Array<Point>} */ points) => {
+            const now = Date.now();
+            const elapsed = now - before;
+            if (elapsed < fps_interval) {
+                return;
+            }
+            before = Date.now();
             if (points.length === 0) {
                 return;
             }
@@ -233,18 +249,18 @@
     }
 
     /** @type {HTMLDivElement} */
-    let stream_div = null;
+    let stream_div_ = null;
 
     function updateAspectRatio() {
         if (
-            stream_div === null ||
+            stream_div_ === null ||
             live_feed_ === null ||
             lidar_canvas_ === null
         ) {
             return;
         }
-        const parentWidth = stream_div.clientWidth;
-        const parentHeight = stream_div.clientHeight;
+        const parentWidth = stream_div_.clientWidth;
+        const parentHeight = stream_div_.clientHeight;
         const width = parentWidth < 0 ? 0 : parentWidth;
         const height = parentHeight < 0 ? 0 : parentHeight;
         const targetAspectRatio = 16 / 9;
@@ -273,7 +289,7 @@
     onMount(updateAspectRatio);
 </script>
 
-<div class="relative w-full h-full" bind:this={stream_div}>
+<div class="relative w-full h-full" bind:this={stream_div_}>
     <!-- svelte-ignore a11y-missing-attribute -->
     <img
         class="absolute top-0 left-0 right-0 bottom-0"
