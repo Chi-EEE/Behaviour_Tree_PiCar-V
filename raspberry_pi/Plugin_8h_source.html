@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('Plugin_8h_source.html',''); initResiza
   <div class="headertitle"><div class="title">Plugin.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PLUGIN_H</span></div>
+<a href="Plugin_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PLUGIN_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PLUGIN_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#pragma once</span></div>
@@ -101,31 +101,38 @@ $(document).ready(function(){initNavTree('Plugin_8h_source.html',''); initResiza
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>car::system</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespacecar_1_1system.html">    9</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacecar_1_1system.html">car::system</a></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">class </span>CarSystem;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">class </span><a class="code hl_class" href="classcar_1_1system_1_1CarSystem.html">CarSystem</a>;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span>car::plugin</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespacecar_1_1plugin.html">   14</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacecar_1_1plugin.html">car::plugin</a></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1Plugin.html">   16</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classcar_1_1plugin_1_1Plugin.html">Plugin</a></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> initialize(std::shared_ptr&lt;car::system::CarSystem&gt; car_system) = 0;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> update() = 0;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> stop() = 0;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">virtual</span> std::string getName() = 0;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1Plugin.html#a4106932b47ca294116579fb489175238">   19</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcar_1_1plugin_1_1Plugin.html#a4106932b47ca294116579fb489175238">initialize</a>(std::shared_ptr&lt;car::system::CarSystem&gt; car_system) = 0;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1Plugin.html#a7b086d61878a6c38a2ef713dd02421f2">   20</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcar_1_1plugin_1_1Plugin.html#a7b086d61878a6c38a2ef713dd02421f2">update</a>() = 0;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1Plugin.html#a264afd26642e8ea4914c5a218877f9f4">   21</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcar_1_1plugin_1_1Plugin.html#a264afd26642e8ea4914c5a218877f9f4">stop</a>() = 0;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1Plugin.html#a9c49d13e1c19885b0374a1c3af49fbfa">   22</a></span>        <span class="keyword">virtual</span> std::string <a class="code hl_function" href="classcar_1_1plugin_1_1Plugin.html#a9c49d13e1c19885b0374a1c3af49fbfa">getName</a>() = 0;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    };</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclasscar_1_1plugin_1_1Plugin_html"><div class="ttname"><a href="classcar_1_1plugin_1_1Plugin.html">car::plugin::Plugin</a></div><div class="ttdef"><b>Definition:</b> Plugin.h:17</div></div>
+<div class="ttc" id="aclasscar_1_1plugin_1_1Plugin_html_a264afd26642e8ea4914c5a218877f9f4"><div class="ttname"><a href="classcar_1_1plugin_1_1Plugin.html#a264afd26642e8ea4914c5a218877f9f4">car::plugin::Plugin::stop</a></div><div class="ttdeci">virtual void stop()=0</div></div>
+<div class="ttc" id="aclasscar_1_1plugin_1_1Plugin_html_a4106932b47ca294116579fb489175238"><div class="ttname"><a href="classcar_1_1plugin_1_1Plugin.html#a4106932b47ca294116579fb489175238">car::plugin::Plugin::initialize</a></div><div class="ttdeci">virtual void initialize(std::shared_ptr&lt; car::system::CarSystem &gt; car_system)=0</div></div>
+<div class="ttc" id="aclasscar_1_1plugin_1_1Plugin_html_a7b086d61878a6c38a2ef713dd02421f2"><div class="ttname"><a href="classcar_1_1plugin_1_1Plugin.html#a7b086d61878a6c38a2ef713dd02421f2">car::plugin::Plugin::update</a></div><div class="ttdeci">virtual void update()=0</div></div>
+<div class="ttc" id="aclasscar_1_1plugin_1_1Plugin_html_a9c49d13e1c19885b0374a1c3af49fbfa"><div class="ttname"><a href="classcar_1_1plugin_1_1Plugin.html#a9c49d13e1c19885b0374a1c3af49fbfa">car::plugin::Plugin::getName</a></div><div class="ttdeci">virtual std::string getName()=0</div></div>
+<div class="ttc" id="aclasscar_1_1system_1_1CarSystem_html"><div class="ttname"><a href="classcar_1_1system_1_1CarSystem.html">car::system::CarSystem</a></div><div class="ttdef"><b>Definition:</b> CarSystem.h:26</div></div>
+<div class="ttc" id="anamespacecar_1_1plugin_html"><div class="ttname"><a href="namespacecar_1_1plugin.html">car::plugin</a></div><div class="ttdef"><b>Definition:</b> Plugin.h:15</div></div>
+<div class="ttc" id="anamespacecar_1_1system_html"><div class="ttname"><a href="namespacecar_1_1system.html">car::system</a></div><div class="ttdef"><b>Definition:</b> Plugin.h:10</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_55041001c20f7f48a88890991ed51504.html">car</a></li><li class="navelem"><a class="el" href="dir_b1ccba8764bccecfe1306b315c25de8e.html">plugin</a></li><li class="navelem"><b>Plugin.h</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_55041001c20f7f48a88890991ed51504.html">car</a></li><li class="navelem"><a class="el" href="dir_b1ccba8764bccecfe1306b315c25de8e.html">plugin</a></li><li class="navelem"><a class="el" href="Plugin_8h.html">Plugin.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

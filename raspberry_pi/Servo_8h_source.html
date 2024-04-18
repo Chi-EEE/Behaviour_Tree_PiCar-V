@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('Servo_8h_source.html',''); initResizab
   <div class="headertitle"><div class="title">Servo.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifdef __linux__</span></div>
+<a href="Servo_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifdef __linux__</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef SERVO_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define SERVO_H</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('Servo_8h_source.html',''); initResizab
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">class </span>Servo</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    {</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">static</span> <span class="keywordtype">int</span> map(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> in_min, <span class="keywordtype">int</span> in_max, <span class="keywordtype">int</span> out_min, <span class="keywordtype">int</span> out_max)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="test__front__wheels_8cpp.html#ab66e88e73e935433d27613e6b65139dd">map</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> in_min, <span class="keywordtype">int</span> in_max, <span class="keywordtype">int</span> out_min, <span class="keywordtype">int</span> out_max)</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">return</span> ((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('Servo_8h_source.html',''); initResizab
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">int</span> getAngle() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="comment">// Some of the code was from: https://github.com/chaoticmachinery/pca9685</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">void</span> setAngle(<span class="keyword">const</span> <span class="keywordtype">int</span> angle);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="test__front__wheels_8cpp.html#a5b3a9eda8e0b49cf4a1bd8b310ce1138">setAngle</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> angle);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">void</span> reset();</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
@@ -139,12 +139,14 @@ $(document).ready(function(){initNavTree('Servo_8h_source.html',''); initResizab
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif </span><span class="comment">// __linux__</span></div>
+<div class="ttc" id="atest__front__wheels_8cpp_html_a5b3a9eda8e0b49cf4a1bd8b310ce1138"><div class="ttname"><a href="test__front__wheels_8cpp.html#a5b3a9eda8e0b49cf4a1bd8b310ce1138">setAngle</a></div><div class="ttdeci">int setAngle(int &amp;angle, PCA9685 pwm, int channel)</div><div class="ttdef"><b>Definition:</b> test_front_wheels.cpp:42</div></div>
+<div class="ttc" id="atest__front__wheels_8cpp_html_ab66e88e73e935433d27613e6b65139dd"><div class="ttname"><a href="test__front__wheels_8cpp.html#ab66e88e73e935433d27613e6b65139dd">map</a></div><div class="ttdeci">int map(int x, int in_min, int in_max, int out_min, int out_max)</div><div class="ttdef"><b>Definition:</b> test_front_wheels.cpp:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_55041001c20f7f48a88890991ed51504.html">car</a></li><li class="navelem"><a class="el" href="dir_69f38725296bc23d6996eb2249dd3661.html">system</a></li><li class="navelem"><a class="el" href="dir_8a9fe3433cca6e524210924fc5074303.html">movement</a></li><li class="navelem"><a class="el" href="dir_8eb4868346fb4f37382c582c1385fa72.html">devices</a></li><li class="navelem"><b>Servo.h</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_55041001c20f7f48a88890991ed51504.html">car</a></li><li class="navelem"><a class="el" href="dir_69f38725296bc23d6996eb2249dd3661.html">system</a></li><li class="navelem"><a class="el" href="dir_8a9fe3433cca6e524210924fc5074303.html">movement</a></li><li class="navelem"><a class="el" href="dir_8eb4868346fb4f37382c582c1385fa72.html">devices</a></li><li class="navelem"><a class="el" href="Servo_8h.html">Servo.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
