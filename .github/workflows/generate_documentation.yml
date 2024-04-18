@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  build_doxygen:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -24,15 +24,31 @@ jobs:
         run: |
           sudo mv docs/raspberry_pi/html/* docs/raspberry_pi
 
-      - name: Generate Doxygen pdf
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+
+  build_doxygen_pdf:
+    needs: build_doxygen
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: gh-pages
+      
+      - name: Generate Doxygen PDF
         run: |
           sudo apt-get update -y
           sudo apt-get install -y doxygen-latex
           cd docs/raspberry_pi/latex
           sudo make
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+      - name: Commit PDF    
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: 'gh-pages'
