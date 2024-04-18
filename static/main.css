@@ -37,6 +37,11 @@ a {
     text-decoration: inherit;
 }
 
+#top-section {
+    flex: 1;
+    text-align: center;
+}
+
 .sub-section {
     flex: 1;
     text-align: center;
