@@ -63,9 +63,12 @@
                 return;
             }
             before = Date.now();
+            if (live_feed_.src !== "") {
+                URL.revokeObjectURL(live_feed_.src);
+            }
             const blob = b64toBlob(value, "image/jpeg");
             const image_url = URL.createObjectURL(blob);
-            live_feed.src = image_url;
+            live_feed_.src = image_url;
         });
     }
 
