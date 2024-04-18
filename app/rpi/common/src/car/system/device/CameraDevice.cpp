@@ -19,17 +19,17 @@ namespace car::system::device
 	}
 
 	void CameraDevice::update() {
+		std::lock_guard<std::mutex> lock(this->camera_mutex_);
+		if (!this->connected_ || this->camera_ == nullptr || !this->camera_->isOpened()) {
+			this->frame_buffer_ = "";
+			return;
+		}
 		const auto now = std::chrono::steady_clock::now();
 		if ((now - this->last).count() < this->configuration->getCameraFpsInterval()) {
 			this->frame_buffer_ = "";
 			return;
 		}
 		this->last = now;
-		std::lock_guard<std::mutex> lock(this->camera_mutex_);
-		if (!this->connected_ || this->camera_ == nullptr || !this->camera_->isOpened()) {
-			this->frame_buffer_ = "";
-			return;
-		}
 		cv::Mat frame;
 		(*this->camera_) >> frame;
 		if (frame.empty()) {
