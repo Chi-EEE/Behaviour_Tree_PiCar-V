@@ -1,0 +1,113 @@
+\hypertarget{MovementSystem_8h_source}{}\doxysection{Movement\+System.\+h}
+\label{MovementSystem_8h_source}\index{include/car/system/movement/MovementSystem.h@{include/car/system/movement/MovementSystem.h}}
+\mbox{\hyperlink{MovementSystem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MOVEMENTSYSTEM\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MOVEMENTSYSTEM\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{AbstractMovementController_8h}{car/system/movement/controller/AbstractMovementController.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1movement_1_1controller}{car::system::movement::controller}};}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1movement}{car::system::movement}}}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem}{MovementSystem}}}
+\DoxyCodeLine{15     \{}
+\DoxyCodeLine{16     \textcolor{keyword}{public}:}
+\DoxyCodeLine{17         \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a2bc2c4a34b516bda9593b9e5a9d920f0}{MovementSystem}}(std::unique\_ptr<AbstractMovementController> \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}) : \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}(std::move(\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}))\{\};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a1eddc118c623ac58470fc9975602db27}{initialize}}()}
+\DoxyCodeLine{20         \{}
+\DoxyCodeLine{21             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>initialize();}
+\DoxyCodeLine{22         \}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a7c8d2d531814a2677e5c2cb2e2fc2636}{start}}()}
+\DoxyCodeLine{25         \{}
+\DoxyCodeLine{26         \}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a0baf504ce2a5a2d56cd3d163311c551b}{stop}}()}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>stop();}
+\DoxyCodeLine{31         \}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_ab6c7d0f21d4b0ce560ada97abd0c0303}{terminate}}()}
+\DoxyCodeLine{34         \{}
+\DoxyCodeLine{35             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>terminate();}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#pragma region Wheels}}
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a5afa6a443a26e329f827ff0a92d0f8e0}{setRearWheelsSpeed}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} speed)\textcolor{keyword}{ const}}
+\DoxyCodeLine{40 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{41             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setRearWheelsSpeed(speed);}
+\DoxyCodeLine{42         \}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a785170a1ca6e92d12509511c266752be}{setRearLeftWheelSpeed}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} speed)\textcolor{keyword}{ const}}
+\DoxyCodeLine{45 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{46             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setRearLeftWheelSpeed(speed);}
+\DoxyCodeLine{47         \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_aa2bb4e84d51ac0883c5f14ae6db2b389}{setRearRightWheelSpeed}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} speed)\textcolor{keyword}{ const}}
+\DoxyCodeLine{50 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{51             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setRearRightWheelSpeed(speed);}
+\DoxyCodeLine{52         \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_ab868eb58c8d360a833a833c24209f765}{setFrontWheelsAngle}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} angle)\textcolor{keyword}{ const}}
+\DoxyCodeLine{55 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{56             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setFrontWheelsAngle(angle);}
+\DoxyCodeLine{57         \}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a9e578db25c4879c452947ba69f309ab0}{setCameraServo1Angle}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} angle)\textcolor{keyword}{ const}}
+\DoxyCodeLine{60 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{61             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setCameraServo1Angle(angle);}
+\DoxyCodeLine{62         \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_aa72a749d44b6b601eaa36b4994e35735}{setCameraServo2Angle}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} angle)\textcolor{keyword}{ const}}
+\DoxyCodeLine{65 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{66             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setCameraServo2Angle(angle);}
+\DoxyCodeLine{67         \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a04493e68ad062d690e75087146560a7b}{setRearWheelsDirectionToForward}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{70 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{71             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setRearWheelsDirectionToForward();}
+\DoxyCodeLine{72         \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_abadf24c8aba5a74f9732ad003be3f827}{setRearLeftWheelDirectionToForward}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{75 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{76             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setRearLeftWheelDirectionToForward();}
+\DoxyCodeLine{77         \}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_ab15a91477518f5875bbe50921a48b366}{setRearRightWheelDirectionToForward}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{80 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{81             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setRearRightWheelDirectionToForward();}
+\DoxyCodeLine{82         \}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a4195cb6a7dc4702d807b490102de3d1b}{setRearWheelsDirectionToBackward}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{85 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{86             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setRearWheelsDirectionToBackward();}
+\DoxyCodeLine{87         \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_aa1c89cc726df1acca75a08beaa02cddc}{setRearLeftWheelDirectionToBackward}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{90 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{91             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setRearLeftWheelDirectionToBackward();}
+\DoxyCodeLine{92         \}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_aa24dc9decce8debd6c2d5e50b2105c76}{setRearRightWheelDirectionToBackward}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{95 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{96             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}}-\/>setRearRightWheelDirectionToBackward();}
+\DoxyCodeLine{97         \}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#pragma endregion}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100         \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_ae4a69efa8582adbdcfed91c0652f1b52}{\string~MovementSystem}}()\{\};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     \textcolor{keyword}{private}:}
+\DoxyCodeLine{103         std::unique\_ptr<AbstractMovementController> \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\_controller}};}
+\DoxyCodeLine{104     \};}
+\DoxyCodeLine{105 \};}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,51 @@
+\hypertarget{LidarDevice_8h_source}{}\doxysection{Lidar\+Device.\+h}
+\label{LidarDevice_8h_source}\index{include/car/system/device/lidar/LidarDevice.h@{include/car/system/device/lidar/LidarDevice.h}}
+\mbox{\hyperlink{LidarDevice_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef LIDARDEVICE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define LIDARDEVICE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <rapidjson/document.h>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <RPLidar.h>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }rplidar;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1device}{car::system::device}} \{}
+\DoxyCodeLine{15     \textcolor{keyword}{class }DeviceManager;}
+\DoxyCodeLine{16 \}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1device_1_1lidar}{car::system::device::lidar}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice}{LidarDevice}}}
+\DoxyCodeLine{21     \{}
+\DoxyCodeLine{22     \textcolor{keyword}{public}:}
+\DoxyCodeLine{23         std::vector<Measure> \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_a3f09073d328373191017634548ded60f}{getScanData}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_ad7735575f03dccbb9ad752ff61115631}{scan\_data\_}}; \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_a71d00498ee8580b2ae08e1fdffc995f2}{start}}() = 0;}
+\DoxyCodeLine{26         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_adeedfba71403f7ef9834680c47b488eb}{update}}() = 0;}
+\DoxyCodeLine{27         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_a3c33c983ecf0e399399045824a333d8f}{stop}}() = 0;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_aaba43d3cbd982e4f3d214ef7235edf31}{initialize}}() = 0;}
+\DoxyCodeLine{30         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_a41748f948b878f5a73775086cde096b1}{terminate}}() = 0;}
+\DoxyCodeLine{31         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_ab00af849de460db819ea389d0dca041f}{disconnect}}() = 0;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{34         \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager}{DeviceManager}};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_ab8e0582777e77b8dc84e497a14f6ba2a}{setScanData}}(\textcolor{keyword}{const} std::vector<Measure>\& scan\_data)}
+\DoxyCodeLine{37         \{}
+\DoxyCodeLine{38             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_ad7735575f03dccbb9ad752ff61115631}{scan\_data\_}} = scan\_data;}
+\DoxyCodeLine{39         \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         std::vector<Measure> \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice_ad7735575f03dccbb9ad752ff61115631}{scan\_data\_}};}
+\DoxyCodeLine{42     \};}
+\DoxyCodeLine{43 \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

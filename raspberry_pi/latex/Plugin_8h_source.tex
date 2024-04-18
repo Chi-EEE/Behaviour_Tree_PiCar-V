@@ -1,0 +1,32 @@
+\hypertarget{Plugin_8h_source}{}\doxysection{Plugin.\+h}
+\label{Plugin_8h_source}\index{include/car/plugin/Plugin.h@{include/car/plugin/Plugin.h}}
+\mbox{\hyperlink{Plugin_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PLUGIN\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PLUGIN\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system}{car::system}}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1system_1_1CarSystem}{CarSystem}};}
+\DoxyCodeLine{12 \}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1plugin}{car::plugin}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1plugin_1_1Plugin}{Plugin}}}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1plugin_1_1Plugin_a4106932b47ca294116579fb489175238}{initialize}}(std::shared\_ptr<car::system::CarSystem> car\_system) = 0;}
+\DoxyCodeLine{20         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1plugin_1_1Plugin_a7b086d61878a6c38a2ef713dd02421f2}{update}}() = 0;}
+\DoxyCodeLine{21         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1plugin_1_1Plugin_a264afd26642e8ea4914c5a218877f9f4}{stop}}() = 0;}
+\DoxyCodeLine{22         \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{classcar_1_1plugin_1_1Plugin_a9c49d13e1c19885b0374a1c3af49fbfa}{getName}}() = 0;}
+\DoxyCodeLine{23     \};}
+\DoxyCodeLine{24 \}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

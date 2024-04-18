@@ -1,0 +1,70 @@
+\hypertarget{DeviceManager_8h_source}{}\doxysection{Device\+Manager.\+h}
+\label{DeviceManager_8h_source}\index{include/car/system/device/DeviceManager.h@{include/car/system/device/DeviceManager.h}}
+\mbox{\hyperlink{DeviceManager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef DEVICE\_MANAGER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define DEVICE\_MANAGER\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <tl/expected.hpp>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Configuration_8h}{car/configuration/Configuration.h}}"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CameraDevice_8h}{CameraDevice.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{LidarDevice_8h}{lidar/LidarDevice.h}}"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{LidarScanner_8h}{lidar/LidarScanner.h}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacecar_1_1configuration}{car::configuration}};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system}{car::system}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     \textcolor{keyword}{class }CarSystem;}
+\DoxyCodeLine{21 \}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1device}{car::system::device}}}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager}{DeviceManager}} \{}
+\DoxyCodeLine{26     \textcolor{keyword}{public}:}
+\DoxyCodeLine{27         [[nodiscard]] \textcolor{keyword}{static} tl::expected<std::unique\_ptr<DeviceManager>, std::string> \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a8dad8493faf025419aacaa8902b9b699}{create}}(std::shared\_ptr<Configuration> configuration);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_ab6d3c6d5180f9ad376e56da7129a2855}{DeviceManager}}(std::unique\_ptr<CameraDevice> camera\_device, std::unique\_ptr<lidar::LidarDevice> lidar\_device) :}
+\DoxyCodeLine{30             \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a86957c9a907aa8e27fbad82603f84469}{camera\_device\_}}(std::move(camera\_device)),}
+\DoxyCodeLine{31             \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a53bd44189a05e5ecc18eddb938a73b5a}{lidar\_device\_}}(std::move(lidar\_device))}
+\DoxyCodeLine{32         \{}
+\DoxyCodeLine{33         \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \mbox{\hyperlink{classcar_1_1system_1_1device_1_1CameraDevice}{CameraDevice}}* \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_ae1fdaef279657c21008f23e2a34913ce}{getCameraDevice}}() \{}
+\DoxyCodeLine{36             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a86957c9a907aa8e27fbad82603f84469}{camera\_device\_}}.get();}
+\DoxyCodeLine{37         \}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice}{lidar::LidarDevice}}* \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a02f4fde9e57bf6d1e59f303980d580e0}{getLidarDevice}}() \{}
+\DoxyCodeLine{40             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a53bd44189a05e5ecc18eddb938a73b5a}{lidar\_device\_}}.get();}
+\DoxyCodeLine{41         \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a63ba22fe228cfcebbe9eb642a3391370}{isRunning}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{44             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a8c04c7ea2f387ea09c7fc7a35bcc03f8}{is\_running\_}};}
+\DoxyCodeLine{45         \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_ae69f845ad5c5cc24f6d258faa6466f19}{initialize}}(std::shared\_ptr<system::CarSystem> \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a263e6c89f1dfb984089ca675a143a407}{car\_system}});}
+\DoxyCodeLine{48         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a0532b345f3647f7ff8e043dc10c6338f}{start}}();}
+\DoxyCodeLine{49         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a24d9ee557ae6a1985ca4919b48498d79}{update}}();}
+\DoxyCodeLine{50         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a37ec3ad83756db6c7e2b274cf72454ae}{stop}}();}
+\DoxyCodeLine{51         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_af936b84c6d39fdf807c9abce829a5040}{terminate}}();}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \textcolor{keyword}{private}:}
+\DoxyCodeLine{54         std::shared\_ptr<car::system::CarSystem> \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a263e6c89f1dfb984089ca675a143a407}{car\_system}};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_ae0ca3d42fec64ed275b537a77bff6e8c}{is\_initialized\_}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{57         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a8c04c7ea2f387ea09c7fc7a35bcc03f8}{is\_running\_}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         std::unique\_ptr<lidar::LidarDevice> \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a53bd44189a05e5ecc18eddb938a73b5a}{lidar\_device\_}};}
+\DoxyCodeLine{60         std::unique\_ptr<CameraDevice> \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager_a86957c9a907aa8e27fbad82603f84469}{camera\_device\_}};}
+\DoxyCodeLine{61     \};}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

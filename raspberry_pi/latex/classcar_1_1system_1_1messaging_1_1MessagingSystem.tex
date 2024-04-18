@@ -1,0 +1,309 @@
+\hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem}{}\doxysection{car\+::system\+::messaging\+::Messaging\+System Class Reference}
+\label{classcar_1_1system_1_1messaging_1_1MessagingSystem}\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+
+
+{\ttfamily \#include $<$Messaging\+System.\+h$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct}{First\+Message\+Struct}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ac2ffac51796711b5fc18fd3c2ec09c1e}{Messaging\+System}} ()
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_aa95921421755b30f29c5f8a3511dd40a}{initialize}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration}{configuration\+::\+Configuration}} $>$ configuration)
+\begin{DoxyCompactList}\small\item\em Initializes the use of Websockets and initializes the Signals. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_afea07c501d71ac24dbc2ed7e5e4808b1}{initialize\+Web\+Socket}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new Websocket object for use. \end{DoxyCompactList}\item 
+const tl\+::expected$<$ nullptr\+\_\+t, std\+::string $>$ \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a21f83981ff7aa1e599b188875e48a32a}{try\+Connect}} ()
+\begin{DoxyCompactList}\small\item\em Attempts to connect to the Websocket server and retrieves the first message from the Websocket (Should be UUID) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ac7e9152d7317ba570db9313840af5606}{stop}} ()
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a94b2c78f499793ae8eecbd27631ccaa1}{terminate}} ()
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a8cc72d9a9c30caf93c8f846d08d14ab9}{set\+Configuration}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration}{configuration\+::\+Configuration}} $>$ configuration)
+\item 
+nod\+::signal$<$ void(const std\+::string, const rapidjson\+::\+Document \&)$>$ \& \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_acb45ac80d9441f19b83879be864c2a56}{get\+Command\+Signal}} ()
+\item 
+nod\+::signal$<$ void(const std\+::string, const rapidjson\+::\+Document \&)$>$ \& \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a01ea5e361e8bd25df66b0e20d22b2e88}{get\+Selection\+Signal}} ()
+\item 
+nod\+::signal$<$ void(const std\+::string)$>$ \& \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a896805eef7fb6cabced9121b62b44e57}{get\+Message\+Signal}} ()
+\item 
+nod\+::signal$<$ void(const std\+::string)$>$ \& \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a51f37df7bd559723c746ac60ae9e2737}{get\+Disconnect\+Signal}} ()
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae3dc9c525e479194d730ae8b85f4ccb0}{on\+Message\+Callback}} (const ix\+::\+Web\+Socket\+Message\+Ptr \&msg) const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a237d72ebe59c4c8ad825fd28b90708c6}{on\+Disconnect}} (const std\+::string)
+\item 
+const std\+::string \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a6585072611a135d613d2f1c0b4e6185f}{get\+UUID}} () const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a3c778a90656eda20b96c86d9fe974c29}{handle\+Message}} (const std\+::string \&message) const
+\begin{DoxyCompactList}\small\item\em Sends out signals depending on the type of message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae2c3c62a21dce556f9fb1c2982abd56f}{send\+Message}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a6f1a6304dd38ffb1cc92e5880f73766d}{on\+First\+Message}} (const ix\+::\+Web\+Socket\+Message\+Ptr \&msg, \mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct}{First\+Message\+Struct}} \&first\+\_\+message\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Actually retrieves the First Message from the Websocket to put into \mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct}{First\+Message\+Struct}}. \end{DoxyCompactList}\item 
+const bool \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ab8c330e08d40bbfd0679f86dd8a15b8e}{is\+Connected}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+nod\+::signal$<$ void(std\+::string)$>$ \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a26656de27ddcdd4c89d0027177bf0692}{on\+\_\+disconnect\+\_\+signal\+\_\+}}
+\item 
+nod\+::signal$<$ void(const std\+::string)$>$ \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ad74ee3dc3da33b149227be370ace2ae5}{message\+\_\+signal\+\_\+}}
+\item 
+nod\+::signal$<$ void(const std\+::string, const rapidjson\+::\+Document \&)$>$ \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae6d2cabe4ad1963913d34d1cb6d2df87}{command\+\_\+signal\+\_\+}}
+\item 
+nod\+::signal$<$ void(const std\+::string, const rapidjson\+::\+Document \&)$>$ \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a32a87fea2fa4768353e6f840d67e0460}{selection\+\_\+signal\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+tl\+::expected$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_aea22af17f50b567709684bb77f607361}{get\+First\+Message}} ()
+\begin{DoxyCompactList}\small\item\em Waits and retrieves the first message when connecting to a websocket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration}{configuration\+::\+Configuration}} $>$ \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_acd2c84b48f2193493cb44eb9375c47db}{configuration\+\_\+}}
+\item 
+std\+::unique\+\_\+ptr$<$ ix\+::\+Web\+Socket $>$ \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a324ed740bef6fa429b571cf6e45d9092}{websocket\+\_\+}}
+\item 
+std\+::string \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a8dbd8f0284492f6980b1307940fd70e1}{websocket\+\_\+url\+\_\+}}
+\item 
+std\+::string \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a08495992bf90c4151a8df2cd51333d74}{uuid\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a24d7c77d11add1edcedfec94963d1261}{connected\+\_\+}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_ac2ffac51796711b5fc18fd3c2ec09c1e}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_ac2ffac51796711b5fc18fd3c2ec09c1e}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!MessagingSystem@{MessagingSystem}}
+\index{MessagingSystem@{MessagingSystem}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{MessagingSystem()}{MessagingSystem()}}
+{\footnotesize\ttfamily car\+::system\+::messaging\+::\+Messaging\+System\+::\+Messaging\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_acb45ac80d9441f19b83879be864c2a56}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_acb45ac80d9441f19b83879be864c2a56}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!getCommandSignal@{getCommandSignal}}
+\index{getCommandSignal@{getCommandSignal}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{getCommandSignal()}{getCommandSignal()}}
+{\footnotesize\ttfamily nod\+::signal$<$ void(const std\+::string, const rapidjson\+::\+Document \&)$>$ \& car\+::system\+::messaging\+::\+Messaging\+System\+::get\+Command\+Signal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a51f37df7bd559723c746ac60ae9e2737}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a51f37df7bd559723c746ac60ae9e2737}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!getDisconnectSignal@{getDisconnectSignal}}
+\index{getDisconnectSignal@{getDisconnectSignal}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{getDisconnectSignal()}{getDisconnectSignal()}}
+{\footnotesize\ttfamily nod\+::signal$<$ void(const std\+::string)$>$ \& car\+::system\+::messaging\+::\+Messaging\+System\+::get\+Disconnect\+Signal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_aea22af17f50b567709684bb77f607361}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_aea22af17f50b567709684bb77f607361}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!getFirstMessage@{getFirstMessage}}
+\index{getFirstMessage@{getFirstMessage}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{getFirstMessage()}{getFirstMessage()}}
+{\footnotesize\ttfamily tl\+::expected$<$ std\+::string, std\+::string $>$ car\+::system\+::messaging\+::\+Messaging\+System\+::get\+First\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Waits and retrieves the first message when connecting to a websocket. 
+
+\begin{DoxyReturn}{Returns}
+tl\+::expected$<$std\+::string, std\+::string$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a896805eef7fb6cabced9121b62b44e57}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a896805eef7fb6cabced9121b62b44e57}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!getMessageSignal@{getMessageSignal}}
+\index{getMessageSignal@{getMessageSignal}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{getMessageSignal()}{getMessageSignal()}}
+{\footnotesize\ttfamily nod\+::signal$<$ void(const std\+::string)$>$ \& car\+::system\+::messaging\+::\+Messaging\+System\+::get\+Message\+Signal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a01ea5e361e8bd25df66b0e20d22b2e88}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a01ea5e361e8bd25df66b0e20d22b2e88}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!getSelectionSignal@{getSelectionSignal}}
+\index{getSelectionSignal@{getSelectionSignal}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{getSelectionSignal()}{getSelectionSignal()}}
+{\footnotesize\ttfamily nod\+::signal$<$ void(const std\+::string, const rapidjson\+::\+Document \&)$>$ \& car\+::system\+::messaging\+::\+Messaging\+System\+::get\+Selection\+Signal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a6585072611a135d613d2f1c0b4e6185f}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a6585072611a135d613d2f1c0b4e6185f}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!getUUID@{getUUID}}
+\index{getUUID@{getUUID}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{getUUID()}{getUUID()}}
+{\footnotesize\ttfamily const std\+::string car\+::system\+::messaging\+::\+Messaging\+System\+::get\+UUID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a3c778a90656eda20b96c86d9fe974c29}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a3c778a90656eda20b96c86d9fe974c29}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!handleMessage@{handleMessage}}
+\index{handleMessage@{handleMessage}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{handleMessage()}{handleMessage()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::handle\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption}) const}
+
+
+
+Sends out signals depending on the type of message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_aa95921421755b30f29c5f8a3511dd40a}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_aa95921421755b30f29c5f8a3511dd40a}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!initialize@{initialize}}
+\index{initialize@{initialize}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::initialize (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration}{configuration\+::\+Configuration}} $>$}]{configuration }\end{DoxyParamCaption})}
+
+
+
+Initializes the use of Websockets and initializes the Signals. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em configuration} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_afea07c501d71ac24dbc2ed7e5e4808b1}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_afea07c501d71ac24dbc2ed7e5e4808b1}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!initializeWebSocket@{initializeWebSocket}}
+\index{initializeWebSocket@{initializeWebSocket}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{initializeWebSocket()}{initializeWebSocket()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::initialize\+Web\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new Websocket object for use. 
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_ab8c330e08d40bbfd0679f86dd8a15b8e}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_ab8c330e08d40bbfd0679f86dd8a15b8e}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!isConnected@{isConnected}}
+\index{isConnected@{isConnected}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{isConnected()}{isConnected()}}
+{\footnotesize\ttfamily const bool car\+::system\+::messaging\+::\+Messaging\+System\+::is\+Connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a237d72ebe59c4c8ad825fd28b90708c6}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a237d72ebe59c4c8ad825fd28b90708c6}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!onDisconnect@{onDisconnect}}
+\index{onDisconnect@{onDisconnect}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{onDisconnect()}{onDisconnect()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::on\+Disconnect (\begin{DoxyParamCaption}\item[{const std\+::string}]{message }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a6f1a6304dd38ffb1cc92e5880f73766d}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a6f1a6304dd38ffb1cc92e5880f73766d}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!onFirstMessage@{onFirstMessage}}
+\index{onFirstMessage@{onFirstMessage}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{onFirstMessage()}{onFirstMessage()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::on\+First\+Message (\begin{DoxyParamCaption}\item[{const ix\+::\+Web\+Socket\+Message\+Ptr \&}]{msg,  }\item[{\mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct}{First\+Message\+Struct}} \&}]{first\+\_\+message\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Actually retrieves the First Message from the Websocket to put into \mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct}{First\+Message\+Struct}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+{\em first\+\_\+message\+\_\+struct} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae3dc9c525e479194d730ae8b85f4ccb0}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae3dc9c525e479194d730ae8b85f4ccb0}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!onMessageCallback@{onMessageCallback}}
+\index{onMessageCallback@{onMessageCallback}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{onMessageCallback()}{onMessageCallback()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::on\+Message\+Callback (\begin{DoxyParamCaption}\item[{const ix\+::\+Web\+Socket\+Message\+Ptr \&}]{msg }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae2c3c62a21dce556f9fb1c2982abd56f}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae2c3c62a21dce556f9fb1c2982abd56f}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!sendMessage@{sendMessage}}
+\index{sendMessage@{sendMessage}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{sendMessage()}{sendMessage()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::send\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a8cc72d9a9c30caf93c8f846d08d14ab9}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a8cc72d9a9c30caf93c8f846d08d14ab9}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!setConfiguration@{setConfiguration}}
+\index{setConfiguration@{setConfiguration}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{setConfiguration()}{setConfiguration()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::set\+Configuration (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration}{configuration\+::\+Configuration}} $>$}]{configuration }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_ac7e9152d7317ba570db9313840af5606}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_ac7e9152d7317ba570db9313840af5606}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!stop@{stop}}
+\index{stop@{stop}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a94b2c78f499793ae8eecbd27631ccaa1}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a94b2c78f499793ae8eecbd27631ccaa1}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!terminate@{terminate}}
+\index{terminate@{terminate}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{terminate()}{terminate()}}
+{\footnotesize\ttfamily void car\+::system\+::messaging\+::\+Messaging\+System\+::terminate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a21f83981ff7aa1e599b188875e48a32a}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a21f83981ff7aa1e599b188875e48a32a}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!tryConnect@{tryConnect}}
+\index{tryConnect@{tryConnect}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{tryConnect()}{tryConnect()}}
+{\footnotesize\ttfamily const tl\+::expected$<$ nullptr\+\_\+t, std\+::string $>$ car\+::system\+::messaging\+::\+Messaging\+System\+::try\+Connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Attempts to connect to the Websocket server and retrieves the first message from the Websocket (Should be UUID) 
+
+\begin{DoxyReturn}{Returns}
+const tl\+::expected$<$nullptr\+\_\+t, std\+::string$>$ 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae6d2cabe4ad1963913d34d1cb6d2df87}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae6d2cabe4ad1963913d34d1cb6d2df87}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!command\_signal\_@{command\_signal\_}}
+\index{command\_signal\_@{command\_signal\_}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{command\_signal\_}{command\_signal\_}}
+{\footnotesize\ttfamily nod\+::signal$<$void(const std\+::string, const rapidjson\+::\+Document\&)$>$ car\+::system\+::messaging\+::\+Messaging\+System\+::command\+\_\+signal\+\_\+}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_acd2c84b48f2193493cb44eb9375c47db}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_acd2c84b48f2193493cb44eb9375c47db}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!configuration\_@{configuration\_}}
+\index{configuration\_@{configuration\_}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{configuration\_}{configuration\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{structcar_1_1configuration_1_1Configuration}{configuration\+::\+Configuration}}$>$ car\+::system\+::messaging\+::\+Messaging\+System\+::configuration\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a24d7c77d11add1edcedfec94963d1261}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a24d7c77d11add1edcedfec94963d1261}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!connected\_@{connected\_}}
+\index{connected\_@{connected\_}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{connected\_}{connected\_}}
+{\footnotesize\ttfamily bool car\+::system\+::messaging\+::\+Messaging\+System\+::connected\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_ad74ee3dc3da33b149227be370ace2ae5}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_ad74ee3dc3da33b149227be370ace2ae5}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!message\_signal\_@{message\_signal\_}}
+\index{message\_signal\_@{message\_signal\_}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{message\_signal\_}{message\_signal\_}}
+{\footnotesize\ttfamily nod\+::signal$<$void(const std\+::string)$>$ car\+::system\+::messaging\+::\+Messaging\+System\+::message\+\_\+signal\+\_\+}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a26656de27ddcdd4c89d0027177bf0692}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a26656de27ddcdd4c89d0027177bf0692}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!on\_disconnect\_signal\_@{on\_disconnect\_signal\_}}
+\index{on\_disconnect\_signal\_@{on\_disconnect\_signal\_}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{on\_disconnect\_signal\_}{on\_disconnect\_signal\_}}
+{\footnotesize\ttfamily nod\+::signal$<$void(std\+::string)$>$ car\+::system\+::messaging\+::\+Messaging\+System\+::on\+\_\+disconnect\+\_\+signal\+\_\+}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a32a87fea2fa4768353e6f840d67e0460}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a32a87fea2fa4768353e6f840d67e0460}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!selection\_signal\_@{selection\_signal\_}}
+\index{selection\_signal\_@{selection\_signal\_}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{selection\_signal\_}{selection\_signal\_}}
+{\footnotesize\ttfamily nod\+::signal$<$void(const std\+::string, const rapidjson\+::\+Document\&)$>$ car\+::system\+::messaging\+::\+Messaging\+System\+::selection\+\_\+signal\+\_\+}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a08495992bf90c4151a8df2cd51333d74}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a08495992bf90c4151a8df2cd51333d74}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!uuid\_@{uuid\_}}
+\index{uuid\_@{uuid\_}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{uuid\_}{uuid\_}}
+{\footnotesize\ttfamily std\+::string car\+::system\+::messaging\+::\+Messaging\+System\+::uuid\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a324ed740bef6fa429b571cf6e45d9092}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a324ed740bef6fa429b571cf6e45d9092}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!websocket\_@{websocket\_}}
+\index{websocket\_@{websocket\_}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{websocket\_}{websocket\_}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ix\+::\+Web\+Socket$>$ car\+::system\+::messaging\+::\+Messaging\+System\+::websocket\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1messaging_1_1MessagingSystem_a8dbd8f0284492f6980b1307940fd70e1}\label{classcar_1_1system_1_1messaging_1_1MessagingSystem_a8dbd8f0284492f6980b1307940fd70e1}} 
+\index{car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}!websocket\_url\_@{websocket\_url\_}}
+\index{websocket\_url\_@{websocket\_url\_}!car::system::messaging::MessagingSystem@{car::system::messaging::MessagingSystem}}
+\doxysubsubsection{\texorpdfstring{websocket\_url\_}{websocket\_url\_}}
+{\footnotesize\ttfamily std\+::string car\+::system\+::messaging\+::\+Messaging\+System\+::websocket\+\_\+url\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/car/system/messaging/\mbox{\hyperlink{MessagingSystem_8h}{Messaging\+System.\+h}}\item 
+src/car/system/messaging/\mbox{\hyperlink{MessagingSystem_8cpp}{Messaging\+System.\+cpp}}\end{DoxyCompactItemize}

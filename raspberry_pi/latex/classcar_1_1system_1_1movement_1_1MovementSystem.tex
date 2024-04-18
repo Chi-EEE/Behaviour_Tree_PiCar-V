@@ -1,0 +1,178 @@
+\hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem}{}\doxysection{car\+::system\+::movement\+::Movement\+System Class Reference}
+\label{classcar_1_1system_1_1movement_1_1MovementSystem}\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+
+
+{\ttfamily \#include $<$Movement\+System.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a2bc2c4a34b516bda9593b9e5a9d920f0}{Movement\+System}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController}{Abstract\+Movement\+Controller}} $>$ \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\+\_\+controller}})
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a1eddc118c623ac58470fc9975602db27}{initialize}} ()
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a7c8d2d531814a2677e5c2cb2e2fc2636}{start}} ()
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a0baf504ce2a5a2d56cd3d163311c551b}{stop}} ()
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_ab6c7d0f21d4b0ce560ada97abd0c0303}{terminate}} ()
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a5afa6a443a26e329f827ff0a92d0f8e0}{set\+Rear\+Wheels\+Speed}} (const int speed) const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a785170a1ca6e92d12509511c266752be}{set\+Rear\+Left\+Wheel\+Speed}} (const int speed) const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_aa2bb4e84d51ac0883c5f14ae6db2b389}{set\+Rear\+Right\+Wheel\+Speed}} (const int speed) const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_ab868eb58c8d360a833a833c24209f765}{set\+Front\+Wheels\+Angle}} (const float angle) const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a9e578db25c4879c452947ba69f309ab0}{set\+Camera\+Servo1\+Angle}} (const float angle) const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_aa72a749d44b6b601eaa36b4994e35735}{set\+Camera\+Servo2\+Angle}} (const float angle) const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a04493e68ad062d690e75087146560a7b}{set\+Rear\+Wheels\+Direction\+To\+Forward}} () const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_abadf24c8aba5a74f9732ad003be3f827}{set\+Rear\+Left\+Wheel\+Direction\+To\+Forward}} () const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_ab15a91477518f5875bbe50921a48b366}{set\+Rear\+Right\+Wheel\+Direction\+To\+Forward}} () const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_a4195cb6a7dc4702d807b490102de3d1b}{set\+Rear\+Wheels\+Direction\+To\+Backward}} () const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_aa1c89cc726df1acca75a08beaa02cddc}{set\+Rear\+Left\+Wheel\+Direction\+To\+Backward}} () const
+\item 
+void \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_aa24dc9decce8debd6c2d5e50b2105c76}{set\+Rear\+Right\+Wheel\+Direction\+To\+Backward}} () const
+\item 
+\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_ae4a69efa8582adbdcfed91c0652f1b52}{$\sim$\+Movement\+System}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController}{Abstract\+Movement\+Controller}} $>$ \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}{movement\+\_\+controller}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_a2bc2c4a34b516bda9593b9e5a9d920f0}\label{classcar_1_1system_1_1movement_1_1MovementSystem_a2bc2c4a34b516bda9593b9e5a9d920f0}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!MovementSystem@{MovementSystem}}
+\index{MovementSystem@{MovementSystem}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{MovementSystem()}{MovementSystem()}}
+{\footnotesize\ttfamily car\+::system\+::movement\+::\+Movement\+System\+::\+Movement\+System (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController}{Abstract\+Movement\+Controller}} $>$}]{movement\+\_\+controller }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_ae4a69efa8582adbdcfed91c0652f1b52}\label{classcar_1_1system_1_1movement_1_1MovementSystem_ae4a69efa8582adbdcfed91c0652f1b52}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!````~MovementSystem@{$\sim$MovementSystem}}
+\index{````~MovementSystem@{$\sim$MovementSystem}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$MovementSystem()}{~MovementSystem()}}
+{\footnotesize\ttfamily car\+::system\+::movement\+::\+Movement\+System\+::$\sim$\+Movement\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_a1eddc118c623ac58470fc9975602db27}\label{classcar_1_1system_1_1movement_1_1MovementSystem_a1eddc118c623ac58470fc9975602db27}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!initialize@{initialize}}
+\index{initialize@{initialize}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_a9e578db25c4879c452947ba69f309ab0}\label{classcar_1_1system_1_1movement_1_1MovementSystem_a9e578db25c4879c452947ba69f309ab0}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setCameraServo1Angle@{setCameraServo1Angle}}
+\index{setCameraServo1Angle@{setCameraServo1Angle}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setCameraServo1Angle()}{setCameraServo1Angle()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Camera\+Servo1\+Angle (\begin{DoxyParamCaption}\item[{const float}]{angle }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_aa72a749d44b6b601eaa36b4994e35735}\label{classcar_1_1system_1_1movement_1_1MovementSystem_aa72a749d44b6b601eaa36b4994e35735}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setCameraServo2Angle@{setCameraServo2Angle}}
+\index{setCameraServo2Angle@{setCameraServo2Angle}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setCameraServo2Angle()}{setCameraServo2Angle()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Camera\+Servo2\+Angle (\begin{DoxyParamCaption}\item[{const float}]{angle }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_ab868eb58c8d360a833a833c24209f765}\label{classcar_1_1system_1_1movement_1_1MovementSystem_ab868eb58c8d360a833a833c24209f765}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setFrontWheelsAngle@{setFrontWheelsAngle}}
+\index{setFrontWheelsAngle@{setFrontWheelsAngle}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setFrontWheelsAngle()}{setFrontWheelsAngle()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Front\+Wheels\+Angle (\begin{DoxyParamCaption}\item[{const float}]{angle }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_aa1c89cc726df1acca75a08beaa02cddc}\label{classcar_1_1system_1_1movement_1_1MovementSystem_aa1c89cc726df1acca75a08beaa02cddc}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setRearLeftWheelDirectionToBackward@{setRearLeftWheelDirectionToBackward}}
+\index{setRearLeftWheelDirectionToBackward@{setRearLeftWheelDirectionToBackward}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setRearLeftWheelDirectionToBackward()}{setRearLeftWheelDirectionToBackward()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Rear\+Left\+Wheel\+Direction\+To\+Backward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_abadf24c8aba5a74f9732ad003be3f827}\label{classcar_1_1system_1_1movement_1_1MovementSystem_abadf24c8aba5a74f9732ad003be3f827}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setRearLeftWheelDirectionToForward@{setRearLeftWheelDirectionToForward}}
+\index{setRearLeftWheelDirectionToForward@{setRearLeftWheelDirectionToForward}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setRearLeftWheelDirectionToForward()}{setRearLeftWheelDirectionToForward()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Rear\+Left\+Wheel\+Direction\+To\+Forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_a785170a1ca6e92d12509511c266752be}\label{classcar_1_1system_1_1movement_1_1MovementSystem_a785170a1ca6e92d12509511c266752be}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setRearLeftWheelSpeed@{setRearLeftWheelSpeed}}
+\index{setRearLeftWheelSpeed@{setRearLeftWheelSpeed}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setRearLeftWheelSpeed()}{setRearLeftWheelSpeed()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Rear\+Left\+Wheel\+Speed (\begin{DoxyParamCaption}\item[{const int}]{speed }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_aa24dc9decce8debd6c2d5e50b2105c76}\label{classcar_1_1system_1_1movement_1_1MovementSystem_aa24dc9decce8debd6c2d5e50b2105c76}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setRearRightWheelDirectionToBackward@{setRearRightWheelDirectionToBackward}}
+\index{setRearRightWheelDirectionToBackward@{setRearRightWheelDirectionToBackward}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setRearRightWheelDirectionToBackward()}{setRearRightWheelDirectionToBackward()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Rear\+Right\+Wheel\+Direction\+To\+Backward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_ab15a91477518f5875bbe50921a48b366}\label{classcar_1_1system_1_1movement_1_1MovementSystem_ab15a91477518f5875bbe50921a48b366}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setRearRightWheelDirectionToForward@{setRearRightWheelDirectionToForward}}
+\index{setRearRightWheelDirectionToForward@{setRearRightWheelDirectionToForward}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setRearRightWheelDirectionToForward()}{setRearRightWheelDirectionToForward()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Rear\+Right\+Wheel\+Direction\+To\+Forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_aa2bb4e84d51ac0883c5f14ae6db2b389}\label{classcar_1_1system_1_1movement_1_1MovementSystem_aa2bb4e84d51ac0883c5f14ae6db2b389}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setRearRightWheelSpeed@{setRearRightWheelSpeed}}
+\index{setRearRightWheelSpeed@{setRearRightWheelSpeed}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setRearRightWheelSpeed()}{setRearRightWheelSpeed()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Rear\+Right\+Wheel\+Speed (\begin{DoxyParamCaption}\item[{const int}]{speed }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_a4195cb6a7dc4702d807b490102de3d1b}\label{classcar_1_1system_1_1movement_1_1MovementSystem_a4195cb6a7dc4702d807b490102de3d1b}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setRearWheelsDirectionToBackward@{setRearWheelsDirectionToBackward}}
+\index{setRearWheelsDirectionToBackward@{setRearWheelsDirectionToBackward}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setRearWheelsDirectionToBackward()}{setRearWheelsDirectionToBackward()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Rear\+Wheels\+Direction\+To\+Backward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_a04493e68ad062d690e75087146560a7b}\label{classcar_1_1system_1_1movement_1_1MovementSystem_a04493e68ad062d690e75087146560a7b}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setRearWheelsDirectionToForward@{setRearWheelsDirectionToForward}}
+\index{setRearWheelsDirectionToForward@{setRearWheelsDirectionToForward}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setRearWheelsDirectionToForward()}{setRearWheelsDirectionToForward()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Rear\+Wheels\+Direction\+To\+Forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_a5afa6a443a26e329f827ff0a92d0f8e0}\label{classcar_1_1system_1_1movement_1_1MovementSystem_a5afa6a443a26e329f827ff0a92d0f8e0}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!setRearWheelsSpeed@{setRearWheelsSpeed}}
+\index{setRearWheelsSpeed@{setRearWheelsSpeed}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{setRearWheelsSpeed()}{setRearWheelsSpeed()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::set\+Rear\+Wheels\+Speed (\begin{DoxyParamCaption}\item[{const int}]{speed }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_a7c8d2d531814a2677e5c2cb2e2fc2636}\label{classcar_1_1system_1_1movement_1_1MovementSystem_a7c8d2d531814a2677e5c2cb2e2fc2636}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!start@{start}}
+\index{start@{start}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_a0baf504ce2a5a2d56cd3d163311c551b}\label{classcar_1_1system_1_1movement_1_1MovementSystem_a0baf504ce2a5a2d56cd3d163311c551b}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!stop@{stop}}
+\index{stop@{stop}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_ab6c7d0f21d4b0ce560ada97abd0c0303}\label{classcar_1_1system_1_1movement_1_1MovementSystem_ab6c7d0f21d4b0ce560ada97abd0c0303}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!terminate@{terminate}}
+\index{terminate@{terminate}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{terminate()}{terminate()}}
+{\footnotesize\ttfamily void car\+::system\+::movement\+::\+Movement\+System\+::terminate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}\label{classcar_1_1system_1_1movement_1_1MovementSystem_accfdf66dcbfed062111b01bc2c09c6be}} 
+\index{car::system::movement::MovementSystem@{car::system::movement::MovementSystem}!movement\_controller@{movement\_controller}}
+\index{movement\_controller@{movement\_controller}!car::system::movement::MovementSystem@{car::system::movement::MovementSystem}}
+\doxysubsubsection{\texorpdfstring{movement\_controller}{movement\_controller}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController}{Abstract\+Movement\+Controller}}$>$ car\+::system\+::movement\+::\+Movement\+System\+::movement\+\_\+controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/car/system/movement/\mbox{\hyperlink{MovementSystem_8h}{Movement\+System.\+h}}\end{DoxyCompactItemize}
