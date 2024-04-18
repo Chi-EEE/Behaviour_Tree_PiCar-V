@@ -1,0 +1,173 @@
+\hypertarget{BehaviourTreeHandler_8hpp_source}{}\doxysection{Behaviour\+Tree\+Handler.\+hpp}
+\label{BehaviourTreeHandler_8hpp_source}\index{/github/workspace/app/rpi/common/include/behaviour\_tree/BehaviourTreeHandler.hpp@{/github/workspace/app/rpi/common/include/behaviour\_tree/BehaviourTreeHandler.hpp}}
+\mbox{\hyperlink{BehaviourTreeHandler_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOURTREEHANDLER\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOURTREEHANDLER\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <nod/nod.hpp>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}utils/Utility.hpp"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Plugin_8h}{car/plugin/Plugin.h}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}behaviour\_tree/BehaviourTreeParser.hpp"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}behaviour\_tree/node/custom/CarCustomNodeParser.hpp"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CarContext_8hpp}{CarContext.hpp}}"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}}}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler}{BehaviourTreeHandler}} : \textcolor{keyword}{public} \mbox{\hyperlink{classcar_1_1plugin_1_1Plugin}{car::plugin::Plugin}}}
+\DoxyCodeLine{23     \{}
+\DoxyCodeLine{24     \textcolor{keyword}{public}:}
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a2baba179a4ce714b45cc4be2634483e8}{initialize}}(std::shared\_ptr<car::system::CarSystem> \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8038c2e4f19e850f17b1ef041f024622}{car\_system}}) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27             this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8038c2e4f19e850f17b1ef041f024622}{car\_system}} = \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8038c2e4f19e850f17b1ef041f024622}{car\_system}};}
+\DoxyCodeLine{28             \textcolor{comment}{// The BehaviourTreeParser does not come with a CustomNodeParser since each program can have a different set of Action nodes}}
+\DoxyCodeLine{29             BehaviourTreeParser::instance().setCustomNodeParser(std::make\_shared<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));}
+\DoxyCodeLine{30             this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8038c2e4f19e850f17b1ef041f024622}{car\_system}}-\/>getMessagingSystem()-\/>getCommandSignal().connect(std::bind(\&\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_ab95e23903c1e501184b6622c6cf6d9ee}{BehaviourTreeHandler::handleCommand}}, \textcolor{keyword}{this}, std::placeholders::\_1, std::placeholders::\_2));}
+\DoxyCodeLine{31         \}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_ab95e23903c1e501184b6622c6cf6d9ee}{handleCommand}}(\textcolor{keyword}{const} std::string message, \textcolor{keyword}{const} rapidjson::Document \&message\_json)}
+\DoxyCodeLine{34         \{}
+\DoxyCodeLine{35             \textcolor{keyword}{const} std::string command = message\_json[\textcolor{stringliteral}{"{}command"{}}].GetString();}
+\DoxyCodeLine{36             \textcolor{keywordflow}{if} (command != \textcolor{stringliteral}{"{}behaviour\_tree"{}})}
+\DoxyCodeLine{37             \{}
+\DoxyCodeLine{38                 spdlog::error(R\textcolor{stringliteral}{"{}(The property "{}command"{} does not match "{}behaviour\_tree"{}, \{\})"{}, command);}}
+\DoxyCodeLine{39 \textcolor{stringliteral}{                }\textcolor{keywordflow}{return};}
+\DoxyCodeLine{40             \}}
+\DoxyCodeLine{41             \textcolor{keywordflow}{if} (!message\_json.HasMember(\textcolor{stringliteral}{"{}action"{}}) || !message\_json[\textcolor{stringliteral}{"{}action"{}}].IsString())}
+\DoxyCodeLine{42             \{}
+\DoxyCodeLine{43                 spdlog::error(R\textcolor{stringliteral}{"{}(The property "{}action"{} does not exist in the given json.)"{});}}
+\DoxyCodeLine{44 \textcolor{stringliteral}{                }\textcolor{keywordflow}{return};}
+\DoxyCodeLine{45             \}}
+\DoxyCodeLine{46             \textcolor{keyword}{const} std::string action = message\_json[\textcolor{stringliteral}{"{}action"{}}].GetString();}
+\DoxyCodeLine{47             \textcolor{keywordflow}{switch} (utils::hash(action))}
+\DoxyCodeLine{48             \{}
+\DoxyCodeLine{49             \textcolor{keywordflow}{case} utils::hash(\textcolor{stringliteral}{"{}set"{}}):}
+\DoxyCodeLine{50             \{}
+\DoxyCodeLine{51                 this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a6ce6391072dc6d900fcfa9fa6a10e43d}{setBehaviourTree}}(message\_json);}
+\DoxyCodeLine{52                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{53             \}}
+\DoxyCodeLine{54             \textcolor{keywordflow}{case} utils::hash(\textcolor{stringliteral}{"{}start"{}}):}
+\DoxyCodeLine{55             \{}
+\DoxyCodeLine{56                 this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a15bd6980d604033a038a9187442292cb}{startBehaviourTree}}();}
+\DoxyCodeLine{57                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{58             \}}
+\DoxyCodeLine{59             \textcolor{keywordflow}{case} utils::hash(\textcolor{stringliteral}{"{}stop"{}}):}
+\DoxyCodeLine{60             \{}
+\DoxyCodeLine{61                 this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_acf96c89a3d424604c4a9f0b16cbfab1b}{stopBehaviourTree}}();}
+\DoxyCodeLine{62                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{63             \}}
+\DoxyCodeLine{64             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{65                 spdlog::error(R\textcolor{stringliteral}{"{}(The property "{}action"{} does not match "{}set"{} or "{}start"{}, \{\})"{}, action);}}
+\DoxyCodeLine{66 \textcolor{stringliteral}{                }\textcolor{keywordflow}{break};}
+\DoxyCodeLine{67             \};}
+\DoxyCodeLine{68         \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a6ce6391072dc6d900fcfa9fa6a10e43d}{setBehaviourTree}}(\textcolor{keyword}{const} rapidjson::Document \&message\_json)}
+\DoxyCodeLine{71         \{}
+\DoxyCodeLine{72             \textcolor{keywordflow}{if} (!message\_json.HasMember(\textcolor{stringliteral}{"{}data"{}}) || !message\_json[\textcolor{stringliteral}{"{}data"{}}].IsString())}
+\DoxyCodeLine{73             \{}
+\DoxyCodeLine{74                 spdlog::error(R\textcolor{stringliteral}{"{}(The property "{}data"{} does not exist in the given json.)"{});}}
+\DoxyCodeLine{75 \textcolor{stringliteral}{                }\textcolor{keywordflow}{return};}
+\DoxyCodeLine{76             \}}
+\DoxyCodeLine{77             \textcolor{keywordflow}{try}}
+\DoxyCodeLine{78             \{}
+\DoxyCodeLine{79                 \textcolor{keyword}{auto} maybe\_behaviour\_tree = BehaviourTreeParser::instance().parseXML(message\_json[\textcolor{stringliteral}{"{}data"{}}].GetString());}
+\DoxyCodeLine{80                 \textcolor{keywordflow}{if} (!maybe\_behaviour\_tree.has\_value())}
+\DoxyCodeLine{81                 \{}
+\DoxyCodeLine{82                     spdlog::error(R\textcolor{stringliteral}{"{}(Unable to parse the given behaviour tree | \{\})"{}, maybe\_behaviour\_tree.error());}}
+\DoxyCodeLine{83 \textcolor{stringliteral}{                    }\textcolor{keywordflow}{return};}
+\DoxyCodeLine{84                 \}}
+\DoxyCodeLine{85                 \textcolor{keyword}{auto} \&\mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}} = maybe\_behaviour\_tree.value();}
+\DoxyCodeLine{86                 spdlog::info(\textcolor{stringliteral}{"{}Behaviour tree parsed successfully | \{\}"{}}, \mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}}-\/>toString());}
+\DoxyCodeLine{87                 this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8b09b8e48e88362af3312aee64cf35ff}{\_setBehaviourTree}}(\mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}});}
+\DoxyCodeLine{88             \}}
+\DoxyCodeLine{89             \textcolor{keywordflow}{catch} (std::exception \&e)}
+\DoxyCodeLine{90             \{}
+\DoxyCodeLine{91                 spdlog::error(\textcolor{stringliteral}{"{}An error has occurred while parsing the given behaviour tree: \{\}"{}}, e.what());}
+\DoxyCodeLine{92             \}}
+\DoxyCodeLine{93         \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a15bd6980d604033a038a9187442292cb}{startBehaviourTree}}()}
+\DoxyCodeLine{96         \{}
+\DoxyCodeLine{97             assert(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8038c2e4f19e850f17b1ef041f024622}{car\_system}} != \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{98             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}} == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{99             \{}
+\DoxyCodeLine{100                 spdlog::error(\textcolor{stringliteral}{"{}The Behaviour tree has not been set"{}});}
+\DoxyCodeLine{101                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{102             \}}
+\DoxyCodeLine{103             this-\/>\mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}}-\/>resetCycles();}
+\DoxyCodeLine{104             this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_aa868142cbfae88ae01ef030810657864}{tick\_count}} = 0;}
+\DoxyCodeLine{105             std::shared\_ptr<Context> \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1c7e331655a627a7deb37525b39249e6}{context}} = std::make\_shared<CarContext>(this-\/>\mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8038c2e4f19e850f17b1ef041f024622}{car\_system}});}
+\DoxyCodeLine{106             this-\/>context = \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1c7e331655a627a7deb37525b39249e6}{context}};}
+\DoxyCodeLine{107             spdlog::info(\textcolor{stringliteral}{"{}Starting the given Behaviour tree"{}});}
+\DoxyCodeLine{108         \}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_acf96c89a3d424604c4a9f0b16cbfab1b}{stopBehaviourTree}}()}
+\DoxyCodeLine{111         \{}
+\DoxyCodeLine{112             assert(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8038c2e4f19e850f17b1ef041f024622}{car\_system}} != \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{113             this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1c7e331655a627a7deb37525b39249e6}{context}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{114             spdlog::info(\textcolor{stringliteral}{"{}Stopped any Behaviour Tree context"{}});}
+\DoxyCodeLine{115         \}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a2a9426f71f865c51d75ca1ec5a96660b}{update}}() final\textcolor{keyword}{ override}}
+\DoxyCodeLine{118 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{119             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1c7e331655a627a7deb37525b39249e6}{context}} == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{120             \{}
+\DoxyCodeLine{121                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{122             \}}
+\DoxyCodeLine{123             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1c7e331655a627a7deb37525b39249e6}{context}}-\/>canRun())}
+\DoxyCodeLine{124             \{}
+\DoxyCodeLine{125                 \textcolor{keyword}{const} std::chrono::time\_point<std::chrono::steady\_clock> now = std::chrono::steady\_clock::now();}
+\DoxyCodeLine{126                 \textcolor{comment}{// TODO:}}
+\DoxyCodeLine{127                 \textcolor{keywordflow}{if} (now -\/ this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a47bacae8472f3b76ce27988eb4b161ca}{last\_connected}} >= this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8038c2e4f19e850f17b1ef041f024622}{car\_system}}-\/>getConfiguration()-\/>behaviour\_tree\_update\_ms\_interval) \{}
+\DoxyCodeLine{128                     this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1c7e331655a627a7deb37525b39249e6}{context}}-\/>update(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_aa868142cbfae88ae01ef030810657864}{tick\_count}});}
+\DoxyCodeLine{129                     this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_aa868142cbfae88ae01ef030810657864}{tick\_count}}++;}
+\DoxyCodeLine{130                     this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a47bacae8472f3b76ce27988eb4b161ca}{last\_connected}} = now;}
+\DoxyCodeLine{131                 \}}
+\DoxyCodeLine{132             \}}
+\DoxyCodeLine{133             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{134             \{}
+\DoxyCodeLine{135                 this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1c7e331655a627a7deb37525b39249e6}{context}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{136             \}}
+\DoxyCodeLine{137         \}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_ac449ae0a932bc4cadd6b6f986620a73a}{stop}}() final\textcolor{keyword}{ override}}
+\DoxyCodeLine{140 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{141             this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1c7e331655a627a7deb37525b39249e6}{context}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{142         \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144         std::string \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1ff821d64c3b47bf711367205eb6e39f}{getName}}() final\textcolor{keyword}{ override}}
+\DoxyCodeLine{145 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{146             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}BehaviourTreeHandler"{}};}
+\DoxyCodeLine{147         \}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8b09b8e48e88362af3312aee64cf35ff}{\_setBehaviourTree}}(std::shared\_ptr<BehaviourTree> \mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}})}
+\DoxyCodeLine{150         \{}
+\DoxyCodeLine{151             this-\/>behaviour\_tree = \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_ae41facd5ed9b39b18a7610d2e3247b50}{behaviour\_tree}};}
+\DoxyCodeLine{152         \}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154     \textcolor{keyword}{private}:}
+\DoxyCodeLine{155         std::shared\_ptr<car::system::CarSystem> \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a8038c2e4f19e850f17b1ef041f024622}{car\_system}};}
+\DoxyCodeLine{156         }
+\DoxyCodeLine{157         std::shared\_ptr<BehaviourTree> \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_ae41facd5ed9b39b18a7610d2e3247b50}{behaviour\_tree}};}
+\DoxyCodeLine{158         std::shared\_ptr<Context> \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a1c7e331655a627a7deb37525b39249e6}{context}};}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160         \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_aa868142cbfae88ae01ef030810657864}{tick\_count}} = 0;}
+\DoxyCodeLine{161         }
+\DoxyCodeLine{162         \textcolor{comment}{// This is initialized as 0}}
+\DoxyCodeLine{163         std::chrono::time\_point<std::chrono::steady\_clock> \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTreeHandler_a47bacae8472f3b76ce27988eb4b161ca}{last\_connected}};}
+\DoxyCodeLine{164     \};}
+\DoxyCodeLine{165 \} \textcolor{comment}{// namespace behaviour\_tree}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,50 @@
+\hypertarget{tui_2src_2main_8cpp}{}\doxysection{/github/workspace/app/rpi/tui/src/main.cpp File Reference}
+\label{tui_2src_2main_8cpp}\index{/github/workspace/app/rpi/tui/src/main.cpp@{/github/workspace/app/rpi/tui/src/main.cpp}}
+{\ttfamily \#include $<$optional$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$fmt/format.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}car/display/console/\+Car\+Console.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/configuration/\+Json\+Configuration.\+cxx\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/system/\+Car\+System.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/system/device/\+Device\+Manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/system/device/lidar/\+Lidar\+Device.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/system/device/lidar/\+Lidar\+Dummy.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/system/device/lidar/\+Lidar\+Scanner.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/system/device/\+Camera\+Device.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/system/movement/controller/\+Dummy\+Movement\+Controller.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/system/movement/controller/\+Device\+Movement\+Controller.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/plugin/\+Plugin\+Manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}car/system/logging/\+Vector\+Sink.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}behaviour\+\_\+tree/\+Behaviour\+Tree\+Handler.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice}{Lidar\+Device}} $>$ \mbox{\hyperlink{tui_2src_2main_8cpp_a13610e1d0688505dbfc8e12e423215f5}{get\+Lidar\+Device}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration}{Configuration}} $>$ configuration)
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController}{Abstract\+Movement\+Controller}} $>$ \mbox{\hyperlink{tui_2src_2main_8cpp_ac44e161c4516bc68f9aaa411fd2725e8}{get\+Movement\+Controller}} ()
+\item 
+int \mbox{\hyperlink{tui_2src_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tui_2src_2main_8cpp_a13610e1d0688505dbfc8e12e423215f5}\label{tui_2src_2main_8cpp_a13610e1d0688505dbfc8e12e423215f5}} 
+\index{main.cpp@{main.cpp}!getLidarDevice@{getLidarDevice}}
+\index{getLidarDevice@{getLidarDevice}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getLidarDevice()}{getLidarDevice()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice}{Lidar\+Device}} $>$ get\+Lidar\+Device (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration}{Configuration}} $>$}]{configuration }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tui_2src_2main_8cpp_ac44e161c4516bc68f9aaa411fd2725e8}\label{tui_2src_2main_8cpp_ac44e161c4516bc68f9aaa411fd2725e8}} 
+\index{main.cpp@{main.cpp}!getMovementController@{getMovementController}}
+\index{getMovementController@{getMovementController}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getMovementController()}{getMovementController()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController}{Abstract\+Movement\+Controller}} $>$ get\+Movement\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tui_2src_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{tui_2src_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+

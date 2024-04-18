@@ -1,0 +1,38 @@
+\hypertarget{LidarDummy_8h_source}{}\doxysection{Lidar\+Dummy.\+h}
+\label{LidarDummy_8h_source}\index{/github/workspace/app/rpi/common/include/car/system/device/lidar/LidarDummy.h@{/github/workspace/app/rpi/common/include/car/system/device/lidar/LidarDummy.h}}
+\mbox{\hyperlink{LidarDummy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef LIDARDUMMY\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define LIDARDUMMY\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <spdlog/spdlog.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{LidarDevice_8h}{LidarDevice.h}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1device_1_1lidar}{car::system::device::lidar}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy}{LidarDummy}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice}{LidarDevice}}}
+\DoxyCodeLine{14     \{}
+\DoxyCodeLine{15     \textcolor{keyword}{public}:}
+\DoxyCodeLine{16         \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy_a9751a890e91ec8fe8acf44b8e03a8355}{LidarDummy}}()}
+\DoxyCodeLine{17         \{}
+\DoxyCodeLine{18             spdlog::warn(\textcolor{stringliteral}{"{}Currently using the LidarDummy"{}});}
+\DoxyCodeLine{19         \};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy_a8c37174d1a48f4ee24fa0b02dc029a39}{start}}() final\textcolor{keyword}{ override }\{\};}
+\DoxyCodeLine{22         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy_aa882ddacecc96329ff2ad38d3e0a3eb8}{update}}() final\textcolor{keyword}{ override }\{\};}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy_a4c7161bf8aee875fa9bf14959eda80d3}{stop}}() final\textcolor{keyword}{ override }\{\};}
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy_aca0b81cc1aeb740d94e7eb2ff19ad9e4}{initialize}}() final\textcolor{keyword}{ override }\{\};}
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy_a2746d43c4c634fd3143b1eb71300defc}{terminate}}() final\textcolor{keyword}{ override }\{\};}
+\DoxyCodeLine{26         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy_afd358cbc173d9a122683250c1f140aea}{disconnect}}() final\textcolor{keyword}{ override }\{\};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keyword}{private}:}
+\DoxyCodeLine{29     \};}
+\DoxyCodeLine{30 \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,85 @@
+\hypertarget{MessagingSystem_8h_source}{}\doxysection{Messaging\+System.\+h}
+\label{MessagingSystem_8h_source}\index{/github/workspace/app/rpi/common/include/car/system/messaging/MessagingSystem.h@{/github/workspace/app/rpi/common/include/car/system/messaging/MessagingSystem.h}}
+\mbox{\hyperlink{MessagingSystem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MESSAGINGSYSTEM\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MESSAGINGSYSTEM\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <ixwebsocket/IXNetSystem.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <ixwebsocket/IXWebSocket.h>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <nod/nod.hpp>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <rapidjson/rapidjson.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <rapidjson/document.h>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}utils/Utility.hpp"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Configuration_8h}{car/configuration/Configuration.h}}"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1messaging}{car::system::messaging}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23     \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem}{MessagingSystem}}}
+\DoxyCodeLine{24     \{}
+\DoxyCodeLine{25     \textcolor{keyword}{public}:}
+\DoxyCodeLine{26         \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ac2ffac51796711b5fc18fd3c2ec09c1e}{MessagingSystem}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_aa95921421755b30f29c5f8a3511dd40a}{initialize}}(std::shared\_ptr<configuration::Configuration> configuration);}
+\DoxyCodeLine{29         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_afea07c501d71ac24dbc2ed7e5e4808b1}{initializeWebSocket}}();}
+\DoxyCodeLine{30         \textcolor{keyword}{const} tl::expected<nullptr\_t, std::string> \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a21f83981ff7aa1e599b188875e48a32a}{tryConnect}}();}
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ac7e9152d7317ba570db9313840af5606}{stop}}();}
+\DoxyCodeLine{32         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a94b2c78f499793ae8eecbd27631ccaa1}{terminate}}();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34         \textcolor{comment}{// Necessary for the reloading the configuration}}
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a8cc72d9a9c30caf93c8f846d08d14ab9}{setConfiguration}}(std::shared\_ptr<configuration::Configuration> configuration);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         nod::signal<void(\textcolor{keyword}{const} std::string, \textcolor{keyword}{const} rapidjson::Document\&)>\& \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_acb45ac80d9441f19b83879be864c2a56}{getCommandSignal}}() \{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae6d2cabe4ad1963913d34d1cb6d2df87}{command\_signal\_}}; \}}
+\DoxyCodeLine{38         nod::signal<void(\textcolor{keyword}{const} std::string, \textcolor{keyword}{const} rapidjson::Document\&)>\& \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a01ea5e361e8bd25df66b0e20d22b2e88}{getSelectionSignal}}() \{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a32a87fea2fa4768353e6f840d67e0460}{selection\_signal\_}}; \}}
+\DoxyCodeLine{39         nod::signal<void(\textcolor{keyword}{const} std::string)>\& \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a896805eef7fb6cabced9121b62b44e57}{getMessageSignal}}() \{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ad74ee3dc3da33b149227be370ace2ae5}{message\_signal\_}}; \}}
+\DoxyCodeLine{40         nod::signal<void(\textcolor{keyword}{const} std::string)>\& \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a51f37df7bd559723c746ac60ae9e2737}{getDisconnectSignal}}() \{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a26656de27ddcdd4c89d0027177bf0692}{on\_disconnect\_signal\_}}; \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae3dc9c525e479194d730ae8b85f4ccb0}{onMessageCallback}}(\textcolor{keyword}{const} ix::WebSocketMessagePtr\& msg) \textcolor{keyword}{const};}
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a237d72ebe59c4c8ad825fd28b90708c6}{onDisconnect}}(\textcolor{keyword}{const} std::string);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a6585072611a135d613d2f1c0b4e6185f}{getUUID}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a08495992bf90c4151a8df2cd51333d74}{uuid\_}}; \}}
+\DoxyCodeLine{46         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a3c778a90656eda20b96c86d9fe974c29}{handleMessage}}(\textcolor{keyword}{const} std::string\& message) \textcolor{keyword}{const};}
+\DoxyCodeLine{47         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae2c3c62a21dce556f9fb1c2982abd56f}{sendMessage}}(\textcolor{keyword}{const} std::string\& message);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keyword}{struct }\mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct}{FirstMessageStruct}}}
+\DoxyCodeLine{50         \{}
+\DoxyCodeLine{51             std::string \mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct_ac12b4d1ff719d02618c1a6f4c660fd9c}{error\_message}};}
+\DoxyCodeLine{52             std::string \mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct_a5427d767fce2ebe7f3d3544640195ac9}{uuid}};}
+\DoxyCodeLine{53             std::condition\_variable \mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct_ad6704cc6f23667d78057a6233bcdb27a}{condition}};}
+\DoxyCodeLine{54         \};}
+\DoxyCodeLine{55         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a6f1a6304dd38ffb1cc92e5880f73766d}{onFirstMessage}}(\textcolor{keyword}{const} ix::WebSocketMessagePtr\& msg, \mbox{\hyperlink{structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct}{FirstMessageStruct}}\& first\_message\_struct);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ab8c330e08d40bbfd0679f86dd8a15b8e}{isConnected}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a24d7c77d11add1edcedfec94963d1261}{connected\_}}; \}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         nod::signal<void(std::string)> \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a26656de27ddcdd4c89d0027177bf0692}{on\_disconnect\_signal\_}};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         nod::signal<void(\textcolor{keyword}{const} std::string)> \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ad74ee3dc3da33b149227be370ace2ae5}{message\_signal\_}};}
+\DoxyCodeLine{62         nod::signal<void(\textcolor{keyword}{const} std::string, \textcolor{keyword}{const} rapidjson::Document\&)> \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_ae6d2cabe4ad1963913d34d1cb6d2df87}{command\_signal\_}};}
+\DoxyCodeLine{63         nod::signal<void(\textcolor{keyword}{const} std::string, \textcolor{keyword}{const} rapidjson::Document\&)> \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a32a87fea2fa4768353e6f840d67e0460}{selection\_signal\_}};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{keyword}{private}:}
+\DoxyCodeLine{66         tl::expected<std::string, std::string> \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_aea22af17f50b567709684bb77f607361}{getFirstMessage}}();}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68         std::shared\_ptr<configuration::Configuration> \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_acd2c84b48f2193493cb44eb9375c47db}{configuration\_}};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70         std::unique\_ptr<ix::WebSocket> \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a324ed740bef6fa429b571cf6e45d9092}{websocket\_}};}
+\DoxyCodeLine{71         std::string \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a8dbd8f0284492f6980b1307940fd70e1}{websocket\_url\_}};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73         std::string \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a08495992bf90c4151a8df2cd51333d74}{uuid\_}};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem_a24d7c77d11add1edcedfec94963d1261}{connected\_}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{76     \};}
+\DoxyCodeLine{77 \};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
