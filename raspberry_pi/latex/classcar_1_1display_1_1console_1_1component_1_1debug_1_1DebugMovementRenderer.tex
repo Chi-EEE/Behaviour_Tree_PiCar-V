@@ -1,0 +1,361 @@
+\hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer}{}\doxysection{car\+::display\+::console\+::component\+::debug\+::Debug\+Movement\+Renderer Class Reference}
+\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer}\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9117cf6fc61e92d2e95b1c818ee1cbbd}{Debug\+Movement\+Renderer}} ()
+\item 
+ftxui\+::\+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae2e9aa7d586401a332aa43b402182fa8}{element}} ()
+\item 
+bool \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ad7e909aba29bfd2da4598f5b8496cf7f}{update\+Front\+Wheels}} ()
+\item 
+bool \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_af90a3f0a8b25c7027265c88b2834c971}{update\+Camera\+Servo1}} ()
+\item 
+bool \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aca7ae6af60c9cf50b53dabd2ebc176f1}{update\+Camera\+Servo2}} ()
+\item 
+bool \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa435bb285dcab51b6225fbbf8bcec051}{update\+Rear\+Wheels}} ()
+\item 
+nod\+::signal$<$ void(bool)$>$ \& \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ab9df99e2e54f7661b4e4267fc96fae18}{get\+Rear\+Wheel\+Direction\+Signal}} ()
+\item 
+const int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ab51fee3d54519c72a0163d6e28a18a29}{get\+Front\+Wheels\+Angle\+Slider\+Value}} () const
+\item 
+const int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a05723191ce205f13a10e875ecbbe92ea}{get\+Camera\+Servo1\+Angle\+Slider\+Value}} () const
+\item 
+const int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa5f11526c70cf638e89512e6ef1ecf2d}{get\+Camera\+Servo2\+Angle\+Slider\+Value}} () const
+\item 
+const int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a436a2aac33bb6f72ddb25eceaf5dd224}{get\+Rear\+Left\+Wheel\+Speed\+Slider\+Value}} () const
+\item 
+const int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a982742660c098d737bc21d2f53a91507}{get\+Rear\+Right\+Wheel\+Speed\+Slider\+Value}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+nod\+::signal$<$ void(bool)$>$ \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae7368b83642a89d51df3cd761b593b7d}{rear\+\_\+wheel\+\_\+direction\+\_\+signal}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a1c2aa81f5e77743e7ffe096303849ca2}{previous\+\_\+rear\+\_\+wheels\+\_\+speed\+\_\+slider\+\_\+value}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a1e39d072eb3f6adf8fd8ad836cb8f427}{rear\+\_\+wheels\+\_\+speed\+\_\+slider\+\_\+value}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a7c134d0c6ddf0e785bd11f3797670962}{previous\+\_\+rear\+\_\+left\+\_\+wheel\+\_\+speed\+\_\+slider\+\_\+value}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a925f31346a10c7ac66ec493e025df0c1}{rear\+\_\+left\+\_\+wheel\+\_\+speed\+\_\+slider\+\_\+value}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a3adaa0d547515cc11cb29edbe55817f9}{previous\+\_\+rear\+\_\+right\+\_\+wheel\+\_\+speed\+\_\+slider\+\_\+value}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa47a8024f064beea5ccdff97fe01efe3}{rear\+\_\+right\+\_\+wheel\+\_\+speed\+\_\+slider\+\_\+value}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6c095bc867e7ac847032f25f4d7dd3a9}{previous\+\_\+front\+\_\+wheels\+\_\+angle\+\_\+slider\+\_\+value}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a567cb11a8b41bef6d1fa038ef0d82893}{front\+\_\+wheels\+\_\+angle\+\_\+slider\+\_\+value}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aeea2f3334732660537a5427d09d73025}{previous\+\_\+camera\+\_\+servo\+\_\+1\+\_\+angle\+\_\+slider\+\_\+angle}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a209ffe21280c4b92a9c443ae7af9375f}{camera\+\_\+servo\+\_\+1\+\_\+angle\+\_\+slider\+\_\+angle}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_adad16677a7684a342f6d915497f24592}{previous\+\_\+camera\+\_\+servo\+\_\+2\+\_\+angle\+\_\+slider\+\_\+angle}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}
+\item 
+int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a163143b41f643500ad92f2c4dae1237f}{camera\+\_\+servo\+\_\+2\+\_\+angle\+\_\+slider\+\_\+angle}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}
+\item 
+bool \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_abf37ac4c267073065ffba36548f05823}{rear\+\_\+wheel\+\_\+direction\+\_\+debounce}} = false
+\item 
+std\+::string \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a06b1cc90e6d4e00b1c17a8895f277c3f}{rear\+\_\+wheel\+\_\+direction\+\_\+status}} = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a45818ae4f24f0339269df10548127d91}{REAR\+\_\+\+WHEEL\+\_\+\+DIRECTION\+\_\+\+FORWARD\+\_\+\+MESSAGE}}
+\item 
+bool \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a8f992a009d6a9499e4cc06ccd9cd9229}{rear\+\_\+wheel\+\_\+direction}} = true
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a5f90380f0fe47ccc3a7b970784263852}{rear\+\_\+wheel\+\_\+speed\+\_\+slider}}
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae6e9a16dcf023d793070acbe15a4b3d3}{rear\+\_\+left\+\_\+wheel\+\_\+speed\+\_\+slider}}
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a035a97e2ae62db8c80f563a68d725e6a}{rear\+\_\+right\+\_\+wheel\+\_\+speed\+\_\+slider}}
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aff75ce347a1f4e2d4b6cdd43a90d0069}{rear\+\_\+wheel\+\_\+direction\+\_\+checkbox\+\_\+component}}
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a301d3cba9b217048da705ffbbf82db38}{front\+\_\+wheels\+\_\+angle\+\_\+slider}}
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a96e318da3ba0ddf59c7dd91e647370e7}{camera\+\_\+servo\+\_\+1\+\_\+angle\+\_\+slider}}
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a049f48326bbf002137de665d7a314790}{camera\+\_\+servo\+\_\+2\+\_\+angle\+\_\+slider}}
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa3e8750f520e7f94a7ee7f19e91acf3c}{rear\+\_\+wheel\+\_\+menu\+\_\+entry}}
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a5433aa24ad24239532f93a201986dffe}{servo\+\_\+menu\+\_\+entry}}
+\item 
+Component \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae1d6630cae1f4aa190f2bf4b1b449aa6}{slider\+\_\+container}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}} = 0
+\item 
+static constexpr int \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}} = 90
+\item 
+static constexpr auto \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a45818ae4f24f0339269df10548127d91}{REAR\+\_\+\+WHEEL\+\_\+\+DIRECTION\+\_\+\+FORWARD\+\_\+\+MESSAGE}} = \char`\"{}Rear Wheel Direction\+: Forward\char`\"{}
+\item 
+static constexpr auto \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae2f1fe7de8aa541dc055f0bc6f8cceed}{REAR\+\_\+\+WHEEL\+\_\+\+DIRECTION\+\_\+\+BACKWARD\+\_\+\+MESSAGE}} = \char`\"{}Rear Wheel Direction\+: Backward\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9117cf6fc61e92d2e95b1c818ee1cbbd}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9117cf6fc61e92d2e95b1c818ee1cbbd}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!DebugMovementRenderer@{DebugMovementRenderer}}
+\index{DebugMovementRenderer@{DebugMovementRenderer}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{DebugMovementRenderer()}{DebugMovementRenderer()}}
+{\footnotesize\ttfamily car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::\+Debug\+Movement\+Renderer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae2e9aa7d586401a332aa43b402182fa8}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae2e9aa7d586401a332aa43b402182fa8}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!element@{element}}
+\index{element@{element}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{element()}{element()}}
+{\footnotesize\ttfamily ftxui\+::\+Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a05723191ce205f13a10e875ecbbe92ea}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a05723191ce205f13a10e875ecbbe92ea}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!getCameraServo1AngleSliderValue@{getCameraServo1AngleSliderValue}}
+\index{getCameraServo1AngleSliderValue@{getCameraServo1AngleSliderValue}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{getCameraServo1AngleSliderValue()}{getCameraServo1AngleSliderValue()}}
+{\footnotesize\ttfamily const int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::get\+Camera\+Servo1\+Angle\+Slider\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa5f11526c70cf638e89512e6ef1ecf2d}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa5f11526c70cf638e89512e6ef1ecf2d}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!getCameraServo2AngleSliderValue@{getCameraServo2AngleSliderValue}}
+\index{getCameraServo2AngleSliderValue@{getCameraServo2AngleSliderValue}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{getCameraServo2AngleSliderValue()}{getCameraServo2AngleSliderValue()}}
+{\footnotesize\ttfamily const int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::get\+Camera\+Servo2\+Angle\+Slider\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ab51fee3d54519c72a0163d6e28a18a29}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ab51fee3d54519c72a0163d6e28a18a29}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!getFrontWheelsAngleSliderValue@{getFrontWheelsAngleSliderValue}}
+\index{getFrontWheelsAngleSliderValue@{getFrontWheelsAngleSliderValue}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{getFrontWheelsAngleSliderValue()}{getFrontWheelsAngleSliderValue()}}
+{\footnotesize\ttfamily const int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::get\+Front\+Wheels\+Angle\+Slider\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a436a2aac33bb6f72ddb25eceaf5dd224}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a436a2aac33bb6f72ddb25eceaf5dd224}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!getRearLeftWheelSpeedSliderValue@{getRearLeftWheelSpeedSliderValue}}
+\index{getRearLeftWheelSpeedSliderValue@{getRearLeftWheelSpeedSliderValue}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{getRearLeftWheelSpeedSliderValue()}{getRearLeftWheelSpeedSliderValue()}}
+{\footnotesize\ttfamily const int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::get\+Rear\+Left\+Wheel\+Speed\+Slider\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a982742660c098d737bc21d2f53a91507}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a982742660c098d737bc21d2f53a91507}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!getRearRightWheelSpeedSliderValue@{getRearRightWheelSpeedSliderValue}}
+\index{getRearRightWheelSpeedSliderValue@{getRearRightWheelSpeedSliderValue}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{getRearRightWheelSpeedSliderValue()}{getRearRightWheelSpeedSliderValue()}}
+{\footnotesize\ttfamily const int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::get\+Rear\+Right\+Wheel\+Speed\+Slider\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ab9df99e2e54f7661b4e4267fc96fae18}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ab9df99e2e54f7661b4e4267fc96fae18}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!getRearWheelDirectionSignal@{getRearWheelDirectionSignal}}
+\index{getRearWheelDirectionSignal@{getRearWheelDirectionSignal}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{getRearWheelDirectionSignal()}{getRearWheelDirectionSignal()}}
+{\footnotesize\ttfamily nod\+::signal$<$ void(bool)$>$ \& car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::get\+Rear\+Wheel\+Direction\+Signal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_af90a3f0a8b25c7027265c88b2834c971}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_af90a3f0a8b25c7027265c88b2834c971}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!updateCameraServo1@{updateCameraServo1}}
+\index{updateCameraServo1@{updateCameraServo1}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{updateCameraServo1()}{updateCameraServo1()}}
+{\footnotesize\ttfamily bool car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::update\+Camera\+Servo1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aca7ae6af60c9cf50b53dabd2ebc176f1}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aca7ae6af60c9cf50b53dabd2ebc176f1}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!updateCameraServo2@{updateCameraServo2}}
+\index{updateCameraServo2@{updateCameraServo2}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{updateCameraServo2()}{updateCameraServo2()}}
+{\footnotesize\ttfamily bool car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::update\+Camera\+Servo2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ad7e909aba29bfd2da4598f5b8496cf7f}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ad7e909aba29bfd2da4598f5b8496cf7f}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!updateFrontWheels@{updateFrontWheels}}
+\index{updateFrontWheels@{updateFrontWheels}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{updateFrontWheels()}{updateFrontWheels()}}
+{\footnotesize\ttfamily bool car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::update\+Front\+Wheels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa435bb285dcab51b6225fbbf8bcec051}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa435bb285dcab51b6225fbbf8bcec051}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!updateRearWheels@{updateRearWheels}}
+\index{updateRearWheels@{updateRearWheels}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{updateRearWheels()}{updateRearWheels()}}
+{\footnotesize\ttfamily bool car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::update\+Rear\+Wheels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a96e318da3ba0ddf59c7dd91e647370e7}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a96e318da3ba0ddf59c7dd91e647370e7}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!camera\_servo\_1\_angle\_slider@{camera\_servo\_1\_angle\_slider}}
+\index{camera\_servo\_1\_angle\_slider@{camera\_servo\_1\_angle\_slider}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{camera\_servo\_1\_angle\_slider}{camera\_servo\_1\_angle\_slider}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::camera\+\_\+servo\+\_\+1\+\_\+angle\+\_\+slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a209ffe21280c4b92a9c443ae7af9375f}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a209ffe21280c4b92a9c443ae7af9375f}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!camera\_servo\_1\_angle\_slider\_angle@{camera\_servo\_1\_angle\_slider\_angle}}
+\index{camera\_servo\_1\_angle\_slider\_angle@{camera\_servo\_1\_angle\_slider\_angle}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{camera\_servo\_1\_angle\_slider\_angle}{camera\_servo\_1\_angle\_slider\_angle}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::camera\+\_\+servo\+\_\+1\+\_\+angle\+\_\+slider\+\_\+angle = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a049f48326bbf002137de665d7a314790}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a049f48326bbf002137de665d7a314790}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!camera\_servo\_2\_angle\_slider@{camera\_servo\_2\_angle\_slider}}
+\index{camera\_servo\_2\_angle\_slider@{camera\_servo\_2\_angle\_slider}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{camera\_servo\_2\_angle\_slider}{camera\_servo\_2\_angle\_slider}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::camera\+\_\+servo\+\_\+2\+\_\+angle\+\_\+slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a163143b41f643500ad92f2c4dae1237f}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a163143b41f643500ad92f2c4dae1237f}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!camera\_servo\_2\_angle\_slider\_angle@{camera\_servo\_2\_angle\_slider\_angle}}
+\index{camera\_servo\_2\_angle\_slider\_angle@{camera\_servo\_2\_angle\_slider\_angle}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{camera\_servo\_2\_angle\_slider\_angle}{camera\_servo\_2\_angle\_slider\_angle}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::camera\+\_\+servo\+\_\+2\+\_\+angle\+\_\+slider\+\_\+angle = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!DEFAULT\_FRONT\_WHEEL\_ANGLE@{DEFAULT\_FRONT\_WHEEL\_ANGLE}}
+\index{DEFAULT\_FRONT\_WHEEL\_ANGLE@{DEFAULT\_FRONT\_WHEEL\_ANGLE}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_FRONT\_WHEEL\_ANGLE}{DEFAULT\_FRONT\_WHEEL\_ANGLE}}
+{\footnotesize\ttfamily constexpr int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::\+DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE = 90\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!DEFAULT\_REAR\_WHEEL\_SPEED@{DEFAULT\_REAR\_WHEEL\_SPEED}}
+\index{DEFAULT\_REAR\_WHEEL\_SPEED@{DEFAULT\_REAR\_WHEEL\_SPEED}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_REAR\_WHEEL\_SPEED}{DEFAULT\_REAR\_WHEEL\_SPEED}}
+{\footnotesize\ttfamily constexpr int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::\+DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a301d3cba9b217048da705ffbbf82db38}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a301d3cba9b217048da705ffbbf82db38}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!front\_wheels\_angle\_slider@{front\_wheels\_angle\_slider}}
+\index{front\_wheels\_angle\_slider@{front\_wheels\_angle\_slider}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{front\_wheels\_angle\_slider}{front\_wheels\_angle\_slider}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::front\+\_\+wheels\+\_\+angle\+\_\+slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a567cb11a8b41bef6d1fa038ef0d82893}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a567cb11a8b41bef6d1fa038ef0d82893}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!front\_wheels\_angle\_slider\_value@{front\_wheels\_angle\_slider\_value}}
+\index{front\_wheels\_angle\_slider\_value@{front\_wheels\_angle\_slider\_value}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{front\_wheels\_angle\_slider\_value}{front\_wheels\_angle\_slider\_value}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::front\+\_\+wheels\+\_\+angle\+\_\+slider\+\_\+value = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aeea2f3334732660537a5427d09d73025}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aeea2f3334732660537a5427d09d73025}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!previous\_camera\_servo\_1\_angle\_slider\_angle@{previous\_camera\_servo\_1\_angle\_slider\_angle}}
+\index{previous\_camera\_servo\_1\_angle\_slider\_angle@{previous\_camera\_servo\_1\_angle\_slider\_angle}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{previous\_camera\_servo\_1\_angle\_slider\_angle}{previous\_camera\_servo\_1\_angle\_slider\_angle}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::previous\+\_\+camera\+\_\+servo\+\_\+1\+\_\+angle\+\_\+slider\+\_\+angle = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_adad16677a7684a342f6d915497f24592}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_adad16677a7684a342f6d915497f24592}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!previous\_camera\_servo\_2\_angle\_slider\_angle@{previous\_camera\_servo\_2\_angle\_slider\_angle}}
+\index{previous\_camera\_servo\_2\_angle\_slider\_angle@{previous\_camera\_servo\_2\_angle\_slider\_angle}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{previous\_camera\_servo\_2\_angle\_slider\_angle}{previous\_camera\_servo\_2\_angle\_slider\_angle}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::previous\+\_\+camera\+\_\+servo\+\_\+2\+\_\+angle\+\_\+slider\+\_\+angle = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6c095bc867e7ac847032f25f4d7dd3a9}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6c095bc867e7ac847032f25f4d7dd3a9}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!previous\_front\_wheels\_angle\_slider\_value@{previous\_front\_wheels\_angle\_slider\_value}}
+\index{previous\_front\_wheels\_angle\_slider\_value@{previous\_front\_wheels\_angle\_slider\_value}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{previous\_front\_wheels\_angle\_slider\_value}{previous\_front\_wheels\_angle\_slider\_value}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::previous\+\_\+front\+\_\+wheels\+\_\+angle\+\_\+slider\+\_\+value = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a6aaeef095356ba6fa4ee6c3d578c9c98}{DEFAULT\+\_\+\+FRONT\+\_\+\+WHEEL\+\_\+\+ANGLE}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a7c134d0c6ddf0e785bd11f3797670962}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a7c134d0c6ddf0e785bd11f3797670962}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!previous\_rear\_left\_wheel\_speed\_slider\_value@{previous\_rear\_left\_wheel\_speed\_slider\_value}}
+\index{previous\_rear\_left\_wheel\_speed\_slider\_value@{previous\_rear\_left\_wheel\_speed\_slider\_value}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{previous\_rear\_left\_wheel\_speed\_slider\_value}{previous\_rear\_left\_wheel\_speed\_slider\_value}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::previous\+\_\+rear\+\_\+left\+\_\+wheel\+\_\+speed\+\_\+slider\+\_\+value = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a3adaa0d547515cc11cb29edbe55817f9}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a3adaa0d547515cc11cb29edbe55817f9}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!previous\_rear\_right\_wheel\_speed\_slider\_value@{previous\_rear\_right\_wheel\_speed\_slider\_value}}
+\index{previous\_rear\_right\_wheel\_speed\_slider\_value@{previous\_rear\_right\_wheel\_speed\_slider\_value}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{previous\_rear\_right\_wheel\_speed\_slider\_value}{previous\_rear\_right\_wheel\_speed\_slider\_value}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::previous\+\_\+rear\+\_\+right\+\_\+wheel\+\_\+speed\+\_\+slider\+\_\+value = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a1c2aa81f5e77743e7ffe096303849ca2}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a1c2aa81f5e77743e7ffe096303849ca2}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!previous\_rear\_wheels\_speed\_slider\_value@{previous\_rear\_wheels\_speed\_slider\_value}}
+\index{previous\_rear\_wheels\_speed\_slider\_value@{previous\_rear\_wheels\_speed\_slider\_value}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{previous\_rear\_wheels\_speed\_slider\_value}{previous\_rear\_wheels\_speed\_slider\_value}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::previous\+\_\+rear\+\_\+wheels\+\_\+speed\+\_\+slider\+\_\+value = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae6e9a16dcf023d793070acbe15a4b3d3}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae6e9a16dcf023d793070acbe15a4b3d3}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_left\_wheel\_speed\_slider@{rear\_left\_wheel\_speed\_slider}}
+\index{rear\_left\_wheel\_speed\_slider@{rear\_left\_wheel\_speed\_slider}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_left\_wheel\_speed\_slider}{rear\_left\_wheel\_speed\_slider}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+left\+\_\+wheel\+\_\+speed\+\_\+slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a925f31346a10c7ac66ec493e025df0c1}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a925f31346a10c7ac66ec493e025df0c1}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_left\_wheel\_speed\_slider\_value@{rear\_left\_wheel\_speed\_slider\_value}}
+\index{rear\_left\_wheel\_speed\_slider\_value@{rear\_left\_wheel\_speed\_slider\_value}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_left\_wheel\_speed\_slider\_value}{rear\_left\_wheel\_speed\_slider\_value}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+left\+\_\+wheel\+\_\+speed\+\_\+slider\+\_\+value = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a035a97e2ae62db8c80f563a68d725e6a}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a035a97e2ae62db8c80f563a68d725e6a}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_right\_wheel\_speed\_slider@{rear\_right\_wheel\_speed\_slider}}
+\index{rear\_right\_wheel\_speed\_slider@{rear\_right\_wheel\_speed\_slider}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_right\_wheel\_speed\_slider}{rear\_right\_wheel\_speed\_slider}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+right\+\_\+wheel\+\_\+speed\+\_\+slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa47a8024f064beea5ccdff97fe01efe3}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa47a8024f064beea5ccdff97fe01efe3}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_right\_wheel\_speed\_slider\_value@{rear\_right\_wheel\_speed\_slider\_value}}
+\index{rear\_right\_wheel\_speed\_slider\_value@{rear\_right\_wheel\_speed\_slider\_value}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_right\_wheel\_speed\_slider\_value}{rear\_right\_wheel\_speed\_slider\_value}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+right\+\_\+wheel\+\_\+speed\+\_\+slider\+\_\+value = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a8f992a009d6a9499e4cc06ccd9cd9229}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a8f992a009d6a9499e4cc06ccd9cd9229}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_wheel\_direction@{rear\_wheel\_direction}}
+\index{rear\_wheel\_direction@{rear\_wheel\_direction}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_wheel\_direction}{rear\_wheel\_direction}}
+{\footnotesize\ttfamily bool car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+wheel\+\_\+direction = true\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae2f1fe7de8aa541dc055f0bc6f8cceed}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae2f1fe7de8aa541dc055f0bc6f8cceed}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!REAR\_WHEEL\_DIRECTION\_BACKWARD\_MESSAGE@{REAR\_WHEEL\_DIRECTION\_BACKWARD\_MESSAGE}}
+\index{REAR\_WHEEL\_DIRECTION\_BACKWARD\_MESSAGE@{REAR\_WHEEL\_DIRECTION\_BACKWARD\_MESSAGE}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{REAR\_WHEEL\_DIRECTION\_BACKWARD\_MESSAGE}{REAR\_WHEEL\_DIRECTION\_BACKWARD\_MESSAGE}}
+{\footnotesize\ttfamily constexpr auto car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::\+REAR\+\_\+\+WHEEL\+\_\+\+DIRECTION\+\_\+\+BACKWARD\+\_\+\+MESSAGE = \char`\"{}Rear Wheel Direction\+: Backward\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aff75ce347a1f4e2d4b6cdd43a90d0069}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aff75ce347a1f4e2d4b6cdd43a90d0069}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_wheel\_direction\_checkbox\_component@{rear\_wheel\_direction\_checkbox\_component}}
+\index{rear\_wheel\_direction\_checkbox\_component@{rear\_wheel\_direction\_checkbox\_component}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_wheel\_direction\_checkbox\_component}{rear\_wheel\_direction\_checkbox\_component}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+wheel\+\_\+direction\+\_\+checkbox\+\_\+component\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_abf37ac4c267073065ffba36548f05823}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_abf37ac4c267073065ffba36548f05823}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_wheel\_direction\_debounce@{rear\_wheel\_direction\_debounce}}
+\index{rear\_wheel\_direction\_debounce@{rear\_wheel\_direction\_debounce}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_wheel\_direction\_debounce}{rear\_wheel\_direction\_debounce}}
+{\footnotesize\ttfamily bool car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+wheel\+\_\+direction\+\_\+debounce = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a45818ae4f24f0339269df10548127d91}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a45818ae4f24f0339269df10548127d91}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!REAR\_WHEEL\_DIRECTION\_FORWARD\_MESSAGE@{REAR\_WHEEL\_DIRECTION\_FORWARD\_MESSAGE}}
+\index{REAR\_WHEEL\_DIRECTION\_FORWARD\_MESSAGE@{REAR\_WHEEL\_DIRECTION\_FORWARD\_MESSAGE}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{REAR\_WHEEL\_DIRECTION\_FORWARD\_MESSAGE}{REAR\_WHEEL\_DIRECTION\_FORWARD\_MESSAGE}}
+{\footnotesize\ttfamily constexpr auto car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::\+REAR\+\_\+\+WHEEL\+\_\+\+DIRECTION\+\_\+\+FORWARD\+\_\+\+MESSAGE = \char`\"{}Rear Wheel Direction\+: Forward\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae7368b83642a89d51df3cd761b593b7d}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae7368b83642a89d51df3cd761b593b7d}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_wheel\_direction\_signal@{rear\_wheel\_direction\_signal}}
+\index{rear\_wheel\_direction\_signal@{rear\_wheel\_direction\_signal}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_wheel\_direction\_signal}{rear\_wheel\_direction\_signal}}
+{\footnotesize\ttfamily nod\+::signal$<$void(bool)$>$ car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+wheel\+\_\+direction\+\_\+signal\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a06b1cc90e6d4e00b1c17a8895f277c3f}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a06b1cc90e6d4e00b1c17a8895f277c3f}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_wheel\_direction\_status@{rear\_wheel\_direction\_status}}
+\index{rear\_wheel\_direction\_status@{rear\_wheel\_direction\_status}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_wheel\_direction\_status}{rear\_wheel\_direction\_status}}
+{\footnotesize\ttfamily std\+::string car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+wheel\+\_\+direction\+\_\+status = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a45818ae4f24f0339269df10548127d91}{REAR\+\_\+\+WHEEL\+\_\+\+DIRECTION\+\_\+\+FORWARD\+\_\+\+MESSAGE}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa3e8750f520e7f94a7ee7f19e91acf3c}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_aa3e8750f520e7f94a7ee7f19e91acf3c}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_wheel\_menu\_entry@{rear\_wheel\_menu\_entry}}
+\index{rear\_wheel\_menu\_entry@{rear\_wheel\_menu\_entry}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_wheel\_menu\_entry}{rear\_wheel\_menu\_entry}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+wheel\+\_\+menu\+\_\+entry\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a5f90380f0fe47ccc3a7b970784263852}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a5f90380f0fe47ccc3a7b970784263852}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_wheel\_speed\_slider@{rear\_wheel\_speed\_slider}}
+\index{rear\_wheel\_speed\_slider@{rear\_wheel\_speed\_slider}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_wheel\_speed\_slider}{rear\_wheel\_speed\_slider}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+wheel\+\_\+speed\+\_\+slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a1e39d072eb3f6adf8fd8ad836cb8f427}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a1e39d072eb3f6adf8fd8ad836cb8f427}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!rear\_wheels\_speed\_slider\_value@{rear\_wheels\_speed\_slider\_value}}
+\index{rear\_wheels\_speed\_slider\_value@{rear\_wheels\_speed\_slider\_value}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{rear\_wheels\_speed\_slider\_value}{rear\_wheels\_speed\_slider\_value}}
+{\footnotesize\ttfamily int car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::rear\+\_\+wheels\+\_\+speed\+\_\+slider\+\_\+value = \mbox{\hyperlink{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a9c24c7ea84d0b4e664267afc116b490a}{DEFAULT\+\_\+\+REAR\+\_\+\+WHEEL\+\_\+\+SPEED}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a5433aa24ad24239532f93a201986dffe}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_a5433aa24ad24239532f93a201986dffe}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!servo\_menu\_entry@{servo\_menu\_entry}}
+\index{servo\_menu\_entry@{servo\_menu\_entry}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{servo\_menu\_entry}{servo\_menu\_entry}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::servo\+\_\+menu\+\_\+entry\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae1d6630cae1f4aa190f2bf4b1b449aa6}\label{classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer_ae1d6630cae1f4aa190f2bf4b1b449aa6}} 
+\index{car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}!slider\_container@{slider\_container}}
+\index{slider\_container@{slider\_container}!car::display::console::component::debug::DebugMovementRenderer@{car::display::console::component::debug::DebugMovementRenderer}}
+\doxysubsubsection{\texorpdfstring{slider\_container}{slider\_container}}
+{\footnotesize\ttfamily Component car\+::display\+::console\+::component\+::debug\+::\+Debug\+Movement\+Renderer\+::slider\+\_\+container\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tui/src/car/display/console/component/debug/\mbox{\hyperlink{DebugMovementRenderer_8cxx}{Debug\+Movement\+Renderer.\+cxx}}\end{DoxyCompactItemize}

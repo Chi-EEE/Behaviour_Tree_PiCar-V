@@ -6,7 +6,34 @@ var annotated_dup =
     ] ],
     [ "car", "namespacecar.html", [
       [ "configuration", "namespacecar_1_1configuration.html", [
-        [ "Configuration", "structcar_1_1configuration_1_1Configuration.html", "structcar_1_1configuration_1_1Configuration" ]
+        [ "Configuration", "structcar_1_1configuration_1_1Configuration.html", "structcar_1_1configuration_1_1Configuration" ],
+        [ "JsonConfiguration", "classcar_1_1configuration_1_1JsonConfiguration.html", "classcar_1_1configuration_1_1JsonConfiguration" ]
+      ] ],
+      [ "display", "namespacecar_1_1display.html", [
+        [ "console", "namespacecar_1_1display_1_1console.html", [
+          [ "component", "namespacecar_1_1display_1_1console_1_1component.html", [
+            [ "debug", "namespacecar_1_1display_1_1console_1_1component_1_1debug.html", [
+              [ "DebugEnabler", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugEnabler.html", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugEnabler" ],
+              [ "DebugLidarCheckbox", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugLidarCheckbox.html", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugLidarCheckbox" ],
+              [ "DebugMessagingTextbox", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMessagingTextbox.html", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMessagingTextbox" ],
+              [ "DebugMovementRenderer", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer.html", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer" ]
+            ] ],
+            [ "main", "namespacecar_1_1display_1_1console_1_1component_1_1main.html", [
+              [ "ConnectButton", "classcar_1_1display_1_1console_1_1component_1_1main_1_1ConnectButton.html", "classcar_1_1display_1_1console_1_1component_1_1main_1_1ConnectButton" ],
+              [ "MainErrorModal", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainErrorModal.html", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainErrorModal" ],
+              [ "MainExitModal", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainExitModal.html", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainExitModal" ]
+            ] ],
+            [ "settings", "namespacecar_1_1display_1_1console_1_1component_1_1settings.html", [
+              [ "SettingsEditConfig", "classcar_1_1display_1_1console_1_1component_1_1settings_1_1SettingsEditConfig.html", "classcar_1_1display_1_1console_1_1component_1_1settings_1_1SettingsEditConfig" ]
+            ] ]
+          ] ],
+          [ "screen", "namespacecar_1_1display_1_1console_1_1screen.html", [
+            [ "LoggingScreen", "classcar_1_1display_1_1console_1_1screen_1_1LoggingScreen.html", "classcar_1_1display_1_1console_1_1screen_1_1LoggingScreen" ],
+            [ "MainScreen", "classcar_1_1display_1_1console_1_1screen_1_1MainScreen.html", "classcar_1_1display_1_1console_1_1screen_1_1MainScreen" ],
+            [ "SettingsScreen", "classcar_1_1display_1_1console_1_1screen_1_1SettingsScreen.html", "classcar_1_1display_1_1console_1_1screen_1_1SettingsScreen" ]
+          ] ],
+          [ "CarConsole", "classcar_1_1display_1_1console_1_1CarConsole.html", "classcar_1_1display_1_1console_1_1CarConsole" ]
+        ] ]
       ] ],
       [ "plugin", "namespacecar_1_1plugin.html", [
         [ "Plugin", "classcar_1_1plugin_1_1Plugin.html", "classcar_1_1plugin_1_1Plugin" ],
@@ -38,5 +65,7 @@ var annotated_dup =
         [ "CarSystem", "classcar_1_1system_1_1CarSystem.html", "classcar_1_1system_1_1CarSystem" ]
       ] ]
     ] ],
-    [ "BackWheels", "classBackWheels.html", "classBackWheels" ]
+    [ "BackWheels", "classBackWheels.html", "classBackWheels" ],
+    [ "rpi_daemon", "classrpi__daemon.html", "classrpi__daemon" ],
+    [ "TB6612", "classTB6612.html", "classTB6612" ]
 ];

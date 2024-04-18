@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rearwheel_2ecpp_0',['RearWheel.cpp',['../RearWheel_8cpp.html',1,'']]],
-  ['rearwheel_2eh_1',['RearWheel.h',['../RearWheel_8h.html',1,'']]]
+  ['plugin_2eh_0',['Plugin.h',['../Plugin_8h.html',1,'']]],
+  ['pluginmanager_2eh_1',['PluginManager.h',['../PluginManager_8h.html',1,'']]]
 ];

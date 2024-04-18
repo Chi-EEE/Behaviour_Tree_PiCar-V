@@ -1,0 +1,34 @@
+Set up the following first\+:
+
+
+\begin{DoxyItemize}
+\item Wifi -\/ Use the Mobile Hotspot feature of your device
+\item SSH -\/ Enable
+\item I2C -\/ Enable
+\end{DoxyItemize}
+
+See if Wifi does not connect\+: \href{https://raspberrypi.stackexchange.com/questions/96736}{\texttt{ Raspberrypi Stackexchange}}
+
+Now connect to the Raspberry Pi with SSH
+
+Run the following commands to get the raspberry pi running\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo apt-\/get install build-\/essential}
+\DoxyCodeLine{curl -\/fsSL https://xmake.io/shget.text | bash}
+\DoxyCodeLine{source \string~/.xmake/profile}
+
+\end{DoxyCode}
+
+
+Run the following commands before cross compilation\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo apt update}
+\DoxyCodeLine{sudo apt upgrade}
+\DoxyCodeLine{sudo apt dist-\/upgrade}
+
+\end{DoxyCode}
+ or {\ttfamily sudo apt update \&\& sudo apt upgrade \&\& sudo apt dist-\/upgrade}
+
+Afterwards run {\ttfamily chmod +x ./rpi\+\_\+tui} on the new executable
+
+Use \href{https://cyberduck.io/}{\texttt{ Cyber\+Duck}} to copy the raspberry\+\_\+pi folder. 

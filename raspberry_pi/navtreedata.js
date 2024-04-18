@@ -25,6 +25,32 @@
 var NAVTREE =
 [
   [ "Behaviour Tree PiCar-V", "index.html", [
+    [ "Sunfounder PiCar Daemon", "md_daemon_install_README.html", [
+      [ "Installation:", "md_daemon_install_README.html#autotoc_md1", null ],
+      [ "View Logs", "md_daemon_install_README.html#autotoc_md2", null ]
+    ] ],
+    [ "Raspberry Pi Daemon", "md_daemon_README.html", [
+      [ "Install Raspberry Pi Daemon", "md_daemon_README.html#autotoc_md4", null ],
+      [ "Enable / Disable Daemon to run on startup", "md_daemon_README.html#autotoc_md5", null ],
+      [ "Start / Stop / Restart Daemon", "md_daemon_README.html#autotoc_md6", null ],
+      [ "View Logs", "md_daemon_README.html#autotoc_md7", null ],
+      [ "Clear Past Logs", "md_daemon_README.html#autotoc_md8", null ],
+      [ "Reload Daemon", "md_daemon_README.html#autotoc_md9", null ],
+      [ "Change Config", "md_daemon_README.html#autotoc_md10", null ],
+      [ "Uninstall Raspberry Pi Daemon", "md_daemon_README.html#autotoc_md11", null ],
+      [ "Speedrun", "md_daemon_README.html#autotoc_md12", null ]
+    ] ],
+    [ "Raspberry Pi", "md_README.html", [
+      [ "Main Technologies", "md_README.html#autotoc_md14", null ],
+      [ "Setting up Raspberry Pi", "md_README.html#autotoc_md15", null ]
+    ] ],
+    [ "SETUP", "md_SETUP.html", null ],
+    [ "Raspberry Pi", "md_tui_README.html", [
+      [ "Installation", "md_tui_README.html#autotoc_md17", null ],
+      [ "Main Technologies", "md_tui_README.html#autotoc_md18", null ],
+      [ "Setting up Raspberry Pi", "md_tui_README.html#autotoc_md19", null ]
+    ] ],
+    [ "SETUP", "md_tui_SETUP.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -38,7 +64,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
@@ -50,7 +76,8 @@ var NAVTREE =
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ]
+        [ "Enumerator", "globals_eval.html", null ],
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -59,8 +86,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AbstractMovementController_8h.html",
-"classcar_1_1system_1_1device_1_1DeviceManager.html#ab6d3c6d5180f9ad376e56da7129a2855",
-"classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController.html#afe6f58ddebfef0c878ee1e8de381c716"
+"classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer.html#a05723191ce205f13a10e875ecbbe92ea",
+"classcar_1_1system_1_1CarSystem.html#ad3d30be79c4ac8150cf280c977ad280c",
+"classcar_1_1system_1_1movement_1_1MovementSystem.html#aa72a749d44b6b601eaa36b4994e35735",
+"structcar_1_1configuration_1_1Configuration.html#a3c92a6852f3c0105b6c45475fe089cc9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

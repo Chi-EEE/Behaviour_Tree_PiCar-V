@@ -1,23 +1,5 @@
 var searchData=
 [
-  ['get_5flog_5fmessages_0',['get_log_messages',['../classcar_1_1system_1_1logging_1_1VectorSink.html#abcf04c0c22017aa4a423520a8bc21cd3',1,'car::system::logging::VectorSink']]],
-  ['getcameradevice_1',['getCameraDevice',['../classcar_1_1system_1_1device_1_1DeviceManager.html#ae1fdaef279657c21008f23e2a34913ce',1,'car::system::device::DeviceManager']]],
-  ['getcamerafpsinterval_2',['getCameraFpsInterval',['../structcar_1_1configuration_1_1Configuration.html#a94d1a5807a59a79a8c386fafe3e420eb',1,'car::configuration::Configuration']]],
-  ['getcarsystem_3',['getCarSystem',['../classbehaviour__tree_1_1CarContext.html#ae64d406a3ec171b9c0eb40aa52dff676',1,'behaviour_tree::CarContext']]],
-  ['getcommandsignal_4',['getCommandSignal',['../classcar_1_1system_1_1messaging_1_1MessagingSystem.html#acb45ac80d9441f19b83879be864c2a56',1,'car::system::messaging::MessagingSystem']]],
-  ['getconfiguration_5',['getConfiguration',['../classcar_1_1system_1_1CarSystem.html#ad7ef3bc25192eeba42e8a6f06118951c',1,'car::system::CarSystem']]],
-  ['getdevicemanager_6',['getDeviceManager',['../classcar_1_1system_1_1CarSystem.html#adbdea8038ec8df17c602cbdfc85b6c1e',1,'car::system::CarSystem']]],
-  ['getdisconnectsignal_7',['getDisconnectSignal',['../classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a51f37df7bd559723c746ac60ae9e2737',1,'car::system::messaging::MessagingSystem']]],
-  ['getfirstmessage_8',['getFirstMessage',['../classcar_1_1system_1_1messaging_1_1MessagingSystem.html#aea22af17f50b567709684bb77f607361',1,'car::system::messaging::MessagingSystem']]],
-  ['getframebuffer_9',['getFrameBuffer',['../classcar_1_1system_1_1device_1_1CameraDevice.html#a4f95920a533262ba847a977099e7b434',1,'car::system::device::CameraDevice']]],
-  ['getlidardevice_10',['getLidarDevice',['../classcar_1_1system_1_1device_1_1DeviceManager.html#a02f4fde9e57bf6d1e59f303980d580e0',1,'car::system::device::DeviceManager']]],
-  ['getmessagesignal_11',['getMessageSignal',['../classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a896805eef7fb6cabced9121b62b44e57',1,'car::system::messaging::MessagingSystem']]],
-  ['getmessagingsystem_12',['getMessagingSystem',['../classcar_1_1system_1_1CarSystem.html#af79b6288bf0f651c74b618cfc321443b',1,'car::system::CarSystem']]],
-  ['getmovementsystem_13',['getMovementSystem',['../classcar_1_1system_1_1CarSystem.html#a423df31a4a0de7033026aef6c27db3cd',1,'car::system::CarSystem']]],
-  ['getname_14',['getName',['../classbehaviour__tree_1_1BehaviourTreeHandler.html#a1ff821d64c3b47bf711367205eb6e39f',1,'behaviour_tree::BehaviourTreeHandler::getName()'],['../classcar_1_1plugin_1_1Plugin.html#a9c49d13e1c19885b0374a1c3af49fbfa',1,'car::plugin::Plugin::getName()']]],
-  ['getplugin_15',['getPlugin',['../classcar_1_1plugin_1_1PluginManager.html#a8eb369a6c295bb57a5581f782aa757e2',1,'car::plugin::PluginManager::getPlugin()'],['../classcar_1_1system_1_1CarSystem.html#a0e10db9cb2d8d6308e7c1fd5e00da735',1,'car::system::CarSystem::getPlugin()']]],
-  ['getscandata_16',['getScanData',['../classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice.html#a3f09073d328373191017634548ded60f',1,'car::system::device::lidar::LidarDevice']]],
-  ['getselectionsignal_17',['getSelectionSignal',['../classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a01ea5e361e8bd25df66b0e20d22b2e88',1,'car::system::messaging::MessagingSystem']]],
-  ['getspeed_18',['getSpeed',['../classBackWheels.html#ab2d6f1e0cbe253e5331abc4c3688eb33',1,'BackWheels']]],
-  ['getuuid_19',['getUUID',['../classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a6585072611a135d613d2f1c0b4e6185f',1,'car::system::messaging::MessagingSystem']]]
+  ['flush_5f_0',['flush_',['../classcar_1_1system_1_1logging_1_1VectorSink.html#aff218d3af65bec5af12f785f28c6f1fd',1,'car::system::logging::VectorSink']]],
+  ['forward_1',['forward',['../classBackWheels.html#a65c0a2c8e6e9874169d6a5ce8218bf84',1,'BackWheels::forward()'],['../classTB6612.html#a32efd331bd1b09b37ac07113e1adde2f',1,'TB6612::forward()']]]
 ];

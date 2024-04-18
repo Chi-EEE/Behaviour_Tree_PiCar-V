@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['max_5flines_0',['max_lines',['../classcar_1_1system_1_1logging_1_1VectorSink.html#a1da9bf98e6bb6f439893902e047bb603',1,'car::system::logging::VectorSink']]],
-  ['message_5fsignal_5f_1',['message_signal_',['../classcar_1_1system_1_1messaging_1_1MessagingSystem.html#ad74ee3dc3da33b149227be370ace2ae5',1,'car::system::messaging::MessagingSystem']]],
-  ['messaging_5fsystem_5f_2',['messaging_system_',['../classcar_1_1system_1_1CarSystem.html#afa095993b79f1f35664a4310b6a45bf5',1,'car::system::CarSystem']]],
-  ['movement_5fcontroller_3',['movement_controller',['../classcar_1_1system_1_1movement_1_1MovementSystem.html#accfdf66dcbfed062111b01bc2c09c6be',1,'car::system::movement::MovementSystem']]],
-  ['movement_5fsystem_5f_4',['movement_system_',['../classcar_1_1system_1_1CarSystem.html#abaa732afd8d2e9b88e9005c5469897c5',1,'car::system::CarSystem']]]
+  ['json_5fconfiguration_0',['json_configuration',['../classcar_1_1display_1_1console_1_1CarConsole.html#ab50bcb2d2bf528bf9c5f0acccb77cbab',1,'car::display::console::CarConsole::json_configuration()'],['../classcar_1_1display_1_1console_1_1component_1_1settings_1_1SettingsEditConfig.html#a38780c12a6775e5f9a35d2e13e923d1d',1,'car::display::console::component::settings::SettingsEditConfig::json_configuration()']]]
 ];

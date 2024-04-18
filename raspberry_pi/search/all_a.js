@@ -1,17 +1,7 @@
 var searchData=
 [
-  ['last_0',['last',['../classcar_1_1system_1_1device_1_1CameraDevice.html#a56f9e43191419958b6904c0385fa6e4d',1,'car::system::device::CameraDevice']]],
-  ['last_5fconnected_1',['last_connected',['../classbehaviour__tree_1_1BehaviourTreeHandler.html#a47bacae8472f3b76ce27988eb4b161ca',1,'behaviour_tree::BehaviourTreeHandler']]],
-  ['left_5fwheel_2',['left_wheel',['../classBackWheels.html#ab14e9b09ac5c0f6cf0b11718e68edfb9',1,'BackWheels']]],
-  ['lidar_3',['Lidar',['../StreamType_8h.html#a8a65141d9ea4bf9d2e2377ed6b888a1da1c30ae643b5eb4b7c08c7e7c7f8f18c8',1,'StreamType.h']]],
-  ['lidar_5f_4',['lidar_',['../classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#abd1a4b02c0a7c0e4963be0238a26813b',1,'car::system::device::lidar::LidarScanner']]],
-  ['lidar_5fdevice_5f_5',['lidar_device_',['../classcar_1_1system_1_1device_1_1DeviceManager.html#a53bd44189a05e5ecc18eddb938a73b5a',1,'car::system::device::DeviceManager']]],
-  ['lidar_5fport_6',['lidar_port',['../structcar_1_1configuration_1_1Configuration.html#a01a46009cc5fff499ea623d636ca562e',1,'car::configuration::Configuration']]],
-  ['lidardevice_7',['LidarDevice',['../classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice.html',1,'car::system::device::lidar']]],
-  ['lidardevice_2eh_8',['LidarDevice.h',['../LidarDevice_8h.html',1,'']]],
-  ['lidardummy_9',['LidarDummy',['../classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy.html',1,'car::system::device::lidar::LidarDummy'],['../classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy.html#a9751a890e91ec8fe8acf44b8e03a8355',1,'car::system::device::lidar::LidarDummy::LidarDummy()']]],
-  ['lidardummy_2eh_10',['LidarDummy.h',['../LidarDummy_8h.html',1,'']]],
-  ['lidarscanner_11',['LidarScanner',['../classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html',1,'car::system::device::lidar::LidarScanner'],['../classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#a7629b3dcb9559e1d77725bdf274378b6',1,'car::system::device::lidar::LidarScanner::LidarScanner()']]],
-  ['lidarscanner_2eh_12',['LidarScanner.h',['../LidarScanner_8h.html',1,'']]],
-  ['log_5fmessages_13',['log_messages',['../classcar_1_1system_1_1logging_1_1VectorSink.html#a2901d26eb70daac9d4d130e340272593',1,'car::system::logging::VectorSink']]]
+  ['json_5fconfiguration_0',['json_configuration',['../classcar_1_1display_1_1console_1_1CarConsole.html#ab50bcb2d2bf528bf9c5f0acccb77cbab',1,'car::display::console::CarConsole::json_configuration()'],['../classcar_1_1display_1_1console_1_1component_1_1settings_1_1SettingsEditConfig.html#a38780c12a6775e5f9a35d2e13e923d1d',1,'car::display::console::component::settings::SettingsEditConfig::json_configuration()']]],
+  ['jsonconfiguration_1',['JsonConfiguration',['../classcar_1_1configuration_1_1JsonConfiguration.html',1,'car::configuration::JsonConfiguration'],['../classcar_1_1configuration_1_1JsonConfiguration.html#ab5d36f513fa7f9e0199b6c9817a7ac40',1,'car::configuration::JsonConfiguration::JsonConfiguration()']]],
+  ['jsonconfiguration_2ecxx_2',['JsonConfiguration.cxx',['../JsonConfiguration_8cxx.html',1,'']]],
+  ['jsonconfiguration_5fcxx_3',['JSONCONFIGURATION_CXX',['../JsonConfiguration_8cxx.html#a6d1dae0effb2a0e7da21cff5ebfb55a0',1,'JsonConfiguration.cxx']]]
 ];
