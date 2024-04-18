@@ -24,12 +24,12 @@ jobs:
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
           doxyfile-path: "./Doxyfile"
-          working-directory: "./rpi/common"
+          working-directory: "./app/rpi/common"
 
       - name: Move Doxygen HTML files into their parent directories
         run: |
           # sudo mv docs/backend/html/* docs/backend
-          sudo mv docs/rpi/common/html/* docs/raspberry_pi
+          sudo mv docs/app/rpi/common/html/* docs/raspberry_pi
 
       # - name: Build JSDoc documentation
       #   uses: andstor/jsdoc-action@v1
