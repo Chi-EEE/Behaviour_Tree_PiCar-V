@@ -70,7 +70,7 @@ public:
         configuration->lidar_port = lidar_port;
         configuration->use_lidar = reader.GetBool("Lidar", "use_lidar", true);
 
-        configuration->behaviour_tree_update_ms_interval = std::chrono::milliseconds(reader.GetInteger("RaspberryPi", "behaviour_tree_update_ms_interval", 100));
+        configuration->behaviour_tree_update_ms_interval = std::chrono::milliseconds(reader.GetInteger("BehaviourTree", "behaviour_tree_update_ms_interval", 100));
         
         this->any_configuration_empty = host.empty();
         if (this->any_configuration_empty)
