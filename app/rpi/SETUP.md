@@ -1,3 +1,5 @@
+# Behaviour Tree PiCar-V Setup
+
 Set up the following first:
 
 - Wifi - Use the Mobile Hotspot feature of your device
@@ -23,7 +25,3 @@ sudo apt dist-upgrade
 ```
 or
 `sudo apt update && sudo apt upgrade && sudo apt dist-upgrade`
-
-Afterwards run `chmod +x ./rpi_tui` on the new executable
-
-Use [CyberDuck](https://cyberduck.io/) to copy the raspberry_pi folder.
