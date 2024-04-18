@@ -21,16 +21,36 @@ namespace behaviour_tree::node::blackboard
         const std::string toString() const final override
         {
             const std::string &name = this->getName();
+            const std::string condition_operator = [&]() {
+                switch (this->condition_operator)
+                {
+                case ConditionOperatorType::Equal:
+                    return "=";
+                case ConditionOperatorType::GreaterThan:
+                    return ">";
+                case ConditionOperatorType::GreaterThanOrEqual:
+                    return ">=";
+                case ConditionOperatorType::LessThan:
+                    return "<";
+                case ConditionOperatorType::LessThanOrEqual:
+                    return "<=";
+                case ConditionOperatorType::NotEqual:
+                    return "!=";
+                default:
+                    return "Invalid";
+                }
+                }
+            ();
             if (name != "")
-                return fmt::format(R"(<Blackboard:IntegerCondition name='{}' operator='{}'/>)", name, out);
+                return fmt::format(R"(<Blackboard:IntegerCondition name='{}' variable_name='{}' condition_operator='{}' value='{}'/>)", name, this->variable_name, condition_operator, this->value);
             else
-                return fmt::format(R"(<Blackboard:IntegerCondition operator='{}'/>)", out);
+                return fmt::format(R"(<Blackboard:IntegerCondition variable_name='{}' condition_operator='{}' value='{}'/>)", this->variable_name, condition_operator, this->value);
         }
 
     private:
-        std::string variable_name;
-        ConditionOperatorType operator;
-        int value;
+        const std::string variable_name;
+        const ConditionOperatorType condition_operator;
+        const int value;
     };
 }
 

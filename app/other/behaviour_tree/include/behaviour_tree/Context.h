@@ -43,6 +43,7 @@ namespace behaviour_tree
 
         void setBlackboard(const std::string& key, const int value);
         int getBlackboard(const std::string& key) const;
+		int containsBlackboard(const std::string& key) const;
 
 		// Necessary for the class to be a polymorphic
 		virtual void _() {};

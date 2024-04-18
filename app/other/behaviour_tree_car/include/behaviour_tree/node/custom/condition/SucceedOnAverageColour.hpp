@@ -10,7 +10,6 @@
 #include "behaviour_tree/CarContext.hpp"
 #include <spdlog/spdlog.h>
 #include <opencv2/opencv.hpp>
-#include <fmt/format.h>
 #endif // !BEHAVIOUR_TREE_DISABLE_RUN
 
 namespace behaviour_tree::node::custom::condition

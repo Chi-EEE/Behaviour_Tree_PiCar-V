@@ -63,8 +63,13 @@ namespace behaviour_tree {
         this->blackboard[key] = value;
     }
 
-    int Context::getBlackboard(const std::string &key) const
-    {
-        return this->blackboard.at(key);
-    }
+	int Context::getBlackboard(const std::string& key) const
+	{
+		return this->blackboard.at(key);
+	}
+
+	int Context::containsBlackboard(const std::string& key) const
+	{
+		return this->blackboard.find(key) != this->blackboard.end();
+	}
 }

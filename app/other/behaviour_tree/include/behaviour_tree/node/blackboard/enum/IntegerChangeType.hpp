@@ -10,8 +10,6 @@ namespace behaviour_tree::node::blackboard
         Set,
         Add,
         Subtract,
-        Multiply,
-        Divide,
     };
 }
 
