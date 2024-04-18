@@ -14,29 +14,29 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build Doxygen documentation for Backend
-        uses: mattnotmitt/doxygen-action@v1.9.5
-        with:
-          doxyfile-path: "./Doxyfile"
-          working-directory: "./backend"
+      # - name: Build Doxygen documentation for Backend
+      #   uses: mattnotmitt/doxygen-action@v1.9.5
+      #   with:
+      #     doxyfile-path: "./Doxyfile"
+      #     working-directory: "./backend"
       
       - name: Build Doxygen documentation for Raspberry Pi
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
           doxyfile-path: "./Doxyfile"
-          working-directory: "./raspberry_pi"
+          working-directory: "./rpi/common"
 
       - name: Move Doxygen HTML files into their parent directories
         run: |
-          sudo mv docs/backend/html/* docs/backend
-          sudo mv docs/raspberry_pi/html/* docs/raspberry_pi
+          # sudo mv docs/backend/html/* docs/backend
+          sudo mv docs/rpi/common/html/* docs/raspberry_pi
 
-      - name: Build JSDoc documentation
-        uses: andstor/jsdoc-action@v1
-        with:
-            config_file: "./frontend/jsdoc.config.json"
-            output_dir: './docs/frontend'
-            recurse: true
+      # - name: Build JSDoc documentation
+      #   uses: andstor/jsdoc-action@v1
+      #   with:
+      #       config_file: "./frontend/jsdoc.config.json"
+      #       output_dir: './docs/frontend'
+      #       recurse: true
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
