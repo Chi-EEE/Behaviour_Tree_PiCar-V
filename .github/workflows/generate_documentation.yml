@@ -24,15 +24,6 @@ jobs:
         run: |
           sudo mv docs/raspberry_pi/html/* docs/raspberry_pi
 
-      - name: Generate Doxygen pdf
-        run: |
-          sudo apt-get install texlive-latex-base
-          sudo apt-get install texlive-fonts-recommended
-          sudo apt-get install texlive-fonts-extra
-          sudo apt-get install texlive-latex-extra
-          cd docs/raspberry_pi/latex
-          sudo make
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
