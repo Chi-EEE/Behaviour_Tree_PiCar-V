@@ -1,0 +1,106 @@
+\hypertarget{structcar_1_1configuration_1_1Configuration}{}\doxysection{car\+::configuration\+::Configuration Struct Reference}
+\label{structcar_1_1configuration_1_1Configuration}\index{car::configuration::Configuration@{car::configuration::Configuration}}
+
+
+{\ttfamily \#include $<$Configuration.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a95c7621ba0a775961a6c533cd6461b0b}{set\+Camera\+Fps}} (const int \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a70cb64a5b83623c9ece988fe5563bacd}{camera\+\_\+fps}})
+\item 
+const int \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a94d1a5807a59a79a8c386fafe3e420eb}{get\+Camera\+Fps\+Interval}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a3c92a6852f3c0105b6c45475fe089cc9}{host}} = \char`\"{}127.\+0.\+0.\+1\+:3000\char`\"{}
+\item 
+int \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a52b38197b557d5cef75f2f91a1848163}{camera\+\_\+index}} = 0
+\item 
+bool \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a3ca2ae2503fd981580984bf15962caf2}{use\+\_\+camera}} = true
+\item 
+std\+::string \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a01a46009cc5fff499ea623d636ca562e}{lidar\+\_\+port}} = \char`\"{}\char`\"{}
+\item 
+bool \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a687fb5d8e91175529e0a3e3280bece8b}{use\+\_\+lidar}} = true
+\item 
+std\+::chrono\+::milliseconds \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a11aefefb94ee7877282bc1a153b4602b}{behaviour\+\_\+tree\+\_\+update\+\_\+ms\+\_\+interval}} = std\+::chrono\+::milliseconds(100)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_a70cb64a5b83623c9ece988fe5563bacd}{camera\+\_\+fps}} = 60
+\item 
+int \mbox{\hyperlink{structcar_1_1configuration_1_1Configuration_ab81a6b4ad04f976a1d11e9d0055acd7b}{camera\+\_\+fps\+\_\+interval}} = 1000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_a94d1a5807a59a79a8c386fafe3e420eb}\label{structcar_1_1configuration_1_1Configuration_a94d1a5807a59a79a8c386fafe3e420eb}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!getCameraFpsInterval@{getCameraFpsInterval}}
+\index{getCameraFpsInterval@{getCameraFpsInterval}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{getCameraFpsInterval()}{getCameraFpsInterval()}}
+{\footnotesize\ttfamily const int car\+::configuration\+::\+Configuration\+::get\+Camera\+Fps\+Interval (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_a95c7621ba0a775961a6c533cd6461b0b}\label{structcar_1_1configuration_1_1Configuration_a95c7621ba0a775961a6c533cd6461b0b}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!setCameraFps@{setCameraFps}}
+\index{setCameraFps@{setCameraFps}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{setCameraFps()}{setCameraFps()}}
+{\footnotesize\ttfamily void car\+::configuration\+::\+Configuration\+::set\+Camera\+Fps (\begin{DoxyParamCaption}\item[{const int}]{camera\+\_\+fps }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_a11aefefb94ee7877282bc1a153b4602b}\label{structcar_1_1configuration_1_1Configuration_a11aefefb94ee7877282bc1a153b4602b}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!behaviour\_tree\_update\_ms\_interval@{behaviour\_tree\_update\_ms\_interval}}
+\index{behaviour\_tree\_update\_ms\_interval@{behaviour\_tree\_update\_ms\_interval}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{behaviour\_tree\_update\_ms\_interval}{behaviour\_tree\_update\_ms\_interval}}
+{\footnotesize\ttfamily std\+::chrono\+::milliseconds car\+::configuration\+::\+Configuration\+::behaviour\+\_\+tree\+\_\+update\+\_\+ms\+\_\+interval = std\+::chrono\+::milliseconds(100)}
+
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_a70cb64a5b83623c9ece988fe5563bacd}\label{structcar_1_1configuration_1_1Configuration_a70cb64a5b83623c9ece988fe5563bacd}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!camera\_fps@{camera\_fps}}
+\index{camera\_fps@{camera\_fps}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{camera\_fps}{camera\_fps}}
+{\footnotesize\ttfamily int car\+::configuration\+::\+Configuration\+::camera\+\_\+fps = 60\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_ab81a6b4ad04f976a1d11e9d0055acd7b}\label{structcar_1_1configuration_1_1Configuration_ab81a6b4ad04f976a1d11e9d0055acd7b}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!camera\_fps\_interval@{camera\_fps\_interval}}
+\index{camera\_fps\_interval@{camera\_fps\_interval}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{camera\_fps\_interval}{camera\_fps\_interval}}
+{\footnotesize\ttfamily int car\+::configuration\+::\+Configuration\+::camera\+\_\+fps\+\_\+interval = 1000\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_a52b38197b557d5cef75f2f91a1848163}\label{structcar_1_1configuration_1_1Configuration_a52b38197b557d5cef75f2f91a1848163}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!camera\_index@{camera\_index}}
+\index{camera\_index@{camera\_index}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{camera\_index}{camera\_index}}
+{\footnotesize\ttfamily int car\+::configuration\+::\+Configuration\+::camera\+\_\+index = 0}
+
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_a3c92a6852f3c0105b6c45475fe089cc9}\label{structcar_1_1configuration_1_1Configuration_a3c92a6852f3c0105b6c45475fe089cc9}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!host@{host}}
+\index{host@{host}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{host}{host}}
+{\footnotesize\ttfamily std\+::string car\+::configuration\+::\+Configuration\+::host = \char`\"{}127.\+0.\+0.\+1\+:3000\char`\"{}}
+
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_a01a46009cc5fff499ea623d636ca562e}\label{structcar_1_1configuration_1_1Configuration_a01a46009cc5fff499ea623d636ca562e}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!lidar\_port@{lidar\_port}}
+\index{lidar\_port@{lidar\_port}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{lidar\_port}{lidar\_port}}
+{\footnotesize\ttfamily std\+::string car\+::configuration\+::\+Configuration\+::lidar\+\_\+port = \char`\"{}\char`\"{}}
+
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_a3ca2ae2503fd981580984bf15962caf2}\label{structcar_1_1configuration_1_1Configuration_a3ca2ae2503fd981580984bf15962caf2}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!use\_camera@{use\_camera}}
+\index{use\_camera@{use\_camera}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{use\_camera}{use\_camera}}
+{\footnotesize\ttfamily bool car\+::configuration\+::\+Configuration\+::use\+\_\+camera = true}
+
+\mbox{\Hypertarget{structcar_1_1configuration_1_1Configuration_a687fb5d8e91175529e0a3e3280bece8b}\label{structcar_1_1configuration_1_1Configuration_a687fb5d8e91175529e0a3e3280bece8b}} 
+\index{car::configuration::Configuration@{car::configuration::Configuration}!use\_lidar@{use\_lidar}}
+\index{use\_lidar@{use\_lidar}!car::configuration::Configuration@{car::configuration::Configuration}}
+\doxysubsubsection{\texorpdfstring{use\_lidar}{use\_lidar}}
+{\footnotesize\ttfamily bool car\+::configuration\+::\+Configuration\+::use\+\_\+lidar = true}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/car/configuration/\mbox{\hyperlink{Configuration_8h}{Configuration.\+h}}\end{DoxyCompactItemize}

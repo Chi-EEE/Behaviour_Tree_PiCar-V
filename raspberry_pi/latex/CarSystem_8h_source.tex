@@ -1,0 +1,90 @@
+\hypertarget{CarSystem_8h_source}{}\doxysection{Car\+System.\+h}
+\label{CarSystem_8h_source}\index{include/car/system/CarSystem.h@{include/car/system/CarSystem.h}}
+\mbox{\hyperlink{CarSystem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CARSYSTEM\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CARSYSTEM\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Configuration_8h}{car/configuration/Configuration.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{DeviceManager_8h}{car/system/device/DeviceManager.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{MessagingSystem_8h}{car/system/messaging/MessagingSystem.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{MovementSystem_8h}{car/system/movement/MovementSystem.h}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{PluginManager_8h}{car/plugin/PluginManager.h}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacecar_1_1configuration}{car::configuration}};}
+\DoxyCodeLine{17 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacecar_1_1plugin}{car::plugin}};}
+\DoxyCodeLine{18 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1device}{car::system::device}};}
+\DoxyCodeLine{19 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1messaging}{car::system::messaging}};}
+\DoxyCodeLine{20 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1movement}{car::system::movement}};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system}{car::system}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24     \textcolor{comment}{// Make sure this is stored as a shared\_ptr}}
+\DoxyCodeLine{25     \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1system_1_1CarSystem}{CarSystem}} : \textcolor{keyword}{public} std::enable\_shared\_from\_this<CarSystem>}
+\DoxyCodeLine{26     \{}
+\DoxyCodeLine{27     \textcolor{keyword}{public}:}
+\DoxyCodeLine{28         \mbox{\hyperlink{classcar_1_1system_1_1CarSystem}{CarSystem}}(}
+\DoxyCodeLine{29             std::shared\_ptr<Configuration> configuration,}
+\DoxyCodeLine{30             std::unique\_ptr<DeviceManager> device\_manager,}
+\DoxyCodeLine{31             std::unique\_ptr<MessagingSystem> messaging\_system,}
+\DoxyCodeLine{32             std::unique\_ptr<MovementSystem> movement\_system,}
+\DoxyCodeLine{33             std::unique\_ptr<PluginManager> plugin\_manager);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_ab06b17f2f281827620e6cabc58161f05}{initialize}}();}
+\DoxyCodeLine{36         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_ad3d30be79c4ac8150cf280c977ad280c}{reload}}();}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_aa4ffdbe77fae8575970f29f3c42a2748}{start}}();}
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a9a0c10676a8334da0493920b2a31d23f}{stop}}();}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         tl::expected<nullptr\_t, std::string> \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a1be14919a0017990b5f3b0414adc976e}{tryConnect}}();}
+\DoxyCodeLine{42         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_ae19c914f90677e8d98460879889f7e46}{disconnect}}();}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_aeb3fb279bf5f6bc516ba8bac34b0107a}{terminate}}();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a9ed30df9af3ced9240bb2e13f4ac35bf}{update}}();}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \textcolor{keyword}{const} std::shared\_ptr<Configuration> \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_ad7ef3bc25192eeba42e8a6f06118951c}{getConfiguration}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1CarSystem_af0e6ea7a6722900ac9ee33d709139cf8}{configuration\_}}; \};}
+\DoxyCodeLine{49         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a74b592c032d2d0f0441b67fe574915ef}{setConfiguration}}(std::shared\_ptr<Configuration> configuration);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \mbox{\hyperlink{classcar_1_1system_1_1device_1_1DeviceManager}{DeviceManager}} *\mbox{\hyperlink{classcar_1_1system_1_1CarSystem_adbdea8038ec8df17c602cbdfc85b6c1e}{getDeviceManager}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{52 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{53             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a8d8b420fb68668aa1f4afa9bfd8bcb9f}{device\_manager\_}}.get();}
+\DoxyCodeLine{54         \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         \mbox{\hyperlink{classcar_1_1system_1_1messaging_1_1MessagingSystem}{MessagingSystem}} *\mbox{\hyperlink{classcar_1_1system_1_1CarSystem_af79b6288bf0f651c74b618cfc321443b}{getMessagingSystem}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{57 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{58             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1CarSystem_afa095993b79f1f35664a4310b6a45bf5}{messaging\_system\_}}.get();}
+\DoxyCodeLine{59         \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         \mbox{\hyperlink{classcar_1_1system_1_1movement_1_1MovementSystem}{MovementSystem}} *\mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a423df31a4a0de7033026aef6c27db3cd}{getMovementSystem}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{62 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{63             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1CarSystem_abaa732afd8d2e9b88e9005c5469897c5}{movement\_system\_}}.get();}
+\DoxyCodeLine{64         \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66         \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{67         \textcolor{keyword}{const} std::shared\_ptr<T> \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a0e10db9cb2d8d6308e7c1fd5e00da735}{getPlugin}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a5d500ae2640a3ed247e25a6fd0e32164}{plugin\_manager\_}}-\/>getPlugin<T>(); \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{keyword}{private}:}
+\DoxyCodeLine{70         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_acc167763c457ad1e56dd129289978033}{sendData}}();}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72         std::shared\_ptr<Configuration> \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_af0e6ea7a6722900ac9ee33d709139cf8}{configuration\_}};}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74         \textcolor{keyword}{const} std::unique\_ptr<DeviceManager> \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a8d8b420fb68668aa1f4afa9bfd8bcb9f}{device\_manager\_}};}
+\DoxyCodeLine{75         \textcolor{keyword}{const} std::unique\_ptr<MessagingSystem> \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_afa095993b79f1f35664a4310b6a45bf5}{messaging\_system\_}};}
+\DoxyCodeLine{76         \textcolor{keyword}{const} std::unique\_ptr<MovementSystem> \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_abaa732afd8d2e9b88e9005c5469897c5}{movement\_system\_}};}
+\DoxyCodeLine{77         \textcolor{keyword}{const} std::unique\_ptr<PluginManager> \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a5d500ae2640a3ed247e25a6fd0e32164}{plugin\_manager\_}};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_ad28657d0381b1898539c5c38cf72d270}{initialized}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{80         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcar_1_1system_1_1CarSystem_a5ba1288c722d9ad655a99cf6edd3d40e}{started}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{81     \};}
+\DoxyCodeLine{82 \}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
