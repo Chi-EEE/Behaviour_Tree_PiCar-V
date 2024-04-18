@@ -159,6 +159,9 @@ class WebSocketServer {
                 global.mainWindow.webContents.send('onMessage', message.toString());
             });
         });
+        this._wss.on('close', () => {
+            this._raspberry_pi_map.clear();
+        });
     }
 
     /**
