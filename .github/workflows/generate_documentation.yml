@@ -22,13 +22,16 @@ jobs:
 
       - name: Move Doxygen HTML files into their parent directories
         run: |
-          # sudo mv docs/backend/html/* docs/backend
           sudo mv docs/raspberry_pi/html/* docs/raspberry_pi
 
-      # - name: Generate Doxygen pdf
-      #   run: |
-      #     cd docs/raspberry_pi/latex
-      #     sudo make
+      - name: Generate Doxygen pdf
+        run: |
+          sudo apt-get install texlive-latex-base
+          sudo apt-get install texlive-fonts-recommended
+          sudo apt-get install texlive-fonts-extra
+          sudo apt-get install texlive-latex-extra
+          cd docs/raspberry_pi/latex
+          sudo make
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
