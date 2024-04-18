@@ -19,6 +19,6 @@ export const camera_stream = writable("");
 
 window.api.onMessage((value) => {
     value = JSON.parse(value);
-    lidar_stream.set(value.lidar_stream);
-    camera_stream.set(value.camera_stream);
+    lidar_stream.set(value.lidar);
+    camera_stream.set(value.frame_buffer);
 });
