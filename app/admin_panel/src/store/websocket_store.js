@@ -14,11 +14,11 @@ async function main() {
 }
 main();
 
-export const lidar = writable([]);
-export const frame_buffer = writable("");
+export const lidar_stream = writable([]);
+export const camera_stream = writable("");
 
 window.api.onMessage((value) => {
     value = JSON.parse(value);
-    lidar.set(value.lidar);
-    frame_buffer.set(value.frame_buffer);
+    lidar_stream.set(value.lidar_stream);
+    camera_stream.set(value.camera_stream);
 });

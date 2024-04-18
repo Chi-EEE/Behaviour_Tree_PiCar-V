@@ -4,7 +4,7 @@
         main_pane_size_0_store,
         lidar_toggle,
     } from "../../store/home_store";
-    import { frame_buffer, lidar } from "../../store/websocket_store";
+    import { camera_stream, lidar_stream } from "../../store/websocket_store";
 
     const lidar_wall_colour = "#0061FF";
     const offset_angle = 45;
@@ -56,7 +56,7 @@
     function handleLiveFeed(/** @type {HTMLImageElement} */ live_feed) {
         live_feed_ = live_feed;
         let before = 0;
-        frame_buffer.subscribe((value) => {
+        camera_stream.subscribe((value) => {
             const now = Date.now();
             const elapsed = now - before;
             if (elapsed < fps_interval) {
@@ -136,7 +136,7 @@
     let last_seen_points = [];
     function subscribeLidarDrawing() {
         let before = 0;
-        return lidar.subscribe((/** @type {Array<Point>} */ points) => {
+        return lidar_stream.subscribe((/** @type {Array<Point>} */ points) => {
             if (points.length === 0) {
                 return;
             }
