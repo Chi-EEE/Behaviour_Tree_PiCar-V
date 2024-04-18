@@ -1,11 +1,11 @@
 # Raspberry Pi
 
-This sub-project handles all the logic of the Sunfounder Raspberry Pi.
+This sub-project handles all the logic of the Sunfounder PiCar.
 
 The system is broken down to 3 sub systems:
 - lidar - Handles the lidar scanner of the Raspberry Pi
 - messaging - Handles the websocket of the Raspberry Pi
-- movement - Handles the movement of the Sunfounder Raspberry Pi
+- movement - Handles the movement of the Sunfounder PiCar
 
 The system is then displayed by the `CarConsole`.
 

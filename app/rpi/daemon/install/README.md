@@ -1,4 +1,4 @@
-# Sunfounder PiCar Daemon
+# Behaviour Tree PiCar Daemon
 
 ## Installation:
 
