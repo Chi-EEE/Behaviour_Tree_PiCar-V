@@ -123,21 +123,24 @@
 
     function subscribeLidarDrawing() {
         return lidar.subscribe((/** @type {Array<Point>} */ points) => {
+            if (points.length === 0) {
+                return;
+            }
             lidar_context_.clearRect(
                 0,
                 0,
                 lidar_canvas_.width,
                 lidar_canvas_.height,
             );
-            if (points.length === 0) {
-                return;
+            /** @type {Map<number, Point>} */
+            const point_map = new Map();
+            for (const point of points) {
+                point_map.set(round0_25(point.angle), point);
             }
             const space_between_angles = lidar_canvas_.width / 90;
             const lidar_canvas_midpoint_y = lidar_canvas_.height / 2;
             for (let i = 0; i < 90; i += 0.25) {
-                const point = points.find(
-                    (point) => round0_25(point.angle) === i + offset_angle,
-                );
+                const point = point_map.get(round0_25(i + offset_angle));
                 if (point !== undefined) {
                     const angle = point.angle;
                     const distance = point.distance;
