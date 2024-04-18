@@ -134,66 +134,63 @@
             }
             const space_between_angles = lidar_canvas_.width / 90;
             const lidar_canvas_midpoint_y = lidar_canvas_.height / 2;
-            for (let point of points) {
-                const angle = point.angle;
-                const distance = point.distance;
-                if (angle < offset_angle || angle > offset_angle + 90) {
-                    continue;
-                }
-                const x = (angle - offset_angle) * space_between_angles;
-                drawLidarWall(x, lidar_canvas_midpoint_y, distance);
-            }
             for (let i = 0; i < 90; i += 0.25) {
-                if (
-                    points.find(
-                        (point) => round0_25(point.angle) === i + offset_angle,
-                    )
-                ) {
-                    continue;
-                }
-                const angle = i + offset_angle;
+                const point = points.find(
+                    (point) => round0_25(point.angle) === i + offset_angle,
+                );
+                if (point !== undefined) {
+                    const angle = point.angle;
+                    const distance = point.distance;
+                    if (angle < offset_angle || angle > offset_angle + 90) {
+                        continue;
+                    }
+                    const x = (angle - offset_angle) * space_between_angles;
+                    drawLidarWall(x, lidar_canvas_midpoint_y, distance);
+                } else {
+                    const angle = i + offset_angle;
 
-                // Using i to calculate x, since we are already going to subtract 45 from angle
-                const x = i * space_between_angles;
+                    // Using i to calculate x, since we are already going to subtract 45 from angle
+                    const x = i * space_between_angles;
 
-                // Get the closest points to the angle
-                let closest_before_point = null;
-                let closest_after_point = null;
-                for (const point of points) {
-                    if (point.angle < angle) {
-                        if (
-                            closest_before_point === null ||
-                            angle - point.angle <
-                                angle - closest_before_point.angle
-                        ) {
-                            closest_before_point = point;
-                        }
-                    } else if (point.angle > angle) {
-                        if (
-                            closest_after_point === null ||
-                            point.angle - angle <
-                                closest_after_point.angle - angle
-                        ) {
-                            closest_after_point = point;
+                    // Get the closest points to the angle
+                    let closest_before_point = null;
+                    let closest_after_point = null;
+                    for (const point of points) {
+                        if (point.angle < angle) {
+                            if (
+                                closest_before_point === null ||
+                                angle - point.angle <
+                                    angle - closest_before_point.angle
+                            ) {
+                                closest_before_point = point;
+                            }
+                        } else if (point.angle > angle) {
+                            if (
+                                closest_after_point === null ||
+                                point.angle - angle <
+                                    closest_after_point.angle - angle
+                            ) {
+                                closest_after_point = point;
+                            }
                         }
                     }
-                }
 
-                let distance = 0;
-                if (
-                    closest_before_point !== null &&
-                    closest_after_point !== null
-                ) {
-                    distance =
-                        (closest_before_point.distance +
-                            closest_after_point.distance) /
-                        2;
-                } else if (closest_before_point !== null) {
-                    distance = closest_before_point.distance;
-                } else if (closest_after_point !== null) {
-                    distance = closest_after_point.distance;
+                    let distance = 0;
+                    if (
+                        closest_before_point !== null &&
+                        closest_after_point !== null
+                    ) {
+                        distance =
+                            (closest_before_point.distance +
+                                closest_after_point.distance) /
+                            2;
+                    } else if (closest_before_point !== null) {
+                        distance = closest_before_point.distance;
+                    } else if (closest_after_point !== null) {
+                        distance = closest_after_point.distance;
+                    }
+                    drawLidarWall(x, lidar_canvas_midpoint_y, distance);
                 }
-                drawLidarWall(x, lidar_canvas_midpoint_y, distance);
             }
         });
     }
@@ -263,7 +260,7 @@
         live_feed_.height = innerHeight;
         lidar_canvas_.width = innerWidth;
         lidar_canvas_.height = innerHeight;
-   
+
         lidar_context_.lineWidth = (parentHeight / 900) * 12;
         lidar_bar_height_size = parentHeight * 140;
     }
