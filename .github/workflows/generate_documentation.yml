@@ -19,10 +19,17 @@ jobs:
         with:
           doxyfile-path: "./Doxyfile"
           working-directory: "./app/rpi"
+      
+      - name: Build Doxygen documentation for Other Code Projects
+        uses: mattnotmitt/doxygen-action@v1.9.5
+        with:
+          doxyfile-path: "./Doxyfile"
+          working-directory: "./app/other"
 
       - name: Move Doxygen HTML files into their parent directories
         run: |
           sudo mv docs/raspberry_pi/html/* docs/raspberry_pi
+          sudo mv docs/other/html/* docs/other
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -44,7 +51,11 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y doxygen-latex
+          
           cd raspberry_pi/latex
+          sudo make
+
+          cd other/latex
           sudo make
 
       - name: Commit PDF    
