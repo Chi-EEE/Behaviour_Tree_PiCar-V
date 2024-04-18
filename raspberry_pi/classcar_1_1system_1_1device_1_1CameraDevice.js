@@ -12,5 +12,11 @@ var classcar_1_1system_1_1device_1_1CameraDevice =
     [ "stop", "classcar_1_1system_1_1device_1_1CameraDevice.html#abd2e4f2001aba5e2bf2fdc79ed9229f1", null ],
     [ "terminate", "classcar_1_1system_1_1device_1_1CameraDevice.html#a16f383287517d36f7f739764103e9515", null ],
     [ "update", "classcar_1_1system_1_1device_1_1CameraDevice.html#a5125e05f251213027dc6a71f26cf1f51", null ],
-    [ "DeviceManager", "classcar_1_1system_1_1device_1_1CameraDevice.html#aead9a9546ea765538d3f95894afea912", null ]
+    [ "DeviceManager", "classcar_1_1system_1_1device_1_1CameraDevice.html#aead9a9546ea765538d3f95894afea912", null ],
+    [ "camera_", "classcar_1_1system_1_1device_1_1CameraDevice.html#a9d05581ab27995253eceb91577a26113", null ],
+    [ "camera_mutex_", "classcar_1_1system_1_1device_1_1CameraDevice.html#a0e0ab1636019ac35a46182e8796db4bd", null ],
+    [ "configuration", "classcar_1_1system_1_1device_1_1CameraDevice.html#af7184782a90080194992a17e1c430fc5", null ],
+    [ "connected_", "classcar_1_1system_1_1device_1_1CameraDevice.html#ab959099e81b772b58dcc46250ec9bdfa", null ],
+    [ "frame_buffer_", "classcar_1_1system_1_1device_1_1CameraDevice.html#a036e36514811f1a36c1c3ed3d2f06468", null ],
+    [ "last", "classcar_1_1system_1_1device_1_1CameraDevice.html#a56f9e43191419958b6904c0385fa6e4d", null ]
 ];

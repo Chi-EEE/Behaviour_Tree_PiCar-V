@@ -8,5 +8,10 @@ var classbehaviour__tree_1_1BehaviourTreeHandler =
     [ "startBehaviourTree", "classbehaviour__tree_1_1BehaviourTreeHandler.html#a15bd6980d604033a038a9187442292cb", null ],
     [ "stop", "classbehaviour__tree_1_1BehaviourTreeHandler.html#ac449ae0a932bc4cadd6b6f986620a73a", null ],
     [ "stopBehaviourTree", "classbehaviour__tree_1_1BehaviourTreeHandler.html#acf96c89a3d424604c4a9f0b16cbfab1b", null ],
-    [ "update", "classbehaviour__tree_1_1BehaviourTreeHandler.html#a2a9426f71f865c51d75ca1ec5a96660b", null ]
+    [ "update", "classbehaviour__tree_1_1BehaviourTreeHandler.html#a2a9426f71f865c51d75ca1ec5a96660b", null ],
+    [ "behaviour_tree", "classbehaviour__tree_1_1BehaviourTreeHandler.html#ae41facd5ed9b39b18a7610d2e3247b50", null ],
+    [ "car_system", "classbehaviour__tree_1_1BehaviourTreeHandler.html#a8038c2e4f19e850f17b1ef041f024622", null ],
+    [ "context", "classbehaviour__tree_1_1BehaviourTreeHandler.html#a1c7e331655a627a7deb37525b39249e6", null ],
+    [ "last_connected", "classbehaviour__tree_1_1BehaviourTreeHandler.html#a47bacae8472f3b76ce27988eb4b161ca", null ],
+    [ "tick_count", "classbehaviour__tree_1_1BehaviourTreeHandler.html#aa868142cbfae88ae01ef030810657864", null ]
 ];

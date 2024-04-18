@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['use_5fcamera_0',['use_camera',['../structcar_1_1configuration_1_1Configuration.html#a3ca2ae2503fd981580984bf15962caf2',1,'car::configuration::Configuration']]],
-  ['use_5flidar_1',['use_lidar',['../structcar_1_1configuration_1_1Configuration.html#a687fb5d8e91175529e0a3e3280bece8b',1,'car::configuration::Configuration']]],
-  ['uuid_2',['uuid',['../structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct.html#a5427d767fce2ebe7f3d3544640195ac9',1,'car::system::messaging::MessagingSystem::FirstMessageStruct']]]
+  ['offset_0',['offset',['../test__front__wheels_8cpp.html#aed7ea92f45bd273dde380a45ddced592',1,'test_front_wheels.cpp']]],
+  ['on_5fdisconnect_5fsignal_5f_1',['on_disconnect_signal_',['../classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a26656de27ddcdd4c89d0027177bf0692',1,'car::system::messaging::MessagingSystem']]]
 ];

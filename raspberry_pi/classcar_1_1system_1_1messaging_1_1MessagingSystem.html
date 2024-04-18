@@ -94,6 +94,8 @@ $(document).ready(function(){initNavTree('classcar_1_1system_1_1messaging_1_1Mes
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classcar_1_1system_1_1messaging_1_1MessagingSystem-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">car::system::messaging::MessagingSystem Class Reference</div></div>
 </div><!--header-->
@@ -160,6 +162,25 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ae6d2cabe4ad1963913d34d1cb6d2df87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32a87fea2fa4768353e6f840d67e0460"><td class="memItemLeft" align="right" valign="top">nod::signal&lt; void(const std::string, const rapidjson::Document &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a32a87fea2fa4768353e6f840d67e0460">selection_signal_</a></td></tr>
 <tr class="separator:a32a87fea2fa4768353e6f840d67e0460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aea22af17f50b567709684bb77f607361"><td class="memItemLeft" align="right" valign="top">tl::expected&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1messaging_1_1MessagingSystem.html#aea22af17f50b567709684bb77f607361">getFirstMessage</a> ()</td></tr>
+<tr class="memdesc:aea22af17f50b567709684bb77f607361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits and retrieves the first message when connecting to a websocket.  <a href="classcar_1_1system_1_1messaging_1_1MessagingSystem.html#aea22af17f50b567709684bb77f607361">More...</a><br /></td></tr>
+<tr class="separator:aea22af17f50b567709684bb77f607361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:acd2c84b48f2193493cb44eb9375c47db"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1messaging_1_1MessagingSystem.html#acd2c84b48f2193493cb44eb9375c47db">configuration_</a></td></tr>
+<tr class="separator:acd2c84b48f2193493cb44eb9375c47db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324ed740bef6fa429b571cf6e45d9092"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; ix::WebSocket &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a324ed740bef6fa429b571cf6e45d9092">websocket_</a></td></tr>
+<tr class="separator:a324ed740bef6fa429b571cf6e45d9092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dbd8f0284492f6980b1307940fd70e1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a8dbd8f0284492f6980b1307940fd70e1">websocket_url_</a></td></tr>
+<tr class="separator:a8dbd8f0284492f6980b1307940fd70e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08495992bf90c4151a8df2cd51333d74"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a08495992bf90c4151a8df2cd51333d74">uuid_</a></td></tr>
+<tr class="separator:a08495992bf90c4151a8df2cd51333d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24d7c77d11add1edcedfec94963d1261"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a24d7c77d11add1edcedfec94963d1261">connected_</a> = false</td></tr>
+<tr class="separator:a24d7c77d11add1edcedfec94963d1261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac2ffac51796711b5fc18fd3c2ec09c1e" name="ac2ffac51796711b5fc18fd3c2ec09c1e"></a>
@@ -227,6 +248,34 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea22af17f50b567709684bb77f607361" name="aea22af17f50b567709684bb77f607361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea22af17f50b567709684bb77f607361">&#9670;&#160;</a></span>getFirstMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">tl::expected&lt; std::string, std::string &gt; car::system::messaging::MessagingSystem::getFirstMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Waits and retrieves the first message when connecting to a websocket. </p>
+<dl class="section return"><dt>Returns</dt><dd>tl::expected&lt;std::string, std::string&gt; </dd></dl>
 
 </div>
 </div>
@@ -579,6 +628,50 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="acd2c84b48f2193493cb44eb9375c47db" name="acd2c84b48f2193493cb44eb9375c47db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd2c84b48f2193493cb44eb9375c47db">&#9670;&#160;</a></span>configuration_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a>&gt; car::system::messaging::MessagingSystem::configuration_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24d7c77d11add1edcedfec94963d1261" name="a24d7c77d11add1edcedfec94963d1261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24d7c77d11add1edcedfec94963d1261">&#9670;&#160;</a></span>connected_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool car::system::messaging::MessagingSystem::connected_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad74ee3dc3da33b149227be370ace2ae5" name="ad74ee3dc3da33b149227be370ace2ae5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad74ee3dc3da33b149227be370ace2ae5">&#9670;&#160;</a></span>message_signal_</h2>
 
@@ -617,6 +710,72 @@ Public Attributes</h2></td></tr>
           <td class="memname">nod::signal&lt;void(const std::string, const rapidjson::Document&amp;)&gt; car::system::messaging::MessagingSystem::selection_signal_</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a08495992bf90c4151a8df2cd51333d74" name="a08495992bf90c4151a8df2cd51333d74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08495992bf90c4151a8df2cd51333d74">&#9670;&#160;</a></span>uuid_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string car::system::messaging::MessagingSystem::uuid_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a324ed740bef6fa429b571cf6e45d9092" name="a324ed740bef6fa429b571cf6e45d9092"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324ed740bef6fa429b571cf6e45d9092">&#9670;&#160;</a></span>websocket_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;ix::WebSocket&gt; car::system::messaging::MessagingSystem::websocket_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8dbd8f0284492f6980b1307940fd70e1" name="a8dbd8f0284492f6980b1307940fd70e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dbd8f0284492f6980b1307940fd70e1">&#9670;&#160;</a></span>websocket_url_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string car::system::messaging::MessagingSystem::websocket_url_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

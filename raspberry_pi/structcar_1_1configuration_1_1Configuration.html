@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('structcar_1_1configuration_1_1Configur
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="structcar_1_1configuration_1_1Configuration-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">car::configuration::Configuration Struct Reference</div></div>
 </div><!--header-->
@@ -102,7 +103,7 @@ $(document).ready(function(){initNavTree('structcar_1_1configuration_1_1Configur
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a95c7621ba0a775961a6c533cd6461b0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcar_1_1configuration_1_1Configuration.html#a95c7621ba0a775961a6c533cd6461b0b">setCameraFps</a> (const int camera_fps)</td></tr>
+<tr class="memitem:a95c7621ba0a775961a6c533cd6461b0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcar_1_1configuration_1_1Configuration.html#a95c7621ba0a775961a6c533cd6461b0b">setCameraFps</a> (const int <a class="el" href="structcar_1_1configuration_1_1Configuration.html#a70cb64a5b83623c9ece988fe5563bacd">camera_fps</a>)</td></tr>
 <tr class="separator:a95c7621ba0a775961a6c533cd6461b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94d1a5807a59a79a8c386fafe3e420eb"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcar_1_1configuration_1_1Configuration.html#a94d1a5807a59a79a8c386fafe3e420eb">getCameraFpsInterval</a> ()</td></tr>
 <tr class="separator:a94d1a5807a59a79a8c386fafe3e420eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +122,13 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a687fb5d8e91175529e0a3e3280bece8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11aefefb94ee7877282bc1a153b4602b"><td class="memItemLeft" align="right" valign="top">std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcar_1_1configuration_1_1Configuration.html#a11aefefb94ee7877282bc1a153b4602b">behaviour_tree_update_ms_interval</a> = std::chrono::milliseconds(100)</td></tr>
 <tr class="separator:a11aefefb94ee7877282bc1a153b4602b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a70cb64a5b83623c9ece988fe5563bacd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcar_1_1configuration_1_1Configuration.html#a70cb64a5b83623c9ece988fe5563bacd">camera_fps</a> = 60</td></tr>
+<tr class="separator:a70cb64a5b83623c9ece988fe5563bacd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab81a6b4ad04f976a1d11e9d0055acd7b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcar_1_1configuration_1_1Configuration.html#ab81a6b4ad04f976a1d11e9d0055acd7b">camera_fps_interval</a> = 1000</td></tr>
+<tr class="separator:ab81a6b4ad04f976a1d11e9d0055acd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a94d1a5807a59a79a8c386fafe3e420eb" name="a94d1a5807a59a79a8c386fafe3e420eb"></a>
@@ -185,6 +193,50 @@ Public Attributes</h2></td></tr>
           <td class="memname">std::chrono::milliseconds car::configuration::Configuration::behaviour_tree_update_ms_interval = std::chrono::milliseconds(100)</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a70cb64a5b83623c9ece988fe5563bacd" name="a70cb64a5b83623c9ece988fe5563bacd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70cb64a5b83623c9ece988fe5563bacd">&#9670;&#160;</a></span>camera_fps</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int car::configuration::Configuration::camera_fps = 60</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab81a6b4ad04f976a1d11e9d0055acd7b" name="ab81a6b4ad04f976a1d11e9d0055acd7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab81a6b4ad04f976a1d11e9d0055acd7b">&#9670;&#160;</a></span>camera_fps_interval</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int car::configuration::Configuration::camera_fps_interval = 1000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

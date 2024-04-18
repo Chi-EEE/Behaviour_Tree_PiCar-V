@@ -4,6 +4,7 @@ var classcar_1_1system_1_1messaging_1_1MessagingSystem =
     [ "MessagingSystem", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#ac2ffac51796711b5fc18fd3c2ec09c1e", null ],
     [ "getCommandSignal", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#acb45ac80d9441f19b83879be864c2a56", null ],
     [ "getDisconnectSignal", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a51f37df7bd559723c746ac60ae9e2737", null ],
+    [ "getFirstMessage", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#aea22af17f50b567709684bb77f607361", null ],
     [ "getMessageSignal", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a896805eef7fb6cabced9121b62b44e57", null ],
     [ "getSelectionSignal", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a01ea5e361e8bd25df66b0e20d22b2e88", null ],
     [ "getUUID", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a6585072611a135d613d2f1c0b4e6185f", null ],
@@ -20,7 +21,12 @@ var classcar_1_1system_1_1messaging_1_1MessagingSystem =
     [ "terminate", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a94b2c78f499793ae8eecbd27631ccaa1", null ],
     [ "tryConnect", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a21f83981ff7aa1e599b188875e48a32a", null ],
     [ "command_signal_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#ae6d2cabe4ad1963913d34d1cb6d2df87", null ],
+    [ "configuration_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#acd2c84b48f2193493cb44eb9375c47db", null ],
+    [ "connected_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a24d7c77d11add1edcedfec94963d1261", null ],
     [ "message_signal_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#ad74ee3dc3da33b149227be370ace2ae5", null ],
     [ "on_disconnect_signal_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a26656de27ddcdd4c89d0027177bf0692", null ],
-    [ "selection_signal_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a32a87fea2fa4768353e6f840d67e0460", null ]
+    [ "selection_signal_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a32a87fea2fa4768353e6f840d67e0460", null ],
+    [ "uuid_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a08495992bf90c4151a8df2cd51333d74", null ],
+    [ "websocket_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a324ed740bef6fa429b571cf6e45d9092", null ],
+    [ "websocket_url_", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a8dbd8f0284492f6980b1307940fd70e1", null ]
 ];

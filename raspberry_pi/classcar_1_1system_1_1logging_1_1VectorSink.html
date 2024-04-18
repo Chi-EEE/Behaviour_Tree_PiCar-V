@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('classcar_1_1system_1_1logging_1_1Vecto
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classcar_1_1system_1_1logging_1_1VectorSink-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">car::system::logging::VectorSink&lt; Mutex &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -107,7 +108,7 @@ Inheritance diagram for car::system::logging::VectorSink&lt; Mutex &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad6d6288677da92c0d9150d1530dc0565"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1logging_1_1VectorSink.html#ad6d6288677da92c0d9150d1530dc0565">VectorSink</a> (int max_lines)</td></tr>
+<tr class="memitem:ad6d6288677da92c0d9150d1530dc0565"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1logging_1_1VectorSink.html#ad6d6288677da92c0d9150d1530dc0565">VectorSink</a> (int <a class="el" href="classcar_1_1system_1_1logging_1_1VectorSink.html#a1da9bf98e6bb6f439893902e047bb603">max_lines</a>)</td></tr>
 <tr class="separator:ad6d6288677da92c0d9150d1530dc0565"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a541b6a05a30bb0330056101c12ae4b39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1logging_1_1VectorSink.html#a541b6a05a30bb0330056101c12ae4b39">sink_it_</a> (const spdlog::details::log_msg &amp;msg) override</td></tr>
 <tr class="separator:a541b6a05a30bb0330056101c12ae4b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,6 +116,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aff218d3af65bec5af12f785f28c6f1fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcf04c0c22017aa4a423520a8bc21cd3"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1logging_1_1VectorSink.html#abcf04c0c22017aa4a423520a8bc21cd3">get_log_messages</a> () const</td></tr>
 <tr class="separator:abcf04c0c22017aa4a423520a8bc21cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1da9bf98e6bb6f439893902e047bb603"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1logging_1_1VectorSink.html#a1da9bf98e6bb6f439893902e047bb603">max_lines</a></td></tr>
+<tr class="separator:a1da9bf98e6bb6f439893902e047bb603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2901d26eb70daac9d4d130e340272593"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1logging_1_1VectorSink.html#a2901d26eb70daac9d4d130e340272593">log_messages</a></td></tr>
+<tr class="separator:a2901d26eb70daac9d4d130e340272593"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad6d6288677da92c0d9150d1530dc0565" name="ad6d6288677da92c0d9150d1530dc0565"></a>
@@ -222,6 +230,55 @@ template&lt;typename Mutex &gt; </div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a2901d26eb70daac9d4d130e340272593" name="a2901d26eb70daac9d4d130e340272593"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2901d26eb70daac9d4d130e340272593">&#9670;&#160;</a></span>log_messages</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Mutex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; <a class="el" href="classcar_1_1system_1_1logging_1_1VectorSink.html">car::system::logging::VectorSink</a>&lt; Mutex &gt;::log_messages</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1da9bf98e6bb6f439893902e047bb603" name="a1da9bf98e6bb6f439893902e047bb603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1da9bf98e6bb6f439893902e047bb603">&#9670;&#160;</a></span>max_lines</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Mutex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int <a class="el" href="classcar_1_1system_1_1logging_1_1VectorSink.html">car::system::logging::VectorSink</a>&lt; Mutex &gt;::max_lines</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

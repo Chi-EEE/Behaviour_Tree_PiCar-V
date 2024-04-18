@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('classBackWheels.html',''); initResizab
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classBackWheels-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BackWheels Class Reference</div></div>
 </div><!--header-->
@@ -110,7 +111,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab7d3770525ceec3aee0ee5f07d284e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2d6f1e0cbe253e5331abc4c3688eb33"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#ab2d6f1e0cbe253e5331abc4c3688eb33">getSpeed</a> () const</td></tr>
 <tr class="separator:ab2d6f1e0cbe253e5331abc4c3688eb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8da39dd293a975ea02b03ae305d4f8ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#a8da39dd293a975ea02b03ae305d4f8ea">setSpeed</a> (const int &amp;speed)</td></tr>
+<tr class="memitem:a8da39dd293a975ea02b03ae305d4f8ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#a8da39dd293a975ea02b03ae305d4f8ea">setSpeed</a> (const int &amp;<a class="el" href="classBackWheels.html#a41cec8527ae9b79096e41ac53a1c12f5">speed</a>)</td></tr>
 <tr class="separator:a8da39dd293a975ea02b03ae305d4f8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c0d032f0ec02f3b0a2c52913372fea7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#a3c0d032f0ec02f3b0a2c52913372fea7">ready</a> ()</td></tr>
 <tr class="separator:a3c0d032f0ec02f3b0a2c52913372fea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,6 +128,23 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac7a2b384565afbc301983ff572eb3284"><td class="memItemLeft" align="right" valign="top">PCA9685&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#ac7a2b384565afbc301983ff572eb3284">pca9685</a></td></tr>
 <tr class="separator:ac7a2b384565afbc301983ff572eb3284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab14e9b09ac5c0f6cf0b11718e68edfb9"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; TB6612 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#ab14e9b09ac5c0f6cf0b11718e68edfb9">left_wheel</a></td></tr>
+<tr class="separator:ab14e9b09ac5c0f6cf0b11718e68edfb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61a761f05835a0f3f6f1e996e5e9bde4"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; TB6612 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#a61a761f05835a0f3f6f1e996e5e9bde4">right_wheel</a></td></tr>
+<tr class="separator:a61a761f05835a0f3f6f1e996e5e9bde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45c7dcaa02fc4d2c02854d8a3d6807c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#ac45c7dcaa02fc4d2c02854d8a3d6807c">forward_A</a></td></tr>
+<tr class="separator:ac45c7dcaa02fc4d2c02854d8a3d6807c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc87a3ce222740511179f28c7525e29e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#afc87a3ce222740511179f28c7525e29e">forward_B</a></td></tr>
+<tr class="separator:afc87a3ce222740511179f28c7525e29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d234501cdf5fc82bf04eeb13d803768"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#a1d234501cdf5fc82bf04eeb13d803768">cali_forward_A</a></td></tr>
+<tr class="separator:a1d234501cdf5fc82bf04eeb13d803768"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a584b367405f58db0f8c9fcd47b8df615"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#a584b367405f58db0f8c9fcd47b8df615">cali_forward_B</a></td></tr>
+<tr class="separator:a584b367405f58db0f8c9fcd47b8df615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41cec8527ae9b79096e41ac53a1c12f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackWheels.html#a41cec8527ae9b79096e41ac53a1c12f5">speed</a></td></tr>
+<tr class="separator:a41cec8527ae9b79096e41ac53a1c12f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="affde9a2b6153e579292b183818fc59bf" name="affde9a2b6153e579292b183818fc59bf"></a>
@@ -408,6 +426,116 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1d234501cdf5fc82bf04eeb13d803768" name="a1d234501cdf5fc82bf04eeb13d803768"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d234501cdf5fc82bf04eeb13d803768">&#9670;&#160;</a></span>cali_forward_A</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BackWheels::cali_forward_A</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a584b367405f58db0f8c9fcd47b8df615" name="a584b367405f58db0f8c9fcd47b8df615"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a584b367405f58db0f8c9fcd47b8df615">&#9670;&#160;</a></span>cali_forward_B</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BackWheels::cali_forward_B</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac45c7dcaa02fc4d2c02854d8a3d6807c" name="ac45c7dcaa02fc4d2c02854d8a3d6807c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45c7dcaa02fc4d2c02854d8a3d6807c">&#9670;&#160;</a></span>forward_A</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BackWheels::forward_A</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc87a3ce222740511179f28c7525e29e" name="afc87a3ce222740511179f28c7525e29e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc87a3ce222740511179f28c7525e29e">&#9670;&#160;</a></span>forward_B</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BackWheels::forward_B</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab14e9b09ac5c0f6cf0b11718e68edfb9" name="ab14e9b09ac5c0f6cf0b11718e68edfb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab14e9b09ac5c0f6cf0b11718e68edfb9">&#9670;&#160;</a></span>left_wheel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;TB6612&gt; BackWheels::left_wheel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ac7a2b384565afbc301983ff572eb3284" name="ac7a2b384565afbc301983ff572eb3284"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac7a2b384565afbc301983ff572eb3284">&#9670;&#160;</a></span>pca9685</h2>
 
@@ -418,6 +546,50 @@ Public Attributes</h2></td></tr>
           <td class="memname">PCA9685 BackWheels::pca9685</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61a761f05835a0f3f6f1e996e5e9bde4" name="a61a761f05835a0f3f6f1e996e5e9bde4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61a761f05835a0f3f6f1e996e5e9bde4">&#9670;&#160;</a></span>right_wheel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;TB6612&gt; BackWheels::right_wheel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41cec8527ae9b79096e41ac53a1c12f5" name="a41cec8527ae9b79096e41ac53a1c12f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41cec8527ae9b79096e41ac53a1c12f5">&#9670;&#160;</a></span>speed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BackWheels::speed</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

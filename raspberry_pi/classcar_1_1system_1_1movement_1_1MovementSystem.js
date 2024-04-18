@@ -17,5 +17,6 @@ var classcar_1_1system_1_1movement_1_1MovementSystem =
     [ "setRearWheelsSpeed", "classcar_1_1system_1_1movement_1_1MovementSystem.html#a5afa6a443a26e329f827ff0a92d0f8e0", null ],
     [ "start", "classcar_1_1system_1_1movement_1_1MovementSystem.html#a7c8d2d531814a2677e5c2cb2e2fc2636", null ],
     [ "stop", "classcar_1_1system_1_1movement_1_1MovementSystem.html#a0baf504ce2a5a2d56cd3d163311c551b", null ],
-    [ "terminate", "classcar_1_1system_1_1movement_1_1MovementSystem.html#ab6c7d0f21d4b0ce560ada97abd0c0303", null ]
+    [ "terminate", "classcar_1_1system_1_1movement_1_1MovementSystem.html#ab6c7d0f21d4b0ce560ada97abd0c0303", null ],
+    [ "movement_controller", "classcar_1_1system_1_1movement_1_1MovementSystem.html#accfdf66dcbfed062111b01bc2c09c6be", null ]
 ];

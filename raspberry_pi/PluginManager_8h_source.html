@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('PluginManager_8h_source.html',''); ini
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1PluginManager.html#acc6f2064cad667a51d7309c5b4349c83">   24</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classcar_1_1plugin_1_1PluginManager.html#acc6f2064cad667a51d7309c5b4349c83">initialize</a>(std::shared_ptr&lt;system::CarSystem&gt; car_system)</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordflow">for</span> (std::shared_ptr&lt;Plugin&gt;&amp; plugin : this-&gt;plugins)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordflow">for</span> (std::shared_ptr&lt;Plugin&gt;&amp; plugin : this-&gt;<a class="code hl_variable" href="classcar_1_1plugin_1_1PluginManager.html#a26042e09c9392ce4eabddde6f265334a">plugins</a>)</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                plugin-&gt;initialize(car_system);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            }</div>
@@ -126,7 +126,7 @@ $(document).ready(function(){initNavTree('PluginManager_8h_source.html',''); ini
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1PluginManager.html#ae3e5bbe8e52062a7f888d076cc92cdc2">   32</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classcar_1_1plugin_1_1PluginManager.html#ae3e5bbe8e52062a7f888d076cc92cdc2">update</a>()</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordflow">for</span> (std::shared_ptr&lt;Plugin&gt;&amp; plugin : this-&gt;plugins)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordflow">for</span> (std::shared_ptr&lt;Plugin&gt;&amp; plugin : this-&gt;<a class="code hl_variable" href="classcar_1_1plugin_1_1PluginManager.html#a26042e09c9392ce4eabddde6f265334a">plugins</a>)</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            {</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                plugin-&gt;update();</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            }</div>
@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('PluginManager_8h_source.html',''); ini
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1PluginManager.html#ab13b0961f3bcfa16b96fdbd12b1a0eac">   40</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classcar_1_1plugin_1_1PluginManager.html#ab13b0961f3bcfa16b96fdbd12b1a0eac">stop</a>()</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">for</span> (std::shared_ptr&lt;Plugin&gt;&amp; plugin : this-&gt;plugins)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">for</span> (std::shared_ptr&lt;Plugin&gt;&amp; plugin : this-&gt;<a class="code hl_variable" href="classcar_1_1plugin_1_1PluginManager.html#a26042e09c9392ce4eabddde6f265334a">plugins</a>)</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                plugin-&gt;stop();</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            }</div>
@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('PluginManager_8h_source.html',''); ini
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1PluginManager.html#ad5e71a845e46b1b8e1838b06892a32d6">   53</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classcar_1_1plugin_1_1PluginManager.html#ad5e71a845e46b1b8e1838b06892a32d6">addPlugin</a>(std::shared_ptr&lt;Plugin&gt; plugin)</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            this-&gt;plugins.push_back(plugin);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            this-&gt;<a class="code hl_variable" href="classcar_1_1plugin_1_1PluginManager.html#a26042e09c9392ce4eabddde6f265334a">plugins</a>.push_back(plugin);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('PluginManager_8h_source.html',''); ini
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            std::string type_name = std::string(utils::TypeName&lt;T&gt;());</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            type_name = utils::getStringAfterLastColon(type_name);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">for</span> (std::shared_ptr&lt;Plugin&gt;&amp; plugin : this-&gt;plugins)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">for</span> (std::shared_ptr&lt;Plugin&gt;&amp; plugin : this-&gt;<a class="code hl_variable" href="classcar_1_1plugin_1_1PluginManager.html#a26042e09c9392ce4eabddde6f265334a">plugins</a>)</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            {</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keywordflow">if</span> (plugin-&gt;getName() == type_name)</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                {</div>
@@ -170,13 +170,14 @@ $(document).ready(function(){initNavTree('PluginManager_8h_source.html',''); ini
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        std::vector&lt;std::shared_ptr&lt;Plugin&gt;&gt; plugins;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classcar_1_1plugin_1_1PluginManager.html#a26042e09c9392ce4eabddde6f265334a">   78</a></span>        std::vector&lt;std::shared_ptr&lt;Plugin&gt;&gt; <a class="code hl_variable" href="classcar_1_1plugin_1_1PluginManager.html#a26042e09c9392ce4eabddde6f265334a">plugins</a>;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    };</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aPlugin_8h_html"><div class="ttname"><a href="Plugin_8h.html">Plugin.h</a></div></div>
 <div class="ttc" id="aclasscar_1_1plugin_1_1PluginManager_html"><div class="ttname"><a href="classcar_1_1plugin_1_1PluginManager.html">car::plugin::PluginManager</a></div><div class="ttdef"><b>Definition:</b> PluginManager.h:22</div></div>
+<div class="ttc" id="aclasscar_1_1plugin_1_1PluginManager_html_a26042e09c9392ce4eabddde6f265334a"><div class="ttname"><a href="classcar_1_1plugin_1_1PluginManager.html#a26042e09c9392ce4eabddde6f265334a">car::plugin::PluginManager::plugins</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Plugin &gt; &gt; plugins</div><div class="ttdef"><b>Definition:</b> PluginManager.h:78</div></div>
 <div class="ttc" id="aclasscar_1_1plugin_1_1PluginManager_html_a8eb369a6c295bb57a5581f782aa757e2"><div class="ttname"><a href="classcar_1_1plugin_1_1PluginManager.html#a8eb369a6c295bb57a5581f782aa757e2">car::plugin::PluginManager::getPlugin</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; getPlugin()</div><div class="ttdef"><b>Definition:</b> PluginManager.h:59</div></div>
 <div class="ttc" id="aclasscar_1_1plugin_1_1PluginManager_html_ab13b0961f3bcfa16b96fdbd12b1a0eac"><div class="ttname"><a href="classcar_1_1plugin_1_1PluginManager.html#ab13b0961f3bcfa16b96fdbd12b1a0eac">car::plugin::PluginManager::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdef"><b>Definition:</b> PluginManager.h:40</div></div>
 <div class="ttc" id="aclasscar_1_1plugin_1_1PluginManager_html_acc6f2064cad667a51d7309c5b4349c83"><div class="ttname"><a href="classcar_1_1plugin_1_1PluginManager.html#acc6f2064cad667a51d7309c5b4349c83">car::plugin::PluginManager::initialize</a></div><div class="ttdeci">void initialize(std::shared_ptr&lt; system::CarSystem &gt; car_system)</div><div class="ttdef"><b>Definition:</b> PluginManager.h:24</div></div>

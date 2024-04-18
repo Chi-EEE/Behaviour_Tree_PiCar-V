@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('classbehaviour__tree_1_1BehaviourTreeH
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classbehaviour__tree_1_1BehaviourTreeHandler-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">behaviour_tree::BehaviourTreeHandler Class Reference</div></div>
 </div><!--header-->
@@ -110,7 +111,7 @@ Inheritance diagram for behaviour_tree::BehaviourTreeHandler:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2baba179a4ce714b45cc4be2634483e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#a2baba179a4ce714b45cc4be2634483e8">initialize</a> (std::shared_ptr&lt; <a class="el" href="classcar_1_1system_1_1CarSystem.html">car::system::CarSystem</a> &gt; car_system) final override</td></tr>
+<tr class="memitem:a2baba179a4ce714b45cc4be2634483e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#a2baba179a4ce714b45cc4be2634483e8">initialize</a> (std::shared_ptr&lt; <a class="el" href="classcar_1_1system_1_1CarSystem.html">car::system::CarSystem</a> &gt; <a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#a8038c2e4f19e850f17b1ef041f024622">car_system</a>) final override</td></tr>
 <tr class="separator:a2baba179a4ce714b45cc4be2634483e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab95e23903c1e501184b6622c6cf6d9ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#ab95e23903c1e501184b6622c6cf6d9ee">handleCommand</a> (const std::string message, const rapidjson::Document &amp;message_json)</td></tr>
 <tr class="separator:ab95e23903c1e501184b6622c6cf6d9ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,7 +127,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac449ae0a932bc4cadd6b6f986620a73a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ff821d64c3b47bf711367205eb6e39f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#a1ff821d64c3b47bf711367205eb6e39f">getName</a> () final override</td></tr>
 <tr class="separator:a1ff821d64c3b47bf711367205eb6e39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b09b8e48e88362af3312aee64cf35ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#a8b09b8e48e88362af3312aee64cf35ff">_setBehaviourTree</a> (std::shared_ptr&lt; BehaviourTree &gt; behaviour_tree)</td></tr>
+<tr class="memitem:a8b09b8e48e88362af3312aee64cf35ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#a8b09b8e48e88362af3312aee64cf35ff">_setBehaviourTree</a> (std::shared_ptr&lt; BehaviourTree &gt; <a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#ae41facd5ed9b39b18a7610d2e3247b50">behaviour_tree</a>)</td></tr>
 <tr class="separator:a8b09b8e48e88362af3312aee64cf35ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4106932b47ca294116579fb489175238"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1plugin_1_1Plugin.html#a4106932b47ca294116579fb489175238">initialize</a> (std::shared_ptr&lt; <a class="el" href="classcar_1_1system_1_1CarSystem.html">car::system::CarSystem</a> &gt; car_system)=0</td></tr>
 <tr class="separator:a4106932b47ca294116579fb489175238"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +137,19 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a264afd26642e8ea4914c5a218877f9f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c49d13e1c19885b0374a1c3af49fbfa"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1plugin_1_1Plugin.html#a9c49d13e1c19885b0374a1c3af49fbfa">getName</a> ()=0</td></tr>
 <tr class="separator:a9c49d13e1c19885b0374a1c3af49fbfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8038c2e4f19e850f17b1ef041f024622"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classcar_1_1system_1_1CarSystem.html">car::system::CarSystem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#a8038c2e4f19e850f17b1ef041f024622">car_system</a></td></tr>
+<tr class="separator:a8038c2e4f19e850f17b1ef041f024622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae41facd5ed9b39b18a7610d2e3247b50"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; BehaviourTree &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#ae41facd5ed9b39b18a7610d2e3247b50">behaviour_tree</a></td></tr>
+<tr class="separator:ae41facd5ed9b39b18a7610d2e3247b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c7e331655a627a7deb37525b39249e6"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; Context &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#a1c7e331655a627a7deb37525b39249e6">context</a></td></tr>
+<tr class="separator:a1c7e331655a627a7deb37525b39249e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa868142cbfae88ae01ef030810657864"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#aa868142cbfae88ae01ef030810657864">tick_count</a> = 0</td></tr>
+<tr class="separator:aa868142cbfae88ae01ef030810657864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47bacae8472f3b76ce27988eb4b161ca"><td class="memItemLeft" align="right" valign="top">std::chrono::time_point&lt; std::chrono::steady_clock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbehaviour__tree_1_1BehaviourTreeHandler.html#a47bacae8472f3b76ce27988eb4b161ca">last_connected</a></td></tr>
+<tr class="separator:a47bacae8472f3b76ce27988eb4b161ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8b09b8e48e88362af3312aee64cf35ff" name="a8b09b8e48e88362af3312aee64cf35ff"></a>
@@ -382,6 +396,117 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classcar_1_1plugin_1_1Plugin.html#a7b086d61878a6c38a2ef713dd02421f2">car::plugin::Plugin</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae41facd5ed9b39b18a7610d2e3247b50" name="ae41facd5ed9b39b18a7610d2e3247b50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae41facd5ed9b39b18a7610d2e3247b50">&#9670;&#160;</a></span>behaviour_tree</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;BehaviourTree&gt; behaviour_tree::BehaviourTreeHandler::behaviour_tree</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8038c2e4f19e850f17b1ef041f024622" name="a8038c2e4f19e850f17b1ef041f024622"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8038c2e4f19e850f17b1ef041f024622">&#9670;&#160;</a></span>car_system</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classcar_1_1system_1_1CarSystem.html">car::system::CarSystem</a>&gt; behaviour_tree::BehaviourTreeHandler::car_system</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c7e331655a627a7deb37525b39249e6" name="a1c7e331655a627a7deb37525b39249e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c7e331655a627a7deb37525b39249e6">&#9670;&#160;</a></span>context</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;Context&gt; behaviour_tree::BehaviourTreeHandler::context</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47bacae8472f3b76ce27988eb4b161ca" name="a47bacae8472f3b76ce27988eb4b161ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47bacae8472f3b76ce27988eb4b161ca">&#9670;&#160;</a></span>last_connected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::time_point&lt;std::chrono::steady_clock&gt; behaviour_tree::BehaviourTreeHandler::last_connected</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa868142cbfae88ae01ef030810657864" name="aa868142cbfae88ae01ef030810657864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa868142cbfae88ae01ef030810657864">&#9670;&#160;</a></span>tick_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int behaviour_tree::BehaviourTreeHandler::tick_count = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

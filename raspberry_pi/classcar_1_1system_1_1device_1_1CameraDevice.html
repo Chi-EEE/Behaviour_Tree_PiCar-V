@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('classcar_1_1system_1_1device_1_1Camera
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classcar_1_1system_1_1device_1_1CameraDevice-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">car::system::device::CameraDevice Class Reference</div></div>
@@ -104,7 +105,7 @@ $(document).ready(function(){initNavTree('classcar_1_1system_1_1device_1_1Camera
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a68a0fefa508c20f32d995aa145c544b3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a68a0fefa508c20f32d995aa145c544b3">CameraDevice</a> (std::shared_ptr&lt; <a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a> &gt; configuration)</td></tr>
+<tr class="memitem:a68a0fefa508c20f32d995aa145c544b3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a68a0fefa508c20f32d995aa145c544b3">CameraDevice</a> (std::shared_ptr&lt; <a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a> &gt; <a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#af7184782a90080194992a17e1c430fc5">configuration</a>)</td></tr>
 <tr class="separator:a68a0fefa508c20f32d995aa145c544b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a721eaf84810ec8ed175b4e045c6326a5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a721eaf84810ec8ed175b4e045c6326a5">CameraDevice</a> (const <a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html">CameraDevice</a> &amp;)=delete</td></tr>
 <tr class="separator:a721eaf84810ec8ed175b4e045c6326a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,7 +122,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a52a58c798be8faed2f9ee9f04a41a9ce"><td class="memItemLeft" align="right" valign="top">static tl::expected&lt; std::unique_ptr&lt; <a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html">CameraDevice</a> &gt;, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a52a58c798be8faed2f9ee9f04a41a9ce">create</a> (std::shared_ptr&lt; <a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a> &gt; configuration)</td></tr>
+<tr class="memitem:a52a58c798be8faed2f9ee9f04a41a9ce"><td class="memItemLeft" align="right" valign="top">static tl::expected&lt; std::unique_ptr&lt; <a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html">CameraDevice</a> &gt;, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a52a58c798be8faed2f9ee9f04a41a9ce">create</a> (std::shared_ptr&lt; <a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a> &gt; <a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#af7184782a90080194992a17e1c430fc5">configuration</a>)</td></tr>
 <tr class="separator:a52a58c798be8faed2f9ee9f04a41a9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
@@ -136,6 +137,21 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a0172dbd229bb34a4602eff8369ba83be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16f383287517d36f7f739764103e9515"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a16f383287517d36f7f739764103e9515">terminate</a> ()</td></tr>
 <tr class="separator:a16f383287517d36f7f739764103e9515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af7184782a90080194992a17e1c430fc5"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#af7184782a90080194992a17e1c430fc5">configuration</a></td></tr>
+<tr class="separator:af7184782a90080194992a17e1c430fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d05581ab27995253eceb91577a26113"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; cv::VideoCapture &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a9d05581ab27995253eceb91577a26113">camera_</a></td></tr>
+<tr class="separator:a9d05581ab27995253eceb91577a26113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab959099e81b772b58dcc46250ec9bdfa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#ab959099e81b772b58dcc46250ec9bdfa">connected_</a> = false</td></tr>
+<tr class="separator:ab959099e81b772b58dcc46250ec9bdfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036e36514811f1a36c1c3ed3d2f06468"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a036e36514811f1a36c1c3ed3d2f06468">frame_buffer_</a></td></tr>
+<tr class="separator:a036e36514811f1a36c1c3ed3d2f06468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e0ab1636019ac35a46182e8796db4bd"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a0e0ab1636019ac35a46182e8796db4bd">camera_mutex_</a></td></tr>
+<tr class="separator:a0e0ab1636019ac35a46182e8796db4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56f9e43191419958b6904c0385fa6e4d"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html#a56f9e43191419958b6904c0385fa6e4d">last</a></td></tr>
+<tr class="separator:a56f9e43191419958b6904c0385fa6e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -484,6 +500,139 @@ Friends</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9d05581ab27995253eceb91577a26113" name="a9d05581ab27995253eceb91577a26113"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d05581ab27995253eceb91577a26113">&#9670;&#160;</a></span>camera_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;cv::VideoCapture&gt; car::system::device::CameraDevice::camera_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e0ab1636019ac35a46182e8796db4bd" name="a0e0ab1636019ac35a46182e8796db4bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e0ab1636019ac35a46182e8796db4bd">&#9670;&#160;</a></span>camera_mutex_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex car::system::device::CameraDevice::camera_mutex_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7184782a90080194992a17e1c430fc5" name="af7184782a90080194992a17e1c430fc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7184782a90080194992a17e1c430fc5">&#9670;&#160;</a></span>configuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a>&gt; car::system::device::CameraDevice::configuration</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab959099e81b772b58dcc46250ec9bdfa" name="ab959099e81b772b58dcc46250ec9bdfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab959099e81b772b58dcc46250ec9bdfa">&#9670;&#160;</a></span>connected_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool car::system::device::CameraDevice::connected_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a036e36514811f1a36c1c3ed3d2f06468" name="a036e36514811f1a36c1c3ed3d2f06468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a036e36514811f1a36c1c3ed3d2f06468">&#9670;&#160;</a></span>frame_buffer_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string car::system::device::CameraDevice::frame_buffer_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56f9e43191419958b6904c0385fa6e4d" name="a56f9e43191419958b6904c0385fa6e4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56f9e43191419958b6904c0385fa6e4d">&#9670;&#160;</a></span>last</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::steady_clock::time_point car::system::device::CameraDevice::last</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

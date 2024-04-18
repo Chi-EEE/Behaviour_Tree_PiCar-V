@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error_5fmessage_0',['error_message',['../structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct.html#ac12b4d1ff719d02618c1a6f4c660fd9c',1,'car::system::messaging::MessagingSystem::FirstMessageStruct']]]
+  ['device_5fmanager_5f_0',['device_manager_',['../classcar_1_1system_1_1CarSystem.html#a8d8b420fb68668aa1f4afa9bfd8bcb9f',1,'car::system::CarSystem']]]
 ];

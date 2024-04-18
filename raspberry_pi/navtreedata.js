@@ -37,7 +37,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
@@ -59,7 +59,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AbstractMovementController_8h.html",
-"classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#aa98622d9b544eac441c253131c237be8"
+"classcar_1_1system_1_1device_1_1DeviceManager.html#ab6d3c6d5180f9ad376e56da7129a2855",
+"classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController.html#afe6f58ddebfef0c878ee1e8de381c716"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

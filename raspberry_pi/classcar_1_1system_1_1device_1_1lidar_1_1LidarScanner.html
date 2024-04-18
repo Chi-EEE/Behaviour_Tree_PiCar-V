@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('classcar_1_1system_1_1device_1_1lidar_
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">car::system::device::lidar::LidarScanner Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -145,6 +146,21 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ade253d31f5e290c59ef71b63a6834b80"><td class="memItemLeft" align="right" valign="top">static tl::expected&lt; std::unique_ptr&lt; <a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html">LidarScanner</a> &gt;, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#ade253d31f5e290c59ef71b63a6834b80">create</a> (std::shared_ptr&lt; <a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a> &gt; configuration) noexcept</td></tr>
 <tr class="separator:ade253d31f5e290c59ef71b63a6834b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aaa3d7d954b61533b2981b155ed9b32f3"><td class="memItemLeft" align="right" valign="top">std::atomic_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#aaa3d7d954b61533b2981b155ed9b32f3">running</a> = false</td></tr>
+<tr class="separator:aaa3d7d954b61533b2981b155ed9b32f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3633e4494c9c478648740a0e072b8bca"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#a3633e4494c9c478648740a0e072b8bca">configuration_</a></td></tr>
+<tr class="separator:a3633e4494c9c478648740a0e072b8bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89b6cda450681d8bb7e8e74750682d7e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; Measure &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#a89b6cda450681d8bb7e8e74750682d7e">scan_data_</a></td></tr>
+<tr class="separator:a89b6cda450681d8bb7e8e74750682d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd1a4b02c0a7c0e4963be0238a26813b"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; RPLidar &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#abd1a4b02c0a7c0e4963be0238a26813b">lidar_</a></td></tr>
+<tr class="separator:abd1a4b02c0a7c0e4963be0238a26813b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec37127a322b877dc11c957a380fd97d"><td class="memItemLeft" align="right" valign="top">std::variant&lt; std::function&lt; std::vector&lt; Measure &gt;()&gt;, nullptr_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#aec37127a322b877dc11c957a380fd97d">scan_generator_</a> = nullptr</td></tr>
+<tr class="separator:aec37127a322b877dc11c957a380fd97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f63208682e8f3d4f310a9ff4e5c346d"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html#a5f63208682e8f3d4f310a9ff4e5c346d">scan_data_mutex_</a></td></tr>
+<tr class="separator:a5f63208682e8f3d4f310a9ff4e5c346d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -378,6 +394,139 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice.html#adeedfba71403f7ef9834680c47b488eb">car::system::device::lidar::LidarDevice</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3633e4494c9c478648740a0e072b8bca" name="a3633e4494c9c478648740a0e072b8bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3633e4494c9c478648740a0e072b8bca">&#9670;&#160;</a></span>configuration_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="structcar_1_1configuration_1_1Configuration.html">configuration::Configuration</a>&gt; car::system::device::lidar::LidarScanner::configuration_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd1a4b02c0a7c0e4963be0238a26813b" name="abd1a4b02c0a7c0e4963be0238a26813b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd1a4b02c0a7c0e4963be0238a26813b">&#9670;&#160;</a></span>lidar_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;RPLidar&gt; car::system::device::lidar::LidarScanner::lidar_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa3d7d954b61533b2981b155ed9b32f3" name="aaa3d7d954b61533b2981b155ed9b32f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa3d7d954b61533b2981b155ed9b32f3">&#9670;&#160;</a></span>running</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic_bool car::system::device::lidar::LidarScanner::running = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a89b6cda450681d8bb7e8e74750682d7e" name="a89b6cda450681d8bb7e8e74750682d7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89b6cda450681d8bb7e8e74750682d7e">&#9670;&#160;</a></span>scan_data_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;Measure&gt; car::system::device::lidar::LidarScanner::scan_data_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f63208682e8f3d4f310a9ff4e5c346d" name="a5f63208682e8f3d4f310a9ff4e5c346d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f63208682e8f3d4f310a9ff4e5c346d">&#9670;&#160;</a></span>scan_data_mutex_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex car::system::device::lidar::LidarScanner::scan_data_mutex_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec37127a322b877dc11c957a380fd97d" name="aec37127a322b877dc11c957a380fd97d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec37127a322b877dc11c957a380fd97d">&#9670;&#160;</a></span>scan_generator_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::variant&lt;std::function&lt;std::vector&lt;Measure&gt;()&gt;, nullptr_t&gt; car::system::device::lidar::LidarScanner::scan_generator_ = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

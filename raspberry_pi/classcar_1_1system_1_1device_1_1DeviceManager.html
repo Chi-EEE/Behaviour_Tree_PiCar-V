@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('classcar_1_1system_1_1device_1_1Device
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classcar_1_1system_1_1device_1_1DeviceManager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">car::system::device::DeviceManager Class Reference</div></div>
 </div><!--header-->
@@ -110,7 +111,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a02f4fde9e57bf6d1e59f303980d580e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63ba22fe228cfcebbe9eb642a3391370"><td class="memItemLeft" align="right" valign="top">const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#a63ba22fe228cfcebbe9eb642a3391370">isRunning</a> () const</td></tr>
 <tr class="separator:a63ba22fe228cfcebbe9eb642a3391370"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae69f845ad5c5cc24f6d258faa6466f19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#ae69f845ad5c5cc24f6d258faa6466f19">initialize</a> (std::shared_ptr&lt; <a class="el" href="classcar_1_1system_1_1CarSystem.html">system::CarSystem</a> &gt; car_system)</td></tr>
+<tr class="memitem:ae69f845ad5c5cc24f6d258faa6466f19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#ae69f845ad5c5cc24f6d258faa6466f19">initialize</a> (std::shared_ptr&lt; <a class="el" href="classcar_1_1system_1_1CarSystem.html">system::CarSystem</a> &gt; <a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#a263e6c89f1dfb984089ca675a143a407">car_system</a>)</td></tr>
 <tr class="separator:ae69f845ad5c5cc24f6d258faa6466f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0532b345f3647f7ff8e043dc10c6338f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#a0532b345f3647f7ff8e043dc10c6338f">start</a> ()</td></tr>
 <tr class="separator:a0532b345f3647f7ff8e043dc10c6338f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,6 +126,19 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a8dad8493faf025419aacaa8902b9b699"><td class="memItemLeft" align="right" valign="top">static tl::expected&lt; std::unique_ptr&lt; <a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html">DeviceManager</a> &gt;, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#a8dad8493faf025419aacaa8902b9b699">create</a> (std::shared_ptr&lt; <a class="el" href="structcar_1_1configuration_1_1Configuration.html">Configuration</a> &gt; configuration)</td></tr>
 <tr class="separator:a8dad8493faf025419aacaa8902b9b699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a263e6c89f1dfb984089ca675a143a407"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classcar_1_1system_1_1CarSystem.html">car::system::CarSystem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#a263e6c89f1dfb984089ca675a143a407">car_system</a></td></tr>
+<tr class="separator:a263e6c89f1dfb984089ca675a143a407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0ca3d42fec64ed275b537a77bff6e8c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#ae0ca3d42fec64ed275b537a77bff6e8c">is_initialized_</a> = false</td></tr>
+<tr class="separator:ae0ca3d42fec64ed275b537a77bff6e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c04c7ea2f387ea09c7fc7a35bcc03f8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#a8c04c7ea2f387ea09c7fc7a35bcc03f8">is_running_</a> = false</td></tr>
+<tr class="separator:a8c04c7ea2f387ea09c7fc7a35bcc03f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53bd44189a05e5ecc18eddb938a73b5a"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice.html">lidar::LidarDevice</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#a53bd44189a05e5ecc18eddb938a73b5a">lidar_device_</a></td></tr>
+<tr class="separator:a53bd44189a05e5ecc18eddb938a73b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86957c9a907aa8e27fbad82603f84469"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html">CameraDevice</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcar_1_1system_1_1device_1_1DeviceManager.html#a86957c9a907aa8e27fbad82603f84469">camera_device_</a></td></tr>
+<tr class="separator:a86957c9a907aa8e27fbad82603f84469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab6d3c6d5180f9ad376e56da7129a2855" name="ab6d3c6d5180f9ad376e56da7129a2855"></a>
@@ -347,6 +361,117 @@ Static Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a86957c9a907aa8e27fbad82603f84469" name="a86957c9a907aa8e27fbad82603f84469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86957c9a907aa8e27fbad82603f84469">&#9670;&#160;</a></span>camera_device_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classcar_1_1system_1_1device_1_1CameraDevice.html">CameraDevice</a>&gt; car::system::device::DeviceManager::camera_device_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a263e6c89f1dfb984089ca675a143a407" name="a263e6c89f1dfb984089ca675a143a407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a263e6c89f1dfb984089ca675a143a407">&#9670;&#160;</a></span>car_system</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classcar_1_1system_1_1CarSystem.html">car::system::CarSystem</a>&gt; car::system::device::DeviceManager::car_system</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae0ca3d42fec64ed275b537a77bff6e8c" name="ae0ca3d42fec64ed275b537a77bff6e8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0ca3d42fec64ed275b537a77bff6e8c">&#9670;&#160;</a></span>is_initialized_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool car::system::device::DeviceManager::is_initialized_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c04c7ea2f387ea09c7fc7a35bcc03f8" name="a8c04c7ea2f387ea09c7fc7a35bcc03f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c04c7ea2f387ea09c7fc7a35bcc03f8">&#9670;&#160;</a></span>is_running_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool car::system::device::DeviceManager::is_running_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a53bd44189a05e5ecc18eddb938a73b5a" name="a53bd44189a05e5ecc18eddb938a73b5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53bd44189a05e5ecc18eddb938a73b5a">&#9670;&#160;</a></span>lidar_device_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice.html">lidar::LidarDevice</a>&gt; car::system::device::DeviceManager::lidar_device_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
