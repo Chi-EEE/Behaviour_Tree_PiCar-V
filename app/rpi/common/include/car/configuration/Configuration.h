@@ -21,7 +21,7 @@ namespace car::configuration
             this->camera_fps = camera_fps;
             this->camera_fps_interval = 1000 / camera_fps;
         }
-        int getCameraFpsInterval() { return this->camera_fps_interval; }
+        const int getCameraFpsInterval() { return this->camera_fps_interval; }
         bool use_camera = true;
 
         std::string lidar_port = "";

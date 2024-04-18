@@ -62,7 +62,7 @@ namespace car::configuration
                 configuration.host = config_json["host"].GetString();
               
                 configuration.camera_index = config_json["camera_index"].GetInt();
-                configuration.camera_fps = config_json["camera_fps"].GetInt();
+                configuration.setCameraFps(config_json["camera_fps"].GetInt());
                 configuration.use_camera = config_json["use_camera"].GetBool();
               
                 configuration.lidar_port = config_json["lidar_port"].GetString();
