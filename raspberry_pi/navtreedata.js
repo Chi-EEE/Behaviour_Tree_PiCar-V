@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Behaviour Tree PiCar-V", "index.html", [
-    [ "Sunfounder PiCar Daemon", "md_daemon_install_README.html", [
+    [ "Behaviour Tree PiCar Daemon", "md_daemon_install_README.html", [
       [ "Installation:", "md_daemon_install_README.html#autotoc_md1", null ],
       [ "View Logs", "md_daemon_install_README.html#autotoc_md2", null ]
     ] ],
