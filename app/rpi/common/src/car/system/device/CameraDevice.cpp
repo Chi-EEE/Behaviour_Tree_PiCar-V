@@ -20,8 +20,7 @@ namespace car::system::device
 
 	void CameraDevice::update() {
 		const auto now = std::chrono::steady_clock::now();
-		// TODO: Fix this
-		if ((now - this->last).count() < (1000 / this->configuration->camera_fps)) {
+		if ((now - this->last).count() < this->configuration->getCameraFpsInterval()) {
 			this->frame_buffer_ = "";
 			return;
 		}

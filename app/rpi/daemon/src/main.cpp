@@ -57,8 +57,8 @@ public:
         dlog::info(fmt::format("Started daemon with host: {}", host));
         configuration->host = host;
 
-        configuration->camera_index = reader.GetString("Camera", "camera_index", 0);
-        configuration->camera_fps = reader.GetString("Camera", "camera_fps", 60);
+        configuration->camera_index = reader.GetInteger("Camera", "camera_index", 0);
+        configuration->setCameraFps(reader.GetInteger("Camera", "camera_fps", 60));
         configuration->use_camera = reader.GetBool("Camera", "use_camera", true);
 #ifdef __linux
         const std::string default_lidar_port = "/dev/ttyUSB0";
