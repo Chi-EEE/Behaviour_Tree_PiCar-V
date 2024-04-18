@@ -196,7 +196,7 @@
         lidar_draw_disconnect = subscribeLidarDrawing();
     }
 
-    let lidar_toggle_icon = "favicon.png";
+    let lidar_toggle_icon = $lidar_toggle ? "favicon.png" : "greyed_favicon.png";
     function toggleLidar() {
         if (
             lidar_draw_disconnect === null ||
