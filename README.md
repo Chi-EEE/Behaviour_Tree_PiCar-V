@@ -1,4 +1,4 @@
-# Car Application
+# Behaviour Tree PiCar-V
 
 Full-Stack Application used by Users to control a SunFounder Pi-Car
 
