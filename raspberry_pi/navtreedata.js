@@ -44,13 +44,12 @@ var NAVTREE =
       [ "Main Technologies", "md_README.html#autotoc_md14", null ],
       [ "Setting up Raspberry Pi", "md_README.html#autotoc_md15", null ]
     ] ],
-    [ "SETUP", "md_SETUP.html", null ],
+    [ "Behaviour Tree PiCar-V Setup", "md_SETUP.html", null ],
     [ "Raspberry Pi", "md_tui_README.html", [
-      [ "Installation", "md_tui_README.html#autotoc_md17", null ],
-      [ "Main Technologies", "md_tui_README.html#autotoc_md18", null ],
-      [ "Setting up Raspberry Pi", "md_tui_README.html#autotoc_md19", null ]
+      [ "Installation", "md_tui_README.html#autotoc_md18", null ],
+      [ "Main Technologies", "md_tui_README.html#autotoc_md19", null ],
+      [ "Setting up Raspberry Pi", "md_tui_README.html#autotoc_md20", null ]
     ] ],
-    [ "SETUP", "md_tui_SETUP.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
