@@ -133,18 +133,20 @@
         lidar_context_.stroke(path);
     }
 
+    let last_seen_points = [];
     function subscribeLidarDrawing() {
         let before = 0;
         return lidar.subscribe((/** @type {Array<Point>} */ points) => {
+            if (points.length === 0) {
+                return;
+            }
             const now = Date.now();
             const elapsed = now - before;
             if (elapsed < fps_interval) {
                 return;
             }
             before = Date.now();
-            if (points.length === 0) {
-                return;
-            }
+            last_seen_points = [];
             lidar_context_.clearRect(
                 0,
                 0,
@@ -168,6 +170,7 @@
                     }
                     const x = (angle - offset_angle) * space_between_angles;
                     drawLidarWall(x, lidar_canvas_midpoint_y, distance);
+                    last_seen_points.push(point);
                 } else {
                     const angle = i + offset_angle;
 
@@ -212,6 +215,10 @@
                         distance = closest_after_point.distance;
                     }
                     drawLidarWall(x, lidar_canvas_midpoint_y, distance);
+                    last_seen_points.push({
+                        angle: angle,
+                        distance: distance,
+                    });
                 }
             }
         });
@@ -227,6 +234,7 @@
     let lidar_toggle_icon = $lidar_toggle
         ? "favicon.png"
         : "greyed_favicon.png";
+
     function toggleLidar() {
         if (
             lidar_draw_disconnect === null ||
@@ -285,6 +293,15 @@
 
         lidar_context_.lineWidth = (parentHeight / 900) * 12;
         lidar_bar_height_size = parentHeight * 140;
+
+        for (const point in last_seen_points) {
+            const angle = point.angle;
+            const distance = point.distance;
+            const space_between_angles = lidar_canvas_.width / 90;
+            const lidar_canvas_midpoint_y = lidar_canvas_.height / 2;
+            const x = (angle - offset_angle) * space_between_angles;
+            drawLidarWall(x, lidar_canvas_midpoint_y, distance);
+        }
     }
 
     main_pane_size_0_store.subscribe(updateAspectRatio);
