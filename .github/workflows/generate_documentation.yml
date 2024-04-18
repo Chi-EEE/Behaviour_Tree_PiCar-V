@@ -44,7 +44,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y doxygen-latex
-          cd docs/raspberry_pi/latex
+          cd raspberry_pi/latex
           sudo make
 
       - name: Commit PDF    
