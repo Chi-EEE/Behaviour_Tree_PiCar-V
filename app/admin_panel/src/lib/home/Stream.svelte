@@ -1,4 +1,5 @@
 <script>
+    import { lidar_toggle } from "../../store/home_store";
     import { frame_buffer, lidar } from "../../store/websocket_store";
 
     const lidar_wall_colour = "#0061FF";
@@ -134,7 +135,11 @@
                 drawLidarWall(x, lidar_canvas_midpoint_y, distance);
             }
             for (let i = 0; i < 90; i += 0.25) {
-                if (points.find((point) => round0_25(point.angle) === i + offset_angle)) {
+                if (
+                    points.find(
+                        (point) => round0_25(point.angle) === i + offset_angle,
+                    )
+                ) {
                     continue;
                 }
                 const angle = i + offset_angle;
@@ -191,7 +196,6 @@
         lidar_draw_disconnect = subscribeLidarDrawing();
     }
 
-    let lidar_toggle = true;
     let lidar_toggle_icon = "favicon.png";
     function toggleLidar() {
         if (
@@ -201,8 +205,8 @@
         ) {
             return;
         }
-        lidar_toggle = !lidar_toggle;
-        if (lidar_toggle) {
+        lidar_toggle.set(!$lidar_toggle);
+        if ($lidar_toggle) {
             lidar_toggle_icon = "favicon.png";
             lidar_draw_disconnect = subscribeLidarDrawing();
         } else {
@@ -230,6 +234,11 @@
         use:handleLidar
     />
     <button class="absolute top-0 right-0" on:click={toggleLidar}>
-        <img width="60" height="60" src={lidar_toggle_icon} alt="Button to toggle Lidar" />
+        <img
+            width="60"
+            height="60"
+            src={lidar_toggle_icon}
+            alt="Button to toggle Lidar"
+        />
     </button>
 </div>

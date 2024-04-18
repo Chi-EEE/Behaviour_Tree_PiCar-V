@@ -5,3 +5,5 @@ export const main_pane_size_1_store = writable(20);
 
 export const side_pane_size_0_store = writable(83);
 export const side_pane_size_1_store = writable(17);
+
+export const lidar_toggle = writable(true);
