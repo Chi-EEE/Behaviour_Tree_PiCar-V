@@ -1,9 +1,14 @@
 <script>
-    import { lidar_toggle } from "../../store/home_store";
+    import { onMount } from "svelte";
+    import {
+        main_pane_size_0_store,
+        lidar_toggle,
+    } from "../../store/home_store";
     import { frame_buffer, lidar } from "../../store/websocket_store";
 
     const lidar_wall_colour = "#0061FF";
     const offset_angle = 45;
+    let lidar_bar_height_size = 20000;
 
     /**
      * @typedef {{
@@ -43,7 +48,11 @@
         return blob;
     }
 
+    /** @type {HTMLImageElement} */
+    let live_feed_ = null;
+
     function handleLiveFeed(/** @type {HTMLImageElement} */ live_feed) {
+        live_feed_ = live_feed;
         frame_buffer.subscribe((value) => {
             const blob = b64toBlob(value, "image/jpeg");
             const image_url = URL.createObjectURL(blob);
@@ -101,7 +110,7 @@
      * @param {number} height
      */
     function drawLidarWall(x, lidar_canvas_midpoint_y, distance) {
-        const height = 20000 / distance;
+        const height = lidar_bar_height_size / distance;
         lidar_context_.strokeStyle = shadeColor(
             lidar_wall_colour,
             distance / 15.15151515151515 / 33,
@@ -113,7 +122,6 @@
     }
 
     function subscribeLidarDrawing() {
-        lidar_context_.lineWidth = 6;
         return lidar.subscribe((/** @type {Array<Point>} */ points) => {
             lidar_context_.clearRect(
                 0,
@@ -197,7 +205,9 @@
         lidar_draw_disconnect = subscribeLidarDrawing();
     }
 
-    let lidar_toggle_icon = $lidar_toggle ? "favicon.png" : "greyed_favicon.png";
+    let lidar_toggle_icon = $lidar_toggle
+        ? "favicon.png"
+        : "greyed_favicon.png";
     function toggleLidar() {
         if (
             lidar_draw_disconnect === null ||
@@ -221,17 +231,59 @@
             );
         }
     }
+
+    /** @type {HTMLDivElement} */
+    let stream_div = null;
+
+    function updateAspectRatio() {
+        if (
+            stream_div === null ||
+            live_feed_ === null ||
+            lidar_canvas_ === null
+        ) {
+            return;
+        }
+        const parentWidth = stream_div.clientWidth;
+        const parentHeight = stream_div.clientHeight;
+        const width = parentWidth < 0 ? 0 : parentWidth;
+        const height = parentHeight < 0 ? 0 : parentHeight;
+        const targetAspectRatio = 16 / 9;
+        const currentAspectRatio = width / height;
+
+        let innerWidth;
+        let innerHeight;
+        if (currentAspectRatio > targetAspectRatio) {
+            innerWidth = height * targetAspectRatio;
+            innerHeight = height;
+        } else {
+            innerWidth = width;
+            innerHeight = width / targetAspectRatio;
+        }
+        live_feed_.width = innerWidth;
+        live_feed_.height = innerHeight;
+        lidar_canvas_.width = innerWidth;
+        lidar_canvas_.height = innerHeight;
+   
+        lidar_context_.lineWidth = (parentHeight / 900) * 12;
+        lidar_bar_height_size = parentHeight * 140;
+    }
+
+    main_pane_size_0_store.subscribe(updateAspectRatio);
+
+    onMount(updateAspectRatio);
 </script>
 
-<div class="relative w-full h-full">
+<div class="relative w-full h-full" bind:this={stream_div}>
     <!-- svelte-ignore a11y-missing-attribute -->
     <img
-        class="absolute top-0 left-0 right-0 bottom-0 w-full h-full"
+        class="absolute top-0 left-0 right-0 bottom-0"
+        style="margin-left:auto;margin-right:auto;"
         src="Warning.png"
         use:handleLiveFeed
     />
     <canvas
-        class="absolute top-0 left-0 right-0 bottom-0 w-full h-full"
+        class="absolute top-0 left-0 right-0 bottom-0"
+        style="margin-left:auto;margin-right:auto;"
         use:handleLidar
     />
     <button class="absolute top-0 right-0" on:click={toggleLidar}>
