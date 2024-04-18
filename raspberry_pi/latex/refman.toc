@@ -1,0 +1,692 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Sunfounder Pi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Car Daemon}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Installation\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}View Logs}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Raspberry Pi Daemon}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Install Raspberry Pi Daemon}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Enable / Disable Daemon to run on startup}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Start / Stop / Restart Daemon}{3}{section.2.3}%
+\contentsline {section}{\numberline {2.4}View Logs}{3}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Clear Past Logs}{3}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Reload Daemon}{3}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Change Config}{4}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Uninstall Raspberry Pi Daemon}{4}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Speedrun}{4}{section.2.9}%
+\contentsline {chapter}{\numberline {3}Raspberry Pi}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Main Technologies}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Setting up Raspberry Pi}{5}{section.3.2}%
+\contentsline {chapter}{\numberline {4}SETUP}{7}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Raspberry Pi}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Installation}{9}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Main Technologies}{9}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Setting up Raspberry Pi}{9}{section.5.3}%
+\contentsline {chapter}{\numberline {6}SETUP}{11}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Namespace Index}{13}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Namespace List}{13}{section.7.1}%
+\contentsline {chapter}{\numberline {8}Hierarchical Index}{15}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Class Hierarchy}{15}{section.8.1}%
+\contentsline {chapter}{\numberline {9}Class Index}{17}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Class List}{17}{section.9.1}%
+\contentsline {chapter}{\numberline {10}File Index}{19}{chapter.10}%
+\contentsline {section}{\numberline {10.1}File List}{19}{section.10.1}%
+\contentsline {chapter}{\numberline {11}Namespace Documentation}{21}{chapter.11}%
+\contentsline {section}{\numberline {11.1}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree Namespace Reference}{21}{section.11.1}%
+\contentsline {section}{\numberline {11.2}car Namespace Reference}{21}{section.11.2}%
+\contentsline {section}{\numberline {11.3}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::configuration Namespace Reference}{21}{section.11.3}%
+\contentsline {section}{\numberline {11.4}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display Namespace Reference}{21}{section.11.4}%
+\contentsline {section}{\numberline {11.5}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console Namespace Reference}{22}{section.11.5}%
+\contentsline {section}{\numberline {11.6}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component Namespace Reference}{22}{section.11.6}%
+\contentsline {section}{\numberline {11.7}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::debug Namespace Reference}{22}{section.11.7}%
+\contentsline {section}{\numberline {11.8}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::main Namespace Reference}{22}{section.11.8}%
+\contentsline {section}{\numberline {11.9}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::settings Namespace Reference}{22}{section.11.9}%
+\contentsline {section}{\numberline {11.10}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::screen Namespace Reference}{23}{section.11.10}%
+\contentsline {section}{\numberline {11.11}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::plugin Namespace Reference}{23}{section.11.11}%
+\contentsline {section}{\numberline {11.12}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system Namespace Reference}{23}{section.11.12}%
+\contentsline {section}{\numberline {11.13}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::device Namespace Reference}{23}{section.11.13}%
+\contentsline {section}{\numberline {11.14}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::lidar Namespace Reference}{23}{section.11.14}%
+\contentsline {section}{\numberline {11.15}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::logging Namespace Reference}{24}{section.11.15}%
+\contentsline {subsection}{\numberline {11.15.1}Typedef Documentation}{24}{subsection.11.15.1}%
+\contentsline {subsubsection}{\numberline {11.15.1.1}vector\_sink\_mt}{24}{subsubsection.11.15.1.1}%
+\contentsline {section}{\numberline {11.16}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::messaging Namespace Reference}{24}{section.11.16}%
+\contentsline {section}{\numberline {11.17}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::movement Namespace Reference}{24}{section.11.17}%
+\contentsline {section}{\numberline {11.18}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::controller Namespace Reference}{24}{section.11.18}%
+\contentsline {chapter}{\numberline {12}Class Documentation}{25}{chapter.12}%
+\contentsline {section}{\numberline {12.1}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::controller\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Abstract\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{25}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Member Function Documentation}{25}{subsection.12.1.1}%
+\contentsline {subsubsection}{\numberline {12.1.1.1}initialize()}{26}{subsubsection.12.1.1.1}%
+\contentsline {subsubsection}{\numberline {12.1.1.2}setCameraServo1Angle()}{26}{subsubsection.12.1.1.2}%
+\contentsline {subsubsection}{\numberline {12.1.1.3}setCameraServo2Angle()}{26}{subsubsection.12.1.1.3}%
+\contentsline {subsubsection}{\numberline {12.1.1.4}setFrontWheelsAngle()}{26}{subsubsection.12.1.1.4}%
+\contentsline {subsubsection}{\numberline {12.1.1.5}setRearLeftWheelDirectionToBackward()}{26}{subsubsection.12.1.1.5}%
+\contentsline {subsubsection}{\numberline {12.1.1.6}setRearLeftWheelDirectionToForward()}{27}{subsubsection.12.1.1.6}%
+\contentsline {subsubsection}{\numberline {12.1.1.7}setRearLeftWheelSpeed()}{27}{subsubsection.12.1.1.7}%
+\contentsline {subsubsection}{\numberline {12.1.1.8}setRearRightWheelDirectionToBackward()}{27}{subsubsection.12.1.1.8}%
+\contentsline {subsubsection}{\numberline {12.1.1.9}setRearRightWheelDirectionToForward()}{27}{subsubsection.12.1.1.9}%
+\contentsline {subsubsection}{\numberline {12.1.1.10}setRearRightWheelSpeed()}{27}{subsubsection.12.1.1.10}%
+\contentsline {subsubsection}{\numberline {12.1.1.11}setRearWheelsDirectionToBackward()}{28}{subsubsection.12.1.1.11}%
+\contentsline {subsubsection}{\numberline {12.1.1.12}setRearWheelsDirectionToForward()}{28}{subsubsection.12.1.1.12}%
+\contentsline {subsubsection}{\numberline {12.1.1.13}setRearWheelsSpeed()}{28}{subsubsection.12.1.1.13}%
+\contentsline {subsubsection}{\numberline {12.1.1.14}stop()}{28}{subsubsection.12.1.1.14}%
+\contentsline {subsubsection}{\numberline {12.1.1.15}terminate()}{28}{subsubsection.12.1.1.15}%
+\contentsline {section}{\numberline {12.2}Back\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wheels Class Reference}{29}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}Constructor \& Destructor Documentation}{29}{subsection.12.2.1}%
+\contentsline {subsubsection}{\numberline {12.2.1.1}BackWheels()}{29}{subsubsection.12.2.1.1}%
+\contentsline {subsection}{\numberline {12.2.2}Member Function Documentation}{29}{subsection.12.2.2}%
+\contentsline {subsubsection}{\numberline {12.2.2.1}backward()}{29}{subsubsection.12.2.2.1}%
+\contentsline {subsubsection}{\numberline {12.2.2.2}calibration()}{30}{subsubsection.12.2.2.2}%
+\contentsline {subsubsection}{\numberline {12.2.2.3}caliLeft()}{30}{subsubsection.12.2.2.3}%
+\contentsline {subsubsection}{\numberline {12.2.2.4}caliOK()}{30}{subsubsection.12.2.2.4}%
+\contentsline {subsubsection}{\numberline {12.2.2.5}caliRight()}{30}{subsubsection.12.2.2.5}%
+\contentsline {subsubsection}{\numberline {12.2.2.6}forward()}{30}{subsubsection.12.2.2.6}%
+\contentsline {subsubsection}{\numberline {12.2.2.7}getSpeed()}{30}{subsubsection.12.2.2.7}%
+\contentsline {subsubsection}{\numberline {12.2.2.8}ready()}{30}{subsubsection.12.2.2.8}%
+\contentsline {subsubsection}{\numberline {12.2.2.9}setSpeed()}{30}{subsubsection.12.2.2.9}%
+\contentsline {subsubsection}{\numberline {12.2.2.10}stop()}{31}{subsubsection.12.2.2.10}%
+\contentsline {subsection}{\numberline {12.2.3}Member Data Documentation}{31}{subsection.12.2.3}%
+\contentsline {subsubsection}{\numberline {12.2.3.1}cali\_forward\_A}{31}{subsubsection.12.2.3.1}%
+\contentsline {subsubsection}{\numberline {12.2.3.2}cali\_forward\_B}{31}{subsubsection.12.2.3.2}%
+\contentsline {subsubsection}{\numberline {12.2.3.3}forward\_A}{31}{subsubsection.12.2.3.3}%
+\contentsline {subsubsection}{\numberline {12.2.3.4}forward\_B}{31}{subsubsection.12.2.3.4}%
+\contentsline {subsubsection}{\numberline {12.2.3.5}left\_wheel}{31}{subsubsection.12.2.3.5}%
+\contentsline {subsubsection}{\numberline {12.2.3.6}pca9685}{31}{subsubsection.12.2.3.6}%
+\contentsline {subsubsection}{\numberline {12.2.3.7}right\_wheel}{32}{subsubsection.12.2.3.7}%
+\contentsline {subsubsection}{\numberline {12.2.3.8}speed}{32}{subsubsection.12.2.3.8}%
+\contentsline {section}{\numberline {12.3}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler Class Reference}{32}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}Member Function Documentation}{33}{subsection.12.3.1}%
+\contentsline {subsubsection}{\numberline {12.3.1.1}\_setBehaviourTree()}{33}{subsubsection.12.3.1.1}%
+\contentsline {subsubsection}{\numberline {12.3.1.2}getName()}{33}{subsubsection.12.3.1.2}%
+\contentsline {subsubsection}{\numberline {12.3.1.3}handleCommand()}{33}{subsubsection.12.3.1.3}%
+\contentsline {subsubsection}{\numberline {12.3.1.4}initialize()}{33}{subsubsection.12.3.1.4}%
+\contentsline {subsubsection}{\numberline {12.3.1.5}setBehaviourTree()}{33}{subsubsection.12.3.1.5}%
+\contentsline {subsubsection}{\numberline {12.3.1.6}startBehaviourTree()}{34}{subsubsection.12.3.1.6}%
+\contentsline {subsubsection}{\numberline {12.3.1.7}stop()}{34}{subsubsection.12.3.1.7}%
+\contentsline {subsubsection}{\numberline {12.3.1.8}stopBehaviourTree()}{34}{subsubsection.12.3.1.8}%
+\contentsline {subsubsection}{\numberline {12.3.1.9}update()}{34}{subsubsection.12.3.1.9}%
+\contentsline {subsection}{\numberline {12.3.2}Member Data Documentation}{34}{subsection.12.3.2}%
+\contentsline {subsubsection}{\numberline {12.3.2.1}behaviour\_tree}{34}{subsubsection.12.3.2.1}%
+\contentsline {subsubsection}{\numberline {12.3.2.2}car\_system}{34}{subsubsection.12.3.2.2}%
+\contentsline {subsubsection}{\numberline {12.3.2.3}context}{35}{subsubsection.12.3.2.3}%
+\contentsline {subsubsection}{\numberline {12.3.2.4}last\_connected}{35}{subsubsection.12.3.2.4}%
+\contentsline {subsubsection}{\numberline {12.3.2.5}tick\_count}{35}{subsubsection.12.3.2.5}%
+\contentsline {section}{\numberline {12.4}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Camera\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device Class Reference}{35}{section.12.4}%
+\contentsline {subsection}{\numberline {12.4.1}Constructor \& Destructor Documentation}{36}{subsection.12.4.1}%
+\contentsline {subsubsection}{\numberline {12.4.1.1}CameraDevice()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{36}{subsubsection.12.4.1.1}%
+\contentsline {subsubsection}{\numberline {12.4.1.2}CameraDevice()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{36}{subsubsection.12.4.1.2}%
+\contentsline {subsubsection}{\numberline {12.4.1.3}CameraDevice()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{36}{subsubsection.12.4.1.3}%
+\contentsline {subsubsection}{\numberline {12.4.1.4}$\sim $CameraDevice()}{36}{subsubsection.12.4.1.4}%
+\contentsline {subsection}{\numberline {12.4.2}Member Function Documentation}{36}{subsection.12.4.2}%
+\contentsline {subsubsection}{\numberline {12.4.2.1}create()}{37}{subsubsection.12.4.2.1}%
+\contentsline {subsubsection}{\numberline {12.4.2.2}disconnect()}{37}{subsubsection.12.4.2.2}%
+\contentsline {subsubsection}{\numberline {12.4.2.3}getFrameBuffer()}{37}{subsubsection.12.4.2.3}%
+\contentsline {subsubsection}{\numberline {12.4.2.4}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{37}{subsubsection.12.4.2.4}%
+\contentsline {subsubsection}{\numberline {12.4.2.5}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{37}{subsubsection.12.4.2.5}%
+\contentsline {subsubsection}{\numberline {12.4.2.6}start()}{37}{subsubsection.12.4.2.6}%
+\contentsline {subsubsection}{\numberline {12.4.2.7}stop()}{37}{subsubsection.12.4.2.7}%
+\contentsline {subsubsection}{\numberline {12.4.2.8}terminate()}{38}{subsubsection.12.4.2.8}%
+\contentsline {subsubsection}{\numberline {12.4.2.9}update()}{38}{subsubsection.12.4.2.9}%
+\contentsline {subsection}{\numberline {12.4.3}Friends And Related Function Documentation}{38}{subsection.12.4.3}%
+\contentsline {subsubsection}{\numberline {12.4.3.1}DeviceManager}{38}{subsubsection.12.4.3.1}%
+\contentsline {subsection}{\numberline {12.4.4}Member Data Documentation}{38}{subsection.12.4.4}%
+\contentsline {subsubsection}{\numberline {12.4.4.1}camera\_}{38}{subsubsection.12.4.4.1}%
+\contentsline {subsubsection}{\numberline {12.4.4.2}camera\_mutex\_}{38}{subsubsection.12.4.4.2}%
+\contentsline {subsubsection}{\numberline {12.4.4.3}configuration}{38}{subsubsection.12.4.4.3}%
+\contentsline {subsubsection}{\numberline {12.4.4.4}connected\_}{39}{subsubsection.12.4.4.4}%
+\contentsline {subsubsection}{\numberline {12.4.4.5}frame\_buffer\_}{39}{subsubsection.12.4.4.5}%
+\contentsline {subsubsection}{\numberline {12.4.4.6}last}{39}{subsubsection.12.4.4.6}%
+\contentsline {section}{\numberline {12.5}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console Class Reference}{39}{section.12.5}%
+\contentsline {subsection}{\numberline {12.5.1}Constructor \& Destructor Documentation}{39}{subsection.12.5.1}%
+\contentsline {subsubsection}{\numberline {12.5.1.1}CarConsole()}{40}{subsubsection.12.5.1.1}%
+\contentsline {subsection}{\numberline {12.5.2}Member Function Documentation}{40}{subsection.12.5.2}%
+\contentsline {subsubsection}{\numberline {12.5.2.1}initialize()}{40}{subsubsection.12.5.2.1}%
+\contentsline {subsubsection}{\numberline {12.5.2.2}run()}{40}{subsubsection.12.5.2.2}%
+\contentsline {subsubsection}{\numberline {12.5.2.3}terminate()}{40}{subsubsection.12.5.2.3}%
+\contentsline {subsection}{\numberline {12.5.3}Member Data Documentation}{40}{subsection.12.5.3}%
+\contentsline {subsubsection}{\numberline {12.5.3.1}car\_system}{40}{subsubsection.12.5.3.1}%
+\contentsline {subsubsection}{\numberline {12.5.3.2}json\_configuration}{40}{subsubsection.12.5.3.2}%
+\contentsline {subsubsection}{\numberline {12.5.3.3}vector\_sink}{41}{subsubsection.12.5.3.3}%
+\contentsline {section}{\numberline {12.6}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Context Class Reference}{41}{section.12.6}%
+\contentsline {subsection}{\numberline {12.6.1}Constructor \& Destructor Documentation}{41}{subsection.12.6.1}%
+\contentsline {subsubsection}{\numberline {12.6.1.1}CarContext()}{41}{subsubsection.12.6.1.1}%
+\contentsline {subsection}{\numberline {12.6.2}Member Function Documentation}{41}{subsection.12.6.2}%
+\contentsline {subsubsection}{\numberline {12.6.2.1}\_()}{42}{subsubsection.12.6.2.1}%
+\contentsline {subsubsection}{\numberline {12.6.2.2}getCarSystem()}{42}{subsubsection.12.6.2.2}%
+\contentsline {subsection}{\numberline {12.6.3}Member Data Documentation}{42}{subsection.12.6.3}%
+\contentsline {subsubsection}{\numberline {12.6.3.1}car\_system}{42}{subsubsection.12.6.3.1}%
+\contentsline {section}{\numberline {12.7}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System Class Reference}{42}{section.12.7}%
+\contentsline {subsection}{\numberline {12.7.1}Constructor \& Destructor Documentation}{43}{subsection.12.7.1}%
+\contentsline {subsubsection}{\numberline {12.7.1.1}CarSystem()}{43}{subsubsection.12.7.1.1}%
+\contentsline {subsection}{\numberline {12.7.2}Member Function Documentation}{43}{subsection.12.7.2}%
+\contentsline {subsubsection}{\numberline {12.7.2.1}disconnect()}{43}{subsubsection.12.7.2.1}%
+\contentsline {subsubsection}{\numberline {12.7.2.2}getConfiguration()}{43}{subsubsection.12.7.2.2}%
+\contentsline {subsubsection}{\numberline {12.7.2.3}getDeviceManager()}{44}{subsubsection.12.7.2.3}%
+\contentsline {subsubsection}{\numberline {12.7.2.4}getMessagingSystem()}{44}{subsubsection.12.7.2.4}%
+\contentsline {subsubsection}{\numberline {12.7.2.5}getMovementSystem()}{44}{subsubsection.12.7.2.5}%
+\contentsline {subsubsection}{\numberline {12.7.2.6}getPlugin()}{44}{subsubsection.12.7.2.6}%
+\contentsline {subsubsection}{\numberline {12.7.2.7}initialize()}{44}{subsubsection.12.7.2.7}%
+\contentsline {subsubsection}{\numberline {12.7.2.8}reload()}{44}{subsubsection.12.7.2.8}%
+\contentsline {subsubsection}{\numberline {12.7.2.9}sendData()}{44}{subsubsection.12.7.2.9}%
+\contentsline {subsubsection}{\numberline {12.7.2.10}setConfiguration()}{45}{subsubsection.12.7.2.10}%
+\contentsline {subsubsection}{\numberline {12.7.2.11}start()}{45}{subsubsection.12.7.2.11}%
+\contentsline {subsubsection}{\numberline {12.7.2.12}stop()}{45}{subsubsection.12.7.2.12}%
+\contentsline {subsubsection}{\numberline {12.7.2.13}terminate()}{45}{subsubsection.12.7.2.13}%
+\contentsline {subsubsection}{\numberline {12.7.2.14}tryConnect()}{45}{subsubsection.12.7.2.14}%
+\contentsline {subsubsection}{\numberline {12.7.2.15}update()}{45}{subsubsection.12.7.2.15}%
+\contentsline {subsection}{\numberline {12.7.3}Member Data Documentation}{45}{subsection.12.7.3}%
+\contentsline {subsubsection}{\numberline {12.7.3.1}configuration\_}{45}{subsubsection.12.7.3.1}%
+\contentsline {subsubsection}{\numberline {12.7.3.2}device\_manager\_}{46}{subsubsection.12.7.3.2}%
+\contentsline {subsubsection}{\numberline {12.7.3.3}initialized}{46}{subsubsection.12.7.3.3}%
+\contentsline {subsubsection}{\numberline {12.7.3.4}messaging\_system\_}{46}{subsubsection.12.7.3.4}%
+\contentsline {subsubsection}{\numberline {12.7.3.5}movement\_system\_}{46}{subsubsection.12.7.3.5}%
+\contentsline {subsubsection}{\numberline {12.7.3.6}plugin\_manager\_}{46}{subsubsection.12.7.3.6}%
+\contentsline {subsubsection}{\numberline {12.7.3.7}started}{46}{subsubsection.12.7.3.7}%
+\contentsline {section}{\numberline {12.8}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::configuration\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Configuration Struct Reference}{46}{section.12.8}%
+\contentsline {subsection}{\numberline {12.8.1}Member Function Documentation}{47}{subsection.12.8.1}%
+\contentsline {subsubsection}{\numberline {12.8.1.1}getCameraFpsInterval()}{47}{subsubsection.12.8.1.1}%
+\contentsline {subsubsection}{\numberline {12.8.1.2}setCameraFps()}{47}{subsubsection.12.8.1.2}%
+\contentsline {subsection}{\numberline {12.8.2}Member Data Documentation}{47}{subsection.12.8.2}%
+\contentsline {subsubsection}{\numberline {12.8.2.1}behaviour\_tree\_update\_ms\_interval}{47}{subsubsection.12.8.2.1}%
+\contentsline {subsubsection}{\numberline {12.8.2.2}camera\_fps}{48}{subsubsection.12.8.2.2}%
+\contentsline {subsubsection}{\numberline {12.8.2.3}camera\_fps\_interval}{48}{subsubsection.12.8.2.3}%
+\contentsline {subsubsection}{\numberline {12.8.2.4}camera\_index}{48}{subsubsection.12.8.2.4}%
+\contentsline {subsubsection}{\numberline {12.8.2.5}host}{48}{subsubsection.12.8.2.5}%
+\contentsline {subsubsection}{\numberline {12.8.2.6}lidar\_port}{48}{subsubsection.12.8.2.6}%
+\contentsline {subsubsection}{\numberline {12.8.2.7}use\_camera}{48}{subsubsection.12.8.2.7}%
+\contentsline {subsubsection}{\numberline {12.8.2.8}use\_lidar}{48}{subsubsection.12.8.2.8}%
+\contentsline {section}{\numberline {12.9}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Connect\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button Class Reference}{49}{section.12.9}%
+\contentsline {subsection}{\numberline {12.9.1}Constructor \& Destructor Documentation}{49}{subsection.12.9.1}%
+\contentsline {subsubsection}{\numberline {12.9.1.1}ConnectButton()}{49}{subsubsection.12.9.1.1}%
+\contentsline {subsection}{\numberline {12.9.2}Member Function Documentation}{49}{subsection.12.9.2}%
+\contentsline {subsubsection}{\numberline {12.9.2.1}element()}{49}{subsubsection.12.9.2.1}%
+\contentsline {subsection}{\numberline {12.9.3}Member Data Documentation}{49}{subsection.12.9.3}%
+\contentsline {subsubsection}{\numberline {12.9.3.1}button\_pressed}{50}{subsubsection.12.9.3.1}%
+\contentsline {subsubsection}{\numberline {12.9.3.2}car\_system}{50}{subsubsection.12.9.3.2}%
+\contentsline {subsubsection}{\numberline {12.9.3.3}main\_button}{50}{subsubsection.12.9.3.3}%
+\contentsline {subsubsection}{\numberline {12.9.3.4}main\_button\_text}{50}{subsubsection.12.9.3.4}%
+\contentsline {subsubsection}{\numberline {12.9.3.5}main\_debounce}{50}{subsubsection.12.9.3.5}%
+\contentsline {subsubsection}{\numberline {12.9.3.6}on\_connect\_failure}{50}{subsubsection.12.9.3.6}%
+\contentsline {section}{\numberline {12.10}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Enabler Class Reference}{50}{section.12.10}%
+\contentsline {subsection}{\numberline {12.10.1}Member Function Documentation}{51}{subsection.12.10.1}%
+\contentsline {subsubsection}{\numberline {12.10.1.1}getCheckbox()}{51}{subsubsection.12.10.1.1}%
+\contentsline {subsubsection}{\numberline {12.10.1.2}getWarningModal()}{51}{subsubsection.12.10.1.2}%
+\contentsline {subsubsection}{\numberline {12.10.1.3}isEnabled()}{51}{subsubsection.12.10.1.3}%
+\contentsline {subsection}{\numberline {12.10.2}Member Data Documentation}{51}{subsection.12.10.2}%
+\contentsline {subsubsection}{\numberline {12.10.2.1}checkbox\_value}{51}{subsubsection.12.10.2.1}%
+\contentsline {subsubsection}{\numberline {12.10.2.2}component}{52}{subsubsection.12.10.2.2}%
+\contentsline {subsubsection}{\numberline {12.10.2.3}debounce}{52}{subsubsection.12.10.2.3}%
+\contentsline {subsubsection}{\numberline {12.10.2.4}DEBUG\_ENABLE\_WARNING\_MESSAGE}{52}{subsubsection.12.10.2.4}%
+\contentsline {subsubsection}{\numberline {12.10.2.5}DEBUG\_MODE\_DISABLED\_MESSAGE}{52}{subsubsection.12.10.2.5}%
+\contentsline {subsubsection}{\numberline {12.10.2.6}DEBUG\_MODE\_ENABLED\_MESSAGE}{52}{subsubsection.12.10.2.6}%
+\contentsline {subsubsection}{\numberline {12.10.2.7}DEBUG\_MODE\_WAIT\_MESSAGE}{52}{subsubsection.12.10.2.7}%
+\contentsline {subsubsection}{\numberline {12.10.2.8}display\_warn\_debug\_modal}{52}{subsubsection.12.10.2.8}%
+\contentsline {subsubsection}{\numberline {12.10.2.9}enabled}{53}{subsubsection.12.10.2.9}%
+\contentsline {subsubsection}{\numberline {12.10.2.10}status}{53}{subsubsection.12.10.2.10}%
+\contentsline {section}{\numberline {12.11}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Checkbox Class Reference}{53}{section.12.11}%
+\contentsline {subsection}{\numberline {12.11.1}Constructor \& Destructor Documentation}{53}{subsection.12.11.1}%
+\contentsline {subsubsection}{\numberline {12.11.1.1}DebugLidarCheckbox()}{53}{subsubsection.12.11.1.1}%
+\contentsline {subsection}{\numberline {12.11.2}Member Function Documentation}{54}{subsection.12.11.2}%
+\contentsline {subsubsection}{\numberline {12.11.2.1}element()}{54}{subsubsection.12.11.2.1}%
+\contentsline {subsubsection}{\numberline {12.11.2.2}getLidarMotorSignal()}{54}{subsubsection.12.11.2.2}%
+\contentsline {subsection}{\numberline {12.11.3}Member Data Documentation}{54}{subsection.12.11.3}%
+\contentsline {subsubsection}{\numberline {12.11.3.1}lidar\_motor\_checkbox\_component}{54}{subsubsection.12.11.3.1}%
+\contentsline {subsubsection}{\numberline {12.11.3.2}LIDAR\_MOTOR\_DISABLED\_MESSAGE}{54}{subsubsection.12.11.3.2}%
+\contentsline {subsubsection}{\numberline {12.11.3.3}lidar\_motor\_enabled}{54}{subsubsection.12.11.3.3}%
+\contentsline {subsubsection}{\numberline {12.11.3.4}LIDAR\_MOTOR\_ENABLED\_MESSAGE}{54}{subsubsection.12.11.3.4}%
+\contentsline {subsubsection}{\numberline {12.11.3.5}lidar\_motor\_loading\_debounce}{55}{subsubsection.12.11.3.5}%
+\contentsline {subsubsection}{\numberline {12.11.3.6}lidar\_motor\_signal}{55}{subsubsection.12.11.3.6}%
+\contentsline {subsubsection}{\numberline {12.11.3.7}lidar\_motor\_status}{55}{subsubsection.12.11.3.7}%
+\contentsline {section}{\numberline {12.12}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Textbox Class Reference}{55}{section.12.12}%
+\contentsline {subsection}{\numberline {12.12.1}Constructor \& Destructor Documentation}{55}{subsection.12.12.1}%
+\contentsline {subsubsection}{\numberline {12.12.1.1}DebugMessagingTextbox()}{56}{subsubsection.12.12.1.1}%
+\contentsline {subsection}{\numberline {12.12.2}Member Function Documentation}{56}{subsection.12.12.2}%
+\contentsline {subsubsection}{\numberline {12.12.2.1}element()}{56}{subsubsection.12.12.2.1}%
+\contentsline {subsection}{\numberline {12.12.3}Member Data Documentation}{56}{subsection.12.12.3}%
+\contentsline {subsubsection}{\numberline {12.12.3.1}message}{56}{subsubsection.12.12.3.1}%
+\contentsline {subsubsection}{\numberline {12.12.3.2}message\_signal}{56}{subsubsection.12.12.3.2}%
+\contentsline {subsubsection}{\numberline {12.12.3.3}messaging\_container}{56}{subsubsection.12.12.3.3}%
+\contentsline {subsubsection}{\numberline {12.12.3.4}messaging\_textbox}{56}{subsubsection.12.12.3.4}%
+\contentsline {subsubsection}{\numberline {12.12.3.5}messaging\_title}{57}{subsubsection.12.12.3.5}%
+\contentsline {section}{\numberline {12.13}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Renderer Class Reference}{57}{section.12.13}%
+\contentsline {subsection}{\numberline {12.13.1}Constructor \& Destructor Documentation}{58}{subsection.12.13.1}%
+\contentsline {subsubsection}{\numberline {12.13.1.1}DebugMovementRenderer()}{58}{subsubsection.12.13.1.1}%
+\contentsline {subsection}{\numberline {12.13.2}Member Function Documentation}{58}{subsection.12.13.2}%
+\contentsline {subsubsection}{\numberline {12.13.2.1}element()}{58}{subsubsection.12.13.2.1}%
+\contentsline {subsubsection}{\numberline {12.13.2.2}getCameraServo1AngleSliderValue()}{58}{subsubsection.12.13.2.2}%
+\contentsline {subsubsection}{\numberline {12.13.2.3}getCameraServo2AngleSliderValue()}{58}{subsubsection.12.13.2.3}%
+\contentsline {subsubsection}{\numberline {12.13.2.4}getFrontWheelsAngleSliderValue()}{59}{subsubsection.12.13.2.4}%
+\contentsline {subsubsection}{\numberline {12.13.2.5}getRearLeftWheelSpeedSliderValue()}{59}{subsubsection.12.13.2.5}%
+\contentsline {subsubsection}{\numberline {12.13.2.6}getRearRightWheelSpeedSliderValue()}{59}{subsubsection.12.13.2.6}%
+\contentsline {subsubsection}{\numberline {12.13.2.7}getRearWheelDirectionSignal()}{59}{subsubsection.12.13.2.7}%
+\contentsline {subsubsection}{\numberline {12.13.2.8}updateCameraServo1()}{59}{subsubsection.12.13.2.8}%
+\contentsline {subsubsection}{\numberline {12.13.2.9}updateCameraServo2()}{59}{subsubsection.12.13.2.9}%
+\contentsline {subsubsection}{\numberline {12.13.2.10}updateFrontWheels()}{59}{subsubsection.12.13.2.10}%
+\contentsline {subsubsection}{\numberline {12.13.2.11}updateRearWheels()}{60}{subsubsection.12.13.2.11}%
+\contentsline {subsection}{\numberline {12.13.3}Member Data Documentation}{60}{subsection.12.13.3}%
+\contentsline {subsubsection}{\numberline {12.13.3.1}camera\_servo\_1\_angle\_slider}{60}{subsubsection.12.13.3.1}%
+\contentsline {subsubsection}{\numberline {12.13.3.2}camera\_servo\_1\_angle\_slider\_angle}{60}{subsubsection.12.13.3.2}%
+\contentsline {subsubsection}{\numberline {12.13.3.3}camera\_servo\_2\_angle\_slider}{60}{subsubsection.12.13.3.3}%
+\contentsline {subsubsection}{\numberline {12.13.3.4}camera\_servo\_2\_angle\_slider\_angle}{60}{subsubsection.12.13.3.4}%
+\contentsline {subsubsection}{\numberline {12.13.3.5}DEFAULT\_FRONT\_WHEEL\_ANGLE}{60}{subsubsection.12.13.3.5}%
+\contentsline {subsubsection}{\numberline {12.13.3.6}DEFAULT\_REAR\_WHEEL\_SPEED}{61}{subsubsection.12.13.3.6}%
+\contentsline {subsubsection}{\numberline {12.13.3.7}front\_wheels\_angle\_slider}{61}{subsubsection.12.13.3.7}%
+\contentsline {subsubsection}{\numberline {12.13.3.8}front\_wheels\_angle\_slider\_value}{61}{subsubsection.12.13.3.8}%
+\contentsline {subsubsection}{\numberline {12.13.3.9}previous\_camera\_servo\_1\_angle\_slider\_angle}{61}{subsubsection.12.13.3.9}%
+\contentsline {subsubsection}{\numberline {12.13.3.10}previous\_camera\_servo\_2\_angle\_slider\_angle}{61}{subsubsection.12.13.3.10}%
+\contentsline {subsubsection}{\numberline {12.13.3.11}previous\_front\_wheels\_angle\_slider\_value}{61}{subsubsection.12.13.3.11}%
+\contentsline {subsubsection}{\numberline {12.13.3.12}previous\_rear\_left\_wheel\_speed\_slider\_value}{61}{subsubsection.12.13.3.12}%
+\contentsline {subsubsection}{\numberline {12.13.3.13}previous\_rear\_right\_wheel\_speed\_slider\_value}{62}{subsubsection.12.13.3.13}%
+\contentsline {subsubsection}{\numberline {12.13.3.14}previous\_rear\_wheels\_speed\_slider\_value}{62}{subsubsection.12.13.3.14}%
+\contentsline {subsubsection}{\numberline {12.13.3.15}rear\_left\_wheel\_speed\_slider}{62}{subsubsection.12.13.3.15}%
+\contentsline {subsubsection}{\numberline {12.13.3.16}rear\_left\_wheel\_speed\_slider\_value}{62}{subsubsection.12.13.3.16}%
+\contentsline {subsubsection}{\numberline {12.13.3.17}rear\_right\_wheel\_speed\_slider}{62}{subsubsection.12.13.3.17}%
+\contentsline {subsubsection}{\numberline {12.13.3.18}rear\_right\_wheel\_speed\_slider\_value}{62}{subsubsection.12.13.3.18}%
+\contentsline {subsubsection}{\numberline {12.13.3.19}rear\_wheel\_direction}{62}{subsubsection.12.13.3.19}%
+\contentsline {subsubsection}{\numberline {12.13.3.20}REAR\_WHEEL\_DIRECTION\_BACKWARD\_MESSAGE}{63}{subsubsection.12.13.3.20}%
+\contentsline {subsubsection}{\numberline {12.13.3.21}rear\_wheel\_direction\_checkbox\_component}{63}{subsubsection.12.13.3.21}%
+\contentsline {subsubsection}{\numberline {12.13.3.22}rear\_wheel\_direction\_debounce}{63}{subsubsection.12.13.3.22}%
+\contentsline {subsubsection}{\numberline {12.13.3.23}REAR\_WHEEL\_DIRECTION\_FORWARD\_MESSAGE}{63}{subsubsection.12.13.3.23}%
+\contentsline {subsubsection}{\numberline {12.13.3.24}rear\_wheel\_direction\_signal}{63}{subsubsection.12.13.3.24}%
+\contentsline {subsubsection}{\numberline {12.13.3.25}rear\_wheel\_direction\_status}{63}{subsubsection.12.13.3.25}%
+\contentsline {subsubsection}{\numberline {12.13.3.26}rear\_wheel\_menu\_entry}{63}{subsubsection.12.13.3.26}%
+\contentsline {subsubsection}{\numberline {12.13.3.27}rear\_wheel\_speed\_slider}{64}{subsubsection.12.13.3.27}%
+\contentsline {subsubsection}{\numberline {12.13.3.28}rear\_wheels\_speed\_slider\_value}{64}{subsubsection.12.13.3.28}%
+\contentsline {subsubsection}{\numberline {12.13.3.29}servo\_menu\_entry}{64}{subsubsection.12.13.3.29}%
+\contentsline {subsubsection}{\numberline {12.13.3.30}slider\_container}{64}{subsubsection.12.13.3.30}%
+\contentsline {section}{\numberline {12.14}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager Class Reference}{64}{section.12.14}%
+\contentsline {subsection}{\numberline {12.14.1}Constructor \& Destructor Documentation}{65}{subsection.12.14.1}%
+\contentsline {subsubsection}{\numberline {12.14.1.1}DeviceManager()}{65}{subsubsection.12.14.1.1}%
+\contentsline {subsection}{\numberline {12.14.2}Member Function Documentation}{65}{subsection.12.14.2}%
+\contentsline {subsubsection}{\numberline {12.14.2.1}create()}{65}{subsubsection.12.14.2.1}%
+\contentsline {subsubsection}{\numberline {12.14.2.2}getCameraDevice()}{65}{subsubsection.12.14.2.2}%
+\contentsline {subsubsection}{\numberline {12.14.2.3}getLidarDevice()}{65}{subsubsection.12.14.2.3}%
+\contentsline {subsubsection}{\numberline {12.14.2.4}initialize()}{66}{subsubsection.12.14.2.4}%
+\contentsline {subsubsection}{\numberline {12.14.2.5}isRunning()}{66}{subsubsection.12.14.2.5}%
+\contentsline {subsubsection}{\numberline {12.14.2.6}start()}{66}{subsubsection.12.14.2.6}%
+\contentsline {subsubsection}{\numberline {12.14.2.7}stop()}{66}{subsubsection.12.14.2.7}%
+\contentsline {subsubsection}{\numberline {12.14.2.8}terminate()}{66}{subsubsection.12.14.2.8}%
+\contentsline {subsubsection}{\numberline {12.14.2.9}update()}{66}{subsubsection.12.14.2.9}%
+\contentsline {subsection}{\numberline {12.14.3}Member Data Documentation}{66}{subsection.12.14.3}%
+\contentsline {subsubsection}{\numberline {12.14.3.1}camera\_device\_}{66}{subsubsection.12.14.3.1}%
+\contentsline {subsubsection}{\numberline {12.14.3.2}car\_system}{67}{subsubsection.12.14.3.2}%
+\contentsline {subsubsection}{\numberline {12.14.3.3}is\_initialized\_}{67}{subsubsection.12.14.3.3}%
+\contentsline {subsubsection}{\numberline {12.14.3.4}is\_running\_}{67}{subsubsection.12.14.3.4}%
+\contentsline {subsubsection}{\numberline {12.14.3.5}lidar\_device\_}{67}{subsubsection.12.14.3.5}%
+\contentsline {section}{\numberline {12.15}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::controller\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Dummy\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{67}{section.12.15}%
+\contentsline {subsection}{\numberline {12.15.1}Member Function Documentation}{68}{subsection.12.15.1}%
+\contentsline {subsubsection}{\numberline {12.15.1.1}initialize()}{68}{subsubsection.12.15.1.1}%
+\contentsline {subsubsection}{\numberline {12.15.1.2}setCameraServo1Angle()}{68}{subsubsection.12.15.1.2}%
+\contentsline {subsubsection}{\numberline {12.15.1.3}setCameraServo2Angle()}{68}{subsubsection.12.15.1.3}%
+\contentsline {subsubsection}{\numberline {12.15.1.4}setFrontWheelsAngle()}{69}{subsubsection.12.15.1.4}%
+\contentsline {subsubsection}{\numberline {12.15.1.5}setRearLeftWheelDirectionToBackward()}{69}{subsubsection.12.15.1.5}%
+\contentsline {subsubsection}{\numberline {12.15.1.6}setRearLeftWheelDirectionToForward()}{69}{subsubsection.12.15.1.6}%
+\contentsline {subsubsection}{\numberline {12.15.1.7}setRearLeftWheelSpeed()}{69}{subsubsection.12.15.1.7}%
+\contentsline {subsubsection}{\numberline {12.15.1.8}setRearRightWheelDirectionToBackward()}{69}{subsubsection.12.15.1.8}%
+\contentsline {subsubsection}{\numberline {12.15.1.9}setRearRightWheelDirectionToForward()}{69}{subsubsection.12.15.1.9}%
+\contentsline {subsubsection}{\numberline {12.15.1.10}setRearRightWheelSpeed()}{70}{subsubsection.12.15.1.10}%
+\contentsline {subsubsection}{\numberline {12.15.1.11}setRearWheelsDirectionToBackward()}{70}{subsubsection.12.15.1.11}%
+\contentsline {subsubsection}{\numberline {12.15.1.12}setRearWheelsDirectionToForward()}{70}{subsubsection.12.15.1.12}%
+\contentsline {subsubsection}{\numberline {12.15.1.13}setRearWheelsSpeed()}{70}{subsubsection.12.15.1.13}%
+\contentsline {subsubsection}{\numberline {12.15.1.14}stop()}{70}{subsubsection.12.15.1.14}%
+\contentsline {subsubsection}{\numberline {12.15.1.15}terminate()}{71}{subsubsection.12.15.1.15}%
+\contentsline {section}{\numberline {12.16}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::First\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Message\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Struct Struct Reference}{71}{section.12.16}%
+\contentsline {subsection}{\numberline {12.16.1}Member Data Documentation}{71}{subsection.12.16.1}%
+\contentsline {subsubsection}{\numberline {12.16.1.1}condition}{71}{subsubsection.12.16.1.1}%
+\contentsline {subsubsection}{\numberline {12.16.1.2}error\_message}{71}{subsubsection.12.16.1.2}%
+\contentsline {subsubsection}{\numberline {12.16.1.3}uuid}{71}{subsubsection.12.16.1.3}%
+\contentsline {section}{\numberline {12.17}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::configuration\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Configuration Class Reference}{72}{section.12.17}%
+\contentsline {subsection}{\numberline {12.17.1}Constructor \& Destructor Documentation}{72}{subsection.12.17.1}%
+\contentsline {subsubsection}{\numberline {12.17.1.1}JsonConfiguration()}{72}{subsubsection.12.17.1.1}%
+\contentsline {subsection}{\numberline {12.17.2}Member Function Documentation}{72}{subsection.12.17.2}%
+\contentsline {subsubsection}{\numberline {12.17.2.1}getConfigFilePath()}{72}{subsubsection.12.17.2.1}%
+\contentsline {subsubsection}{\numberline {12.17.2.2}loadConfiguration()}{72}{subsubsection.12.17.2.2}%
+\contentsline {subsubsection}{\numberline {12.17.2.3}setConfigFilePath()}{72}{subsubsection.12.17.2.3}%
+\contentsline {subsection}{\numberline {12.17.3}Member Data Documentation}{73}{subsection.12.17.3}%
+\contentsline {subsubsection}{\numberline {12.17.3.1}config\_file\_path}{73}{subsubsection.12.17.3.1}%
+\contentsline {subsubsection}{\numberline {12.17.3.2}exe\_dir}{73}{subsubsection.12.17.3.2}%
+\contentsline {section}{\numberline {12.18}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device Class Reference}{73}{section.12.18}%
+\contentsline {subsection}{\numberline {12.18.1}Member Function Documentation}{74}{subsection.12.18.1}%
+\contentsline {subsubsection}{\numberline {12.18.1.1}disconnect()}{74}{subsubsection.12.18.1.1}%
+\contentsline {subsubsection}{\numberline {12.18.1.2}getScanData()}{74}{subsubsection.12.18.1.2}%
+\contentsline {subsubsection}{\numberline {12.18.1.3}initialize()}{74}{subsubsection.12.18.1.3}%
+\contentsline {subsubsection}{\numberline {12.18.1.4}setScanData()}{74}{subsubsection.12.18.1.4}%
+\contentsline {subsubsection}{\numberline {12.18.1.5}start()}{74}{subsubsection.12.18.1.5}%
+\contentsline {subsubsection}{\numberline {12.18.1.6}stop()}{75}{subsubsection.12.18.1.6}%
+\contentsline {subsubsection}{\numberline {12.18.1.7}terminate()}{75}{subsubsection.12.18.1.7}%
+\contentsline {subsubsection}{\numberline {12.18.1.8}update()}{75}{subsubsection.12.18.1.8}%
+\contentsline {subsection}{\numberline {12.18.2}Friends And Related Function Documentation}{75}{subsection.12.18.2}%
+\contentsline {subsubsection}{\numberline {12.18.2.1}DeviceManager}{75}{subsubsection.12.18.2.1}%
+\contentsline {subsection}{\numberline {12.18.3}Member Data Documentation}{75}{subsection.12.18.3}%
+\contentsline {subsubsection}{\numberline {12.18.3.1}scan\_data\_}{75}{subsubsection.12.18.3.1}%
+\contentsline {section}{\numberline {12.19}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dummy Class Reference}{76}{section.12.19}%
+\contentsline {subsection}{\numberline {12.19.1}Constructor \& Destructor Documentation}{76}{subsection.12.19.1}%
+\contentsline {subsubsection}{\numberline {12.19.1.1}LidarDummy()}{76}{subsubsection.12.19.1.1}%
+\contentsline {subsection}{\numberline {12.19.2}Member Function Documentation}{76}{subsection.12.19.2}%
+\contentsline {subsubsection}{\numberline {12.19.2.1}disconnect()}{76}{subsubsection.12.19.2.1}%
+\contentsline {subsubsection}{\numberline {12.19.2.2}initialize()}{77}{subsubsection.12.19.2.2}%
+\contentsline {subsubsection}{\numberline {12.19.2.3}start()}{77}{subsubsection.12.19.2.3}%
+\contentsline {subsubsection}{\numberline {12.19.2.4}stop()}{77}{subsubsection.12.19.2.4}%
+\contentsline {subsubsection}{\numberline {12.19.2.5}terminate()}{77}{subsubsection.12.19.2.5}%
+\contentsline {subsubsection}{\numberline {12.19.2.6}update()}{77}{subsubsection.12.19.2.6}%
+\contentsline {section}{\numberline {12.20}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scanner Class Reference}{78}{section.12.20}%
+\contentsline {subsection}{\numberline {12.20.1}Constructor \& Destructor Documentation}{78}{subsection.12.20.1}%
+\contentsline {subsubsection}{\numberline {12.20.1.1}LidarScanner()}{78}{subsubsection.12.20.1.1}%
+\contentsline {subsection}{\numberline {12.20.2}Member Function Documentation}{79}{subsection.12.20.2}%
+\contentsline {subsubsection}{\numberline {12.20.2.1}create()}{79}{subsubsection.12.20.2.1}%
+\contentsline {subsubsection}{\numberline {12.20.2.2}disconnect()}{79}{subsubsection.12.20.2.2}%
+\contentsline {subsubsection}{\numberline {12.20.2.3}initialize()}{79}{subsubsection.12.20.2.3}%
+\contentsline {subsubsection}{\numberline {12.20.2.4}start()}{79}{subsubsection.12.20.2.4}%
+\contentsline {subsubsection}{\numberline {12.20.2.5}stop()}{79}{subsubsection.12.20.2.5}%
+\contentsline {subsubsection}{\numberline {12.20.2.6}terminate()}{80}{subsubsection.12.20.2.6}%
+\contentsline {subsubsection}{\numberline {12.20.2.7}update()}{80}{subsubsection.12.20.2.7}%
+\contentsline {subsection}{\numberline {12.20.3}Member Data Documentation}{80}{subsection.12.20.3}%
+\contentsline {subsubsection}{\numberline {12.20.3.1}configuration\_}{80}{subsubsection.12.20.3.1}%
+\contentsline {subsubsection}{\numberline {12.20.3.2}lidar\_}{80}{subsubsection.12.20.3.2}%
+\contentsline {subsubsection}{\numberline {12.20.3.3}running}{80}{subsubsection.12.20.3.3}%
+\contentsline {subsubsection}{\numberline {12.20.3.4}scan\_data\_}{80}{subsubsection.12.20.3.4}%
+\contentsline {subsubsection}{\numberline {12.20.3.5}scan\_data\_mutex\_}{81}{subsubsection.12.20.3.5}%
+\contentsline {subsubsection}{\numberline {12.20.3.6}scan\_generator\_}{81}{subsubsection.12.20.3.6}%
+\contentsline {section}{\numberline {12.21}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::screen\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Logging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Screen Class Reference}{81}{section.12.21}%
+\contentsline {subsection}{\numberline {12.21.1}Constructor \& Destructor Documentation}{81}{subsection.12.21.1}%
+\contentsline {subsubsection}{\numberline {12.21.1.1}LoggingScreen()}{81}{subsubsection.12.21.1.1}%
+\contentsline {subsection}{\numberline {12.21.2}Member Function Documentation}{81}{subsection.12.21.2}%
+\contentsline {subsubsection}{\numberline {12.21.2.1}element()}{82}{subsubsection.12.21.2.1}%
+\contentsline {subsection}{\numberline {12.21.3}Member Data Documentation}{82}{subsection.12.21.3}%
+\contentsline {subsubsection}{\numberline {12.21.3.1}line\_elements}{82}{subsubsection.12.21.3.1}%
+\contentsline {subsubsection}{\numberline {12.21.3.2}menu}{82}{subsubsection.12.21.3.2}%
+\contentsline {subsubsection}{\numberline {12.21.3.3}my\_custom\_menu}{82}{subsubsection.12.21.3.3}%
+\contentsline {subsubsection}{\numberline {12.21.3.4}selected\_line}{82}{subsubsection.12.21.3.4}%
+\contentsline {subsubsection}{\numberline {12.21.3.5}vector\_sink}{82}{subsubsection.12.21.3.5}%
+\contentsline {section}{\numberline {12.22}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Error\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modal Class Reference}{83}{section.12.22}%
+\contentsline {subsection}{\numberline {12.22.1}Constructor \& Destructor Documentation}{83}{subsection.12.22.1}%
+\contentsline {subsubsection}{\numberline {12.22.1.1}MainErrorModal()}{83}{subsubsection.12.22.1.1}%
+\contentsline {subsection}{\numberline {12.22.2}Member Function Documentation}{83}{subsection.12.22.2}%
+\contentsline {subsubsection}{\numberline {12.22.2.1}element()}{83}{subsubsection.12.22.2.1}%
+\contentsline {subsubsection}{\numberline {12.22.2.2}setErrorMessage()}{83}{subsubsection.12.22.2.2}%
+\contentsline {subsection}{\numberline {12.22.3}Member Data Documentation}{83}{subsection.12.22.3}%
+\contentsline {subsubsection}{\numberline {12.22.3.1}error\_element}{84}{subsubsection.12.22.3.1}%
+\contentsline {subsubsection}{\numberline {12.22.3.2}error\_modal\_shown}{84}{subsubsection.12.22.3.2}%
+\contentsline {subsubsection}{\numberline {12.22.3.3}main\_error\_modal}{84}{subsubsection.12.22.3.3}%
+\contentsline {section}{\numberline {12.23}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Exit\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modal Class Reference}{84}{section.12.23}%
+\contentsline {subsection}{\numberline {12.23.1}Constructor \& Destructor Documentation}{84}{subsection.12.23.1}%
+\contentsline {subsubsection}{\numberline {12.23.1.1}MainExitModal()}{84}{subsubsection.12.23.1.1}%
+\contentsline {subsection}{\numberline {12.23.2}Member Function Documentation}{85}{subsection.12.23.2}%
+\contentsline {subsubsection}{\numberline {12.23.2.1}element()}{85}{subsubsection.12.23.2.1}%
+\contentsline {subsection}{\numberline {12.23.3}Member Data Documentation}{85}{subsection.12.23.3}%
+\contentsline {subsubsection}{\numberline {12.23.3.1}exit}{85}{subsubsection.12.23.3.1}%
+\contentsline {subsubsection}{\numberline {12.23.3.2}exit\_modal\_shown}{85}{subsubsection.12.23.3.2}%
+\contentsline {subsubsection}{\numberline {12.23.3.3}main\_exit\_modal}{85}{subsubsection.12.23.3.3}%
+\contentsline {section}{\numberline {12.24}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::screen\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Screen Class Reference}{85}{section.12.24}%
+\contentsline {subsection}{\numberline {12.24.1}Constructor \& Destructor Documentation}{86}{subsection.12.24.1}%
+\contentsline {subsubsection}{\numberline {12.24.1.1}MainScreen()}{86}{subsubsection.12.24.1.1}%
+\contentsline {subsection}{\numberline {12.24.2}Member Function Documentation}{86}{subsection.12.24.2}%
+\contentsline {subsubsection}{\numberline {12.24.2.1}element()}{86}{subsubsection.12.24.2.1}%
+\contentsline {subsection}{\numberline {12.24.3}Member Data Documentation}{86}{subsection.12.24.3}%
+\contentsline {subsubsection}{\numberline {12.24.3.1}box}{86}{subsubsection.12.24.3.1}%
+\contentsline {subsubsection}{\numberline {12.24.3.2}car\_system}{86}{subsubsection.12.24.3.2}%
+\contentsline {subsubsection}{\numberline {12.24.3.3}connect\_button}{87}{subsubsection.12.24.3.3}%
+\contentsline {subsubsection}{\numberline {12.24.3.4}info}{87}{subsubsection.12.24.3.4}%
+\contentsline {subsubsection}{\numberline {12.24.3.5}main\_component}{87}{subsubsection.12.24.3.5}%
+\contentsline {subsubsection}{\numberline {12.24.3.6}main\_error\_modal}{87}{subsubsection.12.24.3.6}%
+\contentsline {subsubsection}{\numberline {12.24.3.7}main\_exit\_modal}{87}{subsubsection.12.24.3.7}%
+\contentsline {subsubsection}{\numberline {12.24.3.8}main\_screen}{87}{subsubsection.12.24.3.8}%
+\contentsline {section}{\numberline {12.25}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System Class Reference}{87}{section.12.25}%
+\contentsline {subsection}{\numberline {12.25.1}Constructor \& Destructor Documentation}{88}{subsection.12.25.1}%
+\contentsline {subsubsection}{\numberline {12.25.1.1}MessagingSystem()}{89}{subsubsection.12.25.1.1}%
+\contentsline {subsection}{\numberline {12.25.2}Member Function Documentation}{89}{subsection.12.25.2}%
+\contentsline {subsubsection}{\numberline {12.25.2.1}getCommandSignal()}{89}{subsubsection.12.25.2.1}%
+\contentsline {subsubsection}{\numberline {12.25.2.2}getDisconnectSignal()}{89}{subsubsection.12.25.2.2}%
+\contentsline {subsubsection}{\numberline {12.25.2.3}getFirstMessage()}{89}{subsubsection.12.25.2.3}%
+\contentsline {subsubsection}{\numberline {12.25.2.4}getMessageSignal()}{89}{subsubsection.12.25.2.4}%
+\contentsline {subsubsection}{\numberline {12.25.2.5}getSelectionSignal()}{89}{subsubsection.12.25.2.5}%
+\contentsline {subsubsection}{\numberline {12.25.2.6}getUUID()}{90}{subsubsection.12.25.2.6}%
+\contentsline {subsubsection}{\numberline {12.25.2.7}handleMessage()}{90}{subsubsection.12.25.2.7}%
+\contentsline {subsubsection}{\numberline {12.25.2.8}initialize()}{90}{subsubsection.12.25.2.8}%
+\contentsline {subsubsection}{\numberline {12.25.2.9}initializeWebSocket()}{90}{subsubsection.12.25.2.9}%
+\contentsline {subsubsection}{\numberline {12.25.2.10}isConnected()}{90}{subsubsection.12.25.2.10}%
+\contentsline {subsubsection}{\numberline {12.25.2.11}onDisconnect()}{91}{subsubsection.12.25.2.11}%
+\contentsline {subsubsection}{\numberline {12.25.2.12}onFirstMessage()}{91}{subsubsection.12.25.2.12}%
+\contentsline {subsubsection}{\numberline {12.25.2.13}onMessageCallback()}{91}{subsubsection.12.25.2.13}%
+\contentsline {subsubsection}{\numberline {12.25.2.14}sendMessage()}{91}{subsubsection.12.25.2.14}%
+\contentsline {subsubsection}{\numberline {12.25.2.15}setConfiguration()}{91}{subsubsection.12.25.2.15}%
+\contentsline {subsubsection}{\numberline {12.25.2.16}stop()}{91}{subsubsection.12.25.2.16}%
+\contentsline {subsubsection}{\numberline {12.25.2.17}terminate()}{92}{subsubsection.12.25.2.17}%
+\contentsline {subsubsection}{\numberline {12.25.2.18}tryConnect()}{92}{subsubsection.12.25.2.18}%
+\contentsline {subsection}{\numberline {12.25.3}Member Data Documentation}{92}{subsection.12.25.3}%
+\contentsline {subsubsection}{\numberline {12.25.3.1}command\_signal\_}{92}{subsubsection.12.25.3.1}%
+\contentsline {subsubsection}{\numberline {12.25.3.2}configuration\_}{92}{subsubsection.12.25.3.2}%
+\contentsline {subsubsection}{\numberline {12.25.3.3}connected\_}{92}{subsubsection.12.25.3.3}%
+\contentsline {subsubsection}{\numberline {12.25.3.4}message\_signal\_}{92}{subsubsection.12.25.3.4}%
+\contentsline {subsubsection}{\numberline {12.25.3.5}on\_disconnect\_signal\_}{93}{subsubsection.12.25.3.5}%
+\contentsline {subsubsection}{\numberline {12.25.3.6}selection\_signal\_}{93}{subsubsection.12.25.3.6}%
+\contentsline {subsubsection}{\numberline {12.25.3.7}uuid\_}{93}{subsubsection.12.25.3.7}%
+\contentsline {subsubsection}{\numberline {12.25.3.8}websocket\_}{93}{subsubsection.12.25.3.8}%
+\contentsline {subsubsection}{\numberline {12.25.3.9}websocket\_url\_}{93}{subsubsection.12.25.3.9}%
+\contentsline {section}{\numberline {12.26}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System Class Reference}{93}{section.12.26}%
+\contentsline {subsection}{\numberline {12.26.1}Constructor \& Destructor Documentation}{94}{subsection.12.26.1}%
+\contentsline {subsubsection}{\numberline {12.26.1.1}MovementSystem()}{94}{subsubsection.12.26.1.1}%
+\contentsline {subsubsection}{\numberline {12.26.1.2}$\sim $MovementSystem()}{94}{subsubsection.12.26.1.2}%
+\contentsline {subsection}{\numberline {12.26.2}Member Function Documentation}{94}{subsection.12.26.2}%
+\contentsline {subsubsection}{\numberline {12.26.2.1}initialize()}{94}{subsubsection.12.26.2.1}%
+\contentsline {subsubsection}{\numberline {12.26.2.2}setCameraServo1Angle()}{95}{subsubsection.12.26.2.2}%
+\contentsline {subsubsection}{\numberline {12.26.2.3}setCameraServo2Angle()}{95}{subsubsection.12.26.2.3}%
+\contentsline {subsubsection}{\numberline {12.26.2.4}setFrontWheelsAngle()}{95}{subsubsection.12.26.2.4}%
+\contentsline {subsubsection}{\numberline {12.26.2.5}setRearLeftWheelDirectionToBackward()}{95}{subsubsection.12.26.2.5}%
+\contentsline {subsubsection}{\numberline {12.26.2.6}setRearLeftWheelDirectionToForward()}{95}{subsubsection.12.26.2.6}%
+\contentsline {subsubsection}{\numberline {12.26.2.7}setRearLeftWheelSpeed()}{95}{subsubsection.12.26.2.7}%
+\contentsline {subsubsection}{\numberline {12.26.2.8}setRearRightWheelDirectionToBackward()}{95}{subsubsection.12.26.2.8}%
+\contentsline {subsubsection}{\numberline {12.26.2.9}setRearRightWheelDirectionToForward()}{96}{subsubsection.12.26.2.9}%
+\contentsline {subsubsection}{\numberline {12.26.2.10}setRearRightWheelSpeed()}{96}{subsubsection.12.26.2.10}%
+\contentsline {subsubsection}{\numberline {12.26.2.11}setRearWheelsDirectionToBackward()}{96}{subsubsection.12.26.2.11}%
+\contentsline {subsubsection}{\numberline {12.26.2.12}setRearWheelsDirectionToForward()}{96}{subsubsection.12.26.2.12}%
+\contentsline {subsubsection}{\numberline {12.26.2.13}setRearWheelsSpeed()}{96}{subsubsection.12.26.2.13}%
+\contentsline {subsubsection}{\numberline {12.26.2.14}start()}{96}{subsubsection.12.26.2.14}%
+\contentsline {subsubsection}{\numberline {12.26.2.15}stop()}{96}{subsubsection.12.26.2.15}%
+\contentsline {subsubsection}{\numberline {12.26.2.16}terminate()}{97}{subsubsection.12.26.2.16}%
+\contentsline {subsection}{\numberline {12.26.3}Member Data Documentation}{97}{subsection.12.26.3}%
+\contentsline {subsubsection}{\numberline {12.26.3.1}movement\_controller}{97}{subsubsection.12.26.3.1}%
+\contentsline {section}{\numberline {12.27}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::plugin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Plugin Class Reference}{97}{section.12.27}%
+\contentsline {subsection}{\numberline {12.27.1}Member Function Documentation}{97}{subsection.12.27.1}%
+\contentsline {subsubsection}{\numberline {12.27.1.1}getName()}{97}{subsubsection.12.27.1.1}%
+\contentsline {subsubsection}{\numberline {12.27.1.2}initialize()}{98}{subsubsection.12.27.1.2}%
+\contentsline {subsubsection}{\numberline {12.27.1.3}stop()}{98}{subsubsection.12.27.1.3}%
+\contentsline {subsubsection}{\numberline {12.27.1.4}update()}{98}{subsubsection.12.27.1.4}%
+\contentsline {section}{\numberline {12.28}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::plugin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Plugin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager Class Reference}{98}{section.12.28}%
+\contentsline {subsection}{\numberline {12.28.1}Member Function Documentation}{99}{subsection.12.28.1}%
+\contentsline {subsubsection}{\numberline {12.28.1.1}addPlugin()}{99}{subsubsection.12.28.1.1}%
+\contentsline {subsubsection}{\numberline {12.28.1.2}getPlugin()}{99}{subsubsection.12.28.1.2}%
+\contentsline {subsubsection}{\numberline {12.28.1.3}initialize()}{99}{subsubsection.12.28.1.3}%
+\contentsline {subsubsection}{\numberline {12.28.1.4}stop()}{99}{subsubsection.12.28.1.4}%
+\contentsline {subsubsection}{\numberline {12.28.1.5}terminate()}{99}{subsubsection.12.28.1.5}%
+\contentsline {subsubsection}{\numberline {12.28.1.6}update()}{99}{subsubsection.12.28.1.6}%
+\contentsline {subsection}{\numberline {12.28.2}Member Data Documentation}{99}{subsection.12.28.2}%
+\contentsline {subsubsection}{\numberline {12.28.2.1}plugins}{100}{subsubsection.12.28.2.1}%
+\contentsline {section}{\numberline {12.29}rpi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}daemon Class Reference}{100}{section.12.29}%
+\contentsline {subsection}{\numberline {12.29.1}Member Function Documentation}{100}{subsection.12.29.1}%
+\contentsline {subsubsection}{\numberline {12.29.1.1}connect()}{100}{subsubsection.12.29.1.1}%
+\contentsline {subsubsection}{\numberline {12.29.1.2}on\_reload()}{101}{subsubsection.12.29.1.2}%
+\contentsline {subsubsection}{\numberline {12.29.1.3}on\_start()}{101}{subsubsection.12.29.1.3}%
+\contentsline {subsubsection}{\numberline {12.29.1.4}on\_stop()}{101}{subsubsection.12.29.1.4}%
+\contentsline {subsubsection}{\numberline {12.29.1.5}on\_update()}{101}{subsubsection.12.29.1.5}%
+\contentsline {subsubsection}{\numberline {12.29.1.6}update()}{101}{subsubsection.12.29.1.6}%
+\contentsline {subsection}{\numberline {12.29.2}Member Data Documentation}{101}{subsection.12.29.2}%
+\contentsline {subsubsection}{\numberline {12.29.2.1}any\_configuration\_empty}{101}{subsubsection.12.29.2.1}%
+\contentsline {subsubsection}{\numberline {12.29.2.2}attempted\_to\_reconnect}{101}{subsubsection.12.29.2.2}%
+\contentsline {subsubsection}{\numberline {12.29.2.3}car\_system}{102}{subsubsection.12.29.2.3}%
+\contentsline {subsubsection}{\numberline {12.29.2.4}connection\_ms\_interval}{102}{subsubsection.12.29.2.4}%
+\contentsline {subsubsection}{\numberline {12.29.2.5}last\_connected}{102}{subsubsection.12.29.2.5}%
+\contentsline {section}{\numberline {12.30}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::component\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::settings\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Settings\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Edit\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config Class Reference}{102}{section.12.30}%
+\contentsline {subsection}{\numberline {12.30.1}Constructor \& Destructor Documentation}{102}{subsection.12.30.1}%
+\contentsline {subsubsection}{\numberline {12.30.1.1}SettingsEditConfig()}{103}{subsubsection.12.30.1.1}%
+\contentsline {subsection}{\numberline {12.30.2}Member Function Documentation}{103}{subsection.12.30.2}%
+\contentsline {subsubsection}{\numberline {12.30.2.1}element()}{103}{subsubsection.12.30.2.1}%
+\contentsline {subsection}{\numberline {12.30.3}Member Data Documentation}{103}{subsection.12.30.3}%
+\contentsline {subsubsection}{\numberline {12.30.3.1}car\_system}{103}{subsubsection.12.30.3.1}%
+\contentsline {subsubsection}{\numberline {12.30.3.2}input\_settings\_file\_path}{103}{subsubsection.12.30.3.2}%
+\contentsline {subsubsection}{\numberline {12.30.3.3}json\_configuration}{103}{subsubsection.12.30.3.3}%
+\contentsline {subsubsection}{\numberline {12.30.3.4}load\_button}{103}{subsubsection.12.30.3.4}%
+\contentsline {subsubsection}{\numberline {12.30.3.5}placeholder}{104}{subsubsection.12.30.3.5}%
+\contentsline {subsubsection}{\numberline {12.30.3.6}settings\_file\_path}{104}{subsubsection.12.30.3.6}%
+\contentsline {section}{\numberline {12.31}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::screen\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Settings\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Screen Class Reference}{104}{section.12.31}%
+\contentsline {subsection}{\numberline {12.31.1}Constructor \& Destructor Documentation}{104}{subsection.12.31.1}%
+\contentsline {subsubsection}{\numberline {12.31.1.1}SettingsScreen()}{104}{subsubsection.12.31.1.1}%
+\contentsline {subsection}{\numberline {12.31.2}Member Function Documentation}{105}{subsection.12.31.2}%
+\contentsline {subsubsection}{\numberline {12.31.2.1}element()}{105}{subsubsection.12.31.2.1}%
+\contentsline {subsubsection}{\numberline {12.31.2.2}update()}{105}{subsubsection.12.31.2.2}%
+\contentsline {subsection}{\numberline {12.31.3}Member Data Documentation}{105}{subsection.12.31.3}%
+\contentsline {subsubsection}{\numberline {12.31.3.1}car\_system}{105}{subsubsection.12.31.3.1}%
+\contentsline {subsubsection}{\numberline {12.31.3.2}debug\_enabler}{105}{subsubsection.12.31.3.2}%
+\contentsline {subsubsection}{\numberline {12.31.3.3}debug\_lidar\_checkbox}{105}{subsubsection.12.31.3.3}%
+\contentsline {subsubsection}{\numberline {12.31.3.4}debug\_messaging\_text\_box}{105}{subsubsection.12.31.3.4}%
+\contentsline {subsubsection}{\numberline {12.31.3.5}debug\_movement\_renderer}{106}{subsubsection.12.31.3.5}%
+\contentsline {subsubsection}{\numberline {12.31.3.6}settings\_edit\_config}{106}{subsubsection.12.31.3.6}%
+\contentsline {section}{\numberline {12.32}TB6612 Class Reference}{106}{section.12.32}%
+\contentsline {subsection}{\numberline {12.32.1}Constructor \& Destructor Documentation}{106}{subsection.12.32.1}%
+\contentsline {subsubsection}{\numberline {12.32.1.1}TB6612()}{106}{subsubsection.12.32.1.1}%
+\contentsline {subsection}{\numberline {12.32.2}Member Function Documentation}{107}{subsection.12.32.2}%
+\contentsline {subsubsection}{\numberline {12.32.2.1}backward()}{107}{subsubsection.12.32.2.1}%
+\contentsline {subsubsection}{\numberline {12.32.2.2}forward()}{107}{subsubsection.12.32.2.2}%
+\contentsline {subsubsection}{\numberline {12.32.2.3}getMotorPin()}{107}{subsubsection.12.32.2.3}%
+\contentsline {subsubsection}{\numberline {12.32.2.4}getPWMPin()}{107}{subsubsection.12.32.2.4}%
+\contentsline {subsubsection}{\numberline {12.32.2.5}setOffset()}{107}{subsubsection.12.32.2.5}%
+\contentsline {subsubsection}{\numberline {12.32.2.6}setPWM()}{107}{subsubsection.12.32.2.6}%
+\contentsline {subsubsection}{\numberline {12.32.2.7}stop()}{107}{subsubsection.12.32.2.7}%
+\contentsline {subsection}{\numberline {12.32.3}Member Data Documentation}{108}{subsection.12.32.3}%
+\contentsline {subsubsection}{\numberline {12.32.3.1}motor\_pin}{108}{subsubsection.12.32.3.1}%
+\contentsline {subsubsection}{\numberline {12.32.3.2}offset}{108}{subsubsection.12.32.3.2}%
+\contentsline {subsubsection}{\numberline {12.32.3.3}pwm\_pin}{108}{subsubsection.12.32.3.3}%
+\contentsline {section}{\numberline {12.33}car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::logging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Vector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sink$<$ Mutex $>$ Class Template Reference}{108}{section.12.33}%
+\contentsline {subsection}{\numberline {12.33.1}Constructor \& Destructor Documentation}{109}{subsection.12.33.1}%
+\contentsline {subsubsection}{\numberline {12.33.1.1}VectorSink()}{109}{subsubsection.12.33.1.1}%
+\contentsline {subsection}{\numberline {12.33.2}Member Function Documentation}{109}{subsection.12.33.2}%
+\contentsline {subsubsection}{\numberline {12.33.2.1}flush\_()}{109}{subsubsection.12.33.2.1}%
+\contentsline {subsubsection}{\numberline {12.33.2.2}get\_log\_messages()}{109}{subsubsection.12.33.2.2}%
+\contentsline {subsubsection}{\numberline {12.33.2.3}sink\_it\_()}{109}{subsubsection.12.33.2.3}%
+\contentsline {subsection}{\numberline {12.33.3}Member Data Documentation}{109}{subsection.12.33.3}%
+\contentsline {subsubsection}{\numberline {12.33.3.1}log\_messages}{110}{subsubsection.12.33.3.1}%
+\contentsline {subsubsection}{\numberline {12.33.3.2}max\_lines}{110}{subsubsection.12.33.3.2}%
+\contentsline {chapter}{\numberline {13}File Documentation}{111}{chapter.13}%
+\contentsline {section}{\numberline {13.1}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/src/main.cpp File Reference}{111}{section.13.1}%
+\contentsline {subsection}{\numberline {13.1.1}Function Documentation}{111}{subsection.13.1.1}%
+\contentsline {subsubsection}{\numberline {13.1.1.1}kbhit()}{111}{subsubsection.13.1.1.1}%
+\contentsline {subsubsection}{\numberline {13.1.1.2}main()}{112}{subsubsection.13.1.1.2}%
+\contentsline {section}{\numberline {13.2}daemon/src/main.cpp File Reference}{112}{section.13.2}%
+\contentsline {subsection}{\numberline {13.2.1}Function Documentation}{112}{subsection.13.2.1}%
+\contentsline {subsubsection}{\numberline {13.2.1.1}getLidarDevice()}{112}{subsubsection.13.2.1.1}%
+\contentsline {subsubsection}{\numberline {13.2.1.2}getMovementController()}{113}{subsubsection.13.2.1.2}%
+\contentsline {subsubsection}{\numberline {13.2.1.3}main()}{113}{subsubsection.13.2.1.3}%
+\contentsline {subsubsection}{\numberline {13.2.1.4}terminate\_handler()}{113}{subsubsection.13.2.1.4}%
+\contentsline {section}{\numberline {13.3}tui/src/main.cpp File Reference}{113}{section.13.3}%
+\contentsline {subsection}{\numberline {13.3.1}Function Documentation}{113}{subsection.13.3.1}%
+\contentsline {subsubsection}{\numberline {13.3.1.1}getLidarDevice()}{114}{subsubsection.13.3.1.1}%
+\contentsline {subsubsection}{\numberline {13.3.1.2}getMovementController()}{114}{subsubsection.13.3.1.2}%
+\contentsline {subsubsection}{\numberline {13.3.1.3}main()}{114}{subsubsection.13.3.1.3}%
+\contentsline {section}{\numberline {13.4}common/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler.hpp File Reference}{114}{section.13.4}%
+\contentsline {section}{\numberline {13.5}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{115}{section.13.5}%
+\contentsline {section}{\numberline {13.6}common/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Context.hpp File Reference}{117}{section.13.6}%
+\contentsline {section}{\numberline {13.7}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Context.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{117}{section.13.7}%
+\contentsline {section}{\numberline {13.8}common/include/car/configuration/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Configuration.h File Reference}{118}{section.13.8}%
+\contentsline {section}{\numberline {13.9}Configuration.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{118}{section.13.9}%
+\contentsline {section}{\numberline {13.10}common/include/car/plugin/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Plugin.h File Reference}{118}{section.13.10}%
+\contentsline {section}{\numberline {13.11}Plugin.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{119}{section.13.11}%
+\contentsline {section}{\numberline {13.12}common/include/car/plugin/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Plugin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager.h File Reference}{119}{section.13.12}%
+\contentsline {section}{\numberline {13.13}Plugin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{120}{section.13.13}%
+\contentsline {section}{\numberline {13.14}common/include/car/system/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System.h File Reference}{121}{section.13.14}%
+\contentsline {section}{\numberline {13.15}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{121}{section.13.15}%
+\contentsline {section}{\numberline {13.16}common/include/car/system/device/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Camera\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device.h File Reference}{122}{section.13.16}%
+\contentsline {section}{\numberline {13.17}Camera\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{123}{section.13.17}%
+\contentsline {section}{\numberline {13.18}common/include/car/system/device/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager.h File Reference}{123}{section.13.18}%
+\contentsline {section}{\numberline {13.19}Device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{124}{section.13.19}%
+\contentsline {section}{\numberline {13.20}common/include/car/system/device/lidar/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device.h File Reference}{125}{section.13.20}%
+\contentsline {section}{\numberline {13.21}Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{125}{section.13.21}%
+\contentsline {section}{\numberline {13.22}common/include/car/system/device/lidar/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dummy.h File Reference}{126}{section.13.22}%
+\contentsline {section}{\numberline {13.23}Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dummy.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{126}{section.13.23}%
+\contentsline {section}{\numberline {13.24}common/include/car/system/device/lidar/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scanner.h File Reference}{126}{section.13.24}%
+\contentsline {section}{\numberline {13.25}Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scanner.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{127}{section.13.25}%
+\contentsline {section}{\numberline {13.26}common/include/car/system/logging/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sink.h File Reference}{128}{section.13.26}%
+\contentsline {section}{\numberline {13.27}Vector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sink.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{129}{section.13.27}%
+\contentsline {section}{\numberline {13.28}common/include/car/system/messaging/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System.h File Reference}{129}{section.13.28}%
+\contentsline {section}{\numberline {13.29}Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{130}{section.13.29}%
+\contentsline {section}{\numberline {13.30}common/include/car/system/messaging/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Stream\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.h File Reference}{131}{section.13.30}%
+\contentsline {subsection}{\numberline {13.30.1}Enumeration Type Documentation}{131}{subsection.13.30.1}%
+\contentsline {subsubsection}{\numberline {13.30.1.1}StreamType}{131}{subsubsection.13.30.1.1}%
+\contentsline {section}{\numberline {13.31}Stream\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{132}{section.13.31}%
+\contentsline {section}{\numberline {13.32}common/include/car/system/movement/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Abstract\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.h File Reference}{132}{section.13.32}%
+\contentsline {section}{\numberline {13.33}Abstract\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{132}{section.13.33}%
+\contentsline {section}{\numberline {13.34}common/include/car/system/movement/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.h File Reference}{133}{section.13.34}%
+\contentsline {section}{\numberline {13.35}Device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{133}{section.13.35}%
+\contentsline {section}{\numberline {13.36}common/include/car/system/movement/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dummy\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.h File Reference}{134}{section.13.36}%
+\contentsline {section}{\numberline {13.37}Dummy\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{134}{section.13.37}%
+\contentsline {section}{\numberline {13.38}common/include/car/system/movement/devices/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rear\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wheel.h File Reference}{135}{section.13.38}%
+\contentsline {section}{\numberline {13.39}Rear\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wheel.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{135}{section.13.39}%
+\contentsline {section}{\numberline {13.40}common/include/car/system/movement/devices/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Servo.h File Reference}{135}{section.13.40}%
+\contentsline {section}{\numberline {13.41}Servo.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{135}{section.13.41}%
+\contentsline {section}{\numberline {13.42}common/include/car/system/movement/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System.h File Reference}{136}{section.13.42}%
+\contentsline {section}{\numberline {13.43}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{136}{section.13.43}%
+\contentsline {section}{\numberline {13.44}common/src/car/system/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System.cpp File Reference}{138}{section.13.44}%
+\contentsline {section}{\numberline {13.45}common/src/car/system/device/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Camera\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device.cpp File Reference}{138}{section.13.45}%
+\contentsline {section}{\numberline {13.46}common/src/car/system/device/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager.cpp File Reference}{138}{section.13.46}%
+\contentsline {section}{\numberline {13.47}common/src/car/system/messaging/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System.cpp File Reference}{139}{section.13.47}%
+\contentsline {section}{\numberline {13.48}common/src/car/system/movement/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.cpp File Reference}{139}{section.13.48}%
+\contentsline {section}{\numberline {13.49}common/src/car/system/movement/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dummy\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.cpp File Reference}{139}{section.13.49}%
+\contentsline {section}{\numberline {13.50}common/src/car/system/movement/devices/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rear\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wheel.cpp File Reference}{140}{section.13.50}%
+\contentsline {section}{\numberline {13.51}common/src/car/system/movement/devices/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Servo.cpp File Reference}{140}{section.13.51}%
+\contentsline {section}{\numberline {13.52}common/tests/pca9685/test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}front\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}wheels.cpp File Reference}{140}{section.13.52}%
+\contentsline {subsection}{\numberline {13.52.1}Function Documentation}{140}{subsection.13.52.1}%
+\contentsline {subsubsection}{\numberline {13.52.1.1}main()}{140}{subsubsection.13.52.1.1}%
+\contentsline {subsubsection}{\numberline {13.52.1.2}map()}{140}{subsubsection.13.52.1.2}%
+\contentsline {subsubsection}{\numberline {13.52.1.3}setAngle()}{141}{subsubsection.13.52.1.3}%
+\contentsline {subsubsection}{\numberline {13.52.1.4}setAngleToAnalog()}{141}{subsubsection.13.52.1.4}%
+\contentsline {subsection}{\numberline {13.52.2}Variable Documentation}{141}{subsection.13.52.2}%
+\contentsline {subsubsection}{\numberline {13.52.2.1}offset}{141}{subsubsection.13.52.2.1}%
+\contentsline {section}{\numberline {13.53}common/tests/tb6612/test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rear\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}wheels.cpp File Reference}{141}{section.13.53}%
+\contentsline {subsection}{\numberline {13.53.1}Function Documentation}{141}{subsection.13.53.1}%
+\contentsline {subsubsection}{\numberline {13.53.1.1}main()}{142}{subsubsection.13.53.1.1}%
+\contentsline {subsubsection}{\numberline {13.53.1.2}test()}{142}{subsubsection.13.53.1.2}%
+\contentsline {section}{\numberline {13.54}daemon/install/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}README.md File Reference}{142}{section.13.54}%
+\contentsline {section}{\numberline {13.55}daemon/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}README.md File Reference}{142}{section.13.55}%
+\contentsline {section}{\numberline {13.56}README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{142}{section.13.56}%
+\contentsline {section}{\numberline {13.57}tui/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}README.md File Reference}{142}{section.13.57}%
+\contentsline {section}{\numberline {13.58}repository/packages/t/tb6612/tb6612/include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}TB6612.h File Reference}{142}{section.13.58}%
+\contentsline {section}{\numberline {13.59}TB6612.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{142}{section.13.59}%
+\contentsline {section}{\numberline {13.60}repository/packages/t/tb6612/tb6612/src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}TB6612.cpp File Reference}{143}{section.13.60}%
+\contentsline {section}{\numberline {13.61}SETUP.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{143}{section.13.61}%
+\contentsline {section}{\numberline {13.62}tui/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}SETUP.md File Reference}{143}{section.13.62}%
+\contentsline {section}{\numberline {13.63}tui/src/car/configuration/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Configuration.cxx File Reference}{143}{section.13.63}%
+\contentsline {subsection}{\numberline {13.63.1}Macro Definition Documentation}{144}{subsection.13.63.1}%
+\contentsline {subsubsection}{\numberline {13.63.1.1}JSONCONFIGURATION\_CXX}{144}{subsubsection.13.63.1.1}%
+\contentsline {section}{\numberline {13.64}tui/src/car/display/console/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console.cpp File Reference}{144}{section.13.64}%
+\contentsline {section}{\numberline {13.65}tui/src/car/display/console/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console.h File Reference}{144}{section.13.65}%
+\contentsline {section}{\numberline {13.66}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{145}{section.13.66}%
+\contentsline {section}{\numberline {13.67}tui/src/car/display/console/component/debug/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Enabler.cxx File Reference}{145}{section.13.67}%
+\contentsline {subsection}{\numberline {13.67.1}Macro Definition Documentation}{146}{subsection.13.67.1}%
+\contentsline {subsubsection}{\numberline {13.67.1.1}DEBUGENABLER\_CXX}{146}{subsubsection.13.67.1.1}%
+\contentsline {section}{\numberline {13.68}tui/src/car/display/console/component/debug/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Checkbox.cxx File Reference}{146}{section.13.68}%
+\contentsline {subsection}{\numberline {13.68.1}Macro Definition Documentation}{146}{subsection.13.68.1}%
+\contentsline {subsubsection}{\numberline {13.68.1.1}DEBUGLIDARCHECKBOX\_CXX}{146}{subsubsection.13.68.1.1}%
+\contentsline {section}{\numberline {13.69}tui/src/car/display/console/component/debug/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Textbox.cxx File Reference}{147}{section.13.69}%
+\contentsline {subsection}{\numberline {13.69.1}Macro Definition Documentation}{147}{subsection.13.69.1}%
+\contentsline {subsubsection}{\numberline {13.69.1.1}DEBUGMESSAGINGTEXTBOX\_CXX}{147}{subsubsection.13.69.1.1}%
+\contentsline {section}{\numberline {13.70}tui/src/car/display/console/component/debug/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Debug\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Movement\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Renderer.cxx File Reference}{147}{section.13.70}%
+\contentsline {subsection}{\numberline {13.70.1}Macro Definition Documentation}{148}{subsection.13.70.1}%
+\contentsline {subsubsection}{\numberline {13.70.1.1}DEBUGMOVEMENTRENDERER\_CXX}{148}{subsubsection.13.70.1.1}%
+\contentsline {section}{\numberline {13.71}tui/src/car/display/console/component/main/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Connect\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button.cxx File Reference}{148}{section.13.71}%
+\contentsline {subsection}{\numberline {13.71.1}Macro Definition Documentation}{149}{subsection.13.71.1}%
+\contentsline {subsubsection}{\numberline {13.71.1.1}CONNECTBUTTON\_CXX}{149}{subsubsection.13.71.1.1}%
+\contentsline {section}{\numberline {13.72}tui/src/car/display/console/component/main/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Error\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modal.cxx File Reference}{149}{section.13.72}%
+\contentsline {subsection}{\numberline {13.72.1}Macro Definition Documentation}{149}{subsection.13.72.1}%
+\contentsline {subsubsection}{\numberline {13.72.1.1}MAINERRORMODAL\_CXX}{149}{subsubsection.13.72.1.1}%
+\contentsline {section}{\numberline {13.73}tui/src/car/display/console/component/main/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Exit\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modal.cxx File Reference}{150}{section.13.73}%
+\contentsline {subsection}{\numberline {13.73.1}Macro Definition Documentation}{150}{subsection.13.73.1}%
+\contentsline {subsubsection}{\numberline {13.73.1.1}MAINEXITMODAL\_CXX}{150}{subsubsection.13.73.1.1}%
+\contentsline {section}{\numberline {13.74}tui/src/car/display/console/component/settings/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Settings\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Edit\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config.cxx File Reference}{150}{section.13.74}%
+\contentsline {subsection}{\numberline {13.74.1}Macro Definition Documentation}{151}{subsection.13.74.1}%
+\contentsline {subsubsection}{\numberline {13.74.1.1}SETTINGSEDITCONFIG\_CXX}{151}{subsubsection.13.74.1.1}%
+\contentsline {section}{\numberline {13.75}tui/src/car/display/console/screen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Screen.cxx File Reference}{151}{section.13.75}%
+\contentsline {subsection}{\numberline {13.75.1}Macro Definition Documentation}{152}{subsection.13.75.1}%
+\contentsline {subsubsection}{\numberline {13.75.1.1}LOGGINGSCREEN\_CXX}{152}{subsubsection.13.75.1.1}%
+\contentsline {section}{\numberline {13.76}tui/src/car/display/console/screen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Screen.cxx File Reference}{152}{section.13.76}%
+\contentsline {subsection}{\numberline {13.76.1}Macro Definition Documentation}{152}{subsection.13.76.1}%
+\contentsline {subsubsection}{\numberline {13.76.1.1}MAINSCREEN\_CXX}{152}{subsubsection.13.76.1.1}%
+\contentsline {section}{\numberline {13.77}tui/src/car/display/console/screen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Settings\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Screen.cxx File Reference}{153}{section.13.77}%
+\contentsline {subsection}{\numberline {13.77.1}Macro Definition Documentation}{153}{subsection.13.77.1}%
+\contentsline {subsubsection}{\numberline {13.77.1.1}SETTINGSSCREEN\_CXX}{153}{subsubsection.13.77.1.1}%
+\contentsline {chapter}{Index}{155}{section*.204}%
