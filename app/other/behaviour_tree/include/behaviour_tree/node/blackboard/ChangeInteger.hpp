@@ -3,16 +3,18 @@
 
 #pragma once
 
-#include "BlackboardLeaf.hpp"
+#include "BlackboardNode.hpp"
 
 #include "enum/IntegerChangeType.hpp"
 
 namespace behaviour_tree::node::blackboard
 {
-	class ChangeInteger final : public BlackboardLeaf
+	class ChangeInteger final : public BlackboardNode
 	{
 	public:
-		ChangeInteger(const std::string& name) : BlackboardLeaf(name) {}
+		ChangeInteger(const std::string& name, const std::string variable_name, const IntegerChangeType integer_change_type, const int value) : BlackboardNode(name), variable_name(variable_name), integer_change_type(integer_change_type), value(value) {}
+
+		const BlackboardType type() const final override { return BlackboardType::ChangeInteger; }
 
 		const Status run(const int tick_count, std::shared_ptr<Context> context) final override
 		{
@@ -55,9 +57,9 @@ namespace behaviour_tree::node::blackboard
 				}
 			();
 			if (name != "")
-				return fmt::format(R"(<Blackboard:ChangeInteger name='{}' variable_name='{}' value='{}' integer_change_type='{}'/>)", name, this->variable_name, this->value, integer_change_type);
+				return fmt::format(R"(<Blackboard:ChangeInteger name='{}' variable_name='{}' integer_change_type='{}' value='{}'/>)", name, this->variable_name, integer_change_type, this->value);
 			else
-				return fmt::format(R"(<Blackboard:ChangeInteger variable_name='{}' value='{}' integer_change_type='{}'/>)", this->variable_name, this->value, integer_change_type);
+				return fmt::format(R"(<Blackboard:ChangeInteger variable_name='{}' integer_change_type='{}' value='{}'/>)", this->variable_name, integer_change_type, this->value);
 		}
 
 	private:

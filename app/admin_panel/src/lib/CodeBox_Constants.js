@@ -672,6 +672,10 @@ export const common_nodes = [
     "Task",
     "UseRoot",
 
+    // Blackboard
+    "Blackboard:ChangeInteger",
+    "Blackboard:IntegerCondition",
+
     "Action:PauseExecution",
 
     "Action:Print",
@@ -687,6 +691,15 @@ export const common_nodes = [
     "Condition:SucceedOnAnyNearbyScan",
     "Condition:SucceedOnAverageColour",
 ];
+
+export const condition_operator_types = [
+    "==",
+    "!=",
+    "<",
+    "<=",
+    ">",
+    ">=",
+]
 
 export const xml_schema = {
     elements: [
@@ -753,6 +766,36 @@ export const xml_schema = {
         {
             name: "UseRoot",
             attributes: ["id"],
+            completion: { type: "keyword" },
+        },
+        {
+            name: "Blackboard:ChangeInteger",
+            attributes: [
+                "variable_name",
+                "value",
+                {
+                    name: "integer_change_type",
+                    values: [
+                        "Set",
+                        "Add",
+                        "Subtract",
+                    ],
+                    completion: { type: "keyword" },
+                },
+            ],
+            completion: { type: "keyword" },
+        },
+        {
+            name: "Blackboard:IntegerCondition",
+            attributes: [
+                "variable_name",
+                "value",
+                {
+                    name: "condition_operator_type",
+                    values: condition_operator_types,
+                    completion: { type: "keyword" },
+                },
+            ],
             completion: { type: "keyword" },
         },
         {
@@ -906,6 +949,9 @@ const node_information_list = new Map([
 
     ["Fail", "Always fails"],
     ["Succeed", "Always succeeds"],
+
+    ["Blackboard:ChangeInteger", "Changes the integer value of the blackboard"],
+    ["Blackboard:IntegerCondition", "Checks the integer value of the blackboard"],
 
     ["Action:PauseExecution", "Pauses the execution for the given amount of time"],
     ["Action:Print", "Prints the given message"],
