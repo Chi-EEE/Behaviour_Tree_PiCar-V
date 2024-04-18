@@ -29,7 +29,7 @@ jobs:
       - name: Move Doxygen HTML files into their parent directories
         run: |
           # sudo mv docs/backend/html/* docs/backend
-          sudo mv docs/app/rpi/common/html/* docs/raspberry_pi
+          sudo mv docs/raspberry_pi/html/* docs/raspberry_pi
 
       # - name: Build JSDoc documentation
       #   uses: andstor/jsdoc-action@v1
