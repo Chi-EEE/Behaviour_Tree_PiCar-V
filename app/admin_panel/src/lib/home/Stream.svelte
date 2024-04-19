@@ -19,9 +19,8 @@
      * }} Point
      */
 
-    // From: https://stackoverflow.com/a/16245768
     /**
-     *
+     * @description From: https://stackoverflow.com/a/16245768
      * @param {string} b64Data
      * @param {string} contentType
      * @param {number} sliceSize
