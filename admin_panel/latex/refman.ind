@@ -1,0 +1,48 @@
+\begin{theindex}
+
+  \item {js/behaviour\_tree.js}, \hyperpage{6}
+  \item {js/device.js}, \hyperpage{6}
+  \item {js/main.js}, \hyperpage{6}
+  \item {js/preload.js}, \hyperpage{6}
+  \item {js/raspberry\_pi.js}, \hyperpage{6}
+  \item {js/store.js}, \hyperpage{6}
+  \item {js/websocket.js}, \hyperpage{6}
+  \item {js/websocket\_events.js}, \hyperpage{6}
+
+  \indexspace
+
+  \item {public/index.html}, \hyperpage{6}
+
+  \indexspace
+
+  \item {README.md}, \hyperpage{6}
+  \item {rollup.config.js}, \hyperpage{6}
+
+  \indexspace
+
+  \item {src/App.svelte}, \hyperpage{6}
+  \item {src/lib/BehaviourTreeHandler.svelte}, \hyperpage{6}
+  \item {src/lib/CodeBox\_Constants.js}, \hyperpage{6}
+  \item {src/lib/home/CodeBox.svelte}, \hyperpage{6}
+  \item {src/lib/home/CodeMessagingBar.svelte}, \hyperpage{6}
+  \item {src/lib/home/Stream.svelte}, \hyperpage{6}
+  \item {src/lib/IPList.svelte}, \hyperpage{6}
+  \item {src/lib/NavigationBar.svelte}, \hyperpage{6}
+  \item {src/lib/RaspberryPiConnectBanner.svelte}, \hyperpage{6}
+  \item {src/lib/RaspberryPiSelector.svelte}, \hyperpage{6}
+  \item {src/lib/SaveBehaviourTreeModal.svelte}, \hyperpage{6}
+  \item {src/lib/validate/CodeBox.svelte}, \hyperpage{6}
+  \item {src/lib/validate/CodeButton.svelte}, \hyperpage{6}
+  \item {src/lib/WebsocketServerConfig.svelte}, \hyperpage{6}
+  \item {src/main.js}, \hyperpage{6}
+  \item {src/routes.js}, \hyperpage{6}
+  \item {src/routes/Home.svelte}, \hyperpage{6}
+  \item {src/routes/NotFound.svelte}, \hyperpage{6}
+  \item {src/routes/Validate.svelte}, \hyperpage{6}
+  \item {src/routes/Websocket.svelte}, \hyperpage{6}
+  \item {src/store/behaviour\_tree\_store.js}, \hyperpage{6}
+  \item {src/store/home\_store.js}, \hyperpage{6}
+  \item {src/store/raspberry\_pi\_store.js}, \hyperpage{6}
+  \item {src/store/websocket\_store.js}, \hyperpage{6}
+
+\end{theindex}
