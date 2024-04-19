@@ -102,6 +102,9 @@ Installation:</h1>
 <div class="line">sudo systemctl start rpi_daemon # Start the new Daemon</div>
 </div><!-- fragment --><p >Or use the single command: </p><div class="fragment"><div class="line">sudo chmod +x ./install_script.sh &amp;&amp; systemctl stop rpi_daemon &amp;&amp; sudo ./install_script.sh install &amp;&amp; sudo systemctl daemon-reload &amp;&amp; sudo systemctl start rpi_daemon</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+Enable / Disable Daemon to run on startup</h1>
+<p ><code>sudo systemctl [enable|disable] <a class="el" href="classrpi__daemon.html">rpi_daemon</a></code></p>
+<h1><a class="anchor" id="autotoc_md3"></a>
 View Logs</h1>
 <p ><code>systemctl status rpi_daemon.service</code> <code>journalctl -u <a class="el" href="classrpi__daemon.html">rpi_daemon</a></code> </p>
 </div></div><!-- contents -->

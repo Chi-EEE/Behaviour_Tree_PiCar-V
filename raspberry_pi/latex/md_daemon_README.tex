@@ -1,10 +1,10 @@
-This will only work for Linux.\hypertarget{md_daemon_README_autotoc_md4}{}\doxysection{Install Raspberry Pi Daemon}\label{md_daemon_README_autotoc_md4}
-{\ttfamily xmake install -\/-\/admin \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md5}{}\doxysection{Enable / Disable Daemon to run on startup}\label{md_daemon_README_autotoc_md5}
-{\ttfamily sudo systemctl \mbox{[}enable$\vert$disable\mbox{]} \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md6}{}\doxysection{Start / Stop / Restart Daemon}\label{md_daemon_README_autotoc_md6}
-{\ttfamily sudo systemctl \mbox{[}start/stop/restart\mbox{]} \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md7}{}\doxysection{View Logs}\label{md_daemon_README_autotoc_md7}
-{\ttfamily systemctl status rpi\+\_\+daemon.\+service} {\ttfamily journalctl -\/u \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md8}{}\doxysection{Clear Past Logs}\label{md_daemon_README_autotoc_md8}
-{\ttfamily sudo journalctl -\/m -\/-\/vacuum-\/time=1s}\hypertarget{md_daemon_README_autotoc_md9}{}\doxysection{Reload Daemon}\label{md_daemon_README_autotoc_md9}
-{\ttfamily sudo systemctl reload \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md10}{}\doxysection{Change Config}\label{md_daemon_README_autotoc_md10}
-{\ttfamily sudo nano /etc/rpi\+\_\+daemon/rpi\+\_\+daemon.conf}\hypertarget{md_daemon_README_autotoc_md11}{}\doxysection{Uninstall Raspberry Pi Daemon}\label{md_daemon_README_autotoc_md11}
-{\ttfamily xmake uninstall -\/-\/admin \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md12}{}\doxysection{Speedrun}\label{md_daemon_README_autotoc_md12}
+This will only work for Linux.\hypertarget{md_daemon_README_autotoc_md5}{}\doxysection{Install Raspberry Pi Daemon}\label{md_daemon_README_autotoc_md5}
+{\ttfamily xmake install -\/-\/admin \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md6}{}\doxysection{Enable / Disable Daemon to run on startup}\label{md_daemon_README_autotoc_md6}
+{\ttfamily sudo systemctl \mbox{[}enable$\vert$disable\mbox{]} \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md7}{}\doxysection{Start / Stop / Restart Daemon}\label{md_daemon_README_autotoc_md7}
+{\ttfamily sudo systemctl \mbox{[}start/stop/restart\mbox{]} \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md8}{}\doxysection{View Logs}\label{md_daemon_README_autotoc_md8}
+{\ttfamily systemctl status rpi\+\_\+daemon.\+service} {\ttfamily journalctl -\/u \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md9}{}\doxysection{Clear Past Logs}\label{md_daemon_README_autotoc_md9}
+{\ttfamily sudo journalctl -\/m -\/-\/vacuum-\/time=1s}\hypertarget{md_daemon_README_autotoc_md10}{}\doxysection{Reload Daemon}\label{md_daemon_README_autotoc_md10}
+{\ttfamily sudo systemctl reload \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md11}{}\doxysection{Change Config}\label{md_daemon_README_autotoc_md11}
+{\ttfamily sudo nano /etc/rpi\+\_\+daemon/rpi\+\_\+daemon.conf}\hypertarget{md_daemon_README_autotoc_md12}{}\doxysection{Uninstall Raspberry Pi Daemon}\label{md_daemon_README_autotoc_md12}
+{\ttfamily xmake uninstall -\/-\/admin \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}}\hypertarget{md_daemon_README_autotoc_md13}{}\doxysection{Speedrun}\label{md_daemon_README_autotoc_md13}
 {\ttfamily sudo systemctl stop \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}} \&\& xmake \&\& xmake install -\/-\/admin \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}} \&\& sudo systemctl daemon-\/reload \&\& sudo systemctl start \mbox{\hyperlink{classrpi__daemon}{rpi\+\_\+daemon}}} 

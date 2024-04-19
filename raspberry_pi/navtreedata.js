@@ -27,28 +27,29 @@ var NAVTREE =
   [ "Behaviour Tree PiCar-V", "index.html", [
     [ "Behaviour Tree PiCar Daemon", "md_daemon_install_README.html", [
       [ "Installation:", "md_daemon_install_README.html#autotoc_md1", null ],
-      [ "View Logs", "md_daemon_install_README.html#autotoc_md2", null ]
+      [ "Enable / Disable Daemon to run on startup", "md_daemon_install_README.html#autotoc_md2", null ],
+      [ "View Logs", "md_daemon_install_README.html#autotoc_md3", null ]
     ] ],
     [ "Raspberry Pi Daemon", "md_daemon_README.html", [
-      [ "Install Raspberry Pi Daemon", "md_daemon_README.html#autotoc_md4", null ],
-      [ "Enable / Disable Daemon to run on startup", "md_daemon_README.html#autotoc_md5", null ],
-      [ "Start / Stop / Restart Daemon", "md_daemon_README.html#autotoc_md6", null ],
-      [ "View Logs", "md_daemon_README.html#autotoc_md7", null ],
-      [ "Clear Past Logs", "md_daemon_README.html#autotoc_md8", null ],
-      [ "Reload Daemon", "md_daemon_README.html#autotoc_md9", null ],
-      [ "Change Config", "md_daemon_README.html#autotoc_md10", null ],
-      [ "Uninstall Raspberry Pi Daemon", "md_daemon_README.html#autotoc_md11", null ],
-      [ "Speedrun", "md_daemon_README.html#autotoc_md12", null ]
+      [ "Install Raspberry Pi Daemon", "md_daemon_README.html#autotoc_md5", null ],
+      [ "Enable / Disable Daemon to run on startup", "md_daemon_README.html#autotoc_md6", null ],
+      [ "Start / Stop / Restart Daemon", "md_daemon_README.html#autotoc_md7", null ],
+      [ "View Logs", "md_daemon_README.html#autotoc_md8", null ],
+      [ "Clear Past Logs", "md_daemon_README.html#autotoc_md9", null ],
+      [ "Reload Daemon", "md_daemon_README.html#autotoc_md10", null ],
+      [ "Change Config", "md_daemon_README.html#autotoc_md11", null ],
+      [ "Uninstall Raspberry Pi Daemon", "md_daemon_README.html#autotoc_md12", null ],
+      [ "Speedrun", "md_daemon_README.html#autotoc_md13", null ]
     ] ],
     [ "Raspberry Pi", "md_README.html", [
-      [ "Main Technologies", "md_README.html#autotoc_md14", null ],
-      [ "Setting up Raspberry Pi", "md_README.html#autotoc_md15", null ]
+      [ "Main Technologies", "md_README.html#autotoc_md15", null ],
+      [ "Setting up Raspberry Pi", "md_README.html#autotoc_md16", null ]
     ] ],
     [ "Behaviour Tree PiCar-V Setup", "md_SETUP.html", null ],
     [ "Raspberry Pi", "md_tui_README.html", [
-      [ "Installation", "md_tui_README.html#autotoc_md18", null ],
-      [ "Main Technologies", "md_tui_README.html#autotoc_md19", null ],
-      [ "Setting up Raspberry Pi", "md_tui_README.html#autotoc_md20", null ]
+      [ "Installation", "md_tui_README.html#autotoc_md19", null ],
+      [ "Main Technologies", "md_tui_README.html#autotoc_md20", null ],
+      [ "Setting up Raspberry Pi", "md_tui_README.html#autotoc_md21", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],

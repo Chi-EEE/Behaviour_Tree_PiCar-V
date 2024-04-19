@@ -94,31 +94,31 @@ $(document).ready(function(){initNavTree('md_daemon_README.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p >This will only work for Linux.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Install Raspberry Pi Daemon</h1>
 <p ><code>xmake install --admin <a class="el" href="classrpi__daemon.html">rpi_daemon</a></code></p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Enable / Disable Daemon to run on startup</h1>
 <p ><code>sudo systemctl [enable|disable] <a class="el" href="classrpi__daemon.html">rpi_daemon</a></code></p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Start / Stop / Restart Daemon</h1>
 <p ><code>sudo systemctl [start/stop/restart] <a class="el" href="classrpi__daemon.html">rpi_daemon</a></code></p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 View Logs</h1>
 <p ><code>systemctl status rpi_daemon.service</code> <code>journalctl -u <a class="el" href="classrpi__daemon.html">rpi_daemon</a></code></p>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 Clear Past Logs</h1>
 <p ><code>sudo journalctl -m --vacuum-time=1s</code></p>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Reload Daemon</h1>
 <p ><code>sudo systemctl reload <a class="el" href="classrpi__daemon.html">rpi_daemon</a></code></p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Change Config</h1>
 <p ><code>sudo nano /etc/rpi_daemon/rpi_daemon.conf</code></p>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Uninstall Raspberry Pi Daemon</h1>
 <p ><code>xmake uninstall --admin <a class="el" href="classrpi__daemon.html">rpi_daemon</a></code></p>
-<h1><a class="anchor" id="autotoc_md12"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 Speedrun</h1>
 <p ><code>sudo systemctl stop <a class="el" href="classrpi__daemon.html">rpi_daemon</a> &amp;&amp; xmake &amp;&amp; xmake install --admin <a class="el" href="classrpi__daemon.html">rpi_daemon</a> &amp;&amp; sudo systemctl daemon-reload &amp;&amp; sudo systemctl start <a class="el" href="classrpi__daemon.html">rpi_daemon</a></code> </p>
 </div></div><!-- contents -->
