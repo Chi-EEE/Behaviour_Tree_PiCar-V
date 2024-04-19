@@ -1,0 +1,702 @@
+\begin{theindex}
+
+  \item {\_\_pad0\_\_}
+    \subitem {App.svelte}, \hyperpage{26}
+  \item {\_\_pad1\_\_}
+    \subitem {App.svelte}, \hyperpage{26}
+
+  \indexspace
+
+  \item {app}
+    \subitem {main.js}, \hyperpage{19}
+  \item {App.svelte}
+    \subitem {\_\_pad0\_\_}, \hyperpage{26}
+    \subitem {\_\_pad1\_\_}, \hyperpage{26}
+    \subitem {main}, \hyperpage{26}
+    \subitem {media}, \hyperpage{26}
+    \subitem {router}, \hyperpage{27}
+    \subitem {routes}, \hyperpage{27}
+    \subitem {svelte}, \hyperpage{27}
+    \subitem {width}, \hyperpage{27}
+
+  \indexspace
+
+  \item {b64toBlob}
+    \subitem {Stream.svelte}, \hyperpage{34}
+  \item {base\_path}
+    \subitem {behaviour\_tree.js}, \hyperpage{15}
+  \item {behaviour\_tree.js}
+    \subitem {base\_path}, \hyperpage{15}
+    \subitem {const}, \hyperpage{15}
+    \subitem {exec}, \hyperpage{15}
+    \subitem {fs}, \hyperpage{15}
+    \subitem {getBehaviourTreeList}, \hyperpage{13}
+    \subitem {handle}, \hyperpage{13}
+    \subitem {isDev}, \hyperpage{14}
+    \subitem {Os}, \hyperpage{15}
+    \subitem {path}, \hyperpage{16}
+    \subitem {removeBehaviourTree}, \hyperpage{14}
+    \subitem {resources\_dir}, \hyperpage{16}
+    \subitem {saveBehaviourTree}, \hyperpage{14}
+    \subitem {sendBehaviourTree}, \hyperpage{14}
+    \subitem {startBehaviourTree}, \hyperpage{14}
+    \subitem {stopBehaviourTree}, \hyperpage{14}
+    \subitem {updateBehaviourTreeList}, \hyperpage{14}
+    \subitem {validateBehaviourTree}, \hyperpage{15}
+  \item {behaviour\_tree\_list}
+    \subitem {behaviour\_tree\_store.js}, \hyperpage{51}
+  \item {behaviour\_tree\_name}
+    \subitem {SaveBehaviourTreeModal.svelte}, \hyperpage{42}
+  \item {behaviour\_tree\_save\_modal\_code}
+    \subitem {behaviour\_tree\_store.js}, \hyperpage{51}
+  \item {behaviour\_tree\_store.js}
+    \subitem {behaviour\_tree\_list}, \hyperpage{51}
+    \subitem {behaviour\_tree\_save\_modal\_code}, \hyperpage{51}
+    \subitem {behaviour\_tree\_xml\_code}, \hyperpage{51}
+    \subitem {import}, \hyperpage{51}
+    \subitem {main}, \hyperpage{50}
+    \subitem {show\_behaviour\_tree\_save\_modal}, \hyperpage{51}
+  \item {behaviour\_tree\_xml\_code}
+    \subitem {behaviour\_tree\_store.js}, \hyperpage{51}
+  \item {BehaviourTreeHandler.svelte}
+    \subitem {import}, \hyperpage{28}
+    \subitem {set}, \hyperpage{27}
+
+  \indexspace
+
+  \item {camera\_stream}
+    \subitem {websocket\_store.js}, \hyperpage{54}
+  \item {close}
+    \subitem {WebSocketServer}, \hyperpage{8}
+  \item {closeWebSocketServer}
+    \subitem {websocket\_events.js}, \hyperpage{22}
+  \item {Code}, \hyperpage{7}
+    \subitem {constructor}, \hyperpage{7}
+    \subitem {generate}, \hyperpage{7}
+    \subitem {get}, \hyperpage{7}
+  \item {CodeBox.svelte}
+    \subitem {editor}, \hyperpage{30, 31}
+    \subitem {import}, \hyperpage{30, 31}
+    \subitem {scroller}, \hyperpage{30, 31}
+    \subitem {svelte}, \hyperpage{30, 31}
+  \item {CodeBox\_Constants.js}
+    \subitem {condition\_operator\_types}, \hyperpage{28}
+    \subitem {import}, \hyperpage{28}
+    \subitem {node\_hover}, \hyperpage{28}
+    \subitem {node\_information\_list}, \hyperpage{29}
+    \subitem {range\_0\_100}, \hyperpage{29}
+    \subitem {range\_0\_180}, \hyperpage{29}
+    \subitem {range\_0\_360}, \hyperpage{30}
+  \item {CodeButton.svelte}
+    \subitem {formatter}, \hyperpage{43}
+    \subitem {import}, \hyperpage{43}
+    \subitem {validate\_behaviour\_tree\_color}, \hyperpage{43}
+    \subitem {validate\_behaviour\_tree\_debounce}, \hyperpage{43}
+    \subitem {validate\_behaviour\_tree\_text}, \hyperpage{43}
+    \subitem {validateBehaviourTree}, \hyperpage{43}
+  \item {CodeMessagingBar.svelte}
+    \subitem {formatter}, \hyperpage{32}
+    \subitem {import}, \hyperpage{33}
+    \subitem {send\_behaviour\_tree\_color}, \hyperpage{33}
+    \subitem {send\_behaviour\_tree\_debounce}, \hyperpage{33}
+    \subitem {send\_behaviour\_tree\_text}, \hyperpage{33}
+    \subitem {sendBehaviourTree}, \hyperpage{32}
+    \subitem {start\_behaviour\_tree\_color}, \hyperpage{33}
+    \subitem {start\_behaviour\_tree\_debounce}, \hyperpage{33}
+    \subitem {start\_behaviour\_tree\_text}, \hyperpage{33}
+    \subitem {startBehaviourTree}, \hyperpage{32}
+    \subitem {stopBehaviourTree}, \hyperpage{32}
+  \item {commonjs}
+    \subitem {rollup.config.js}, \hyperpage{24}
+  \item {condition\_operator\_types}
+    \subitem {CodeBox\_Constants.js}, \hyperpage{28}
+  \item {connect}
+    \subitem {WebSocketServer}, \hyperpage{8}
+  \item {connectToRaspberryPi}
+    \subitem {RaspberryPiSelector.svelte}, \hyperpage{40}
+  \item {const}
+    \subitem {behaviour\_tree.js}, \hyperpage{15}
+    \subitem {main.js}, \hyperpage{18}
+    \subitem {raspberry\_pi.js}, \hyperpage{21}
+    \subitem {websocket\_events.js}, \hyperpage{23}
+  \item {constructor}
+    \subitem {Code}, \hyperpage{7}
+    \subitem {WebSocketServer}, \hyperpage{8}
+  \item {createWindow}
+    \subitem {main.js}, \hyperpage{17}
+
+  \indexspace
+
+  \item {default}
+    \subitem {rollup.config.js}, \hyperpage{24}
+    \subitem {routes.js}, \hyperpage{45}
+  \item {device.js}
+    \subitem {exports}, \hyperpage{17}
+    \subitem {getLocalIPList}, \hyperpage{16}
+    \subitem {handle}, \hyperpage{16}
+    \subitem {os}, \hyperpage{17}
+  \item {displayWebsocketServerStatus}
+    \subitem {WebsocketServerConfig.svelte}, \hyperpage{44}
+  \item {drawLidarWall}
+    \subitem {Stream.svelte}, \hyperpage{35}
+
+  \indexspace
+
+  \item {editor}
+    \subitem {CodeBox.svelte}, \hyperpage{30, 31}
+    \subitem {SaveBehaviourTreeModal.svelte}, \hyperpage{42}
+  \item {exec}
+    \subitem {behaviour\_tree.js}, \hyperpage{15}
+  \item {exports}
+    \subitem {device.js}, \hyperpage{17}
+    \subitem {websocket.js}, \hyperpage{22}
+
+  \indexspace
+
+  \item {formatter}
+    \subitem {CodeButton.svelte}, \hyperpage{43}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{32}
+  \item {fps}
+    \subitem {Stream.svelte}, \hyperpage{37}
+  \item {fps\_interval}
+    \subitem {Stream.svelte}, \hyperpage{37}
+  \item {fs}
+    \subitem {behaviour\_tree.js}, \hyperpage{15}
+
+  \indexspace
+
+  \item {generate}
+    \subitem {Code}, \hyperpage{7}
+  \item {generateCode}
+    \subitem {WebSocketServer}, \hyperpage{9}
+  \item {get}
+    \subitem {Code}, \hyperpage{7}
+  \item {getBehaviourTreeList}
+    \subitem {behaviour\_tree.js}, \hyperpage{13}
+  \item {getCode}
+    \subitem {WebSocketServer}, \hyperpage{9}
+  \item {getIPList}
+    \subitem {IPList.svelte}, \hyperpage{39}
+  \item {getLocalIPList}
+    \subitem {device.js}, \hyperpage{16}
+  \item {getPort}
+    \subitem {WebSocketServer}, \hyperpage{9}
+  \item {getRandomInt}
+    \subitem {websocket.js}, \hyperpage{21}
+  \item {getRaspberryPiList}
+    \subitem {raspberry\_pi.js}, \hyperpage{20}
+  \item {getRaspberryPiMap}
+    \subitem {WebSocketServer}, \hyperpage{9}
+  \item {getSelectedRaspberryPi}
+    \subitem {raspberry\_pi.js}, \hyperpage{20}
+    \subitem {WebSocketServer}, \hyperpage{9}
+  \item {getWebSocketServer}
+    \subitem {websocket\_events.js}, \hyperpage{22}
+
+  \indexspace
+
+  \item {h1}
+    \subitem {NotFound.svelte}, \hyperpage{48}
+  \item {handle}
+    \subitem {behaviour\_tree.js}, \hyperpage{13}
+    \subitem {device.js}, \hyperpage{16}
+    \subitem {raspberry\_pi.js}, \hyperpage{20}
+    \subitem {websocket\_events.js}, \hyperpage{23}
+  \item {handleLidar}
+    \subitem {Stream.svelte}, \hyperpage{35}
+  \item {handleLiveFeed}
+    \subitem {Stream.svelte}, \hyperpage{35}
+  \item {helperText}
+    \subitem {WebsocketServerConfig.svelte}, \hyperpage{45}
+  \item {Home.svelte}
+    \subitem {import}, \hyperpage{47}
+    \subitem {main\_pane\_size\_0}, \hyperpage{47}
+    \subitem {main\_pane\_size\_1}, \hyperpage{47}
+    \subitem {onMainResize}, \hyperpage{46}
+    \subitem {onSideResize}, \hyperpage{46}
+    \subitem {side\_pane\_size\_0}, \hyperpage{47}
+    \subitem {side\_pane\_size\_1}, \hyperpage{47}
+    \subitem {stream\_split\_height}, \hyperpage{47}
+    \subitem {stream\_split\_width}, \hyperpage{47}
+    \subitem {svelte}, \hyperpage{48}
+  \item {home\_store.js}
+    \subitem {import}, \hyperpage{52}
+    \subitem {lidar\_toggle}, \hyperpage{52}
+    \subitem {main\_pane\_size\_0\_store}, \hyperpage{52}
+    \subitem {main\_pane\_size\_1\_store}, \hyperpage{52}
+    \subitem {side\_pane\_size\_0\_store}, \hyperpage{52}
+    \subitem {side\_pane\_size\_1\_store}, \hyperpage{52}
+
+  \indexspace
+
+  \item {if}
+    \subitem {IPList.svelte}, \hyperpage{39}
+  \item {import}
+    \subitem {behaviour\_tree\_store.js}, \hyperpage{51}
+    \subitem {BehaviourTreeHandler.svelte}, \hyperpage{28}
+    \subitem {CodeBox.svelte}, \hyperpage{30, 31}
+    \subitem {CodeBox\_Constants.js}, \hyperpage{28}
+    \subitem {CodeButton.svelte}, \hyperpage{43}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{33}
+    \subitem {Home.svelte}, \hyperpage{47}
+    \subitem {home\_store.js}, \hyperpage{52}
+    \subitem {IPList.svelte}, \hyperpage{39}
+    \subitem {NavigationBar.svelte}, \hyperpage{40}
+    \subitem {raspberry\_pi\_store.js}, \hyperpage{53}
+    \subitem {RaspberryPiConnectBanner.svelte}, \hyperpage{40}
+    \subitem {RaspberryPiSelector.svelte}, \hyperpage{41}
+    \subitem {rollup.config.js}, \hyperpage{24}
+    \subitem {SaveBehaviourTreeModal.svelte}, \hyperpage{42}
+    \subitem {Stream.svelte}, \hyperpage{37}
+    \subitem {Validate.svelte}, \hyperpage{49}
+    \subitem {websocket\_store.js}, \hyperpage{55}
+    \subitem {WebsocketServerConfig.svelte}, \hyperpage{45}
+  \item {IPList.svelte}
+    \subitem {getIPList}, \hyperpage{39}
+    \subitem {if}, \hyperpage{39}
+    \subitem {import}, \hyperpage{39}
+    \subitem {refreshIPList}, \hyperpage{39}
+    \subitem {updateIPList}, \hyperpage{39}
+  \item {isConnected}
+    \subitem {WebSocketServer}, \hyperpage{10}
+  \item {isDev}
+    \subitem {behaviour\_tree.js}, \hyperpage{14}
+    \subitem {main.js}, \hyperpage{17}
+
+  \indexspace
+
+  \item {js/behaviour\_tree.js}, \hyperpage{13}
+  \item {js/device.js}, \hyperpage{16}
+  \item {js/main.js}, \hyperpage{17}
+  \item {js/preload.js}, \hyperpage{19}
+  \item {js/raspberry\_pi.js}, \hyperpage{19}
+  \item {js/store.js}, \hyperpage{21}
+  \item {js/websocket.js}, \hyperpage{21}
+  \item {js/websocket\_events.js}, \hyperpage{22}
+
+  \indexspace
+
+  \item {last\_seen\_points}
+    \subitem {Stream.svelte}, \hyperpage{37}
+  \item {lidar\_bar\_height\_size}
+    \subitem {Stream.svelte}, \hyperpage{37}
+  \item {lidar\_canvas\_}
+    \subitem {Stream.svelte}, \hyperpage{37}
+  \item {lidar\_context\_}
+    \subitem {Stream.svelte}, \hyperpage{37}
+  \item {lidar\_draw\_disconnect}
+    \subitem {Stream.svelte}, \hyperpage{37}
+  \item {lidar\_stream}
+    \subitem {websocket\_store.js}, \hyperpage{55}
+  \item {lidar\_toggle}
+    \subitem {home\_store.js}, \hyperpage{52}
+  \item {lidar\_toggle\_icon}
+    \subitem {Stream.svelte}, \hyperpage{38}
+  \item {lidar\_wall\_colour}
+    \subitem {Stream.svelte}, \hyperpage{38}
+  \item {live\_feed\_}
+    \subitem {Stream.svelte}, \hyperpage{38}
+  \item {livereload}
+    \subitem {rollup.config.js}, \hyperpage{24}
+  \item {loadURL}
+    \subitem {main.js}, \hyperpage{18}
+
+  \indexspace
+
+  \item {main}
+    \subitem {App.svelte}, \hyperpage{26}
+    \subitem {behaviour\_tree\_store.js}, \hyperpage{50}
+    \subitem {raspberry\_pi\_store.js}, \hyperpage{53}
+    \subitem {websocket\_store.js}, \hyperpage{54}
+  \item {main.js}
+    \subitem {app}, \hyperpage{19}
+    \subitem {const}, \hyperpage{18}
+    \subitem {createWindow}, \hyperpage{17}
+    \subitem {isDev}, \hyperpage{17}
+    \subitem {loadURL}, \hyperpage{18}
+    \subitem {on}, \hyperpage{18}
+    \subitem {onClose}, \hyperpage{18}
+    \subitem {path}, \hyperpage{18}
+    \subitem {pcss}, \hyperpage{19}
+    \subitem {serve}, \hyperpage{18}
+    \subitem {svelte}, \hyperpage{19}
+  \item {main\_pane\_size\_0}
+    \subitem {Home.svelte}, \hyperpage{47}
+  \item {main\_pane\_size\_0\_store}
+    \subitem {home\_store.js}, \hyperpage{52}
+  \item {main\_pane\_size\_1}
+    \subitem {Home.svelte}, \hyperpage{47}
+  \item {main\_pane\_size\_1\_store}
+    \subitem {home\_store.js}, \hyperpage{52}
+  \item {media}
+    \subitem {App.svelte}, \hyperpage{26}
+
+  \indexspace
+
+  \item {NavigationBar.svelte}
+    \subitem {import}, \hyperpage{40}
+  \item {node\_hover}
+    \subitem {CodeBox\_Constants.js}, \hyperpage{28}
+  \item {node\_information\_list}
+    \subitem {CodeBox\_Constants.js}, \hyperpage{29}
+  \item {NotFound.svelte}
+    \subitem {h1}, \hyperpage{48}
+    \subitem {size}, \hyperpage{48}
+    \subitem {transform}, \hyperpage{48}
+    \subitem {weight}, \hyperpage{48}
+
+  \indexspace
+
+  \item {offset\_angle}
+    \subitem {Stream.svelte}, \hyperpage{38}
+  \item {on}
+    \subitem {main.js}, \hyperpage{18}
+  \item {onClose}
+    \subitem {main.js}, \hyperpage{18}
+  \item {onConnection}
+    \subitem {raspberry\_pi\_store.js}, \hyperpage{53}
+  \item {onDisconnection}
+    \subitem {raspberry\_pi\_store.js}, \hyperpage{53}
+  \item {only}
+    \subitem {rollup.config.js}, \hyperpage{25}
+  \item {onMainResize}
+    \subitem {Home.svelte}, \hyperpage{46}
+  \item {onMessage}
+    \subitem {websocket\_store.js}, \hyperpage{54}
+  \item {onMount}
+    \subitem {Stream.svelte}, \hyperpage{35}
+  \item {onSideResize}
+    \subitem {Home.svelte}, \hyperpage{46}
+    \subitem {Validate.svelte}, \hyperpage{49}
+  \item {Os}
+    \subitem {behaviour\_tree.js}, \hyperpage{15}
+  \item {os}
+    \subitem {device.js}, \hyperpage{17}
+
+  \indexspace
+
+  \item {path}
+    \subitem {behaviour\_tree.js}, \hyperpage{16}
+    \subitem {main.js}, \hyperpage{18}
+  \item {pcss}
+    \subitem {main.js}, \hyperpage{19}
+  \item {polyfills}
+    \subitem {rollup.config.js}, \hyperpage{25}
+  \item {production}
+    \subitem {rollup.config.js}, \hyperpage{25}
+  \item {public/index.html}, \hyperpage{23}
+
+  \indexspace
+
+  \item {range\_0\_100}
+    \subitem {CodeBox\_Constants.js}, \hyperpage{29}
+  \item {range\_0\_180}
+    \subitem {CodeBox\_Constants.js}, \hyperpage{29}
+  \item {range\_0\_360}
+    \subitem {CodeBox\_Constants.js}, \hyperpage{30}
+  \item {raspberry\_pi.js}
+    \subitem {const}, \hyperpage{21}
+    \subitem {getRaspberryPiList}, \hyperpage{20}
+    \subitem {getSelectedRaspberryPi}, \hyperpage{20}
+    \subitem {handle}, \hyperpage{20}
+    \subitem {selectRaspberryPi}, \hyperpage{20}
+    \subitem {unselectRaspberryPi}, \hyperpage{20}
+  \item {raspberry\_pi\_store.js}
+    \subitem {import}, \hyperpage{53}
+    \subitem {main}, \hyperpage{53}
+    \subitem {onConnection}, \hyperpage{53}
+    \subitem {onDisconnection}, \hyperpage{53}
+    \subitem {raspberry\_pi\_uuid\_list}, \hyperpage{53}
+    \subitem {selected\_raspberry\_pi\_uuid}, \hyperpage{53}
+  \item {raspberry\_pi\_uuid\_list}
+    \subitem {raspberry\_pi\_store.js}, \hyperpage{53}
+  \item {RaspberryPiConnectBanner.svelte}
+    \subitem {import}, \hyperpage{40}
+  \item {RaspberryPiSelector.svelte}
+    \subitem {connectToRaspberryPi}, \hyperpage{40}
+    \subitem {import}, \hyperpage{41}
+    \subitem {selected\_uuid}, \hyperpage{41}
+  \item {README.md}, \hyperpage{23}
+  \item {refreshIPList}
+    \subitem {IPList.svelte}, \hyperpage{39}
+  \item {removeBehaviourTree}
+    \subitem {behaviour\_tree.js}, \hyperpage{14}
+  \item {resolve}
+    \subitem {rollup.config.js}, \hyperpage{25}
+  \item {resources\_dir}
+    \subitem {behaviour\_tree.js}, \hyperpage{16}
+  \item {rollup.config.js}, \hyperpage{23}
+    \subitem {commonjs}, \hyperpage{24}
+    \subitem {default}, \hyperpage{24}
+    \subitem {import}, \hyperpage{24}
+    \subitem {livereload}, \hyperpage{24}
+    \subitem {only}, \hyperpage{25}
+    \subitem {polyfills}, \hyperpage{25}
+    \subitem {production}, \hyperpage{25}
+    \subitem {resolve}, \hyperpage{25}
+    \subitem {serve}, \hyperpage{24}
+    \subitem {svelte}, \hyperpage{25}
+    \subitem {tailwindConfig}, \hyperpage{25}
+    \subitem {tailwindcss}, \hyperpage{25}
+  \item {round0\_25}
+    \subitem {Stream.svelte}, \hyperpage{35}
+  \item {router}
+    \subitem {App.svelte}, \hyperpage{27}
+  \item {routes}
+    \subitem {App.svelte}, \hyperpage{27}
+  \item {routes.js}
+    \subitem {default}, \hyperpage{45}
+    \subitem {svelte}, \hyperpage{46}
+
+  \indexspace
+
+  \item {saveBehaviourTree}
+    \subitem {behaviour\_tree.js}, \hyperpage{14}
+    \subitem {SaveBehaviourTreeModal.svelte}, \hyperpage{41}
+  \item {SaveBehaviourTreeModal.svelte}
+    \subitem {behaviour\_tree\_name}, \hyperpage{42}
+    \subitem {editor}, \hyperpage{42}
+    \subitem {import}, \hyperpage{42}
+    \subitem {saveBehaviourTree}, \hyperpage{41}
+    \subitem {set}, \hyperpage{42}
+  \item {scroller}
+    \subitem {CodeBox.svelte}, \hyperpage{30, 31}
+  \item {selected\_raspberry\_pi\_uuid}
+    \subitem {raspberry\_pi\_store.js}, \hyperpage{53}
+  \item {selected\_uuid}
+    \subitem {RaspberryPiSelector.svelte}, \hyperpage{41}
+  \item {selectRaspberryPi}
+    \subitem {raspberry\_pi.js}, \hyperpage{20}
+    \subitem {WebSocketServer}, \hyperpage{10}
+  \item {send\_behaviour\_tree\_color}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{33}
+  \item {send\_behaviour\_tree\_debounce}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{33}
+  \item {send\_behaviour\_tree\_text}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{33}
+  \item {sendBehaviourTree}
+    \subitem {behaviour\_tree.js}, \hyperpage{14}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{32}
+    \subitem {WebSocketServer}, \hyperpage{10}
+  \item {serve}
+    \subitem {main.js}, \hyperpage{18}
+    \subitem {rollup.config.js}, \hyperpage{24}
+  \item {set}
+    \subitem {BehaviourTreeHandler.svelte}, \hyperpage{27}
+    \subitem {SaveBehaviourTreeModal.svelte}, \hyperpage{42}
+  \item {shadeColor}
+    \subitem {Stream.svelte}, \hyperpage{36}
+  \item {show\_behaviour\_tree\_save\_modal}
+    \subitem {behaviour\_tree\_store.js}, \hyperpage{51}
+  \item {side\_pane\_size\_0}
+    \subitem {Home.svelte}, \hyperpage{47}
+    \subitem {Validate.svelte}, \hyperpage{49}
+  \item {side\_pane\_size\_0\_store}
+    \subitem {home\_store.js}, \hyperpage{52}
+  \item {side\_pane\_size\_1}
+    \subitem {Home.svelte}, \hyperpage{47}
+    \subitem {Validate.svelte}, \hyperpage{49}
+  \item {side\_pane\_size\_1\_store}
+    \subitem {home\_store.js}, \hyperpage{52}
+  \item {size}
+    \subitem {NotFound.svelte}, \hyperpage{48}
+  \item {src/App.svelte}, \hyperpage{26}
+  \item {src/lib/BehaviourTreeHandler.svelte}, \hyperpage{27}
+  \item {src/lib/CodeBox\_Constants.js}, \hyperpage{28}
+  \item {src/lib/home/CodeBox.svelte}, \hyperpage{30}
+  \item {src/lib/home/CodeMessagingBar.svelte}, \hyperpage{32}
+  \item {src/lib/home/Stream.svelte}, \hyperpage{34}
+  \item {src/lib/IPList.svelte}, \hyperpage{38}
+  \item {src/lib/NavigationBar.svelte}, \hyperpage{39}
+  \item {src/lib/RaspberryPiConnectBanner.svelte}, \hyperpage{40}
+  \item {src/lib/RaspberryPiSelector.svelte}, \hyperpage{40}
+  \item {src/lib/SaveBehaviourTreeModal.svelte}, \hyperpage{41}
+  \item {src/lib/validate/CodeBox.svelte}, \hyperpage{31}
+  \item {src/lib/validate/CodeButton.svelte}, \hyperpage{42}
+  \item {src/lib/WebsocketServerConfig.svelte}, \hyperpage{44}
+  \item {src/main.js}, \hyperpage{19}
+  \item {src/routes.js}, \hyperpage{45}
+  \item {src/routes/Home.svelte}, \hyperpage{46}
+  \item {src/routes/NotFound.svelte}, \hyperpage{48}
+  \item {src/routes/Validate.svelte}, \hyperpage{49}
+  \item {src/routes/Websocket.svelte}, \hyperpage{50}
+  \item {src/store/behaviour\_tree\_store.js}, \hyperpage{50}
+  \item {src/store/home\_store.js}, \hyperpage{51}
+  \item {src/store/raspberry\_pi\_store.js}, \hyperpage{52}
+  \item {src/store/websocket\_store.js}, \hyperpage{54}
+  \item {start\_behaviour\_tree\_color}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{33}
+  \item {start\_behaviour\_tree\_debounce}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{33}
+  \item {start\_behaviour\_tree\_text}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{33}
+  \item {startBehaviourTree}
+    \subitem {behaviour\_tree.js}, \hyperpage{14}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{32}
+    \subitem {WebSocketServer}, \hyperpage{10}
+  \item {startConnections}
+    \subitem {WebSocketServer}, \hyperpage{11}
+  \item {startWebSocketServer}
+    \subitem {websocket\_events.js}, \hyperpage{23}
+  \item {stopBehaviourTree}
+    \subitem {behaviour\_tree.js}, \hyperpage{14}
+    \subitem {CodeMessagingBar.svelte}, \hyperpage{32}
+    \subitem {WebSocketServer}, \hyperpage{11}
+  \item {Stream.svelte}
+    \subitem {b64toBlob}, \hyperpage{34}
+    \subitem {drawLidarWall}, \hyperpage{35}
+    \subitem {fps}, \hyperpage{37}
+    \subitem {fps\_interval}, \hyperpage{37}
+    \subitem {handleLidar}, \hyperpage{35}
+    \subitem {handleLiveFeed}, \hyperpage{35}
+    \subitem {import}, \hyperpage{37}
+    \subitem {last\_seen\_points}, \hyperpage{37}
+    \subitem {lidar\_bar\_height\_size}, \hyperpage{37}
+    \subitem {lidar\_canvas\_}, \hyperpage{37}
+    \subitem {lidar\_context\_}, \hyperpage{37}
+    \subitem {lidar\_draw\_disconnect}, \hyperpage{37}
+    \subitem {lidar\_toggle\_icon}, \hyperpage{38}
+    \subitem {lidar\_wall\_colour}, \hyperpage{38}
+    \subitem {live\_feed\_}, \hyperpage{38}
+    \subitem {offset\_angle}, \hyperpage{38}
+    \subitem {onMount}, \hyperpage{35}
+    \subitem {round0\_25}, \hyperpage{35}
+    \subitem {shadeColor}, \hyperpage{36}
+    \subitem {stream\_div\_}, \hyperpage{38}
+    \subitem {subscribe}, \hyperpage{36}
+    \subitem {subscribeLidarDrawing}, \hyperpage{36}
+    \subitem {toggleLidar}, \hyperpage{36}
+    \subitem {updateAspectRatio}, \hyperpage{36}
+  \item {stream\_div\_}
+    \subitem {Stream.svelte}, \hyperpage{38}
+  \item {stream\_split\_height}
+    \subitem {Home.svelte}, \hyperpage{47}
+  \item {stream\_split\_width}
+    \subitem {Home.svelte}, \hyperpage{47}
+  \item {subscribe}
+    \subitem {Stream.svelte}, \hyperpage{36}
+    \subitem {WebsocketServerConfig.svelte}, \hyperpage{44}
+  \item {subscribeLidarDrawing}
+    \subitem {Stream.svelte}, \hyperpage{36}
+  \item {svelte}
+    \subitem {App.svelte}, \hyperpage{27}
+    \subitem {CodeBox.svelte}, \hyperpage{30, 31}
+    \subitem {Home.svelte}, \hyperpage{48}
+    \subitem {main.js}, \hyperpage{19}
+    \subitem {rollup.config.js}, \hyperpage{25}
+    \subitem {routes.js}, \hyperpage{46}
+    \subitem {Validate.svelte}, \hyperpage{50}
+    \subitem {Websocket.svelte}, \hyperpage{50}
+
+  \indexspace
+
+  \item {tailwindConfig}
+    \subitem {rollup.config.js}, \hyperpage{25}
+  \item {tailwindcss}
+    \subitem {rollup.config.js}, \hyperpage{25}
+  \item {tcpPortUsed}
+    \subitem {websocket\_events.js}, \hyperpage{23}
+  \item {toggleLidar}
+    \subitem {Stream.svelte}, \hyperpage{36}
+  \item {toggleWebsocketServer}
+    \subitem {WebsocketServerConfig.svelte}, \hyperpage{44}
+  \item {toggleWebsocketServerMessage}
+    \subitem {WebsocketServerConfig.svelte}, \hyperpage{45}
+  \item {transform}
+    \subitem {NotFound.svelte}, \hyperpage{48}
+
+  \indexspace
+
+  \item {unselectRaspberryPi}
+    \subitem {raspberry\_pi.js}, \hyperpage{20}
+  \item {updateAspectRatio}
+    \subitem {Stream.svelte}, \hyperpage{36}
+  \item {updateBehaviourTreeList}
+    \subitem {behaviour\_tree.js}, \hyperpage{14}
+  \item {updateIPList}
+    \subitem {IPList.svelte}, \hyperpage{39}
+
+  \indexspace
+
+  \item {Validate.svelte}
+    \subitem {import}, \hyperpage{49}
+    \subitem {onSideResize}, \hyperpage{49}
+    \subitem {side\_pane\_size\_0}, \hyperpage{49}
+    \subitem {side\_pane\_size\_1}, \hyperpage{49}
+    \subitem {svelte}, \hyperpage{50}
+  \item {validate\_behaviour\_tree\_color}
+    \subitem {CodeButton.svelte}, \hyperpage{43}
+  \item {validate\_behaviour\_tree\_debounce}
+    \subitem {CodeButton.svelte}, \hyperpage{43}
+  \item {validate\_behaviour\_tree\_text}
+    \subitem {CodeButton.svelte}, \hyperpage{43}
+  \item {validateBehaviourTree}
+    \subitem {behaviour\_tree.js}, \hyperpage{15}
+    \subitem {CodeButton.svelte}, \hyperpage{43}
+
+  \indexspace
+
+  \item {WebSocket}
+    \subitem {websocket.js}, \hyperpage{22}
+  \item {websocket.js}
+    \subitem {exports}, \hyperpage{22}
+    \subitem {getRandomInt}, \hyperpage{21}
+    \subitem {WebSocket}, \hyperpage{22}
+  \item {Websocket.svelte}
+    \subitem {svelte}, \hyperpage{50}
+  \item {websocket\_events.js}
+    \subitem {closeWebSocketServer}, \hyperpage{22}
+    \subitem {const}, \hyperpage{23}
+    \subitem {getWebSocketServer}, \hyperpage{22}
+    \subitem {handle}, \hyperpage{23}
+    \subitem {startWebSocketServer}, \hyperpage{23}
+    \subitem {tcpPortUsed}, \hyperpage{23}
+  \item {websocket\_server\_code}
+    \subitem {websocket\_store.js}, \hyperpage{55}
+  \item {websocket\_server\_connection\_state}
+    \subitem {websocket\_store.js}, \hyperpage{55}
+  \item {websocket\_server\_port}
+    \subitem {websocket\_store.js}, \hyperpage{55}
+  \item {websocket\_store.js}
+    \subitem {camera\_stream}, \hyperpage{54}
+    \subitem {import}, \hyperpage{55}
+    \subitem {lidar\_stream}, \hyperpage{55}
+    \subitem {main}, \hyperpage{54}
+    \subitem {onMessage}, \hyperpage{54}
+    \subitem {websocket\_server\_code}, \hyperpage{55}
+    \subitem {websocket\_server\_connection\_state}, \hyperpage{55}
+    \subitem {websocket\_server\_port}, \hyperpage{55}
+  \item {WebSocketServer}, \hyperpage{8}
+    \subitem {close}, \hyperpage{8}
+    \subitem {connect}, \hyperpage{8}
+    \subitem {constructor}, \hyperpage{8}
+    \subitem {generateCode}, \hyperpage{9}
+    \subitem {getCode}, \hyperpage{9}
+    \subitem {getPort}, \hyperpage{9}
+    \subitem {getRaspberryPiMap}, \hyperpage{9}
+    \subitem {getSelectedRaspberryPi}, \hyperpage{9}
+    \subitem {isConnected}, \hyperpage{10}
+    \subitem {selectRaspberryPi}, \hyperpage{10}
+    \subitem {sendBehaviourTree}, \hyperpage{10}
+    \subitem {startBehaviourTree}, \hyperpage{10}
+    \subitem {startConnections}, \hyperpage{11}
+    \subitem {stopBehaviourTree}, \hyperpage{11}
+  \item {WebsocketServerConfig.svelte}
+    \subitem {displayWebsocketServerStatus}, \hyperpage{44}
+    \subitem {helperText}, \hyperpage{45}
+    \subitem {import}, \hyperpage{45}
+    \subitem {subscribe}, \hyperpage{44}
+    \subitem {toggleWebsocketServer}, \hyperpage{44}
+    \subitem {toggleWebsocketServerMessage}, \hyperpage{45}
+    \subitem {websocketServerPort}, \hyperpage{45}
+    \subitem {websocketServerPortInputColor}, \hyperpage{45}
+  \item {websocketServerPort}
+    \subitem {WebsocketServerConfig.svelte}, \hyperpage{45}
+  \item {websocketServerPortInputColor}
+    \subitem {WebsocketServerConfig.svelte}, \hyperpage{45}
+  \item {weight}
+    \subitem {NotFound.svelte}, \hyperpage{48}
+  \item {width}
+    \subitem {App.svelte}, \hyperpage{27}
+
+\end{theindex}
