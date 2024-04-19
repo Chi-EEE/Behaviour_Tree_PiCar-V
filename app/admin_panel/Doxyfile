@@ -342,7 +342,7 @@ OPTIMIZE_OUTPUT_SLICE  = NO
 #
 # Note see also the list of default file extension mappings.
 
-EXTENSION_MAPPING      = svelte=md html=md js=JavaScript
+EXTENSION_MAPPING      = svelte=no_extension html=no_extension js=JavaScript
                         
 
 # If the MARKDOWN_SUPPORT tag is enabled then doxygen pre-processes all comments
