@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['servo_2ecpp_0',['Servo.cpp',['../Servo_8cpp.html',1,'']]],
-  ['servo_2eh_1',['Servo.h',['../Servo_8h.html',1,'']]],
-  ['settingseditconfig_2ecxx_2',['SettingsEditConfig.cxx',['../SettingsEditConfig_8cxx.html',1,'']]],
-  ['settingsscreen_2ecxx_3',['SettingsScreen.cxx',['../SettingsScreen_8cxx.html',1,'']]],
-  ['setup_2emd_4',['SETUP.md',['../SETUP_8md.html',1,'']]],
-  ['streamtype_2eh_5',['StreamType.h',['../StreamType_8h.html',1,'']]]
+  ['raspberry_5fpi_2ejs_0',['raspberry_pi.js',['../raspberry__pi_8js.html',1,'']]],
+  ['raspberry_5fpi_5fstore_2ejs_1',['raspberry_pi_store.js',['../raspberry__pi__store_8js.html',1,'']]],
+  ['raspberrypiconnectbanner_2esvelte_2',['RaspberryPiConnectBanner.svelte',['../RaspberryPiConnectBanner_8svelte.html',1,'']]],
+  ['raspberrypiselector_2esvelte_3',['RaspberryPiSelector.svelte',['../RaspberryPiSelector_8svelte.html',1,'']]],
+  ['readme_2emd_4',['README.md',['../README_8md.html',1,'']]],
+  ['rollup_2econfig_2ejs_5',['rollup.config.js',['../rollup_8config_8js.html',1,'']]],
+  ['routes_2ejs_6',['routes.js',['../routes_8js.html',1,'']]]
 ];

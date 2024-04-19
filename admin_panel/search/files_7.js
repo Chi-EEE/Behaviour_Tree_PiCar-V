@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['plugin_2eh_0',['Plugin.h',['../Plugin_8h.html',1,'']]],
-  ['pluginmanager_2eh_1',['PluginManager.h',['../PluginManager_8h.html',1,'']]]
+  ['navigationbar_2esvelte_0',['NavigationBar.svelte',['../NavigationBar_8svelte.html',1,'']]],
+  ['notfound_2esvelte_1',['NotFound.svelte',['../NotFound_8svelte.html',1,'']]]
 ];

@@ -1,5 +1,0 @@
-var namespacecar_1_1system_1_1movement_1_1controller =
-[
-    [ "AbstractMovementController", "classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController.html", "classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController" ],
-    [ "DummyMovementController", "classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController.html", "classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController" ]
-];
