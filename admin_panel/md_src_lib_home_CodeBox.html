@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('md_src_lib_home_CodeBox.html',''); ini
   <div class="headertitle"><div class="title">CodeBox </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >&lt;script&gt; // If this does not work then try preview import CodeMirror from "svelte-codemirror-editor"; import { xml } from "@codemirror/lang-xml"; import { oneDark } from "@codemirror/theme-one-dark";</p>
+<div class="textblock"><p >` &lt;script&gt; // If this does not work then try preview import CodeMirror from "svelte-codemirror-editor"; import { xml } from "@codemirror/lang-xml"; import { oneDark } from "@codemirror/theme-one-dark";</p>
 <p >import { node_hover, xml_schema } from "../CodeBox_Constants";</p>
 <p >import { behaviour_tree_xml_code } from "../../store/behaviour_tree_store"; import CodeMessagingBar from "./CodeMessagingBar.svelte"; &lt;/script&gt;</p>
 <div class="h-full m-1"> &lt;CodeMessagingBar&gt; &lt;CodeMirror
@@ -103,7 +103,8 @@ $(document).ready(function(){initNavTree('md_src_lib_home_CodeBox.html',''); ini
         tabSize={4}
         theme={oneDark}
         extensions={[node_hover]}
-    &gt; &lt;style&gt; .cm-editor { height: 90% !important; } .cm-editor * { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New" !important; } .cm-scroller { height: 100% !important; } &lt;/style&gt; </div> </div></div><!-- contents -->
+    &gt; &lt;style&gt; .cm-editor { height: 90% !important; } .cm-editor * { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New" !important; } .cm-scroller { height: 100% !important; } &lt;/style&gt; </div><p> ``` </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

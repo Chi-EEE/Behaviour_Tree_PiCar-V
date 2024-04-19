@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('md_src_routes_Home.html',''); initResi
   <div class="headertitle"><div class="title">Home </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >&lt;script&gt; import BehaviourTreeHandler from "../lib/BehaviourTreeHandler.svelte"; import Stream from "../lib/home/Stream.svelte"; import CodeBox from "../lib/home/CodeBox.svelte"; import RaspberryPiConnectBanner from "../lib/RaspberryPiConnectBanner.svelte";</p>
+<div class="textblock"><p >` &lt;script&gt; import BehaviourTreeHandler from "../lib/BehaviourTreeHandler.svelte"; import Stream from "../lib/home/Stream.svelte"; import CodeBox from "../lib/home/CodeBox.svelte"; import RaspberryPiConnectBanner from "../lib/RaspberryPiConnectBanner.svelte";</p>
 <p >import { websocket_server_connection_state } from "../store/websocket_store";</p>
 <p >import { main_pane_size_0_store, main_pane_size_1_store, side_pane_size_0_store, side_pane_size_1_store, } from "../store/home_store";</p>
 <p >import { Pane, Splitpanes } from "svelte-splitpanes"; import SaveBehaviourTreeModal from "../lib/SaveBehaviourTreeModal.svelte";</p>
@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('md_src_routes_Home.html',''); initResi
 <p >&lt;main style="height: 92vh"&gt; {#if $websocket_server_connection_state === false} &lt;RaspberryPiConnectBanner &gt; {/if} &lt;SaveBehaviourTreeModal &gt; &lt;Splitpanes
         style="height:100%;padding:1em;background-color:rgb(20,20,40)"
         on:resize={onSideResize}
-    &gt; &lt;Pane size={side_pane_size_0}&gt;&gt; &lt;Splitpanes horizontal={true} on:resize={onMainResize}&gt;&gt; &lt;Pane size={main_pane_size_0} minSize={5}&gt;&gt; </p><div class="w-full h-full" style="background-color:rgb(230,230,230)" bind:clientwidth="{stream_split_width}" bind:clientheight="{stream_split_height}"> &lt;Stream &gt; </div><p> &lt;/Pane&gt; &lt;Pane size={main_pane_size_1} minSize={7.5}&gt;&gt; </p><div class="w-full h-full" style="background-color:rgb(230,230,230)"> &lt;CodeBox &gt; </div><p> &lt;/Pane&gt; &lt;/Splitpanes&gt; &lt;/Pane&gt; &lt;Pane size={side_pane_size_1} minSize={17} maxSize={80}&gt;&gt; &lt;BehaviourTreeHandler &gt; &lt;/Pane&gt; &lt;/Splitpanes&gt; &lt;/main&gt; </p>
+    &gt; &lt;Pane size={side_pane_size_0}&gt;&gt; &lt;Splitpanes horizontal={true} on:resize={onMainResize}&gt;&gt; &lt;Pane size={main_pane_size_0} minSize={5}&gt;&gt; </p><div class="w-full h-full" style="background-color:rgb(230,230,230)" bind:clientwidth="{stream_split_width}" bind:clientheight="{stream_split_height}"> &lt;Stream &gt; </div><p> &lt;/Pane&gt; &lt;Pane size={main_pane_size_1} minSize={7.5}&gt;&gt; </p><div class="w-full h-full" style="background-color:rgb(230,230,230)"> &lt;CodeBox &gt; </div><p> &lt;/Pane&gt; &lt;/Splitpanes&gt; &lt;/Pane&gt; &lt;Pane size={side_pane_size_1} minSize={17} maxSize={80}&gt;&gt; &lt;BehaviourTreeHandler &gt; &lt;/Pane&gt; &lt;/Splitpanes&gt; &lt;/main&gt; ``` </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

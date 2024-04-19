@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('md_src_routes_Validate.html',''); init
   <div class="headertitle"><div class="title">Validate </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >&lt;script&gt; import BehaviourTreeHandler from "../lib/BehaviourTreeHandler.svelte";</p>
+<div class="textblock"><p >` &lt;script&gt; import BehaviourTreeHandler from "../lib/BehaviourTreeHandler.svelte";</p>
 <p >import { side_pane_size_0_store, side_pane_size_1_store, } from "../store/home_store";</p>
 <p >import { Pane, Splitpanes } from "svelte-splitpanes"; import SaveBehaviourTreeModal from "../lib/SaveBehaviourTreeModal.svelte"; import CodeBox from "../lib/validate/CodeBox.svelte";</p>
 <p >let side_pane_size_0 = $side_pane_size_0_store; let side_pane_size_1 = $side_pane_size_1_store;</p>
@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('md_src_routes_Validate.html',''); init
 <p >&lt;main style="height: 92vh"&gt; &lt;SaveBehaviourTreeModal &gt; &lt;Splitpanes
         style="height:100%;padding:1em;background-color:rgb(20,20,40)"
         on:resize={onSideResize}
-    &gt; &lt;Pane size={side_pane_size_0}&gt;&gt; &lt;CodeBox &gt; &lt;/Pane&gt; &lt;Pane size={side_pane_size_1} minSize={17} maxSize={80}&gt;&gt; &lt;BehaviourTreeHandler &gt; &lt;/Pane&gt; &lt;/Splitpanes&gt; &lt;/main&gt; </p>
+    &gt; &lt;Pane size={side_pane_size_0}&gt;&gt; &lt;CodeBox &gt; &lt;/Pane&gt; &lt;Pane size={side_pane_size_1} minSize={17} maxSize={80}&gt;&gt; &lt;BehaviourTreeHandler &gt; &lt;/Pane&gt; &lt;/Splitpanes&gt; &lt;/main&gt; ``` </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

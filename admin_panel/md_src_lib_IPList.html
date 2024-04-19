@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('md_src_lib_IPList.html',''); initResiz
   <div class="headertitle"><div class="title">IPList </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >&lt;script&gt; import { Button, Card, Spinner, Tooltip } from "flowbite-svelte"; import { copy } from "svelte-copy";</p>
+<div class="textblock"><p >` &lt;script&gt; import { Button, Card, Spinner, Tooltip } from "flowbite-svelte"; import { copy } from "svelte-copy";</p>
 <p >import { websocket_server_port } from "../store/websocket_store";</p>
 <p >if (api.getLocalIPList === undefined) { api.getLocalIPList = async function () { return new Promise((resolve) =&gt; { <a class="el" href="rollup_8config_8js.html#a4f43d96eba609427909ea43beff4450e">resolve([])</a>; }); }; }</p>
 <p >export let getIPList = updateIPList();</p>
@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('md_src_lib_IPList.html',''); initResiz
 <p >&lt;Spinner &gt; {:then ip_list} &lt;Card class="overflow-y-scroll h-screen gap-2 justify-center" style="padding:0px"&gt; {#each ip_list as ip} &lt;Card class="py-6 border-neutral-100 border-b border-t" style="padding:0.5rem"&gt; </p><h3 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{ip.group_name} </h3>
 <p  class="font-normal text-gray-700 dark:text-gray-400 leading-tight"></p>
 <p >{ip.address}<b>:{$websocket_server_port}</b> </p>
-<p >&lt;button use:copy={<code>${ip.address}:${$websocket_server_port}</code>} class="mt-4 p-2" &gt; Copy IP &lt;/button&gt; &lt;/Card&gt; {/each} &lt;/Card&gt; {/await} &lt;/Card&gt; </p>
+<p >&lt;button use:copy={<code>${ip.address}:${$websocket_server_port}</code>} class="mt-4 p-2" &gt; Copy IP &lt;/button&gt; &lt;/Card&gt; {/each} &lt;/Card&gt; {/await} &lt;/Card&gt; ``` </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

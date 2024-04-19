@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('md_src_lib_SaveBehaviourTreeModal.html
   <div class="headertitle"><div class="title">SaveBehaviourTreeModal </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >&lt;script&gt; import { Button, Input, Modal } from "flowbite-svelte";</p>
+<div class="textblock"><p >` &lt;script&gt; import { Button, Input, Modal } from "flowbite-svelte";</p>
 <p >import CodeMirror from "svelte-codemirror-editor"; import { xml } from "@codemirror/lang-xml"; import { oneDark } from "@codemirror/theme-one-dark";</p>
 <p >import { xml_schema } from "./CodeBox_Constants"; import { node_hover } from "./CodeBox_Constants";</p>
 <p >import { show_behaviour_tree_save_modal, behaviour_tree_save_modal_code, behaviour_tree_list, } from "../store/behaviour_tree_store";</p>
@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('md_src_lib_SaveBehaviourTreeModal.html
         tabSize={4}
         theme={oneDark}
         extensions={[node_hover]}
-    &gt; &lt;svelte:fragment slot="footer"&gt; &lt;Button on:click={() =&gt; { const behaviour_tree_save_state = { name: behaviour_tree_name, code: $behaviour_tree_save_modal_code, }; api.saveBehaviourTree(behaviour_tree_save_state); behaviour_tree_list.set([ ...$behaviour_tree_list, behaviour_tree_save_state, ]); }}&gt;Yes&lt;/Button&gt; &lt;Button color="alternative"&gt;No&lt;/Button&gt; &lt;/svelte:fragment&gt; &lt;/Modal&gt; </p>
+    &gt; &lt;svelte:fragment slot="footer"&gt; &lt;Button on:click={() =&gt; { const behaviour_tree_save_state = { name: behaviour_tree_name, code: $behaviour_tree_save_modal_code, }; api.saveBehaviourTree(behaviour_tree_save_state); behaviour_tree_list.set([ ...$behaviour_tree_list, behaviour_tree_save_state, ]); }}&gt;Yes&lt;/Button&gt; &lt;Button color="alternative"&gt;No&lt;/Button&gt; &lt;/svelte:fragment&gt; &lt;/Modal&gt; ``` </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

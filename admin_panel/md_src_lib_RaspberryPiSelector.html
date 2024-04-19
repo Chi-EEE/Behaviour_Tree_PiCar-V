@@ -93,14 +93,15 @@ $(document).ready(function(){initNavTree('md_src_lib_RaspberryPiSelector.html','
   <div class="headertitle"><div class="title">RaspberryPiSelector </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >&lt;script&gt; import { Button, Card } from "flowbite-svelte";</p>
+<div class="textblock"><p >` &lt;script&gt; import { Button, Card } from "flowbite-svelte";</p>
 <p >import { raspberry_pi_uuid_list, selected_raspberry_pi_uuid, } from "../store/raspberry_pi_store";</p>
 <p >/** @type {string} */ let selected_uuid = "";</p>
 <p >async function connectToRaspberryPi() { if (selected_uuid === "") { return; } console.log(selected_uuid); const selection_result = await api.selectRaspberryPi({ uuid: selected_uuid, }); console.log(selection_result); if (selection_result.success) { selected_raspberry_pi_uuid.set(selected_uuid); } else { console.log(selection_result.message); } } &lt;/script&gt;</p>
 <div> <h1 class="text-gray-900 dark:text-white text-2xl font-bold">Raspberry Pi UUID List </h1>
 </div><div> <div class="grid-cols-3 grid my-2"> <div class="content-center col-start-1 col-span-2 grid grid-cols-2 gap-2 p-3 border-2 rounded border-gray-200 dark:border-gray-700"> {#each $raspberry_pi_uuid_list as uuid} &lt;Card&gt; &lt;Button on:click={() =&gt; { selected_uuid = uuid; }} &gt; {uuid} &lt;/Button&gt; &lt;/Card&gt; {/each} </div><p> &lt;Card class="col-start-3 w-full ml-2"&gt; </p><h2 class="text-gray-900 dark:text-white text-2xl font-bold mb-2">Connect to Raspberry Pi UUID </h2>
 </div></div><div><div class="grid-cols-3 grid my-2"> &lt;Button on:click={connectToRaspberryPi}&gt;&gt; {#if selected_uuid === ""} Select a Raspberry Pi UUID {:else} Connect to <br  />
- [{selected_uuid}] {/if} &lt;/Button&gt; &lt;/Card&gt; </div> </div> </div></div><!-- contents -->
+ [{selected_uuid}] {/if} &lt;/Button&gt; &lt;/Card&gt; </div> </div><p> ``` </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

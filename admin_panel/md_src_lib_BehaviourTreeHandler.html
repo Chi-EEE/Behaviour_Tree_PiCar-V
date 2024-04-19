@@ -93,13 +93,14 @@ $(document).ready(function(){initNavTree('md_src_lib_BehaviourTreeHandler.html',
   <div class="headertitle"><div class="title">BehaviourTreeHandler </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >&lt;script&gt; import { Button, Card } from "flowbite-svelte";</p>
+<div class="textblock"><p >` &lt;script&gt; import { Button, Card } from "flowbite-svelte";</p>
 <p >import { behaviour_tree_xml_code, behaviour_tree_save_modal_code, show_behaviour_tree_save_modal, behaviour_tree_list, } from "../store/behaviour_tree_store";</p>
 <p >&lt;/script&gt;</p>
 <div class="w-full h-full bg-white dark:bg-gray-800"> &lt;Button on:click={() =&gt; { show_behaviour_tree_save_modal.set(true); behaviour_tree_save_modal_code.set($behaviour_tree_xml_code); }} class="w-full my-3" color="green"&gt;Save Behaviour Tree&lt;/Button&gt; &lt;Card
         class="w-full max-w-full h-full max-h-full overflow-scroll my-4 gap-y-2"
     &gt; {#each $behaviour_tree_list as behaviour_tree} &lt;Card class="w-full max-w-full grid grid-rows-2"&gt; <h3>{behaviour_tree.name === "" ? "[Empty Name]" : behaviour_tree.name} </h3>
-</div><div class="w-full h-full bg-white dark:bg-gray-800"> <div class="grid grid-cols-2 gap-1"> &lt;Button color="red" on:click={()=&gt;&gt;{ api.removeBehaviourTree({uuid: behaviour_tree.uuid}); behaviour_tree_list.set($behaviour_tree_list.filter((item) =&gt; item.uuid !== behaviour_tree.uuid)); }}&gt;Remove&lt;/Button&gt; &lt;Button color="blue" on:click={()=&gt;&gt;{ $behaviour_tree_xml_code = behaviour_tree.code; }}&gt;Load&lt;/Button&gt; </div><p> &lt;/Card&gt; {/each} &lt;/Card&gt; </div> </div></div><!-- contents -->
+</div><div class="w-full h-full bg-white dark:bg-gray-800"> <div class="grid grid-cols-2 gap-1"> &lt;Button color="red" on:click={()=&gt;&gt;{ api.removeBehaviourTree({uuid: behaviour_tree.uuid}); behaviour_tree_list.set($behaviour_tree_list.filter((item) =&gt; item.uuid !== behaviour_tree.uuid)); }}&gt;Remove&lt;/Button&gt; &lt;Button color="blue" on:click={()=&gt;&gt;{ $behaviour_tree_xml_code = behaviour_tree.code; }}&gt;Load&lt;/Button&gt; </div><p> &lt;/Card&gt; {/each} &lt;/Card&gt; </div><p> ``` </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

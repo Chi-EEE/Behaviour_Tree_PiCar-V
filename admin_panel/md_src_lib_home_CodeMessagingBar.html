@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('md_src_lib_home_CodeMessagingBar.html'
   <div class="headertitle"><div class="title">CodeMessagingBar </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >&lt;script&gt; import { selected_raspberry_pi_uuid } from "../../store/raspberry_pi_store"; import xmlFormat from "xml-formatter"; import { behaviour_tree_xml_code } from "../../store/behaviour_tree_store";</p>
+<div class="textblock"><p >` &lt;script&gt; import { selected_raspberry_pi_uuid } from "../../store/raspberry_pi_store"; import xmlFormat from "xml-formatter"; import { behaviour_tree_xml_code } from "../../store/behaviour_tree_store";</p>
 <p >/** @type {string} */ let send_behaviour_tree_text = "Send Behaviour Tree";</p>
 <p >/** @type {string} */ let send_behaviour_tree_color = "#50AA34";</p>
 <p >/** @type {boolean} */ let send_behaviour_tree_debounce = false;</p>
@@ -112,7 +112,8 @@ $(document).ready(function(){initNavTree('md_src_lib_home_CodeMessagingBar.html'
             : ''}" disabled={$selected_raspberry_pi_uuid === ""} &gt;{start_behaviour_tree_text}&lt;/button&gt; &lt;button on:mousedown={stopBehaviourTree} class="p-2 rounded-lg shadow-lg relative inset-0" style="background-color: #FF352F; color: white; width: 100%; border: none; {$selected_raspberry_pi_uuid ===
         ''
             ? 'cursor: not-allowed;'
-            : ''}" disabled={$selected_raspberry_pi_uuid === ""} &gt;Stop Behaviour Tree&lt;/button&gt; </div> </div></div><!-- contents -->
+            : ''}" disabled={$selected_raspberry_pi_uuid === ""} &gt;Stop Behaviour Tree&lt;/button&gt; </div><p> ``` </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

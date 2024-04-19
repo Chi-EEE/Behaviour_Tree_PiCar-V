@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('md_src_lib_WebsocketServerConfig.html'
   <div class="headertitle"><div class="title">WebsocketServerConfig </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >&lt;script&gt; import { Label, Input, Button, Helper } from "flowbite-svelte";</p>
+<div class="textblock"><p >` &lt;script&gt; import { Label, Input, Button, Helper } from "flowbite-svelte";</p>
 <p >import { websocket_server_connection_state, websocket_server_port, websocket_server_code, } from "../store/websocket_store";</p>
 <p >import { raspberry_pi_uuid_list, } from "../store/raspberry_pi_store";</p>
 <p >/** @type {number} */ let websocketServerPort = $websocket_server_port;</p>
@@ -113,7 +113,8 @@ $(document).ready(function(){initNavTree('md_src_lib_WebsocketServerConfig.html'
         color={websocketServerPortInputColor}
     &gt; &lt;Button class="mt-4" on:click={toggleWebsocketServer}
         &gt;{toggleWebsocketServerMessage}&lt;/Button&gt; &lt;Helper class="mt-2" color={websocketServerPortInputColor}
-        &gt;{helperText}&lt;/Helper&gt; </div> </div></div><!-- contents -->
+        &gt;{helperText}&lt;/Helper&gt; </div><p> ``` </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
