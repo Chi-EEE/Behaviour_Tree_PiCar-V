@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.4.19)  19 APR 2024 19:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.4.19)  19 APR 2024 19:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1001,7 +1001,7 @@ Underfull \hbox (badness 10000) detected at line 38
 [][][]
  []
 
-) (./websocket__events_8js.tex [22]) (./index_8html.tex) (./README_8md.tex)
+) (./websocket__events_8js.tex [22]) (./README_8md.tex)
 (./rollup_8config_8js.tex [23] [24]) (./App_8svelte.tex)
 (./BehaviourTreeHandler_8svelte.tex) (./CodeBox__Constants_8js.tex [25]
 [26]) (./home_2CodeBox_8svelte.tex) (./validate_2CodeBox_8svelte.tex)
@@ -1032,13 +1032,13 @@ ar);camera[]_[]stream.[]set(value.[]
 
 ]) (./refman.aux)
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 481C86B84D969502698A40B3946D23FC;38239.
+(rerunfilecheck)             Checksum: B462F742180FCEDF9DD658878F6326FD;37988.
  ) 
 Here is how much of TeX's memory you used:
- 18654 strings out of 480247
- 309658 string characters out of 5896151
- 642697 words of memory out of 5000000
- 35775 multiletter control sequences out of 15000+600000
+ 18645 strings out of 480247
+ 309511 string characters out of 5896151
+ 642428 words of memory out of 5000000
+ 35770 multiletter control sequences out of 15000+600000
  520613 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  99i,16n,117p,699b,635s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1053,10 +1053,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (46 pages, 203308 bytes).
+Output written on refman.pdf (46 pages, 202940 bytes).
 PDF statistics:
- 2062 PDF objects out of 2073 (max. 8388607)
- 1972 compressed objects within 20 object streams
- 411 named destinations out of 1000 (max. 500000)
- 1489 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2053 PDF objects out of 2073 (max. 8388607)
+ 1963 compressed objects within 20 object streams
+ 409 named destinations out of 1000 (max. 500000)
+ 1481 words of extra memory for PDF output out of 10000 (max. 10000000)
 
