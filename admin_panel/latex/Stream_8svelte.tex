@@ -1,2 +1,259 @@
 \hypertarget{Stream_8svelte}{}\doxysection{src/lib/home/\+Stream.svelte File Reference}
 \label{Stream_8svelte}\index{src/lib/home/Stream.svelte@{src/lib/home/Stream.svelte}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+function \mbox{\hyperlink{Stream_8svelte_a0cae3e18dd6fc7c6a04439837a0fdcf1}{b64to\+Blob}} (b64\+Data, content\+Type=\char`\"{}\char`\"{}, slice\+Size=512)
+\item 
+function \mbox{\hyperlink{Stream_8svelte_ab4b196b1d0edc97cdb1e65f7539d4a8a}{handle\+Live\+Feed}} (live\+\_\+feed)
+\item 
+function \mbox{\hyperlink{Stream_8svelte_a6e0d2451db16b5e1373529786fbb1710}{shade\+Color}} (color, decimal)
+\item 
+function \mbox{\hyperlink{Stream_8svelte_ac4adc4555c3ee4cd845cb0e66caada91}{round0\+\_\+25}} (num)
+\item 
+function \mbox{\hyperlink{Stream_8svelte_afa193cc5a416761e49ca9077995e7d6f}{draw\+Lidar\+Wall}} (x, lidar\+\_\+canvas\+\_\+midpoint\+\_\+y, distance)
+\item 
+function \mbox{\hyperlink{Stream_8svelte_a3f9af215454d694ab9c05e67ccb478eb}{subscribe\+Lidar\+Drawing}} ()
+\item 
+function \mbox{\hyperlink{Stream_8svelte_a9a33c0c80ea51edff440d7aeebeab5a2}{handle\+Lidar}} (lidar\+\_\+canvas)
+\item 
+function \mbox{\hyperlink{Stream_8svelte_a5a9293f55f7e0f5711c481bfdcb7c0d1}{toggle\+Lidar}} ()
+\item 
+function \mbox{\hyperlink{Stream_8svelte_ad7fc5bfcb73b585540769736282e8449}{update\+Aspect\+Ratio}} ()
+\item 
+\mbox{\hyperlink{home__store_8js_a19b6944fb3a7451af2d0ea9db621ad92}{main\+\_\+pane\+\_\+size\+\_\+0\+\_\+store}} \mbox{\hyperlink{Stream_8svelte_af755f21456a776ad3ef961c8bcae9ba5}{subscribe}} (\mbox{\hyperlink{Stream_8svelte_ad7fc5bfcb73b585540769736282e8449}{update\+Aspect\+Ratio}})
+\item 
+\mbox{\hyperlink{Stream_8svelte_ab8e6f563f1ddb209e1e4d9ac42be85c5}{on\+Mount}} (\mbox{\hyperlink{Stream_8svelte_ad7fc5bfcb73b585540769736282e8449}{update\+Aspect\+Ratio}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+$<$ script $>$ \mbox{\hyperlink{Stream_8svelte_a59be084da8908b7d77ff34b25cd84488}{import}} \{ \mbox{\hyperlink{Stream_8svelte_ab8e6f563f1ddb209e1e4d9ac42be85c5}{on\+Mount}} \} from \char`\"{}svelte\char`\"{}
+\item 
+\mbox{\hyperlink{behaviour__tree_8js_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{Stream_8svelte_a9317ea3509da1ef44872b79fabb80a7c}{lidar\+\_\+wall\+\_\+colour}} = \char`\"{}\#0061FF\char`\"{}
+\item 
+\mbox{\hyperlink{behaviour__tree_8js_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{Stream_8svelte_ad3da4cfc81c180e2af49731d7624704d}{offset\+\_\+angle}} = 45
+\item 
+\mbox{\hyperlink{behaviour__tree_8js_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{Stream_8svelte_a45f9e8b289a7d7d2d191f5bcc098cf15}{fps}} = 30
+\item 
+\mbox{\hyperlink{behaviour__tree_8js_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{Stream_8svelte_a43fd940db385cb53d3809ff5a0403523}{fps\+\_\+interval}} = 1000 / \mbox{\hyperlink{Stream_8svelte_a45f9e8b289a7d7d2d191f5bcc098cf15}{fps}}
+\item 
+let \mbox{\hyperlink{Stream_8svelte_a34c41928dfd8ec79c677a37fa3ba8912}{lidar\+\_\+bar\+\_\+height\+\_\+size}} = 20000
+\item 
+let \mbox{\hyperlink{Stream_8svelte_a65be140d5a0d75daad7496fbc4800e8a}{live\+\_\+feed\+\_\+}} = null
+\item 
+let \mbox{\hyperlink{Stream_8svelte_a394933e0408e956ed24cf771cb6277e3}{lidar\+\_\+canvas\+\_\+}} = null
+\item 
+let \mbox{\hyperlink{Stream_8svelte_af3be61c99dfe5c2a9ab2018d601b006f}{lidar\+\_\+context\+\_\+}} = null
+\item 
+let \mbox{\hyperlink{Stream_8svelte_a914401eeb1f4076935f41893530ac64c}{last\+\_\+seen\+\_\+points}} = \mbox{[}$\,$\mbox{]}
+\item 
+let \mbox{\hyperlink{Stream_8svelte_acf57e8b3d05a5fa0d4c97e48ea210978}{lidar\+\_\+draw\+\_\+disconnect}} = null
+\item 
+let \mbox{\hyperlink{Stream_8svelte_aec5ec78b63977b8524710daa4e85d51a}{lidar\+\_\+toggle\+\_\+icon}}
+\item 
+let \mbox{\hyperlink{Stream_8svelte_a9e1c7433ab5a1e0f8996b860bdae8786}{stream\+\_\+div\+\_\+}} = null
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Stream_8svelte_a0cae3e18dd6fc7c6a04439837a0fdcf1}\label{Stream_8svelte_a0cae3e18dd6fc7c6a04439837a0fdcf1}} 
+\index{Stream.svelte@{Stream.svelte}!b64toBlob@{b64toBlob}}
+\index{b64toBlob@{b64toBlob}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{b64toBlob()}{b64toBlob()}}
+{\footnotesize\ttfamily function b64to\+Blob (\begin{DoxyParamCaption}\item[{}]{b64\+Data,  }\item[{}]{content\+Type = {\ttfamily \char`\"{}\char`\"{}},  }\item[{}]{slice\+Size = {\ttfamily 512} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & b64\+Data \\
+\hline
+{\em \{string\}} & content\+Type \\
+\hline
+{\em \{number\}} & slice\+Size \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Stream_8svelte_afa193cc5a416761e49ca9077995e7d6f}\label{Stream_8svelte_afa193cc5a416761e49ca9077995e7d6f}} 
+\index{Stream.svelte@{Stream.svelte}!drawLidarWall@{drawLidarWall}}
+\index{drawLidarWall@{drawLidarWall}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{drawLidarWall()}{drawLidarWall()}}
+{\footnotesize\ttfamily function draw\+Lidar\+Wall (\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{lidar\+\_\+canvas\+\_\+midpoint\+\_\+y,  }\item[{}]{distance }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{number\}} & x \\
+\hline
+{\em \{number\}} & lidar\+\_\+canvas\+\_\+midpoint\+\_\+y \\
+\hline
+{\em \{number\}} & height \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Stream_8svelte_a9a33c0c80ea51edff440d7aeebeab5a2}\label{Stream_8svelte_a9a33c0c80ea51edff440d7aeebeab5a2}} 
+\index{Stream.svelte@{Stream.svelte}!handleLidar@{handleLidar}}
+\index{handleLidar@{handleLidar}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{handleLidar()}{handleLidar()}}
+{\footnotesize\ttfamily function handle\+Lidar (\begin{DoxyParamCaption}\item[{}]{lidar\+\_\+canvas }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em lidar\+\_\+canvas} & @type \{HTMLCanvas\+Element\} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Stream_8svelte_ab4b196b1d0edc97cdb1e65f7539d4a8a}\label{Stream_8svelte_ab4b196b1d0edc97cdb1e65f7539d4a8a}} 
+\index{Stream.svelte@{Stream.svelte}!handleLiveFeed@{handleLiveFeed}}
+\index{handleLiveFeed@{handleLiveFeed}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{handleLiveFeed()}{handleLiveFeed()}}
+{\footnotesize\ttfamily function handle\+Live\+Feed (\begin{DoxyParamCaption}\item[{}]{live\+\_\+feed }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em live\+\_\+feed} & @type \{HTMLImage\+Element\} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Stream_8svelte_ab8e6f563f1ddb209e1e4d9ac42be85c5}\label{Stream_8svelte_ab8e6f563f1ddb209e1e4d9ac42be85c5}} 
+\index{Stream.svelte@{Stream.svelte}!onMount@{onMount}}
+\index{onMount@{onMount}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{onMount()}{onMount()}}
+{\footnotesize\ttfamily on\+Mount (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Stream_8svelte_ad7fc5bfcb73b585540769736282e8449}{update\+Aspect\+Ratio}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Stream_8svelte_ac4adc4555c3ee4cd845cb0e66caada91}\label{Stream_8svelte_ac4adc4555c3ee4cd845cb0e66caada91}} 
+\index{Stream.svelte@{Stream.svelte}!round0\_25@{round0\_25}}
+\index{round0\_25@{round0\_25}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{round0\_25()}{round0\_25()}}
+{\footnotesize\ttfamily function round0\+\_\+25 (\begin{DoxyParamCaption}\item[{}]{num }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{number\}} & num \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Stream_8svelte_a6e0d2451db16b5e1373529786fbb1710}\label{Stream_8svelte_a6e0d2451db16b5e1373529786fbb1710}} 
+\index{Stream.svelte@{Stream.svelte}!shadeColor@{shadeColor}}
+\index{shadeColor@{shadeColor}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{shadeColor()}{shadeColor()}}
+{\footnotesize\ttfamily function shade\+Color (\begin{DoxyParamCaption}\item[{}]{color,  }\item[{}]{decimal }\end{DoxyParamCaption})}
+
+@description From\+: \href{https://stackoverflow.com/a/69123384}{\texttt{ https\+://stackoverflow.\+com/a/69123384}} 
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & color Hex value format\+: \#ffffff or ffffff \\
+\hline
+{\em \{number\}} & decimal lighten or darken decimal value, example 0.\+5 to lighten by 50\% or 1.\+5 to darken by 50\%. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{string\} Hex value of the new color 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Stream_8svelte_af755f21456a776ad3ef961c8bcae9ba5}\label{Stream_8svelte_af755f21456a776ad3ef961c8bcae9ba5}} 
+\index{Stream.svelte@{Stream.svelte}!subscribe@{subscribe}}
+\index{subscribe@{subscribe}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{subscribe()}{subscribe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{home__store_8js_a19b6944fb3a7451af2d0ea9db621ad92}{main\+\_\+pane\+\_\+size\+\_\+0\+\_\+store}} subscribe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Stream_8svelte_ad7fc5bfcb73b585540769736282e8449}{update\+Aspect\+Ratio}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Stream_8svelte_a3f9af215454d694ab9c05e67ccb478eb}\label{Stream_8svelte_a3f9af215454d694ab9c05e67ccb478eb}} 
+\index{Stream.svelte@{Stream.svelte}!subscribeLidarDrawing@{subscribeLidarDrawing}}
+\index{subscribeLidarDrawing@{subscribeLidarDrawing}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{subscribeLidarDrawing()}{subscribeLidarDrawing()}}
+{\footnotesize\ttfamily function subscribe\+Lidar\+Drawing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+@type \{Array$<$\+Point$>$\}
+
+@type \{Map$<$number, Point$>$\}\mbox{\Hypertarget{Stream_8svelte_a5a9293f55f7e0f5711c481bfdcb7c0d1}\label{Stream_8svelte_a5a9293f55f7e0f5711c481bfdcb7c0d1}} 
+\index{Stream.svelte@{Stream.svelte}!toggleLidar@{toggleLidar}}
+\index{toggleLidar@{toggleLidar}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{toggleLidar()}{toggleLidar()}}
+{\footnotesize\ttfamily function toggle\+Lidar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Stream_8svelte_ad7fc5bfcb73b585540769736282e8449}\label{Stream_8svelte_ad7fc5bfcb73b585540769736282e8449}} 
+\index{Stream.svelte@{Stream.svelte}!updateAspectRatio@{updateAspectRatio}}
+\index{updateAspectRatio@{updateAspectRatio}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{updateAspectRatio()}{updateAspectRatio()}}
+{\footnotesize\ttfamily function update\+Aspect\+Ratio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{Stream_8svelte_a45f9e8b289a7d7d2d191f5bcc098cf15}\label{Stream_8svelte_a45f9e8b289a7d7d2d191f5bcc098cf15}} 
+\index{Stream.svelte@{Stream.svelte}!fps@{fps}}
+\index{fps@{fps}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{fps}{fps}}
+{\footnotesize\ttfamily \mbox{\hyperlink{behaviour__tree_8js_a92b303b76a3f942ea819498907d5e83c}{const}} fps = 30}
+
+\mbox{\Hypertarget{Stream_8svelte_a43fd940db385cb53d3809ff5a0403523}\label{Stream_8svelte_a43fd940db385cb53d3809ff5a0403523}} 
+\index{Stream.svelte@{Stream.svelte}!fps\_interval@{fps\_interval}}
+\index{fps\_interval@{fps\_interval}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{fps\_interval}{fps\_interval}}
+{\footnotesize\ttfamily \mbox{\hyperlink{behaviour__tree_8js_a92b303b76a3f942ea819498907d5e83c}{const}} fps\+\_\+interval = 1000 / \mbox{\hyperlink{Stream_8svelte_a45f9e8b289a7d7d2d191f5bcc098cf15}{fps}}}
+
+\mbox{\Hypertarget{Stream_8svelte_a59be084da8908b7d77ff34b25cd84488}\label{Stream_8svelte_a59be084da8908b7d77ff34b25cd84488}} 
+\index{Stream.svelte@{Stream.svelte}!import@{import}}
+\index{import@{import}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{import}{import}}
+{\footnotesize\ttfamily import \{ \mbox{\hyperlink{Stream_8svelte_ab8e6f563f1ddb209e1e4d9ac42be85c5}{on\+Mount}} \} from \char`\"{}svelte\char`\"{}}
+
+\mbox{\Hypertarget{Stream_8svelte_a914401eeb1f4076935f41893530ac64c}\label{Stream_8svelte_a914401eeb1f4076935f41893530ac64c}} 
+\index{Stream.svelte@{Stream.svelte}!last\_seen\_points@{last\_seen\_points}}
+\index{last\_seen\_points@{last\_seen\_points}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{last\_seen\_points}{last\_seen\_points}}
+{\footnotesize\ttfamily let last\+\_\+seen\+\_\+points = \mbox{[}$\,$\mbox{]}}
+
+\mbox{\Hypertarget{Stream_8svelte_a34c41928dfd8ec79c677a37fa3ba8912}\label{Stream_8svelte_a34c41928dfd8ec79c677a37fa3ba8912}} 
+\index{Stream.svelte@{Stream.svelte}!lidar\_bar\_height\_size@{lidar\_bar\_height\_size}}
+\index{lidar\_bar\_height\_size@{lidar\_bar\_height\_size}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{lidar\_bar\_height\_size}{lidar\_bar\_height\_size}}
+{\footnotesize\ttfamily let lidar\+\_\+bar\+\_\+height\+\_\+size = 20000}
+
+\mbox{\Hypertarget{Stream_8svelte_a394933e0408e956ed24cf771cb6277e3}\label{Stream_8svelte_a394933e0408e956ed24cf771cb6277e3}} 
+\index{Stream.svelte@{Stream.svelte}!lidar\_canvas\_@{lidar\_canvas\_}}
+\index{lidar\_canvas\_@{lidar\_canvas\_}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{lidar\_canvas\_}{lidar\_canvas\_}}
+{\footnotesize\ttfamily let lidar\+\_\+canvas\+\_\+ = null}
+
+@type \{HTMLCanvas\+Element\} \mbox{\Hypertarget{Stream_8svelte_af3be61c99dfe5c2a9ab2018d601b006f}\label{Stream_8svelte_af3be61c99dfe5c2a9ab2018d601b006f}} 
+\index{Stream.svelte@{Stream.svelte}!lidar\_context\_@{lidar\_context\_}}
+\index{lidar\_context\_@{lidar\_context\_}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{lidar\_context\_}{lidar\_context\_}}
+{\footnotesize\ttfamily let lidar\+\_\+context\+\_\+ = null}
+
+@type \{Canvas\+Rendering\+Context2D\} \mbox{\Hypertarget{Stream_8svelte_acf57e8b3d05a5fa0d4c97e48ea210978}\label{Stream_8svelte_acf57e8b3d05a5fa0d4c97e48ea210978}} 
+\index{Stream.svelte@{Stream.svelte}!lidar\_draw\_disconnect@{lidar\_draw\_disconnect}}
+\index{lidar\_draw\_disconnect@{lidar\_draw\_disconnect}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{lidar\_draw\_disconnect}{lidar\_draw\_disconnect}}
+{\footnotesize\ttfamily let lidar\+\_\+draw\+\_\+disconnect = null}
+
+\mbox{\Hypertarget{Stream_8svelte_aec5ec78b63977b8524710daa4e85d51a}\label{Stream_8svelte_aec5ec78b63977b8524710daa4e85d51a}} 
+\index{Stream.svelte@{Stream.svelte}!lidar\_toggle\_icon@{lidar\_toggle\_icon}}
+\index{lidar\_toggle\_icon@{lidar\_toggle\_icon}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{lidar\_toggle\_icon}{lidar\_toggle\_icon}}
+{\footnotesize\ttfamily let lidar\+\_\+toggle\+\_\+icon}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \$lidar\_toggle}
+\DoxyCodeLine{        ? \textcolor{stringliteral}{"{}favicon.png"{}}}
+\DoxyCodeLine{        : \textcolor{stringliteral}{"{}greyed\_favicon.png"{}}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{Stream_8svelte_a9317ea3509da1ef44872b79fabb80a7c}\label{Stream_8svelte_a9317ea3509da1ef44872b79fabb80a7c}} 
+\index{Stream.svelte@{Stream.svelte}!lidar\_wall\_colour@{lidar\_wall\_colour}}
+\index{lidar\_wall\_colour@{lidar\_wall\_colour}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{lidar\_wall\_colour}{lidar\_wall\_colour}}
+{\footnotesize\ttfamily \mbox{\hyperlink{behaviour__tree_8js_a92b303b76a3f942ea819498907d5e83c}{const}} lidar\+\_\+wall\+\_\+colour = \char`\"{}\#0061FF\char`\"{}}
+
+\mbox{\Hypertarget{Stream_8svelte_a65be140d5a0d75daad7496fbc4800e8a}\label{Stream_8svelte_a65be140d5a0d75daad7496fbc4800e8a}} 
+\index{Stream.svelte@{Stream.svelte}!live\_feed\_@{live\_feed\_}}
+\index{live\_feed\_@{live\_feed\_}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{live\_feed\_}{live\_feed\_}}
+{\footnotesize\ttfamily let live\+\_\+feed\+\_\+ = null}
+
+@type \{HTMLImage\+Element\} \mbox{\Hypertarget{Stream_8svelte_ad3da4cfc81c180e2af49731d7624704d}\label{Stream_8svelte_ad3da4cfc81c180e2af49731d7624704d}} 
+\index{Stream.svelte@{Stream.svelte}!offset\_angle@{offset\_angle}}
+\index{offset\_angle@{offset\_angle}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{offset\_angle}{offset\_angle}}
+{\footnotesize\ttfamily \mbox{\hyperlink{behaviour__tree_8js_a92b303b76a3f942ea819498907d5e83c}{const}} offset\+\_\+angle = 45}
+
+\mbox{\Hypertarget{Stream_8svelte_a9e1c7433ab5a1e0f8996b860bdae8786}\label{Stream_8svelte_a9e1c7433ab5a1e0f8996b860bdae8786}} 
+\index{Stream.svelte@{Stream.svelte}!stream\_div\_@{stream\_div\_}}
+\index{stream\_div\_@{stream\_div\_}!Stream.svelte@{Stream.svelte}}
+\doxysubsubsection{\texorpdfstring{stream\_div\_}{stream\_div\_}}
+{\footnotesize\ttfamily let stream\+\_\+div\+\_\+ = null}
+
+@type \{HTMLDiv\+Element\} 

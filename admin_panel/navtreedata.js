@@ -31,15 +31,29 @@ var NAVTREE =
       [ "Build EXE to export:", "md_README.html#autotoc_md3", null ],
       [ "Template from:", "md_README.html#autotoc_md4", null ]
     ] ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ]
+      ] ]
+    ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"App_8svelte.html"
+"App_8svelte.html",
+"validate_2CodeBox_8svelte.html#a59be084da8908b7d77ff34b25cd84488"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

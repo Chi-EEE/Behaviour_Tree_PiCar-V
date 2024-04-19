@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['websocket_2ejs_0',['websocket.js',['../websocket_8js.html',1,'']]],
-  ['websocket_2esvelte_1',['Websocket.svelte',['../Websocket_8svelte.html',1,'']]],
-  ['websocket_5fevents_2ejs_2',['websocket_events.js',['../websocket__events_8js.html',1,'']]],
-  ['websocket_5fstore_2ejs_3',['websocket_store.js',['../websocket__store_8js.html',1,'']]],
-  ['websocketserverconfig_2esvelte_4',['WebsocketServerConfig.svelte',['../WebsocketServerConfig_8svelte.html',1,'']]]
+  ['navigationbar_2esvelte_0',['NavigationBar.svelte',['../NavigationBar_8svelte.html',1,'']]],
+  ['node_5fhover_1',['node_hover',['../CodeBox__Constants_8js.html#a1c24954f47d75d34a9ee3eccf3856d18',1,'CodeBox_Constants.js']]],
+  ['node_5finformation_5flist_2',['node_information_list',['../CodeBox__Constants_8js.html#ab0d4518e7055b8f43b13c09f8ca4cc63',1,'CodeBox_Constants.js']]],
+  ['notfound_2esvelte_3',['NotFound.svelte',['../NotFound_8svelte.html',1,'']]]
 ];

@@ -1,0 +1,166 @@
+\hypertarget{classWebSocketServer}{}\doxysection{Web\+Socket\+Server Class Reference}
+\label{classWebSocketServer}\index{WebSocketServer@{WebSocketServer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWebSocketServer_a0aa30a486ff38aab40584a0279566966}{constructor}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_a2d76372a630e78c1b68af266369115a7}{connect}} (port)
+\item 
+\mbox{\hyperlink{classWebSocketServer_a6317330d70e0e2740f48ead6f6108e3d}{is\+Connected}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_a80874201d659c20d8ccbda18129c57a6}{close}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_aa5873d7a8f27147254f71df559a2b8ed}{generate\+Code}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_a2c701e998b2f2eadbd05fc67c5214665}{get\+Code}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_ac8a3e0719a668802724d74f8b5b08164}{get\+Port}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_ad339e396ebc351efeab2c9b8b664552a}{get\+Raspberry\+Pi\+Map}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_a9e333fc6f91da1e20a189e1251dc0304}{get\+Selected\+Raspberry\+Pi}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_af56903802ce3a9299bdee2b1176b415e}{select\+Raspberry\+Pi}} (uuid)
+\item 
+async \mbox{\hyperlink{classWebSocketServer_a2e8d7a1b479faa9ec30e88203d4f32c8}{start\+Connections}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_ad1f4a6be82fdcd0ead6830d4de08ec95}{send\+Behaviour\+Tree}} (behaviour\+\_\+tree)
+\item 
+\mbox{\hyperlink{classWebSocketServer_a3d2408cb9ecfb1fab790f351cf84200c}{start\+Behaviour\+Tree}} ()
+\item 
+\mbox{\hyperlink{classWebSocketServer_af75193e41fe0ffa45300fd51b01eaae2}{stop\+Behaviour\+Tree}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWebSocketServer_a80874201d659c20d8ccbda18129c57a6}\label{classWebSocketServer_a80874201d659c20d8ccbda18129c57a6}} 
+\index{WebSocketServer@{WebSocketServer}!close@{close}}
+\index{close@{close}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Call this function to close the Web\+Socket server. \mbox{\Hypertarget{classWebSocketServer_a2d76372a630e78c1b68af266369115a7}\label{classWebSocketServer_a2d76372a630e78c1b68af266369115a7}} 
+\index{WebSocketServer@{WebSocketServer}!connect@{connect}}
+\index{connect@{connect}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::connect (\begin{DoxyParamCaption}\item[{}]{port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Call this function to start the Web\+Socket server. 
+\begin{DoxyParams}{Parameters}
+{\em \{number\}} & port \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWebSocketServer_a0aa30a486ff38aab40584a0279566966}\label{classWebSocketServer_a0aa30a486ff38aab40584a0279566966}} 
+\index{WebSocketServer@{WebSocketServer}!constructor@{constructor}}
+\index{constructor@{constructor}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::constructor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+@type \{Web\+Socket.\+Server $\vert$ undefined\}
+
+@type \{number $\vert$ undefined\}
+
+@type \{\mbox{\hyperlink{classCode}{Code}}\}
+
+@type \{Map$<$string, Web\+Socket$>$\}
+
+@type \{Raspberry\+Pi $\vert$ undefined\}\mbox{\Hypertarget{classWebSocketServer_aa5873d7a8f27147254f71df559a2b8ed}\label{classWebSocketServer_aa5873d7a8f27147254f71df559a2b8ed}} 
+\index{WebSocketServer@{WebSocketServer}!generateCode@{generateCode}}
+\index{generateCode@{generateCode}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{generateCode()}{generateCode()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::generate\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+\{number\} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWebSocketServer_a2c701e998b2f2eadbd05fc67c5214665}\label{classWebSocketServer_a2c701e998b2f2eadbd05fc67c5214665}} 
+\index{WebSocketServer@{WebSocketServer}!getCode@{getCode}}
+\index{getCode@{getCode}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+\{number\} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWebSocketServer_ac8a3e0719a668802724d74f8b5b08164}\label{classWebSocketServer_ac8a3e0719a668802724d74f8b5b08164}} 
+\index{WebSocketServer@{WebSocketServer}!getPort@{getPort}}
+\index{getPort@{getPort}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{getPort()}{getPort()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::get\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+\{number\} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWebSocketServer_ad339e396ebc351efeab2c9b8b664552a}\label{classWebSocketServer_ad339e396ebc351efeab2c9b8b664552a}} 
+\index{WebSocketServer@{WebSocketServer}!getRaspberryPiMap@{getRaspberryPiMap}}
+\index{getRaspberryPiMap@{getRaspberryPiMap}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{getRaspberryPiMap()}{getRaspberryPiMap()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::get\+Raspberry\+Pi\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+\{Map$<$string, Web\+Socket$>$\} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWebSocketServer_a9e333fc6f91da1e20a189e1251dc0304}\label{classWebSocketServer_a9e333fc6f91da1e20a189e1251dc0304}} 
+\index{WebSocketServer@{WebSocketServer}!getSelectedRaspberryPi@{getSelectedRaspberryPi}}
+\index{getSelectedRaspberryPi@{getSelectedRaspberryPi}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{getSelectedRaspberryPi()}{getSelectedRaspberryPi()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::get\+Selected\+Raspberry\+Pi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+\{Raspberry\+Pi $\vert$ undefined\} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWebSocketServer_a6317330d70e0e2740f48ead6f6108e3d}\label{classWebSocketServer_a6317330d70e0e2740f48ead6f6108e3d}} 
+\index{WebSocketServer@{WebSocketServer}!isConnected@{isConnected}}
+\index{isConnected@{isConnected}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{isConnected()}{isConnected()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::is\+Connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWebSocketServer_af56903802ce3a9299bdee2b1176b415e}\label{classWebSocketServer_af56903802ce3a9299bdee2b1176b415e}} 
+\index{WebSocketServer@{WebSocketServer}!selectRaspberryPi@{selectRaspberryPi}}
+\index{selectRaspberryPi@{selectRaspberryPi}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{selectRaspberryPi()}{selectRaspberryPi()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::select\+Raspberry\+Pi (\begin{DoxyParamCaption}\item[{}]{uuid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Select a Raspberry Pi to send / receive messages from. 
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & uuid \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWebSocketServer_ad1f4a6be82fdcd0ead6830d4de08ec95}\label{classWebSocketServer_ad1f4a6be82fdcd0ead6830d4de08ec95}} 
+\index{WebSocketServer@{WebSocketServer}!sendBehaviourTree@{sendBehaviourTree}}
+\index{sendBehaviourTree@{sendBehaviourTree}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{sendBehaviourTree()}{sendBehaviourTree()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::send\+Behaviour\+Tree (\begin{DoxyParamCaption}\item[{}]{behaviour\+\_\+tree }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & behaviour\+\_\+tree \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWebSocketServer_a3d2408cb9ecfb1fab790f351cf84200c}\label{classWebSocketServer_a3d2408cb9ecfb1fab790f351cf84200c}} 
+\index{WebSocketServer@{WebSocketServer}!startBehaviourTree@{startBehaviourTree}}
+\index{startBehaviourTree@{startBehaviourTree}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{startBehaviourTree()}{startBehaviourTree()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::start\+Behaviour\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWebSocketServer_a2e8d7a1b479faa9ec30e88203d4f32c8}\label{classWebSocketServer_a2e8d7a1b479faa9ec30e88203d4f32c8}} 
+\index{WebSocketServer@{WebSocketServer}!startConnections@{startConnections}}
+\index{startConnections@{startConnections}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{startConnections()}{startConnections()}}
+{\footnotesize\ttfamily async Web\+Socket\+Server\+::start\+Connections (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWebSocketServer_af75193e41fe0ffa45300fd51b01eaae2}\label{classWebSocketServer_af75193e41fe0ffa45300fd51b01eaae2}} 
+\index{WebSocketServer@{WebSocketServer}!stopBehaviourTree@{stopBehaviourTree}}
+\index{stopBehaviourTree@{stopBehaviourTree}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{stopBehaviourTree()}{stopBehaviourTree()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::stop\+Behaviour\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+js/\mbox{\hyperlink{websocket_8js}{websocket.\+js}}\end{DoxyCompactItemize}
