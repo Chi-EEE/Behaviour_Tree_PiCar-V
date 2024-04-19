@@ -26,9 +26,12 @@ jobs:
           doxyfile-path: "./Doxyfile"
           working-directory: "./app/other"
 
-      - name: Move Doxygen HTML files into their parent directories
+      - name: Move Raspberry Pi Doxygen HTML files
         run: |
           sudo mv docs/raspberry_pi/html/* docs/raspberry_pi
+
+      - name: Move Other Doxygen HTML files
+        run: |
           sudo mv docs/other/html/* docs/other
 
       - name: Deploy
