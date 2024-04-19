@@ -10,7 +10,7 @@ function isDev() {
 
 function createWindow() {
     // Create the browser window.
-    global.mainWindow = new BrowserWindow({
+    const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
@@ -23,6 +23,8 @@ function createWindow() {
         icon: path.join(__dirname, '../public/favicon.png'),
         show: false
     });
+
+    global.mainWindow = mainWindow;
 
     // This block of code is intended for development purpose only.
     // Delete this entire block of code when you are ready to package the application.
@@ -45,6 +47,14 @@ function createWindow() {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         global.mainWindow = null
+    });
+
+    global.mainWindow.on('hide', () => {
+        global.hidden = true;
+    });
+
+    global.mainWindow.on('show', () => {
+        global.hidden = false;
     });
 
     // Emitted when the window is ready to be shown

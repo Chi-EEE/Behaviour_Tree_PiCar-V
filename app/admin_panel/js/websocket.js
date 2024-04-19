@@ -156,6 +156,9 @@ class WebSocketServer {
                 if (uuid !== this.getSelectedRaspberryPi()?.uuid) {
                     return;
                 }
+                if (global.hidden) {
+                    return;
+                }
                 global.mainWindow.webContents.send('onMessage', message.toString());
             });
         });
