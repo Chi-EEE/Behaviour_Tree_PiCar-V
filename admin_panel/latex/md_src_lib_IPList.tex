@@ -1,0 +1,29 @@
+$<$script$>$ import \{ Button, Card, Spinner, Tooltip \} from \char`\"{}flowbite-\/svelte\char`\"{}; import \{ copy \} from \char`\"{}svelte-\/copy\char`\"{};
+
+import \{ websocket\+\_\+server\+\_\+port \} from \char`\"{}../store/websocket\+\_\+store\char`\"{};
+
+if (api.\+get\+Local\+IPList === undefined) \{ api.\+get\+Local\+IPList = async function () \{ return new Promise((resolve) =\texorpdfstring{$>$}{>} \{ \mbox{\hyperlink{rollup_8config_8js_a4f43d96eba609427909ea43beff4450e}{resolve(\mbox{[}$\,$\mbox{]})}}; \}); \}; \}
+
+export let get\+IPList = update\+IPList();
+
+function refresh\+IPList() \{ get\+IPList = update\+IPList(); \}
+
+function update\+IPList() \{ return api.\+get\+Local\+IPList().then((local\+\_\+ip\+\_\+list) =\texorpdfstring{$>$}{>} \{ let ip\+\_\+list = \mbox{[}\mbox{]}; console.\+log(local\+\_\+ip\+\_\+list); for (const \mbox{[}ip\+\_\+group\+\_\+name, ip\+\_\+group\mbox{]} of Object.\+entries(                 local\+\_\+ip\+\_\+list,             )) \{ for (const ip of ip\+\_\+group) \{ if (ip.\+family === \char`\"{}\+IPv4\char`\"{}) \{ ip\+\_\+list.\+push(\{ group\+\_\+name\+: ip\+\_\+group\+\_\+name, address\+: ip.\+address, netmask\+: ip.\+netmask, mac\+: ip.\+mac, internal\+: ip.\+internal, cidr\+: ip.\+cidr, \}); \} \} \} console.\+log(ip\+\_\+list); return ip\+\_\+list; \}); \} $<$/script$>$
+
+$<$\+Card class=\char`\"{}p-\/6\char`\"{}$>$ \doxysubsection*{Local IP List }
+
+~\newline
+ $<$\+Button class=\char`\"{}mb-\/3\char`\"{} id=\char`\"{}refresh\+\_\+ip\+\_\+address\char`\"{} on\+:click=\{refresh\+IPList\}         $>$Refresh IP List$<$/\+Button$>$ $<$\+Tooltip triggered\+By=\char`\"{}\#refresh\+\_\+ip\+\_\+address\char`\"{}         $>$Remember to determine the appropriate IP Address based on the Raspberry Pi\textquotesingle{}s network connection.$<$/\+Tooltip$>$ ~\newline
+
+
+\{\#await get\+IPList\} 
+
+Loading IP List
+
+$<$\+Spinner $>$ \{\+:then ip\+\_\+list\} $<$\+Card class=\char`\"{}overflow-\/y-\/scroll h-\/screen gap-\/2 justify-\/center\char`\"{} style=\char`\"{}padding\+:0px\char`\"{}$>$ \{\#each ip\+\_\+list as ip\} $<$\+Card class=\char`\"{}py-\/6 border-\/neutral-\/100 border-\/b border-\/t\char`\"{} style=\char`\"{}padding\+:0.\+5rem\char`\"{}$>$ \doxysubsubsection*{\{ip.\+group\+\_\+name\} }
+
+
+
+\{ip.\+address\}{\bfseries{\+:\{\$websocket\+\_\+server\+\_\+port\}}} 
+
+\texorpdfstring{$<$}{<}button use\+:copy=\{{\ttfamily \$\{ip.\+address\}\+:\$\{\$websocket\+\_\+server\+\_\+port\}}\} class=\char`\"{}mt-\/4 p-\/2\char`\"{} \texorpdfstring{$>$}{>} Copy IP $<$/button$>$ $<$/\+Card$>$ \{/each\} $<$/\+Card$>$ \{/await\} $<$/\+Card$>$ 
