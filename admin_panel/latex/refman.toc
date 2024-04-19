@@ -1,0 +1,45 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Admin Panel}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Install Packages\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Run\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Build EXE to export\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Template from\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{section.1.4}%
+\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Documentation}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}js/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree.js File Reference}{6}{section.3.1}%
+\contentsline {section}{\numberline {3.2}js/device.js File Reference}{6}{section.3.2}%
+\contentsline {section}{\numberline {3.3}js/main.js File Reference}{6}{section.3.3}%
+\contentsline {section}{\numberline {3.4}src/main.js File Reference}{6}{section.3.4}%
+\contentsline {section}{\numberline {3.5}js/preload.js File Reference}{6}{section.3.5}%
+\contentsline {section}{\numberline {3.6}js/raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pi.js File Reference}{6}{section.3.6}%
+\contentsline {section}{\numberline {3.7}js/store.js File Reference}{6}{section.3.7}%
+\contentsline {section}{\numberline {3.8}js/websocket.js File Reference}{6}{section.3.8}%
+\contentsline {section}{\numberline {3.9}js/websocket\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}events.js File Reference}{6}{section.3.9}%
+\contentsline {section}{\numberline {3.10}public/index.html File Reference}{6}{section.3.10}%
+\contentsline {section}{\numberline {3.11}README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{6}{section.3.11}%
+\contentsline {section}{\numberline {3.12}rollup.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}js File Reference}{6}{section.3.12}%
+\contentsline {section}{\numberline {3.13}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App.svelte File Reference}{6}{section.3.13}%
+\contentsline {section}{\numberline {3.14}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler.svelte File Reference}{6}{section.3.14}%
+\contentsline {section}{\numberline {3.15}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Constants.js File Reference}{6}{section.3.15}%
+\contentsline {section}{\numberline {3.16}src/lib/home/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box.svelte File Reference}{6}{section.3.16}%
+\contentsline {section}{\numberline {3.17}src/lib/validate/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box.svelte File Reference}{6}{section.3.17}%
+\contentsline {section}{\numberline {3.18}src/lib/home/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bar.svelte File Reference}{6}{section.3.18}%
+\contentsline {section}{\numberline {3.19}src/lib/home/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Stream.svelte File Reference}{6}{section.3.19}%
+\contentsline {section}{\numberline {3.20}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IPList.svelte File Reference}{6}{section.3.20}%
+\contentsline {section}{\numberline {3.21}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Navigation\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bar.svelte File Reference}{6}{section.3.21}%
+\contentsline {section}{\numberline {3.22}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Connect\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Banner.svelte File Reference}{6}{section.3.22}%
+\contentsline {section}{\numberline {3.23}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Selector.svelte File Reference}{6}{section.3.23}%
+\contentsline {section}{\numberline {3.24}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Save\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modal.svelte File Reference}{6}{section.3.24}%
+\contentsline {section}{\numberline {3.25}src/lib/validate/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button.svelte File Reference}{6}{section.3.25}%
+\contentsline {section}{\numberline {3.26}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Websocket\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Server\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config.svelte File Reference}{6}{section.3.26}%
+\contentsline {section}{\numberline {3.27}src/routes.js File Reference}{6}{section.3.27}%
+\contentsline {section}{\numberline {3.28}src/routes/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Home.svelte File Reference}{6}{section.3.28}%
+\contentsline {section}{\numberline {3.29}src/routes/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Not\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Found.svelte File Reference}{6}{section.3.29}%
+\contentsline {section}{\numberline {3.30}src/routes/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Validate.svelte File Reference}{6}{section.3.30}%
+\contentsline {section}{\numberline {3.31}src/routes/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Websocket.svelte File Reference}{6}{section.3.31}%
+\contentsline {section}{\numberline {3.32}src/store/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}store.js File Reference}{6}{section.3.32}%
+\contentsline {section}{\numberline {3.33}src/store/home\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}store.js File Reference}{6}{section.3.33}%
+\contentsline {section}{\numberline {3.34}src/store/raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}store.js File Reference}{6}{section.3.34}%
+\contentsline {section}{\numberline {3.35}src/store/websocket\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}store.js File Reference}{6}{section.3.35}%
+\contentsline {chapter}{Index}{7}{section*.1}%
