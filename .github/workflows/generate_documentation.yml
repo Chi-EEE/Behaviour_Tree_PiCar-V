@@ -16,9 +16,10 @@ jobs:
       
       - name: Add ``` to Svelte files From ChatGPT
         run: |
-          for file in *.svelte; do
-            sed -i '1i\
-            \```' "$file" && echo '```' >> "$file"
+          find ./app/admin_panel -type f -name '*.svelte' -print0 |
+          while IFS= read -r -d '' file; do
+            sed -i "1i\```" "$file"
+            echo '```' >> "$file"
           done
 
       - name: Build Doxygen documentation for Admin Panel
