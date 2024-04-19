@@ -1,0 +1,58 @@
+\hypertarget{test__front__wheels_8cpp}{}\doxysection{/github/workspace/app/rpi/common/tests/pca9685/test\+\_\+front\+\_\+wheels.cpp File Reference}
+\label{test__front__wheels_8cpp}\index{/github/workspace/app/rpi/common/tests/pca9685/test\_front\_wheels.cpp@{/github/workspace/app/rpi/common/tests/pca9685/test\_front\_wheels.cpp}}
+{\ttfamily \#include \char`\"{}PCA9685.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test__front__wheels_8cpp_a5b3a9eda8e0b49cf4a1bd8b310ce1138}{set\+Angle}} (int \&angle, PCA9685 pwm, int channel)
+\item 
+int \mbox{\hyperlink{test__front__wheels_8cpp_ab66e88e73e935433d27613e6b65139dd}{map}} (int x, int in\+\_\+min, int in\+\_\+max, int out\+\_\+min, int out\+\_\+max)
+\item 
+int \mbox{\hyperlink{test__front__wheels_8cpp_abbdd69bb2ca6284c4c6494c65b442a4c}{set\+Angle\+To\+Analog}} (int angle)
+\item 
+int \mbox{\hyperlink{test__front__wheels_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test__front__wheels_8cpp_aed7ea92f45bd273dde380a45ddced592}{offset}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test__front__wheels_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test__front__wheels_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{test\_front\_wheels.cpp@{test\_front\_wheels.cpp}!main@{main}}
+\index{main@{main}!test\_front\_wheels.cpp@{test\_front\_wheels.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test__front__wheels_8cpp_ab66e88e73e935433d27613e6b65139dd}\label{test__front__wheels_8cpp_ab66e88e73e935433d27613e6b65139dd}} 
+\index{test\_front\_wheels.cpp@{test\_front\_wheels.cpp}!map@{map}}
+\index{map@{map}!test\_front\_wheels.cpp@{test\_front\_wheels.cpp}}
+\doxysubsubsection{\texorpdfstring{map()}{map()}}
+{\footnotesize\ttfamily int map (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{in\+\_\+min,  }\item[{int}]{in\+\_\+max,  }\item[{int}]{out\+\_\+min,  }\item[{int}]{out\+\_\+max }\end{DoxyParamCaption})}
+
+Following method clamps the x to in\+\_\+min and in\+\_\+max. Afterwards, it puts the result of that into the range of out\+\_\+min and out\+\_\+max \mbox{\Hypertarget{test__front__wheels_8cpp_a5b3a9eda8e0b49cf4a1bd8b310ce1138}\label{test__front__wheels_8cpp_a5b3a9eda8e0b49cf4a1bd8b310ce1138}} 
+\index{test\_front\_wheels.cpp@{test\_front\_wheels.cpp}!setAngle@{setAngle}}
+\index{setAngle@{setAngle}!test\_front\_wheels.cpp@{test\_front\_wheels.cpp}}
+\doxysubsubsection{\texorpdfstring{setAngle()}{setAngle()}}
+{\footnotesize\ttfamily int set\+Angle (\begin{DoxyParamCaption}\item[{int \&}]{angle,  }\item[{PCA9685}]{pwm,  }\item[{int}]{channel }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test__front__wheels_8cpp_abbdd69bb2ca6284c4c6494c65b442a4c}\label{test__front__wheels_8cpp_abbdd69bb2ca6284c4c6494c65b442a4c}} 
+\index{test\_front\_wheels.cpp@{test\_front\_wheels.cpp}!setAngleToAnalog@{setAngleToAnalog}}
+\index{setAngleToAnalog@{setAngleToAnalog}!test\_front\_wheels.cpp@{test\_front\_wheels.cpp}}
+\doxysubsubsection{\texorpdfstring{setAngleToAnalog()}{setAngleToAnalog()}}
+{\footnotesize\ttfamily int set\+Angle\+To\+Analog (\begin{DoxyParamCaption}\item[{int}]{angle }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{test__front__wheels_8cpp_aed7ea92f45bd273dde380a45ddced592}\label{test__front__wheels_8cpp_aed7ea92f45bd273dde380a45ddced592}} 
+\index{test\_front\_wheels.cpp@{test\_front\_wheels.cpp}!offset@{offset}}
+\index{offset@{offset}!test\_front\_wheels.cpp@{test\_front\_wheels.cpp}}
+\doxysubsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily int offset = 0}
+

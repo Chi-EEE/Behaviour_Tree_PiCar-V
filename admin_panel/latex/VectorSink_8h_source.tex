@@ -1,0 +1,62 @@
+\hypertarget{VectorSink_8h_source}{}\doxysection{Vector\+Sink.\+h}
+\label{VectorSink_8h_source}\index{/github/workspace/app/rpi/common/include/car/system/logging/VectorSink.h@{/github/workspace/app/rpi/common/include/car/system/logging/VectorSink.h}}
+\mbox{\hyperlink{VectorSink_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VECTORSINK\_CXX}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VECTORSINK\_CXX}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <fmt/format.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <spdlog/sinks/base\_sink.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <spdlog/details/synchronous\_factory.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecar_1_1system_1_1logging}{car::system::logging}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15     \textcolor{keyword}{template} <\textcolor{keyword}{typename} Mutex>}
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink}{VectorSink}} : \textcolor{keyword}{public} spdlog::sinks::base\_sink<Mutex>}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19         \mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_ad6d6288677da92c0d9150d1530dc0565}{VectorSink}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a1da9bf98e6bb6f439893902e047bb603}{max\_lines}}) : \mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a1da9bf98e6bb6f439893902e047bb603}{max\_lines}}(\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a1da9bf98e6bb6f439893902e047bb603}{max\_lines}})}
+\DoxyCodeLine{20         \{}
+\DoxyCodeLine{21         \}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a541b6a05a30bb0330056101c12ae4b39}{sink\_it\_}}(\textcolor{keyword}{const} spdlog::details::log\_msg \&msg)\textcolor{keyword}{ override}}
+\DoxyCodeLine{24 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{25             spdlog::memory\_buf\_t formatted;}
+\DoxyCodeLine{26             spdlog::sinks::base\_sink<Mutex>::formatter\_-\/>format(msg, formatted);}
+\DoxyCodeLine{27             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a2901d26eb70daac9d4d130e340272593}{log\_messages}}.size() < this-\/>max\_lines)}
+\DoxyCodeLine{28             \{}
+\DoxyCodeLine{29                 this-\/>\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a2901d26eb70daac9d4d130e340272593}{log\_messages}}.push\_back(std::string(formatted.data(), formatted.size()));}
+\DoxyCodeLine{30             \}}
+\DoxyCodeLine{31             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{32             \{}
+\DoxyCodeLine{33                 std::rotate(this-\/>\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a2901d26eb70daac9d4d130e340272593}{log\_messages}}.begin(), this-\/>log\_messages.begin() + 1, this-\/>log\_messages.end());}
+\DoxyCodeLine{34                 this-\/>\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a2901d26eb70daac9d4d130e340272593}{log\_messages}}[this-\/>\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a2901d26eb70daac9d4d130e340272593}{log\_messages}}.size() -\/ 1] = std::string(formatted.data(), formatted.size());}
+\DoxyCodeLine{35             \}}
+\DoxyCodeLine{36         \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_aff218d3af65bec5af12f785f28c6f1fd}{flush\_}}()\textcolor{keyword}{ override}}
+\DoxyCodeLine{39 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{40             this-\/>\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a2901d26eb70daac9d4d130e340272593}{log\_messages}}.clear();}
+\DoxyCodeLine{41         \};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \textcolor{keyword}{const} std::vector<std::string> \&\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_abcf04c0c22017aa4a423520a8bc21cd3}{get\_log\_messages}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{44 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{45             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a2901d26eb70daac9d4d130e340272593}{log\_messages}};}
+\DoxyCodeLine{46         \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keyword}{private}:}
+\DoxyCodeLine{49         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a1da9bf98e6bb6f439893902e047bb603}{max\_lines}};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         std::vector<std::string> \mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink_a2901d26eb70daac9d4d130e340272593}{log\_messages}};}
+\DoxyCodeLine{52     \};}
+\DoxyCodeLine{53     \textcolor{keyword}{using }\mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink}{vector\_sink\_mt}} = \mbox{\hyperlink{classcar_1_1system_1_1logging_1_1VectorSink}{VectorSink<std::mutex>}};}
+\DoxyCodeLine{54 \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
