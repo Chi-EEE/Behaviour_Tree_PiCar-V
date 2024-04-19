@@ -1,0 +1,21 @@
+$<$script$>$ import \{ Label, Input, Button, Helper \} from \char`\"{}flowbite-\/svelte\char`\"{};
+
+import \{ websocket\+\_\+server\+\_\+connection\+\_\+state, websocket\+\_\+server\+\_\+port, websocket\+\_\+server\+\_\+code, \} from \char`\"{}../store/websocket\+\_\+store\char`\"{};
+
+import \{ raspberry\+\_\+pi\+\_\+uuid\+\_\+list, \} from \char`\"{}../store/raspberry\+\_\+pi\+\_\+store\char`\"{};
+
+/$\ast$$\ast$ @type \{number\} $\ast$/ let websocket\+Server\+Port = \$websocket\+\_\+server\+\_\+port;
+
+/$\ast$$\ast$ @type \{string\} $\ast$/ let toggle\+Websocket\+Server\+Message = \char`\"{}\+Start Websocket Server\char`\"{};
+
+/$\ast$$\ast$ @type \{string\} $\ast$/ let helper\+Text = \char`\"{}\char`\"{};
+
+/$\ast$$\ast$ @type \{string\} $\ast$/ let websocket\+Server\+Port\+Input\+Color = \char`\"{}\char`\"{};
+
+function display\+Websocket\+Server\+Status() \{ if (\$websocket\+\_\+server\+\_\+connection\+\_\+state) \{ websocket\+Server\+Port\+Input\+Color = \char`\"{}green\char`\"{}; helper\+Text = \char`\"{}\+Websocket Server is running\char`\"{}; toggle\+Websocket\+Server\+Message = \char`\"{}\+Stop Websocket Server\char`\"{}; \} else \{ websocket\+Server\+Port\+Input\+Color = \char`\"{}\char`\"{}; helper\+Text = \char`\"{}\char`\"{}; toggle\+Websocket\+Server\+Message = \char`\"{}\+Start Websocket Server\char`\"{}; \} \}
+
+websocket\+\_\+server\+\_\+connection\+\_\+state.\+subscribe(display\+Websocket\+Server\+Status);
+
+async function toggle\+Websocket\+Server() \{ const websocket\+Server\+Port\+Number = websocket\+Server\+Port $\ast$ 1; if (typeof websocket\+Server\+Port\+Number !== \char`\"{}number\char`\"{}) \{ helper\+Text = \char`\"{}\+Port must be a number\char`\"{}; websocket\+Server\+Port\+Input\+Color = \char`\"{}red\char`\"{}; return; \} if (!\$websocket\+\_\+server\+\_\+connection\+\_\+state) \{ websocket\+\_\+server\+\_\+port.\+set(websocket\+Server\+Port\+Number); const response = await api.\+start\+Web\+Socket\+Server(\{ port\+: \$websocket\+\_\+server\+\_\+port, \}); if (response.\+success) \{ websocket\+\_\+server\+\_\+connection\+\_\+state.\+set(true); websocket\+\_\+server\+\_\+code.\+set(response.\+code); \} else \{ // Error\+: Websocket Server is already running websocket\+Server\+Port\+Input\+Color = \char`\"{}red\char`\"{}; helper\+Text = response.\+message; toggle\+Websocket\+Server\+Message = \char`\"{}\+Start Websocket Server\char`\"{}; \} \} else \{ await api.\+close\+Web\+Socket\+Server(); websocket\+\_\+server\+\_\+connection\+\_\+state.\+set(false); raspberry\+\_\+pi\+\_\+uuid\+\_\+list.\+set(\mbox{[}$\,$\mbox{]}); \} \} $<$/script$>$
+
+ $<$\+Label for=\char`\"{}websocket-\/server-\/port\char`\"{} class=\char`\"{}block mb-\/2\char`\"{}         $>$Input Port for Websocket Server$<$/\+Label$>$ $<$\+Input         id=\char`\"{}websocket-\/server-\/port\char`\"{}         size=\char`\"{}lg\char`\"{}         placeholder=\char`\"{}\+Websocket Server Port\char`\"{}         bind\+:value=\{websocket\+Server\+Port\}         disabled=\{\$websocket\+\_\+server\+\_\+connection\+\_\+state\}         color=\{websocket\+Server\+Port\+Input\+Color\}     $>$ $<$\+Button class=\char`\"{}mt-\/4\char`\"{} on\+:click=\{toggle\+Websocket\+Server\}         $>$\{toggle\+Websocket\+Server\+Message\}$<$/\+Button$>$ $<$\+Helper class=\char`\"{}mt-\/2\char`\"{} color=\{websocket\+Server\+Port\+Input\+Color\}         $>$\{helper\+Text\}$<$/\+Helper$>$  

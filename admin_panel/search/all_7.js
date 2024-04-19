@@ -1,16 +1,7 @@
 var searchData=
 [
-  ['generate_0',['generate',['../classCode.html#a013b15f71dbaa17b5f2be5a8eb921bbe',1,'Code']]],
-  ['generatecode_1',['generateCode',['../classWebSocketServer.html#aa5873d7a8f27147254f71df559a2b8ed',1,'WebSocketServer']]],
-  ['get_2',['get',['../classCode.html#ab73aebe9c8ea9fdaf5ae0ab58353ed71',1,'Code']]],
-  ['getbehaviourtreelist_3',['getBehaviourTreeList',['../behaviour__tree_8js.html#a3631feaf238754ae1f83f0dccca6760b',1,'behaviour_tree.js']]],
-  ['getcode_4',['getCode',['../classWebSocketServer.html#a2c701e998b2f2eadbd05fc67c5214665',1,'WebSocketServer']]],
-  ['getiplist_5',['getIPList',['../IPList_8svelte.html#a581d007ecd7f483d737affabe7efac7d',1,'IPList.svelte']]],
-  ['getlocaliplist_6',['getLocalIPList',['../device_8js.html#ab9d011814641350c3ce127ba771f6080',1,'device.js']]],
-  ['getport_7',['getPort',['../classWebSocketServer.html#ac8a3e0719a668802724d74f8b5b08164',1,'WebSocketServer']]],
-  ['getrandomint_8',['getRandomInt',['../websocket_8js.html#a33d811b55c2c184e55a9978bd589a194',1,'websocket.js']]],
-  ['getraspberrypilist_9',['getRaspberryPiList',['../raspberry__pi_8js.html#a43c39b733d717c54bca87768673f7013',1,'raspberry_pi.js']]],
-  ['getraspberrypimap_10',['getRaspberryPiMap',['../classWebSocketServer.html#ad339e396ebc351efeab2c9b8b664552a',1,'WebSocketServer']]],
-  ['getselectedraspberrypi_11',['getSelectedRaspberryPi',['../classWebSocketServer.html#a9e333fc6f91da1e20a189e1251dc0304',1,'WebSocketServer::getSelectedRaspberryPi()'],['../raspberry__pi_8js.html#a9fe8eae2bc6ae3f23c55be359edc7a64',1,'getSelectedRaspberryPi(_event, _args):&#160;raspberry_pi.js']]],
-  ['getwebsocketserver_12',['getWebSocketServer',['../websocket__events_8js.html#ae344f32004483dce1b43316b3c150d3e',1,'websocket_events.js']]]
+  ['handle_0',['handle',['../behaviour__tree_8js.html#ad623cba561bd2e93697195908ba15aed',1,'handle(&apos;sendBehaviourTree&apos;, sendBehaviourTree):&#160;behaviour_tree.js'],['../device_8js.html#aa05bbb00700ff6425208d19adb6c537c',1,'handle(&apos;getLocalIPList&apos;, getLocalIPList):&#160;device.js'],['../raspberry__pi_8js.html#a42d1c6077f48cc54b4ef716e01a00d47',1,'handle(&apos;selectRaspberryPi&apos;, selectRaspberryPi):&#160;raspberry_pi.js'],['../websocket__events_8js.html#a493470c2906b0aa806c610487b9600c2',1,'handle(&apos;startWebSocketServer&apos;, startWebSocketServer):&#160;websocket_events.js']]],
+  ['home_1',['Home',['../md_src_routes_Home.html',1,'']]],
+  ['home_2esvelte_2',['Home.svelte',['../Home_8svelte.html',1,'']]],
+  ['home_5fstore_2ejs_3',['home_store.js',['../home__store_8js.html',1,'']]]
 ];

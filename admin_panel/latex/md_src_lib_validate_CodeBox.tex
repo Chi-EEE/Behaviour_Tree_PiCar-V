@@ -1,0 +1,7 @@
+$<$script$>$ // If this does not work then try preview import Code\+Mirror from \char`\"{}svelte-\/codemirror-\/editor\char`\"{}; import \{ xml \} from \char`\"{}@codemirror/lang-\/xml\char`\"{}; import \{ one\+Dark \} from \char`\"{}@codemirror/theme-\/one-\/dark\char`\"{};
+
+import \{ node\+\_\+hover, xml\+\_\+schema \} from \char`\"{}../\+Code\+Box\+\_\+\+Constants\char`\"{};
+
+import \{ behaviour\+\_\+tree\+\_\+xml\+\_\+code \} from \char`\"{}../../store/behaviour\+\_\+tree\+\_\+store\char`\"{}; import Code\+Button from \char`\"{}./\+Code\+Button.\+svelte\char`\"{}; $<$/script$>$
+
+ $<$\+Code\+Button$>$ $<$\+Code\+Mirror         class=\char`\"{}text-\/left h-\/full flex-\/auto font-\/mono text-\/lg font-\/bold\char`\"{}         bind\+:value=\{\$behaviour\+\_\+tree\+\_\+xml\+\_\+code\}         lang=\{xml(xml\+\_\+schema)\}         tab\+Size=\{4\}         theme=\{one\+Dark\}         extensions=\{\mbox{[}node\+\_\+hover\mbox{]}\}     $>$ $<$style$>$ .cm-\/editor \{ height\+: 90\% !important; \} .cm-\/editor $\ast$ \{ font-\/family\+: ui-\/monospace, SFMono-\/\+Regular, Menlo, Monaco, Consolas, \char`\"{}\+Liberation Mono\char`\"{}, \char`\"{}\+Courier New\char`\"{} !important; \} .cm-\/scroller \{ height\+: 100\% !important; \} $<$/style$>$  

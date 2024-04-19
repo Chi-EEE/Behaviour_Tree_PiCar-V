@@ -1,15 +1,4 @@
 var searchData=
 [
-  ['savebehaviourtree_0',['saveBehaviourTree',['../behaviour__tree_8js.html#aec18e4d3446a2e90472581b9431d41e0',1,'saveBehaviourTree(_event, args):&#160;behaviour_tree.js'],['../SaveBehaviourTreeModal_8svelte.html#a284175c66f25ccd1c712d041caa1b971',1,'saveBehaviourTree(behaviour_tree_save_state):&#160;SaveBehaviourTreeModal.svelte']]],
-  ['selectraspberrypi_1',['selectRaspberryPi',['../classWebSocketServer.html#af56903802ce3a9299bdee2b1176b415e',1,'WebSocketServer::selectRaspberryPi()'],['../raspberry__pi_8js.html#a7771ae9fa46f3a3a22ea9f230ade12d8',1,'selectRaspberryPi():&#160;raspberry_pi.js']]],
-  ['sendbehaviourtree_2',['sendBehaviourTree',['../classWebSocketServer.html#ad1f4a6be82fdcd0ead6830d4de08ec95',1,'WebSocketServer::sendBehaviourTree()'],['../behaviour__tree_8js.html#a0877b082bd308be13518093717c4bd45',1,'sendBehaviourTree(_event, args):&#160;behaviour_tree.js'],['../CodeMessagingBar_8svelte.html#ac7538f80ce397fd21520325566dd7cda',1,'sendBehaviourTree():&#160;CodeMessagingBar.svelte']]],
-  ['serve_3',['serve',['../rollup_8config_8js.html#a06cc7452cc7a2410b993ca6796953c47',1,'rollup.config.js']]],
-  ['set_4',['set',['../BehaviourTreeHandler_8svelte.html#aaf952930c76829bcdedb9f08c9180569',1,'set($behaviour_tree_xml_code):&#160;BehaviourTreeHandler.svelte'],['../SaveBehaviourTreeModal_8svelte.html#a8d32aa260be4c433e0b0347bc2858d7d',1,'set([... $behaviour_tree_list, behaviour_tree_save_state]):&#160;SaveBehaviourTreeModal.svelte']]],
-  ['shadecolor_5',['shadeColor',['../Stream_8svelte.html#a6e0d2451db16b5e1373529786fbb1710',1,'Stream.svelte']]],
-  ['startbehaviourtree_6',['startBehaviourTree',['../classWebSocketServer.html#a3d2408cb9ecfb1fab790f351cf84200c',1,'WebSocketServer::startBehaviourTree()'],['../behaviour__tree_8js.html#aac2c0c00fc0702be14d2e88e51016c2e',1,'startBehaviourTree(_event, _args):&#160;behaviour_tree.js'],['../CodeMessagingBar_8svelte.html#ad06bf0303c9769d16265eec84401615c',1,'startBehaviourTree():&#160;CodeMessagingBar.svelte']]],
-  ['startconnections_7',['startConnections',['../classWebSocketServer.html#a2e8d7a1b479faa9ec30e88203d4f32c8',1,'WebSocketServer']]],
-  ['startwebsocketserver_8',['startWebSocketServer',['../websocket__events_8js.html#ad3e2eaadbe3ee2eb2ca07e042df240b1',1,'websocket_events.js']]],
-  ['stopbehaviourtree_9',['stopBehaviourTree',['../classWebSocketServer.html#af75193e41fe0ffa45300fd51b01eaae2',1,'WebSocketServer::stopBehaviourTree()'],['../behaviour__tree_8js.html#a918578916851725276d5212a9646aec4',1,'stopBehaviourTree(_event, _args):&#160;behaviour_tree.js'],['../CodeMessagingBar_8svelte.html#a92e118c6ca2c4e51d9e74a651a7a8f6e',1,'stopBehaviourTree():&#160;CodeMessagingBar.svelte']]],
-  ['subscribe_10',['subscribe',['../Stream_8svelte.html#af755f21456a776ad3ef961c8bcae9ba5',1,'subscribe(updateAspectRatio):&#160;Stream.svelte'],['../WebsocketServerConfig_8svelte.html#ace289ec578986dbcf4f8715072d2bc18',1,'subscribe(displayWebsocketServerStatus):&#160;WebsocketServerConfig.svelte']]],
-  ['subscribelidardrawing_11',['subscribeLidarDrawing',['../Stream_8svelte.html#a3f9af215454d694ab9c05e67ccb478eb',1,'Stream.svelte']]]
+  ['validatebehaviourtree_0',['validateBehaviourTree',['../behaviour__tree_8js.html#ae5f4d3481cf68db2c222cc1848971c14',1,'behaviour_tree.js']]]
 ];

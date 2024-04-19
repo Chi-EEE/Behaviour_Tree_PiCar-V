@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['h1_0',['h1',['../NotFound_8svelte.html#a723b78d0156e8e1f1e02f2522aa72666',1,'NotFound.svelte']]],
-  ['helpertext_1',['helperText',['../WebsocketServerConfig_8svelte.html#a9e2bbe3cf55f7274e13f6e99b6233be5',1,'WebsocketServerConfig.svelte']]]
+  ['main_5fpane_5fsize_5f0_5fstore_0',['main_pane_size_0_store',['../home__store_8js.html#a19b6944fb3a7451af2d0ea9db621ad92',1,'home_store.js']]],
+  ['main_5fpane_5fsize_5f1_5fstore_1',['main_pane_size_1_store',['../home__store_8js.html#ac73e4f9ed9fc2c0799f66720929901bf',1,'home_store.js']]]
 ];

@@ -9,7 +9,7 @@ var rollup_8config_8js =
     [ "polyfills", "rollup_8config_8js.html#a0b22d171d6eefcda9b154fad05f5e8c1", null ],
     [ "production", "rollup_8config_8js.html#af8021c5ab9880ccfb68599a020c97bd5", null ],
     [ "resolve", "rollup_8config_8js.html#a4f43d96eba609427909ea43beff4450e", null ],
-    [ "svelte", "rollup_8config_8js.html#aab3e6f09eda944874a706e36906d2529", null ],
+    [ "svelte", "rollup_8config_8js.html#ad9f5a36d21c2985f3017c38d5e0a45c3", null ],
     [ "tailwindConfig", "rollup_8config_8js.html#aaa0ecc3bb46c330f24202fec7ceb1e3e", null ],
     [ "tailwindcss", "rollup_8config_8js.html#a82f76c52e8de0e5f15be1a65632aa3db", null ]
 ];

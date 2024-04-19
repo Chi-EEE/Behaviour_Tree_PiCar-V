@@ -101,12 +101,12 @@ $(document).ready(function(){initNavTree('websocket__store_8js.html',''); initRe
 Functions</h2></td></tr>
 <tr class="memitem:a8b1e2258a5b1bdd06f0fbae9e50f6e4c"><td class="memItemLeft" align="right" valign="top">function async&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="websocket__store_8js.html#a8b1e2258a5b1bdd06f0fbae9e50f6e4c">main</a> ()</td></tr>
 <tr class="separator:a8b1e2258a5b1bdd06f0fbae9e50f6e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac659e77b07a932a0a6c0c8fcbc07ba4f"><td class="memItemLeft" align="right" valign="top">window api&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="websocket__store_8js.html#ac659e77b07a932a0a6c0c8fcbc07ba4f">onMessage</a> ((value)=&gt; { value=JSON.parse(value);<a class="el" href="BehaviourTreeHandler_8svelte.html#aaf952930c76829bcdedb9f08c9180569">lidar_stream.set</a>(value.lidar);<a class="el" href="BehaviourTreeHandler_8svelte.html#aaf952930c76829bcdedb9f08c9180569">camera_stream.set</a>(value.frame_buffer);})</td></tr>
+<tr class="memitem:ac659e77b07a932a0a6c0c8fcbc07ba4f"><td class="memItemLeft" align="right" valign="top">window api&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="websocket__store_8js.html#ac659e77b07a932a0a6c0c8fcbc07ba4f">onMessage</a> ((value)=&gt; { value=JSON.parse(value);lidar_stream.set(value.lidar);camera_stream.set(value.frame_buffer);})</td></tr>
 <tr class="separator:ac659e77b07a932a0a6c0c8fcbc07ba4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a59be084da8908b7d77ff34b25cd84488"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="websocket__store_8js.html#a59be084da8908b7d77ff34b25cd84488">import</a> { writable } from '<a class="el" href="rollup_8config_8js.html#aab3e6f09eda944874a706e36906d2529">svelte</a>/store'</td></tr>
+<tr class="memitem:a59be084da8908b7d77ff34b25cd84488"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="websocket__store_8js.html#a59be084da8908b7d77ff34b25cd84488">import</a> { writable } from '<a class="el" href="rollup_8config_8js.html#ad9f5a36d21c2985f3017c38d5e0a45c3">svelte</a>/store'</td></tr>
 <tr class="separator:a59be084da8908b7d77ff34b25cd84488"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a165aa85554dfd503251cdbb2a38fd6a8"><td class="memItemLeft" align="right" valign="top">export <a class="el" href="behaviour__tree_8js.html#a92b303b76a3f942ea819498907d5e83c">const</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="websocket__store_8js.html#a165aa85554dfd503251cdbb2a38fd6a8">websocket_server_connection_state</a> = writable(false)</td></tr>
 <tr class="separator:a165aa85554dfd503251cdbb2a38fd6a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,7 +152,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">{ value=JSON.parse(value);<a class="el" href="BehaviourTreeHandler_8svelte.html#aaf952930c76829bcdedb9f08c9180569">lidar_stream.set</a>(value.lidar);<a class="el" href="BehaviourTreeHandler_8svelte.html#aaf952930c76829bcdedb9f08c9180569">camera_stream.set</a>(value.frame_buffer);}&#160;</td>
+          <td class="paramtype">{ value=JSON.parse(value);lidar_stream.set(value.lidar);camera_stream.set(value.frame_buffer);}&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -187,7 +187,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">import { writable } from '<a class="el" href="rollup_8config_8js.html#aab3e6f09eda944874a706e36906d2529">svelte</a>/store'</td>
+          <td class="memname">import { writable } from '<a class="el" href="rollup_8config_8js.html#ad9f5a36d21c2985f3017c38d5e0a45c3">svelte</a>/store'</td>
         </tr>
       </table>
 </div><div class="memdoc">
