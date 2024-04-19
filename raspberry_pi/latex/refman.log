@@ -1,0 +1,3386 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.4.19)  19 APR 2024 19:04
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**refman
+(./refman.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-01-21>
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Rollback for package 'array' requested -> date 2016-10-06.
+         Best approximation is the release introduced on 2016-10-06.
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array-2016-10-06.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen139
+\extrarowheight=\dimen140
+\NC@list=\toks16
+\extratabsurround=\skip49
+\backup@length=\skip50
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
+Applying: [2015/01/01] Old fixltx2e package on input line 46.
+
+
+Package fixltx2e Warning: fixltx2e is not required with releases after 2015
+(fixltx2e)                All fixes are now in the LaTeX kernel.
+(fixltx2e)                See the latexrelease package for details.
+
+Already applied: [0000/00/00] Old fixltx2e package on input line 53.
+) (./doxygen.sty
+Package: doxygen 
+ (/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 2021/01/29 v2.0g defines alltt environment
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count194
+\calc@Bcount=\count195
+\calc@Adimen=\dimen141
+\calc@Bdimen=\dimen142
+\calc@Askip=\skip51
+\calc@Bskip=\skip52
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count196
+\calc@Cskip=\skip53
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count197
+\float@exts=\toks17
+\float@box=\box50
+\@float@everytoks=\toks18
+\@floatcapt=\box51
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks19
+\verbatim@line=\toks20
+\verbatim@in@stream=\read2
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+\everycr=\toks21
+\minrowclearance=\skip54
+)
+\rownum=\count198
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+)
+(./longtable_doxygen.sty
+Package: longtable_doxygen 2014/10/28 v4.11 Multi-page Table package (DPC) - fr
+ozen version for doxygen
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count199
+\LTcapwidth=\dimen143
+\LT@head=\box52
+\LT@firsthead=\box53
+\LT@foot=\box54
+\LT@lastfoot=\box55
+\LT@cols=\count266
+\LT@rows=\count267
+\c@LT@tables=\count268
+\c@LT@chunks=\count269
+\LT@p@ftn=\toks22
+) (./tabu_doxygen.sty
+Package: tabu_doxygen 2011/02/26 v2.8 - flexible LaTeX tabulars (FC), frozen ve
+rsion for doxygen
+
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box56
+\sift@deathcycles=\count270
+\@vwid@loff=\dimen144
+\@vwid@roff=\dimen145
+)
+\c@taburow=\count271
+\tabu@nbcols=\count272
+\tabu@cnt=\count273
+\tabu@Xcol=\count274
+\tabu@alloc=\count275
+\tabu@nested=\count276
+\tabu@target=\dimen146
+\tabu@spreadtarget=\dimen147
+\tabu@naturalX=\dimen148
+\tabucolX=\dimen149
+\tabu@Xsum=\dimen150
+\extrarowdepth=\dimen151
+\abovetabulinesep=\dimen152
+\belowtabulinesep=\dimen153
+\tabustrutrule=\dimen154
+\tabu@thebody=\toks23
+\tabu@footnotes=\toks24
+\tabu@box=\box57
+\tabu@arstrutbox=\box58
+\tabu@hleads=\box59
+\tabu@vleads=\box60
+\tabu@cellskip=\skip59
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2021/12/21 4.1b verbatim text (tvz,hv)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks25
+)
+\FV@CodeLineNo=\count277
+\FV@InFile=\read3
+\FV@TabBox=\box61
+\c@FancyVerbLine=\count278
+\FV@StepNumber=\count279
+\FV@OutFile=\write3
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen155
+\TX@old@table=\dimen156
+\TX@old@col=\dimen157
+\TX@target=\dimen158
+\TX@delta=\dimen159
+\TX@cols=\count280
+\TX@ftn=\toks26
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2021/10/28 v1.9b multicolumn formatting (FMi)
+\c@tracingmulticols=\count281
+\mult@box=\box62
+\multicol@leftmargin=\dimen160
+\c@unbalance=\count282
+\c@collectmore=\count283
+\doublecol@number=\count284
+\multicoltolerance=\count285
+\multicolpretolerance=\count286
+\full@width=\dimen161
+\page@free=\dimen162
+\premulticols=\dimen163
+\postmulticols=\dimen164
+\multicolsep=\skip60
+\multicolbaselineskip=\skip61
+\partial@page=\box63
+\last@line=\box64
+\maxbalancingoverflow=\dimen165
+\mult@rightbox=\box65
+\mult@grightbox=\box66
+\mult@firstbox=\box67
+\mult@gfirstbox=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\@tempa=\box103
+\@tempa=\box104
+\c@minrows=\count287
+\c@columnbadness=\count288
+\c@finalcolumnbadness=\count289
+\last@try=\dimen166
+\multicolovershoot=\dimen167
+\multicolundershoot=\dimen168
+\mult@nat@firstbox=\box105
+\colbreak@box=\box106
+\mc@col@check@num=\count290
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip62
+\multirow@cntb=\count291
+\multirow@dima=\skip63
+\bigstrutjot=\dimen169
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hanging/hanging.sty
+Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
+\h@ngcommawd=\skip64
+\h@ngfstopwd=\skip65
+\h@ngquotewd=\skip66
+\h@ngdquotewd=\skip67
+\h@ngquerywd=\skip68
+\h@ngexclwd=\skip69
+\h@ngcolonwd=\skip70
+\h@ngscolonwd=\skip71
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2020/08/19 v1.3 Adjusting TeX boxes (trim, clip, ...)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks27
+\XKV@tempa@toks=\toks28
+)
+\XKV@depth=\count292
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen170
+\Gin@req@width=\dimen171
+)
+(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box107
+)
+\tc@llx=\dimen172
+\tc@lly=\dimen173
+\tc@urx=\dimen174
+\tc@ury=\dimen175
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen176
+\adjbox@Height=\dimen177
+\adjbox@Depth=\dimen178
+\adjbox@Totalheight=\dimen179
+\adjbox@pwidth=\dimen180
+\adjbox@pheight=\dimen181
+\adjbox@pdepth=\dimen182
+\adjbox@ptotalheight=\dimen183
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count293
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks29
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/stackengine/stackengine.sty
+Package: stackengine 2021/07/22 v4.11\ Stacking text and objects in convenient 
+ways
+
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count294
+)
+(/usr/share/texlive/texmf-dist/tex/generic/listofitems/listofitems.sty
+(/usr/share/texlive/texmf-dist/tex/generic/listofitems/listofitems.tex
+\loi_cnt_foreach_nest=\count295
+\loi_nestcnt=\count296
+)
+Package: listofitems 2019/08/21 v1.63 Grab items in lists using user-specified 
+sep char (CT)
+)
+\c@@stackindex=\count297
+\@boxshift=\skip72
+\stack@tmplength=\skip73
+\temp@stkl=\skip74
+\@stackedboxwidth=\skip75
+\@addedbox=\box108
+\@anchorbox=\box109
+\@insetbox=\box110
+\se@backgroundbox=\box111
+\stackedbox=\box112
+\@centerbox=\box113
+\c@ROWcellindex@=\count298
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip76
+\enit@outerparindent=\dimen184
+\enit@toks=\toks30
+\enit@inbox=\box114
+\enit@count@id=\count299
+\enitdp@description=\count300
+)
+(/usr/share/texlive/texmf-dist/tex/generic/alphalph/alphalph.sty
+Package: alphalph 2019/12/09 v2.6 Convert numbers to letters (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box115
+\UL@hyphenbox=\box116
+\UL@skip=\skip77
+\UL@hook=\toks31
+\UL@height=\dimen185
+\UL@pe=\count301
+\UL@pixel=\dimen186
+\ULC@box=\box117
+Package: ulem 2019/11/18
+\ULdepth=\dimen187
+)
+\xrefbox=\box118
+\xreflength=\skip78
+\CodeWidthChar=\skip79
+\CodeHeightChar=\skip80
+\DoxyCodeWidth=\skip81
+\c@DoxyEnumeratei=\count302
+\c@DoxyEnumerateii=\count303
+\c@DoxyEnumerateiii=\count304
+\c@DoxyEnumerateiv=\count305
+\c@DoxyEnumeratev=\count306
+\c@DoxyEnumeratevi=\count307
+\c@DoxyEnumeratevii=\count308
+\c@DoxyEnumerateviii=\count309
+\c@DoxyEnumerateix=\count310
+\c@DoxyEnumeratex=\count311
+\c@DoxyEnumeratexi=\count312
+\c@DoxyEnumeratexii=\count313
+\enitdp@DoxyEnumerate=\count314
+\enitdp@DoxyItemize=\count315
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks32
+\inpenc@posthook=\toks33
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/wasysym.sty
+Package: wasysym 2020/01/19 v2.4 Wasy-2 symbol support package
+\symwasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 93.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty
+Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/courier.sty
+Package: courier 2020/03/25 PSNFSS-v9.3 (WaS) 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/sectsty/sectsty.sty
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count316
+\Gm@cntv=\count317
+\c@Gm@tempcnt=\count318
+\Gm@bindingoffset=\dimen188
+\Gm@wd@mp=\dimen189
+\Gm@odd@mp=\dimen190
+\Gm@even@mp=\dimen191
+\Gm@layoutwidth=\dimen192
+\Gm@layoutheight=\dimen193
+\Gm@layouthoffset=\dimen194
+\Gm@layoutvoffset=\dimen195
+\Gm@dimlist=\toks34
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
+rs
+\f@nch@headwidth=\skip82
+\f@nch@O@elh=\skip83
+\f@nch@O@erh=\skip84
+\f@nch@O@olh=\skip85
+\f@nch@O@orh=\skip86
+\f@nch@O@elf=\skip87
+\f@nch@O@erf=\skip88
+\f@nch@O@olf=\skip89
+\f@nch@O@orf=\skip90
+)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip91
+\bibsep=\skip92
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count319
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip93
+\cftbeforetoctitleskip=\skip94
+\cftaftertoctitleskip=\skip95
+\cftbeforepartskip=\skip96
+\cftpartnumwidth=\skip97
+\cftpartindent=\skip98
+\cftbeforechapskip=\skip99
+\cftchapindent=\skip100
+\cftchapnumwidth=\skip101
+\cftbeforesecskip=\skip102
+\cftsecindent=\skip103
+\cftsecnumwidth=\skip104
+\cftbeforesubsecskip=\skip105
+\cftsubsecindent=\skip106
+\cftsubsecnumwidth=\skip107
+\cftbeforesubsubsecskip=\skip108
+\cftsubsubsecindent=\skip109
+\cftsubsubsecnumwidth=\skip110
+\cftbeforeparaskip=\skip111
+\cftparaindent=\skip112
+\cftparanumwidth=\skip113
+\cftbeforesubparaskip=\skip114
+\cftsubparaindent=\skip115
+\cftsubparanumwidth=\skip116
+\cftbeforeloftitleskip=\skip117
+\cftafterloftitleskip=\skip118
+\cftbeforefigskip=\skip119
+\cftfigindent=\skip120
+\cftfignumwidth=\skip121
+\c@lofdepth=\count320
+\c@lotdepth=\count321
+\cftbeforelottitleskip=\skip122
+\cftafterlottitleskip=\skip123
+\cftbeforetabskip=\skip124
+\cfttabindent=\skip125
+\cfttabnumwidth=\skip126
+)
+\@indexfile=\write4
+\openout4 = `refman.idx'.
+
+
+Writing index file refman.idx
+(/usr/share/texlive/texmf-dist/tex/latex/newunicodechar/newunicodechar.sty
+Package: newunicodechar 2018/04/08 v1.2 Defining Unicode characters
+)
+
+Package newunicodechar Warning: Redefining Unicode character on input line 116.
+
+
+
+Package newunicodechar Warning: Redefining Unicode character on input line 117.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen196
+\Hy@linkcounter=\count322
+\Hy@pagecounter=\count323
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
+File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel la
+nguages
+)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count324
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing ON on input line 4210.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/backref.sty
+Package: backref 2021/02/04 v1.41 Bibliographical back referencing
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+))
+\c@Hy@tempcnt=\count325
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen197
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+)
+\Fld@menulength=\count326
+\Field@Width=\dimen198
+\Fld@charsize=\dimen199
+Package hyperref Info: Hyper figures OFF on input line 6076.
+Package hyperref Info: Link nesting OFF on input line 6081.
+Package hyperref Info: Hyper index ON on input line 6084.
+Package hyperref Info: backreferencing ON on input line 6089.
+Package hyperref Info: Link coloring OFF on input line 6096.
+Package hyperref Info: Link coloring with OCG OFF on input line 6101.
+Package hyperref Info: PDF/A mode OFF on input line 6106.
+LaTeX Info: Redefining \ref on input line 6146.
+LaTeX Info: Redefining \pageref on input line 6150.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count327
+\c@Item=\count328
+\c@Hfootnote=\count329
+
+
+LaTeX Warning: Command \LT@p@ftntext  has changed.
+               Check if current package is valid.
+
+)
+Package hyperref Info: Driver: hpdftex.
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
+\Fld@listcount=\count330
+\c@bookmark@seq@number=\count331
+\Hy@SectionHShift=\skip127
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 136.
+Package hyperref Info: Option `unicode' set `true' on input line 136.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen256
+\captionmargin@=\dimen257
+\captionwidth=\dimen258
+\caption@tempdima=\dimen259
+\caption@indent=\dimen260
+\caption@parindent=\dimen261
+\caption@hangindent=\dimen262
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count332
+\c@continuedfloat=\count333
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/etoc/etoc.sty
+Package: etoc 2021/09/23 v1.09e Completely customisable TOCs (JFB)
+\Etoc@toctoks=\toks35
+\c@etoc@tocid=\count334
+\c@etoc@tocdepth=\count335
+\etoc@framed@titlebox=\box119
+\etoc@framed@contentsbox=\box120
+)
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 15
+2.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
+)
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 152.
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count336
+\l__pdf_internal_box=\box121
+)
+(./refman.aux)
+\openout1 = `refman.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count337
+\scratchdimen=\dimen263
+\scratchbox=\box122
+\nofMPsegments=\count338
+\nofMParguments=\count339
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count340
+\MPscratchDim=\dimen264
+\MPnumerator=\count341
+\makeMPintoPDFobject=\count342
+\everyMPtoPDFconversion=\toks37
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-31.2056pt
+* \headheight=12.0pt
+* \headsep=18.06749pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 152.
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count343
+)
+LaTeX Info: Redefining \ref on input line 152.
+LaTeX Info: Redefining \pageref on input line 152.
+LaTeX Info: Redefining \nameref on input line 152.
+
+(./refman.out) (./refman.out)
+\@outlinefile=\write5
+\openout5 = `refman.out'.
+
+Package backref Info: ** backref set up for natbib ** on input line 152.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+\Etoc@tf=\read4
+Package hyperref Info: Option `pageanchor' set `false' on input line 160.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 160.
+
+Package hyperref Info: Option `unicode' set `true' on input line 160.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 12.9599pt on input line 165.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 6.29996pt on input line 165.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 165
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 165
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 16
+5.
+
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
+)
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 10.79993pt on input line 167.
+ [1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+]
+\tf@toc=\write6
+\openout6 = `refman.toc'.
+
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 8.99994pt on input line 173.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 6.29996pt on input line 173.
+ [1] [2]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 173.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 17
+3.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+) [3] [4] [5] [6]
+[7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18
+
+]
+Package hyperref Info: Option `pageanchor' set `true' on input line 176.
+
+Chapter 1.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 18.66588pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 18.66588pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 18.66588pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 22.39185pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 22.39185pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 22.39185pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 6.29996pt on input line 178.
+(./md_daemon_install_README.tex
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 12.9599pt on input line 1.
+) [1
+
+] [2
+
+]
+Chapter 2.
+(./md_daemon_README.tex [3])
+Underfull \hbox (badness 10000) in paragraph at lines 10--186
+\T1/pcr/m/n/10 sudo systemctl stop [] && xmake && xmake install --admin []
+ []
+
+[4]
+Chapter 3.
+(./md_README.tex
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 3
+.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 3.
+)
+[5
+
+] [6
+
+]
+Chapter 4.
+(./md_SETUP.tex) [7] [8
+
+]
+Chapter 5.
+(./md_tui_README.tex) [9] [10
+
+]
+Chapter 6.
+(./namespaces.tex) [11] [12
+
+]
+Chapter 7.
+(./hierarchy.tex) [13] [14
+
+]
+Chapter 8.
+(./annotated.tex) [15] [16
+
+]
+Chapter 9.
+(./files.tex [17]) [18]
+Chapter 10.
+(./namespacebehaviour__tree.tex
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 10.79993pt on input line 3.
+) (./namespacecar.tex)
+(./namespacecar_1_1configuration.tex) (./namespacecar_1_1display.tex)
+(./namespacecar_1_1display_1_1console.tex [19
+
+])
+(./namespacecar_1_1display_1_1console_1_1component.tex)
+(./namespacecar_1_1display_1_1console_1_1component_1_1debug.tex)
+(./namespacecar_1_1display_1_1console_1_1component_1_1main.tex)
+(./namespacecar_1_1display_1_1console_1_1component_1_1settings.tex)
+(./namespacecar_1_1display_1_1console_1_1screen.tex)
+(./namespacecar_1_1plugin.tex [20]) (./namespacecar_1_1system.tex)
+(./namespacecar_1_1system_1_1device.tex)
+(./namespacecar_1_1system_1_1device_1_1lidar.tex)
+(./namespacecar_1_1system_1_1logging.tex [21])
+(./namespacecar_1_1system_1_1messaging.tex)
+(./namespacecar_1_1system_1_1movement.tex)
+(./namespacecar_1_1system_1_1movement_1_1controller.tex) [22]
+Chapter 11.
+
+(./classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController.t
+ex
+Package epstopdf Info: Source file: <classcar_1_1system_1_1movement_1_1controll
+er_1_1AbstractMovementController.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3980 bytes
+(epstopdf)             Output file: <classcar_1_1system_1_1movement_1_1controll
+er_1_1AbstractMovementController-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:12
+(epstopdf)                    size: 5604 bytes
+(epstopdf)             Command: <repstopdf --outfile=classcar_1_1system_1_1move
+ment_1_1controller_1_1AbstractMovementController-eps-converted-to.pdf classcar_
+1_1system_1_1movement_1_1controller_1_1AbstractMovementController.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController-
+eps-converted-to.pdf>
+<classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController-eps
+-converted-to.pdf, id=4084, 501.875pt x 107.93324pt>
+File: classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementControlle
+r-eps-converted-to.pdf Graphic file (type pdf)
+<use classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController
+-eps-converted-to.pdf>
+Package pdftex.def Info: classcar_1_1system_1_1movement_1_1controller_1_1Abstra
+ctMovementController-eps-converted-to.pdf  used on input line 10.
+(pdftex.def)             Requested size: 264.60638pt x 56.9055pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::initialize ( )
+ []
+
+[23
+
+]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 63.
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Camera[]Servo1[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Camera[]Servo2[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Front[]Wheels[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Rear[]Left[]Wheel[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Rear[]Left[]Wheel[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Rear[]Left[]Wheel[]
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Rear[]Right[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Rear[]Right[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Rear[]Right[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Rear[]Wheels[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Rear[]Wheels[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::set[]Rear[]Wheels[]Speed
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::stop ( ) [pure
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
+\T1/pcr/m/n/8 virtual void car[]::system[]::movement[]::controller[]::[]Abstrac
+t[]Movement[]Controller[]::terminate ( )
+ []
+
+) (./classBackWheels.tex [26]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 57.
+ [27] [28])
+(./classbehaviour__tree_1_1BehaviourTreeHandler.tex [29]
+Package epstopdf Info: Source file: <classbehaviour__tree_1_1BehaviourTreeHandl
+er.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3852 bytes
+(epstopdf)             Output file: <classbehaviour__tree_1_1BehaviourTreeHandl
+er-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:12
+(epstopdf)                    size: 5845 bytes
+(epstopdf)             Command: <repstopdf --outfile=classbehaviour__tree_1_1Be
+haviourTreeHandler-eps-converted-to.pdf classbehaviour__tree_1_1BehaviourTreeHa
+ndler.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classbehaviour__tree_1_1BehaviourTreeHandler-eps-converted-to.pdf>
+<classbehaviour__tree_1_1BehaviourTreeHandler-eps-converted-to.pdf, id=4234, 50
+1.875pt x 166.60242pt>
+File: classbehaviour__tree_1_1BehaviourTreeHandler-eps-converted-to.pdf Graphic
+ file (type pdf)
+<use classbehaviour__tree_1_1BehaviourTreeHandler-eps-converted-to.pdf>
+Package pdftex.def Info: classbehaviour__tree_1_1BehaviourTreeHandler-eps-conve
+rted-to.pdf  used on input line 10.
+(pdftex.def)             Requested size: 171.41635pt x 56.9055pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+\T1/pcr/m/n/8 std[]::string behaviour[]_[]tree[]::[]Behaviour[]Tree[]Handler[]:
+:get[]Name ( ) [inline], [final], [override],
+ []
+
+[30]
+Overfull \hbox (21.81996pt too wide) in paragraph at lines 76--77
+|  \T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$ [] $>$ \T1/pcr/m/sl/8
+ car[]_[]system \T1/pcr/m/n/8 ) [inline], [final], [override],
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 behav
+iour[]_[]tree[]::[]Behaviour[]Tree[]Handler[]::car[]_[]system
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
+\T1/pcr/m/n/8 std[]::chrono[]::time[]_[]point$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 s
+td[]::chrono[]::steady[]_[]clock$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 behaviour[]_[
+]tree[]::[]Behaviour[]Tree[]Handler[]
+ []
+
+[32]) (./classcar_1_1system_1_1device_1_1CameraDevice.tex
+Overfull \hbox (50.93391pt too wide) in paragraph at lines 27--28
+[]\T1/phv/m/n/10 static tl[]::expected$\OML/cmm/m/it/10 <$ \T1/phv/m/n/10 std[]
+::unique[]_[]ptr$\OML/cmm/m/it/10 <$ [] $>$\T1/phv/m/n/10 , std[]::string $\OML
+/cmm/m/it/10 >$ [] \T1/phv/m/n/10 (std[]::shared[]_[]ptr$\OML/cmm/m/it/10 <$ []
+
+ []
+
+[33]
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 7.19995pt on input line 68.
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+\T1/pcr/m/n/8 tl[]::expected$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 std[]::unique[]_[
+]ptr$\OML/cmm/m/it/8 <$ [] $>$\T1/pcr/m/n/8 , std[]::string $\OML/cmm/m/it/8 >$
+ \T1/pcr/m/n/8 car[]::system[]::device[]::[]Camera[]
+ []
+
+[34] [35]
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 car[]
+::system[]::device[]::[]Camera[]Device[]::configuration
+ []
+
+[36]) (./classcar_1_1display_1_1console_1_1CarConsole.tex
+Underfull \hbox (badness 7451) in paragraph at lines 10--12
+[][] \T1/phv/m/n/10 (std[]::shared[]_[]ptr$\OML/cmm/m/it/10 <$ [] $>$ []\T1/phv
+/m/n/10 , std[]::shared[]_[]ptr$\OML/cmm/m/it/10 <$ [] $>$
+ []
+
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 car[]
+::display[]::console[]::[]Car[]Console[]::json[]_[]configuration
+ []
+
+
+Overfull \hbox (17.7145pt too wide) in paragraph at lines 76--77
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 car[]
+::display[]::console[]::[]Car[]Console[]::vector[]_[]sink [private] 
+ []
+
+) (./classbehaviour__tree_1_1CarContext.tex
+Package epstopdf Info: Source file: <classbehaviour__tree_1_1CarContext.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3808 bytes
+(epstopdf)             Output file: <classbehaviour__tree_1_1CarContext-eps-con
+verted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:12
+(epstopdf)                    size: 5047 bytes
+(epstopdf)             Command: <repstopdf --outfile=classbehaviour__tree_1_1Ca
+rContext-eps-converted-to.pdf classbehaviour__tree_1_1CarContext.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classbehaviour__tree_1_1CarContext-eps-converted-to.pdf>
+<classbehaviour__tree_1_1CarContext-eps-converted-to.pdf, id=4425, 501.875pt x 
+229.42714pt>
+File: classbehaviour__tree_1_1CarContext-eps-converted-to.pdf Graphic file (typ
+e pdf)
+<use classbehaviour__tree_1_1CarContext-eps-converted-to.pdf>
+Package pdftex.def Info: classbehaviour__tree_1_1CarContext-eps-converted-to.pd
+f  used on input line 10.
+(pdftex.def)             Requested size: 124.48056pt x 56.9055pt.
+ [38]
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$ [] $>$ \T1/pcr/m/n/8 beh
+aviour[]_[]tree[]::[]Car[]Context[]::get[]Car[]System ( ) const
+ []
+
+[39]) (./classcar_1_1system_1_1CarSystem.tex
+Package epstopdf Info: Source file: <classcar_1_1system_1_1CarSystem.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3868 bytes
+(epstopdf)             Output file: <classcar_1_1system_1_1CarSystem-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:12
+(epstopdf)                    size: 5821 bytes
+(epstopdf)             Command: <repstopdf --outfile=classcar_1_1system_1_1CarS
+ystem-eps-converted-to.pdf classcar_1_1system_1_1CarSystem.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classcar_1_1system_1_1CarSystem-eps-converted-to.pdf>
+<classcar_1_1system_1_1CarSystem-eps-converted-to.pdf, id=4458, 501.875pt x 149
+.25763pt>
+File: classcar_1_1system_1_1CarSystem-eps-converted-to.pdf Graphic file (type p
+df)
+<use classcar_1_1system_1_1CarSystem-eps-converted-to.pdf>
+Package pdftex.def Info: classcar_1_1system_1_1CarSystem-eps-converted-to.pdf  
+used on input line 10.
+(pdftex.def)             Requested size: 191.34242pt x 56.9055pt.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.09995pt on input line 31.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 31.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 31.
+ [40]
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
+\T1/pcr/m/n/8 const std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$ [] $>$ \T1/pcr/m/n
+/8 car[]::system[]::[]Car[]System[]::get[]Configuration ( ) const
+ []
+
+[41] [42] [43]) (./structcar_1_1configuration_1_1Configuration.tex [44]
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
+\T1/pcr/m/n/8 std[]::chrono[]::milliseconds car[]::configuration[]::[]Configura
+tion[]::behaviour[]_[]tree[]_[]update[]_[]ms[]_[]interval
+ []
+
+[45])
+(./classcar_1_1display_1_1console_1_1component_1_1main_1_1ConnectButton.tex
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 car[]
+::display[]::console[]::component[]::main[]::[]Connect[]Button[]::car[]_[]syste
+m
+ []
+
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+\T1/pcr/m/n/8 std[]::string car[]::display[]::console[]::component[]::main[]::[
+]Connect[]Button[]::main[]_[]button[]_[]text = "Start
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+\T1/pcr/m/n/8 std[]::function$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 void(std[]::strin
+g)$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 car[]::display[]::console[]::component[]::m
+ain[]::[]Connect[]Button[]::on[]_[]
+ []
+
+) (./classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugEnabler.tex
+[48]
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+\T1/pcr/m/n/8 Component[]Decorator car[]::display[]::console[]::component[]::de
+bug[]::[]Debug[]Enabler[]::get[]Warning[]Modal ( )
+ []
+
+[49]
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+\T1/pcr/m/n/8 constexpr auto car[]::display[]::console[]::component[]::debug[]:
+:[]Debug[]Enabler[]::[]DEBUG[]_[][]ENABLE[]_[][]WARNING[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+\T1/pcr/m/n/8 _[][]MESSAGE = "Enabling debug mode temporarily disables connecti
+ng to online. Are you sure you
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
+\T1/pcr/m/n/8 constexpr auto car[]::display[]::console[]::component[]::debug[]:
+:[]Debug[]Enabler[]::[]DEBUG[]_[][]MODE[]_[][]DISABLED[]_[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+\T1/pcr/m/n/8 constexpr auto car[]::display[]::console[]::component[]::debug[]:
+:[]Debug[]Enabler[]::[]DEBUG[]_[][]MODE[]_[][]ENABLED[]_[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
+\T1/pcr/m/n/8 constexpr auto car[]::display[]::console[]::component[]::debug[]:
+:[]Debug[]Enabler[]::[]DEBUG[]_[][]MODE[]_[][]WAIT[]_[][]MESSAGE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+\T1/pcr/m/n/8 bool car[]::display[]::console[]::component[]::debug[]::[]Debug[]
+Enabler[]::display[]_[]warn[]_[]debug[]_[]modal = false
+ []
+
+
+Overfull \hbox (39.1562pt too wide) in paragraph at lines 120--121
+\T1/pcr/m/n/8 std[]::string car[]::display[]::console[]::component[]::debug[]::
+[]Debug[]Enabler[]::status = []
+ []
+
+[50])
+(./classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugLidarCheckbox.t
+ex
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 void(bool)$\OML/cm
+m/m/it/8 >$ \T1/pcr/m/n/8 & car[]::display[]::console[]::component[]::debug[]::
+[]Debug[]Lidar[]Checkbox[]::get[]
+ []
+
+[51]
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Lidar[]Checkbox[]::lidar[]_[]motor[]_[]checkbox[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+\T1/pcr/m/n/8 constexpr auto car[]::display[]::console[]::component[]::debug[]:
+:[]Debug[]Lidar[]Checkbox[]::[]LIDAR[]_[][]MOTOR[]_[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+\T1/pcr/m/n/8 bool car[]::display[]::console[]::component[]::debug[]::[]Debug[]
+Lidar[]Checkbox[]::lidar[]_[]motor[]_[]enabled = false
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
+\T1/pcr/m/n/8 constexpr auto car[]::display[]::console[]::component[]::debug[]:
+:[]Debug[]Lidar[]Checkbox[]::[]LIDAR[]_[][]MOTOR[]_[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+\T1/pcr/m/n/8 bool car[]::display[]::console[]::component[]::debug[]::[]Debug[]
+Lidar[]Checkbox[]::lidar[]_[]motor[]_[]loading[]_[]debounce
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 void(bool)$\OML/cmm
+/m/it/8 >$ \T1/pcr/m/n/8 car[]::display[]::console[]::component[]::debug[]::[]D
+ebug[]Lidar[]Checkbox[]::lidar[]_[]
+ []
+
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+\T1/pcr/m/n/8 std[]::string car[]::display[]::console[]::component[]::debug[]::
+[]Debug[]Lidar[]Checkbox[]::lidar[]_[]motor[]_[]status =
+ []
+
+)
+(./classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMessagingTextbo
+x.tex
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+\T1/pcr/m/n/8 ftxui[]::[]Component car[]::display[]::console[]::component[]::de
+bug[]::[]Debug[]Messaging[]Textbox[]::element ( )
+ []
+
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Messaging[]Textbox[]::messaging[]_[]container
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Messaging[]Textbox[]::messaging[]_[]textbox
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Messaging[]Textbox[]::messaging[]_[]title
+ []
+
+)
+(./classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRendere
+r.tex [54] [55]
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+\T1/pcr/m/n/8 car[]::display[]::console[]::component[]::debug[]::[]Debug[]Movem
+ent[]Renderer[]::[]Debug[]Movement[]Renderer ( )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+\T1/pcr/m/n/8 ftxui[]::[]Component car[]::display[]::console[]::component[]::de
+bug[]::[]Debug[]Movement[]Renderer[]::element ( )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+\T1/pcr/m/n/8 const int car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::get[]Camera[]Servo1[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
+\T1/pcr/m/n/8 const int car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::get[]Camera[]Servo2[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
+\T1/pcr/m/n/8 const int car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::get[]Front[]Wheels[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+\T1/pcr/m/n/8 const int car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::get[]Rear[]Left[]Wheel[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
+\T1/pcr/m/n/8 const int car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::get[]Rear[]Right[]Wheel[]
+ []
+
+[56]
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 void(bool)$\OML/cm
+m/m/it/8 >$ \T1/pcr/m/n/8 & car[]::display[]::console[]::component[]::debug[]::
+[]Debug[]Movement[]Renderer[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
+\T1/pcr/m/n/8 bool car[]::display[]::console[]::component[]::debug[]::[]Debug[]
+Movement[]Renderer[]::update[]Camera[]Servo1 ( )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+\T1/pcr/m/n/8 bool car[]::display[]::console[]::component[]::debug[]::[]Debug[]
+Movement[]Renderer[]::update[]Camera[]Servo2 ( )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+\T1/pcr/m/n/8 bool car[]::display[]::console[]::component[]::debug[]::[]Debug[]
+Movement[]Renderer[]::update[]Front[]Wheels ( )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+\T1/pcr/m/n/8 bool car[]::display[]::console[]::component[]::debug[]::[]Debug[]
+Movement[]Renderer[]::update[]Rear[]Wheels ( )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::camera[]_[]servo[]_[]1[]_[]
+ []
+
+[57]
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::camera[]_[]servo[]_[]1[]_[]angle[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::camera[]_[]servo[]_[]2[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::camera[]_[]servo[]_[]2[]_[]angle[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
+\T1/pcr/m/n/8 constexpr int car[]::display[]::console[]::component[]::debug[]::
+[]Debug[]Movement[]Renderer[]::[]DEFAULT[]_[][]FRONT[]_[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
+\T1/pcr/m/n/8 constexpr int car[]::display[]::console[]::component[]::debug[]::
+[]Debug[]Movement[]Renderer[]::[]DEFAULT[]_[][]REAR[]_[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::front[]_[]wheels[]_[]angle[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::front[]_[]wheels[]_[]angle[]_[]
+ []
+
+[58]
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::previous[]_[]camera[]_[]servo[]_[]1[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::previous[]_[]camera[]_[]servo[]_[]2[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::previous[]_[]front[]_[]wheels[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--248
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::previous[]_[]rear[]_[]left[]_[]wheel[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::previous[]_[]rear[]_[]right[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::previous[]_[]rear[]_[]wheels[]_[]
+ []
+
+[59]
+Underfull \hbox (badness 10000) in paragraph at lines 265--266
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::rear[]_[]left[]_[]wheel[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::rear[]_[]left[]_[]wheel[]_[]speed[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::rear[]_[]right[]_[]wheel[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--284
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::rear[]_[]right[]_[]wheel[]_[]speed[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
+\T1/pcr/m/n/8 bool car[]::display[]::console[]::component[]::debug[]::[]Debug[]
+Movement[]Renderer[]::rear[]_[]wheel[]_[]direction =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+\T1/pcr/m/n/8 constexpr auto car[]::display[]::console[]::component[]::debug[]:
+:[]Debug[]Movement[]Renderer[]::[]REAR[]_[][]WHEEL[]_[][]
+ []
+
+[60]
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
+\T1/pcr/m/n/8 bool car[]::display[]::console[]::component[]::debug[]::[]Debug[]
+Movement[]Renderer[]::rear[]_[]wheel[]_[]direction[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
+\T1/pcr/m/n/8 constexpr auto car[]::display[]::console[]::component[]::debug[]:
+:[]Debug[]Movement[]Renderer[]::[]REAR[]_[][]WHEEL[]_[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 319--320
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 void(bool)$\OML/cmm
+/m/it/8 >$ \T1/pcr/m/n/8 car[]::display[]::console[]::component[]::debug[]::[]D
+ebug[]Movement[]Renderer[]::rear[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
+\T1/pcr/m/n/8 std[]::string car[]::display[]::console[]::component[]::debug[]::
+[]Debug[]Movement[]Renderer[]::rear[]_[]wheel[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::rear[]_[]wheel[]_[]menu[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::rear[]_[]wheel[]_[]speed[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
+\T1/pcr/m/n/8 int car[]::display[]::console[]::component[]::debug[]::[]Debug[]M
+ovement[]Renderer[]::rear[]_[]wheels[]_[]speed[]_[]slider[]
+ []
+
+[61]
+Underfull \hbox (badness 10000) in paragraph at lines 349--350
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::servo[]_[]menu[]_[]entry
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::debug[]::[]De
+bug[]Movement[]Renderer[]::slider[]_[]container
+ []
+
+) (./classcar_1_1system_1_1device_1_1DeviceManager.tex [62]
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+\T1/pcr/m/n/8 tl[]::expected$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 std[]::unique[]_[
+]ptr$\OML/cmm/m/it/8 <$ [] $>$\T1/pcr/m/n/8 , std[]::string $\OML/cmm/m/it/8 >$
+ \T1/pcr/m/n/8 car[]::system[]::device[]::[]Device[]
+ []
+
+[63] [64])
+(./classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController.tex
+Package epstopdf Info: Source file: <classcar_1_1system_1_1movement_1_1controll
+er_1_1DummyMovementController.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3980 bytes
+(epstopdf)             Output file: <classcar_1_1system_1_1movement_1_1controll
+er_1_1DummyMovementController-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:13
+(epstopdf)                    size: 5606 bytes
+(epstopdf)             Command: <repstopdf --outfile=classcar_1_1system_1_1move
+ment_1_1controller_1_1DummyMovementController-eps-converted-to.pdf classcar_1_1
+system_1_1movement_1_1controller_1_1DummyMovementController.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController-eps
+-converted-to.pdf>
+<classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController-eps-co
+nverted-to.pdf, id=4952, 501.875pt x 107.93324pt>
+File: classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController-e
+ps-converted-to.pdf Graphic file (type pdf)
+<use classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController-ep
+s-converted-to.pdf>
+Package pdftex.def Info: classcar_1_1system_1_1movement_1_1controller_1_1DummyM
+ovementController-eps-converted-to.pdf  used on input line 10.
+(pdftex.def)             Requested size: 264.60638pt x 56.9055pt.
+ [65]
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::controller[]::[]Dummy[]Movement
+[]Controller[]::initialize ( ) [inline],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::controller[]::[]Dummy[]Movement
+[]Controller[]::set[]Rear[]Left[]Wheel[]Direction[]To[]
+ []
+
+[66]
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::controller[]::[]Dummy[]Movement
+[]Controller[]::set[]Rear[]Left[]Wheel[]Direction[]To[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::controller[]::[]Dummy[]Movement
+[]Controller[]::set[]Rear[]Right[]Wheel[]Direction[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::controller[]::[]Dummy[]Movement
+[]Controller[]::set[]Rear[]Right[]Wheel[]Direction[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::controller[]::[]Dummy[]Movement
+[]Controller[]::set[]Rear[]Wheels[]Direction[]To[]
+ []
+
+[67]
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::controller[]::[]Dummy[]Movement
+[]Controller[]::set[]Rear[]Wheels[]Direction[]To[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::controller[]::[]Dummy[]Movement
+[]Controller[]::stop ( ) [final], [override],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::controller[]::[]Dummy[]Movement
+[]Controller[]::terminate ( ) [inline],
+ []
+
+)
+(./structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct.te
+x [68]) (./classcar_1_1configuration_1_1JsonConfiguration.tex [69]
+Overfull \hbox (23.5786pt too wide) in paragraph at lines 43--44
+\T1/pcr/m/n/8 tl[]::expected$\OML/cmm/m/it/8 <$ []\T1/pcr/m/n/8 , std[]::string
+ $\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 car[]::configuration[]::[]Json[]Configuratio
+n[]::load[]Configuration
+ []
+
+[70]) (./classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice.tex
+Package epstopdf Info: Source file: <classcar_1_1system_1_1device_1_1lidar_1_1L
+idarDevice.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 4074 bytes
+(epstopdf)             Output file: <classcar_1_1system_1_1device_1_1lidar_1_1L
+idarDevice-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:13
+(epstopdf)                    size: 5575 bytes
+(epstopdf)             Command: <repstopdf --outfile=classcar_1_1system_1_1devi
+ce_1_1lidar_1_1LidarDevice-eps-converted-to.pdf classcar_1_1system_1_1device_1_
+1lidar_1_1LidarDevice.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice-eps-converted-to.pdf>
+<classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice-eps-converted-to.pdf, id=
+5044, 501.875pt x 83.30121pt>
+File: classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice-eps-converted-to.pdf
+ Graphic file (type pdf)
+<use classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice-eps-converted-to.pdf>
+
+Package pdftex.def Info: classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice-e
+ps-converted-to.pdf  used on input line 10.
+(pdftex.def)             Requested size: 342.84036pt x 56.9055pt.
+ [71] [72])
+(./classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy.tex
+Package epstopdf Info: Source file: <classcar_1_1system_1_1device_1_1lidar_1_1L
+idarDummy.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3896 bytes
+(epstopdf)             Output file: <classcar_1_1system_1_1device_1_1lidar_1_1L
+idarDummy-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:13
+(epstopdf)                    size: 5247 bytes
+(epstopdf)             Command: <repstopdf --outfile=classcar_1_1system_1_1devi
+ce_1_1lidar_1_1LidarDummy-eps-converted-to.pdf classcar_1_1system_1_1device_1_1
+lidar_1_1LidarDummy.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy-eps-converted-to.pdf>
+<classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy-eps-converted-to.pdf, id=5
+104, 501.875pt x 171.58102pt>
+File: classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy-eps-converted-to.pdf 
+Graphic file (type pdf)
+<use classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy-eps-converted-to.pdf>
+Package pdftex.def Info: classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy-ep
+s-converted-to.pdf  used on input line 10.
+(pdftex.def)             Requested size: 166.44632pt x 56.9055pt.
+ [73]
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+\T1/pcr/m/n/8 void car[]::system[]::device[]::lidar[]::[]Lidar[]Dummy[]::discon
+nect ( ) [inline], [final], [override],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+\T1/pcr/m/n/8 void car[]::system[]::device[]::lidar[]::[]Lidar[]Dummy[]::initia
+lize ( ) [inline], [final], [override],
+ []
+
+[74]
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+\T1/pcr/m/n/8 void car[]::system[]::device[]::lidar[]::[]Lidar[]Dummy[]::termin
+ate ( ) [inline], [final], [override],
+ []
+
+) (./classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.tex
+Package epstopdf Info: Source file: <classcar_1_1system_1_1device_1_1lidar_1_1L
+idarScanner.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3900 bytes
+(epstopdf)             Output file: <classcar_1_1system_1_1device_1_1lidar_1_1L
+idarScanner-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:13
+(epstopdf)                    size: 5432 bytes
+(epstopdf)             Command: <repstopdf --outfile=classcar_1_1system_1_1devi
+ce_1_1lidar_1_1LidarScanner-eps-converted-to.pdf classcar_1_1system_1_1device_1
+_1lidar_1_1LidarScanner.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner-eps-converted-to.pdf>
+<classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner-eps-converted-to.pdf, id
+=5141, 501.875pt x 166.60242pt>
+File: classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner-eps-converted-to.pd
+f Graphic file (type pdf)
+<use classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner-eps-converted-to.pdf
+>
+Package pdftex.def Info: classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner-
+eps-converted-to.pdf  used on input line 10.
+(pdftex.def)             Requested size: 171.41635pt x 56.9055pt.
+ [75]
+Overfull \hbox (45.30876pt too wide) in paragraph at lines 33--34
+[]\T1/phv/m/n/10 static tl[]::expected$\OML/cmm/m/it/10 <$ \T1/phv/m/n/10 std[]
+::unique[]_[]ptr$\OML/cmm/m/it/10 <$ [] $>$\T1/phv/m/n/10 , std[]::string $\OML
+/cmm/m/it/10 >$ [] \T1/phv/m/n/10 (std[]::shared[]_[]ptr$\OML/cmm/m/it/10 <$ []
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+\T1/pcr/m/n/8 static tl[]::expected$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 std[]::uni
+que[]_[]ptr$\OML/cmm/m/it/8 <$ [] $>$\T1/pcr/m/n/8 , std[]::string $\OML/cmm/m/
+it/8 >$ \T1/pcr/m/n/8 car[]::system[]::device[]
+ []
+
+[76]
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+\T1/pcr/m/n/8 void car[]::system[]::device[]::lidar[]::[]Lidar[]Scanner[]::disc
+onnect ( ) [inline], [final], [override],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+\T1/pcr/m/n/8 void car[]::system[]::device[]::lidar[]::[]Lidar[]Scanner[]::init
+ialize ( ) [inline], [final], [override],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+\T1/pcr/m/n/8 void car[]::system[]::device[]::lidar[]::[]Lidar[]Scanner[]::term
+inate ( ) [inline], [final], [override],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+\T1/pcr/m/n/8 void car[]::system[]::device[]::lidar[]::[]Lidar[]Scanner[]::upda
+te ( ) [inline], [final], [override],
+ []
+
+[77]
+Overfull \hbox (42.16011pt too wide) in paragraph at lines 136--137
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 car[]
+::system[]::device[]::lidar[]::[]Lidar[]Scanner[]::configuration[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+\T1/pcr/m/n/8 std[]::variant$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 std[]::function$\O
+ML/cmm/m/it/8 <$\T1/pcr/m/n/8 std[]::vector$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 Mea
+sure$\OML/cmm/m/it/8 >$\T1/pcr/m/n/8 ()$\OML/cmm/m/it/8 >$\T1/pcr/m/n/8 , nullp
+tr[]_[]t$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 car[]::system[]::device[]::lidar[]
+ []
+
+) (./classcar_1_1display_1_1console_1_1screen_1_1LoggingScreen.tex [78]
+[79])
+(./classcar_1_1display_1_1console_1_1component_1_1main_1_1MainErrorModal.tex
+[80] [81])
+(./classcar_1_1display_1_1console_1_1component_1_1main_1_1MainExitModal.tex
+[82]) (./classcar_1_1display_1_1console_1_1screen_1_1MainScreen.tex [83]
+[84]) (./classcar_1_1system_1_1messaging_1_1MessagingSystem.tex [85]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 48.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 6.29996pt on input line 48.
+ [86]
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 void(const std[]::
+string, const rapidjson[]::[]Document &)$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 & car
+[]::system[]::messaging[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+\T1/pcr/m/n/8 tl[]::expected$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 std[]::string, st
+d[]::string $\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 car[]::system[]::messaging[]::[]M
+essaging[]System[]::get[]First[]
+ []
+
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 8.99994pt on input line 114.
+
+Underfull \hbox (badness 10000) detected at line 114
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 void(const std[]::
+string)$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 & car[]::system[]::messaging[]::[]Mess
+aging[]System[]::get[]Message[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 void(const std[]::
+string, const rapidjson[]::[]Document &)$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 & car
+[]::system[]::messaging[]
+ []
+
+[87] [88]
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
+\T1/pcr/m/n/8 const tl[]::expected$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 nullptr[]_[
+]t, std[]::string $\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 car[]::system[]::messaging[
+]::[]Messaging[]System[]::try[]
+ []
+
+[89]
+Underfull \hbox (badness 10000) detected at line 244
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 void(const std[]::s
+tring, const rapidjson[]::[]Document&)$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 car[]::
+system[]::messaging[]::[]
+ []
+
+
+Overfull \hbox (37.3601pt too wide) in paragraph at lines 260--261
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 car[]
+::system[]::messaging[]::[]Messaging[]System[]::configuration[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--273
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 void(const std[]::s
+tring)$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 car[]::system[]::messaging[]::[]Messagi
+ng[]System[]::message[]_[]signal[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 void(std[]::string)
+$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 car[]::system[]::messaging[]::[]Messaging[]Sy
+stem[]::on[]_[]disconnect[]_[]signal[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+\T1/pcr/m/n/8 nod[]::signal$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 void(const std[]::s
+tring, const rapidjson[]::[]Document&)$\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 car[]::
+system[]::messaging[]::[]
+ []
+
+[90]) (./classcar_1_1system_1_1movement_1_1MovementSystem.tex [91] [92]
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::[]Movement[]System[]::set[]Rear
+[]Left[]Wheel[]Direction[]To[]Backward ( ) const
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::[]Movement[]System[]::set[]Rear
+[]Right[]Wheel[]Direction[]To[]Backward ( ) const
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
+\T1/pcr/m/n/8 void car[]::system[]::movement[]::[]Movement[]System[]::set[]Rear
+[]Right[]Wheel[]Direction[]To[]Forward ( ) const
+ []
+
+[93]
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+\T1/pcr/m/n/8 std[]::unique[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 car[]
+::system[]::movement[]::[]Movement[]System[]::movement[]_[]
+ []
+
+[94]) (./classcar_1_1plugin_1_1Plugin.tex
+Package epstopdf Info: Source file: <classcar_1_1plugin_1_1Plugin.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3852 bytes
+(epstopdf)             Output file: <classcar_1_1plugin_1_1Plugin-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:13
+(epstopdf)                    size: 5848 bytes
+(epstopdf)             Command: <repstopdf --outfile=classcar_1_1plugin_1_1Plug
+in-eps-converted-to.pdf classcar_1_1plugin_1_1Plugin.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classcar_1_1plugin_1_1Plugin-eps-converted-to.pdf>
+<classcar_1_1plugin_1_1Plugin-eps-converted-to.pdf, id=5486, 501.875pt x 166.60
+242pt>
+File: classcar_1_1plugin_1_1Plugin-eps-converted-to.pdf Graphic file (type pdf)
+
+<use classcar_1_1plugin_1_1Plugin-eps-converted-to.pdf>
+Package pdftex.def Info: classcar_1_1plugin_1_1Plugin-eps-converted-to.pdf  use
+d on input line 10.
+(pdftex.def)             Requested size: 171.41635pt x 56.9055pt.
+ [95]) (./classcar_1_1plugin_1_1PluginManager.tex [96])
+(./classrpi__daemon.tex
+Package epstopdf Info: Source file: <classrpi__daemon.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3774 bytes
+(epstopdf)             Output file: <classrpi__daemon-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:13
+(epstopdf)                    size: 4540 bytes
+(epstopdf)             Command: <repstopdf --outfile=classrpi__daemon-eps-conve
+rted-to.pdf classrpi__daemon.eps>
+(epstopdf)             \includegraphics on input line 6.
+Package epstopdf Info: Output file is already uptodate.
+ <./classrpi__daemon-eps-converted-to.pdf>
+<classrpi__daemon-eps-converted-to.pdf, id=5536, 501.875pt x 466.8642pt>
+File: classrpi__daemon-eps-converted-to.pdf Graphic file (type pdf)
+<use classrpi__daemon-eps-converted-to.pdf>
+Package pdftex.def Info: classrpi__daemon-eps-converted-to.pdf  used on input l
+ine 6.
+(pdftex.def)             Requested size: 61.17198pt x 56.9055pt.
+ [97] [98]
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
+\T1/pcr/m/n/8 std[]::chrono[]::milliseconds rpi[]_[]daemon[]::connection[]_[]ms
+[]_[]interval = std[]::chrono[]::milliseconds(1000)
+ []
+
+[99])
+(./classcar_1_1display_1_1console_1_1component_1_1settings_1_1SettingsEditConfi
+g.tex [100]
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 car[]
+::display[]::console[]::component[]::settings[]::[]Settings[]Edit[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+\T1/pcr/m/n/8 Component car[]::display[]::console[]::component[]::settings[]::[
+]Settings[]Edit[]Config[]::input[]_[]settings[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+\T1/pcr/m/n/8 std[]::shared[]_[]ptr$\OML/cmm/m/it/8 <$[]$>$ \T1/pcr/m/n/8 car[]
+::display[]::console[]::component[]::settings[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+\T1/pcr/m/n/8 std[]::string car[]::display[]::console[]::component[]::settings[
+]::[]Settings[]Edit[]Config[]::placeholder =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+\T1/pcr/m/n/8 std[]::string car[]::display[]::console[]::component[]::settings[
+]::[]Settings[]Edit[]Config[]::settings[]_[]file[]_[]path
+ []
+
+[101]) (./classcar_1_1display_1_1console_1_1screen_1_1SettingsScreen.tex
+[102]
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+[] \T1/pcr/m/n/8 car[]::display[]::console[]::screen[]::[]Settings[]Screen[]::d
+ebug[]_[]messaging[]_[]text[]_[]box
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+[] \T1/pcr/m/n/8 car[]::display[]::console[]::screen[]::[]Settings[]Screen[]::d
+ebug[]_[]movement[]_[]renderer
+ []
+
+) (./classTB6612.tex [103] [104] [105])
+(./classcar_1_1system_1_1logging_1_1VectorSink.tex
+Package epstopdf Info: Source file: <classcar_1_1system_1_1logging_1_1VectorSin
+k.eps>
+(epstopdf)                    date: 2024-04-19 19:03:18
+(epstopdf)                    size: 3890 bytes
+(epstopdf)             Output file: <classcar_1_1system_1_1logging_1_1VectorSin
+k-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-19 19:04:14
+(epstopdf)                    size: 6420 bytes
+(epstopdf)             Command: <repstopdf --outfile=classcar_1_1system_1_1logg
+ing_1_1VectorSink-eps-converted-to.pdf classcar_1_1system_1_1logging_1_1VectorS
+ink.eps>
+(epstopdf)             \includegraphics on input line 10.
+Package epstopdf Info: Output file is already uptodate.
+ <./classcar_1_1system_1_1logging_1_1VectorSink-eps-converted-to.pdf>
+<classcar_1_1system_1_1logging_1_1VectorSink-eps-converted-to.pdf, id=5704, 501
+.875pt x 156.83594pt>
+File: classcar_1_1system_1_1logging_1_1VectorSink-eps-converted-to.pdf Graphic 
+file (type pdf)
+<use classcar_1_1system_1_1logging_1_1VectorSink-eps-converted-to.pdf>
+Package pdftex.def Info: classcar_1_1system_1_1logging_1_1VectorSink-eps-conver
+ted-to.pdf  used on input line 10.
+(pdftex.def)             Requested size: 182.09924pt x 56.9055pt.
+ [106]
+Underfull \hbox (badness 10000) in paragraph at lines 55--57
+\T1/pcr/m/n/8 const std[]::vector$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 std[]::strin
+g $\OML/cmm/m/it/8 >$ \T1/pcr/m/n/8 & []$\OML/cmm/m/it/8 <$ \T1/pcr/m/n/8 Mutex
+ $\OML/cmm/m/it/8 >$[]\T1/pcr/m/n/8 ::get[]_[]log[]_[]
+ []
+
+[107]) [108]
+Chapter 12.
+(./behaviour__tree_2src_2main_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--20
+
+ []
+
+) (./daemon_2src_2main_8cpp.tex [109
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 3--18
+
+ []
+
+[110]) (./tui_2src_2main_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--21
+
+ []
+
+[111]) (./BehaviourTreeHandler_8hpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--11
+
+ []
+
+) (./BehaviourTreeHandler_8hpp_source.tex [112]
+Overfull \hbox (111.75548pt too wide) in paragraph at lines 33--33
+\T1/pcr/m/n/7 BehaviourTreeParser::instance().setCustomNodeParser(std::make_sha
+red<node::custom::CarCustomNodeParser>(CarCustomNodeParser()));  
+ []
+
+
+Overfull \hbox (52.95552pt too wide) in paragraph at lines 34--34
+\T1/pcr/m/n/7 this->[]->getMessagingSystem()->getCommandSignal().connect(std::b
+ind(&[], 
+ []
+
+[113] [114]) (./CarContext_8hpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./CarContext_8hpp_source.tex) (./Configuration_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--7
+
+ []
+
+[115]) (./Configuration_8h_source.tex) (./Plugin_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+[116]) (./Plugin_8h_source.tex) (./PluginManager_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--8
+
+ []
+
+) (./PluginManager_8h_source.tex [117]) (./CarSystem_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--9
+
+ []
+
+[118]) (./CarSystem_8h_source.tex [119]) (./CameraDevice_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--7
+
+ []
+
+) (./CameraDevice_8h_source.tex [120]) (./DeviceManager_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--9
+
+ []
+
+[121]) (./DeviceManager_8h_source.tex) (./LidarDevice_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+[122]) (./LidarDevice_8h_source.tex) (./LidarDummy_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+[123]) (./LidarDummy_8h_source.tex) (./LidarScanner_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--9
+
+ []
+
+[124]) (./LidarScanner_8h_source.tex [125]) (./VectorSink_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--9
+
+ []
+
+) (./VectorSink_8h_source.tex [126]) (./MessagingSystem_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--12
+
+ []
+
+[127]) (./MessagingSystem_8h_source.tex [128]) (./StreamType_8h.tex)
+(./StreamType_8h_source.tex [129]) (./AbstractMovementController_8h.tex)
+(./AbstractMovementController_8h_source.tex) (./DeviceMovementController_8h.tex
+) (./DeviceMovementController_8h_source.tex [130])
+(./DummyMovementController_8h.tex [131]
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+) (./DummyMovementController_8h_source.tex) (./RearWheel_8h.tex)
+(./RearWheel_8h_source.tex [132]) (./Servo_8h.tex) (./Servo_8h_source.tex
+[133]) (./MovementSystem_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./MovementSystem_8h_source.tex [134] [135]) (./CarSystem_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--17
+
+ []
+
+) (./CameraDevice_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+) (./DeviceManager_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./MessagingSystem_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--14
+
+ []
+
+[136]) (./DeviceMovementController_8cpp.tex)
+(./DummyMovementController_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./RearWheel_8cpp.tex) (./Servo_8cpp.tex) (./test__front__wheels_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--7
+
+ []
+
+[137] [138]) (./test__rear__wheels_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--11
+
+ []
+
+) (./daemon_2install_2README_8md.tex [139]) (./daemon_2README_8md.tex)
+(./README_8md.tex) (./tui_2README_8md.tex) (./TB6612_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./TB6612_8h_source.tex [140]) (./TB6612_8cpp.tex) (./SETUP_8md.tex)
+(./JsonConfiguration_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--13
+
+ []
+
+) (./CarConsole_8cpp.tex [141]
+Underfull \hbox (badness 10000) in paragraph at lines 3--9
+
+ []
+
+) (./CarConsole_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--9
+
+ []
+
+) (./CarConsole_8h_source.tex [142]) (./DebugEnabler_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+[143]) (./DebugLidarCheckbox_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./DebugMessagingTextbox_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+[144]) (./DebugMovementRenderer_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+[145]) (./ConnectButton_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./MainErrorModal_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+[146]) (./MainExitModal_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+[147]) (./SettingsEditConfig_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+[148]) (./LoggingScreen_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+) (./MainScreen_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--9
+
+ []
+
+[149]) (./SettingsScreen_8cxx.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--12
+
+ []
+
+[150]) [151] [152
+
+] (./refman.ind
+Overfull \hbox (19.97931pt too wide) in paragraph at lines 77--79
+[]| \T1/phv/m/n/10 car::display::console::component::main::ConnectButton,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 109--111
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+[153
+
+
+]
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 112--114
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 115--117
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 118--120
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (31.68616pt too wide) in paragraph at lines 169--171
+[]\T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+ []
+
+
+Overfull \hbox (46.02298pt too wide) in paragraph at lines 181--183
+[]\T1/phv/m/n/10 car::display::console::component::debug::DebugMessagingTextbox
+,
+ []
+
+
+Overfull \hbox (51.27869pt too wide) in paragraph at lines 190--192
+[]\T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRenderer
+,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
+[]| \T1/phv/m/n/10 pre-vi-ous_rear_right_wheel_speed_slider_value,
+ []
+
+
+Overfull \hbox (21.92421pt too wide) in paragraph at lines 225--227
+[]| \T1/phv/m/n/10 REAR_WHEEL_DIRECTION_BACKWARD_MESSAGE,
+ []
+
+
+Overfull \hbox (16.41637pt too wide) in paragraph at lines 230--231
+[]| \T1/phv/m/n/10 REAR_WHEEL_DIRECTION_FORWARD_MESSAGE,
+ []
+
+[154]
+Underfull \hbox (badness 10000) in paragraph at lines 243--245
+[]\T1/phv/m/n/10 car::display::console::component::main::ConnectButton,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--263
+[]\T1/phv/m/n/10 car::display::console::component::main::MainExitModal,
+ []
+
+
+Overfull \hbox (25.9888pt too wide) in paragraph at lines 269--271
+[]\T1/phv/m/n/10 car::display::console::component::settings::SettingsEditConfig
+,
+ []
+
+[155]
+Overfull \hbox (35.85304pt too wide) in paragraph at lines 459--461
+[]\T1/phv/m/n/10 car::system::messaging::MessagingSystem::FirstMessageStruct,
+ []
+
+[156]
+Overfull \hbox (33.67482pt too wide) in paragraph at lines 466--468
+[]\T1/phv/m/n/10 car::system::movement::controller::AbstractMovementController,
+
+ []
+
+
+Overfull \hbox (31.61415pt too wide) in paragraph at lines 483--485
+[]\T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (19.97931pt too wide) in paragraph at lines 524--526
+[]| \T1/phv/m/n/10 car::display::console::component::main::ConnectButton,
+ []
+
+
+Overfull \hbox (45.9888pt too wide) in paragraph at lines 526--528
+[]| \T1/phv/m/n/10 car::display::console::component::settings::SettingsEditConf
+ig,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 541--543
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (16.58447pt too wide) in paragraph at lines 545--547
+[]\T1/phv/m/n/10 common/include/behaviour_tree/BehaviourTreeHandler.hpp,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 555--557
+[]\T1/phv/m/n/10 common/include/car/system/device/CameraDevice.h,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 557--559
+[]\T1/phv/m/n/10 common/include/car/system/device/DeviceManager.h,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 559--561
+[]\T1/phv/m/n/10 common/include/car/system/device/lidar/LidarDevice.h,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--563
+[]\T1/phv/m/n/10 common/include/car/system/device/lidar/LidarDummy.h,
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 565--567
+[]\T1/phv/m/n/10 common/include/car/system/logging/VectorSink.h, [][]126[][],
+ []
+
+
+Overfull \hbox (20.94969pt too wide) in paragraph at lines 567--569
+[]\T1/phv/m/n/10 common/include/car/system/messaging/MessagingSystem.h,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--571
+[]\T1/phv/m/n/10 common/include/car/system/messaging/StreamType.h,
+ []
+
+
+Overfull \hbox (98.20396pt too wide) in paragraph at lines 571--573
+[]\T1/phv/m/n/10 common/include/car/system/movement/controller/AbstractMovement
+Controller.h,
+ []
+
+
+Overfull \hbox (92.5163pt too wide) in paragraph at lines 573--575
+[]\T1/phv/m/n/10 common/include/car/system/movement/controller/DeviceMovementCo
+ntroller.h,
+ []
+
+
+Overfull \hbox (96.1433pt too wide) in paragraph at lines 575--577
+[]\T1/phv/m/n/10 common/include/car/system/movement/controller/DummyMovementCon
+troller.h,
+ []
+
+
+Overfull \hbox (23.31664pt too wide) in paragraph at lines 577--579
+[]\T1/phv/m/n/10 common/include/car/system/movement/devices/RearWheel.h,
+ []
+
+
+Overfull \hbox (17.22377pt too wide) in paragraph at lines 581--583
+[]\T1/phv/m/n/10 common/include/car/system/movement/MovementSystem.h,
+ []
+
+[157]
+Underfull \hbox (badness 10000) in paragraph at lines 586--588
+[]\T1/phv/m/n/10 common/src/car/system/device/DeviceManager.cpp,
+ []
+
+
+Overfull \hbox (85.50554pt too wide) in paragraph at lines 590--592
+[]\T1/phv/m/n/10 common/src/car/system/movement/controller/DeviceMovementContro
+ller.cpp,
+ []
+
+
+Overfull \hbox (89.13254pt too wide) in paragraph at lines 592--594
+[]\T1/phv/m/n/10 common/src/car/system/movement/controller/DummyMovementControl
+ler.cpp,
+ []
+
+
+Overfull \hbox (16.30588pt too wide) in paragraph at lines 594--596
+[]\T1/phv/m/n/10 common/src/car/system/movement/devices/RearWheel.cpp,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 596--598
+[]\T1/phv/m/n/10 common/src/car/system/movement/devices/Servo.cpp,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 601--603
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (55.85304pt too wide) in paragraph at lines 604--606
+[]| \T1/phv/m/n/10 car::system::messaging::MessagingSystem::FirstMessageStruct,
+
+ []
+
+
+Overfull \hbox (19.97931pt too wide) in paragraph at lines 620--622
+[]| \T1/phv/m/n/10 car::display::console::component::main::ConnectButton,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 644--646
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 647--649
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 659--661
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 662--664
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 665--667
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 675--677
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+
+Overfull \hbox (66.02298pt too wide) in paragraph at lines 682--684
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMessagingTextb
+ox,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 689--691
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 696--698
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 699--701
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+[158]
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 714--716
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 720--722
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+
+Overfull \hbox (66.02298pt too wide) in paragraph at lines 722--724
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMessagingTextb
+ox,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 724--726
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (19.97931pt too wide) in paragraph at lines 726--728
+[]| \T1/phv/m/n/10 car::display::console::component::main::ConnectButton,
+ []
+
+
+Overfull \hbox (24.45235pt too wide) in paragraph at lines 728--730
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainErrorModal,
+ []
+
+
+Overfull \hbox (19.45746pt too wide) in paragraph at lines 730--732
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainExitModal,
+ []
+
+
+Overfull \hbox (45.9888pt too wide) in paragraph at lines 732--734
+[]| \T1/phv/m/n/10 car::display::console::component::settings::SettingsEditConf
+ig,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 741--743
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (24.45235pt too wide) in paragraph at lines 744--746
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainErrorModal,
+ []
+
+
+Overfull \hbox (55.85304pt too wide) in paragraph at lines 747--749
+[]| \T1/phv/m/n/10 car::system::messaging::MessagingSystem::FirstMessageStruct,
+
+ []
+
+
+Overfull \hbox (24.45235pt too wide) in paragraph at lines 750--752
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainErrorModal,
+ []
+
+
+Overfull \hbox (19.45746pt too wide) in paragraph at lines 755--757
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainExitModal,
+ []
+
+
+Overfull \hbox (19.45746pt too wide) in paragraph at lines 758--760
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainExitModal,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 776--778
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 779--781
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 792--794
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 795--797
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 800--802
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 817--819
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 823--825
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+[159]
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 844--846
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 847--849
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 850--852
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 861--863
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 889--891
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 891--893
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (45.9888pt too wide) in paragraph at lines 899--901
+[]| \T1/phv/m/n/10 car::display::console::component::settings::SettingsEditConf
+ig,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 908--910
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (45.9888pt too wide) in paragraph at lines 917--919
+[]| \T1/phv/m/n/10 car::display::console::component::settings::SettingsEditConf
+ig,
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 947--949
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 950--952
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 953--955
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 956--958
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 959--961
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 962--964
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+
+Overfull \hbox (51.68616pt too wide) in paragraph at lines 965--967
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugLidarCheckbox,
+
+ []
+
+[160]
+Overfull \hbox (45.9888pt too wide) in paragraph at lines 977--979
+[]| \T1/phv/m/n/10 car::display::console::component::settings::SettingsEditConf
+ig,
+ []
+
+
+Overfull \hbox (19.97931pt too wide) in paragraph at lines 1005--1007
+[]| \T1/phv/m/n/10 car::display::console::component::main::ConnectButton,
+ []
+
+
+Overfull \hbox (19.97931pt too wide) in paragraph at lines 1008--1010
+[]| \T1/phv/m/n/10 car::display::console::component::main::ConnectButton,
+ []
+
+
+Overfull \hbox (19.97931pt too wide) in paragraph at lines 1014--1016
+[]| \T1/phv/m/n/10 car::display::console::component::main::ConnectButton,
+ []
+
+
+Overfull \hbox (24.45235pt too wide) in paragraph at lines 1017--1019
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainErrorModal,
+ []
+
+
+Overfull \hbox (19.45746pt too wide) in paragraph at lines 1022--1024
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainExitModal,
+ []
+
+
+Overfull \hbox (24.45235pt too wide) in paragraph at lines 1030--1032
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainErrorModal,
+ []
+
+
+Overfull \hbox (19.45746pt too wide) in paragraph at lines 1037--1039
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainExitModal,
+ []
+
+
+Overfull \hbox (66.02298pt too wide) in paragraph at lines 1059--1061
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMessagingTextb
+ox,
+ []
+
+
+Overfull \hbox (66.02298pt too wide) in paragraph at lines 1062--1064
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMessagingTextb
+ox,
+ []
+
+
+Overfull \hbox (66.02298pt too wide) in paragraph at lines 1067--1069
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMessagingTextb
+ox,
+ []
+
+
+Overfull \hbox (66.02298pt too wide) in paragraph at lines 1072--1074
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMessagingTextb
+ox,
+ []
+
+
+Overfull \hbox (66.02298pt too wide) in paragraph at lines 1075--1077
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMessagingTextb
+ox,
+ []
+
+
+Overfull \hbox (19.97931pt too wide) in paragraph at lines 1102--1104
+[]| \T1/phv/m/n/10 car::display::console::component::main::ConnectButton,
+ []
+
+[161]
+Overfull \hbox (45.9888pt too wide) in paragraph at lines 1128--1130
+[]| \T1/phv/m/n/10 car::display::console::component::settings::SettingsEditConf
+ig,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1135--1137
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1138--1140
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1141--1143
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1144--1146
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1147--1149
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1150--1152
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1161--1163
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1164--1166
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1167--1169
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1170--1172
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1173--1175
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1176--1178
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1179--1181
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1182--1184
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1185--1187
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1188--1190
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1191--1193
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1194--1196
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1197--1199
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1200--1202
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1206
+[]\T1/phv/m/n/10 repository/packages/t/tb6612/tb6612/include/TB6612.h,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1206--1208
+[]\T1/phv/m/n/10 repository/packages/t/tb6612/tb6612/src/TB6612.cpp,
+ []
+
+[162]
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1246--1248
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1257--1259
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1259--1261
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1263--1265
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1265--1267
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (24.45235pt too wide) in paragraph at lines 1274--1276
+[]| \T1/phv/m/n/10 car::display::console::component::main::MainErrorModal,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1277--1279
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1279--1281
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1287--1289
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1289--1291
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1293--1295
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1295--1297
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1299--1301
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1301--1303
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1305--1307
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1307--1309
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1311--1313
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1313--1315
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1317--1319
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1319--1321
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1323--1325
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1325--1327
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1329--1331
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1331--1333
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1335--1337
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1337--1339
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+[163]
+Overfull \hbox (45.9888pt too wide) in paragraph at lines 1348--1350
+[]| \T1/phv/m/n/10 car::display::console::component::settings::SettingsEditConf
+ig,
+ []
+
+
+Overfull \hbox (45.9888pt too wide) in paragraph at lines 1351--1353
+[]| \T1/phv/m/n/10 car::display::console::component::settings::SettingsEditConf
+ig,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1369--1371
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (22.94943pt too wide) in paragraph at lines 1386--1388
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugEnabler,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1400--1402
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1402--1404
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+
+Overfull \hbox (53.67482pt too wide) in paragraph at lines 1441--1443
+[]| \T1/phv/m/n/10 car::system::movement::controller::AbstractMovementControlle
+r,
+ []
+
+
+Overfull \hbox (51.61415pt too wide) in paragraph at lines 1443--1445
+[]| \T1/phv/m/n/10 car::system::movement::controller::DummyMovementController,
+ []
+
+[164]
+Overfull \hbox (32.22624pt too wide) in paragraph at lines 1470--1472
+[]\T1/phv/m/n/10 tui/src/car/display/console/component/debug/DebugEnabler.cxx,
+ []
+
+
+Overfull \hbox (61.41298pt too wide) in paragraph at lines 1472--1474
+[]\T1/phv/m/n/10 tui/src/car/display/console/component/debug/DebugLidarCheckbox
+.cxx,
+ []
+
+
+Overfull \hbox (75.7498pt too wide) in paragraph at lines 1474--1476
+[]\T1/phv/m/n/10 tui/src/car/display/console/component/debug/DebugMessagingText
+box.cxx,
+ []
+
+
+Overfull \hbox (80.5555pt too wide) in paragraph at lines 1476--1478
+[]\T1/phv/m/n/10 tui/src/car/display/console/component/debug/DebugMovementRende
+rer.cxx,
+ []
+
+
+Overfull \hbox (29.70613pt too wide) in paragraph at lines 1478--1480
+[]\T1/phv/m/n/10 tui/src/car/display/console/component/main/ConnectButton.cxx,
+ []
+
+
+Overfull \hbox (34.17917pt too wide) in paragraph at lines 1480--1482
+[]\T1/phv/m/n/10 tui/src/car/display/console/component/main/MainErrorModal.cxx,
+
+ []
+
+
+Overfull \hbox (29.18428pt too wide) in paragraph at lines 1482--1484
+[]\T1/phv/m/n/10 tui/src/car/display/console/component/main/MainExitModal.cxx,
+ []
+
+
+Overfull \hbox (55.71562pt too wide) in paragraph at lines 1484--1486
+[]\T1/phv/m/n/10 tui/src/car/display/console/component/settings/SettingsEditCon
+fig.cxx,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1486--1488
+[]\T1/phv/m/n/10 tui/src/car/display/console/screen/LoggingScreen.cxx,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1490--1492
+[]\T1/phv/m/n/10 tui/src/car/display/console/screen/SettingsScreen.cxx,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1510--1512
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1513--1515
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1516--1518
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (71.27869pt too wide) in paragraph at lines 1519--1521
+[]| \T1/phv/m/n/10 car::display::console::component::debug::DebugMovementRender
+er,
+ []
+
+
+Overfull \hbox (55.85304pt too wide) in paragraph at lines 1526--1528
+[]| \T1/phv/m/n/10 car::system::messaging::MessagingSystem::FirstMessageStruct,
+
+ []
+
+[165]) (./refman.aux)
+Package rerunfilecheck Info: File `refman.out' has not changed.
+(rerunfilecheck)             Checksum: 8C51B06AE64DB1C4835B2FE5871751EC;167484.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 21689 strings out of 480247
+ 443336 string characters out of 5896151
+ 832297 words of memory out of 5000000
+ 37345 multiletter control sequences out of 15000+600000
+ 533677 words of font info for 109 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 99i,16n,117p,925b,756s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/helvetic/uhvb8ac.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
+vro8a.pfb>
+Output written on refman.pdf (185 pages, 602065 bytes).
+PDF statistics:
+ 8216 PDF objects out of 8907 (max. 8388607)
+ 7900 compressed objects within 79 object streams
+ 1638 named destinations out of 1728 (max. 500000)
+ 5568 words of extra memory for PDF output out of 10000 (max. 10000000)
+
