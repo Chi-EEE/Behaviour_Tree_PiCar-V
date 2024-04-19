@@ -1,3 +1,4 @@
+<!-- ``` -->
 <script>
     import { Button, Input, Modal } from "flowbite-svelte";
 
@@ -51,9 +52,13 @@
                     code: $behaviour_tree_save_modal_code,
                 };
                 api.saveBehaviourTree(behaviour_tree_save_state);
-                behaviour_tree_list.set([...$behaviour_tree_list, behaviour_tree_save_state]);
+                behaviour_tree_list.set([
+                    ...$behaviour_tree_list,
+                    behaviour_tree_save_state,
+                ]);
             }}>Yes</Button
         >
         <Button color="alternative">No</Button>
     </svelte:fragment>
 </Modal>
+<!-- ``` -->

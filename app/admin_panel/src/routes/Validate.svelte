@@ -1,3 +1,4 @@
+<!-- ``` -->
 <script>
     import BehaviourTreeHandler from "../lib/BehaviourTreeHandler.svelte";
 
@@ -34,3 +35,4 @@
         </Pane>
     </Splitpanes>
 </main>
+<!-- ``` -->

@@ -1,3 +1,4 @@
+<!-- ``` -->
 <script>
     import { selected_raspberry_pi_uuid } from "../../store/raspberry_pi_store";
     import xmlFormat from "xml-formatter";
@@ -100,3 +101,4 @@
         >Stop Behaviour Tree</button
     >
 </div>
+<!-- ``` -->
