@@ -55,6 +55,8 @@ jobs:
           cd raspberry_pi/latex
           sudo make
 
+          cd ../..
+
           cd other/latex
           sudo make
 
