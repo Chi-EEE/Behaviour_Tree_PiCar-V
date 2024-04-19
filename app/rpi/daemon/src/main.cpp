@@ -59,7 +59,7 @@ public:
 
         configuration->camera_index = reader.GetInteger("Camera", "camera_index", 0);
         configuration->setCameraFps(reader.GetInteger("Camera", "camera_fps", 60));
-        configuration->use_camera = reader.GetBool("Camera", "use_camera", true);
+        configuration->use_camera = reader.GetBoolean("Camera", "use_camera", true);
 #ifdef __linux
         const std::string default_lidar_port = "/dev/ttyUSB0";
 #else
@@ -68,7 +68,7 @@ public:
         const std::string lidar_port = reader.GetString("Lidar", "lidar_port", default_lidar_port);
         dlog::info(fmt::format("Using lidar port: {}", lidar_port));
         configuration->lidar_port = lidar_port;
-        configuration->use_lidar = reader.GetBool("Lidar", "use_lidar", true);
+        configuration->use_lidar = reader.GetBoolean("Lidar", "use_lidar", true);
 
         configuration->behaviour_tree_update_ms_interval = std::chrono::milliseconds(reader.GetInteger("BehaviourTree", "behaviour_tree_update_ms_interval", 100));
         
@@ -203,13 +203,27 @@ public:
             dlog::alert("Could not load 'rpi_daemon.service'\n");
             return;
         }
-        std::string host = reader.GetString("Host", "host", "");
 
-        dlog::info(fmt::format(R"(Reloading daemon with host: "{}"\n)", host));
+        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{});
+        
+        const std::string host = reader.GetString("RaspberryPi", "host", "");
+        dlog::info(fmt::format("Started daemon with host: {}", host));
+        configuration->host = host;
 
-        std::shared_ptr<Configuration> configuration = std::make_shared<Configuration>(Configuration{
-            host,
-        });
+        configuration->camera_index = reader.GetInteger("Camera", "camera_index", 0);
+        configuration->setCameraFps(reader.GetInteger("Camera", "camera_fps", 60));
+        configuration->use_camera = reader.GetBoolean("Camera", "use_camera", true);
+#ifdef __linux
+        const std::string default_lidar_port = "/dev/ttyUSB0";
+#else
+        const std::string default_lidar_port = "COM3";
+#endif
+        const std::string lidar_port = reader.GetString("Lidar", "lidar_port", default_lidar_port);
+        dlog::info(fmt::format("Using lidar port: {}", lidar_port));
+        configuration->lidar_port = lidar_port;
+        configuration->use_lidar = reader.GetBoolean("Lidar", "use_lidar", true);
+
+        configuration->behaviour_tree_update_ms_interval = std::chrono::milliseconds(reader.GetInteger("BehaviourTree", "behaviour_tree_update_ms_interval", 100));
         
         this->any_configuration_empty = host.empty();
         if (this->any_configuration_empty)
