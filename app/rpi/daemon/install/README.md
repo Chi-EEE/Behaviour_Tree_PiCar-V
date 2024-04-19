@@ -16,6 +16,9 @@ Or use the single command:
 sudo chmod +x ./install_script.sh && systemctl stop rpi_daemon && sudo ./install_script.sh install && sudo systemctl daemon-reload && sudo systemctl start rpi_daemon
 ```
 
+## Enable / Disable Daemon to run on startup
+`sudo systemctl [enable|disable] rpi_daemon`
+
 ## View Logs
 `systemctl status rpi_daemon.service`
 `journalctl -u rpi_daemon`
