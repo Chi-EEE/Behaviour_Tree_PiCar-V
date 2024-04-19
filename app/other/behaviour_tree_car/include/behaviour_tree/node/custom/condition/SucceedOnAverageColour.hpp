@@ -26,7 +26,7 @@ namespace behaviour_tree::node::custom::condition
         const static tl::expected<std::shared_ptr<SucceedOnAverageColour>, std::string> parse(const pugi::xml_node &node, const int index, const std::string &name_attribute)
         {
             std::string hex_colour = node.attribute("hex_colour").as_string();
-            if (!hex_colour.compare(0, 1, "#"))
+            if (hex_colour.compare(0, 1, "#"))
             {
                 hex_colour = "#" + hex_colour;
             }
