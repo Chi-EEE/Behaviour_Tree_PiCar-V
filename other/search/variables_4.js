@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['enabled_0',['enabled',['../classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugEnabler.html#a449e75a9261c2d4151ff32912bcd7521',1,'car::display::console::component::debug::DebugEnabler']]],
-  ['error_5felement_1',['error_element',['../classcar_1_1display_1_1console_1_1component_1_1main_1_1MainErrorModal.html#a1ef7ccbea4b4eef1c3b46821b2736493',1,'car::display::console::component::main::MainErrorModal']]],
-  ['error_5fmessage_2',['error_message',['../structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct.html#ac12b4d1ff719d02618c1a6f4c660fd9c',1,'car::system::messaging::MessagingSystem::FirstMessageStruct']]],
-  ['error_5fmodal_5fshown_3',['error_modal_shown',['../classcar_1_1display_1_1console_1_1component_1_1main_1_1MainErrorModal.html#ad63fab4910bca6d9519540ee2646b5f8',1,'car::display::console::component::main::MainErrorModal']]],
-  ['exe_5fdir_4',['exe_dir',['../classcar_1_1configuration_1_1JsonConfiguration.html#a5f4a77ff39dacc25a2db7bbb5e022e54',1,'car::configuration::JsonConfiguration']]],
-  ['exit_5',['exit',['../classcar_1_1display_1_1console_1_1component_1_1main_1_1MainExitModal.html#a1ad3d1e14c02af1580a5d205d518a970',1,'car::display::console::component::main::MainExitModal']]],
-  ['exit_5fmodal_5fshown_6',['exit_modal_shown',['../classcar_1_1display_1_1console_1_1component_1_1main_1_1MainExitModal.html#afbb0258c29055e88e33d8fcf653dc254',1,'car::display::console::component::main::MainExitModal']]]
+  ['default_5fmotor_5fpwm_0',['DEFAULT_MOTOR_PWM',['../namespacerplidar.html#a2298b87542f6a4a1e9eb2143ba9cf9ab',1,'rplidar']]],
+  ['descriptor_5flen_1',['DESCRIPTOR_LEN',['../namespacerplidar.html#a7a7dd67caebe4aa8ac0a4979e1286b98',1,'rplidar']]],
+  ['direction_5ftype_2',['direction_type',['../classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Drive.html#a3bed194a0a57298276c7499131d9408c',1,'behaviour_tree::node::custom::action::Drive::direction_type()'],['../classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetWheelDirection.html#a7983c523d1b8e11b53cb8a0d31943d36',1,'behaviour_tree::node::custom::action::SetWheelDirection::direction_type()']]],
+  ['distance_3',['distance',['../structrplidar_1_1Measure.html#a9f388735107a844a5031936333093eb0',1,'rplidar::Measure::distance()'],['../classrplidar_1_1ExpressPacket.html#ae8ddd1acf1424b4be771c7b8ef90b908',1,'rplidar::ExpressPacket::distance()']]],
+  ['dsize_4',['dsize',['../structrplidar_1_1ScanInfo.html#ae2687c6bef2e50778a34d118d936f084',1,'rplidar::ScanInfo']]]
 ];

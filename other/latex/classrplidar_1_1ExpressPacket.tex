@@ -1,0 +1,96 @@
+\hypertarget{classrplidar_1_1ExpressPacket}{}\doxysection{rplidar\+::Express\+Packet Class Reference}
+\label{classrplidar_1_1ExpressPacket}\index{rplidar::ExpressPacket@{rplidar::ExpressPacket}}
+
+
+{\ttfamily \#include $<$RPLidar.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classrplidar_1_1ExpressPacket_a33961ea18254009488140f7e04a5311b}{Express\+Packet}} (std\+::vector$<$ uint8\+\_\+t $>$ data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classrplidar_1_1ExpressPacket_abeeff4b6fa6cc68d523b303514e49559}{get\+Sign}} (uint8\+\_\+t value)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ uint16\+\_\+t $>$ \mbox{\hyperlink{classrplidar_1_1ExpressPacket_ae8ddd1acf1424b4be771c7b8ef90b908}{distance}}
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a62769fca277366ef560618259595a080}{angle}}
+\item 
+bool \mbox{\hyperlink{classrplidar_1_1ExpressPacket_aadea49091f4cbb99b8af4ff01037d242}{new\+\_\+scan}}
+\item 
+float \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a7f4d86947e6d4ec8d20bfa92c529b4a8}{start\+\_\+angle}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a2bf003f302f0405623cd603edb499373}{sync1}} = 0xa
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a5f4335adba4b99268cb0c86b8d387c67}{sync2}} = 0x5
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classrplidar_1_1ExpressPacket_a33961ea18254009488140f7e04a5311b}\label{classrplidar_1_1ExpressPacket_a33961ea18254009488140f7e04a5311b}} 
+\index{rplidar::ExpressPacket@{rplidar::ExpressPacket}!ExpressPacket@{ExpressPacket}}
+\index{ExpressPacket@{ExpressPacket}!rplidar::ExpressPacket@{rplidar::ExpressPacket}}
+\doxysubsubsection{\texorpdfstring{ExpressPacket()}{ExpressPacket()}}
+{\footnotesize\ttfamily rplidar\+::\+Express\+Packet\+::\+Express\+Packet (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrplidar_1_1ExpressPacket_abeeff4b6fa6cc68d523b303514e49559}\label{classrplidar_1_1ExpressPacket_abeeff4b6fa6cc68d523b303514e49559}} 
+\index{rplidar::ExpressPacket@{rplidar::ExpressPacket}!getSign@{getSign}}
+\index{getSign@{getSign}!rplidar::ExpressPacket@{rplidar::ExpressPacket}}
+\doxysubsubsection{\texorpdfstring{getSign()}{getSign()}}
+{\footnotesize\ttfamily static int rplidar\+::\+Express\+Packet\+::get\+Sign (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classrplidar_1_1ExpressPacket_a62769fca277366ef560618259595a080}\label{classrplidar_1_1ExpressPacket_a62769fca277366ef560618259595a080}} 
+\index{rplidar::ExpressPacket@{rplidar::ExpressPacket}!angle@{angle}}
+\index{angle@{angle}!rplidar::ExpressPacket@{rplidar::ExpressPacket}}
+\doxysubsubsection{\texorpdfstring{angle}{angle}}
+{\footnotesize\ttfamily std\+::vector$<$float$>$ rplidar\+::\+Express\+Packet\+::angle}
+
+\mbox{\Hypertarget{classrplidar_1_1ExpressPacket_ae8ddd1acf1424b4be771c7b8ef90b908}\label{classrplidar_1_1ExpressPacket_ae8ddd1acf1424b4be771c7b8ef90b908}} 
+\index{rplidar::ExpressPacket@{rplidar::ExpressPacket}!distance@{distance}}
+\index{distance@{distance}!rplidar::ExpressPacket@{rplidar::ExpressPacket}}
+\doxysubsubsection{\texorpdfstring{distance}{distance}}
+{\footnotesize\ttfamily std\+::vector$<$uint16\+\_\+t$>$ rplidar\+::\+Express\+Packet\+::distance}
+
+\mbox{\Hypertarget{classrplidar_1_1ExpressPacket_aadea49091f4cbb99b8af4ff01037d242}\label{classrplidar_1_1ExpressPacket_aadea49091f4cbb99b8af4ff01037d242}} 
+\index{rplidar::ExpressPacket@{rplidar::ExpressPacket}!new\_scan@{new\_scan}}
+\index{new\_scan@{new\_scan}!rplidar::ExpressPacket@{rplidar::ExpressPacket}}
+\doxysubsubsection{\texorpdfstring{new\_scan}{new\_scan}}
+{\footnotesize\ttfamily bool rplidar\+::\+Express\+Packet\+::new\+\_\+scan}
+
+\mbox{\Hypertarget{classrplidar_1_1ExpressPacket_a7f4d86947e6d4ec8d20bfa92c529b4a8}\label{classrplidar_1_1ExpressPacket_a7f4d86947e6d4ec8d20bfa92c529b4a8}} 
+\index{rplidar::ExpressPacket@{rplidar::ExpressPacket}!start\_angle@{start\_angle}}
+\index{start\_angle@{start\_angle}!rplidar::ExpressPacket@{rplidar::ExpressPacket}}
+\doxysubsubsection{\texorpdfstring{start\_angle}{start\_angle}}
+{\footnotesize\ttfamily float rplidar\+::\+Express\+Packet\+::start\+\_\+angle}
+
+\mbox{\Hypertarget{classrplidar_1_1ExpressPacket_a2bf003f302f0405623cd603edb499373}\label{classrplidar_1_1ExpressPacket_a2bf003f302f0405623cd603edb499373}} 
+\index{rplidar::ExpressPacket@{rplidar::ExpressPacket}!sync1@{sync1}}
+\index{sync1@{sync1}!rplidar::ExpressPacket@{rplidar::ExpressPacket}}
+\doxysubsubsection{\texorpdfstring{sync1}{sync1}}
+{\footnotesize\ttfamily const uint8\+\_\+t rplidar\+::\+Express\+Packet\+::sync1 = 0xa\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classrplidar_1_1ExpressPacket_a5f4335adba4b99268cb0c86b8d387c67}\label{classrplidar_1_1ExpressPacket_a5f4335adba4b99268cb0c86b8d387c67}} 
+\index{rplidar::ExpressPacket@{rplidar::ExpressPacket}!sync2@{sync2}}
+\index{sync2@{sync2}!rplidar::ExpressPacket@{rplidar::ExpressPacket}}
+\doxysubsubsection{\texorpdfstring{sync2}{sync2}}
+{\footnotesize\ttfamily const uint8\+\_\+t rplidar\+::\+Express\+Packet\+::sync2 = 0x5\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rplidar/include/\mbox{\hyperlink{RPLidar_8h}{RPLidar.\+h}}\end{DoxyCompactItemize}

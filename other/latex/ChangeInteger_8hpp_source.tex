@@ -1,0 +1,78 @@
+\hypertarget{ChangeInteger_8hpp_source}{}\doxysection{Change\+Integer.\+hpp}
+\label{ChangeInteger_8hpp_source}\index{behaviour\_tree/include/behaviour\_tree/node/blackboard/ChangeInteger.hpp@{behaviour\_tree/include/behaviour\_tree/node/blackboard/ChangeInteger.hpp}}
+\mbox{\hyperlink{ChangeInteger_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_CHANGE\_INTEGER\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_CHANGE\_INTEGER\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{BlackboardNode_8hpp}{BlackboardNode.hpp}}"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{IntegerChangeType_8hpp}{enum/IntegerChangeType.hpp}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard}{behaviour\_tree::node::blackboard}}}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger}{ChangeInteger}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1BlackboardNode}{BlackboardNode}}}
+\DoxyCodeLine{13     \{}
+\DoxyCodeLine{14     \textcolor{keyword}{public}:}
+\DoxyCodeLine{15         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a30502f94be0c06918c675afdbb72b454}{ChangeInteger}}(\textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}}, \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab27b6ef1bef9576208ad5d19b009a9b1}{IntegerChangeType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a90b982d9fa100a66f996dbe9cb4f7ade}{integer\_change\_type}}, \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a15f7b361e93a267627c848475b4adef3}{value}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1BlackboardNode}{BlackboardNode}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a90b982d9fa100a66f996dbe9cb4f7ade}{integer\_change\_type}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a90b982d9fa100a66f996dbe9cb4f7ade}{integer\_change\_type}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a15f7b361e93a267627c848475b4adef3}{value}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a15f7b361e93a267627c848475b4adef3}{value}}) \{\}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab8b6ba939a11c0b42e19ead6fc391fe9}{BlackboardType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a1c9475f125103c755cd45f426043f95d}{type}}() const final\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab8b6ba939a11c0b42e19ead6fc391fe9a604f18c1f2f2f1b30278e1731ca4d1e1}{BlackboardType::ChangeInteger}}; \}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a6b10cd6f8c98b823d78148ccd344bf0c}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{20         \{}
+\DoxyCodeLine{21             \textcolor{keywordflow}{if} (!context-\/>containsBlackboard(this-\/>variable\_name)) \{}
+\DoxyCodeLine{22                 context-\/>setBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}}, 0);}
+\DoxyCodeLine{23             \}}
+\DoxyCodeLine{24             \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a15f7b361e93a267627c848475b4adef3}{value}} = context-\/>getBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}});}
+\DoxyCodeLine{25             \textcolor{keywordflow}{switch} (this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a90b982d9fa100a66f996dbe9cb4f7ade}{integer\_change\_type}}) \{}
+\DoxyCodeLine{26             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab27b6ef1bef9576208ad5d19b009a9b1a5d5b78699e57104f2fa03bbdf7b9197b}{IntegerChangeType::Set}}: \{}
+\DoxyCodeLine{27                 context-\/>setBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}}, this-\/>value);}
+\DoxyCodeLine{28                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{29             \}}
+\DoxyCodeLine{30             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab27b6ef1bef9576208ad5d19b009a9b1aec211f7c20af43e742bf2570c3cb84f9}{IntegerChangeType::Add}}: \{}
+\DoxyCodeLine{31                 context-\/>setBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}}, value + this-\/>value);}
+\DoxyCodeLine{32                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{33             \}}
+\DoxyCodeLine{34             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab27b6ef1bef9576208ad5d19b009a9b1a1d9baf077ee87921f57a8fe42d510b65}{IntegerChangeType::Subtract}}: \{}
+\DoxyCodeLine{35                 context-\/>setBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}}, value -\/ this-\/>value);}
+\DoxyCodeLine{36                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{37             \}}
+\DoxyCodeLine{38             \}}
+\DoxyCodeLine{39             \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}};}
+\DoxyCodeLine{40         \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_afc50950405fbfc99f42af530212150e4}{toString}}() const final\textcolor{keyword}{ override}}
+\DoxyCodeLine{43 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{44             \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{getName}}();}
+\DoxyCodeLine{45             \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a90b982d9fa100a66f996dbe9cb4f7ade}{integer\_change\_type}} = [\&]() \{}
+\DoxyCodeLine{46                 \textcolor{keywordflow}{switch} (this-\/>integer\_change\_type)}
+\DoxyCodeLine{47                 \{}
+\DoxyCodeLine{48                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab27b6ef1bef9576208ad5d19b009a9b1a5d5b78699e57104f2fa03bbdf7b9197b}{IntegerChangeType::Set}}:}
+\DoxyCodeLine{49                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Set"{}};}
+\DoxyCodeLine{50                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab27b6ef1bef9576208ad5d19b009a9b1aec211f7c20af43e742bf2570c3cb84f9}{IntegerChangeType::Add}}:}
+\DoxyCodeLine{51                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Add"{}};}
+\DoxyCodeLine{52                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab27b6ef1bef9576208ad5d19b009a9b1a1d9baf077ee87921f57a8fe42d510b65}{IntegerChangeType::Subtract}}:}
+\DoxyCodeLine{53                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Subtract"{}};}
+\DoxyCodeLine{54                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{55                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Invalid"{}};}
+\DoxyCodeLine{56                 \}}
+\DoxyCodeLine{57                 \}}
+\DoxyCodeLine{58             ();}
+\DoxyCodeLine{59             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{60                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Blackboard:ChangeInteger name='\{\}' variable\_name='\{\}' integer\_change\_type='\{\}' value='\{\}'/>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}}, integer\_change\_type, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a15f7b361e93a267627c848475b4adef3}{value}});}}
+\DoxyCodeLine{61 \textcolor{stringliteral}{            }\textcolor{keywordflow}{else}}
+\DoxyCodeLine{62                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Blackboard:ChangeInteger variable\_name='\{\}' integer\_change\_type='\{\}' value='\{\}'/>)"{}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}}, integer\_change\_type, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a15f7b361e93a267627c848475b4adef3}{value}});}}
+\DoxyCodeLine{63 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{64 \textcolor{stringliteral}{}}
+\DoxyCodeLine{65 \textcolor{stringliteral}{    }\textcolor{keyword}{private}:}
+\DoxyCodeLine{66         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a17686a51a39ee687b85df2f4dffb7aaf}{variable\_name}};}
+\DoxyCodeLine{67         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab27b6ef1bef9576208ad5d19b009a9b1}{IntegerChangeType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a90b982d9fa100a66f996dbe9cb4f7ade}{integer\_change\_type}};}
+\DoxyCodeLine{68         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a15f7b361e93a267627c848475b4adef3}{value}};}
+\DoxyCodeLine{69     \};}
+\DoxyCodeLine{70 \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

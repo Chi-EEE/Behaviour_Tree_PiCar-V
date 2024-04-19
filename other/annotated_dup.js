@@ -1,71 +1,64 @@
 var annotated_dup =
 [
     [ "behaviour_tree", "namespacebehaviour__tree.html", [
-      [ "BehaviourTreeHandler", "classbehaviour__tree_1_1BehaviourTreeHandler.html", "classbehaviour__tree_1_1BehaviourTreeHandler" ],
-      [ "CarContext", "classbehaviour__tree_1_1CarContext.html", "classbehaviour__tree_1_1CarContext" ]
+      [ "node", "namespacebehaviour__tree_1_1node.html", [
+        [ "blackboard", "namespacebehaviour__tree_1_1node_1_1blackboard.html", [
+          [ "BlackboardNode", "classbehaviour__tree_1_1node_1_1blackboard_1_1BlackboardNode.html", "classbehaviour__tree_1_1node_1_1blackboard_1_1BlackboardNode" ],
+          [ "ChangeInteger", "classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger.html", "classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger" ],
+          [ "IntegerCondition", "classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition.html", "classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition" ]
+        ] ],
+        [ "composite", "namespacebehaviour__tree_1_1node_1_1composite.html", [
+          [ "Composite", "classbehaviour__tree_1_1node_1_1composite_1_1Composite.html", "classbehaviour__tree_1_1node_1_1composite_1_1Composite" ],
+          [ "Random", "classbehaviour__tree_1_1node_1_1composite_1_1Random.html", "classbehaviour__tree_1_1node_1_1composite_1_1Random" ],
+          [ "Selector", "classbehaviour__tree_1_1node_1_1composite_1_1Selector.html", "classbehaviour__tree_1_1node_1_1composite_1_1Selector" ],
+          [ "Sequence", "classbehaviour__tree_1_1node_1_1composite_1_1Sequence.html", "classbehaviour__tree_1_1node_1_1composite_1_1Sequence" ]
+        ] ],
+        [ "custom", "namespacebehaviour__tree_1_1node_1_1custom.html", [
+          [ "action", "namespacebehaviour__tree_1_1node_1_1custom_1_1action.html", [
+            [ "Drive", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Drive.html", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Drive" ],
+            [ "PauseExecution", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution.html", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution" ],
+            [ "Print", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print.html", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print" ],
+            [ "SetAngle", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetAngle.html", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetAngle" ],
+            [ "SetSpeed", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed.html", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed" ],
+            [ "SetWheelDirection", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetWheelDirection.html", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetWheelDirection" ],
+            [ "Turn", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Turn.html", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Turn" ]
+          ] ],
+          [ "condition", "namespacebehaviour__tree_1_1node_1_1custom_1_1condition.html", [
+            [ "SucceedOnAnyNearbyScan", "classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan.html", "classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan" ],
+            [ "SucceedOnAverageColour", "classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageColour.html", "classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageColour" ],
+            [ "SucceedOnAverageNearbyScan", "classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan.html", "classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan" ]
+          ] ],
+          [ "CarCustomNodeParser", "classbehaviour__tree_1_1node_1_1custom_1_1CarCustomNodeParser.html", "classbehaviour__tree_1_1node_1_1custom_1_1CarCustomNodeParser" ],
+          [ "CustomNode", "classbehaviour__tree_1_1node_1_1custom_1_1CustomNode.html", "classbehaviour__tree_1_1node_1_1custom_1_1CustomNode" ],
+          [ "CustomNodeParser", "classbehaviour__tree_1_1node_1_1custom_1_1CustomNodeParser.html", "classbehaviour__tree_1_1node_1_1custom_1_1CustomNodeParser" ]
+        ] ],
+        [ "decorator", "namespacebehaviour__tree_1_1node_1_1decorator.html", [
+          [ "Decorator", "classbehaviour__tree_1_1node_1_1decorator_1_1Decorator.html", "classbehaviour__tree_1_1node_1_1decorator_1_1Decorator" ],
+          [ "Invert", "classbehaviour__tree_1_1node_1_1decorator_1_1Invert.html", "classbehaviour__tree_1_1node_1_1decorator_1_1Invert" ],
+          [ "Repeat", "classbehaviour__tree_1_1node_1_1decorator_1_1Repeat.html", "classbehaviour__tree_1_1node_1_1decorator_1_1Repeat" ]
+        ] ],
+        [ "leaf", "namespacebehaviour__tree_1_1node_1_1leaf.html", [
+          [ "Fail", "classbehaviour__tree_1_1node_1_1leaf_1_1Fail.html", "classbehaviour__tree_1_1node_1_1leaf_1_1Fail" ],
+          [ "Leaf", "classbehaviour__tree_1_1node_1_1leaf_1_1Leaf.html", "classbehaviour__tree_1_1node_1_1leaf_1_1Leaf" ],
+          [ "Succeed", "classbehaviour__tree_1_1node_1_1leaf_1_1Succeed.html", "classbehaviour__tree_1_1node_1_1leaf_1_1Succeed" ],
+          [ "UseRoot", "classbehaviour__tree_1_1node_1_1leaf_1_1UseRoot.html", "classbehaviour__tree_1_1node_1_1leaf_1_1UseRoot" ]
+        ] ],
+        [ "Node", "classbehaviour__tree_1_1node_1_1Node.html", "classbehaviour__tree_1_1node_1_1Node" ]
+      ] ],
+      [ "BehaviourTree", "classbehaviour__tree_1_1BehaviourTree.html", "classbehaviour__tree_1_1BehaviourTree" ],
+      [ "BehaviourTreeParser", "classbehaviour__tree_1_1BehaviourTreeParser.html", "classbehaviour__tree_1_1BehaviourTreeParser" ],
+      [ "Context", "classbehaviour__tree_1_1Context.html", "classbehaviour__tree_1_1Context" ],
+      [ "Root", "classbehaviour__tree_1_1Root.html", "classbehaviour__tree_1_1Root" ]
     ] ],
-    [ "car", "namespacecar.html", [
-      [ "configuration", "namespacecar_1_1configuration.html", [
-        [ "Configuration", "structcar_1_1configuration_1_1Configuration.html", "structcar_1_1configuration_1_1Configuration" ],
-        [ "JsonConfiguration", "classcar_1_1configuration_1_1JsonConfiguration.html", "classcar_1_1configuration_1_1JsonConfiguration" ]
-      ] ],
-      [ "display", "namespacecar_1_1display.html", [
-        [ "console", "namespacecar_1_1display_1_1console.html", [
-          [ "component", "namespacecar_1_1display_1_1console_1_1component.html", [
-            [ "debug", "namespacecar_1_1display_1_1console_1_1component_1_1debug.html", [
-              [ "DebugEnabler", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugEnabler.html", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugEnabler" ],
-              [ "DebugLidarCheckbox", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugLidarCheckbox.html", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugLidarCheckbox" ],
-              [ "DebugMessagingTextbox", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMessagingTextbox.html", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMessagingTextbox" ],
-              [ "DebugMovementRenderer", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer.html", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer" ]
-            ] ],
-            [ "main", "namespacecar_1_1display_1_1console_1_1component_1_1main.html", [
-              [ "ConnectButton", "classcar_1_1display_1_1console_1_1component_1_1main_1_1ConnectButton.html", "classcar_1_1display_1_1console_1_1component_1_1main_1_1ConnectButton" ],
-              [ "MainErrorModal", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainErrorModal.html", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainErrorModal" ],
-              [ "MainExitModal", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainExitModal.html", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainExitModal" ]
-            ] ],
-            [ "settings", "namespacecar_1_1display_1_1console_1_1component_1_1settings.html", [
-              [ "SettingsEditConfig", "classcar_1_1display_1_1console_1_1component_1_1settings_1_1SettingsEditConfig.html", "classcar_1_1display_1_1console_1_1component_1_1settings_1_1SettingsEditConfig" ]
-            ] ]
-          ] ],
-          [ "screen", "namespacecar_1_1display_1_1console_1_1screen.html", [
-            [ "LoggingScreen", "classcar_1_1display_1_1console_1_1screen_1_1LoggingScreen.html", "classcar_1_1display_1_1console_1_1screen_1_1LoggingScreen" ],
-            [ "MainScreen", "classcar_1_1display_1_1console_1_1screen_1_1MainScreen.html", "classcar_1_1display_1_1console_1_1screen_1_1MainScreen" ],
-            [ "SettingsScreen", "classcar_1_1display_1_1console_1_1screen_1_1SettingsScreen.html", "classcar_1_1display_1_1console_1_1screen_1_1SettingsScreen" ]
-          ] ],
-          [ "CarConsole", "classcar_1_1display_1_1console_1_1CarConsole.html", "classcar_1_1display_1_1console_1_1CarConsole" ]
-        ] ]
-      ] ],
-      [ "plugin", "namespacecar_1_1plugin.html", [
-        [ "Plugin", "classcar_1_1plugin_1_1Plugin.html", "classcar_1_1plugin_1_1Plugin" ],
-        [ "PluginManager", "classcar_1_1plugin_1_1PluginManager.html", "classcar_1_1plugin_1_1PluginManager" ]
-      ] ],
-      [ "system", "namespacecar_1_1system.html", [
-        [ "device", "namespacecar_1_1system_1_1device.html", [
-          [ "lidar", "namespacecar_1_1system_1_1device_1_1lidar.html", [
-            [ "LidarDevice", "classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice.html", "classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice" ],
-            [ "LidarDummy", "classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy.html", "classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy" ],
-            [ "LidarScanner", "classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html", "classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner" ]
-          ] ],
-          [ "CameraDevice", "classcar_1_1system_1_1device_1_1CameraDevice.html", "classcar_1_1system_1_1device_1_1CameraDevice" ],
-          [ "DeviceManager", "classcar_1_1system_1_1device_1_1DeviceManager.html", "classcar_1_1system_1_1device_1_1DeviceManager" ]
-        ] ],
-        [ "logging", "namespacecar_1_1system_1_1logging.html", [
-          [ "VectorSink", "classcar_1_1system_1_1logging_1_1VectorSink.html", "classcar_1_1system_1_1logging_1_1VectorSink" ]
-        ] ],
-        [ "messaging", "namespacecar_1_1system_1_1messaging.html", [
-          [ "MessagingSystem", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html", "classcar_1_1system_1_1messaging_1_1MessagingSystem" ]
-        ] ],
-        [ "movement", "namespacecar_1_1system_1_1movement.html", [
-          [ "controller", "namespacecar_1_1system_1_1movement_1_1controller.html", [
-            [ "AbstractMovementController", "classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController.html", "classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController" ],
-            [ "DummyMovementController", "classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController.html", "classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController" ]
-          ] ],
-          [ "MovementSystem", "classcar_1_1system_1_1movement_1_1MovementSystem.html", "classcar_1_1system_1_1movement_1_1MovementSystem" ]
-        ] ],
-        [ "CarSystem", "classcar_1_1system_1_1CarSystem.html", "classcar_1_1system_1_1CarSystem" ]
-      ] ]
+    [ "rplidar", "namespacerplidar.html", [
+      [ "DeviceInfo", "structrplidar_1_1DeviceInfo.html", "structrplidar_1_1DeviceInfo" ],
+      [ "ExpressPacket", "classrplidar_1_1ExpressPacket.html", "classrplidar_1_1ExpressPacket" ],
+      [ "HealthInfo", "structrplidar_1_1HealthInfo.html", "structrplidar_1_1HealthInfo" ],
+      [ "Measure", "structrplidar_1_1Measure.html", "structrplidar_1_1Measure" ],
+      [ "RPLidar", "classrplidar_1_1RPLidar.html", "classrplidar_1_1RPLidar" ],
+      [ "ScanInfo", "structrplidar_1_1ScanInfo.html", "structrplidar_1_1ScanInfo" ]
     ] ],
-    [ "BackWheels", "classBackWheels.html", "classBackWheels" ],
-    [ "rpi_daemon", "classrpi__daemon.html", "classrpi__daemon" ],
-    [ "TB6612", "classTB6612.html", "classTB6612" ]
+    [ "utils", "namespaceutils.html", [
+      [ "RawTypeNameFormat", "structutils_1_1RawTypeNameFormat.html", "structutils_1_1RawTypeNameFormat" ]
+    ] ]
 ];

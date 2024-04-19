@@ -1,0 +1,38 @@
+\hypertarget{Fail_8hpp_source}{}\doxysection{Fail.\+hpp}
+\label{Fail_8hpp_source}\index{behaviour\_tree/include/behaviour\_tree/node/leaf/Fail.hpp@{behaviour\_tree/include/behaviour\_tree/node/leaf/Fail.hpp}}
+\mbox{\hyperlink{Fail_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_FAIL\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_FAIL\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Leaf_8hpp}{Leaf.hpp}}"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1leaf}{behaviour\_tree::node::leaf}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Fail}{Fail}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Leaf}{Leaf}}}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12     \textcolor{keyword}{public}:}
+\DoxyCodeLine{13         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Fail_a8f874817ae08e75b78083af08784df07}{Fail}}(\textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Leaf}{Leaf}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}) \{\}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1leaf_ab108dfaa4c59e46ba51b66c3429900ee}{LeafType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Fail_a8755f1ee680fc148e63a70da830b72cc}{type}}() const final\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1leaf_ab108dfaa4c59e46ba51b66c3429900eeaceaa0734f0b3c738120c67344d8f3ec1}{LeafType::Fail}}; \}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Fail_ac419eb4c4595bdde9b6561870288cf87}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{18         \{}
+\DoxyCodeLine{19             \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{20         \}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Fail_a970f472c133f3a64e51928bdad18e318}{toString}}() const final\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{23             \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{getName}}();}
+\DoxyCodeLine{24             \textcolor{keywordflow}{if} (name != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{25                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Fail name='\{\}'/>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}});}}
+\DoxyCodeLine{26 \textcolor{stringliteral}{            }\textcolor{keywordflow}{else}}
+\DoxyCodeLine{27                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Fail/>)"{});}}
+\DoxyCodeLine{28 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{29 \textcolor{stringliteral}{    \};}}
+\DoxyCodeLine{30 \textcolor{stringliteral}{\}}}
+\DoxyCodeLine{31 \textcolor{stringliteral}{}}
+\DoxyCodeLine{32 \textcolor{stringliteral}{}\textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

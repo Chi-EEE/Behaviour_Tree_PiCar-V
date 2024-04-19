@@ -1,47 +1,51 @@
 var hierarchy =
 [
-    [ "car::system::movement::controller::AbstractMovementController", "classcar_1_1system_1_1movement_1_1controller_1_1AbstractMovementController.html", [
-      [ "car::system::movement::controller::DummyMovementController", "classcar_1_1system_1_1movement_1_1controller_1_1DummyMovementController.html", null ]
+    [ "behaviour_tree::BehaviourTree", "classbehaviour__tree_1_1BehaviourTree.html", null ],
+    [ "behaviour_tree::BehaviourTreeParser", "classbehaviour__tree_1_1BehaviourTreeParser.html", null ],
+    [ "behaviour_tree::node::custom::CustomNodeParser", "classbehaviour__tree_1_1node_1_1custom_1_1CustomNodeParser.html", [
+      [ "behaviour_tree::node::custom::CarCustomNodeParser", "classbehaviour__tree_1_1node_1_1custom_1_1CarCustomNodeParser.html", null ]
     ] ],
-    [ "BackWheels", "classBackWheels.html", null ],
-    [ "spdlog::sinks::base_sink", null, [
-      [ "car::system::logging::VectorSink< Mutex >", "classcar_1_1system_1_1logging_1_1VectorSink.html", null ]
-    ] ],
-    [ "car::system::device::CameraDevice", "classcar_1_1system_1_1device_1_1CameraDevice.html", null ],
-    [ "car::display::console::CarConsole", "classcar_1_1display_1_1console_1_1CarConsole.html", null ],
-    [ "car::configuration::Configuration", "structcar_1_1configuration_1_1Configuration.html", null ],
-    [ "car::display::console::component::main::ConnectButton", "classcar_1_1display_1_1console_1_1component_1_1main_1_1ConnectButton.html", null ],
-    [ "Context", null, [
-      [ "behaviour_tree::CarContext", "classbehaviour__tree_1_1CarContext.html", null ]
-    ] ],
-    [ "daemon", null, [
-      [ "rpi_daemon", "classrpi__daemon.html", null ]
-    ] ],
-    [ "car::display::console::component::debug::DebugEnabler", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugEnabler.html", null ],
-    [ "car::display::console::component::debug::DebugLidarCheckbox", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugLidarCheckbox.html", null ],
-    [ "car::display::console::component::debug::DebugMessagingTextbox", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMessagingTextbox.html", null ],
-    [ "car::display::console::component::debug::DebugMovementRenderer", "classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer.html", null ],
-    [ "car::system::device::DeviceManager", "classcar_1_1system_1_1device_1_1DeviceManager.html", null ],
+    [ "rplidar::DeviceInfo", "structrplidar_1_1DeviceInfo.html", null ],
     [ "std::enable_shared_from_this", null, [
-      [ "car::system::CarSystem", "classcar_1_1system_1_1CarSystem.html", null ]
+      [ "behaviour_tree::Context", "classbehaviour__tree_1_1Context.html", null ],
+      [ "behaviour_tree::node::Node", "classbehaviour__tree_1_1node_1_1Node.html", [
+        [ "behaviour_tree::node::blackboard::BlackboardNode", "classbehaviour__tree_1_1node_1_1blackboard_1_1BlackboardNode.html", [
+          [ "behaviour_tree::node::blackboard::ChangeInteger", "classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger.html", null ],
+          [ "behaviour_tree::node::blackboard::IntegerCondition", "classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition.html", null ]
+        ] ],
+        [ "behaviour_tree::node::composite::Composite", "classbehaviour__tree_1_1node_1_1composite_1_1Composite.html", [
+          [ "behaviour_tree::node::composite::Random", "classbehaviour__tree_1_1node_1_1composite_1_1Random.html", null ],
+          [ "behaviour_tree::node::composite::Selector", "classbehaviour__tree_1_1node_1_1composite_1_1Selector.html", null ],
+          [ "behaviour_tree::node::composite::Sequence", "classbehaviour__tree_1_1node_1_1composite_1_1Sequence.html", null ]
+        ] ],
+        [ "behaviour_tree::node::custom::CustomNode", "classbehaviour__tree_1_1node_1_1custom_1_1CustomNode.html", [
+          [ "behaviour_tree::node::custom::action::Drive", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Drive.html", null ],
+          [ "behaviour_tree::node::custom::action::PauseExecution", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution.html", null ],
+          [ "behaviour_tree::node::custom::action::Print", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print.html", null ],
+          [ "behaviour_tree::node::custom::action::SetAngle", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetAngle.html", null ],
+          [ "behaviour_tree::node::custom::action::SetSpeed", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed.html", null ],
+          [ "behaviour_tree::node::custom::action::SetWheelDirection", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetWheelDirection.html", null ],
+          [ "behaviour_tree::node::custom::action::Turn", "classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Turn.html", null ],
+          [ "behaviour_tree::node::custom::condition::SucceedOnAnyNearbyScan", "classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan.html", null ],
+          [ "behaviour_tree::node::custom::condition::SucceedOnAverageColour", "classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageColour.html", null ],
+          [ "behaviour_tree::node::custom::condition::SucceedOnAverageNearbyScan", "classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan.html", null ]
+        ] ],
+        [ "behaviour_tree::node::decorator::Decorator", "classbehaviour__tree_1_1node_1_1decorator_1_1Decorator.html", [
+          [ "behaviour_tree::node::decorator::Invert", "classbehaviour__tree_1_1node_1_1decorator_1_1Invert.html", null ],
+          [ "behaviour_tree::node::decorator::Repeat", "classbehaviour__tree_1_1node_1_1decorator_1_1Repeat.html", null ]
+        ] ],
+        [ "behaviour_tree::node::leaf::Leaf", "classbehaviour__tree_1_1node_1_1leaf_1_1Leaf.html", [
+          [ "behaviour_tree::node::leaf::Fail", "classbehaviour__tree_1_1node_1_1leaf_1_1Fail.html", null ],
+          [ "behaviour_tree::node::leaf::Succeed", "classbehaviour__tree_1_1node_1_1leaf_1_1Succeed.html", null ],
+          [ "behaviour_tree::node::leaf::UseRoot", "classbehaviour__tree_1_1node_1_1leaf_1_1UseRoot.html", null ]
+        ] ]
+      ] ]
     ] ],
-    [ "car::system::messaging::MessagingSystem::FirstMessageStruct", "structcar_1_1system_1_1messaging_1_1MessagingSystem_1_1FirstMessageStruct.html", null ],
-    [ "car::configuration::JsonConfiguration", "classcar_1_1configuration_1_1JsonConfiguration.html", null ],
-    [ "car::system::device::lidar::LidarDevice", "classcar_1_1system_1_1device_1_1lidar_1_1LidarDevice.html", [
-      [ "car::system::device::lidar::LidarDummy", "classcar_1_1system_1_1device_1_1lidar_1_1LidarDummy.html", null ],
-      [ "car::system::device::lidar::LidarScanner", "classcar_1_1system_1_1device_1_1lidar_1_1LidarScanner.html", null ]
-    ] ],
-    [ "car::display::console::screen::LoggingScreen", "classcar_1_1display_1_1console_1_1screen_1_1LoggingScreen.html", null ],
-    [ "car::display::console::component::main::MainErrorModal", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainErrorModal.html", null ],
-    [ "car::display::console::component::main::MainExitModal", "classcar_1_1display_1_1console_1_1component_1_1main_1_1MainExitModal.html", null ],
-    [ "car::display::console::screen::MainScreen", "classcar_1_1display_1_1console_1_1screen_1_1MainScreen.html", null ],
-    [ "car::system::messaging::MessagingSystem", "classcar_1_1system_1_1messaging_1_1MessagingSystem.html", null ],
-    [ "car::system::movement::MovementSystem", "classcar_1_1system_1_1movement_1_1MovementSystem.html", null ],
-    [ "car::plugin::Plugin", "classcar_1_1plugin_1_1Plugin.html", [
-      [ "behaviour_tree::BehaviourTreeHandler", "classbehaviour__tree_1_1BehaviourTreeHandler.html", null ]
-    ] ],
-    [ "car::plugin::PluginManager", "classcar_1_1plugin_1_1PluginManager.html", null ],
-    [ "car::display::console::component::settings::SettingsEditConfig", "classcar_1_1display_1_1console_1_1component_1_1settings_1_1SettingsEditConfig.html", null ],
-    [ "car::display::console::screen::SettingsScreen", "classcar_1_1display_1_1console_1_1screen_1_1SettingsScreen.html", null ],
-    [ "TB6612", "classTB6612.html", null ]
+    [ "rplidar::ExpressPacket", "classrplidar_1_1ExpressPacket.html", null ],
+    [ "rplidar::HealthInfo", "structrplidar_1_1HealthInfo.html", null ],
+    [ "rplidar::Measure", "structrplidar_1_1Measure.html", null ],
+    [ "utils::RawTypeNameFormat", "structutils_1_1RawTypeNameFormat.html", null ],
+    [ "behaviour_tree::Root", "classbehaviour__tree_1_1Root.html", null ],
+    [ "rplidar::RPLidar", "classrplidar_1_1RPLidar.html", null ],
+    [ "rplidar::ScanInfo", "structrplidar_1_1ScanInfo.html", null ]
 ];

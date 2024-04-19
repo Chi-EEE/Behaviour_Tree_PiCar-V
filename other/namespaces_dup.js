@@ -1,5 +1,6 @@
 var namespaces_dup =
 [
     [ "behaviour_tree", "namespacebehaviour__tree.html", "namespacebehaviour__tree" ],
-    [ "car", "namespacecar.html", "namespacecar" ]
+    [ "rplidar", "namespacerplidar.html", "namespacerplidar" ],
+    [ "utils", "namespaceutils.html", "namespaceutils" ]
 ];

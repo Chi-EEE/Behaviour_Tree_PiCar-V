@@ -1,0 +1,64 @@
+\hypertarget{Context_8h_source}{}\doxysection{Context.\+h}
+\label{Context_8h_source}\index{behaviour\_tree/include/behaviour\_tree/Context.h@{behaviour\_tree/include/behaviour\_tree/Context.h}}
+\mbox{\hyperlink{Context_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_CONTEXT\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_CONTEXT\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <variant>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Status_8hpp}{Status.hpp}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{class }BehaviourTree;}
+\DoxyCodeLine{18     \textcolor{keyword}{namespace }node}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20         \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node}{Node}};}
+\DoxyCodeLine{21         \textcolor{keyword}{namespace }composite}
+\DoxyCodeLine{22         \{}
+\DoxyCodeLine{23             \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite}{Composite}};}
+\DoxyCodeLine{24         \}}
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{26 \}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}}}
+\DoxyCodeLine{29 \{}
+\DoxyCodeLine{30     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} : \textcolor{keyword}{public} std::enable\_shared\_from\_this<Context>}
+\DoxyCodeLine{31     \{}
+\DoxyCodeLine{32     \textcolor{keyword}{public}:}
+\DoxyCodeLine{33         \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}}(std::shared\_ptr<BehaviourTree> \mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}});}
+\DoxyCodeLine{34         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1Context_a7cfb40e394e9b938debdc5511fda5733}{update}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count);}
+\DoxyCodeLine{35         \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1Context_ada16161d782a91146799187685d80536}{UseRoot}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, \textcolor{keyword}{const} std::string\& \textcolor{keywordtype}{id});}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         std::shared\_ptr<BehaviourTree> \mbox{\hyperlink{classbehaviour__tree_1_1Context_ac7c5e4d5939957ee5d97bb223e0b2ee8}{getBehaviourTree}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1Context_af78cadd5dd10ccb6cfde6cd69e09ff2e}{behaviour\_tree}}; \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1Context_ae508ccb7dde5bc3f45ab1a477f66799b}{pushNodeTrace}}(std::pair<std::shared\_ptr<node::Node>, \textcolor{keywordtype}{int}> node\_trace);}
+\DoxyCodeLine{40         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1Context_a27ad4f21fcd8441f5e7b7cdb2daa1b7c}{popNode}}();}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbehaviour__tree_1_1Context_aca9e56cac136a40ab316a38cc6cb4be6}{canRun}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1Context_abbf9ffc22b7665c63e3d22f002715878}{setBlackboard}}(\textcolor{keyword}{const} std::string\& key, \textcolor{keyword}{const} \textcolor{keywordtype}{int} value);}
+\DoxyCodeLine{45         \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1Context_a7df95385af9ddc57f2a0c8d13a0162f7}{getBlackboard}}(\textcolor{keyword}{const} std::string\& key) \textcolor{keyword}{const};}
+\DoxyCodeLine{46         \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1Context_a16d0c5df1b724b119ad1233f6ff83175}{containsBlackboard}}(\textcolor{keyword}{const} std::string\& key) \textcolor{keyword}{const};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \textcolor{comment}{// Necessary for the class to be a polymorphic}}
+\DoxyCodeLine{49         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1Context_a19f285b9db7fac0c95922bd6ff471a0a}{\_}}() \{\};}
+\DoxyCodeLine{50     \textcolor{keyword}{private}:}
+\DoxyCodeLine{51         std::shared\_ptr<BehaviourTree> \mbox{\hyperlink{classbehaviour__tree_1_1Context_af78cadd5dd10ccb6cfde6cd69e09ff2e}{behaviour\_tree}};}
+\DoxyCodeLine{52         std::vector<std::pair<std::shared\_ptr<node::Node>, \textcolor{keywordtype}{int}>> \mbox{\hyperlink{classbehaviour__tree_1_1Context_af30c17365b9cfe9068f4c2750959e403}{node\_trace\_list}};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         std::unordered\_map<std::string, int> \mbox{\hyperlink{classbehaviour__tree_1_1Context_a615a4445cbc5656eded4c3ed246a28d0}{blackboard}};}
+\DoxyCodeLine{55     \};}
+\DoxyCodeLine{56 \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

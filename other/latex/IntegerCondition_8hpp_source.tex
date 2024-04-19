@@ -1,0 +1,85 @@
+\hypertarget{IntegerCondition_8hpp_source}{}\doxysection{Integer\+Condition.\+hpp}
+\label{IntegerCondition_8hpp_source}\index{behaviour\_tree/include/behaviour\_tree/node/blackboard/IntegerCondition.hpp@{behaviour\_tree/include/behaviour\_tree/node/blackboard/IntegerCondition.hpp}}
+\mbox{\hyperlink{IntegerCondition_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_INTEGER\_CONDITION\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_INTEGER\_CONDITION\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{BlackboardNode_8hpp}{BlackboardNode.hpp}}"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ConditionOperatorType_8hpp}{enum/ConditionOperatorType.hpp}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard}{behaviour\_tree::node::blackboard}}}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition}{IntegerCondition}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1BlackboardNode}{BlackboardNode}}}
+\DoxyCodeLine{13     \{}
+\DoxyCodeLine{14     \textcolor{keyword}{public}:}
+\DoxyCodeLine{15         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_ae8d6b3aee66f75c7ed42ba3c841d10e6}{IntegerCondition}}(\textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}, \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893}{ConditionOperatorType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_afcf225a7cec8fea74cdfc42b8e27545e}{condition\_operator}}, \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1BlackboardNode}{BlackboardNode}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_afcf225a7cec8fea74cdfc42b8e27545e}{condition\_operator}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_afcf225a7cec8fea74cdfc42b8e27545e}{condition\_operator}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}}) \{\}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab8b6ba939a11c0b42e19ead6fc391fe9}{BlackboardType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a32456fc9ce2d5e72703a5516494edad2}{type}}() const final\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_ab8b6ba939a11c0b42e19ead6fc391fe9abeb6a6e92de236810155758b5cb03d4c}{BlackboardType::IntegerCondition}}; \}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a3c1f6208d7280543fb0679e337769b67}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{20         \{}
+\DoxyCodeLine{21             \textcolor{keywordflow}{if} (!context-\/>containsBlackboard(this-\/>variable\_name)) \{}
+\DoxyCodeLine{22                 context-\/>setBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}, 0);}
+\DoxyCodeLine{23             \}}
+\DoxyCodeLine{24             \textcolor{keywordflow}{switch} (this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_afcf225a7cec8fea74cdfc42b8e27545e}{condition\_operator}})}
+\DoxyCodeLine{25             \{}
+\DoxyCodeLine{26             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893af5f286e73bda105e538310b3190f75c5}{ConditionOperatorType::Equal}}:}
+\DoxyCodeLine{27                 \textcolor{keywordflow}{return} context-\/>getBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}) == this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}} ? \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}} : \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{28             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893af6d044fe1f01fb0c956b80099e2a3072}{ConditionOperatorType::GreaterThan}}:}
+\DoxyCodeLine{29                 \textcolor{keywordflow}{return} context-\/>getBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}) > this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}} ? \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}} : \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{30             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893a25c44812e9d75f685d2a0b815dea1ebe}{ConditionOperatorType::GreaterThanOrEqual}}:}
+\DoxyCodeLine{31                 \textcolor{keywordflow}{return} context-\/>getBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}) >= this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}} ? \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}} : \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{32             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893ac6d9d7bb9939f62f01c80f8b1251501c}{ConditionOperatorType::LessThan}}:}
+\DoxyCodeLine{33                 \textcolor{keywordflow}{return} context-\/>getBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}) < this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}} ? \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}} : \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{34             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893a4ab671acbbaacb0db7d8477cfe4f4e0b}{ConditionOperatorType::LessThanOrEqual}}:}
+\DoxyCodeLine{35                 \textcolor{keywordflow}{return} context-\/>getBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}) <= this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}} ? \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}} : \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{36             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893a19bb0af2c3c530538cb41aff7f235b96}{ConditionOperatorType::NotEqual}}:}
+\DoxyCodeLine{37                 \textcolor{keywordflow}{return} context-\/>getBlackboard(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}) != this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}} ? \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}} : \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{38             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{39                 \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{40             \}}
+\DoxyCodeLine{41         \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_abd1c2fe586789229fa370a36455d5188}{toString}}() const final\textcolor{keyword}{ override}}
+\DoxyCodeLine{44 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{45             \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{getName}}();}
+\DoxyCodeLine{46             \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_afcf225a7cec8fea74cdfc42b8e27545e}{condition\_operator}} = [\&]() \{}
+\DoxyCodeLine{47                 \textcolor{keywordflow}{switch} (this-\/>condition\_operator)}
+\DoxyCodeLine{48                 \{}
+\DoxyCodeLine{49                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893af5f286e73bda105e538310b3190f75c5}{ConditionOperatorType::Equal}}:}
+\DoxyCodeLine{50                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}="{}};}
+\DoxyCodeLine{51                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893af6d044fe1f01fb0c956b80099e2a3072}{ConditionOperatorType::GreaterThan}}:}
+\DoxyCodeLine{52                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}>"{}};}
+\DoxyCodeLine{53                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893a25c44812e9d75f685d2a0b815dea1ebe}{ConditionOperatorType::GreaterThanOrEqual}}:}
+\DoxyCodeLine{54                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}>="{}};}
+\DoxyCodeLine{55                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893ac6d9d7bb9939f62f01c80f8b1251501c}{ConditionOperatorType::LessThan}}:}
+\DoxyCodeLine{56                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}<"{}};}
+\DoxyCodeLine{57                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893a4ab671acbbaacb0db7d8477cfe4f4e0b}{ConditionOperatorType::LessThanOrEqual}}:}
+\DoxyCodeLine{58                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}<="{}};}
+\DoxyCodeLine{59                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893a19bb0af2c3c530538cb41aff7f235b96}{ConditionOperatorType::NotEqual}}:}
+\DoxyCodeLine{60                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}!="{}};}
+\DoxyCodeLine{61                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{62                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Invalid"{}};}
+\DoxyCodeLine{63                 \}}
+\DoxyCodeLine{64                 \}}
+\DoxyCodeLine{65             ();}
+\DoxyCodeLine{66             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{67                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Blackboard:IntegerCondition name='\{\}' variable\_name='\{\}' condition\_operator='\{\}' value='\{\}'/>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}, condition\_operator, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}});}}
+\DoxyCodeLine{68 \textcolor{stringliteral}{            }\textcolor{keywordflow}{else}}
+\DoxyCodeLine{69                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Blackboard:IntegerCondition variable\_name='\{\}' condition\_operator='\{\}' value='\{\}'/>)"{}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}}, condition\_operator, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}});}}
+\DoxyCodeLine{70 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{71 \textcolor{stringliteral}{}}
+\DoxyCodeLine{72 \textcolor{stringliteral}{    }\textcolor{keyword}{private}:}
+\DoxyCodeLine{73         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a0f4b01e001b2cb614178cd7a88c4e4d8}{variable\_name}};}
+\DoxyCodeLine{74         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1blackboard_a2cf8d2f4b23cab99480bdffc92908893}{ConditionOperatorType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_afcf225a7cec8fea74cdfc42b8e27545e}{condition\_operator}};}
+\DoxyCodeLine{75         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a64f5a63cd60e6c7c2788c8b3b861db2f}{value}};}
+\DoxyCodeLine{76     \};}
+\DoxyCodeLine{77 \}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

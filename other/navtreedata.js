@@ -25,36 +25,15 @@
 var NAVTREE =
 [
   [ "Other Code", "index.html", [
-    [ "Behaviour Tree PiCar Daemon", "md__github_workspace_app_rpi_daemon_install_README.html", [
-      [ "Installation:", "md__github_workspace_app_rpi_daemon_install_README.html#autotoc_md1", null ],
-      [ "View Logs", "md__github_workspace_app_rpi_daemon_install_README.html#autotoc_md2", null ]
-    ] ],
-    [ "Raspberry Pi Daemon", "md__github_workspace_app_rpi_daemon_README.html", [
-      [ "Install Raspberry Pi Daemon", "md__github_workspace_app_rpi_daemon_README.html#autotoc_md4", null ],
-      [ "Enable / Disable Daemon to run on startup", "md__github_workspace_app_rpi_daemon_README.html#autotoc_md5", null ],
-      [ "Start / Stop / Restart Daemon", "md__github_workspace_app_rpi_daemon_README.html#autotoc_md6", null ],
-      [ "View Logs", "md__github_workspace_app_rpi_daemon_README.html#autotoc_md7", null ],
-      [ "Clear Past Logs", "md__github_workspace_app_rpi_daemon_README.html#autotoc_md8", null ],
-      [ "Reload Daemon", "md__github_workspace_app_rpi_daemon_README.html#autotoc_md9", null ],
-      [ "Change Config", "md__github_workspace_app_rpi_daemon_README.html#autotoc_md10", null ],
-      [ "Uninstall Raspberry Pi Daemon", "md__github_workspace_app_rpi_daemon_README.html#autotoc_md11", null ],
-      [ "Speedrun", "md__github_workspace_app_rpi_daemon_README.html#autotoc_md12", null ]
-    ] ],
-    [ "Raspberry Pi", "md__github_workspace_app_rpi_README.html", [
-      [ "Main Technologies", "md__github_workspace_app_rpi_README.html#autotoc_md14", null ],
-      [ "Setting up Raspberry Pi", "md__github_workspace_app_rpi_README.html#autotoc_md15", null ]
-    ] ],
-    [ "Behaviour Tree PiCar-V Setup", "md__github_workspace_app_rpi_SETUP.html", null ],
-    [ "Raspberry Pi", "md__github_workspace_app_rpi_tui_README.html", [
-      [ "Installation", "md__github_workspace_app_rpi_tui_README.html#autotoc_md18", null ],
-      [ "Main Technologies", "md__github_workspace_app_rpi_tui_README.html#autotoc_md19", null ],
-      [ "Setting up Raspberry Pi", "md__github_workspace_app_rpi_tui_README.html#autotoc_md20", null ]
-    ] ],
+    [ "Other", "md_README.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ]
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -64,8 +43,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Related Functions", "functions_rela.html", null ]
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -73,10 +51,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+        [ "Typedefs", "globals_type.html", null ]
       ] ]
     ] ]
   ] ]
@@ -84,11 +59,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"AbstractMovementController_8h.html",
-"classcar_1_1display_1_1console_1_1component_1_1debug_1_1DebugMovementRenderer.html#a05723191ce205f13a10e875ecbbe92ea",
-"classcar_1_1system_1_1CarSystem.html#ad3d30be79c4ac8150cf280c977ad280c",
-"classcar_1_1system_1_1movement_1_1MovementSystem.html#aa72a749d44b6b601eaa36b4994e35735",
-"structcar_1_1configuration_1_1Configuration.html#a3c92a6852f3c0105b6c45475fe089cc9"
+"BehaviourTreeParser_8hpp.html",
+"classbehaviour__tree_1_1Context.html#af78cadd5dd10ccb6cfde6cd69e09ff2e",
+"classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan.html",
+"dir_7fc4d44d83504217e6235a46d86f566e.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

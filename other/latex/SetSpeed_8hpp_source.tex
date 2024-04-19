@@ -1,0 +1,135 @@
+\hypertarget{SetSpeed_8hpp_source}{}\doxysection{Set\+Speed.\+hpp}
+\label{SetSpeed_8hpp_source}\index{behaviour\_tree\_car/include/behaviour\_tree/node/custom/action/SetSpeed.hpp@{behaviour\_tree\_car/include/behaviour\_tree/node/custom/action/SetSpeed.hpp}}
+\mbox{\hyperlink{SetSpeed_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_SETSPEED\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_SETSPEED\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <fmt/format.h>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CustomNode_8hpp}{behaviour\_tree/node/custom/CustomNode.hpp}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Context_8h}{behaviour\_tree/Context.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}behaviour\_tree/CarContext.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{WheelType_8hpp}{enum/WheelType.hpp}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action}{behaviour\_tree::node::custom::action}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed}{SetSpeed}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNode}{CustomNode}}}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21     \textcolor{keyword}{public}:}
+\DoxyCodeLine{22         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a5fdfdf052b60beacfd31d6c31353a617}{SetSpeed}}(\textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0}{WheelType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}}, \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a798376de280ce976ee925dfeee4aeb95}{speed}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNode}{CustomNode}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a798376de280ce976ee925dfeee4aeb95}{speed}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a798376de280ce976ee925dfeee4aeb95}{speed}})}
+\DoxyCodeLine{23         \{}
+\DoxyCodeLine{24         \}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \textcolor{keyword}{const} \textcolor{keyword}{static} tl::expected<std::shared\_ptr<SetSpeed>, std::string> \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a42357fe72cbe19587681ac973fc88d4e}{parse}}(\textcolor{keyword}{const} pugi::xml\_node \&node, \textcolor{keyword}{const} \textcolor{keywordtype}{int} index, \textcolor{keyword}{const} std::string \&name\_attribute)}
+\DoxyCodeLine{27         \{}
+\DoxyCodeLine{28             \textcolor{keyword}{const} tl::expected<WheelType, std::string> maybe\_wheel\_type = [\&]()}
+\DoxyCodeLine{29             \{}
+\DoxyCodeLine{30                 \textcolor{keyword}{const} std::string wheel\_type\_attribute = node.attribute(\textcolor{stringliteral}{"{}wheel\_type"{}}).as\_string();}
+\DoxyCodeLine{31                 tl::expected<WheelType, std::string> result;}
+\DoxyCodeLine{32                 \textcolor{keywordflow}{switch} (utils::hash(wheel\_type\_attribute))}
+\DoxyCodeLine{33                 \{}
+\DoxyCodeLine{34                 \textcolor{keywordflow}{case} utils::hash(\textcolor{stringliteral}{"{}Left"{}}):}
+\DoxyCodeLine{35                 \{}
+\DoxyCodeLine{36                     result = \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0a945d5e233cf7d6240f6b783b36a374ff}{WheelType::Left}};}
+\DoxyCodeLine{37                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{38                 \}}
+\DoxyCodeLine{39                 \textcolor{keywordflow}{case} utils::hash(\textcolor{stringliteral}{"{}Right"{}}):}
+\DoxyCodeLine{40                 \{}
+\DoxyCodeLine{41                     result = \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0a92b09c7c48c520c3c55e497875da437c}{WheelType::Right}};}
+\DoxyCodeLine{42                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{43                 \}}
+\DoxyCodeLine{44                 \textcolor{keywordflow}{case} utils::hash(\textcolor{stringliteral}{"{}Both"{}}):}
+\DoxyCodeLine{45                 \{}
+\DoxyCodeLine{46                     result = \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0a130c5b3473c57faa76e2a1c54e26f88e}{WheelType::Both}};}
+\DoxyCodeLine{47                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{48                 \}}
+\DoxyCodeLine{49                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{50                 \{}
+\DoxyCodeLine{51                     result = tl::unexpected(fmt::format(R\textcolor{stringliteral}{"{}(Invalid wheel\_type: '\{\}' | Action:SetSpeed:['\{\}',\{\}])"{}, wheel\_type\_attribute, name\_attribute, index));}}
+\DoxyCodeLine{52 \textcolor{stringliteral}{                    }\textcolor{keywordflow}{break};}
+\DoxyCodeLine{53                 \}}
+\DoxyCodeLine{54                 \};}
+\DoxyCodeLine{55                 \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{56             \}();}
+\DoxyCodeLine{57             \textcolor{keywordflow}{if} (!maybe\_wheel\_type.has\_value())}
+\DoxyCodeLine{58             \{}
+\DoxyCodeLine{59                 \textcolor{keywordflow}{return} tl::make\_unexpected(maybe\_wheel\_type.error());}
+\DoxyCodeLine{60             \}}
+\DoxyCodeLine{61             \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a798376de280ce976ee925dfeee4aeb95}{speed}} = node.attribute(\textcolor{stringliteral}{"{}speed"{}}).as\_int();}
+\DoxyCodeLine{62             \textcolor{keywordflow}{if} (speed < 0 || speed > 100)}
+\DoxyCodeLine{63             \{}
+\DoxyCodeLine{64                 \textcolor{keywordflow}{return} tl::unexpected(fmt::format(R\textcolor{stringliteral}{"{}(Invalid speed: '\{\}' | Action:SetSpeed:['\{\}',\{\}])"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a798376de280ce976ee925dfeee4aeb95}{speed}}, name\_attribute, index));}}
+\DoxyCodeLine{65 \textcolor{stringliteral}{            \}}}
+\DoxyCodeLine{66 \textcolor{stringliteral}{            }\textcolor{keywordflow}{return} std::make\_shared<SetSpeed>(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed}{SetSpeed}}(name\_attribute, maybe\_wheel\_type.value(), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a798376de280ce976ee925dfeee4aeb95}{speed}}));}
+\DoxyCodeLine{67         \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_ab8262100c87d7e7408480c649f5437d4}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{70         \{}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{72             std::shared\_ptr<CarContext> car\_context = std::dynamic\_pointer\_cast<CarContext>(context);}
+\DoxyCodeLine{73             \textcolor{keyword}{auto} car\_system = car\_context-\/>getCarSystem();}
+\DoxyCodeLine{74             \textcolor{keyword}{const} MovementSystem *movement\_system = car\_system-\/>getMovementSystem();}
+\DoxyCodeLine{75             \textcolor{keywordflow}{switch} (this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_ab16cc4764a4ccc92a4d147f45e0f7f4e}{getWheelType}}())}
+\DoxyCodeLine{76             \{}
+\DoxyCodeLine{77             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0a945d5e233cf7d6240f6b783b36a374ff}{WheelType::Left}}:}
+\DoxyCodeLine{78                 movement\_system-\/>setRearLeftWheelSpeed(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a22b4bd5a027aa29751b6a5e44f942788}{getSpeed}}());}
+\DoxyCodeLine{79                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{80             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0a92b09c7c48c520c3c55e497875da437c}{WheelType::Right}}:}
+\DoxyCodeLine{81                 movement\_system-\/>setRearRightWheelSpeed(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a22b4bd5a027aa29751b6a5e44f942788}{getSpeed}}());}
+\DoxyCodeLine{82                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{83             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0a130c5b3473c57faa76e2a1c54e26f88e}{WheelType::Both}}:}
+\DoxyCodeLine{84                 movement\_system-\/>setRearWheelsSpeed(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a22b4bd5a027aa29751b6a5e44f942788}{getSpeed}}());}
+\DoxyCodeLine{85                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{86             \}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{88             \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}};}
+\DoxyCodeLine{89         \}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_ab95232d7f68c75bdd54980ead6280a5f}{toString}}() const final\textcolor{keyword}{ override}}
+\DoxyCodeLine{92 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{93             std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}};}
+\DoxyCodeLine{94             \textcolor{keywordflow}{switch} (this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_ab16cc4764a4ccc92a4d147f45e0f7f4e}{getWheelType}}())}
+\DoxyCodeLine{95             \{}
+\DoxyCodeLine{96             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0a945d5e233cf7d6240f6b783b36a374ff}{WheelType::Left}}:}
+\DoxyCodeLine{97                 wheel\_type = \textcolor{stringliteral}{"{}Forward"{}};}
+\DoxyCodeLine{98                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{99             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0a92b09c7c48c520c3c55e497875da437c}{WheelType::Right}}:}
+\DoxyCodeLine{100                 \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}} = \textcolor{stringliteral}{"{}Backward"{}};}
+\DoxyCodeLine{101                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{102             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0a130c5b3473c57faa76e2a1c54e26f88e}{WheelType::Both}}:}
+\DoxyCodeLine{103                 \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}} = \textcolor{stringliteral}{"{}Both"{}};}
+\DoxyCodeLine{104                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{105             \}}
+\DoxyCodeLine{106             \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{getName}}();}
+\DoxyCodeLine{107             \textcolor{keywordflow}{if} (name != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{108                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Action:SetSpeed name='\{\}' wheel\_type='\{\}' speed='\{\}'/>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a22b4bd5a027aa29751b6a5e44f942788}{getSpeed}}());}}
+\DoxyCodeLine{109 \textcolor{stringliteral}{            }\textcolor{keywordflow}{else}}
+\DoxyCodeLine{110                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Action:SetSpeed wheel\_type='\{\}' speed='\{\}'/>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a22b4bd5a027aa29751b6a5e44f942788}{getSpeed}}());}}
+\DoxyCodeLine{111 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{112 \textcolor{stringliteral}{}}
+\DoxyCodeLine{113 \textcolor{stringliteral}{        }\textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0}{WheelType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_ab16cc4764a4ccc92a4d147f45e0f7f4e}{getWheelType}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{114 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{115             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}};}
+\DoxyCodeLine{116         \}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a22b4bd5a027aa29751b6a5e44f942788}{getSpeed}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{119 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{120             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a798376de280ce976ee925dfeee4aeb95}{speed}};}
+\DoxyCodeLine{121         \}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     \textcolor{keyword}{private}:}
+\DoxyCodeLine{124         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_a798376de280ce976ee925dfeee4aeb95}{speed}};}
+\DoxyCodeLine{125         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action_a3174bcea8a2506e7afb378c40dfb06b0}{WheelType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_aa93860e7de31ad96ce008d959f9b7476}{wheel\_type}};}
+\DoxyCodeLine{126     \};}
+\DoxyCodeLine{127 \}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,54 @@
+\hypertarget{Root_8hpp_source}{}\doxysection{Root.\+hpp}
+\label{Root_8hpp_source}\index{behaviour\_tree/include/behaviour\_tree/Root.hpp@{behaviour\_tree/include/behaviour\_tree/Root.hpp}}
+\mbox{\hyperlink{Root_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_ROOT\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_ROOT\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <fmt/format.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Node_8hpp}{node/Node.hpp}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node}{behaviour\_tree::node}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree}{behaviour\_tree}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1Root}{Root}}}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17     \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \mbox{\hyperlink{classbehaviour__tree_1_1Root_a44401c0d99c537660c8b07f9f40825df}{Root}}(std::string \textcolor{keywordtype}{id}, std::shared\_ptr<node::Node> \mbox{\hyperlink{classbehaviour__tree_1_1Root_a3db2e90e2d4e8035f0b84d24aa4114a3}{child}}) : \mbox{\hyperlink{classbehaviour__tree_1_1Root_a41724dca1035177dfaebba51a44e0f53}{id}}(\mbox{\hyperlink{classbehaviour__tree_1_1Root_a41724dca1035177dfaebba51a44e0f53}{id}}), \mbox{\hyperlink{classbehaviour__tree_1_1Root_a3db2e90e2d4e8035f0b84d24aa4114a3}{child}}(std::move(\mbox{\hyperlink{classbehaviour__tree_1_1Root_a3db2e90e2d4e8035f0b84d24aa4114a3}{child}}))}
+\DoxyCodeLine{19         \{}
+\DoxyCodeLine{20         \}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1Root_a6fe58981a23a7e3c0a56af85db278295}{tick}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context>\& context)}
+\DoxyCodeLine{23         \{}
+\DoxyCodeLine{24             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1Root_a3db2e90e2d4e8035f0b84d24aa4114a3}{child}} == \textcolor{keyword}{nullptr}) \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}};}
+\DoxyCodeLine{25             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1Root_a3db2e90e2d4e8035f0b84d24aa4114a3}{child}}-\/>tick(tick\_count, context);}
+\DoxyCodeLine{26         \}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1Root_ab7cd4e5f12cdff7fb049ce94deebcee3}{toString}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{29             \textcolor{keyword}{const} std::string\& \textcolor{keywordtype}{id} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1Root_a858bded728a84983f8a81da049a9a456}{getId}}();}
+\DoxyCodeLine{30             std::string child\_string = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1Root_a3db2e90e2d4e8035f0b84d24aa4114a3}{child}} != \textcolor{keyword}{nullptr} ? this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1Root_a3db2e90e2d4e8035f0b84d24aa4114a3}{child}}-\/>toString() : \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{31             \textcolor{keywordflow}{if} (\textcolor{keywordtype}{id} != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{32                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Root id='\{\}'>\{\}</Root>)"{}, }\textcolor{keywordtype}{id}, child\_string);}
+\DoxyCodeLine{33             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{34                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Root>\{\}</Root>)"{}, child\_string);}}
+\DoxyCodeLine{35 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{36 \textcolor{stringliteral}{}}
+\DoxyCodeLine{37 \textcolor{stringliteral}{        }\textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1Root_a858bded728a84983f8a81da049a9a456}{getId}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{38 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{39             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1Root_a41724dca1035177dfaebba51a44e0f53}{id}};}
+\DoxyCodeLine{40         \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keyword}{private}:}
+\DoxyCodeLine{43         std::string \mbox{\hyperlink{classbehaviour__tree_1_1Root_a41724dca1035177dfaebba51a44e0f53}{id}};}
+\DoxyCodeLine{44         std::shared\_ptr<node::Node> \mbox{\hyperlink{classbehaviour__tree_1_1Root_a3db2e90e2d4e8035f0b84d24aa4114a3}{child}};}
+\DoxyCodeLine{45     \};}
+\DoxyCodeLine{46 \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,755 @@
+\hypertarget{RPLidar_8h_source}{}\doxysection{RPLidar.\+h}
+\label{RPLidar_8h_source}\index{rplidar/include/RPLidar.h@{rplidar/include/RPLidar.h}}
+\mbox{\hyperlink{RPLidar_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef RPLIDAR\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define RPLIDAR\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{// Made with the help of ChatGPT}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{/*}}
+\DoxyCodeLine{10 \textcolor{comment}{\#include <RPLidar.h>}}
+\DoxyCodeLine{11 \textcolor{comment}{\#include <memory>}}
+\DoxyCodeLine{12 \textcolor{comment}{\#include <spdlog/spdlog.h>}}
+\DoxyCodeLine{13 \textcolor{comment}{}}
+\DoxyCodeLine{14 \textcolor{comment}{int main()}}
+\DoxyCodeLine{15 \textcolor{comment}{\{}}
+\DoxyCodeLine{16 \textcolor{comment}{    using namespace rplidar;}}
+\DoxyCodeLine{17 \textcolor{comment}{    spdlog::set\_level(spdlog::level::debug);}}
+\DoxyCodeLine{18 \textcolor{comment}{}}
+\DoxyCodeLine{19 \textcolor{comment}{    // auto lidar\_result = RPLidar::create("{}/dev/ttyUSB0"{}); // For Linux}}
+\DoxyCodeLine{20 \textcolor{comment}{    // auto lidar\_result = RPLidar::create("{}COM3"{}); // For Windows}}
+\DoxyCodeLine{21 \textcolor{comment}{    if (!lidar\_result.has\_value())}}
+\DoxyCodeLine{22 \textcolor{comment}{    \{}}
+\DoxyCodeLine{23 \textcolor{comment}{        std::cout << "{}Unable to open lidar\(\backslash\)n"{};}}
+\DoxyCodeLine{24 \textcolor{comment}{        return 0;}}
+\DoxyCodeLine{25 \textcolor{comment}{    \}}}
+\DoxyCodeLine{26 \textcolor{comment}{    auto \&lidar = lidar\_result.value();}}
+\DoxyCodeLine{27 \textcolor{comment}{    std::cout << "{}Connected to lidar\(\backslash\)n"{};}}
+\DoxyCodeLine{28 \textcolor{comment}{}}
+\DoxyCodeLine{29 \textcolor{comment}{    auto info\_result = lidar-\/>get\_info();}}
+\DoxyCodeLine{30 \textcolor{comment}{    if (!info\_result.has\_value())}}
+\DoxyCodeLine{31 \textcolor{comment}{    \{}}
+\DoxyCodeLine{32 \textcolor{comment}{        std::cout << "{}Unable to get value of get\_info() "{} << info\_result.error();}}
+\DoxyCodeLine{33 \textcolor{comment}{        return 0;}}
+\DoxyCodeLine{34 \textcolor{comment}{    \}}}
+\DoxyCodeLine{35 \textcolor{comment}{    auto \&info = info\_result.value();}}
+\DoxyCodeLine{36 \textcolor{comment}{    std::cout << fmt::format("{}model: \{\}, firmware: (\{\}, \{\}), hardware: \{\}, serialnumber: \{\}\(\backslash\)n"{}, info.model, info.firmware.first, info.firmware.second, info.hardware, info.serialNumber);}}
+\DoxyCodeLine{37 \textcolor{comment}{}}
+\DoxyCodeLine{38 \textcolor{comment}{    auto health\_result = lidar-\/>get\_health();}}
+\DoxyCodeLine{39 \textcolor{comment}{    if (!health\_result.has\_value())}}
+\DoxyCodeLine{40 \textcolor{comment}{    \{}}
+\DoxyCodeLine{41 \textcolor{comment}{        std::cout << "{}Unable to get value of get\_health() "{}<< health\_result.error();}}
+\DoxyCodeLine{42 \textcolor{comment}{        return 0;}}
+\DoxyCodeLine{43 \textcolor{comment}{    \}}}
+\DoxyCodeLine{44 \textcolor{comment}{    auto \&health = health\_result.value();}}
+\DoxyCodeLine{45 \textcolor{comment}{    std::cout << fmt::format("{}(\{\}, \{\})\(\backslash\)n"{}, health.status, health.errorCode);}}
+\DoxyCodeLine{46 \textcolor{comment}{}}
+\DoxyCodeLine{47 \textcolor{comment}{    std::function<std::vector<Measure>()> scanGenerator = lidar-\/>iter\_scans();}}
+\DoxyCodeLine{48 \textcolor{comment}{    for (int i = 0; i < 10; i++)}}
+\DoxyCodeLine{49 \textcolor{comment}{    \{}}
+\DoxyCodeLine{50 \textcolor{comment}{        std::vector<Measure> scan = scanGenerator();}}
+\DoxyCodeLine{51 \textcolor{comment}{        std::cout << "{}Got "{} << scan.size() << "{} Measures!\(\backslash\)n"{};}}
+\DoxyCodeLine{52 \textcolor{comment}{        for (const Measure \&measure : scan)}}
+\DoxyCodeLine{53 \textcolor{comment}{        \{}}
+\DoxyCodeLine{54 \textcolor{comment}{            // Access individual measurements in the scan}}
+\DoxyCodeLine{55 \textcolor{comment}{            bool newScan = measure.newScan;}}
+\DoxyCodeLine{56 \textcolor{comment}{            int quality = measure.quality;}}
+\DoxyCodeLine{57 \textcolor{comment}{            float angle = measure.angle;}}
+\DoxyCodeLine{58 \textcolor{comment}{            float distance = measure.distance;}}
+\DoxyCodeLine{59 \textcolor{comment}{        \}}}
+\DoxyCodeLine{60 \textcolor{comment}{    \}}}
+\DoxyCodeLine{61 \textcolor{comment}{}}
+\DoxyCodeLine{62 \textcolor{comment}{    lidar-\/>stop();}}
+\DoxyCodeLine{63 \textcolor{comment}{    lidar-\/>stop\_motor();}}
+\DoxyCodeLine{64 \textcolor{comment}{    lidar-\/>disconnect();}}
+\DoxyCodeLine{65 \textcolor{comment}{    return 1;}}
+\DoxyCodeLine{66 \textcolor{comment}{\}}}
+\DoxyCodeLine{67 \textcolor{comment}{}}
+\DoxyCodeLine{68 \textcolor{comment}{*/}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#include <serial/serial.h>}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{comment}{// std::this\_thread::sleep\_for(std::chrono::milliseconds(1));}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{comment}{// convertToHexString}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#include <iomanip>}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{comment}{// iter\_measures}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#include <spdlog/spdlog.h>}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#include <spdlog/fmt/bin\_to\_hex.h>}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#include <tl/expected.hpp>}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacerplidar}{rplidar}}}
+\DoxyCodeLine{101 \{}
+\DoxyCodeLine{102     \textcolor{keyword}{constexpr} uint8\_t \mbox{\hyperlink{namespacerplidar_ac9fc8ec7c8c5252deccccbb97b5b1ed0}{SYNC\_BYTE}} = 0xA5;}
+\DoxyCodeLine{103     \textcolor{keyword}{constexpr} uint8\_t \mbox{\hyperlink{namespacerplidar_ae247ad6a3825ddc55b486a4fc8c28c47}{SYNC\_BYTE2}} = 0x5A;}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \textcolor{keyword}{constexpr} uint8\_t \mbox{\hyperlink{namespacerplidar_ae97da6603812122463e76a32b8fc72c0}{GET\_INFO\_BYTE}} = 0x50;}
+\DoxyCodeLine{106     \textcolor{keyword}{constexpr} uint8\_t \mbox{\hyperlink{namespacerplidar_af629cff240361cf121502a3b3e9aa198}{GET\_HEALTH\_BYTE}} = 0x52;}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     \textcolor{keyword}{constexpr} uint8\_t \mbox{\hyperlink{namespacerplidar_afc069ffc0a883032cf57e4217b819d9c}{STOP\_BYTE}} = 0x25;}
+\DoxyCodeLine{109     \textcolor{keyword}{constexpr} uint8\_t \mbox{\hyperlink{namespacerplidar_a6282ac59506ebf379e15ea00882f2a8b}{RESET\_BYTE}} = 0x40;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111     \textcolor{keyword}{enum} \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7}{ScanType}}}
+\DoxyCodeLine{112     \{}
+\DoxyCodeLine{113         \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}{NORMAL}} = 0,}
+\DoxyCodeLine{114         \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a9f110e831b8ea3dbf546e8093ffca6b5}{FORCE}},}
+\DoxyCodeLine{115         \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7ae685a4556f6818b07b7fbcc195a35f92}{EXPRESS}}}
+\DoxyCodeLine{116     \};}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{keyword}{struct }\mbox{\hyperlink{structrplidar_1_1ScanInfo}{ScanInfo}}}
+\DoxyCodeLine{119     \{}
+\DoxyCodeLine{120         \textcolor{keywordtype}{int} \mbox{\hyperlink{structrplidar_1_1ScanInfo_a4afafc9358d8e54064700eee6b2e454e}{currently\_scanning}};}
+\DoxyCodeLine{121         \textcolor{keywordtype}{int} \mbox{\hyperlink{structrplidar_1_1ScanInfo_ae2687c6bef2e50778a34d118d936f084}{dsize}};}
+\DoxyCodeLine{122         \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7}{ScanType}} \mbox{\hyperlink{structrplidar_1_1ScanInfo_a2c149e8bff2bedd74348f2b4e6e92451}{type}};}
+\DoxyCodeLine{123     \};}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     \textcolor{keyword}{static} std::map<ScanType, std::map<std::string, uint8\_t>> SCAN\_TYPE = \{}
+\DoxyCodeLine{126         \{\mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}{ScanType::NORMAL}}, \{\{\textcolor{stringliteral}{"{}byte"{}}, 0x20\}, \{\textcolor{stringliteral}{"{}response"{}}, 129\}, \{\textcolor{stringliteral}{"{}size"{}}, 5\}\}\},}
+\DoxyCodeLine{127         \{\mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a9f110e831b8ea3dbf546e8093ffca6b5}{ScanType::FORCE}}, \{\{\textcolor{stringliteral}{"{}byte"{}}, 0x21\}, \{\textcolor{stringliteral}{"{}response"{}}, 129\}, \{\textcolor{stringliteral}{"{}size"{}}, 5\}\}\},}
+\DoxyCodeLine{128         \{\mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7ae685a4556f6818b07b7fbcc195a35f92}{ScanType::EXPRESS}}, \{\{\textcolor{stringliteral}{"{}byte"{}}, 0x82\}, \{\textcolor{stringliteral}{"{}response"{}}, 130\}, \{\textcolor{stringliteral}{"{}size"{}}, 84\}\}\}\};}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130     \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacerplidar_a7a7dd67caebe4aa8ac0a4979e1286b98}{DESCRIPTOR\_LEN}} = 7;}
+\DoxyCodeLine{131     \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacerplidar_af454220d3fe7250d010a99d12c06f054}{INFO\_LEN}} = 20;}
+\DoxyCodeLine{132     \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacerplidar_af13dc55ee8539871ff68fe2979bc1beb}{HEALTH\_LEN}} = 3;}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacerplidar_a91d743ea1d1e238f896c9ecb0d279c8e}{INFO\_TYPE}} = 4;}
+\DoxyCodeLine{135     \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacerplidar_a6d2fe1a18bc0ad2c9074ffd7e51e07e8}{HEALTH\_TYPE}} = 6;}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacerplidar_a15f11f2fabb321455dbb8f7bcc24403d}{MAX\_MOTOR\_PWM}} = 1023;}
+\DoxyCodeLine{138     \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacerplidar_a2298b87542f6a4a1e9eb2143ba9cf9ab}{DEFAULT\_MOTOR\_PWM}} = 660;}
+\DoxyCodeLine{139     \textcolor{keyword}{constexpr} uint8\_t \mbox{\hyperlink{namespacerplidar_a07781a840ad090d846ba1aaa2596a22c}{SET\_PWM\_BYTE}} = 0xF0;}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141     \textcolor{keyword}{static} std::map<int, std::string> HEALTH\_STATUSES = \{}
+\DoxyCodeLine{142         \{0, \textcolor{stringliteral}{"{}Good"{}}\},}
+\DoxyCodeLine{143         \{1, \textcolor{stringliteral}{"{}Warning"{}}\},}
+\DoxyCodeLine{144         \{2, \textcolor{stringliteral}{"{}Error"{}}\}\};}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146     \textcolor{keyword}{struct }\mbox{\hyperlink{structrplidar_1_1DeviceInfo}{DeviceInfo}}}
+\DoxyCodeLine{147     \{}
+\DoxyCodeLine{148         uint8\_t \mbox{\hyperlink{structrplidar_1_1DeviceInfo_a5db4c48072db222549e9ef3f4ba42f5f}{model}};}
+\DoxyCodeLine{149         std::pair<uint8\_t, uint8\_t> \mbox{\hyperlink{structrplidar_1_1DeviceInfo_a8ae11d05b113b4878997a2f333951b1f}{firmware}};}
+\DoxyCodeLine{150         uint8\_t \mbox{\hyperlink{structrplidar_1_1DeviceInfo_a886b4f62e65cba4fc3391cc28832b54a}{hardware}};}
+\DoxyCodeLine{151         std::string \mbox{\hyperlink{structrplidar_1_1DeviceInfo_a34f45c4e4c697cd02859f6ef4b5286fc}{serialNumber}};}
+\DoxyCodeLine{152     \};}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{158     \textcolor{keyword}{struct }\mbox{\hyperlink{structrplidar_1_1HealthInfo}{HealthInfo}}}
+\DoxyCodeLine{159     \{}
+\DoxyCodeLine{164         std::string \mbox{\hyperlink{structrplidar_1_1HealthInfo_a88d05caf0a43fcacc55866bed71bed2a}{status}};}
+\DoxyCodeLine{169         \textcolor{keywordtype}{int} \mbox{\hyperlink{structrplidar_1_1HealthInfo_af80be8fdde9685b1ae0235590d01bb4d}{errorCode}};}
+\DoxyCodeLine{170     \};}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     \textcolor{keyword}{struct }\mbox{\hyperlink{structrplidar_1_1Measure}{Measure}}}
+\DoxyCodeLine{173     \{}
+\DoxyCodeLine{174         \textcolor{keywordtype}{bool} \mbox{\hyperlink{structrplidar_1_1Measure_aa224771a20227ff6311d59002dde542f}{newScan}};}
+\DoxyCodeLine{175         \textcolor{keywordtype}{int} \mbox{\hyperlink{structrplidar_1_1Measure_af25e2158775bea26b253bf4056747353}{quality}};}
+\DoxyCodeLine{176         \textcolor{keywordtype}{double} \mbox{\hyperlink{structrplidar_1_1Measure_ad1d3aa520adf98a85828e9908a5a4d26}{angle}};}
+\DoxyCodeLine{177         \textcolor{keywordtype}{double} \mbox{\hyperlink{structrplidar_1_1Measure_a9f388735107a844a5031936333093eb0}{distance}};}
+\DoxyCodeLine{178     \};}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180     \textcolor{keyword}{class }\mbox{\hyperlink{classrplidar_1_1ExpressPacket}{ExpressPacket}}}
+\DoxyCodeLine{181     \{}
+\DoxyCodeLine{182     \textcolor{keyword}{public}:}
+\DoxyCodeLine{183         \textcolor{keyword}{static} \textcolor{keyword}{const} uint8\_t \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a2bf003f302f0405623cd603edb499373}{sync1}} = 0xa;}
+\DoxyCodeLine{184         \textcolor{keyword}{static} \textcolor{keyword}{const} uint8\_t \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a5f4335adba4b99268cb0c86b8d387c67}{sync2}} = 0x5;}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186         \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a33961ea18254009488140f7e04a5311b}{ExpressPacket}}(std::vector<uint8\_t> data)}
+\DoxyCodeLine{187         \{}
+\DoxyCodeLine{188             \textcolor{keywordflow}{if} ((data[0] >> 4) != \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a2bf003f302f0405623cd603edb499373}{sync1}} || (data[1] >> 4) != \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a5f4335adba4b99268cb0c86b8d387c67}{sync2}})}
+\DoxyCodeLine{189             \{}
+\DoxyCodeLine{190                 \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}try to parse corrupted data"{}});}
+\DoxyCodeLine{191             \}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193             uint8\_t checksum = 0;}
+\DoxyCodeLine{194             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 2; i < data.size(); i++)}
+\DoxyCodeLine{195             \{}
+\DoxyCodeLine{196                 checksum \string^= data[i];}
+\DoxyCodeLine{197             \}}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199             \textcolor{keywordflow}{if} (checksum != ((data[0] \& 0x0F) + ((data[1] \& 0x0F) << 4)))}
+\DoxyCodeLine{200             \{}
+\DoxyCodeLine{201                 \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid checksum"{}});}
+\DoxyCodeLine{202             \}}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204             \mbox{\hyperlink{classrplidar_1_1ExpressPacket_aadea49091f4cbb99b8af4ff01037d242}{new\_scan}} = (data[2] >> 7) \& 0x01;}
+\DoxyCodeLine{205             \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a7f4d86947e6d4ec8d20bfa92c529b4a8}{start\_angle}} = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}((data[1] \& 0x0F) << 8 | data[2]) / 64.0f;}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 4; i < data.size(); i += 5)}
+\DoxyCodeLine{208             \{}
+\DoxyCodeLine{209                 \mbox{\hyperlink{classrplidar_1_1ExpressPacket_ae8ddd1acf1424b4be771c7b8ef90b908}{distance}}.push\_back(((data[i + 1] >> 2) \& 0x3F) | ((data[i] \& 0x3F) << 6));}
+\DoxyCodeLine{210                 \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a62769fca277366ef560618259595a080}{angle}}.push\_back((((data[i + 3] \& 0x0F) + ((data[i + 1] \& 0x01) << 4)) / 8.0f) * \mbox{\hyperlink{classrplidar_1_1ExpressPacket_abeeff4b6fa6cc68d523b303514e49559}{getSign}}(data[i + 1]));}
+\DoxyCodeLine{211                 \mbox{\hyperlink{classrplidar_1_1ExpressPacket_ae8ddd1acf1424b4be771c7b8ef90b908}{distance}}.push\_back(((data[i + 2] >> 2) \& 0x3F) | ((data[i + 1] \& 0x3F) << 6));}
+\DoxyCodeLine{212                 \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a62769fca277366ef560618259595a080}{angle}}.push\_back((((data[i + 3] >> 4) \& 0x0F) + ((data[i + 2] \& 0x01) << 4)) / 8.0f * \mbox{\hyperlink{classrplidar_1_1ExpressPacket_abeeff4b6fa6cc68d523b303514e49559}{getSign}}(data[i + 2]));}
+\DoxyCodeLine{213             \}}
+\DoxyCodeLine{214         \}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216         \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{classrplidar_1_1ExpressPacket_abeeff4b6fa6cc68d523b303514e49559}{getSign}}(uint8\_t value)}
+\DoxyCodeLine{217         \{}
+\DoxyCodeLine{218             \textcolor{keywordflow}{return} (value \& 0x02) ? -\/1 : 1;}
+\DoxyCodeLine{219         \}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221     \textcolor{keyword}{public}:}
+\DoxyCodeLine{222         std::vector<uint16\_t> \mbox{\hyperlink{classrplidar_1_1ExpressPacket_ae8ddd1acf1424b4be771c7b8ef90b908}{distance}};}
+\DoxyCodeLine{223         std::vector<float> \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a62769fca277366ef560618259595a080}{angle}};}
+\DoxyCodeLine{224         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrplidar_1_1ExpressPacket_aadea49091f4cbb99b8af4ff01037d242}{new\_scan}};}
+\DoxyCodeLine{225         \textcolor{keywordtype}{float} \mbox{\hyperlink{classrplidar_1_1ExpressPacket_a7f4d86947e6d4ec8d20bfa92c529b4a8}{start\_angle}};}
+\DoxyCodeLine{226     \};}
+\DoxyCodeLine{231     \textcolor{keyword}{class }\mbox{\hyperlink{classrplidar_1_1RPLidar}{RPLidar}}}
+\DoxyCodeLine{232     \{}
+\DoxyCodeLine{233     \textcolor{keyword}{public}:}
+\DoxyCodeLine{234         \textcolor{keyword}{static} tl::expected<std::unique\_ptr<RPLidar>, std::string> \mbox{\hyperlink{classrplidar_1_1RPLidar_aca36f0625367cd74f85d02e2af56fbc4}{create}}(\textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classrplidar_1_1RPLidar_a917c65e8bbd3cebc40d8358538e56279}{port}}, uint32\_t \mbox{\hyperlink{classrplidar_1_1RPLidar_a2a038bbc9cad3cdd39c761957d65980c}{baudrate}} = 115200U) noexcept}
+\DoxyCodeLine{235         \{}
+\DoxyCodeLine{236             \textcolor{keywordflow}{try}}
+\DoxyCodeLine{237             \{}
+\DoxyCodeLine{238                 \textcolor{comment}{// Timeout after 60 seconds if nothing read}}
+\DoxyCodeLine{239                 \textcolor{keyword}{auto} timeout = serial::Timeout(1000U, 60000U, 0, 1000U, 0);}
+\DoxyCodeLine{240                 std::unique\_ptr<serial::Serial> serial = std::make\_unique<serial::Serial>(\mbox{\hyperlink{classrplidar_1_1RPLidar_a917c65e8bbd3cebc40d8358538e56279}{port}}, \mbox{\hyperlink{classrplidar_1_1RPLidar_a2a038bbc9cad3cdd39c761957d65980c}{baudrate}}, timeout);}
+\DoxyCodeLine{241                 std::unique\_ptr<RPLidar> lidar = std::make\_unique<RPLidar>(\mbox{\hyperlink{classrplidar_1_1RPLidar_a917c65e8bbd3cebc40d8358538e56279}{port}}, \mbox{\hyperlink{classrplidar_1_1RPLidar_a2a038bbc9cad3cdd39c761957d65980c}{baudrate}}, std::move(serial));}
+\DoxyCodeLine{242                 \textcolor{keywordflow}{return} std::move(lidar);}
+\DoxyCodeLine{243             \}}
+\DoxyCodeLine{244             \textcolor{keywordflow}{catch} (std::exception \&e)}
+\DoxyCodeLine{245             \{}
+\DoxyCodeLine{246                 \textcolor{keywordflow}{return} tl::make\_unexpected(e.what());}
+\DoxyCodeLine{247             \}}
+\DoxyCodeLine{248         \}}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{256         \mbox{\hyperlink{classrplidar_1_1RPLidar_aba94501980eed8e18afe7514360129cd}{RPLidar}}(\textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classrplidar_1_1RPLidar_a917c65e8bbd3cebc40d8358538e56279}{port}}, uint32\_t \mbox{\hyperlink{classrplidar_1_1RPLidar_a2a038bbc9cad3cdd39c761957d65980c}{baudrate}}, std::unique\_ptr<serial::Serial> serial) : \mbox{\hyperlink{classrplidar_1_1RPLidar_a917c65e8bbd3cebc40d8358538e56279}{port}}(\mbox{\hyperlink{classrplidar_1_1RPLidar_a917c65e8bbd3cebc40d8358538e56279}{port}}), \mbox{\hyperlink{classrplidar_1_1RPLidar_a2a038bbc9cad3cdd39c761957d65980c}{baudrate}}(\mbox{\hyperlink{classrplidar_1_1RPLidar_a2a038bbc9cad3cdd39c761957d65980c}{baudrate}}), \mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}(std::move(serial))\{\};}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258         \mbox{\hyperlink{classrplidar_1_1RPLidar_a85a3f0e91d020be983295f5e9d0f3b48}{\string~RPLidar}}() \{\}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_a1138d81c9bb062d0e415ae65336d8a83}{disconnect}}()}
+\DoxyCodeLine{261         \{}
+\DoxyCodeLine{262             \textcolor{keywordflow}{if} (!this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>isOpen())}
+\DoxyCodeLine{263             \{}
+\DoxyCodeLine{264                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{265             \}}
+\DoxyCodeLine{266             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>close();}
+\DoxyCodeLine{267         \}}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{269         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_a7bfcd9b46b0ce25cffe6735b5fe21763}{set\_motor\_speed}}(\textcolor{keywordtype}{int} pwm)}
+\DoxyCodeLine{270         \{}
+\DoxyCodeLine{271             \textcolor{keywordflow}{if} (0 <= pwm \&\& pwm <= \mbox{\hyperlink{namespacerplidar_a15f11f2fabb321455dbb8f7bcc24403d}{MAX\_MOTOR\_PWM}})}
+\DoxyCodeLine{272             \{}
+\DoxyCodeLine{273                 std::abort();}
+\DoxyCodeLine{274             \}}
+\DoxyCodeLine{275             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a63ca639d27b927228ecfae51dc678915}{\_motor\_speed}} = pwm;}
+\DoxyCodeLine{276             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_af30f40ab63ecf0e2333f03bd25be771f}{motor\_running}})}
+\DoxyCodeLine{277                 this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a3229bcf79650f993c72cf1374478469f}{\_set\_pwm}}(this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a63ca639d27b927228ecfae51dc678915}{\_motor\_speed}});}
+\DoxyCodeLine{278         \}}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{284         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_a1df8777d4c6bf70c6f30af2a1b7a9105}{start\_motor}}()}
+\DoxyCodeLine{285         \{}
+\DoxyCodeLine{286             spdlog::info(\textcolor{stringliteral}{"{}Starting motor"{}});}
+\DoxyCodeLine{287             \textcolor{comment}{// For A1}}
+\DoxyCodeLine{288             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>setDTR(\textcolor{keyword}{false});}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290             \textcolor{comment}{// For A2}}
+\DoxyCodeLine{291             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a3229bcf79650f993c72cf1374478469f}{\_set\_pwm}}(this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a63ca639d27b927228ecfae51dc678915}{\_motor\_speed}});}
+\DoxyCodeLine{292             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_af30f40ab63ecf0e2333f03bd25be771f}{motor\_running}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{293         \}}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{299         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_a60956dfd06aa05cda50fcd5e71e7e378}{stop\_motor}}()}
+\DoxyCodeLine{300         \{}
+\DoxyCodeLine{301             spdlog::info(\textcolor{stringliteral}{"{}Stopping motor"{}});}
+\DoxyCodeLine{302             \textcolor{comment}{// For A2}}
+\DoxyCodeLine{303             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a3229bcf79650f993c72cf1374478469f}{\_set\_pwm}}(0);}
+\DoxyCodeLine{304             std::this\_thread::sleep\_for(std::chrono::milliseconds(1));}
+\DoxyCodeLine{305 }
+\DoxyCodeLine{306             \textcolor{comment}{// For A1}}
+\DoxyCodeLine{307             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>setDTR(\textcolor{keyword}{true});}
+\DoxyCodeLine{308             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_af30f40ab63ecf0e2333f03bd25be771f}{motor\_running}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{309         \}}
+\DoxyCodeLine{310 }
+\DoxyCodeLine{316         tl::expected<DeviceInfo, std::string> \mbox{\hyperlink{classrplidar_1_1RPLidar_a5d82ad9289684644d7154836845632b9}{get\_info}}()}
+\DoxyCodeLine{317         \{}
+\DoxyCodeLine{318             \textcolor{comment}{// Check if there's data in the buffer}}
+\DoxyCodeLine{319             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>available() > 0)}
+\DoxyCodeLine{320             \{}
+\DoxyCodeLine{321                 \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Data in buffer, you can't have info! Run flush() to empty the buffer."{}});}
+\DoxyCodeLine{322             \}}
+\DoxyCodeLine{323             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8d099f194f23d580e35e7f106192e1fa}{\_send\_cmd}}(GET\_INFO\_BYTE);}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{325             uint8\_t dsize;}
+\DoxyCodeLine{326             \textcolor{keywordtype}{bool} isSingle;}
+\DoxyCodeLine{327             uint8\_t dtype;}
+\DoxyCodeLine{328             \textcolor{keyword}{auto} descriptor\_result = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_af5e6a38926e62f82fe417f2f1ae86ab2}{\_read\_descriptor}}();}
+\DoxyCodeLine{329             \textcolor{keywordflow}{if} (!descriptor\_result.has\_value())}
+\DoxyCodeLine{330                 \textcolor{keywordflow}{return} tl::make\_unexpected(descriptor\_result.error());}
+\DoxyCodeLine{331             std::tie(dsize, isSingle, dtype) = descriptor\_result.value();}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{333             \textcolor{comment}{// Check response properties}}
+\DoxyCodeLine{334             \textcolor{keywordflow}{if} (dsize != \mbox{\hyperlink{namespacerplidar_af454220d3fe7250d010a99d12c06f054}{INFO\_LEN}})}
+\DoxyCodeLine{335             \{}
+\DoxyCodeLine{336                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Wrong get\_info reply length"{}});}
+\DoxyCodeLine{337             \}}
+\DoxyCodeLine{338             \textcolor{keywordflow}{if} (!isSingle)}
+\DoxyCodeLine{339             \{}
+\DoxyCodeLine{340                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Not a single response mode"{}});}
+\DoxyCodeLine{341             \}}
+\DoxyCodeLine{342             \textcolor{keywordflow}{if} (dtype != \mbox{\hyperlink{namespacerplidar_a91d743ea1d1e238f896c9ecb0d279c8e}{INFO\_TYPE}})}
+\DoxyCodeLine{343             \{}
+\DoxyCodeLine{344                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Wrong response data type"{}});}
+\DoxyCodeLine{345             \}}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347             \textcolor{comment}{// Read the response}}
+\DoxyCodeLine{348             std::vector<uint8\_t> raw = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7d3781aa79ec3839467d3556c0390e7}{\_read\_response}}(dsize);}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{350             \textcolor{comment}{// Convert serial number to a hex string}}
+\DoxyCodeLine{351             std::string serialNumber;}
+\DoxyCodeLine{352             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 4; i < raw.size(); ++i)}
+\DoxyCodeLine{353             \{}
+\DoxyCodeLine{354                 serialNumber += \mbox{\hyperlink{classrplidar_1_1RPLidar_ad34c88a39c257fa07ca5323c8b681506}{convertToHexString}}(raw[i]);}
+\DoxyCodeLine{355             \}}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{357             \textcolor{comment}{// Construct the device info struct}}
+\DoxyCodeLine{358             \mbox{\hyperlink{structrplidar_1_1DeviceInfo}{DeviceInfo}} info;}
+\DoxyCodeLine{359             info.\mbox{\hyperlink{structrplidar_1_1DeviceInfo_a5db4c48072db222549e9ef3f4ba42f5f}{model}} = raw[0];}
+\DoxyCodeLine{360             info.\mbox{\hyperlink{structrplidar_1_1DeviceInfo_a8ae11d05b113b4878997a2f333951b1f}{firmware}}.first = raw[2];}
+\DoxyCodeLine{361             info.\mbox{\hyperlink{structrplidar_1_1DeviceInfo_a8ae11d05b113b4878997a2f333951b1f}{firmware}}.second = raw[1];}
+\DoxyCodeLine{362             info.\mbox{\hyperlink{structrplidar_1_1DeviceInfo_a886b4f62e65cba4fc3391cc28832b54a}{hardware}} = raw[3];}
+\DoxyCodeLine{363             info.\mbox{\hyperlink{structrplidar_1_1DeviceInfo_a34f45c4e4c697cd02859f6ef4b5286fc}{serialNumber}} = serialNumber;}
+\DoxyCodeLine{364 }
+\DoxyCodeLine{365             \textcolor{keywordflow}{return} info;}
+\DoxyCodeLine{366         \}}
+\DoxyCodeLine{367 }
+\DoxyCodeLine{378         tl::expected<HealthInfo, std::string> \mbox{\hyperlink{classrplidar_1_1RPLidar_a732564d72b819c4b4640c13784a0560b}{get\_health}}()}
+\DoxyCodeLine{379         \{}
+\DoxyCodeLine{380             \textcolor{comment}{// Check if there's data in the buffer}}
+\DoxyCodeLine{381             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>available() > 0)}
+\DoxyCodeLine{382             \{}
+\DoxyCodeLine{383                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Data in buffer, you can't get health info! Run cleanInput() to empty the buffer."{}});}
+\DoxyCodeLine{384             \}}
+\DoxyCodeLine{385             spdlog::info(\textcolor{stringliteral}{"{}Asking for health"{}});}
+\DoxyCodeLine{386 }
+\DoxyCodeLine{387             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8d099f194f23d580e35e7f106192e1fa}{\_send\_cmd}}(GET\_HEALTH\_BYTE);}
+\DoxyCodeLine{388 }
+\DoxyCodeLine{389             \textcolor{comment}{// Read the descriptor}}
+\DoxyCodeLine{390             uint8\_t dsize;}
+\DoxyCodeLine{391             \textcolor{keywordtype}{bool} isSingle;}
+\DoxyCodeLine{392             uint8\_t dtype;}
+\DoxyCodeLine{393             \textcolor{keyword}{auto} descriptor\_result = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_af5e6a38926e62f82fe417f2f1ae86ab2}{\_read\_descriptor}}();}
+\DoxyCodeLine{394             \textcolor{keywordflow}{if} (!descriptor\_result.has\_value())}
+\DoxyCodeLine{395                 \textcolor{keywordflow}{return} tl::make\_unexpected(descriptor\_result.error());}
+\DoxyCodeLine{396             std::tie(dsize, isSingle, dtype) = descriptor\_result.value();}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{398             \textcolor{comment}{// Check response properties}}
+\DoxyCodeLine{399             \textcolor{keywordflow}{if} (dsize != \mbox{\hyperlink{namespacerplidar_af13dc55ee8539871ff68fe2979bc1beb}{HEALTH\_LEN}})}
+\DoxyCodeLine{400             \{}
+\DoxyCodeLine{401                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Wrong get\_health reply length"{}});}
+\DoxyCodeLine{402             \}}
+\DoxyCodeLine{403             \textcolor{keywordflow}{if} (!isSingle)}
+\DoxyCodeLine{404             \{}
+\DoxyCodeLine{405                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Not a single response mode"{}});}
+\DoxyCodeLine{406             \}}
+\DoxyCodeLine{407             \textcolor{keywordflow}{if} (dtype != \mbox{\hyperlink{namespacerplidar_a6d2fe1a18bc0ad2c9074ffd7e51e07e8}{HEALTH\_TYPE}})}
+\DoxyCodeLine{408             \{}
+\DoxyCodeLine{409                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Wrong response data type"{}});}
+\DoxyCodeLine{410             \}}
+\DoxyCodeLine{411 }
+\DoxyCodeLine{412             \textcolor{comment}{// Read the response}}
+\DoxyCodeLine{413             std::vector<uint8\_t> raw = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7d3781aa79ec3839467d3556c0390e7}{\_read\_response}}(dsize);}
+\DoxyCodeLine{414 }
+\DoxyCodeLine{415             \textcolor{comment}{// Extract status and error code}}
+\DoxyCodeLine{416             std::string status = HEALTH\_STATUSES[raw[0]];}
+\DoxyCodeLine{417             \textcolor{keywordtype}{int} errorCode = (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(raw[1]) << 8) + \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(raw[2]);}
+\DoxyCodeLine{418 }
+\DoxyCodeLine{419             \textcolor{keywordflow}{return} \mbox{\hyperlink{structrplidar_1_1HealthInfo}{HealthInfo}}\{status, errorCode\};}
+\DoxyCodeLine{420         \}}
+\DoxyCodeLine{421 }
+\DoxyCodeLine{426         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_a5c55915ec1764fbcee2cd1676f9cb9b0}{clean\_input}}()}
+\DoxyCodeLine{427         \{}
+\DoxyCodeLine{428             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a395f7d31502b3f81570d374a689a669e}{scanning}}.\mbox{\hyperlink{structrplidar_1_1ScanInfo_a4afafc9358d8e54064700eee6b2e454e}{currently\_scanning}})}
+\DoxyCodeLine{429             \{}
+\DoxyCodeLine{430                 \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Cleaning not allowed during scanning process active!"{}});}
+\DoxyCodeLine{431             \}}
+\DoxyCodeLine{432             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>flushInput();}
+\DoxyCodeLine{433             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7dff8f629d8bc200a1c6923f9e750df}{express\_trame}} = 32;}
+\DoxyCodeLine{434             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac52aa4a3fb0f89738ca2e4618fc5eb38}{express\_data}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{435         \}}
+\DoxyCodeLine{436 }
+\DoxyCodeLine{442         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_ae4dc92aa29a82fc626b78265eb7cee86}{stop}}()}
+\DoxyCodeLine{443         \{}
+\DoxyCodeLine{444             spdlog::info(\textcolor{stringliteral}{"{}Stopping scanning"{}});}
+\DoxyCodeLine{445             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8d099f194f23d580e35e7f106192e1fa}{\_send\_cmd}}(STOP\_BYTE);}
+\DoxyCodeLine{446             std::this\_thread::sleep\_for(std::chrono::milliseconds(100));}
+\DoxyCodeLine{447             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a395f7d31502b3f81570d374a689a669e}{scanning}}.\mbox{\hyperlink{structrplidar_1_1ScanInfo_a4afafc9358d8e54064700eee6b2e454e}{currently\_scanning}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{448             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a5c55915ec1764fbcee2cd1676f9cb9b0}{clean\_input}}();}
+\DoxyCodeLine{449         \}}
+\DoxyCodeLine{450 }
+\DoxyCodeLine{456         tl::expected<nullptr\_t, std::string> \mbox{\hyperlink{classrplidar_1_1RPLidar_a7530f222428dc636be107c3d45567ca0}{start}}(\mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7}{ScanType}} scanType = \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}{ScanType::NORMAL}})}
+\DoxyCodeLine{457         \{}
+\DoxyCodeLine{458             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a395f7d31502b3f81570d374a689a669e}{scanning}}.\mbox{\hyperlink{structrplidar_1_1ScanInfo_a4afafc9358d8e54064700eee6b2e454e}{currently\_scanning}})}
+\DoxyCodeLine{459             \{}
+\DoxyCodeLine{460                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Scanning already running!"{}});}
+\DoxyCodeLine{461             \}}
+\DoxyCodeLine{462 }
+\DoxyCodeLine{463             \textcolor{keyword}{auto} health\_info\_result = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a732564d72b819c4b4640c13784a0560b}{get\_health}}();}
+\DoxyCodeLine{464             \textcolor{keywordflow}{if} (!health\_info\_result.has\_value())}
+\DoxyCodeLine{465                 \textcolor{keywordflow}{return} tl::make\_unexpected(health\_info\_result.error());}
+\DoxyCodeLine{466 }
+\DoxyCodeLine{467             \mbox{\hyperlink{structrplidar_1_1HealthInfo}{HealthInfo}} healthInfo = health\_info\_result.value();}
+\DoxyCodeLine{468             std::string status = healthInfo.\mbox{\hyperlink{structrplidar_1_1HealthInfo_a88d05caf0a43fcacc55866bed71bed2a}{status}};}
+\DoxyCodeLine{469             \textcolor{keywordtype}{int} errorCode = healthInfo.\mbox{\hyperlink{structrplidar_1_1HealthInfo_af80be8fdde9685b1ae0235590d01bb4d}{errorCode}};}
+\DoxyCodeLine{470             spdlog::debug(\textcolor{stringliteral}{"{}Health status: \{\} [\{\}\}]"{}}, status, errorCode);}
+\DoxyCodeLine{471 }
+\DoxyCodeLine{472             \textcolor{keywordflow}{if} (status == \textcolor{stringliteral}{"{}Error"{}})}
+\DoxyCodeLine{473             \{}
+\DoxyCodeLine{474                 this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8b0fcd13c4e6d6db6642773c965c698f}{reset}}();}
+\DoxyCodeLine{475                 health\_info\_result = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a732564d72b819c4b4640c13784a0560b}{get\_health}}();}
+\DoxyCodeLine{476                 \textcolor{keywordflow}{if} (!health\_info\_result.has\_value())}
+\DoxyCodeLine{477                     \textcolor{keywordflow}{return} tl::make\_unexpected(health\_info\_result.error());}
+\DoxyCodeLine{478                 healthInfo = health\_info\_result.value();}
+\DoxyCodeLine{479                 status = healthInfo.\mbox{\hyperlink{structrplidar_1_1HealthInfo_a88d05caf0a43fcacc55866bed71bed2a}{status}};}
+\DoxyCodeLine{480                 errorCode = healthInfo.\mbox{\hyperlink{structrplidar_1_1HealthInfo_af80be8fdde9685b1ae0235590d01bb4d}{errorCode}};}
+\DoxyCodeLine{481                 \textcolor{keywordflow}{if} (status == \textcolor{stringliteral}{"{}Error"{}})}
+\DoxyCodeLine{482                 \{}
+\DoxyCodeLine{483                     \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}RPLidar hardware failure. Error code: "{}} + std::to\_string(errorCode));}
+\DoxyCodeLine{484                 \}}
+\DoxyCodeLine{485             \}}
+\DoxyCodeLine{486             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (status == \textcolor{stringliteral}{"{}Warning"{}})}
+\DoxyCodeLine{487             \{}
+\DoxyCodeLine{488                 spdlog::warn(\textcolor{stringliteral}{"{}Warning sensor status detected! Error code: \{\}"{}}, errorCode);}
+\DoxyCodeLine{489             \}}
+\DoxyCodeLine{490 }
+\DoxyCodeLine{491             uint8\_t cmd = SCAN\_TYPE[scanType][\textcolor{stringliteral}{"{}byte"{}}];}
+\DoxyCodeLine{492 }
+\DoxyCodeLine{493             spdlog::warn(\textcolor{stringliteral}{"{}starting scan process in \{\} mode"{}}, \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(scanType));}
+\DoxyCodeLine{494 }
+\DoxyCodeLine{495             \textcolor{keywordflow}{if} (scanType == \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7ae685a4556f6818b07b7fbcc195a35f92}{ScanType::EXPRESS}})}
+\DoxyCodeLine{496             \{}
+\DoxyCodeLine{497                 \textcolor{comment}{// Adjust this part according to your payload format}}
+\DoxyCodeLine{498                 std::string payload = \textcolor{stringliteral}{"{}\(\backslash\)x00\(\backslash\)x00\(\backslash\)x00\(\backslash\)x00\(\backslash\)x00"{}};}
+\DoxyCodeLine{499                 this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ad1a78c99fc81251fc6a9c171b06371e6}{\_send\_payload\_cmd}}(cmd, payload);}
+\DoxyCodeLine{500             \}}
+\DoxyCodeLine{501             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{502             \{}
+\DoxyCodeLine{503                 this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8d099f194f23d580e35e7f106192e1fa}{\_send\_cmd}}(cmd);}
+\DoxyCodeLine{504             \}}
+\DoxyCodeLine{505 }
+\DoxyCodeLine{506             uint8\_t dsize;}
+\DoxyCodeLine{507             \textcolor{keywordtype}{bool} isSingle;}
+\DoxyCodeLine{508             uint8\_t dtype;}
+\DoxyCodeLine{509 }
+\DoxyCodeLine{510             \textcolor{keyword}{auto} descriptor\_result = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_af5e6a38926e62f82fe417f2f1ae86ab2}{\_read\_descriptor}}();}
+\DoxyCodeLine{511             \textcolor{keywordflow}{if} (!descriptor\_result.has\_value())}
+\DoxyCodeLine{512                 \textcolor{keywordflow}{return} tl::make\_unexpected(descriptor\_result.error());}
+\DoxyCodeLine{513 }
+\DoxyCodeLine{514             std::tie(dsize, isSingle, dtype) = descriptor\_result.value();}
+\DoxyCodeLine{515 }
+\DoxyCodeLine{516             \textcolor{keywordflow}{if} (dsize != SCAN\_TYPE[scanType][\textcolor{stringliteral}{"{}size"{}}])}
+\DoxyCodeLine{517             \{}
+\DoxyCodeLine{518                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Wrong get\_info reply length"{}});}
+\DoxyCodeLine{519             \}}
+\DoxyCodeLine{520             \textcolor{keywordflow}{if} (isSingle)}
+\DoxyCodeLine{521             \{}
+\DoxyCodeLine{522                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Not a multiple response mode"{}});}
+\DoxyCodeLine{523             \}}
+\DoxyCodeLine{524             \textcolor{keywordflow}{if} (dtype != SCAN\_TYPE[scanType][\textcolor{stringliteral}{"{}response"{}}])}
+\DoxyCodeLine{525             \{}
+\DoxyCodeLine{526                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Wrong response data type"{}});}
+\DoxyCodeLine{527             \}}
+\DoxyCodeLine{528             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a395f7d31502b3f81570d374a689a669e}{scanning}} = \mbox{\hyperlink{structrplidar_1_1ScanInfo}{ScanInfo}}\{\textcolor{keyword}{true}, dsize, scanType\};}
+\DoxyCodeLine{529             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{530         \}}
+\DoxyCodeLine{531 }
+\DoxyCodeLine{537         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_a8b0fcd13c4e6d6db6642773c965c698f}{reset}}()}
+\DoxyCodeLine{538         \{}
+\DoxyCodeLine{539             spdlog::info(\textcolor{stringliteral}{"{}Resetting the sensor"{}});}
+\DoxyCodeLine{540             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8d099f194f23d580e35e7f106192e1fa}{\_send\_cmd}}(RESET\_BYTE);}
+\DoxyCodeLine{541             std::this\_thread::sleep\_for(std::chrono::milliseconds(2000));}
+\DoxyCodeLine{542             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a5c55915ec1764fbcee2cd1676f9cb9b0}{clean\_input}}();}
+\DoxyCodeLine{543         \}}
+\DoxyCodeLine{544 }
+\DoxyCodeLine{545         std::function<tl::expected<Measure, std::string>()> \mbox{\hyperlink{classrplidar_1_1RPLidar_ace2a42a1e9667f7138be8633225dae34}{iter\_measures}}(\mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7}{ScanType}} scanType = \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}{ScanType::NORMAL}}, \textcolor{keywordtype}{int} maxBufMeas = 3000)}
+\DoxyCodeLine{546         \{}
+\DoxyCodeLine{547             \textcolor{keywordflow}{if} (!this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_af30f40ab63ecf0e2333f03bd25be771f}{motor\_running}})}
+\DoxyCodeLine{548             \{}
+\DoxyCodeLine{549                 this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a1df8777d4c6bf70c6f30af2a1b7a9105}{start\_motor}}();}
+\DoxyCodeLine{550             \}}
+\DoxyCodeLine{551 }
+\DoxyCodeLine{552             \textcolor{keywordflow}{if} (!this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a395f7d31502b3f81570d374a689a669e}{scanning}}.\mbox{\hyperlink{structrplidar_1_1ScanInfo_a4afafc9358d8e54064700eee6b2e454e}{currently\_scanning}})}
+\DoxyCodeLine{553             \{}
+\DoxyCodeLine{554                 this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a7530f222428dc636be107c3d45567ca0}{start}}(scanType);}
+\DoxyCodeLine{555             \}}
+\DoxyCodeLine{556 }
+\DoxyCodeLine{557             \textcolor{comment}{// Define a lambda function to generate measures}}
+\DoxyCodeLine{558             \textcolor{keyword}{auto} generator = [\textcolor{keyword}{this}, scanType, maxBufMeas]() -\/> tl::expected<Measure, std::string>}
+\DoxyCodeLine{559             \{}
+\DoxyCodeLine{560                 \textcolor{keywordflow}{while} (\textcolor{keyword}{true})}
+\DoxyCodeLine{561                 \{}
+\DoxyCodeLine{562                     \textcolor{keywordtype}{int} dsize = \mbox{\hyperlink{classrplidar_1_1RPLidar_a395f7d31502b3f81570d374a689a669e}{scanning}}.\mbox{\hyperlink{structrplidar_1_1ScanInfo_ae2687c6bef2e50778a34d118d936f084}{dsize}};}
+\DoxyCodeLine{563 }
+\DoxyCodeLine{564                     \textcolor{keywordflow}{if} (maxBufMeas != 0)}
+\DoxyCodeLine{565                     \{}
+\DoxyCodeLine{566                         \textcolor{keywordtype}{int} dataInBuf = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>available();}
+\DoxyCodeLine{567                         \textcolor{keywordflow}{if} (dataInBuf > maxBufMeas)}
+\DoxyCodeLine{568                         \{}
+\DoxyCodeLine{569                             spdlog::warn(}
+\DoxyCodeLine{570                                 \textcolor{stringliteral}{"{}Too many bytes in the input buffer: \{\}/\{\}. \(\backslash\)n"{}}}
+\DoxyCodeLine{571                                 \textcolor{stringliteral}{"{}Cleaning buffer..."{}},}
+\DoxyCodeLine{572                                 dataInBuf, maxBufMeas);}
+\DoxyCodeLine{573                             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ae4dc92aa29a82fc626b78265eb7cee86}{stop}}();}
+\DoxyCodeLine{574                             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a7530f222428dc636be107c3d45567ca0}{start}}(\mbox{\hyperlink{classrplidar_1_1RPLidar_a395f7d31502b3f81570d374a689a669e}{scanning}}.\mbox{\hyperlink{structrplidar_1_1ScanInfo_a2c149e8bff2bedd74348f2b4e6e92451}{type}});}
+\DoxyCodeLine{575                         \}}
+\DoxyCodeLine{576                     \}}
+\DoxyCodeLine{577 }
+\DoxyCodeLine{578                     \textcolor{keywordflow}{if} (scanType == \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}{ScanType::NORMAL}})}
+\DoxyCodeLine{579                     \{}
+\DoxyCodeLine{580                         std::vector<uint8\_t> raw = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7d3781aa79ec3839467d3556c0390e7}{\_read\_response}}(dsize);}
+\DoxyCodeLine{581                         \textcolor{keywordflow}{return} \mbox{\hyperlink{classrplidar_1_1RPLidar_a7d83f8089f04f159bab819ac958c7889}{\_process\_scan}}(raw);}
+\DoxyCodeLine{582                     \}}
+\DoxyCodeLine{583                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (scanType == \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7ae685a4556f6818b07b7fbcc195a35f92}{ScanType::EXPRESS}})}
+\DoxyCodeLine{584                     \{}
+\DoxyCodeLine{585                         \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7dff8f629d8bc200a1c6923f9e750df}{express\_trame}} == 32)}
+\DoxyCodeLine{586                         \{}
+\DoxyCodeLine{587                             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7dff8f629d8bc200a1c6923f9e750df}{express\_trame}} = 0;}
+\DoxyCodeLine{588 }
+\DoxyCodeLine{589                             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac52aa4a3fb0f89738ca2e4618fc5eb38}{express\_data}} == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{590                             \{}
+\DoxyCodeLine{591                                 spdlog::debug(\textcolor{stringliteral}{"{}reading first time bytes"{}});}
+\DoxyCodeLine{592                                 this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac52aa4a3fb0f89738ca2e4618fc5eb38}{express\_data}} = std::make\_unique<ExpressPacket>(\mbox{\hyperlink{classrplidar_1_1ExpressPacket}{ExpressPacket}}(this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7d3781aa79ec3839467d3556c0390e7}{\_read\_response}}(dsize)));}
+\DoxyCodeLine{593                             \}}
+\DoxyCodeLine{594 }
+\DoxyCodeLine{595                             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_acd327f59cbb5554f5abdc416676ef9a6}{express\_old\_data}} = std::move(this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac52aa4a3fb0f89738ca2e4618fc5eb38}{express\_data}});}
+\DoxyCodeLine{596                             spdlog::debug(\textcolor{stringliteral}{"{}set old\_data with start\_angle \{\}"{}}, this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_acd327f59cbb5554f5abdc416676ef9a6}{express\_old\_data}}-\/>start\_angle);}
+\DoxyCodeLine{597                             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac52aa4a3fb0f89738ca2e4618fc5eb38}{express\_data}} = std::make\_unique<ExpressPacket>(\mbox{\hyperlink{classrplidar_1_1ExpressPacket}{ExpressPacket}}(this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7d3781aa79ec3839467d3556c0390e7}{\_read\_response}}(dsize)));}
+\DoxyCodeLine{598                             spdlog::debug(\textcolor{stringliteral}{"{}set new\_data with start\_angle \{\}"{}}, this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac52aa4a3fb0f89738ca2e4618fc5eb38}{express\_data}}-\/>start\_angle);}
+\DoxyCodeLine{599                         \}}
+\DoxyCodeLine{600                         this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7dff8f629d8bc200a1c6923f9e750df}{express\_trame}}++;}
+\DoxyCodeLine{601                         spdlog::debug(\textcolor{stringliteral}{"{}process scan of frame \%d with angle : \(\backslash\)n"{}}}
+\DoxyCodeLine{602                                       \textcolor{stringliteral}{"{}\%f and angle new : \%f"{}},}
+\DoxyCodeLine{603                                       this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac7dff8f629d8bc200a1c6923f9e750df}{express\_trame}},}
+\DoxyCodeLine{604                                       this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_acd327f59cbb5554f5abdc416676ef9a6}{express\_old\_data}}-\/>start\_angle,}
+\DoxyCodeLine{605                                       this-\/>express\_data-\/>start\_angle);}
+\DoxyCodeLine{606                         \mbox{\hyperlink{structrplidar_1_1Measure}{Measure}} measure = \mbox{\hyperlink{classrplidar_1_1RPLidar_a03f19f11ee07b3919701b5af812bf407}{\_process\_express\_scan}}(this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_acd327f59cbb5554f5abdc416676ef9a6}{express\_old\_data}}, this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ac52aa4a3fb0f89738ca2e4618fc5eb38}{express\_data}}-\/>start\_angle, this-\/>express\_trame);}
+\DoxyCodeLine{607                         \textcolor{keywordflow}{return} measure;}
+\DoxyCodeLine{608                     \}}
+\DoxyCodeLine{609                 \}}
+\DoxyCodeLine{610             \};}
+\DoxyCodeLine{611 }
+\DoxyCodeLine{612             \textcolor{keywordflow}{return} generator;}
+\DoxyCodeLine{613         \}}
+\DoxyCodeLine{614 }
+\DoxyCodeLine{626         std::function<std::vector<Measure>()> \mbox{\hyperlink{classrplidar_1_1RPLidar_ac3df2ad049cd56533f8dff5697901a64}{iter\_scans}}(\mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7}{ScanType}} scanType = \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}{ScanType::NORMAL}}, \textcolor{keywordtype}{int} maxBufMeas = 3000, \textcolor{keywordtype}{int} minLen = 5)}
+\DoxyCodeLine{627         \{}
+\DoxyCodeLine{628             \textcolor{keyword}{auto} measureIterator = this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ace2a42a1e9667f7138be8633225dae34}{iter\_measures}}(scanType, maxBufMeas);}
+\DoxyCodeLine{629 }
+\DoxyCodeLine{630             \textcolor{comment}{// Define a lambda function to generate scans}}
+\DoxyCodeLine{631             \textcolor{keyword}{auto} scanGenerator = [measureIterator, minLen]() -\/> std::vector<Measure>}
+\DoxyCodeLine{632             \{}
+\DoxyCodeLine{633                 std::vector<Measure> scanList;}
+\DoxyCodeLine{634                 \textcolor{keywordflow}{do}}
+\DoxyCodeLine{635                 \{}
+\DoxyCodeLine{636                     tl::expected<Measure, std::string> maybe\_measure = measureIterator();}
+\DoxyCodeLine{637                     \textcolor{keywordflow}{if} (!maybe\_measure.has\_value())}
+\DoxyCodeLine{638                     \{}
+\DoxyCodeLine{639                         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{640                     \}}
+\DoxyCodeLine{641                     \mbox{\hyperlink{structrplidar_1_1Measure}{Measure}} measure = maybe\_measure.value();}
+\DoxyCodeLine{642                     \textcolor{keywordtype}{bool} newScan = measure.\mbox{\hyperlink{structrplidar_1_1Measure_aa224771a20227ff6311d59002dde542f}{newScan}};}
+\DoxyCodeLine{643                     \textcolor{keywordflow}{if} (newScan)}
+\DoxyCodeLine{644                     \{}
+\DoxyCodeLine{645                         \textcolor{keywordflow}{if} (scanList.size() > minLen)}
+\DoxyCodeLine{646                         \{}
+\DoxyCodeLine{647                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{648                         \}}
+\DoxyCodeLine{649                         scanList.clear();}
+\DoxyCodeLine{650                     \}}
+\DoxyCodeLine{651                     \textcolor{keywordflow}{if} (measure.\mbox{\hyperlink{structrplidar_1_1Measure_a9f388735107a844a5031936333093eb0}{distance}} > 0)}
+\DoxyCodeLine{652                     \{}
+\DoxyCodeLine{653                         scanList.push\_back(measure);}
+\DoxyCodeLine{654                     \}}
+\DoxyCodeLine{655                 \}}
+\DoxyCodeLine{656                 \textcolor{keywordflow}{while} (\textcolor{keyword}{true});}
+\DoxyCodeLine{657                 \textcolor{keywordflow}{return} scanList;}
+\DoxyCodeLine{658             \};}
+\DoxyCodeLine{659             \textcolor{keywordflow}{return} scanGenerator;}
+\DoxyCodeLine{660         \}}
+\DoxyCodeLine{661 }
+\DoxyCodeLine{662     \textcolor{keyword}{private}:}
+\DoxyCodeLine{663         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_a3229bcf79650f993c72cf1374478469f}{\_set\_pwm}}(\textcolor{keywordtype}{int} pwm)}
+\DoxyCodeLine{664         \{}
+\DoxyCodeLine{665             std::string payload;}
+\DoxyCodeLine{666             payload.push\_back(\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(pwm \& 0xFF));}
+\DoxyCodeLine{667             payload.push\_back(\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}((pwm >> 8) \& 0xFF));}
+\DoxyCodeLine{668             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_ad1a78c99fc81251fc6a9c171b06371e6}{\_send\_payload\_cmd}}(SET\_PWM\_BYTE, payload);}
+\DoxyCodeLine{669         \}}
+\DoxyCodeLine{670 }
+\DoxyCodeLine{677         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_ad1a78c99fc81251fc6a9c171b06371e6}{\_send\_payload\_cmd}}(uint8\_t cmd, \textcolor{keyword}{const} std::string \&payload)}
+\DoxyCodeLine{678         \{}
+\DoxyCodeLine{679             \textcolor{comment}{// Calculate the size}}
+\DoxyCodeLine{680             uint8\_t size = \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(payload.size());}
+\DoxyCodeLine{681 }
+\DoxyCodeLine{682             \textcolor{comment}{// Construct the request string}}
+\DoxyCodeLine{683             std::string req;}
+\DoxyCodeLine{684             req += \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{namespacerplidar_ac9fc8ec7c8c5252deccccbb97b5b1ed0}{SYNC\_BYTE}});}
+\DoxyCodeLine{685             req += \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(cmd);}
+\DoxyCodeLine{686             req += \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(size);}
+\DoxyCodeLine{687             req += payload;}
+\DoxyCodeLine{688 }
+\DoxyCodeLine{689             \textcolor{comment}{// Calculate the checksum}}
+\DoxyCodeLine{690             uint8\_t checksum = 0;}
+\DoxyCodeLine{691             \textcolor{keywordflow}{for} (\textcolor{keyword}{const} uint8\_t \&c : req)}
+\DoxyCodeLine{692             \{}
+\DoxyCodeLine{693                 checksum \string^= \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(c);}
+\DoxyCodeLine{694             \}}
+\DoxyCodeLine{695 }
+\DoxyCodeLine{696             req += \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(checksum);}
+\DoxyCodeLine{697 }
+\DoxyCodeLine{698             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>write(req);}
+\DoxyCodeLine{699             spdlog::debug(\textcolor{stringliteral}{"{}Command sent: \{\}"{}}, spdlog::to\_hex(req));}
+\DoxyCodeLine{700         \}}
+\DoxyCodeLine{701 }
+\DoxyCodeLine{707         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrplidar_1_1RPLidar_a8d099f194f23d580e35e7f106192e1fa}{\_send\_cmd}}(uint8\_t cmd)}
+\DoxyCodeLine{708         \{}
+\DoxyCodeLine{709             std::string req;}
+\DoxyCodeLine{710             req += \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{namespacerplidar_ac9fc8ec7c8c5252deccccbb97b5b1ed0}{SYNC\_BYTE}});}
+\DoxyCodeLine{711             req += \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(cmd);}
+\DoxyCodeLine{712 }
+\DoxyCodeLine{713             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>write(req);}
+\DoxyCodeLine{714             spdlog::debug(\textcolor{stringliteral}{"{}Command sent: \{\}"{}}, spdlog::to\_hex(req));}
+\DoxyCodeLine{715         \}}
+\DoxyCodeLine{716 }
+\DoxyCodeLine{722         tl::expected<}
+\DoxyCodeLine{723             std::tuple<uint8\_t, bool, uint8\_t>,}
+\DoxyCodeLine{724             std::string>}
+\DoxyCodeLine{725         \mbox{\hyperlink{classrplidar_1_1RPLidar_af5e6a38926e62f82fe417f2f1ae86ab2}{\_read\_descriptor}}()}
+\DoxyCodeLine{726         \{}
+\DoxyCodeLine{727             \textcolor{comment}{// Read descriptor packet}}
+\DoxyCodeLine{728             std::array<uint8\_t, DESCRIPTOR\_LEN> descriptor;}
+\DoxyCodeLine{729             memset(descriptor.data(), \textcolor{charliteral}{'\(\backslash\)0'}, \textcolor{keyword}{sizeof}(descriptor));}
+\DoxyCodeLine{730             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>read(descriptor.data(), \mbox{\hyperlink{namespacerplidar_a7a7dd67caebe4aa8ac0a4979e1286b98}{DESCRIPTOR\_LEN}});}
+\DoxyCodeLine{731             spdlog::debug(\textcolor{stringliteral}{"{}Received descriptor: \{\}"{}}, spdlog::to\_hex(descriptor));}
+\DoxyCodeLine{732 }
+\DoxyCodeLine{733             \textcolor{keywordflow}{if} (descriptor.size() != \mbox{\hyperlink{namespacerplidar_a7a7dd67caebe4aa8ac0a4979e1286b98}{DESCRIPTOR\_LEN}})}
+\DoxyCodeLine{734             \{}
+\DoxyCodeLine{735                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Descriptor length mismatch"{}});}
+\DoxyCodeLine{736             \}}
+\DoxyCodeLine{737             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (descriptor[0] != \mbox{\hyperlink{namespacerplidar_ac9fc8ec7c8c5252deccccbb97b5b1ed0}{SYNC\_BYTE}} || descriptor[1] != \mbox{\hyperlink{namespacerplidar_ae247ad6a3825ddc55b486a4fc8c28c47}{SYNC\_BYTE2}})}
+\DoxyCodeLine{738             \{}
+\DoxyCodeLine{739                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Incorrect descriptor starting bytes"{}});}
+\DoxyCodeLine{740             \}}
+\DoxyCodeLine{741 }
+\DoxyCodeLine{742             \textcolor{keywordtype}{bool} isSingle = descriptor[5] == 0;}
+\DoxyCodeLine{743             \textcolor{keywordflow}{return} std::make\_tuple(descriptor[2], isSingle, descriptor[6]);}
+\DoxyCodeLine{744         \}}
+\DoxyCodeLine{745 }
+\DoxyCodeLine{752         std::vector<uint8\_t> \mbox{\hyperlink{classrplidar_1_1RPLidar_ac7d3781aa79ec3839467d3556c0390e7}{\_read\_response}}(\textcolor{keywordtype}{int} dsize)}
+\DoxyCodeLine{753         \{}
+\DoxyCodeLine{754             spdlog::debug(\textcolor{stringliteral}{"{}Trying to read response: \{\} bytes"{}}, dsize);}
+\DoxyCodeLine{755 }
+\DoxyCodeLine{756             std::vector<uint8\_t> data;}
+\DoxyCodeLine{757             data.reserve(dsize);}
+\DoxyCodeLine{758 }
+\DoxyCodeLine{759             \textcolor{keywordflow}{while} (this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>available() < dsize)}
+\DoxyCodeLine{760             \{}
+\DoxyCodeLine{761                 std::this\_thread::sleep\_for(std::chrono::milliseconds(1));}
+\DoxyCodeLine{762             \}}
+\DoxyCodeLine{763 }
+\DoxyCodeLine{764             this-\/>\mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}}-\/>read(data, dsize);}
+\DoxyCodeLine{765 }
+\DoxyCodeLine{766             spdlog::debug(\textcolor{stringliteral}{"{}Received data: \{\}"{}}, spdlog::to\_hex(data));}
+\DoxyCodeLine{767             \textcolor{keywordflow}{return} data;}
+\DoxyCodeLine{768         \}}
+\DoxyCodeLine{769 }
+\DoxyCodeLine{770         std::string \mbox{\hyperlink{classrplidar_1_1RPLidar_ad34c88a39c257fa07ca5323c8b681506}{convertToHexString}}(uint8\_t value)}
+\DoxyCodeLine{771         \{}
+\DoxyCodeLine{772             \textcolor{comment}{// Convert a uint8\_t to a hexadecimal string}}
+\DoxyCodeLine{773             std::stringstream stream;}
+\DoxyCodeLine{774             stream << std::hex << std::uppercase << std::setw(2) << std::setfill('0') << static\_cast<int>(value);}
+\DoxyCodeLine{775             \textcolor{keywordflow}{return} stream.str();}
+\DoxyCodeLine{776         \}}
+\DoxyCodeLine{777 }
+\DoxyCodeLine{778         tl::expected<Measure, std::string> \mbox{\hyperlink{classrplidar_1_1RPLidar_a7d83f8089f04f159bab819ac958c7889}{\_process\_scan}}(\textcolor{keyword}{const} std::vector<uint8\_t> \&raw)}
+\DoxyCodeLine{779         \{}
+\DoxyCodeLine{780             \mbox{\hyperlink{structrplidar_1_1Measure}{Measure}} measurementData;}
+\DoxyCodeLine{781 }
+\DoxyCodeLine{782             \textcolor{keywordtype}{bool} newScan = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{bool}\textcolor{keyword}{>}(raw[0] \& 0b1);}
+\DoxyCodeLine{783             \textcolor{keywordtype}{bool} inversedNewScan = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{bool}\textcolor{keyword}{>}((raw[0] >> 1) \& 0b1);}
+\DoxyCodeLine{784             \textcolor{keywordtype}{int} quality = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(raw[0] >> 2);}
+\DoxyCodeLine{785 }
+\DoxyCodeLine{786             \textcolor{keywordflow}{if} (newScan == inversedNewScan)}
+\DoxyCodeLine{787             \{}
+\DoxyCodeLine{788                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}New scan flags mismatch"{}});}
+\DoxyCodeLine{789             \}}
+\DoxyCodeLine{790 }
+\DoxyCodeLine{791             \textcolor{keywordtype}{int} checkBit = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(raw[1] \& 0b1);}
+\DoxyCodeLine{792             \textcolor{keywordflow}{if} (checkBit != 1)}
+\DoxyCodeLine{793             \{}
+\DoxyCodeLine{794                 \textcolor{keywordflow}{return} tl::make\_unexpected(\textcolor{stringliteral}{"{}Check bit not equal to 1"{}});}
+\DoxyCodeLine{795             \}}
+\DoxyCodeLine{796 }
+\DoxyCodeLine{797             \textcolor{keywordtype}{int} anglePart1 = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(raw[1] >> 1);}
+\DoxyCodeLine{798             \textcolor{keywordtype}{int} anglePart2 = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(raw[2]) << 7;}
+\DoxyCodeLine{799             \textcolor{keywordtype}{float} angle = (anglePart1 + anglePart2) / 64.0;}
+\DoxyCodeLine{800 }
+\DoxyCodeLine{801             \textcolor{keywordtype}{int} distancePart1 = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(raw[3]);}
+\DoxyCodeLine{802             \textcolor{keywordtype}{int} distancePart2 = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(raw[4]) << 8;}
+\DoxyCodeLine{803             \textcolor{keywordtype}{float} distance = (distancePart1 + distancePart2) / 4.0;}
+\DoxyCodeLine{804 }
+\DoxyCodeLine{805             measurementData.\mbox{\hyperlink{structrplidar_1_1Measure_aa224771a20227ff6311d59002dde542f}{newScan}} = newScan;}
+\DoxyCodeLine{806             measurementData.\mbox{\hyperlink{structrplidar_1_1Measure_af25e2158775bea26b253bf4056747353}{quality}} = quality;}
+\DoxyCodeLine{807             measurementData.\mbox{\hyperlink{structrplidar_1_1Measure_ad1d3aa520adf98a85828e9908a5a4d26}{angle}} = angle;}
+\DoxyCodeLine{808             measurementData.\mbox{\hyperlink{structrplidar_1_1Measure_a9f388735107a844a5031936333093eb0}{distance}} = distance;}
+\DoxyCodeLine{809 }
+\DoxyCodeLine{810             \textcolor{keywordflow}{return} measurementData;}
+\DoxyCodeLine{811         \}}
+\DoxyCodeLine{812 }
+\DoxyCodeLine{824         \mbox{\hyperlink{structrplidar_1_1Measure}{Measure}} \mbox{\hyperlink{classrplidar_1_1RPLidar_a03f19f11ee07b3919701b5af812bf407}{\_process\_express\_scan}}(std::unique\_ptr<ExpressPacket> \&data, \textcolor{keywordtype}{float} newAngle, \textcolor{keywordtype}{int} trame)}
+\DoxyCodeLine{825         \{}
+\DoxyCodeLine{826             \mbox{\hyperlink{structrplidar_1_1Measure}{Measure}} measurementData;}
+\DoxyCodeLine{827 }
+\DoxyCodeLine{828             \textcolor{keywordtype}{bool} newScan = (newAngle < data-\/>start\_angle) \&\& (trame == 1);}
+\DoxyCodeLine{829 }
+\DoxyCodeLine{830             \textcolor{keywordtype}{float} angle = std::fmod((data-\/>start\_angle + ((newAngle -\/ data-\/>start\_angle) / 32 * trame -\/ data-\/>angle[trame -\/ 1])), 360);}
+\DoxyCodeLine{831             \textcolor{keywordtype}{float} distance = data-\/>distance[trame -\/ 1];}
+\DoxyCodeLine{832 }
+\DoxyCodeLine{833             measurementData.\mbox{\hyperlink{structrplidar_1_1Measure_aa224771a20227ff6311d59002dde542f}{newScan}} = newScan;}
+\DoxyCodeLine{834             measurementData.\mbox{\hyperlink{structrplidar_1_1Measure_af25e2158775bea26b253bf4056747353}{quality}} = 0; \textcolor{comment}{// Replace this with your actual quality value}}
+\DoxyCodeLine{835             measurementData.\mbox{\hyperlink{structrplidar_1_1Measure_ad1d3aa520adf98a85828e9908a5a4d26}{angle}} = angle;}
+\DoxyCodeLine{836             measurementData.\mbox{\hyperlink{structrplidar_1_1Measure_a9f388735107a844a5031936333093eb0}{distance}} = distance;}
+\DoxyCodeLine{837 }
+\DoxyCodeLine{838             \textcolor{keywordflow}{return} measurementData;}
+\DoxyCodeLine{839         \}}
+\DoxyCodeLine{840 }
+\DoxyCodeLine{841     \textcolor{keyword}{private}:}
+\DoxyCodeLine{842         std::unique\_ptr<serial::Serial> \mbox{\hyperlink{classrplidar_1_1RPLidar_a8700e9984b373ea081db1e3b6b8db10b}{\_serial}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{843 }
+\DoxyCodeLine{844         std::string \mbox{\hyperlink{classrplidar_1_1RPLidar_a917c65e8bbd3cebc40d8358538e56279}{port}};}
+\DoxyCodeLine{845         uint32\_t \mbox{\hyperlink{classrplidar_1_1RPLidar_a2a038bbc9cad3cdd39c761957d65980c}{baudrate}};}
+\DoxyCodeLine{846 }
+\DoxyCodeLine{847         \textcolor{keywordtype}{int} \mbox{\hyperlink{classrplidar_1_1RPLidar_a63ca639d27b927228ecfae51dc678915}{\_motor\_speed}} = \mbox{\hyperlink{namespacerplidar_a2298b87542f6a4a1e9eb2143ba9cf9ab}{DEFAULT\_MOTOR\_PWM}};}
+\DoxyCodeLine{848         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrplidar_1_1RPLidar_af30f40ab63ecf0e2333f03bd25be771f}{motor\_running}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{849         \mbox{\hyperlink{structrplidar_1_1ScanInfo}{ScanInfo}} \mbox{\hyperlink{classrplidar_1_1RPLidar_a395f7d31502b3f81570d374a689a669e}{scanning}} = \mbox{\hyperlink{structrplidar_1_1ScanInfo}{ScanInfo}}\{\textcolor{keyword}{false}, 0, \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}{ScanType::NORMAL}}\};}
+\DoxyCodeLine{850         \textcolor{keywordtype}{int} \mbox{\hyperlink{classrplidar_1_1RPLidar_ac7dff8f629d8bc200a1c6923f9e750df}{express\_trame}} = 32;}
+\DoxyCodeLine{851 }
+\DoxyCodeLine{852         std::unique\_ptr<ExpressPacket> \mbox{\hyperlink{classrplidar_1_1RPLidar_ac52aa4a3fb0f89738ca2e4618fc5eb38}{express\_data}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{853         std::unique\_ptr<ExpressPacket> \mbox{\hyperlink{classrplidar_1_1RPLidar_acd327f59cbb5554f5abdc416676ef9a6}{express\_old\_data}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{854     \};}
+\DoxyCodeLine{855 \}}
+\DoxyCodeLine{856 }
+\DoxyCodeLine{857 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

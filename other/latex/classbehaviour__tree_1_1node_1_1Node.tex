@@ -1,0 +1,120 @@
+\hypertarget{classbehaviour__tree_1_1node_1_1Node}{}\doxysection{behaviour\+\_\+tree\+::node\+::Node Class Reference}
+\label{classbehaviour__tree_1_1node_1_1Node}\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+
+
+{\ttfamily \#include $<$Node.\+hpp$>$}
+
+Inheritance diagram for behaviour\+\_\+tree\+::node\+::Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.673563cm]{classbehaviour__tree_1_1node_1_1Node}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a091ed9233201c4bf4a5c2941067df8ca}{Node}} (const std\+::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}})
+\item 
+virtual void \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a964cd9153c2f61640c19e61cc17b7f51}{start}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context)
+\item 
+virtual const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a8b3dba8156f7422146ebd33550cca229}{run}} (const int tick\+\_\+count, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context)=0
+\item 
+virtual void \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a83ca3a5e9f523bedd01c40b0e1a09cd3}{finish}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context)
+\item 
+\mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a6097234b7074db5e46d90aa560f5e254}{tick}} (const int tick\+\_\+count, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context)
+\item 
+virtual const std\+::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a9aa2e9616bb462fbe4adf9081b7de9d8}{to\+String}} () const =0
+\item 
+const std\+::string \& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{get\+Name}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}
+\item 
+bool \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a7fc32573eaae9fdf83975eb7a5b8ad8f}{started}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1Node_a091ed9233201c4bf4a5c2941067df8ca}\label{classbehaviour__tree_1_1node_1_1Node_a091ed9233201c4bf4a5c2941067df8ca}} 
+\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}!Node@{Node}}
+\index{Node@{Node}!behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}}
+{\footnotesize\ttfamily behaviour\+\_\+tree\+::node\+::\+Node\+::\+Node (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1Node_a83ca3a5e9f523bedd01c40b0e1a09cd3}\label{classbehaviour__tree_1_1node_1_1Node_a83ca3a5e9f523bedd01c40b0e1a09cd3}} 
+\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}!finish@{finish}}
+\index{finish@{finish}!behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+\doxysubsubsection{\texorpdfstring{finish()}{finish()}}
+{\footnotesize\ttfamily virtual void behaviour\+\_\+tree\+::node\+::\+Node\+::finish (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_aca4db913ea3e192acf4de5d58cb7bd92}{behaviour\+\_\+tree\+::node\+::decorator\+::\+Invert}}, and \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_ac09698da055230393f386084e3f7b424}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}\label{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}} 
+\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}!getName@{getName}}
+\index{getName@{getName}!behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const std\+::string \& behaviour\+\_\+tree\+::node\+::\+Node\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1Node_a8b3dba8156f7422146ebd33550cca229}\label{classbehaviour__tree_1_1node_1_1Node_a8b3dba8156f7422146ebd33550cca229}} 
+\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}!run@{run}}
+\index{run@{run}!behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily virtual const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} behaviour\+\_\+tree\+::node\+::\+Node\+::run (\begin{DoxyParamCaption}\item[{const int}]{tick\+\_\+count,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_a6b10cd6f8c98b823d78148ccd344bf0c}{behaviour\+\_\+tree\+::node\+::blackboard\+::\+Change\+Integer}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_a3c1f6208d7280543fb0679e337769b67}{behaviour\+\_\+tree\+::node\+::blackboard\+::\+Integer\+Condition}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Random_a8d6796d60e073168c9b474ef3e0962f0}{behaviour\+\_\+tree\+::node\+::composite\+::\+Random}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Selector_ab3c9335bbd5f8277c647a29233dcd4c7}{behaviour\+\_\+tree\+::node\+::composite\+::\+Selector}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a69e603487466f451c41076a539bea9d4}{behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_a37b94931a72673b3f56623007ea97d95}{behaviour\+\_\+tree\+::node\+::decorator\+::\+Invert}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Repeat_a4065977d9235d0861d5e73e6c976e688}{behaviour\+\_\+tree\+::node\+::decorator\+::\+Repeat}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Fail_ac419eb4c4595bdde9b6561870288cf87}{behaviour\+\_\+tree\+::node\+::leaf\+::\+Fail}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Succeed_a6b6ed3f2d0c5e44c46d14988b2b50ab9}{behaviour\+\_\+tree\+::node\+::leaf\+::\+Succeed}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1UseRoot_a38ea01e187935c328ce02d18709a4df4}{behaviour\+\_\+tree\+::node\+::leaf\+::\+Use\+Root}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Drive_ae64f5582f82bf34ddcc8013737b46bda}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Drive}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa3721a12de0db928b2f56ea41eefe27b}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a94c386cf6588915bf41624cb7518fa00}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Print}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetAngle_aa512ad55f0e2a839e323a55736f04e09}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Set\+Angle}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_ab8262100c87d7e7408480c649f5437d4}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Set\+Speed}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetWheelDirection_a25c804af850b055a90910b1a1c9bb677}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Set\+Wheel\+Direction}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Turn_a773a75938e87ac0accf924cbef707cf3}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Turn}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a69784697b33c62747f2f390632a6e584}{behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageColour_a4aae9efacfa01e74012ae90aef2b5b48}{behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Average\+Colour}}, and \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a41ce1a5977935cc64c273a749e32830d}{behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Average\+Nearby\+Scan}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1Node_a964cd9153c2f61640c19e61cc17b7f51}\label{classbehaviour__tree_1_1node_1_1Node_a964cd9153c2f61640c19e61cc17b7f51}} 
+\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}!start@{start}}
+\index{start@{start}!behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily virtual void behaviour\+\_\+tree\+::node\+::\+Node\+::start (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Selector_ad6f52ab38cfa07c94ca20fafe192d2c8}{behaviour\+\_\+tree\+::node\+::composite\+::\+Selector}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9fad044b2ea5c9d75ac122bc4828c6dc}{behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_a1f2ddde6a9bf42275fa5ea7412ae575f}{behaviour\+\_\+tree\+::node\+::decorator\+::\+Invert}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Repeat_a473bd6dbd802031a102dfa6da0177c6d}{behaviour\+\_\+tree\+::node\+::decorator\+::\+Repeat}}, and \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a361d53f216c7c3c94c1276f351a2d627}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1Node_a6097234b7074db5e46d90aa560f5e254}\label{classbehaviour__tree_1_1node_1_1Node_a6097234b7074db5e46d90aa560f5e254}} 
+\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}!tick@{tick}}
+\index{tick@{tick}!behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} behaviour\+\_\+tree\+::node\+::\+Node\+::tick (\begin{DoxyParamCaption}\item[{const int}]{tick\+\_\+count,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1Node_a9aa2e9616bb462fbe4adf9081b7de9d8}\label{classbehaviour__tree_1_1node_1_1Node_a9aa2e9616bb462fbe4adf9081b7de9d8}} 
+\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}!toString@{toString}}
+\index{toString@{toString}!behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily virtual const std\+::string behaviour\+\_\+tree\+::node\+::\+Node\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1ChangeInteger_afc50950405fbfc99f42af530212150e4}{behaviour\+\_\+tree\+::node\+::blackboard\+::\+Change\+Integer}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1blackboard_1_1IntegerCondition_abd1c2fe586789229fa370a36455d5188}{behaviour\+\_\+tree\+::node\+::blackboard\+::\+Integer\+Condition}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Random_a4c40552b7d60cba9ab8b91e6d7668e66}{behaviour\+\_\+tree\+::node\+::composite\+::\+Random}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Selector_a13cc1bb44a632c042bebbea71cd08f17}{behaviour\+\_\+tree\+::node\+::composite\+::\+Selector}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a8113284ee54d78cb0a465a4be2acde6c}{behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_aa2397da6a448328fdbe6717e849f6f22}{behaviour\+\_\+tree\+::node\+::decorator\+::\+Invert}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Repeat_a91240f66e36b9c59f6addac025b54ec7}{behaviour\+\_\+tree\+::node\+::decorator\+::\+Repeat}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Fail_a970f472c133f3a64e51928bdad18e318}{behaviour\+\_\+tree\+::node\+::leaf\+::\+Fail}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1Succeed_a30f05936ffe8bdaaab88bd538635b9d2}{behaviour\+\_\+tree\+::node\+::leaf\+::\+Succeed}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1leaf_1_1UseRoot_a64030e9ae861aacae511359e14e69d69}{behaviour\+\_\+tree\+::node\+::leaf\+::\+Use\+Root}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Drive_a40cbf7c23736406403b10118d0381a45}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Drive}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a3a48461dee65dab2a2284ff1d21ce246}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a79146514f540d405490d8ee342e2d42c}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Print}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetAngle_a040e1d1f21e04636a32a716215a354be}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Set\+Angle}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetSpeed_ab95232d7f68c75bdd54980ead6280a5f}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Set\+Speed}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetWheelDirection_ac2d3625ccbe578b662843743c2219775}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Set\+Wheel\+Direction}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Turn_a7cb0afb70132b5ae4f24b71dbe2db467}{behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Turn}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_ae7a8119daf0ade2658c886c7491205ae}{behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan}}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageColour_a9904e657590430f6c31a4bb84eff50e0}{behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Average\+Colour}}, and \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a8b712bfca5d1808a54e0355f755a02a3}{behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Average\+Nearby\+Scan}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}\label{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}} 
+\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}!name@{name}}
+\index{name@{name}!behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily const std\+::string behaviour\+\_\+tree\+::node\+::\+Node\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1Node_a7fc32573eaae9fdf83975eb7a5b8ad8f}\label{classbehaviour__tree_1_1node_1_1Node_a7fc32573eaae9fdf83975eb7a5b8ad8f}} 
+\index{behaviour\_tree::node::Node@{behaviour\_tree::node::Node}!started@{started}}
+\index{started@{started}!behaviour\_tree::node::Node@{behaviour\_tree::node::Node}}
+\doxysubsubsection{\texorpdfstring{started}{started}}
+{\footnotesize\ttfamily bool behaviour\+\_\+tree\+::node\+::\+Node\+::started = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+behaviour\+\_\+tree/include/behaviour\+\_\+tree/node/\mbox{\hyperlink{Node_8hpp}{Node.\+hpp}}\end{DoxyCompactItemize}

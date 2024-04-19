@@ -1,0 +1,109 @@
+\hypertarget{classbehaviour__tree_1_1node_1_1composite_1_1Sequence}{}\doxysection{behaviour\+\_\+tree\+::node\+::composite\+::Sequence Class Reference}
+\label{classbehaviour__tree_1_1node_1_1composite_1_1Sequence}\index{behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}}
+
+
+{\ttfamily \#include $<$Sequence.\+hpp$>$}
+
+Inheritance diagram for behaviour\+\_\+tree\+::node\+::composite\+::Sequence\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classbehaviour__tree_1_1node_1_1composite_1_1Sequence}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a4d4ec85a57679bfeceb9b4769c6d599b}{Sequence}} (const std\+::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node}{Node}} $>$ $>$ \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite_a53f7bd51c86db41a54f0cd276fbfaf77}{children}})
+\item 
+const \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1composite_a3f2cf132b2387c0cfb3ad9bb369cfb1c}{Composite\+Type}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9417a9b5bd7ddddf006a5bc728e2eb50}{type}} () const final override
+\item 
+void \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9fad044b2ea5c9d75ac122bc4828c6dc}{start}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context) final override
+\item 
+const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a69e603487466f451c41076a539bea9d4}{run}} (const int tick\+\_\+count, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context) final override
+\item 
+const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9cfaf06788bdac16847398a02b75a3ec}{run}} (const int tick\+\_\+count, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context, const int start\+\_\+index) final override
+\item 
+const std\+::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a8113284ee54d78cb0a465a4be2acde6c}{to\+String}} () const final override
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a3652e4d41c4d9b8128f14b01016a4c4f}{previous\+\_\+start\+\_\+index}} = -\/1
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a4d4ec85a57679bfeceb9b4769c6d599b}\label{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a4d4ec85a57679bfeceb9b4769c6d599b}} 
+\index{behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}!Sequence@{Sequence}}
+\index{Sequence@{Sequence}!behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}}
+\doxysubsubsection{\texorpdfstring{Sequence()}{Sequence()}}
+{\footnotesize\ttfamily behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence\+::\+Sequence (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node}{Node}} $>$ $>$}]{children }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a69e603487466f451c41076a539bea9d4}\label{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a69e603487466f451c41076a539bea9d4}} 
+\index{behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}!run@{run}}
+\index{run@{run}!behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence\+::run (\begin{DoxyParamCaption}\item[{const int}]{tick\+\_\+count,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a8b3dba8156f7422146ebd33550cca229}{behaviour\+\_\+tree\+::node\+::\+Node}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9cfaf06788bdac16847398a02b75a3ec}\label{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9cfaf06788bdac16847398a02b75a3ec}} 
+\index{behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}!run@{run}}
+\index{run@{run}!behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence\+::run (\begin{DoxyParamCaption}\item[{const int}]{tick\+\_\+count,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context,  }\item[{const int}]{start\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite_a4e433c015bd35ad76dd8f1f655a34390}{behaviour\+\_\+tree\+::node\+::composite\+::\+Composite}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9fad044b2ea5c9d75ac122bc4828c6dc}\label{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9fad044b2ea5c9d75ac122bc4828c6dc}} 
+\index{behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}!start@{start}}
+\index{start@{start}!behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence\+::start (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a964cd9153c2f61640c19e61cc17b7f51}{behaviour\+\_\+tree\+::node\+::\+Node}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a8113284ee54d78cb0a465a4be2acde6c}\label{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a8113284ee54d78cb0a465a4be2acde6c}} 
+\index{behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}!toString@{toString}}
+\index{toString@{toString}!behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily const std\+::string behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a9aa2e9616bb462fbe4adf9081b7de9d8}{behaviour\+\_\+tree\+::node\+::\+Node}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9417a9b5bd7ddddf006a5bc728e2eb50}\label{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a9417a9b5bd7ddddf006a5bc728e2eb50}} 
+\index{behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}!type@{type}}
+\index{type@{type}!behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}}
+\doxysubsubsection{\texorpdfstring{type()}{type()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1composite_a3f2cf132b2387c0cfb3ad9bb369cfb1c}{Composite\+Type}} behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence\+::type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite_af7bcacd86ac98f502a183626d99af678}{behaviour\+\_\+tree\+::node\+::composite\+::\+Composite}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a3652e4d41c4d9b8128f14b01016a4c4f}\label{classbehaviour__tree_1_1node_1_1composite_1_1Sequence_a3652e4d41c4d9b8128f14b01016a4c4f}} 
+\index{behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}!previous\_start\_index@{previous\_start\_index}}
+\index{previous\_start\_index@{previous\_start\_index}!behaviour\_tree::node::composite::Sequence@{behaviour\_tree::node::composite::Sequence}}
+\doxysubsubsection{\texorpdfstring{previous\_start\_index}{previous\_start\_index}}
+{\footnotesize\ttfamily int behaviour\+\_\+tree\+::node\+::composite\+::\+Sequence\+::previous\+\_\+start\+\_\+index = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+behaviour\+\_\+tree/include/behaviour\+\_\+tree/node/composite/\mbox{\hyperlink{Sequence_8hpp}{Sequence.\+hpp}}\end{DoxyCompactItemize}

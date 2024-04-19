@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['handlecommand_0',['handleCommand',['../classbehaviour__tree_1_1BehaviourTreeHandler.html#ab95e23903c1e501184b6622c6cf6d9ee',1,'behaviour_tree::BehaviourTreeHandler']]],
-  ['handlemessage_1',['handleMessage',['../classcar_1_1system_1_1messaging_1_1MessagingSystem.html#a3c778a90656eda20b96c86d9fe974c29',1,'car::system::messaging::MessagingSystem']]],
-  ['host_2',['host',['../structcar_1_1configuration_1_1Configuration.html#a3c92a6852f3c0105b6c45475fe089cc9',1,'car::configuration::Configuration']]]
+  ['hardware_0',['hardware',['../structrplidar_1_1DeviceInfo.html#a886b4f62e65cba4fc3391cc28832b54a',1,'rplidar::DeviceInfo']]],
+  ['health_5flen_1',['HEALTH_LEN',['../namespacerplidar.html#af13dc55ee8539871ff68fe2979bc1beb',1,'rplidar']]],
+  ['health_5ftype_2',['HEALTH_TYPE',['../namespacerplidar.html#a6d2fe1a18bc0ad2c9074ffd7e51e07e8',1,'rplidar']]],
+  ['healthinfo_3',['HealthInfo',['../structrplidar_1_1HealthInfo.html',1,'rplidar']]],
+  ['hex_5fcolour_4',['hex_colour',['../classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageColour.html#a69b9d3a559bd242f49e585fae29c56af',1,'behaviour_tree::node::custom::condition::SucceedOnAverageColour']]],
+  ['hextorgb_5',['hexToRGB',['../classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageColour.html#ad00bce2d0734901c731d1b2118c22558',1,'behaviour_tree::node::custom::condition::SucceedOnAverageColour']]]
 ];

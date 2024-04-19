@@ -1,0 +1,150 @@
+\hypertarget{SucceedOnAverageNearbyScan_8hpp_source}{}\doxysection{Succeed\+On\+Average\+Nearby\+Scan.\+hpp}
+\label{SucceedOnAverageNearbyScan_8hpp_source}\index{behaviour\_tree\_car/include/behaviour\_tree/node/custom/condition/SucceedOnAverageNearbyScan.hpp@{behaviour\_tree\_car/include/behaviour\_tree/node/custom/condition/SucceedOnAverageNearbyScan.hpp}}
+\mbox{\hyperlink{SucceedOnAverageNearbyScan_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_SUCCEED\_ON\_AVERAGE\_NEARBY\_SCAN\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_SUCCEED\_ON\_AVERAGE\_NEARBY\_SCAN\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CustomNode_8hpp}{behaviour\_tree/node/custom/CustomNode.hpp}}"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Context_8h}{behaviour\_tree/Context.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}behaviour\_tree/CarContext.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <spdlog/spdlog.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{distance_8h}{behaviour\_tree/global/distance.h}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1condition}{behaviour\_tree::node::custom::condition}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan}{SucceedOnAverageNearbyScan}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNode}{CustomNode}}}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20     \textcolor{keyword}{public}:}
+\DoxyCodeLine{21         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a6cc43743fcc308deab05a041dcfd16ef}{SucceedOnAverageNearbyScan}}(\textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a4f435ab0f2abf7684b9b7a2c6a114afb}{min\_angle}}, \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a9b131ab91f34232d110de5f4e114daae}{max\_angle}}, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}}, \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a578442f00f0e076da7992b3195e76e13}{smallest\_measure\_amount\_used}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNode}{CustomNode}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}),}
+\DoxyCodeLine{22                                                                                                                                                                  \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a4f435ab0f2abf7684b9b7a2c6a114afb}{min\_angle}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a4f435ab0f2abf7684b9b7a2c6a114afb}{min\_angle}}),}
+\DoxyCodeLine{23                                                                                                                                                                  \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a9b131ab91f34232d110de5f4e114daae}{max\_angle}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a9b131ab91f34232d110de5f4e114daae}{max\_angle}}),}
+\DoxyCodeLine{24                                                                                                                                                                  \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}}),}
+\DoxyCodeLine{25                                                                                                                                                                  \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a578442f00f0e076da7992b3195e76e13}{smallest\_measure\_amount\_used}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a578442f00f0e076da7992b3195e76e13}{smallest\_measure\_amount\_used}}),}
+\DoxyCodeLine{26                                                                                                                                                                  \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_aba50bc59d5cdff66b40204584549819a}{average\_distance\_unit}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}} * global::CM\_TO\_DISTANCE)}
+\DoxyCodeLine{27         \{}
+\DoxyCodeLine{28         \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keyword}{const} \textcolor{keyword}{static} tl::expected<std::shared\_ptr<SucceedOnAverageNearbyScan>, std::string> \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a7d2f515e56b4cb80619d0850753db3f9}{parse}}(\textcolor{keyword}{const} pugi::xml\_node \&node, \textcolor{keyword}{const} \textcolor{keywordtype}{int} index, \textcolor{keyword}{const} std::string \&name\_attribute)}
+\DoxyCodeLine{31         \{}
+\DoxyCodeLine{32             \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a4f435ab0f2abf7684b9b7a2c6a114afb}{min\_angle}} = node.attribute(\textcolor{stringliteral}{"{}min\_angle"{}}).as\_int();}
+\DoxyCodeLine{33             \textcolor{keywordflow}{if} (min\_angle < 0 || min\_angle > 360)}
+\DoxyCodeLine{34             \{}
+\DoxyCodeLine{35                 \textcolor{keywordflow}{return} tl::unexpected(fmt::format(R\textcolor{stringliteral}{"{}(Invalid min\_angle: '\{\}' | Condition:SucceedOnAverageNearbyScan:['\{\}',\{\}])"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a4f435ab0f2abf7684b9b7a2c6a114afb}{min\_angle}}, name\_attribute, index));}}
+\DoxyCodeLine{36 \textcolor{stringliteral}{            \}}}
+\DoxyCodeLine{37 \textcolor{stringliteral}{            }\textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a9b131ab91f34232d110de5f4e114daae}{max\_angle}} = node.attribute(\textcolor{stringliteral}{"{}max\_angle"{}}).as\_int();}
+\DoxyCodeLine{38             \textcolor{keywordflow}{if} (max\_angle < 0 || max\_angle > 360)}
+\DoxyCodeLine{39             \{}
+\DoxyCodeLine{40                 \textcolor{keywordflow}{return} tl::unexpected(fmt::format(R\textcolor{stringliteral}{"{}(Invalid max\_angle: '\{\}' | Condition:SucceedOnAverageNearbyScan:['\{\}',\{\}])"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a9b131ab91f34232d110de5f4e114daae}{max\_angle}}, name\_attribute, index));}}
+\DoxyCodeLine{41 \textcolor{stringliteral}{            \}}}
+\DoxyCodeLine{42 \textcolor{stringliteral}{            }\textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}} = node.attribute(\textcolor{stringliteral}{"{}cm"{}}).as\_double();}
+\DoxyCodeLine{43             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}} < 0)}
+\DoxyCodeLine{44             \{}
+\DoxyCodeLine{45                 \textcolor{keywordflow}{return} tl::unexpected(fmt::format(R\textcolor{stringliteral}{"{}(Invalid cm: '\{\}' | Condition:SucceedOnAverageNearbyScan:['\{\}',\{\}])"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}}, name\_attribute, index));}}
+\DoxyCodeLine{46 \textcolor{stringliteral}{            \}}}
+\DoxyCodeLine{47 \textcolor{stringliteral}{            }\textcolor{keyword}{const} \textcolor{keywordtype}{int} minimum\_measure\_amount\_used = node.attribute(\textcolor{stringliteral}{"{}minimum\_measure\_amount\_used"{}}).as\_int();}
+\DoxyCodeLine{48             \textcolor{keywordflow}{if} (minimum\_measure\_amount\_used < 0)}
+\DoxyCodeLine{49             \{}
+\DoxyCodeLine{50                 \textcolor{keywordflow}{return} tl::unexpected(fmt::format(R\textcolor{stringliteral}{"{}(Invalid minimum\_measure\_amount\_used: '\{\}' | Condition:SucceedOnAverageNearbyScan:['\{\}',\{\}])"{}, minimum\_measure\_amount\_used, name\_attribute, index));}}
+\DoxyCodeLine{51 \textcolor{stringliteral}{            \}}}
+\DoxyCodeLine{52 \textcolor{stringliteral}{            }\textcolor{keywordflow}{return} std::make\_shared<SucceedOnAverageNearbyScan>(}
+\DoxyCodeLine{53                 \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan}{SucceedOnAverageNearbyScan}}(}
+\DoxyCodeLine{54                     name\_attribute,}
+\DoxyCodeLine{55                     \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a4f435ab0f2abf7684b9b7a2c6a114afb}{min\_angle}},}
+\DoxyCodeLine{56                     \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a9b131ab91f34232d110de5f4e114daae}{max\_angle}},}
+\DoxyCodeLine{57                     \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}},}
+\DoxyCodeLine{58                     minimum\_measure\_amount\_used));}
+\DoxyCodeLine{59         \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a41ce1a5977935cc64c273a749e32830d}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{62         \{}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{64             std::shared\_ptr<CarContext> car\_context = std::dynamic\_pointer\_cast<CarContext>(context);}
+\DoxyCodeLine{65             \textcolor{keyword}{auto} car\_system = car\_context-\/>getCarSystem();}
+\DoxyCodeLine{66             \textcolor{keywordtype}{double} total\_distance = 0.0;}
+\DoxyCodeLine{67             \textcolor{keywordtype}{int} angles\_between\_count = 0;}
+\DoxyCodeLine{68             std::vector<Measure> scan\_data = car\_system-\/>getDeviceManager()-\/>getLidarDevice()-\/>getScanData();}
+\DoxyCodeLine{69             \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a578442f00f0e076da7992b3195e76e13}{smallest\_measure\_amount\_used}} > 0)}
+\DoxyCodeLine{70             \{}
+\DoxyCodeLine{71                 std::vector<Measure> smallest\_measures;}
+\DoxyCodeLine{72                 std::partial\_sort(scan\_data.begin(), scan\_data.begin() + this-\/>smallest\_measure\_amount\_used, scan\_data.end(),}
+\DoxyCodeLine{73                                   [](\textcolor{keyword}{const} Measure \&a, \textcolor{keyword}{const} Measure \&b)}
+\DoxyCodeLine{74                                   \{ return a.distance < b.distance; \});}
+\DoxyCodeLine{75                 smallest\_measures.insert(smallest\_measures.end(), scan\_data.begin(), scan\_data.begin() + this-\/>smallest\_measure\_amount\_used);}
+\DoxyCodeLine{76                 scan\_data = smallest\_measures;}
+\DoxyCodeLine{77             \}}
+\DoxyCodeLine{78             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&measure : scan\_data)}
+\DoxyCodeLine{79             \{}
+\DoxyCodeLine{80                 \textcolor{keywordflow}{if} (measure.angle > this-\/>getMinAngle() \&\& measure.angle < this-\/>getMaxAngle())}
+\DoxyCodeLine{81                 \{}
+\DoxyCodeLine{82                     total\_distance += measure.distance;}
+\DoxyCodeLine{83                     ++angles\_between\_count;}
+\DoxyCodeLine{84                 \}}
+\DoxyCodeLine{85             \}}
+\DoxyCodeLine{86             \textcolor{keywordflow}{if} (angles\_between\_count > 0)}
+\DoxyCodeLine{87             \{}
+\DoxyCodeLine{88                 \textcolor{keywordtype}{double} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_aba50bc59d5cdff66b40204584549819a}{average\_distance\_unit}} = total\_distance / angles\_between\_count;}
+\DoxyCodeLine{89                 \textcolor{keywordflow}{if} (average\_distance\_unit < this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a1843ff305fc133a9c7dce240bdd67619}{getAverageDistanceUnit}}())}
+\DoxyCodeLine{90                 \{}
+\DoxyCodeLine{91                     \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}};}
+\DoxyCodeLine{92                 \}}
+\DoxyCodeLine{93             \}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{95             \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{96         \}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a0fa72566f2475a1a1699e099b15a4755}{getMinAngle}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{99 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{100             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a4f435ab0f2abf7684b9b7a2c6a114afb}{min\_angle}};}
+\DoxyCodeLine{101         \}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a2f3fad2bd45ebc38e78839de8538dd1f}{getMaxAngle}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{104 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{105             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a9b131ab91f34232d110de5f4e114daae}{max\_angle}};}
+\DoxyCodeLine{106         \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108         \textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a1843ff305fc133a9c7dce240bdd67619}{getAverageDistanceUnit}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{109 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{110             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_aba50bc59d5cdff66b40204584549819a}{average\_distance\_unit}};}
+\DoxyCodeLine{111         \}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113         \textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a97a6a866d5b47fad66d286bdf8a37b3d}{getCentimeters}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{114 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{115             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}};}
+\DoxyCodeLine{116         \}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a538e36893b88ad5059367ba3c49ebcd0}{getSmallestMeasureAmountUsed}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{119 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{120             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a578442f00f0e076da7992b3195e76e13}{smallest\_measure\_amount\_used}};}
+\DoxyCodeLine{121         \}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a8b712bfca5d1808a54e0355f755a02a3}{toString}}() const final\textcolor{keyword}{ override}}
+\DoxyCodeLine{124 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{125             \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{getName}}();}
+\DoxyCodeLine{126             \textcolor{keywordflow}{if} (name != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{127                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Condition:SucceedOnAverageNearbyScan name='\{\}' min\_angle='\{\}' max\_angle='\{\}' cm='\{\}' smallest\_measure\_amount\_used='\{\}'/>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a0fa72566f2475a1a1699e099b15a4755}{getMinAngle}}(), this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a2f3fad2bd45ebc38e78839de8538dd1f}{getMaxAngle}}(), this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a97a6a866d5b47fad66d286bdf8a37b3d}{getCentimeters}}(), this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a538e36893b88ad5059367ba3c49ebcd0}{getSmallestMeasureAmountUsed}}());}}
+\DoxyCodeLine{128 \textcolor{stringliteral}{            }\textcolor{keywordflow}{else}}
+\DoxyCodeLine{129                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Condition:SucceedOnAverageNearbyScan min\_angle='\{\}' max\_angle='\{\}' cm='\{\}' smallest\_measure\_amount\_used='\{\}'/>)"{}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a0fa72566f2475a1a1699e099b15a4755}{getMinAngle}}(), this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a2f3fad2bd45ebc38e78839de8538dd1f}{getMaxAngle}}(), this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a97a6a866d5b47fad66d286bdf8a37b3d}{getCentimeters}}(), this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a538e36893b88ad5059367ba3c49ebcd0}{getSmallestMeasureAmountUsed}}());}}
+\DoxyCodeLine{130 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{131 \textcolor{stringliteral}{}}
+\DoxyCodeLine{132 \textcolor{stringliteral}{    }\textcolor{keyword}{private}:}
+\DoxyCodeLine{133         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a4f435ab0f2abf7684b9b7a2c6a114afb}{min\_angle}};}
+\DoxyCodeLine{134         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a9b131ab91f34232d110de5f4e114daae}{max\_angle}};}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136         \textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a161abea1b78dc5b0703bf9cb46f9eb4b}{cm}};}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_a578442f00f0e076da7992b3195e76e13}{smallest\_measure\_amount\_used}};}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140         \textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan_aba50bc59d5cdff66b40204584549819a}{average\_distance\_unit}};}
+\DoxyCodeLine{141     \};}
+\DoxyCodeLine{142 \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,83 @@
+\hypertarget{PauseExecution_8hpp_source}{}\doxysection{Pause\+Execution.\+hpp}
+\label{PauseExecution_8hpp_source}\index{behaviour\_tree\_car/include/behaviour\_tree/node/custom/action/PauseExecution.hpp@{behaviour\_tree\_car/include/behaviour\_tree/node/custom/action/PauseExecution.hpp}}
+\mbox{\hyperlink{PauseExecution_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_PAUSE\_EXECUTION\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_PAUSE\_EXECUTION\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <fmt/format.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CustomNode_8hpp}{behaviour\_tree/node/custom/CustomNode.hpp}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Context_8h}{behaviour\_tree/Context.h}}"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action}{behaviour\_tree::node::custom::action}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution}{PauseExecution}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNode}{CustomNode}}}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17     \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aed222accaad8426ec27b45e9949a62da}{PauseExecution}}(\textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNode}{CustomNode}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}})}
+\DoxyCodeLine{19         \{}
+\DoxyCodeLine{20         \}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \textcolor{keyword}{const} \textcolor{keyword}{static} tl::expected<std::shared\_ptr<PauseExecution>, std::string> \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a67619d1cee8009b5b767335607c4a4d3}{parse}}(\textcolor{keyword}{const} pugi::xml\_node \&node, \textcolor{keyword}{const} \textcolor{keywordtype}{int} index, \textcolor{keyword}{const} std::string \&name\_attribute)}
+\DoxyCodeLine{23         \{}
+\DoxyCodeLine{24             \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}} = node.attribute(\textcolor{stringliteral}{"{}ms"{}}).as\_int();}
+\DoxyCodeLine{25             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}} < 0)}
+\DoxyCodeLine{26             \{}
+\DoxyCodeLine{27                 \textcolor{keywordflow}{return} tl::unexpected(fmt::format(R\textcolor{stringliteral}{"{}(Invalid ms: '\{\}' | Action:PauseExecution:['\{\}',\{\}])"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}}, name\_attribute, index));}}
+\DoxyCodeLine{28 \textcolor{stringliteral}{            \}}}
+\DoxyCodeLine{29 \textcolor{stringliteral}{            }\textcolor{keywordflow}{return} std::make\_shared<custom::action::PauseExecution>(}
+\DoxyCodeLine{30                 \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution}{custom::action::PauseExecution}}(}
+\DoxyCodeLine{31                     name\_attribute,}
+\DoxyCodeLine{32                     \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}}));}
+\DoxyCodeLine{33         \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a361d53f216c7c3c94c1276f351a2d627}{start}}(std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{36         \{}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{38             this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa4a04d76863b63c57ff4591ce15da4cd}{start\_time}} = std::chrono::steady\_clock::now();}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{40         \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_ac09698da055230393f386084e3f7b424}{finish}}(std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{43         \{}
+\DoxyCodeLine{44         \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa3721a12de0db928b2f56ea41eefe27b}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{47         \{}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{49             \textcolor{keywordflow}{if} (std::chrono::duration\_cast<std::chrono::milliseconds>(std::chrono::steady\_clock::now() -\/ this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa4a04d76863b63c57ff4591ce15da4cd}{start\_time}}).count() < this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}})}
+\DoxyCodeLine{50             \{}
+\DoxyCodeLine{51                 \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a5bda814c4aedb126839228f1a3d92f09}{Status::Running}};}
+\DoxyCodeLine{52             \}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{54             \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}};}
+\DoxyCodeLine{55         \}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a3a48461dee65dab2a2284ff1d21ce246}{toString}}() const final\textcolor{keyword}{ override}}
+\DoxyCodeLine{58 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{59             \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{getName}}();}
+\DoxyCodeLine{60             \textcolor{keywordflow}{if} (name != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{61                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Action:PauseExecution name='\{\}' ms='\{\}'/>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a14bfe0479b23293d0a89cbae4e5dce17}{getMS}}());}}
+\DoxyCodeLine{62 \textcolor{stringliteral}{            }\textcolor{keywordflow}{else}}
+\DoxyCodeLine{63                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Action:PauseExecution ms='\{\}'/>)"{}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a14bfe0479b23293d0a89cbae4e5dce17}{getMS}}());}}
+\DoxyCodeLine{64 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{65 \textcolor{stringliteral}{}}
+\DoxyCodeLine{66 \textcolor{stringliteral}{        }\textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a14bfe0479b23293d0a89cbae4e5dce17}{getMS}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{67 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{68             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}};}
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{keyword}{private}:}
+\DoxyCodeLine{72         std::chrono::steady\_clock::time\_point \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa4a04d76863b63c57ff4591ce15da4cd}{start\_time}};}
+\DoxyCodeLine{73         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}};}
+\DoxyCodeLine{74     \};}
+\DoxyCodeLine{75 \}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,55 @@
+\hypertarget{Invert_8hpp_source}{}\doxysection{Invert.\+hpp}
+\label{Invert_8hpp_source}\index{behaviour\_tree/include/behaviour\_tree/node/decorator/Invert.hpp@{behaviour\_tree/include/behaviour\_tree/node/decorator/Invert.hpp}}
+\mbox{\hyperlink{Invert_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_INVERT\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_INVERT\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Decorator_8hpp}{Decorator.hpp}}"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1decorator}{behaviour\_tree::node::decorator}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert}{Invert}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator}{Decorator}}}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12     \textcolor{keyword}{public}:}
+\DoxyCodeLine{13         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_a93bd8f6380552d3b3bfe30d66dd567fc}{Invert}}(\textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, std::shared\_ptr<Node> \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_af173d187c2207095f51e61aea7dd87d5}{child}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator}{Decorator}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, std::move(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_af173d187c2207095f51e61aea7dd87d5}{child}})) \{\}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1decorator_af345e3facbd64aad6479c9474d1ea990}{DecoratorType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_af15479ac616cb2411b9f7e5322d31e9c}{type}}() const final\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1decorator_af345e3facbd64aad6479c9474d1ea990a9b8958acb7be504bb5f55f17c0eea366}{DecoratorType::Invert}}; \}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_a1f2ddde6a9bf42275fa5ea7412ae575f}{start}}(std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override} \{}
+\DoxyCodeLine{18             context-\/>pushNodeTrace(std::make\_pair(shared\_from\_this(), 0));}
+\DoxyCodeLine{19         \}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_aca4db913ea3e192acf4de5d58cb7bd92}{finish}}(std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override} \{}
+\DoxyCodeLine{22             context-\/>popNode();}
+\DoxyCodeLine{23         \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_a37b94931a72673b3f56623007ea97d95}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27             \textcolor{keyword}{auto} status = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_af173d187c2207095f51e61aea7dd87d5}{child}}-\/>tick(tick\_count, context);}
+\DoxyCodeLine{28             \textcolor{keywordflow}{switch} (status)}
+\DoxyCodeLine{29             \{}
+\DoxyCodeLine{30             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}}:}
+\DoxyCodeLine{31                 \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}};}
+\DoxyCodeLine{32             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997ae139a585510a502bbf1841cf589f5086}{Status::Failure}}:}
+\DoxyCodeLine{33                 \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}};}
+\DoxyCodeLine{34             \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a5bda814c4aedb126839228f1a3d92f09}{Status::Running}}:}
+\DoxyCodeLine{35                 \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a5bda814c4aedb126839228f1a3d92f09}{Status::Running}};}
+\DoxyCodeLine{36             \}}
+\DoxyCodeLine{37         \}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Invert_aa2397da6a448328fdbe6717e849f6f22}{toString}}() const final\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{40             \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{getName}}();}
+\DoxyCodeLine{41             \textcolor{keywordflow}{if} (name != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{42                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Invert name='\{\}'>\{\}</Invert>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_af173d187c2207095f51e61aea7dd87d5}{child}}-\/>toString());}}
+\DoxyCodeLine{43 \textcolor{stringliteral}{            }\textcolor{keywordflow}{else}}
+\DoxyCodeLine{44                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Invert>\{\}</Invert>)"{}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_af173d187c2207095f51e61aea7dd87d5}{child}}-\/>toString());}}
+\DoxyCodeLine{45 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{46 \textcolor{stringliteral}{    \};}}
+\DoxyCodeLine{47 \textcolor{stringliteral}{\}}}
+\DoxyCodeLine{48 \textcolor{stringliteral}{}}
+\DoxyCodeLine{49 \textcolor{stringliteral}{}\textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

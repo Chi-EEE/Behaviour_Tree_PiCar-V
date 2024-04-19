@@ -1,0 +1,53 @@
+\hypertarget{Random_8hpp_source}{}\doxysection{Random.\+hpp}
+\label{Random_8hpp_source}\index{behaviour\_tree/include/behaviour\_tree/node/composite/Random.hpp@{behaviour\_tree/include/behaviour\_tree/node/composite/Random.hpp}}
+\mbox{\hyperlink{Random_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_RANDOM\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_RANDOM\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <effolkronium/random.hpp>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Composite_8hpp}{Composite.hpp}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{using }\mbox{\hyperlink{Random_8hpp_a37803052e4ec1ec10036c999338f9771}{effolkronium\_Random}} = effolkronium::random\_static;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1composite}{behaviour\_tree::node::composite}}}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Random}{Random}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite}{Composite}}}
+\DoxyCodeLine{15     \{}
+\DoxyCodeLine{16     \textcolor{keyword}{public}:}
+\DoxyCodeLine{17         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Random_af8640a9b1b72c8762ceb4dda3ce9dbc6}{Random}}(\textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, std::vector<std::shared\_ptr<Node>> \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite_a53f7bd51c86db41a54f0cd276fbfaf77}{children}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite}{Composite}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, std::move(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite_a53f7bd51c86db41a54f0cd276fbfaf77}{children}})) \{\}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1composite_a3f2cf132b2387c0cfb3ad9bb369cfb1c}{CompositeType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Random_a227c264da81f63bfac94aef9aa86b10c}{type}}() const final\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1composite_a3f2cf132b2387c0cfb3ad9bb369cfb1ca64663f4646781c9c0110838b905daa23}{CompositeType::Random}}; \}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Random_a8d6796d60e073168c9b474ef3e0962f0}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{22         \{}
+\DoxyCodeLine{23             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Random_a8d6796d60e073168c9b474ef3e0962f0}{run}}(tick\_count, context, 0);}
+\DoxyCodeLine{24         \}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Random_a253a077c7196ed353a0d651af7327620}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context, \textcolor{keyword}{const} \textcolor{keywordtype}{int} start\_index) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{27         \{}
+\DoxyCodeLine{28             \textcolor{comment}{// Random can never be empty from the BehaviourTreeParser}}
+\DoxyCodeLine{29             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite_a53f7bd51c86db41a54f0cd276fbfaf77}{children}}[effolkronium\_Random::get(0, \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite_a53f7bd51c86db41a54f0cd276fbfaf77}{children}}.size() -\/ 1))]-\/>tick(tick\_count, context);}
+\DoxyCodeLine{30         \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Random_a4c40552b7d60cba9ab8b91e6d7668e66}{toString}}() const final\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{33             std::string out;}
+\DoxyCodeLine{34             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}\& child : this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1composite_1_1Composite_a53f7bd51c86db41a54f0cd276fbfaf77}{children}})}
+\DoxyCodeLine{35             \{}
+\DoxyCodeLine{36                 out += child-\/>toString();}
+\DoxyCodeLine{37             \}}
+\DoxyCodeLine{38             \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{getName}}();}
+\DoxyCodeLine{39             \textcolor{keywordflow}{if} (name != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{40                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Random name='\{\}'>\{\}</Random>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, out);}}
+\DoxyCodeLine{41 \textcolor{stringliteral}{            }\textcolor{keywordflow}{else}}
+\DoxyCodeLine{42                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Random>\{\}</Random>)"{}, out);}}
+\DoxyCodeLine{43 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{44 \textcolor{stringliteral}{    \};}}
+\DoxyCodeLine{45 \textcolor{stringliteral}{\}}}
+\DoxyCodeLine{46 \textcolor{stringliteral}{}}
+\DoxyCodeLine{47 \textcolor{stringliteral}{}\textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

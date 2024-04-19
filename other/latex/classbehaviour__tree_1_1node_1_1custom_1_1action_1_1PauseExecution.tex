@@ -1,0 +1,124 @@
+\hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution}{}\doxysection{behaviour\+\_\+tree\+::node\+::custom\+::action\+::Pause\+Execution Class Reference}
+\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution}\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+
+
+{\ttfamily \#include $<$Pause\+Execution.\+hpp$>$}
+
+Inheritance diagram for behaviour\+\_\+tree\+::node\+::custom\+::action\+::Pause\+Execution\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aed222accaad8426ec27b45e9949a62da}{Pause\+Execution}} (const std\+::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, const int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}})
+\item 
+void \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a361d53f216c7c3c94c1276f351a2d627}{start}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context) final override
+\item 
+void \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_ac09698da055230393f386084e3f7b424}{finish}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context) final override
+\item 
+const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa3721a12de0db928b2f56ea41eefe27b}{run}} (const int tick\+\_\+count, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context) final override
+\item 
+const std\+::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a3a48461dee65dab2a2284ff1d21ce246}{to\+String}} () const final override
+\item 
+const int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a14bfe0479b23293d0a89cbae4e5dce17}{get\+MS}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const tl\+::expected$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution}{Pause\+Execution}} $>$, std\+::string $>$ \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a67619d1cee8009b5b767335607c4a4d3}{parse}} (const pugi\+::xml\+\_\+node \&node, const int index, const std\+::string \&name\+\_\+attribute)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa4a04d76863b63c57ff4591ce15da4cd}{start\+\_\+time}}
+\item 
+const int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}{ms}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aed222accaad8426ec27b45e9949a62da}\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aed222accaad8426ec27b45e9949a62da}} 
+\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}!PauseExecution@{PauseExecution}}
+\index{PauseExecution@{PauseExecution}!behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+\doxysubsubsection{\texorpdfstring{PauseExecution()}{PauseExecution()}}
+{\footnotesize\ttfamily behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution\+::\+Pause\+Execution (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const int}]{ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_ac09698da055230393f386084e3f7b424}\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_ac09698da055230393f386084e3f7b424}} 
+\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}!finish@{finish}}
+\index{finish@{finish}!behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+\doxysubsubsection{\texorpdfstring{finish()}{finish()}}
+{\footnotesize\ttfamily void behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution\+::finish (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a83ca3a5e9f523bedd01c40b0e1a09cd3}{behaviour\+\_\+tree\+::node\+::\+Node}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a14bfe0479b23293d0a89cbae4e5dce17}\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a14bfe0479b23293d0a89cbae4e5dce17}} 
+\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}!getMS@{getMS}}
+\index{getMS@{getMS}!behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+\doxysubsubsection{\texorpdfstring{getMS()}{getMS()}}
+{\footnotesize\ttfamily const int behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution\+::get\+MS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a67619d1cee8009b5b767335607c4a4d3}\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a67619d1cee8009b5b767335607c4a4d3}} 
+\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}!parse@{parse}}
+\index{parse@{parse}!behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily static const tl\+::expected$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution}{Pause\+Execution}} $>$, std\+::string $>$ behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution\+::parse (\begin{DoxyParamCaption}\item[{const pugi\+::xml\+\_\+node \&}]{node,  }\item[{const int}]{index,  }\item[{const std\+::string \&}]{name\+\_\+attribute }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa3721a12de0db928b2f56ea41eefe27b}\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa3721a12de0db928b2f56ea41eefe27b}} 
+\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}!run@{run}}
+\index{run@{run}!behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution\+::run (\begin{DoxyParamCaption}\item[{const int}]{tick\+\_\+count,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a8b3dba8156f7422146ebd33550cca229}{behaviour\+\_\+tree\+::node\+::\+Node}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a361d53f216c7c3c94c1276f351a2d627}\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a361d53f216c7c3c94c1276f351a2d627}} 
+\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}!start@{start}}
+\index{start@{start}!behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution\+::start (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a964cd9153c2f61640c19e61cc17b7f51}{behaviour\+\_\+tree\+::node\+::\+Node}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a3a48461dee65dab2a2284ff1d21ce246}\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a3a48461dee65dab2a2284ff1d21ce246}} 
+\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}!toString@{toString}}
+\index{toString@{toString}!behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily const std\+::string behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a9aa2e9616bb462fbe4adf9081b7de9d8}{behaviour\+\_\+tree\+::node\+::\+Node}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_a86c528fcb0e118ac372c35cb13be849e}} 
+\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}!ms@{ms}}
+\index{ms@{ms}!behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+\doxysubsubsection{\texorpdfstring{ms}{ms}}
+{\footnotesize\ttfamily const int behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution\+::ms\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa4a04d76863b63c57ff4591ce15da4cd}\label{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1PauseExecution_aa4a04d76863b63c57ff4591ce15da4cd}} 
+\index{behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}!start\_time@{start\_time}}
+\index{start\_time@{start\_time}!behaviour\_tree::node::custom::action::PauseExecution@{behaviour\_tree::node::custom::action::PauseExecution}}
+\doxysubsubsection{\texorpdfstring{start\_time}{start\_time}}
+{\footnotesize\ttfamily std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point behaviour\+\_\+tree\+::node\+::custom\+::action\+::\+Pause\+Execution\+::start\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+behaviour\+\_\+tree\+\_\+car/include/behaviour\+\_\+tree/node/custom/action/\mbox{\hyperlink{PauseExecution_8hpp}{Pause\+Execution.\+hpp}}\end{DoxyCompactItemize}

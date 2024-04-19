@@ -1,0 +1,122 @@
+\hypertarget{classbehaviour__tree_1_1BehaviourTree}{}\doxysection{behaviour\+\_\+tree\+::Behaviour\+Tree Class Reference}
+\label{classbehaviour__tree_1_1BehaviourTree}\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+
+
+{\ttfamily \#include $<$Behaviour\+Tree.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a02677f666e740fefe9b0c778d367f782}{Behaviour\+Tree}} (unsigned int \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a1d318cba29cb82c087a45b0cddedb979}{cycle\+\_\+limit}}, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Root}{Root}} $>$ $>$ \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a122d800eacfea947079f48c062d80a47}{roots}})
+\item 
+void \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_ae27d24c4c1f122aad9110fa70a75d518}{start}} ()
+\item 
+\mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_ab884c7303547b1551fc08af95f898635}{tick}} (const int tick\+\_\+count, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context)
+\item 
+\mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_ada7dc70a82579c6ba81e7635b4eba4e5}{Use\+Root}} (const int tick\+\_\+count, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context, const std\+::string \&id)
+\item 
+bool \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a386e85f2f3a2c0243ee6404735d4b801}{can\+Run}} () const
+\item 
+void \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a94ed9690ada8dc4a2b51a64390ec6a63}{increment\+Cycle}} ()
+\item 
+void \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a50c069599ac4ce73eee3ec20741feb63}{reset\+Cycles}} ()
+\item 
+const std\+::string \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a3abe45585ebd050298dd248ffd33ad88}{to\+String}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_afc2927e22b6aac3162d37723aac2a7ac}{cycles}} = 0
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Root}{Root}} $>$ \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a79e3a407412a9ee8df4965a533427378}{root\+\_\+to\+\_\+use}}
+\item 
+const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Root}{Root}} $>$ $>$ \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a122d800eacfea947079f48c062d80a47}{roots}}
+\item 
+const unsigned int \mbox{\hyperlink{classbehaviour__tree_1_1BehaviourTree_a1d318cba29cb82c087a45b0cddedb979}{cycle\+\_\+limit}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_a02677f666e740fefe9b0c778d367f782}\label{classbehaviour__tree_1_1BehaviourTree_a02677f666e740fefe9b0c778d367f782}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!BehaviourTree@{BehaviourTree}}
+\index{BehaviourTree@{BehaviourTree}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{BehaviourTree()}{BehaviourTree()}}
+{\footnotesize\ttfamily behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::\+Behaviour\+Tree (\begin{DoxyParamCaption}\item[{unsigned int}]{cycle\+\_\+limit,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Root}{Root}} $>$ $>$}]{roots }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_a386e85f2f3a2c0243ee6404735d4b801}\label{classbehaviour__tree_1_1BehaviourTree_a386e85f2f3a2c0243ee6404735d4b801}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!canRun@{canRun}}
+\index{canRun@{canRun}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{canRun()}{canRun()}}
+{\footnotesize\ttfamily bool behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::can\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_a94ed9690ada8dc4a2b51a64390ec6a63}\label{classbehaviour__tree_1_1BehaviourTree_a94ed9690ada8dc4a2b51a64390ec6a63}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!incrementCycle@{incrementCycle}}
+\index{incrementCycle@{incrementCycle}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{incrementCycle()}{incrementCycle()}}
+{\footnotesize\ttfamily void behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::increment\+Cycle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_a50c069599ac4ce73eee3ec20741feb63}\label{classbehaviour__tree_1_1BehaviourTree_a50c069599ac4ce73eee3ec20741feb63}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!resetCycles@{resetCycles}}
+\index{resetCycles@{resetCycles}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{resetCycles()}{resetCycles()}}
+{\footnotesize\ttfamily void behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::reset\+Cycles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_ae27d24c4c1f122aad9110fa70a75d518}\label{classbehaviour__tree_1_1BehaviourTree_ae27d24c4c1f122aad9110fa70a75d518}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!start@{start}}
+\index{start@{start}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_ab884c7303547b1551fc08af95f898635}\label{classbehaviour__tree_1_1BehaviourTree_ab884c7303547b1551fc08af95f898635}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!tick@{tick}}
+\index{tick@{tick}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::tick (\begin{DoxyParamCaption}\item[{const int}]{tick\+\_\+count,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_a3abe45585ebd050298dd248ffd33ad88}\label{classbehaviour__tree_1_1BehaviourTree_a3abe45585ebd050298dd248ffd33ad88}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!toString@{toString}}
+\index{toString@{toString}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily const std\+::string behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_ada7dc70a82579c6ba81e7635b4eba4e5}\label{classbehaviour__tree_1_1BehaviourTree_ada7dc70a82579c6ba81e7635b4eba4e5}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!UseRoot@{UseRoot}}
+\index{UseRoot@{UseRoot}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{UseRoot()}{UseRoot()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::\+Use\+Root (\begin{DoxyParamCaption}\item[{const int}]{tick\+\_\+count,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context,  }\item[{const std\+::string \&}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_a1d318cba29cb82c087a45b0cddedb979}\label{classbehaviour__tree_1_1BehaviourTree_a1d318cba29cb82c087a45b0cddedb979}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!cycle\_limit@{cycle\_limit}}
+\index{cycle\_limit@{cycle\_limit}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{cycle\_limit}{cycle\_limit}}
+{\footnotesize\ttfamily const unsigned int behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::cycle\+\_\+limit\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_afc2927e22b6aac3162d37723aac2a7ac}\label{classbehaviour__tree_1_1BehaviourTree_afc2927e22b6aac3162d37723aac2a7ac}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!cycles@{cycles}}
+\index{cycles@{cycles}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{cycles}{cycles}}
+{\footnotesize\ttfamily int behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::cycles = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_a79e3a407412a9ee8df4965a533427378}\label{classbehaviour__tree_1_1BehaviourTree_a79e3a407412a9ee8df4965a533427378}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!root\_to\_use@{root\_to\_use}}
+\index{root\_to\_use@{root\_to\_use}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{root\_to\_use}{root\_to\_use}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classbehaviour__tree_1_1Root}{Root}}$>$ behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::root\+\_\+to\+\_\+use\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1BehaviourTree_a122d800eacfea947079f48c062d80a47}\label{classbehaviour__tree_1_1BehaviourTree_a122d800eacfea947079f48c062d80a47}} 
+\index{behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}!roots@{roots}}
+\index{roots@{roots}!behaviour\_tree::BehaviourTree@{behaviour\_tree::BehaviourTree}}
+\doxysubsubsection{\texorpdfstring{roots}{roots}}
+{\footnotesize\ttfamily const std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classbehaviour__tree_1_1Root}{Root}}$>$ $>$ behaviour\+\_\+tree\+::\+Behaviour\+Tree\+::roots\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+behaviour\+\_\+tree/include/behaviour\+\_\+tree/\mbox{\hyperlink{BehaviourTree_8hpp}{Behaviour\+Tree.\+hpp}}\end{DoxyCompactItemize}

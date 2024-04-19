@@ -1,0 +1,32 @@
+\hypertarget{Decorator_8hpp_source}{}\doxysection{Decorator.\+hpp}
+\label{Decorator_8hpp_source}\index{behaviour\_tree/include/behaviour\_tree/node/decorator/Decorator.hpp@{behaviour\_tree/include/behaviour\_tree/node/decorator/Decorator.hpp}}
+\mbox{\hyperlink{Decorator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_DECORATOR\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_DECORATOR\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}../Node.hpp"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{DecoratorType_8hpp}{DecoratorType.hpp}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1decorator}{behaviour\_tree::node::decorator}}}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator}{Decorator}} : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node}{Node}}}
+\DoxyCodeLine{13     \{}
+\DoxyCodeLine{14     \textcolor{keyword}{public}:}
+\DoxyCodeLine{15         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_a59658ac46ae8640b360381129c0f12a2}{Decorator}}(\textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, std::shared\_ptr<Node> \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_af173d187c2207095f51e61aea7dd87d5}{child}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node}{Node}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_af173d187c2207095f51e61aea7dd87d5}{child}}(std::move(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_af173d187c2207095f51e61aea7dd87d5}{child}}))}
+\DoxyCodeLine{16         \{}
+\DoxyCodeLine{17         \}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{keyword}{virtual} \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1decorator_af345e3facbd64aad6479c9474d1ea990}{DecoratorType}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_a4817285dbcf690c6ad1e2f51454fe3b4}{type}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{22         std::shared\_ptr<Node> \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1decorator_1_1Decorator_af173d187c2207095f51e61aea7dd87d5}{child}};}
+\DoxyCodeLine{23     \};}
+\DoxyCodeLine{24 \}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

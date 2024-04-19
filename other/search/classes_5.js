@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jsonconfiguration_0',['JsonConfiguration',['../classcar_1_1configuration_1_1JsonConfiguration.html',1,'car::configuration']]]
+  ['healthinfo_0',['HealthInfo',['../structrplidar_1_1HealthInfo.html',1,'rplidar']]]
 ];

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['behaviour_5ftree_0',['behaviour_tree',['../classbehaviour__tree_1_1BehaviourTreeHandler.html#ae41facd5ed9b39b18a7610d2e3247b50',1,'behaviour_tree::BehaviourTreeHandler']]],
-  ['behaviour_5ftree_5fupdate_5fms_5finterval_1',['behaviour_tree_update_ms_interval',['../structcar_1_1configuration_1_1Configuration.html#a11aefefb94ee7877282bc1a153b4602b',1,'car::configuration::Configuration']]],
-  ['box_2',['box',['../classcar_1_1display_1_1console_1_1screen_1_1MainScreen.html#a3821c5885113585efd641a089e2e5089',1,'car::display::console::screen::MainScreen']]],
-  ['button_5fpressed_3',['button_pressed',['../classcar_1_1display_1_1console_1_1component_1_1main_1_1ConnectButton.html#acc2b103bbbce59e4037dc81fc5b94caf',1,'car::display::console::component::main::ConnectButton']]]
+  ['amount_0',['amount',['../classbehaviour__tree_1_1node_1_1decorator_1_1Repeat.html#ae86585ff8107b5d51f91a09c6d203eb0',1,'behaviour_tree::node::decorator::Repeat']]],
+  ['angle_1',['angle',['../classbehaviour__tree_1_1node_1_1custom_1_1action_1_1SetAngle.html#acfacda02115c20645d2ed65bc1e456b4',1,'behaviour_tree::node::custom::action::SetAngle::angle()'],['../classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Turn.html#a14290839b1c9bc9401c8c1b4931901b5',1,'behaviour_tree::node::custom::action::Turn::angle()'],['../structrplidar_1_1Measure.html#ad1d3aa520adf98a85828e9908a5a4d26',1,'rplidar::Measure::angle()'],['../classrplidar_1_1ExpressPacket.html#a62769fca277366ef560618259595a080',1,'rplidar::ExpressPacket::angle()']]],
+  ['average_5fdistance_5funit_2',['average_distance_unit',['../classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAverageNearbyScan.html#aba50bc59d5cdff66b40204584549819a',1,'behaviour_tree::node::custom::condition::SucceedOnAverageNearbyScan']]]
 ];

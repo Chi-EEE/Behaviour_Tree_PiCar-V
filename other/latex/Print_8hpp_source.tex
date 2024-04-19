@@ -1,0 +1,69 @@
+\hypertarget{Print_8hpp_source}{}\doxysection{Print.\+hpp}
+\label{Print_8hpp_source}\index{behaviour\_tree\_car/include/behaviour\_tree/node/custom/action/Print.hpp@{behaviour\_tree\_car/include/behaviour\_tree/node/custom/action/Print.hpp}}
+\mbox{\hyperlink{Print_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_PRINT\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_PRINT\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CustomNode_8hpp}{behaviour\_tree/node/custom/CustomNode.hpp}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Context_8h}{behaviour\_tree/Context.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}behaviour\_tree/CarContext.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <spdlog/spdlog.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom_1_1action}{behaviour\_tree::node::custom::action}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print}{Print}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNode}{CustomNode}}}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20     \textcolor{keyword}{public}:}
+\DoxyCodeLine{21         \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_aba60b7e739039f93404228cf2f3bf337}{Print}}(\textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a5c3b3373b0834fddb50952ae3f41e67d}{text}}) : \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNode}{CustomNode}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}), \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a5c3b3373b0834fddb50952ae3f41e67d}{text}}(\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a5c3b3373b0834fddb50952ae3f41e67d}{text}})}
+\DoxyCodeLine{22         \{}
+\DoxyCodeLine{23         \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \textcolor{keyword}{const} \textcolor{keyword}{static} tl::expected<std::shared\_ptr<Print>, std::string> \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_abc1de42fc29959e377ed1b7351edb4c0}{parse}}(\textcolor{keyword}{const} pugi::xml\_node \&node, \textcolor{keyword}{const} \textcolor{keywordtype}{int} index, \textcolor{keyword}{const} std::string \&name\_attribute)}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27             \textcolor{keywordflow}{return} std::make\_shared<Print>(}
+\DoxyCodeLine{28                 \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print}{Print}}(}
+\DoxyCodeLine{29                     name\_attribute,}
+\DoxyCodeLine{30                     node.attribute(\textcolor{stringliteral}{"{}text"{}}).as\_string()));}
+\DoxyCodeLine{31         \}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keyword}{const} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a94c386cf6588915bf41624cb7518fa00}{run}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tick\_count, std::shared\_ptr<Context> context) \textcolor{keyword}{final} \textcolor{keyword}{override}}
+\DoxyCodeLine{34         \{}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_DISABLE\_RUN}}
+\DoxyCodeLine{36             std::shared\_ptr<CarContext> car\_context = std::dynamic\_pointer\_cast<CarContext>(context);}
+\DoxyCodeLine{37             spdlog::info(this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a58657ba84da0dfaa76592b7d39df1dd2}{getText}}());}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{39             std::cout << this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a58657ba84da0dfaa76592b7d39df1dd2}{getText}}();}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{41             \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997a505a83f220c02df2f85c3810cd9ceb38}{Status::Success}};}
+\DoxyCodeLine{42         \}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a58657ba84da0dfaa76592b7d39df1dd2}{getText}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{45 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{46             \textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a5c3b3373b0834fddb50952ae3f41e67d}{text}};}
+\DoxyCodeLine{47         \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a79146514f540d405490d8ee342e2d42c}{toString}}() const final\textcolor{keyword}{ override}}
+\DoxyCodeLine{50 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{51             \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}} = this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_ad9b3324377c0a8e45bf05999664aa263}{getName}}();}
+\DoxyCodeLine{52             \textcolor{keywordflow}{if} (name != \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{53                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Action:Print name='\{\}' text='\{\}'/>)"{}, \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a58657ba84da0dfaa76592b7d39df1dd2}{getText}}());}}
+\DoxyCodeLine{54 \textcolor{stringliteral}{            }\textcolor{keywordflow}{else}}
+\DoxyCodeLine{55                 \textcolor{keywordflow}{return} fmt::format(R\textcolor{stringliteral}{"{}(<Action:Print text='\{\}'/>)"{}, this-\/>\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a58657ba84da0dfaa76592b7d39df1dd2}{getText}}());}}
+\DoxyCodeLine{56 \textcolor{stringliteral}{        \}}}
+\DoxyCodeLine{57 \textcolor{stringliteral}{}}
+\DoxyCodeLine{58 \textcolor{stringliteral}{    }\textcolor{keyword}{private}:}
+\DoxyCodeLine{59         \textcolor{keyword}{const} std::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1action_1_1Print_a5c3b3373b0834fddb50952ae3f41e67d}{text}};}
+\DoxyCodeLine{60     \};}
+\DoxyCodeLine{61 \}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

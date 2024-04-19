@@ -1,0 +1,30 @@
+\hypertarget{CustomNodeParser_8hpp_source}{}\doxysection{Custom\+Node\+Parser.\+hpp}
+\label{CustomNodeParser_8hpp_source}\index{behaviour\_tree/include/behaviour\_tree/node/custom/CustomNodeParser.hpp@{behaviour\_tree/include/behaviour\_tree/node/custom/CustomNodeParser.hpp}}
+\mbox{\hyperlink{CustomNodeParser_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BEHAVIOUR\_TREE\_CUSTOM\_NODE\_PARSER\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BEHAVIOUR\_TREE\_CUSTOM\_NODE\_PARSER\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <pugixml.hpp>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <tl/expected.hpp>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <fmt/format.h>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CustomNode_8hpp}{CustomNode.hpp}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebehaviour__tree_1_1node_1_1custom}{behaviour\_tree::node::custom}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{class }\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNodeParser}{CustomNodeParser}}}
+\DoxyCodeLine{18     \{}
+\DoxyCodeLine{19     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \textcolor{keyword}{virtual} tl::expected<std::shared\_ptr<CustomNode>, std::string> \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1CustomNodeParser_a2930fa1cb56061abfde189311878b971}{parseCustomNode}}(\textcolor{keyword}{const} pugi::xml\_node\& node, \textcolor{keyword}{const} \textcolor{keywordtype}{int} index) = 0;}
+\DoxyCodeLine{21     \};}
+\DoxyCodeLine{22 \}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

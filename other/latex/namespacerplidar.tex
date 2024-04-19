@@ -1,0 +1,166 @@
+\hypertarget{namespacerplidar}{}\doxysection{rplidar Namespace Reference}
+\label{namespacerplidar}\index{rplidar@{rplidar}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structrplidar_1_1DeviceInfo}{Device\+Info}}
+\item 
+class \mbox{\hyperlink{classrplidar_1_1ExpressPacket}{Express\+Packet}}
+\item 
+struct \mbox{\hyperlink{structrplidar_1_1HealthInfo}{Health\+Info}}
+\begin{DoxyCompactList}\small\item\em Health Info for Lidar Scanner. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structrplidar_1_1Measure}{Measure}}
+\item 
+class \mbox{\hyperlink{classrplidar_1_1RPLidar}{RPLidar}}
+\begin{DoxyCompactList}\small\item\em Class for communicating with \mbox{\hyperlink{classrplidar_1_1RPLidar}{RPLidar}} rangefinder scanners. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structrplidar_1_1ScanInfo}{Scan\+Info}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7}{Scan\+Type}} \{ \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}{NORMAL}} = 0
+, \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a9f110e831b8ea3dbf546e8093ffca6b5}{FORCE}}
+, \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7ae685a4556f6818b07b7fbcc195a35f92}{EXPRESS}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{namespacerplidar_ac9fc8ec7c8c5252deccccbb97b5b1ed0}{SYNC\+\_\+\+BYTE}} = 0x\+A5
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{namespacerplidar_ae247ad6a3825ddc55b486a4fc8c28c47}{SYNC\+\_\+\+BYTE2}} = 0x5A
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{namespacerplidar_ae97da6603812122463e76a32b8fc72c0}{GET\+\_\+\+INFO\+\_\+\+BYTE}} = 0x50
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{namespacerplidar_af629cff240361cf121502a3b3e9aa198}{GET\+\_\+\+HEALTH\+\_\+\+BYTE}} = 0x52
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{namespacerplidar_afc069ffc0a883032cf57e4217b819d9c}{STOP\+\_\+\+BYTE}} = 0x25
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{namespacerplidar_a6282ac59506ebf379e15ea00882f2a8b}{RESET\+\_\+\+BYTE}} = 0x40
+\item 
+constexpr int \mbox{\hyperlink{namespacerplidar_a7a7dd67caebe4aa8ac0a4979e1286b98}{DESCRIPTOR\+\_\+\+LEN}} = 7
+\item 
+constexpr int \mbox{\hyperlink{namespacerplidar_af454220d3fe7250d010a99d12c06f054}{INFO\+\_\+\+LEN}} = 20
+\item 
+constexpr int \mbox{\hyperlink{namespacerplidar_af13dc55ee8539871ff68fe2979bc1beb}{HEALTH\+\_\+\+LEN}} = 3
+\item 
+constexpr int \mbox{\hyperlink{namespacerplidar_a91d743ea1d1e238f896c9ecb0d279c8e}{INFO\+\_\+\+TYPE}} = 4
+\item 
+constexpr int \mbox{\hyperlink{namespacerplidar_a6d2fe1a18bc0ad2c9074ffd7e51e07e8}{HEALTH\+\_\+\+TYPE}} = 6
+\item 
+constexpr int \mbox{\hyperlink{namespacerplidar_a15f11f2fabb321455dbb8f7bcc24403d}{MAX\+\_\+\+MOTOR\+\_\+\+PWM}} = 1023
+\item 
+constexpr int \mbox{\hyperlink{namespacerplidar_a2298b87542f6a4a1e9eb2143ba9cf9ab}{DEFAULT\+\_\+\+MOTOR\+\_\+\+PWM}} = 660
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{namespacerplidar_a07781a840ad090d846ba1aaa2596a22c}{SET\+\_\+\+PWM\+\_\+\+BYTE}} = 0x\+F0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7}\label{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7}} 
+\index{rplidar@{rplidar}!ScanType@{ScanType}}
+\index{ScanType@{ScanType}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{ScanType}{ScanType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7}{rplidar\+::\+Scan\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORMAL@{NORMAL}!rplidar@{rplidar}}\index{rplidar@{rplidar}!NORMAL@{NORMAL}}}\mbox{\Hypertarget{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}\label{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a1d31c62731ffc3f507baf52b8d291b82}} 
+NORMAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FORCE@{FORCE}!rplidar@{rplidar}}\index{rplidar@{rplidar}!FORCE@{FORCE}}}\mbox{\Hypertarget{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a9f110e831b8ea3dbf546e8093ffca6b5}\label{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7a9f110e831b8ea3dbf546e8093ffca6b5}} 
+FORCE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPRESS@{EXPRESS}!rplidar@{rplidar}}\index{rplidar@{rplidar}!EXPRESS@{EXPRESS}}}\mbox{\Hypertarget{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7ae685a4556f6818b07b7fbcc195a35f92}\label{namespacerplidar_a4bebbdc0abf31aa7a8e10e706b86aed7ae685a4556f6818b07b7fbcc195a35f92}} 
+EXPRESS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacerplidar_a2298b87542f6a4a1e9eb2143ba9cf9ab}\label{namespacerplidar_a2298b87542f6a4a1e9eb2143ba9cf9ab}} 
+\index{rplidar@{rplidar}!DEFAULT\_MOTOR\_PWM@{DEFAULT\_MOTOR\_PWM}}
+\index{DEFAULT\_MOTOR\_PWM@{DEFAULT\_MOTOR\_PWM}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_MOTOR\_PWM}{DEFAULT\_MOTOR\_PWM}}
+{\footnotesize\ttfamily constexpr int rplidar\+::\+DEFAULT\+\_\+\+MOTOR\+\_\+\+PWM = 660\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_a7a7dd67caebe4aa8ac0a4979e1286b98}\label{namespacerplidar_a7a7dd67caebe4aa8ac0a4979e1286b98}} 
+\index{rplidar@{rplidar}!DESCRIPTOR\_LEN@{DESCRIPTOR\_LEN}}
+\index{DESCRIPTOR\_LEN@{DESCRIPTOR\_LEN}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{DESCRIPTOR\_LEN}{DESCRIPTOR\_LEN}}
+{\footnotesize\ttfamily constexpr int rplidar\+::\+DESCRIPTOR\+\_\+\+LEN = 7\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_af629cff240361cf121502a3b3e9aa198}\label{namespacerplidar_af629cff240361cf121502a3b3e9aa198}} 
+\index{rplidar@{rplidar}!GET\_HEALTH\_BYTE@{GET\_HEALTH\_BYTE}}
+\index{GET\_HEALTH\_BYTE@{GET\_HEALTH\_BYTE}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{GET\_HEALTH\_BYTE}{GET\_HEALTH\_BYTE}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t rplidar\+::\+GET\+\_\+\+HEALTH\+\_\+\+BYTE = 0x52\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_ae97da6603812122463e76a32b8fc72c0}\label{namespacerplidar_ae97da6603812122463e76a32b8fc72c0}} 
+\index{rplidar@{rplidar}!GET\_INFO\_BYTE@{GET\_INFO\_BYTE}}
+\index{GET\_INFO\_BYTE@{GET\_INFO\_BYTE}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{GET\_INFO\_BYTE}{GET\_INFO\_BYTE}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t rplidar\+::\+GET\+\_\+\+INFO\+\_\+\+BYTE = 0x50\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_af13dc55ee8539871ff68fe2979bc1beb}\label{namespacerplidar_af13dc55ee8539871ff68fe2979bc1beb}} 
+\index{rplidar@{rplidar}!HEALTH\_LEN@{HEALTH\_LEN}}
+\index{HEALTH\_LEN@{HEALTH\_LEN}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{HEALTH\_LEN}{HEALTH\_LEN}}
+{\footnotesize\ttfamily constexpr int rplidar\+::\+HEALTH\+\_\+\+LEN = 3\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_a6d2fe1a18bc0ad2c9074ffd7e51e07e8}\label{namespacerplidar_a6d2fe1a18bc0ad2c9074ffd7e51e07e8}} 
+\index{rplidar@{rplidar}!HEALTH\_TYPE@{HEALTH\_TYPE}}
+\index{HEALTH\_TYPE@{HEALTH\_TYPE}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{HEALTH\_TYPE}{HEALTH\_TYPE}}
+{\footnotesize\ttfamily constexpr int rplidar\+::\+HEALTH\+\_\+\+TYPE = 6\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_af454220d3fe7250d010a99d12c06f054}\label{namespacerplidar_af454220d3fe7250d010a99d12c06f054}} 
+\index{rplidar@{rplidar}!INFO\_LEN@{INFO\_LEN}}
+\index{INFO\_LEN@{INFO\_LEN}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{INFO\_LEN}{INFO\_LEN}}
+{\footnotesize\ttfamily constexpr int rplidar\+::\+INFO\+\_\+\+LEN = 20\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_a91d743ea1d1e238f896c9ecb0d279c8e}\label{namespacerplidar_a91d743ea1d1e238f896c9ecb0d279c8e}} 
+\index{rplidar@{rplidar}!INFO\_TYPE@{INFO\_TYPE}}
+\index{INFO\_TYPE@{INFO\_TYPE}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{INFO\_TYPE}{INFO\_TYPE}}
+{\footnotesize\ttfamily constexpr int rplidar\+::\+INFO\+\_\+\+TYPE = 4\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_a15f11f2fabb321455dbb8f7bcc24403d}\label{namespacerplidar_a15f11f2fabb321455dbb8f7bcc24403d}} 
+\index{rplidar@{rplidar}!MAX\_MOTOR\_PWM@{MAX\_MOTOR\_PWM}}
+\index{MAX\_MOTOR\_PWM@{MAX\_MOTOR\_PWM}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{MAX\_MOTOR\_PWM}{MAX\_MOTOR\_PWM}}
+{\footnotesize\ttfamily constexpr int rplidar\+::\+MAX\+\_\+\+MOTOR\+\_\+\+PWM = 1023\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_a6282ac59506ebf379e15ea00882f2a8b}\label{namespacerplidar_a6282ac59506ebf379e15ea00882f2a8b}} 
+\index{rplidar@{rplidar}!RESET\_BYTE@{RESET\_BYTE}}
+\index{RESET\_BYTE@{RESET\_BYTE}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{RESET\_BYTE}{RESET\_BYTE}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t rplidar\+::\+RESET\+\_\+\+BYTE = 0x40\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_a07781a840ad090d846ba1aaa2596a22c}\label{namespacerplidar_a07781a840ad090d846ba1aaa2596a22c}} 
+\index{rplidar@{rplidar}!SET\_PWM\_BYTE@{SET\_PWM\_BYTE}}
+\index{SET\_PWM\_BYTE@{SET\_PWM\_BYTE}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{SET\_PWM\_BYTE}{SET\_PWM\_BYTE}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t rplidar\+::\+SET\+\_\+\+PWM\+\_\+\+BYTE = 0x\+F0\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_afc069ffc0a883032cf57e4217b819d9c}\label{namespacerplidar_afc069ffc0a883032cf57e4217b819d9c}} 
+\index{rplidar@{rplidar}!STOP\_BYTE@{STOP\_BYTE}}
+\index{STOP\_BYTE@{STOP\_BYTE}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{STOP\_BYTE}{STOP\_BYTE}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t rplidar\+::\+STOP\+\_\+\+BYTE = 0x25\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_ac9fc8ec7c8c5252deccccbb97b5b1ed0}\label{namespacerplidar_ac9fc8ec7c8c5252deccccbb97b5b1ed0}} 
+\index{rplidar@{rplidar}!SYNC\_BYTE@{SYNC\_BYTE}}
+\index{SYNC\_BYTE@{SYNC\_BYTE}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{SYNC\_BYTE}{SYNC\_BYTE}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t rplidar\+::\+SYNC\+\_\+\+BYTE = 0x\+A5\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacerplidar_ae247ad6a3825ddc55b486a4fc8c28c47}\label{namespacerplidar_ae247ad6a3825ddc55b486a4fc8c28c47}} 
+\index{rplidar@{rplidar}!SYNC\_BYTE2@{SYNC\_BYTE2}}
+\index{SYNC\_BYTE2@{SYNC\_BYTE2}!rplidar@{rplidar}}
+\doxysubsubsection{\texorpdfstring{SYNC\_BYTE2}{SYNC\_BYTE2}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t rplidar\+::\+SYNC\+\_\+\+BYTE2 = 0x5A\hspace{0.3cm}{\ttfamily [constexpr]}}
+

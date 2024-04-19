@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['any_5fconfiguration_5fempty_0',['any_configuration_empty',['../classrpi__daemon.html#aab9b3fd1c95642a652581d1b11d318fb',1,'rpi_daemon']]],
-  ['attempted_5fto_5freconnect_1',['attempted_to_reconnect',['../classrpi__daemon.html#ae3af5ae1b9eaec9d2cd03684417b661e',1,'rpi_daemon']]]
+  ['_5fmotor_5fspeed_0',['_motor_speed',['../classrplidar_1_1RPLidar.html#a63ca639d27b927228ecfae51dc678915',1,'rplidar::RPLidar']]],
+  ['_5fserial_1',['_serial',['../classrplidar_1_1RPLidar.html#a8700e9984b373ea081db1e3b6b8db10b',1,'rplidar::RPLidar']]]
 ];

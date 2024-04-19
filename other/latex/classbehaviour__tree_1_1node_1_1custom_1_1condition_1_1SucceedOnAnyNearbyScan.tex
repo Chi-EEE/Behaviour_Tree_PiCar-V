@@ -1,0 +1,140 @@
+\hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan}{}\doxysection{behaviour\+\_\+tree\+::node\+::custom\+::condition\+::Succeed\+On\+Any\+Nearby\+Scan Class Reference}
+\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan}\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+
+
+{\ttfamily \#include $<$Succeed\+On\+Any\+Nearby\+Scan.\+hpp$>$}
+
+Inheritance diagram for behaviour\+\_\+tree\+::node\+::custom\+::condition\+::Succeed\+On\+Any\+Nearby\+Scan\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a275537d16a77067f3c2b06f663667d36}{Succeed\+On\+Any\+Nearby\+Scan}} (const std\+::string \&\mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a24780ba4a95e7495222ead3390bddd35}{name}}, const int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a1ea09b8a836df8530d5328a3200d3c21}{min\+\_\+angle}}, const int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a5bdc28442cfc67303ebb960f9e23a540}{max\+\_\+angle}}, const double \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_adf6492aef5606911a24a1fbe2e123938}{cm}})
+\item 
+const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a69784697b33c62747f2f390632a6e584}{run}} (const int tick\+\_\+count, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$ context) final override
+\item 
+const int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a9cdf3498af070bd4a15e2b95b2dbbb9f}{get\+Min\+Angle}} () const
+\item 
+const int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a328eb1cc8d779c72bc5951031d7fa4d8}{get\+Max\+Angle}} () const
+\item 
+const double \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_ae74e2bc9ed1e0a0028e4b90050092e69}{get\+Minimum\+Distance\+Unit}} () const
+\item 
+const double \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_aaec65a70a99b32a3a3aabc19b43b2b9d}{get\+Centimeters}} () const
+\item 
+const std\+::string \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_ae7a8119daf0ade2658c886c7491205ae}{to\+String}} () const final override
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const tl\+::expected$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan}{Succeed\+On\+Any\+Nearby\+Scan}} $>$, std\+::string $>$ \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_afe10898f604269afe376c1283a45d2fc}{parse}} (const pugi\+::xml\+\_\+node \&node, const int index, const std\+::string \&name\+\_\+attribute)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a1ea09b8a836df8530d5328a3200d3c21}{min\+\_\+angle}}
+\item 
+const int \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a5bdc28442cfc67303ebb960f9e23a540}{max\+\_\+angle}}
+\item 
+const double \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_adf6492aef5606911a24a1fbe2e123938}{cm}}
+\item 
+const double \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a09b204009e015b46146663e6fa0524bf}{minimum\+\_\+distance\+\_\+unit}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a275537d16a77067f3c2b06f663667d36}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a275537d16a77067f3c2b06f663667d36}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!SucceedOnAnyNearbyScan@{SucceedOnAnyNearbyScan}}
+\index{SucceedOnAnyNearbyScan@{SucceedOnAnyNearbyScan}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{SucceedOnAnyNearbyScan()}{SucceedOnAnyNearbyScan()}}
+{\footnotesize\ttfamily behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::\+Succeed\+On\+Any\+Nearby\+Scan (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const int}]{min\+\_\+angle,  }\item[{const int}]{max\+\_\+angle,  }\item[{const double}]{cm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_aaec65a70a99b32a3a3aabc19b43b2b9d}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_aaec65a70a99b32a3a3aabc19b43b2b9d}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!getCentimeters@{getCentimeters}}
+\index{getCentimeters@{getCentimeters}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{getCentimeters()}{getCentimeters()}}
+{\footnotesize\ttfamily const double behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::get\+Centimeters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a328eb1cc8d779c72bc5951031d7fa4d8}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a328eb1cc8d779c72bc5951031d7fa4d8}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!getMaxAngle@{getMaxAngle}}
+\index{getMaxAngle@{getMaxAngle}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{getMaxAngle()}{getMaxAngle()}}
+{\footnotesize\ttfamily const int behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::get\+Max\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a9cdf3498af070bd4a15e2b95b2dbbb9f}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a9cdf3498af070bd4a15e2b95b2dbbb9f}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!getMinAngle@{getMinAngle}}
+\index{getMinAngle@{getMinAngle}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{getMinAngle()}{getMinAngle()}}
+{\footnotesize\ttfamily const int behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::get\+Min\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_ae74e2bc9ed1e0a0028e4b90050092e69}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_ae74e2bc9ed1e0a0028e4b90050092e69}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!getMinimumDistanceUnit@{getMinimumDistanceUnit}}
+\index{getMinimumDistanceUnit@{getMinimumDistanceUnit}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{getMinimumDistanceUnit()}{getMinimumDistanceUnit()}}
+{\footnotesize\ttfamily const double behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::get\+Minimum\+Distance\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_afe10898f604269afe376c1283a45d2fc}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_afe10898f604269afe376c1283a45d2fc}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!parse@{parse}}
+\index{parse@{parse}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily static const tl\+::expected$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan}{Succeed\+On\+Any\+Nearby\+Scan}} $>$, std\+::string $>$ behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::parse (\begin{DoxyParamCaption}\item[{const pugi\+::xml\+\_\+node \&}]{node,  }\item[{const int}]{index,  }\item[{const std\+::string \&}]{name\+\_\+attribute }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a69784697b33c62747f2f390632a6e584}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a69784697b33c62747f2f390632a6e584}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!run@{run}}
+\index{run@{run}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacebehaviour__tree_acc43ccc4dd130eee1c630b2acc709997}{Status}} behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::run (\begin{DoxyParamCaption}\item[{const int}]{tick\+\_\+count,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classbehaviour__tree_1_1Context}{Context}} $>$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a8b3dba8156f7422146ebd33550cca229}{behaviour\+\_\+tree\+::node\+::\+Node}}.
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_ae7a8119daf0ade2658c886c7491205ae}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_ae7a8119daf0ade2658c886c7491205ae}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!toString@{toString}}
+\index{toString@{toString}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily const std\+::string behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbehaviour__tree_1_1node_1_1Node_a9aa2e9616bb462fbe4adf9081b7de9d8}{behaviour\+\_\+tree\+::node\+::\+Node}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_adf6492aef5606911a24a1fbe2e123938}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_adf6492aef5606911a24a1fbe2e123938}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!cm@{cm}}
+\index{cm@{cm}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{cm}{cm}}
+{\footnotesize\ttfamily const double behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::cm\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a5bdc28442cfc67303ebb960f9e23a540}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a5bdc28442cfc67303ebb960f9e23a540}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!max\_angle@{max\_angle}}
+\index{max\_angle@{max\_angle}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{max\_angle}{max\_angle}}
+{\footnotesize\ttfamily const int behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::max\+\_\+angle\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a1ea09b8a836df8530d5328a3200d3c21}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a1ea09b8a836df8530d5328a3200d3c21}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!min\_angle@{min\_angle}}
+\index{min\_angle@{min\_angle}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{min\_angle}{min\_angle}}
+{\footnotesize\ttfamily const int behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::min\+\_\+angle\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a09b204009e015b46146663e6fa0524bf}\label{classbehaviour__tree_1_1node_1_1custom_1_1condition_1_1SucceedOnAnyNearbyScan_a09b204009e015b46146663e6fa0524bf}} 
+\index{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}!minimum\_distance\_unit@{minimum\_distance\_unit}}
+\index{minimum\_distance\_unit@{minimum\_distance\_unit}!behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan@{behaviour\_tree::node::custom::condition::SucceedOnAnyNearbyScan}}
+\doxysubsubsection{\texorpdfstring{minimum\_distance\_unit}{minimum\_distance\_unit}}
+{\footnotesize\ttfamily const double behaviour\+\_\+tree\+::node\+::custom\+::condition\+::\+Succeed\+On\+Any\+Nearby\+Scan\+::minimum\+\_\+distance\+\_\+unit\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+behaviour\+\_\+tree\+\_\+car/include/behaviour\+\_\+tree/node/custom/condition/\mbox{\hyperlink{SucceedOnAnyNearbyScan_8hpp}{Succeed\+On\+Any\+Nearby\+Scan.\+hpp}}\end{DoxyCompactItemize}
