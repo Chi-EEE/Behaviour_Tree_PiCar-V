@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     import { Button, Card, Spinner, Tooltip } from "flowbite-svelte";
     import { copy } from "svelte-copy";
@@ -87,4 +86,3 @@
         </Card>
     {/await}
 </Card>
-<!-- ``` -->

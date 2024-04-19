@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     import { onMount } from "svelte";
     import {
@@ -332,4 +331,3 @@
         />
     </button>
 </div>
-<!-- ``` -->

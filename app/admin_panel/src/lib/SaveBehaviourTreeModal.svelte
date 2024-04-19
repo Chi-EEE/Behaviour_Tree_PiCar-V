@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     import { Button, Input, Modal } from "flowbite-svelte";
 
@@ -61,4 +60,3 @@
         <Button color="alternative">No</Button>
     </svelte:fragment>
 </Modal>
-<!-- ``` -->

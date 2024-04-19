@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     import {
         DarkMode,
@@ -27,4 +26,3 @@
     <NavHamburger class="lg:hidden" />
     <DarkMode {btnClass} />
 </Navbar>
-<!-- ``` -->

@@ -14,6 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - name: Add ``` to Svelte files From ChatGPT
+        run: |
+          for file in *.svelte; do
+            sed -i '1i\
+            \```' "$file" && echo '```' >> "$file"
+          done
+
       - name: Build Doxygen documentation for Admin Panel
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:

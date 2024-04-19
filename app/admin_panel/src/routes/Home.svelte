@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     import BehaviourTreeHandler from "../lib/BehaviourTreeHandler.svelte";
     import Stream from "../lib/home/Stream.svelte";
@@ -75,4 +74,3 @@
         </Pane>
     </Splitpanes>
 </main>
-<!-- ``` -->

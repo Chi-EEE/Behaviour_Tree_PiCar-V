@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     import xmlFormat from "xml-formatter";
     import { behaviour_tree_xml_code } from "../../store/behaviour_tree_store";
@@ -47,4 +46,3 @@
     class="p-2 rounded-lg shadow-lg relative inset-0"
     style="background-color: {validate_behaviour_tree_color}; color: white; width: 100%; border: none;">{validate_behaviour_tree_text}</button
 >
-<!-- ``` -->

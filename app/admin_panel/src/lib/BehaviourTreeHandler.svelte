@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     import { Button, Card } from "flowbite-svelte";
 
@@ -41,4 +40,3 @@
         {/each}
     </Card>
 </div>
-<!-- ``` -->

@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     import { Label, Input, Button, Helper } from "flowbite-svelte";
 
@@ -86,4 +85,3 @@
         >{helperText}</Helper
     >
 </div>
-<!-- ``` -->

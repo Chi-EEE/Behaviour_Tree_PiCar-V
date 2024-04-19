@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     // If this does not work then try preview
     import CodeMirror from "svelte-codemirror-editor";
@@ -34,4 +33,3 @@
         }
     </style>
 </div>
-<!-- ``` -->

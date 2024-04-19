@@ -1,4 +1,3 @@
-<!-- ``` -->
 <script>
     import NavigationBar from "./lib/NavigationBar.svelte";
     import Router from "svelte-spa-router";
@@ -24,4 +23,3 @@
         }
     }
 </style>
-<!-- ``` -->
