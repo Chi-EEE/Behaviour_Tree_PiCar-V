@@ -1,0 +1,590 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Other}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Namespace Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Namespace List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Hierarchical Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class Hierarchy}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Class Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Class List}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}File Index}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}File List}{9}{section.5.1}%
+\contentsline {chapter}{\numberline {6}Namespace Documentation}{11}{chapter.6}%
+\contentsline {section}{\numberline {6.1}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree Namespace Reference}{11}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Enumeration Type Documentation}{11}{subsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1.1}Status}{11}{subsubsection.6.1.1.1}%
+\contentsline {section}{\numberline {6.2}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::global Namespace Reference}{12}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Variable Documentation}{12}{subsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.1.1}CM\_TO\_DISTANCE}{12}{subsubsection.6.2.1.1}%
+\contentsline {section}{\numberline {6.3}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node Namespace Reference}{12}{section.6.3}%
+\contentsline {section}{\numberline {6.4}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::blackboard Namespace Reference}{12}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Enumeration Type Documentation}{12}{subsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.1.1}BlackboardType}{12}{subsubsection.6.4.1.1}%
+\contentsline {subsubsection}{\numberline {6.4.1.2}ConditionOperatorType}{13}{subsubsection.6.4.1.2}%
+\contentsline {subsubsection}{\numberline {6.4.1.3}IntegerChangeType}{13}{subsubsection.6.4.1.3}%
+\contentsline {section}{\numberline {6.5}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::composite Namespace Reference}{13}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Enumeration Type Documentation}{14}{subsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.1.1}CompositeType}{14}{subsubsection.6.5.1.1}%
+\contentsline {section}{\numberline {6.6}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom Namespace Reference}{14}{section.6.6}%
+\contentsline {section}{\numberline {6.7}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::action Namespace Reference}{14}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Enumeration Type Documentation}{15}{subsection.6.7.1}%
+\contentsline {subsubsection}{\numberline {6.7.1.1}ClockDirectionType}{15}{subsubsection.6.7.1.1}%
+\contentsline {subsubsection}{\numberline {6.7.1.2}DirectionType}{15}{subsubsection.6.7.1.2}%
+\contentsline {subsubsection}{\numberline {6.7.1.3}ServoType}{15}{subsubsection.6.7.1.3}%
+\contentsline {subsubsection}{\numberline {6.7.1.4}WheelType}{15}{subsubsection.6.7.1.4}%
+\contentsline {section}{\numberline {6.8}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::condition Namespace Reference}{16}{section.6.8}%
+\contentsline {section}{\numberline {6.9}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::decorator Namespace Reference}{16}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}Enumeration Type Documentation}{16}{subsection.6.9.1}%
+\contentsline {subsubsection}{\numberline {6.9.1.1}DecoratorType}{16}{subsubsection.6.9.1.1}%
+\contentsline {section}{\numberline {6.10}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::leaf Namespace Reference}{16}{section.6.10}%
+\contentsline {subsection}{\numberline {6.10.1}Enumeration Type Documentation}{17}{subsection.6.10.1}%
+\contentsline {subsubsection}{\numberline {6.10.1.1}LeafType}{17}{subsubsection.6.10.1.1}%
+\contentsline {section}{\numberline {6.11}rplidar Namespace Reference}{17}{section.6.11}%
+\contentsline {subsection}{\numberline {6.11.1}Enumeration Type Documentation}{18}{subsection.6.11.1}%
+\contentsline {subsubsection}{\numberline {6.11.1.1}ScanType}{18}{subsubsection.6.11.1.1}%
+\contentsline {subsection}{\numberline {6.11.2}Variable Documentation}{18}{subsection.6.11.2}%
+\contentsline {subsubsection}{\numberline {6.11.2.1}DEFAULT\_MOTOR\_PWM}{18}{subsubsection.6.11.2.1}%
+\contentsline {subsubsection}{\numberline {6.11.2.2}DESCRIPTOR\_LEN}{18}{subsubsection.6.11.2.2}%
+\contentsline {subsubsection}{\numberline {6.11.2.3}GET\_HEALTH\_BYTE}{18}{subsubsection.6.11.2.3}%
+\contentsline {subsubsection}{\numberline {6.11.2.4}GET\_INFO\_BYTE}{18}{subsubsection.6.11.2.4}%
+\contentsline {subsubsection}{\numberline {6.11.2.5}HEALTH\_LEN}{19}{subsubsection.6.11.2.5}%
+\contentsline {subsubsection}{\numberline {6.11.2.6}HEALTH\_TYPE}{19}{subsubsection.6.11.2.6}%
+\contentsline {subsubsection}{\numberline {6.11.2.7}INFO\_LEN}{19}{subsubsection.6.11.2.7}%
+\contentsline {subsubsection}{\numberline {6.11.2.8}INFO\_TYPE}{19}{subsubsection.6.11.2.8}%
+\contentsline {subsubsection}{\numberline {6.11.2.9}MAX\_MOTOR\_PWM}{19}{subsubsection.6.11.2.9}%
+\contentsline {subsubsection}{\numberline {6.11.2.10}RESET\_BYTE}{19}{subsubsection.6.11.2.10}%
+\contentsline {subsubsection}{\numberline {6.11.2.11}SET\_PWM\_BYTE}{19}{subsubsection.6.11.2.11}%
+\contentsline {subsubsection}{\numberline {6.11.2.12}STOP\_BYTE}{19}{subsubsection.6.11.2.12}%
+\contentsline {subsubsection}{\numberline {6.11.2.13}SYNC\_BYTE}{20}{subsubsection.6.11.2.13}%
+\contentsline {subsubsection}{\numberline {6.11.2.14}SYNC\_BYTE2}{20}{subsubsection.6.11.2.14}%
+\contentsline {section}{\numberline {6.12}utils Namespace Reference}{20}{section.6.12}%
+\contentsline {subsection}{\numberline {6.12.1}Function Documentation}{20}{subsection.6.12.1}%
+\contentsline {subsubsection}{\numberline {6.12.1.1}CexprTypeName()}{20}{subsubsection.6.12.1.1}%
+\contentsline {subsubsection}{\numberline {6.12.1.2}GetRawTypeNameFormat()}{20}{subsubsection.6.12.1.2}%
+\contentsline {subsubsection}{\numberline {6.12.1.3}RawTypeName()}{21}{subsubsection.6.12.1.3}%
+\contentsline {subsubsection}{\numberline {6.12.1.4}TypeName()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{21}{subsubsection.6.12.1.4}%
+\contentsline {subsubsection}{\numberline {6.12.1.5}TypeName()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{21}{subsubsection.6.12.1.5}%
+\contentsline {chapter}{\numberline {7}Class Documentation}{23}{chapter.7}%
+\contentsline {section}{\numberline {7.1}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree Class Reference}{23}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Constructor \& Destructor Documentation}{23}{subsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.1.1}BehaviourTree()}{23}{subsubsection.7.1.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Member Function Documentation}{24}{subsection.7.1.2}%
+\contentsline {subsubsection}{\numberline {7.1.2.1}canRun()}{24}{subsubsection.7.1.2.1}%
+\contentsline {subsubsection}{\numberline {7.1.2.2}incrementCycle()}{24}{subsubsection.7.1.2.2}%
+\contentsline {subsubsection}{\numberline {7.1.2.3}resetCycles()}{24}{subsubsection.7.1.2.3}%
+\contentsline {subsubsection}{\numberline {7.1.2.4}start()}{24}{subsubsection.7.1.2.4}%
+\contentsline {subsubsection}{\numberline {7.1.2.5}tick()}{24}{subsubsection.7.1.2.5}%
+\contentsline {subsubsection}{\numberline {7.1.2.6}toString()}{24}{subsubsection.7.1.2.6}%
+\contentsline {subsubsection}{\numberline {7.1.2.7}UseRoot()}{24}{subsubsection.7.1.2.7}%
+\contentsline {subsection}{\numberline {7.1.3}Member Data Documentation}{25}{subsection.7.1.3}%
+\contentsline {subsubsection}{\numberline {7.1.3.1}cycle\_limit}{25}{subsubsection.7.1.3.1}%
+\contentsline {subsubsection}{\numberline {7.1.3.2}cycles}{25}{subsubsection.7.1.3.2}%
+\contentsline {subsubsection}{\numberline {7.1.3.3}root\_to\_use}{25}{subsubsection.7.1.3.3}%
+\contentsline {subsubsection}{\numberline {7.1.3.4}roots}{25}{subsubsection.7.1.3.4}%
+\contentsline {section}{\numberline {7.2}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser Class Reference}{25}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Constructor \& Destructor Documentation}{26}{subsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.1.1}BehaviourTreeParser()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{26}{subsubsection.7.2.1.1}%
+\contentsline {subsubsection}{\numberline {7.2.1.2}BehaviourTreeParser()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{26}{subsubsection.7.2.1.2}%
+\contentsline {subsection}{\numberline {7.2.2}Member Function Documentation}{26}{subsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.1}instance()}{26}{subsubsection.7.2.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2.2}operator=()}{27}{subsubsection.7.2.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.3}parse()}{27}{subsubsection.7.2.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.2.4}parseBlackboardNode()}{27}{subsubsection.7.2.2.4}%
+\contentsline {subsubsection}{\numberline {7.2.2.5}parseChild()}{27}{subsubsection.7.2.2.5}%
+\contentsline {subsubsection}{\numberline {7.2.2.6}parseComposite()}{27}{subsubsection.7.2.2.6}%
+\contentsline {subsubsection}{\numberline {7.2.2.7}parseCustomNode()}{27}{subsubsection.7.2.2.7}%
+\contentsline {subsubsection}{\numberline {7.2.2.8}parseDecorator()}{28}{subsubsection.7.2.2.8}%
+\contentsline {subsubsection}{\numberline {7.2.2.9}parseFileXML()}{28}{subsubsection.7.2.2.9}%
+\contentsline {subsubsection}{\numberline {7.2.2.10}parseRoot()}{28}{subsubsection.7.2.2.10}%
+\contentsline {subsubsection}{\numberline {7.2.2.11}parseXML()}{28}{subsubsection.7.2.2.11}%
+\contentsline {subsubsection}{\numberline {7.2.2.12}setCustomNodeParser()}{28}{subsubsection.7.2.2.12}%
+\contentsline {subsection}{\numberline {7.2.3}Member Data Documentation}{28}{subsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.3.1}custom\_node\_parser}{29}{subsubsection.7.2.3.1}%
+\contentsline {section}{\numberline {7.3}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::blackboard\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Blackboard\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node Class Reference}{29}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Constructor \& Destructor Documentation}{29}{subsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.1.1}BlackboardNode()}{29}{subsubsection.7.3.1.1}%
+\contentsline {subsection}{\numberline {7.3.2}Member Function Documentation}{29}{subsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.2.1}type()}{30}{subsubsection.7.3.2.1}%
+\contentsline {section}{\numberline {7.4}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser Class Reference}{30}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Constructor \& Destructor Documentation}{30}{subsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.1.1}CarCustomNodeParser()}{30}{subsubsection.7.4.1.1}%
+\contentsline {subsection}{\numberline {7.4.2}Member Function Documentation}{30}{subsection.7.4.2}%
+\contentsline {subsubsection}{\numberline {7.4.2.1}parseCustomNode()}{31}{subsubsection.7.4.2.1}%
+\contentsline {section}{\numberline {7.5}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::blackboard\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Change\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Integer Class Reference}{31}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Constructor \& Destructor Documentation}{31}{subsection.7.5.1}%
+\contentsline {subsubsection}{\numberline {7.5.1.1}ChangeInteger()}{32}{subsubsection.7.5.1.1}%
+\contentsline {subsection}{\numberline {7.5.2}Member Function Documentation}{32}{subsection.7.5.2}%
+\contentsline {subsubsection}{\numberline {7.5.2.1}run()}{32}{subsubsection.7.5.2.1}%
+\contentsline {subsubsection}{\numberline {7.5.2.2}toString()}{32}{subsubsection.7.5.2.2}%
+\contentsline {subsubsection}{\numberline {7.5.2.3}type()}{32}{subsubsection.7.5.2.3}%
+\contentsline {subsection}{\numberline {7.5.3}Member Data Documentation}{32}{subsection.7.5.3}%
+\contentsline {subsubsection}{\numberline {7.5.3.1}integer\_change\_type}{32}{subsubsection.7.5.3.1}%
+\contentsline {subsubsection}{\numberline {7.5.3.2}value}{33}{subsubsection.7.5.3.2}%
+\contentsline {subsubsection}{\numberline {7.5.3.3}variable\_name}{33}{subsubsection.7.5.3.3}%
+\contentsline {section}{\numberline {7.6}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::composite\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Composite Class Reference}{33}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Constructor \& Destructor Documentation}{33}{subsection.7.6.1}%
+\contentsline {subsubsection}{\numberline {7.6.1.1}Composite()}{34}{subsubsection.7.6.1.1}%
+\contentsline {subsection}{\numberline {7.6.2}Member Function Documentation}{34}{subsection.7.6.2}%
+\contentsline {subsubsection}{\numberline {7.6.2.1}run()}{34}{subsubsection.7.6.2.1}%
+\contentsline {subsubsection}{\numberline {7.6.2.2}tick()}{34}{subsubsection.7.6.2.2}%
+\contentsline {subsubsection}{\numberline {7.6.2.3}type()}{34}{subsubsection.7.6.2.3}%
+\contentsline {subsection}{\numberline {7.6.3}Member Data Documentation}{34}{subsection.7.6.3}%
+\contentsline {subsubsection}{\numberline {7.6.3.1}children}{35}{subsubsection.7.6.3.1}%
+\contentsline {section}{\numberline {7.7}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Context Class Reference}{35}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Constructor \& Destructor Documentation}{35}{subsection.7.7.1}%
+\contentsline {subsubsection}{\numberline {7.7.1.1}Context()}{36}{subsubsection.7.7.1.1}%
+\contentsline {subsection}{\numberline {7.7.2}Member Function Documentation}{36}{subsection.7.7.2}%
+\contentsline {subsubsection}{\numberline {7.7.2.1}\_()}{36}{subsubsection.7.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.7.2.2}canRun()}{36}{subsubsection.7.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.7.2.3}containsBlackboard()}{36}{subsubsection.7.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.7.2.4}getBehaviourTree()}{36}{subsubsection.7.7.2.4}%
+\contentsline {subsubsection}{\numberline {7.7.2.5}getBlackboard()}{36}{subsubsection.7.7.2.5}%
+\contentsline {subsubsection}{\numberline {7.7.2.6}popNode()}{36}{subsubsection.7.7.2.6}%
+\contentsline {subsubsection}{\numberline {7.7.2.7}pushNodeTrace()}{37}{subsubsection.7.7.2.7}%
+\contentsline {subsubsection}{\numberline {7.7.2.8}setBlackboard()}{37}{subsubsection.7.7.2.8}%
+\contentsline {subsubsection}{\numberline {7.7.2.9}update()}{37}{subsubsection.7.7.2.9}%
+\contentsline {subsubsection}{\numberline {7.7.2.10}UseRoot()}{37}{subsubsection.7.7.2.10}%
+\contentsline {subsection}{\numberline {7.7.3}Member Data Documentation}{37}{subsection.7.7.3}%
+\contentsline {subsubsection}{\numberline {7.7.3.1}behaviour\_tree}{37}{subsubsection.7.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.7.3.2}blackboard}{37}{subsubsection.7.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.7.3.3}node\_trace\_list}{38}{subsubsection.7.7.3.3}%
+\contentsline {section}{\numberline {7.8}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node Class Reference}{38}{section.7.8}%
+\contentsline {subsection}{\numberline {7.8.1}Constructor \& Destructor Documentation}{38}{subsection.7.8.1}%
+\contentsline {subsubsection}{\numberline {7.8.1.1}CustomNode()}{39}{subsubsection.7.8.1.1}%
+\contentsline {section}{\numberline {7.9}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser Class Reference}{39}{section.7.9}%
+\contentsline {subsection}{\numberline {7.9.1}Member Function Documentation}{39}{subsection.7.9.1}%
+\contentsline {subsubsection}{\numberline {7.9.1.1}parseCustomNode()}{39}{subsubsection.7.9.1.1}%
+\contentsline {section}{\numberline {7.10}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::decorator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Decorator Class Reference}{40}{section.7.10}%
+\contentsline {subsection}{\numberline {7.10.1}Constructor \& Destructor Documentation}{40}{subsection.7.10.1}%
+\contentsline {subsubsection}{\numberline {7.10.1.1}Decorator()}{40}{subsubsection.7.10.1.1}%
+\contentsline {subsection}{\numberline {7.10.2}Member Function Documentation}{40}{subsection.7.10.2}%
+\contentsline {subsubsection}{\numberline {7.10.2.1}type()}{40}{subsubsection.7.10.2.1}%
+\contentsline {subsection}{\numberline {7.10.3}Member Data Documentation}{41}{subsection.7.10.3}%
+\contentsline {subsubsection}{\numberline {7.10.3.1}child}{41}{subsubsection.7.10.3.1}%
+\contentsline {section}{\numberline {7.11}rplidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Info Struct Reference}{41}{section.7.11}%
+\contentsline {subsection}{\numberline {7.11.1}Member Data Documentation}{41}{subsection.7.11.1}%
+\contentsline {subsubsection}{\numberline {7.11.1.1}firmware}{41}{subsubsection.7.11.1.1}%
+\contentsline {subsubsection}{\numberline {7.11.1.2}hardware}{41}{subsubsection.7.11.1.2}%
+\contentsline {subsubsection}{\numberline {7.11.1.3}model}{41}{subsubsection.7.11.1.3}%
+\contentsline {subsubsection}{\numberline {7.11.1.4}serialNumber}{42}{subsubsection.7.11.1.4}%
+\contentsline {section}{\numberline {7.12}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::action\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Drive Class Reference}{42}{section.7.12}%
+\contentsline {subsection}{\numberline {7.12.1}Constructor \& Destructor Documentation}{42}{subsection.7.12.1}%
+\contentsline {subsubsection}{\numberline {7.12.1.1}Drive()}{43}{subsubsection.7.12.1.1}%
+\contentsline {subsection}{\numberline {7.12.2}Member Function Documentation}{43}{subsection.7.12.2}%
+\contentsline {subsubsection}{\numberline {7.12.2.1}getDirectionType()}{43}{subsubsection.7.12.2.1}%
+\contentsline {subsubsection}{\numberline {7.12.2.2}getSpeed()}{43}{subsubsection.7.12.2.2}%
+\contentsline {subsubsection}{\numberline {7.12.2.3}parse()}{43}{subsubsection.7.12.2.3}%
+\contentsline {subsubsection}{\numberline {7.12.2.4}run()}{43}{subsubsection.7.12.2.4}%
+\contentsline {subsubsection}{\numberline {7.12.2.5}toString()}{43}{subsubsection.7.12.2.5}%
+\contentsline {subsection}{\numberline {7.12.3}Member Data Documentation}{44}{subsection.7.12.3}%
+\contentsline {subsubsection}{\numberline {7.12.3.1}direction\_type}{44}{subsubsection.7.12.3.1}%
+\contentsline {subsubsection}{\numberline {7.12.3.2}speed}{44}{subsubsection.7.12.3.2}%
+\contentsline {section}{\numberline {7.13}rplidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Express\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Packet Class Reference}{44}{section.7.13}%
+\contentsline {subsection}{\numberline {7.13.1}Constructor \& Destructor Documentation}{45}{subsection.7.13.1}%
+\contentsline {subsubsection}{\numberline {7.13.1.1}ExpressPacket()}{45}{subsubsection.7.13.1.1}%
+\contentsline {subsection}{\numberline {7.13.2}Member Function Documentation}{45}{subsection.7.13.2}%
+\contentsline {subsubsection}{\numberline {7.13.2.1}getSign()}{45}{subsubsection.7.13.2.1}%
+\contentsline {subsection}{\numberline {7.13.3}Member Data Documentation}{45}{subsection.7.13.3}%
+\contentsline {subsubsection}{\numberline {7.13.3.1}angle}{45}{subsubsection.7.13.3.1}%
+\contentsline {subsubsection}{\numberline {7.13.3.2}distance}{45}{subsubsection.7.13.3.2}%
+\contentsline {subsubsection}{\numberline {7.13.3.3}new\_scan}{45}{subsubsection.7.13.3.3}%
+\contentsline {subsubsection}{\numberline {7.13.3.4}start\_angle}{45}{subsubsection.7.13.3.4}%
+\contentsline {subsubsection}{\numberline {7.13.3.5}sync1}{46}{subsubsection.7.13.3.5}%
+\contentsline {subsubsection}{\numberline {7.13.3.6}sync2}{46}{subsubsection.7.13.3.6}%
+\contentsline {section}{\numberline {7.14}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::leaf\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Fail Class Reference}{46}{section.7.14}%
+\contentsline {subsection}{\numberline {7.14.1}Constructor \& Destructor Documentation}{46}{subsection.7.14.1}%
+\contentsline {subsubsection}{\numberline {7.14.1.1}Fail()}{46}{subsubsection.7.14.1.1}%
+\contentsline {subsection}{\numberline {7.14.2}Member Function Documentation}{47}{subsection.7.14.2}%
+\contentsline {subsubsection}{\numberline {7.14.2.1}run()}{47}{subsubsection.7.14.2.1}%
+\contentsline {subsubsection}{\numberline {7.14.2.2}toString()}{47}{subsubsection.7.14.2.2}%
+\contentsline {subsubsection}{\numberline {7.14.2.3}type()}{47}{subsubsection.7.14.2.3}%
+\contentsline {section}{\numberline {7.15}rplidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Health\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Info Struct Reference}{47}{section.7.15}%
+\contentsline {subsection}{\numberline {7.15.1}Detailed Description}{48}{subsection.7.15.1}%
+\contentsline {subsection}{\numberline {7.15.2}Member Data Documentation}{48}{subsection.7.15.2}%
+\contentsline {subsubsection}{\numberline {7.15.2.1}errorCode}{48}{subsubsection.7.15.2.1}%
+\contentsline {subsubsection}{\numberline {7.15.2.2}status}{48}{subsubsection.7.15.2.2}%
+\contentsline {section}{\numberline {7.16}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::blackboard\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Integer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Condition Class Reference}{48}{section.7.16}%
+\contentsline {subsection}{\numberline {7.16.1}Constructor \& Destructor Documentation}{49}{subsection.7.16.1}%
+\contentsline {subsubsection}{\numberline {7.16.1.1}IntegerCondition()}{49}{subsubsection.7.16.1.1}%
+\contentsline {subsection}{\numberline {7.16.2}Member Function Documentation}{49}{subsection.7.16.2}%
+\contentsline {subsubsection}{\numberline {7.16.2.1}run()}{49}{subsubsection.7.16.2.1}%
+\contentsline {subsubsection}{\numberline {7.16.2.2}toString()}{49}{subsubsection.7.16.2.2}%
+\contentsline {subsubsection}{\numberline {7.16.2.3}type()}{50}{subsubsection.7.16.2.3}%
+\contentsline {subsection}{\numberline {7.16.3}Member Data Documentation}{50}{subsection.7.16.3}%
+\contentsline {subsubsection}{\numberline {7.16.3.1}condition\_operator}{50}{subsubsection.7.16.3.1}%
+\contentsline {subsubsection}{\numberline {7.16.3.2}value}{50}{subsubsection.7.16.3.2}%
+\contentsline {subsubsection}{\numberline {7.16.3.3}variable\_name}{50}{subsubsection.7.16.3.3}%
+\contentsline {section}{\numberline {7.17}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::decorator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Invert Class Reference}{50}{section.7.17}%
+\contentsline {subsection}{\numberline {7.17.1}Constructor \& Destructor Documentation}{51}{subsection.7.17.1}%
+\contentsline {subsubsection}{\numberline {7.17.1.1}Invert()}{51}{subsubsection.7.17.1.1}%
+\contentsline {subsection}{\numberline {7.17.2}Member Function Documentation}{51}{subsection.7.17.2}%
+\contentsline {subsubsection}{\numberline {7.17.2.1}finish()}{51}{subsubsection.7.17.2.1}%
+\contentsline {subsubsection}{\numberline {7.17.2.2}run()}{51}{subsubsection.7.17.2.2}%
+\contentsline {subsubsection}{\numberline {7.17.2.3}start()}{52}{subsubsection.7.17.2.3}%
+\contentsline {subsubsection}{\numberline {7.17.2.4}toString()}{52}{subsubsection.7.17.2.4}%
+\contentsline {subsubsection}{\numberline {7.17.2.5}type()}{52}{subsubsection.7.17.2.5}%
+\contentsline {section}{\numberline {7.18}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::leaf\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Leaf Class Reference}{52}{section.7.18}%
+\contentsline {subsection}{\numberline {7.18.1}Constructor \& Destructor Documentation}{53}{subsection.7.18.1}%
+\contentsline {subsubsection}{\numberline {7.18.1.1}Leaf()}{53}{subsubsection.7.18.1.1}%
+\contentsline {subsection}{\numberline {7.18.2}Member Function Documentation}{53}{subsection.7.18.2}%
+\contentsline {subsubsection}{\numberline {7.18.2.1}type()}{53}{subsubsection.7.18.2.1}%
+\contentsline {section}{\numberline {7.19}rplidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Measure Struct Reference}{53}{section.7.19}%
+\contentsline {subsection}{\numberline {7.19.1}Member Data Documentation}{53}{subsection.7.19.1}%
+\contentsline {subsubsection}{\numberline {7.19.1.1}angle}{53}{subsubsection.7.19.1.1}%
+\contentsline {subsubsection}{\numberline {7.19.1.2}distance}{54}{subsubsection.7.19.1.2}%
+\contentsline {subsubsection}{\numberline {7.19.1.3}newScan}{54}{subsubsection.7.19.1.3}%
+\contentsline {subsubsection}{\numberline {7.19.1.4}quality}{54}{subsubsection.7.19.1.4}%
+\contentsline {section}{\numberline {7.20}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Node Class Reference}{54}{section.7.20}%
+\contentsline {subsection}{\numberline {7.20.1}Constructor \& Destructor Documentation}{55}{subsection.7.20.1}%
+\contentsline {subsubsection}{\numberline {7.20.1.1}Node()}{55}{subsubsection.7.20.1.1}%
+\contentsline {subsection}{\numberline {7.20.2}Member Function Documentation}{55}{subsection.7.20.2}%
+\contentsline {subsubsection}{\numberline {7.20.2.1}finish()}{55}{subsubsection.7.20.2.1}%
+\contentsline {subsubsection}{\numberline {7.20.2.2}getName()}{55}{subsubsection.7.20.2.2}%
+\contentsline {subsubsection}{\numberline {7.20.2.3}run()}{55}{subsubsection.7.20.2.3}%
+\contentsline {subsubsection}{\numberline {7.20.2.4}start()}{56}{subsubsection.7.20.2.4}%
+\contentsline {subsubsection}{\numberline {7.20.2.5}tick()}{56}{subsubsection.7.20.2.5}%
+\contentsline {subsubsection}{\numberline {7.20.2.6}toString()}{56}{subsubsection.7.20.2.6}%
+\contentsline {subsection}{\numberline {7.20.3}Member Data Documentation}{56}{subsection.7.20.3}%
+\contentsline {subsubsection}{\numberline {7.20.3.1}name}{56}{subsubsection.7.20.3.1}%
+\contentsline {subsubsection}{\numberline {7.20.3.2}started}{56}{subsubsection.7.20.3.2}%
+\contentsline {section}{\numberline {7.21}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::action\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pause\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Execution Class Reference}{57}{section.7.21}%
+\contentsline {subsection}{\numberline {7.21.1}Constructor \& Destructor Documentation}{57}{subsection.7.21.1}%
+\contentsline {subsubsection}{\numberline {7.21.1.1}PauseExecution()}{57}{subsubsection.7.21.1.1}%
+\contentsline {subsection}{\numberline {7.21.2}Member Function Documentation}{58}{subsection.7.21.2}%
+\contentsline {subsubsection}{\numberline {7.21.2.1}finish()}{58}{subsubsection.7.21.2.1}%
+\contentsline {subsubsection}{\numberline {7.21.2.2}getMS()}{58}{subsubsection.7.21.2.2}%
+\contentsline {subsubsection}{\numberline {7.21.2.3}parse()}{58}{subsubsection.7.21.2.3}%
+\contentsline {subsubsection}{\numberline {7.21.2.4}run()}{58}{subsubsection.7.21.2.4}%
+\contentsline {subsubsection}{\numberline {7.21.2.5}start()}{58}{subsubsection.7.21.2.5}%
+\contentsline {subsubsection}{\numberline {7.21.2.6}toString()}{59}{subsubsection.7.21.2.6}%
+\contentsline {subsection}{\numberline {7.21.3}Member Data Documentation}{59}{subsection.7.21.3}%
+\contentsline {subsubsection}{\numberline {7.21.3.1}ms}{59}{subsubsection.7.21.3.1}%
+\contentsline {subsubsection}{\numberline {7.21.3.2}start\_time}{59}{subsubsection.7.21.3.2}%
+\contentsline {section}{\numberline {7.22}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::action\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Print Class Reference}{59}{section.7.22}%
+\contentsline {subsection}{\numberline {7.22.1}Constructor \& Destructor Documentation}{60}{subsection.7.22.1}%
+\contentsline {subsubsection}{\numberline {7.22.1.1}Print()}{60}{subsubsection.7.22.1.1}%
+\contentsline {subsection}{\numberline {7.22.2}Member Function Documentation}{60}{subsection.7.22.2}%
+\contentsline {subsubsection}{\numberline {7.22.2.1}getText()}{60}{subsubsection.7.22.2.1}%
+\contentsline {subsubsection}{\numberline {7.22.2.2}parse()}{60}{subsubsection.7.22.2.2}%
+\contentsline {subsubsection}{\numberline {7.22.2.3}run()}{61}{subsubsection.7.22.2.3}%
+\contentsline {subsubsection}{\numberline {7.22.2.4}toString()}{61}{subsubsection.7.22.2.4}%
+\contentsline {subsection}{\numberline {7.22.3}Member Data Documentation}{61}{subsection.7.22.3}%
+\contentsline {subsubsection}{\numberline {7.22.3.1}text}{61}{subsubsection.7.22.3.1}%
+\contentsline {section}{\numberline {7.23}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::composite\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Random Class Reference}{61}{section.7.23}%
+\contentsline {subsection}{\numberline {7.23.1}Constructor \& Destructor Documentation}{62}{subsection.7.23.1}%
+\contentsline {subsubsection}{\numberline {7.23.1.1}Random()}{62}{subsubsection.7.23.1.1}%
+\contentsline {subsection}{\numberline {7.23.2}Member Function Documentation}{62}{subsection.7.23.2}%
+\contentsline {subsubsection}{\numberline {7.23.2.1}run()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{62}{subsubsection.7.23.2.1}%
+\contentsline {subsubsection}{\numberline {7.23.2.2}run()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{62}{subsubsection.7.23.2.2}%
+\contentsline {subsubsection}{\numberline {7.23.2.3}toString()}{63}{subsubsection.7.23.2.3}%
+\contentsline {subsubsection}{\numberline {7.23.2.4}type()}{63}{subsubsection.7.23.2.4}%
+\contentsline {section}{\numberline {7.24}utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Raw\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Name\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Format Struct Reference}{63}{section.7.24}%
+\contentsline {subsection}{\numberline {7.24.1}Member Data Documentation}{63}{subsection.7.24.1}%
+\contentsline {subsubsection}{\numberline {7.24.1.1}leading\_junk}{63}{subsubsection.7.24.1.1}%
+\contentsline {subsubsection}{\numberline {7.24.1.2}trailing\_junk}{63}{subsubsection.7.24.1.2}%
+\contentsline {section}{\numberline {7.25}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::decorator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repeat Class Reference}{64}{section.7.25}%
+\contentsline {subsection}{\numberline {7.25.1}Constructor \& Destructor Documentation}{64}{subsection.7.25.1}%
+\contentsline {subsubsection}{\numberline {7.25.1.1}Repeat()}{64}{subsubsection.7.25.1.1}%
+\contentsline {subsection}{\numberline {7.25.2}Member Function Documentation}{65}{subsection.7.25.2}%
+\contentsline {subsubsection}{\numberline {7.25.2.1}getAmount()}{65}{subsubsection.7.25.2.1}%
+\contentsline {subsubsection}{\numberline {7.25.2.2}getBreakOnFail()}{65}{subsubsection.7.25.2.2}%
+\contentsline {subsubsection}{\numberline {7.25.2.3}getCount()}{65}{subsubsection.7.25.2.3}%
+\contentsline {subsubsection}{\numberline {7.25.2.4}run()}{65}{subsubsection.7.25.2.4}%
+\contentsline {subsubsection}{\numberline {7.25.2.5}start()}{65}{subsubsection.7.25.2.5}%
+\contentsline {subsubsection}{\numberline {7.25.2.6}toString()}{65}{subsubsection.7.25.2.6}%
+\contentsline {subsubsection}{\numberline {7.25.2.7}type()}{66}{subsubsection.7.25.2.7}%
+\contentsline {subsection}{\numberline {7.25.3}Member Data Documentation}{66}{subsection.7.25.3}%
+\contentsline {subsubsection}{\numberline {7.25.3.1}amount}{66}{subsubsection.7.25.3.1}%
+\contentsline {subsubsection}{\numberline {7.25.3.2}break\_on\_fail}{66}{subsubsection.7.25.3.2}%
+\contentsline {subsubsection}{\numberline {7.25.3.3}count}{66}{subsubsection.7.25.3.3}%
+\contentsline {section}{\numberline {7.26}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Root Class Reference}{66}{section.7.26}%
+\contentsline {subsection}{\numberline {7.26.1}Constructor \& Destructor Documentation}{67}{subsection.7.26.1}%
+\contentsline {subsubsection}{\numberline {7.26.1.1}Root()}{67}{subsubsection.7.26.1.1}%
+\contentsline {subsection}{\numberline {7.26.2}Member Function Documentation}{67}{subsection.7.26.2}%
+\contentsline {subsubsection}{\numberline {7.26.2.1}getId()}{67}{subsubsection.7.26.2.1}%
+\contentsline {subsubsection}{\numberline {7.26.2.2}tick()}{67}{subsubsection.7.26.2.2}%
+\contentsline {subsubsection}{\numberline {7.26.2.3}toString()}{67}{subsubsection.7.26.2.3}%
+\contentsline {subsection}{\numberline {7.26.3}Member Data Documentation}{67}{subsection.7.26.3}%
+\contentsline {subsubsection}{\numberline {7.26.3.1}child}{67}{subsubsection.7.26.3.1}%
+\contentsline {subsubsection}{\numberline {7.26.3.2}id}{68}{subsubsection.7.26.3.2}%
+\contentsline {section}{\numberline {7.27}rplidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::RPLidar Class Reference}{68}{section.7.27}%
+\contentsline {subsection}{\numberline {7.27.1}Detailed Description}{69}{subsection.7.27.1}%
+\contentsline {subsection}{\numberline {7.27.2}Constructor \& Destructor Documentation}{69}{subsection.7.27.2}%
+\contentsline {subsubsection}{\numberline {7.27.2.1}RPLidar()}{69}{subsubsection.7.27.2.1}%
+\contentsline {subsubsection}{\numberline {7.27.2.2}$\sim $RPLidar()}{70}{subsubsection.7.27.2.2}%
+\contentsline {subsection}{\numberline {7.27.3}Member Function Documentation}{70}{subsection.7.27.3}%
+\contentsline {subsubsection}{\numberline {7.27.3.1}\_process\_express\_scan()}{70}{subsubsection.7.27.3.1}%
+\contentsline {subsubsection}{\numberline {7.27.3.2}\_process\_scan()}{70}{subsubsection.7.27.3.2}%
+\contentsline {subsubsection}{\numberline {7.27.3.3}\_read\_descriptor()}{71}{subsubsection.7.27.3.3}%
+\contentsline {subsubsection}{\numberline {7.27.3.4}\_read\_response()}{71}{subsubsection.7.27.3.4}%
+\contentsline {subsubsection}{\numberline {7.27.3.5}\_send\_cmd()}{71}{subsubsection.7.27.3.5}%
+\contentsline {subsubsection}{\numberline {7.27.3.6}\_send\_payload\_cmd()}{71}{subsubsection.7.27.3.6}%
+\contentsline {subsubsection}{\numberline {7.27.3.7}\_set\_pwm()}{73}{subsubsection.7.27.3.7}%
+\contentsline {subsubsection}{\numberline {7.27.3.8}clean\_input()}{73}{subsubsection.7.27.3.8}%
+\contentsline {subsubsection}{\numberline {7.27.3.9}convertToHexString()}{73}{subsubsection.7.27.3.9}%
+\contentsline {subsubsection}{\numberline {7.27.3.10}create()}{73}{subsubsection.7.27.3.10}%
+\contentsline {subsubsection}{\numberline {7.27.3.11}disconnect()}{73}{subsubsection.7.27.3.11}%
+\contentsline {subsubsection}{\numberline {7.27.3.12}get\_health()}{74}{subsubsection.7.27.3.12}%
+\contentsline {subsubsection}{\numberline {7.27.3.13}get\_info()}{74}{subsubsection.7.27.3.13}%
+\contentsline {subsubsection}{\numberline {7.27.3.14}iter\_measures()}{74}{subsubsection.7.27.3.14}%
+\contentsline {subsubsection}{\numberline {7.27.3.15}iter\_scans()}{74}{subsubsection.7.27.3.15}%
+\contentsline {subsubsection}{\numberline {7.27.3.16}reset()}{75}{subsubsection.7.27.3.16}%
+\contentsline {subsubsection}{\numberline {7.27.3.17}set\_motor\_speed()}{75}{subsubsection.7.27.3.17}%
+\contentsline {subsubsection}{\numberline {7.27.3.18}start()}{75}{subsubsection.7.27.3.18}%
+\contentsline {subsubsection}{\numberline {7.27.3.19}start\_motor()}{75}{subsubsection.7.27.3.19}%
+\contentsline {subsubsection}{\numberline {7.27.3.20}stop()}{75}{subsubsection.7.27.3.20}%
+\contentsline {subsubsection}{\numberline {7.27.3.21}stop\_motor()}{76}{subsubsection.7.27.3.21}%
+\contentsline {subsection}{\numberline {7.27.4}Member Data Documentation}{76}{subsection.7.27.4}%
+\contentsline {subsubsection}{\numberline {7.27.4.1}\_motor\_speed}{76}{subsubsection.7.27.4.1}%
+\contentsline {subsubsection}{\numberline {7.27.4.2}\_serial}{76}{subsubsection.7.27.4.2}%
+\contentsline {subsubsection}{\numberline {7.27.4.3}baudrate}{76}{subsubsection.7.27.4.3}%
+\contentsline {subsubsection}{\numberline {7.27.4.4}express\_data}{76}{subsubsection.7.27.4.4}%
+\contentsline {subsubsection}{\numberline {7.27.4.5}express\_old\_data}{76}{subsubsection.7.27.4.5}%
+\contentsline {subsubsection}{\numberline {7.27.4.6}express\_trame}{76}{subsubsection.7.27.4.6}%
+\contentsline {subsubsection}{\numberline {7.27.4.7}motor\_running}{77}{subsubsection.7.27.4.7}%
+\contentsline {subsubsection}{\numberline {7.27.4.8}port}{77}{subsubsection.7.27.4.8}%
+\contentsline {subsubsection}{\numberline {7.27.4.9}scanning}{77}{subsubsection.7.27.4.9}%
+\contentsline {section}{\numberline {7.28}rplidar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Scan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Info Struct Reference}{77}{section.7.28}%
+\contentsline {subsection}{\numberline {7.28.1}Member Data Documentation}{77}{subsection.7.28.1}%
+\contentsline {subsubsection}{\numberline {7.28.1.1}currently\_scanning}{77}{subsubsection.7.28.1.1}%
+\contentsline {subsubsection}{\numberline {7.28.1.2}dsize}{77}{subsubsection.7.28.1.2}%
+\contentsline {subsubsection}{\numberline {7.28.1.3}type}{78}{subsubsection.7.28.1.3}%
+\contentsline {section}{\numberline {7.29}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::composite\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Selector Class Reference}{78}{section.7.29}%
+\contentsline {subsection}{\numberline {7.29.1}Constructor \& Destructor Documentation}{78}{subsection.7.29.1}%
+\contentsline {subsubsection}{\numberline {7.29.1.1}Selector()}{78}{subsubsection.7.29.1.1}%
+\contentsline {subsection}{\numberline {7.29.2}Member Function Documentation}{79}{subsection.7.29.2}%
+\contentsline {subsubsection}{\numberline {7.29.2.1}run()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{79}{subsubsection.7.29.2.1}%
+\contentsline {subsubsection}{\numberline {7.29.2.2}run()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{79}{subsubsection.7.29.2.2}%
+\contentsline {subsubsection}{\numberline {7.29.2.3}start()}{79}{subsubsection.7.29.2.3}%
+\contentsline {subsubsection}{\numberline {7.29.2.4}toString()}{79}{subsubsection.7.29.2.4}%
+\contentsline {subsubsection}{\numberline {7.29.2.5}type()}{79}{subsubsection.7.29.2.5}%
+\contentsline {subsection}{\numberline {7.29.3}Member Data Documentation}{80}{subsection.7.29.3}%
+\contentsline {subsubsection}{\numberline {7.29.3.1}previous\_start\_index}{80}{subsubsection.7.29.3.1}%
+\contentsline {section}{\numberline {7.30}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::composite\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Sequence Class Reference}{80}{section.7.30}%
+\contentsline {subsection}{\numberline {7.30.1}Constructor \& Destructor Documentation}{80}{subsection.7.30.1}%
+\contentsline {subsubsection}{\numberline {7.30.1.1}Sequence()}{81}{subsubsection.7.30.1.1}%
+\contentsline {subsection}{\numberline {7.30.2}Member Function Documentation}{81}{subsection.7.30.2}%
+\contentsline {subsubsection}{\numberline {7.30.2.1}run()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{81}{subsubsection.7.30.2.1}%
+\contentsline {subsubsection}{\numberline {7.30.2.2}run()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{81}{subsubsection.7.30.2.2}%
+\contentsline {subsubsection}{\numberline {7.30.2.3}start()}{81}{subsubsection.7.30.2.3}%
+\contentsline {subsubsection}{\numberline {7.30.2.4}toString()}{81}{subsubsection.7.30.2.4}%
+\contentsline {subsubsection}{\numberline {7.30.2.5}type()}{82}{subsubsection.7.30.2.5}%
+\contentsline {subsection}{\numberline {7.30.3}Member Data Documentation}{82}{subsection.7.30.3}%
+\contentsline {subsubsection}{\numberline {7.30.3.1}previous\_start\_index}{82}{subsubsection.7.30.3.1}%
+\contentsline {section}{\numberline {7.31}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::action\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Set\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Angle Class Reference}{82}{section.7.31}%
+\contentsline {subsection}{\numberline {7.31.1}Constructor \& Destructor Documentation}{83}{subsection.7.31.1}%
+\contentsline {subsubsection}{\numberline {7.31.1.1}SetAngle()}{83}{subsubsection.7.31.1.1}%
+\contentsline {subsection}{\numberline {7.31.2}Member Function Documentation}{83}{subsection.7.31.2}%
+\contentsline {subsubsection}{\numberline {7.31.2.1}getAngle()}{83}{subsubsection.7.31.2.1}%
+\contentsline {subsubsection}{\numberline {7.31.2.2}getServoType()}{83}{subsubsection.7.31.2.2}%
+\contentsline {subsubsection}{\numberline {7.31.2.3}parse()}{83}{subsubsection.7.31.2.3}%
+\contentsline {subsubsection}{\numberline {7.31.2.4}run()}{84}{subsubsection.7.31.2.4}%
+\contentsline {subsubsection}{\numberline {7.31.2.5}toString()}{84}{subsubsection.7.31.2.5}%
+\contentsline {subsection}{\numberline {7.31.3}Member Data Documentation}{84}{subsection.7.31.3}%
+\contentsline {subsubsection}{\numberline {7.31.3.1}angle}{84}{subsubsection.7.31.3.1}%
+\contentsline {subsubsection}{\numberline {7.31.3.2}servo\_type}{84}{subsubsection.7.31.3.2}%
+\contentsline {section}{\numberline {7.32}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::action\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Set\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Speed Class Reference}{84}{section.7.32}%
+\contentsline {subsection}{\numberline {7.32.1}Constructor \& Destructor Documentation}{85}{subsection.7.32.1}%
+\contentsline {subsubsection}{\numberline {7.32.1.1}SetSpeed()}{85}{subsubsection.7.32.1.1}%
+\contentsline {subsection}{\numberline {7.32.2}Member Function Documentation}{85}{subsection.7.32.2}%
+\contentsline {subsubsection}{\numberline {7.32.2.1}getSpeed()}{85}{subsubsection.7.32.2.1}%
+\contentsline {subsubsection}{\numberline {7.32.2.2}getWheelType()}{85}{subsubsection.7.32.2.2}%
+\contentsline {subsubsection}{\numberline {7.32.2.3}parse()}{86}{subsubsection.7.32.2.3}%
+\contentsline {subsubsection}{\numberline {7.32.2.4}run()}{86}{subsubsection.7.32.2.4}%
+\contentsline {subsubsection}{\numberline {7.32.2.5}toString()}{86}{subsubsection.7.32.2.5}%
+\contentsline {subsection}{\numberline {7.32.3}Member Data Documentation}{86}{subsection.7.32.3}%
+\contentsline {subsubsection}{\numberline {7.32.3.1}speed}{86}{subsubsection.7.32.3.1}%
+\contentsline {subsubsection}{\numberline {7.32.3.2}wheel\_type}{86}{subsubsection.7.32.3.2}%
+\contentsline {section}{\numberline {7.33}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::action\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Set\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wheel\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Direction Class Reference}{87}{section.7.33}%
+\contentsline {subsection}{\numberline {7.33.1}Constructor \& Destructor Documentation}{87}{subsection.7.33.1}%
+\contentsline {subsubsection}{\numberline {7.33.1.1}SetWheelDirection()}{87}{subsubsection.7.33.1.1}%
+\contentsline {subsection}{\numberline {7.33.2}Member Function Documentation}{88}{subsection.7.33.2}%
+\contentsline {subsubsection}{\numberline {7.33.2.1}getDirectionType()}{88}{subsubsection.7.33.2.1}%
+\contentsline {subsubsection}{\numberline {7.33.2.2}getWheelType()}{88}{subsubsection.7.33.2.2}%
+\contentsline {subsubsection}{\numberline {7.33.2.3}parse()}{88}{subsubsection.7.33.2.3}%
+\contentsline {subsubsection}{\numberline {7.33.2.4}run()}{88}{subsubsection.7.33.2.4}%
+\contentsline {subsubsection}{\numberline {7.33.2.5}toString()}{88}{subsubsection.7.33.2.5}%
+\contentsline {subsection}{\numberline {7.33.3}Member Data Documentation}{88}{subsection.7.33.3}%
+\contentsline {subsubsection}{\numberline {7.33.3.1}direction\_type}{89}{subsubsection.7.33.3.1}%
+\contentsline {subsubsection}{\numberline {7.33.3.2}wheel\_type}{89}{subsubsection.7.33.3.2}%
+\contentsline {section}{\numberline {7.34}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::leaf\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Succeed Class Reference}{89}{section.7.34}%
+\contentsline {subsection}{\numberline {7.34.1}Constructor \& Destructor Documentation}{89}{subsection.7.34.1}%
+\contentsline {subsubsection}{\numberline {7.34.1.1}Succeed()}{90}{subsubsection.7.34.1.1}%
+\contentsline {subsection}{\numberline {7.34.2}Member Function Documentation}{90}{subsection.7.34.2}%
+\contentsline {subsubsection}{\numberline {7.34.2.1}run()}{90}{subsubsection.7.34.2.1}%
+\contentsline {subsubsection}{\numberline {7.34.2.2}toString()}{90}{subsubsection.7.34.2.2}%
+\contentsline {subsubsection}{\numberline {7.34.2.3}type()}{90}{subsubsection.7.34.2.3}%
+\contentsline {section}{\numberline {7.35}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::condition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Succeed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}On\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Any\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Nearby\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scan Class Reference}{90}{section.7.35}%
+\contentsline {subsection}{\numberline {7.35.1}Constructor \& Destructor Documentation}{91}{subsection.7.35.1}%
+\contentsline {subsubsection}{\numberline {7.35.1.1}SucceedOnAnyNearbyScan()}{91}{subsubsection.7.35.1.1}%
+\contentsline {subsection}{\numberline {7.35.2}Member Function Documentation}{91}{subsection.7.35.2}%
+\contentsline {subsubsection}{\numberline {7.35.2.1}getCentimeters()}{91}{subsubsection.7.35.2.1}%
+\contentsline {subsubsection}{\numberline {7.35.2.2}getMaxAngle()}{92}{subsubsection.7.35.2.2}%
+\contentsline {subsubsection}{\numberline {7.35.2.3}getMinAngle()}{92}{subsubsection.7.35.2.3}%
+\contentsline {subsubsection}{\numberline {7.35.2.4}getMinimumDistanceUnit()}{92}{subsubsection.7.35.2.4}%
+\contentsline {subsubsection}{\numberline {7.35.2.5}parse()}{92}{subsubsection.7.35.2.5}%
+\contentsline {subsubsection}{\numberline {7.35.2.6}run()}{92}{subsubsection.7.35.2.6}%
+\contentsline {subsubsection}{\numberline {7.35.2.7}toString()}{92}{subsubsection.7.35.2.7}%
+\contentsline {subsection}{\numberline {7.35.3}Member Data Documentation}{93}{subsection.7.35.3}%
+\contentsline {subsubsection}{\numberline {7.35.3.1}cm}{93}{subsubsection.7.35.3.1}%
+\contentsline {subsubsection}{\numberline {7.35.3.2}max\_angle}{93}{subsubsection.7.35.3.2}%
+\contentsline {subsubsection}{\numberline {7.35.3.3}min\_angle}{93}{subsubsection.7.35.3.3}%
+\contentsline {subsubsection}{\numberline {7.35.3.4}minimum\_distance\_unit}{93}{subsubsection.7.35.3.4}%
+\contentsline {section}{\numberline {7.36}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::condition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Succeed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}On\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Average\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Colour Class Reference}{93}{section.7.36}%
+\contentsline {subsection}{\numberline {7.36.1}Constructor \& Destructor Documentation}{94}{subsection.7.36.1}%
+\contentsline {subsubsection}{\numberline {7.36.1.1}SucceedOnAverageColour()}{94}{subsubsection.7.36.1.1}%
+\contentsline {subsection}{\numberline {7.36.2}Member Function Documentation}{94}{subsection.7.36.2}%
+\contentsline {subsubsection}{\numberline {7.36.2.1}calculateColorDifference()}{94}{subsubsection.7.36.2.1}%
+\contentsline {subsubsection}{\numberline {7.36.2.2}calculateMaxColorDifference()}{95}{subsubsection.7.36.2.2}%
+\contentsline {subsubsection}{\numberline {7.36.2.3}getHexColour()}{95}{subsubsection.7.36.2.3}%
+\contentsline {subsubsection}{\numberline {7.36.2.4}getTolerance()}{95}{subsubsection.7.36.2.4}%
+\contentsline {subsubsection}{\numberline {7.36.2.5}hexToRGB()}{95}{subsubsection.7.36.2.5}%
+\contentsline {subsubsection}{\numberline {7.36.2.6}parse()}{95}{subsubsection.7.36.2.6}%
+\contentsline {subsubsection}{\numberline {7.36.2.7}run()}{95}{subsubsection.7.36.2.7}%
+\contentsline {subsubsection}{\numberline {7.36.2.8}toString()}{96}{subsubsection.7.36.2.8}%
+\contentsline {subsection}{\numberline {7.36.3}Member Data Documentation}{96}{subsection.7.36.3}%
+\contentsline {subsubsection}{\numberline {7.36.3.1}hex\_colour}{96}{subsubsection.7.36.3.1}%
+\contentsline {subsubsection}{\numberline {7.36.3.2}tolerance}{96}{subsubsection.7.36.3.2}%
+\contentsline {section}{\numberline {7.37}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::condition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Succeed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}On\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Average\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Nearby\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scan Class Reference}{96}{section.7.37}%
+\contentsline {subsection}{\numberline {7.37.1}Constructor \& Destructor Documentation}{97}{subsection.7.37.1}%
+\contentsline {subsubsection}{\numberline {7.37.1.1}SucceedOnAverageNearbyScan()}{97}{subsubsection.7.37.1.1}%
+\contentsline {subsection}{\numberline {7.37.2}Member Function Documentation}{97}{subsection.7.37.2}%
+\contentsline {subsubsection}{\numberline {7.37.2.1}getAverageDistanceUnit()}{98}{subsubsection.7.37.2.1}%
+\contentsline {subsubsection}{\numberline {7.37.2.2}getCentimeters()}{98}{subsubsection.7.37.2.2}%
+\contentsline {subsubsection}{\numberline {7.37.2.3}getMaxAngle()}{98}{subsubsection.7.37.2.3}%
+\contentsline {subsubsection}{\numberline {7.37.2.4}getMinAngle()}{98}{subsubsection.7.37.2.4}%
+\contentsline {subsubsection}{\numberline {7.37.2.5}getSmallestMeasureAmountUsed()}{98}{subsubsection.7.37.2.5}%
+\contentsline {subsubsection}{\numberline {7.37.2.6}parse()}{98}{subsubsection.7.37.2.6}%
+\contentsline {subsubsection}{\numberline {7.37.2.7}run()}{99}{subsubsection.7.37.2.7}%
+\contentsline {subsubsection}{\numberline {7.37.2.8}toString()}{99}{subsubsection.7.37.2.8}%
+\contentsline {subsection}{\numberline {7.37.3}Member Data Documentation}{99}{subsection.7.37.3}%
+\contentsline {subsubsection}{\numberline {7.37.3.1}average\_distance\_unit}{99}{subsubsection.7.37.3.1}%
+\contentsline {subsubsection}{\numberline {7.37.3.2}cm}{99}{subsubsection.7.37.3.2}%
+\contentsline {subsubsection}{\numberline {7.37.3.3}max\_angle}{99}{subsubsection.7.37.3.3}%
+\contentsline {subsubsection}{\numberline {7.37.3.4}min\_angle}{99}{subsubsection.7.37.3.4}%
+\contentsline {subsubsection}{\numberline {7.37.3.5}smallest\_measure\_amount\_used}{100}{subsubsection.7.37.3.5}%
+\contentsline {section}{\numberline {7.38}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::action\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Turn Class Reference}{100}{section.7.38}%
+\contentsline {subsection}{\numberline {7.38.1}Constructor \& Destructor Documentation}{100}{subsection.7.38.1}%
+\contentsline {subsubsection}{\numberline {7.38.1.1}Turn()}{101}{subsubsection.7.38.1.1}%
+\contentsline {subsection}{\numberline {7.38.2}Member Function Documentation}{101}{subsection.7.38.2}%
+\contentsline {subsubsection}{\numberline {7.38.2.1}getAngle()}{101}{subsubsection.7.38.2.1}%
+\contentsline {subsubsection}{\numberline {7.38.2.2}parse()}{101}{subsubsection.7.38.2.2}%
+\contentsline {subsubsection}{\numberline {7.38.2.3}run()}{101}{subsubsection.7.38.2.3}%
+\contentsline {subsubsection}{\numberline {7.38.2.4}toString()}{101}{subsubsection.7.38.2.4}%
+\contentsline {subsection}{\numberline {7.38.3}Member Data Documentation}{101}{subsection.7.38.3}%
+\contentsline {subsubsection}{\numberline {7.38.3.1}angle}{102}{subsubsection.7.38.3.1}%
+\contentsline {section}{\numberline {7.39}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::leaf\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Root Class Reference}{102}{section.7.39}%
+\contentsline {subsection}{\numberline {7.39.1}Constructor \& Destructor Documentation}{102}{subsection.7.39.1}%
+\contentsline {subsubsection}{\numberline {7.39.1.1}UseRoot()}{102}{subsubsection.7.39.1.1}%
+\contentsline {subsection}{\numberline {7.39.2}Member Function Documentation}{103}{subsection.7.39.2}%
+\contentsline {subsubsection}{\numberline {7.39.2.1}getId()}{103}{subsubsection.7.39.2.1}%
+\contentsline {subsubsection}{\numberline {7.39.2.2}run()}{103}{subsubsection.7.39.2.2}%
+\contentsline {subsubsection}{\numberline {7.39.2.3}toString()}{103}{subsubsection.7.39.2.3}%
+\contentsline {subsubsection}{\numberline {7.39.2.4}type()}{103}{subsubsection.7.39.2.4}%
+\contentsline {subsection}{\numberline {7.39.3}Member Data Documentation}{103}{subsection.7.39.3}%
+\contentsline {subsubsection}{\numberline {7.39.3.1}id}{103}{subsubsection.7.39.3.1}%
+\contentsline {chapter}{\numberline {8}File Documentation}{105}{chapter.8}%
+\contentsline {section}{\numberline {8.1}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree.hpp File Reference}{105}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{105}{section.8.2}%
+\contentsline {section}{\numberline {8.3}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser.hpp File Reference}{106}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{107}{section.8.4}%
+\contentsline {section}{\numberline {8.5}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Context.cpp File Reference}{112}{section.8.5}%
+\contentsline {section}{\numberline {8.6}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Context.h File Reference}{113}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Context.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{113}{section.8.7}%
+\contentsline {section}{\numberline {8.8}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/blackboard/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Blackboard\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node.hpp File Reference}{114}{section.8.8}%
+\contentsline {section}{\numberline {8.9}Blackboard\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{114}{section.8.9}%
+\contentsline {section}{\numberline {8.10}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/blackboard/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Blackboard\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{115}{section.8.10}%
+\contentsline {section}{\numberline {8.11}Blackboard\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{115}{section.8.11}%
+\contentsline {section}{\numberline {8.12}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/blackboard/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Integer.hpp File Reference}{115}{section.8.12}%
+\contentsline {section}{\numberline {8.13}Change\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Integer.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{116}{section.8.13}%
+\contentsline {section}{\numberline {8.14}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/blackboard/enum/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Condition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{117}{section.8.14}%
+\contentsline {section}{\numberline {8.15}Condition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{117}{section.8.15}%
+\contentsline {section}{\numberline {8.16}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/blackboard/enum/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Integer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{117}{section.8.16}%
+\contentsline {section}{\numberline {8.17}Integer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{118}{section.8.17}%
+\contentsline {section}{\numberline {8.18}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/blackboard/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Integer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Condition.hpp File Reference}{118}{section.8.18}%
+\contentsline {section}{\numberline {8.19}Integer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Condition.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{118}{section.8.19}%
+\contentsline {section}{\numberline {8.20}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/composite/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Composite.hpp File Reference}{119}{section.8.20}%
+\contentsline {section}{\numberline {8.21}Composite.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{120}{section.8.21}%
+\contentsline {section}{\numberline {8.22}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/composite/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Composite\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{120}{section.8.22}%
+\contentsline {section}{\numberline {8.23}Composite\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{121}{section.8.23}%
+\contentsline {section}{\numberline {8.24}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/composite/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Random.hpp File Reference}{121}{section.8.24}%
+\contentsline {subsection}{\numberline {8.24.1}Typedef Documentation}{121}{subsection.8.24.1}%
+\contentsline {subsubsection}{\numberline {8.24.1.1}effolkronium\_Random}{122}{subsubsection.8.24.1.1}%
+\contentsline {section}{\numberline {8.25}Random.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{122}{section.8.25}%
+\contentsline {section}{\numberline {8.26}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/composite/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Selector.hpp File Reference}{122}{section.8.26}%
+\contentsline {section}{\numberline {8.27}Selector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{123}{section.8.27}%
+\contentsline {section}{\numberline {8.28}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/composite/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sequence.hpp File Reference}{124}{section.8.28}%
+\contentsline {section}{\numberline {8.29}Sequence.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{124}{section.8.29}%
+\contentsline {section}{\numberline {8.30}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node.hpp File Reference}{125}{section.8.30}%
+\contentsline {section}{\numberline {8.31}Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{125}{section.8.31}%
+\contentsline {section}{\numberline {8.32}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser.hpp File Reference}{126}{section.8.32}%
+\contentsline {section}{\numberline {8.33}Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{126}{section.8.33}%
+\contentsline {section}{\numberline {8.34}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/decorator/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Decorator.hpp File Reference}{126}{section.8.34}%
+\contentsline {section}{\numberline {8.35}Decorator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{127}{section.8.35}%
+\contentsline {section}{\numberline {8.36}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/decorator/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Decorator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{127}{section.8.36}%
+\contentsline {section}{\numberline {8.37}Decorator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{128}{section.8.37}%
+\contentsline {section}{\numberline {8.38}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/decorator/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Invert.hpp File Reference}{128}{section.8.38}%
+\contentsline {section}{\numberline {8.39}Invert.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{128}{section.8.39}%
+\contentsline {section}{\numberline {8.40}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/decorator/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repeat.hpp File Reference}{129}{section.8.40}%
+\contentsline {section}{\numberline {8.41}Repeat.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{129}{section.8.41}%
+\contentsline {section}{\numberline {8.42}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/leaf/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Fail.hpp File Reference}{130}{section.8.42}%
+\contentsline {section}{\numberline {8.43}Fail.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{131}{section.8.43}%
+\contentsline {section}{\numberline {8.44}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/leaf/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Leaf.hpp File Reference}{131}{section.8.44}%
+\contentsline {section}{\numberline {8.45}Leaf.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{132}{section.8.45}%
+\contentsline {section}{\numberline {8.46}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/leaf/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Leaf\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{132}{section.8.46}%
+\contentsline {section}{\numberline {8.47}Leaf\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{132}{section.8.47}%
+\contentsline {section}{\numberline {8.48}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/leaf/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Succeed.hpp File Reference}{133}{section.8.48}%
+\contentsline {section}{\numberline {8.49}Succeed.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{133}{section.8.49}%
+\contentsline {section}{\numberline {8.50}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/leaf/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Root.hpp File Reference}{133}{section.8.50}%
+\contentsline {section}{\numberline {8.51}Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Root.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{134}{section.8.51}%
+\contentsline {section}{\numberline {8.52}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node.hpp File Reference}{134}{section.8.52}%
+\contentsline {section}{\numberline {8.53}Node.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{135}{section.8.53}%
+\contentsline {section}{\numberline {8.54}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Root.hpp File Reference}{136}{section.8.54}%
+\contentsline {section}{\numberline {8.55}Root.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{136}{section.8.55}%
+\contentsline {section}{\numberline {8.56}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Status.hpp File Reference}{137}{section.8.56}%
+\contentsline {section}{\numberline {8.57}Status.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{137}{section.8.57}%
+\contentsline {section}{\numberline {8.58}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/global/distance.h File Reference}{137}{section.8.58}%
+\contentsline {section}{\numberline {8.59}distance.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{137}{section.8.59}%
+\contentsline {section}{\numberline {8.60}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Drive.hpp File Reference}{138}{section.8.60}%
+\contentsline {section}{\numberline {8.61}Drive.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{138}{section.8.61}%
+\contentsline {section}{\numberline {8.62}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/enum/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Clock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Direction\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{140}{section.8.62}%
+\contentsline {section}{\numberline {8.63}Clock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Direction\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{140}{section.8.63}%
+\contentsline {section}{\numberline {8.64}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/enum/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Direction\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{140}{section.8.64}%
+\contentsline {section}{\numberline {8.65}Direction\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{141}{section.8.65}%
+\contentsline {section}{\numberline {8.66}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/enum/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Servo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{141}{section.8.66}%
+\contentsline {section}{\numberline {8.67}Servo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{141}{section.8.67}%
+\contentsline {section}{\numberline {8.68}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/enum/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wheel\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.hpp File Reference}{142}{section.8.68}%
+\contentsline {section}{\numberline {8.69}Wheel\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{142}{section.8.69}%
+\contentsline {section}{\numberline {8.70}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pause\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Execution.hpp File Reference}{142}{section.8.70}%
+\contentsline {section}{\numberline {8.71}Pause\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Execution.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{143}{section.8.71}%
+\contentsline {section}{\numberline {8.72}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Print.hpp File Reference}{144}{section.8.72}%
+\contentsline {section}{\numberline {8.73}Print.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{144}{section.8.73}%
+\contentsline {section}{\numberline {8.74}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Set\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Angle.hpp File Reference}{145}{section.8.74}%
+\contentsline {section}{\numberline {8.75}Set\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Angle.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{145}{section.8.75}%
+\contentsline {section}{\numberline {8.76}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Set\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Speed.hpp File Reference}{147}{section.8.76}%
+\contentsline {section}{\numberline {8.77}Set\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Speed.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{147}{section.8.77}%
+\contentsline {section}{\numberline {8.78}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Set\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wheel\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Direction.hpp File Reference}{149}{section.8.78}%
+\contentsline {section}{\numberline {8.79}Set\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wheel\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Direction.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{150}{section.8.79}%
+\contentsline {section}{\numberline {8.80}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/action/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Turn.hpp File Reference}{152}{section.8.80}%
+\contentsline {section}{\numberline {8.81}Turn.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{152}{section.8.81}%
+\contentsline {section}{\numberline {8.82}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser.hpp File Reference}{153}{section.8.82}%
+\contentsline {section}{\numberline {8.83}Car\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{154}{section.8.83}%
+\contentsline {section}{\numberline {8.84}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/condition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Succeed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}On\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Any\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Nearby\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scan.hpp File Reference}{155}{section.8.84}%
+\contentsline {section}{\numberline {8.85}Succeed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}On\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Any\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Nearby\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scan.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{156}{section.8.85}%
+\contentsline {section}{\numberline {8.86}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/condition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Succeed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}On\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Average\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Colour.hpp File Reference}{157}{section.8.86}%
+\contentsline {section}{\numberline {8.87}Succeed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}On\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Average\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Colour.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{158}{section.8.87}%
+\contentsline {section}{\numberline {8.88}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}car/include/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree/node/custom/condition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Succeed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}On\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Average\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Nearby\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scan.hpp File Reference}{160}{section.8.88}%
+\contentsline {section}{\numberline {8.89}Succeed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}On\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Average\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Nearby\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scan.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{160}{section.8.89}%
+\contentsline {section}{\numberline {8.90}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tester/src/main.cpp File Reference}{162}{section.8.90}%
+\contentsline {subsection}{\numberline {8.90.1}Function Documentation}{162}{subsection.8.90.1}%
+\contentsline {subsubsection}{\numberline {8.90.1.1}main()}{163}{subsubsection.8.90.1.1}%
+\contentsline {section}{\numberline {8.91}behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}validator/src/main.cpp File Reference}{163}{section.8.91}%
+\contentsline {subsection}{\numberline {8.91.1}Function Documentation}{163}{subsection.8.91.1}%
+\contentsline {subsubsection}{\numberline {8.91.1.1}main()}{163}{subsubsection.8.91.1.1}%
+\contentsline {section}{\numberline {8.92}README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{163}{section.8.92}%
+\contentsline {section}{\numberline {8.93}rplidar/include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}RPLidar.h File Reference}{163}{section.8.93}%
+\contentsline {section}{\numberline {8.94}RPLidar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{164}{section.8.94}%
+\contentsline {section}{\numberline {8.95}utils/include/utils/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Name.hpp File Reference}{173}{section.8.95}%
+\contentsline {section}{\numberline {8.96}Type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Name.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{174}{section.8.96}%
+\contentsline {section}{\numberline {8.97}utils/include/utils/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Utility.hpp File Reference}{175}{section.8.97}%
+\contentsline {section}{\numberline {8.98}Utility.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{175}{section.8.98}%
+\contentsline {chapter}{Index}{177}{section*.257}%

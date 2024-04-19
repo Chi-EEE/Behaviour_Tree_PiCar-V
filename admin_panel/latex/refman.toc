@@ -1,0 +1,203 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Admin Panel}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Install Packages\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Run\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Build EXE to export\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Template from\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{section.1.4}%
+\contentsline {chapter}{\numberline {2}App}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler}{5}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box}{7}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bar}{9}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Stream}{11}{chapter.6}%
+\contentsline {chapter}{\numberline {7}IPList}{13}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Navigation\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bar}{15}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Connect\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Banner}{17}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Selector}{19}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Save\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modal}{21}{chapter.11}%
+\contentsline {chapter}{\numberline {12}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box}{23}{chapter.12}%
+\contentsline {chapter}{\numberline {13}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button}{25}{chapter.13}%
+\contentsline {chapter}{\numberline {14}Websocket\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Server\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config}{27}{chapter.14}%
+\contentsline {chapter}{\numberline {15}Home}{29}{chapter.15}%
+\contentsline {chapter}{\numberline {16}Not\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Found}{31}{chapter.16}%
+\contentsline {chapter}{\numberline {17}Validate}{33}{chapter.17}%
+\contentsline {chapter}{\numberline {18}Websocket}{35}{chapter.18}%
+\contentsline {chapter}{\numberline {19}Class Index}{37}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Class List}{37}{section.19.1}%
+\contentsline {chapter}{\numberline {20}File Index}{39}{chapter.20}%
+\contentsline {section}{\numberline {20.1}File List}{39}{section.20.1}%
+\contentsline {chapter}{\numberline {21}Class Documentation}{41}{chapter.21}%
+\contentsline {section}{\numberline {21.1}Code Class Reference}{41}{section.21.1}%
+\contentsline {subsection}{\numberline {21.1.1}Member Function Documentation}{41}{subsection.21.1.1}%
+\contentsline {subsubsection}{\numberline {21.1.1.1}constructor()}{41}{subsubsection.21.1.1.1}%
+\contentsline {subsubsection}{\numberline {21.1.1.2}generate()}{41}{subsubsection.21.1.1.2}%
+\contentsline {subsubsection}{\numberline {21.1.1.3}get()}{41}{subsubsection.21.1.1.3}%
+\contentsline {section}{\numberline {21.2}Web\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Socket\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Server Class Reference}{41}{section.21.2}%
+\contentsline {subsection}{\numberline {21.2.1}Member Function Documentation}{42}{subsection.21.2.1}%
+\contentsline {subsubsection}{\numberline {21.2.1.1}close()}{42}{subsubsection.21.2.1.1}%
+\contentsline {subsubsection}{\numberline {21.2.1.2}connect()}{42}{subsubsection.21.2.1.2}%
+\contentsline {subsubsection}{\numberline {21.2.1.3}constructor()}{42}{subsubsection.21.2.1.3}%
+\contentsline {subsubsection}{\numberline {21.2.1.4}generateCode()}{42}{subsubsection.21.2.1.4}%
+\contentsline {subsubsection}{\numberline {21.2.1.5}getCode()}{42}{subsubsection.21.2.1.5}%
+\contentsline {subsubsection}{\numberline {21.2.1.6}getPort()}{42}{subsubsection.21.2.1.6}%
+\contentsline {subsubsection}{\numberline {21.2.1.7}getRaspberryPiMap()}{43}{subsubsection.21.2.1.7}%
+\contentsline {subsubsection}{\numberline {21.2.1.8}getSelectedRaspberryPi()}{43}{subsubsection.21.2.1.8}%
+\contentsline {subsubsection}{\numberline {21.2.1.9}isConnected()}{43}{subsubsection.21.2.1.9}%
+\contentsline {subsubsection}{\numberline {21.2.1.10}selectRaspberryPi()}{43}{subsubsection.21.2.1.10}%
+\contentsline {subsubsection}{\numberline {21.2.1.11}sendBehaviourTree()}{43}{subsubsection.21.2.1.11}%
+\contentsline {subsubsection}{\numberline {21.2.1.12}startBehaviourTree()}{43}{subsubsection.21.2.1.12}%
+\contentsline {subsubsection}{\numberline {21.2.1.13}startConnections()}{43}{subsubsection.21.2.1.13}%
+\contentsline {subsubsection}{\numberline {21.2.1.14}stopBehaviourTree()}{44}{subsubsection.21.2.1.14}%
+\contentsline {chapter}{\numberline {22}File Documentation}{45}{chapter.22}%
+\contentsline {section}{\numberline {22.1}js/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree.js File Reference}{45}{section.22.1}%
+\contentsline {subsection}{\numberline {22.1.1}Function Documentation}{45}{subsection.22.1.1}%
+\contentsline {subsubsection}{\numberline {22.1.1.1}getBehaviourTreeList()}{45}{subsubsection.22.1.1.1}%
+\contentsline {subsubsection}{\numberline {22.1.1.2}handle()}{45}{subsubsection.22.1.1.2}%
+\contentsline {subsubsection}{\numberline {22.1.1.3}isDev()}{46}{subsubsection.22.1.1.3}%
+\contentsline {subsubsection}{\numberline {22.1.1.4}removeBehaviourTree()}{46}{subsubsection.22.1.1.4}%
+\contentsline {subsubsection}{\numberline {22.1.1.5}saveBehaviourTree()}{46}{subsubsection.22.1.1.5}%
+\contentsline {subsubsection}{\numberline {22.1.1.6}sendBehaviourTree()}{46}{subsubsection.22.1.1.6}%
+\contentsline {subsubsection}{\numberline {22.1.1.7}startBehaviourTree()}{46}{subsubsection.22.1.1.7}%
+\contentsline {subsubsection}{\numberline {22.1.1.8}stopBehaviourTree()}{46}{subsubsection.22.1.1.8}%
+\contentsline {subsubsection}{\numberline {22.1.1.9}updateBehaviourTreeList()}{46}{subsubsection.22.1.1.9}%
+\contentsline {subsubsection}{\numberline {22.1.1.10}validateBehaviourTree()}{46}{subsubsection.22.1.1.10}%
+\contentsline {subsection}{\numberline {22.1.2}Variable Documentation}{47}{subsection.22.1.2}%
+\contentsline {subsubsection}{\numberline {22.1.2.1}base\_path}{47}{subsubsection.22.1.2.1}%
+\contentsline {subsubsection}{\numberline {22.1.2.2}const}{47}{subsubsection.22.1.2.2}%
+\contentsline {subsubsection}{\numberline {22.1.2.3}exec}{47}{subsubsection.22.1.2.3}%
+\contentsline {subsubsection}{\numberline {22.1.2.4}fs}{47}{subsubsection.22.1.2.4}%
+\contentsline {subsubsection}{\numberline {22.1.2.5}Os}{47}{subsubsection.22.1.2.5}%
+\contentsline {subsubsection}{\numberline {22.1.2.6}path}{47}{subsubsection.22.1.2.6}%
+\contentsline {subsubsection}{\numberline {22.1.2.7}resources\_dir}{47}{subsubsection.22.1.2.7}%
+\contentsline {section}{\numberline {22.2}js/device.js File Reference}{47}{section.22.2}%
+\contentsline {subsection}{\numberline {22.2.1}Function Documentation}{47}{subsection.22.2.1}%
+\contentsline {subsubsection}{\numberline {22.2.1.1}getLocalIPList()}{48}{subsubsection.22.2.1.1}%
+\contentsline {subsubsection}{\numberline {22.2.1.2}handle()}{48}{subsubsection.22.2.1.2}%
+\contentsline {subsection}{\numberline {22.2.2}Variable Documentation}{48}{subsection.22.2.2}%
+\contentsline {subsubsection}{\numberline {22.2.2.1}exports}{48}{subsubsection.22.2.2.1}%
+\contentsline {subsubsection}{\numberline {22.2.2.2}os}{48}{subsubsection.22.2.2.2}%
+\contentsline {section}{\numberline {22.3}js/main.js File Reference}{48}{section.22.3}%
+\contentsline {subsection}{\numberline {22.3.1}Function Documentation}{48}{subsection.22.3.1}%
+\contentsline {subsubsection}{\numberline {22.3.1.1}createWindow()}{48}{subsubsection.22.3.1.1}%
+\contentsline {subsubsection}{\numberline {22.3.1.2}isDev()}{49}{subsubsection.22.3.1.2}%
+\contentsline {subsubsection}{\numberline {22.3.1.3}on()}{49}{subsubsection.22.3.1.3}%
+\contentsline {subsubsection}{\numberline {22.3.1.4}onClose()}{49}{subsubsection.22.3.1.4}%
+\contentsline {subsection}{\numberline {22.3.2}Variable Documentation}{49}{subsection.22.3.2}%
+\contentsline {subsubsection}{\numberline {22.3.2.1}const}{49}{subsubsection.22.3.2.1}%
+\contentsline {subsubsection}{\numberline {22.3.2.2}loadURL}{49}{subsubsection.22.3.2.2}%
+\contentsline {subsubsection}{\numberline {22.3.2.3}path}{49}{subsubsection.22.3.2.3}%
+\contentsline {subsubsection}{\numberline {22.3.2.4}serve}{49}{subsubsection.22.3.2.4}%
+\contentsline {section}{\numberline {22.4}src/main.js File Reference}{49}{section.22.4}%
+\contentsline {subsection}{\numberline {22.4.1}Variable Documentation}{49}{subsection.22.4.1}%
+\contentsline {subsubsection}{\numberline {22.4.1.1}app}{49}{subsubsection.22.4.1.1}%
+\contentsline {subsubsection}{\numberline {22.4.1.2}pcss}{50}{subsubsection.22.4.1.2}%
+\contentsline {subsubsection}{\numberline {22.4.1.3}svelte}{50}{subsubsection.22.4.1.3}%
+\contentsline {section}{\numberline {22.5}js/preload.js File Reference}{50}{section.22.5}%
+\contentsline {section}{\numberline {22.6}js/raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pi.js File Reference}{50}{section.22.6}%
+\contentsline {subsection}{\numberline {22.6.1}Function Documentation}{50}{subsection.22.6.1}%
+\contentsline {subsubsection}{\numberline {22.6.1.1}getRaspberryPiList()}{50}{subsubsection.22.6.1.1}%
+\contentsline {subsubsection}{\numberline {22.6.1.2}getSelectedRaspberryPi()}{50}{subsubsection.22.6.1.2}%
+\contentsline {subsubsection}{\numberline {22.6.1.3}handle()}{50}{subsubsection.22.6.1.3}%
+\contentsline {subsubsection}{\numberline {22.6.1.4}selectRaspberryPi()}{50}{subsubsection.22.6.1.4}%
+\contentsline {subsubsection}{\numberline {22.6.1.5}unselectRaspberryPi()}{51}{subsubsection.22.6.1.5}%
+\contentsline {subsection}{\numberline {22.6.2}Variable Documentation}{51}{subsection.22.6.2}%
+\contentsline {subsubsection}{\numberline {22.6.2.1}const}{51}{subsubsection.22.6.2.1}%
+\contentsline {section}{\numberline {22.7}js/store.js File Reference}{51}{section.22.7}%
+\contentsline {section}{\numberline {22.8}js/websocket.js File Reference}{51}{section.22.8}%
+\contentsline {subsection}{\numberline {22.8.1}Function Documentation}{51}{subsection.22.8.1}%
+\contentsline {subsubsection}{\numberline {22.8.1.1}getRandomInt()}{51}{subsubsection.22.8.1.1}%
+\contentsline {subsection}{\numberline {22.8.2}Variable Documentation}{51}{subsection.22.8.2}%
+\contentsline {subsubsection}{\numberline {22.8.2.1}exports}{51}{subsubsection.22.8.2.1}%
+\contentsline {subsubsection}{\numberline {22.8.2.2}WebSocket}{52}{subsubsection.22.8.2.2}%
+\contentsline {section}{\numberline {22.9}js/websocket\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}events.js File Reference}{52}{section.22.9}%
+\contentsline {subsection}{\numberline {22.9.1}Function Documentation}{52}{subsection.22.9.1}%
+\contentsline {subsubsection}{\numberline {22.9.1.1}closeWebSocketServer()}{52}{subsubsection.22.9.1.1}%
+\contentsline {subsubsection}{\numberline {22.9.1.2}getWebSocketServer()}{52}{subsubsection.22.9.1.2}%
+\contentsline {subsubsection}{\numberline {22.9.1.3}handle()}{52}{subsubsection.22.9.1.3}%
+\contentsline {subsubsection}{\numberline {22.9.1.4}startWebSocketServer()}{52}{subsubsection.22.9.1.4}%
+\contentsline {subsection}{\numberline {22.9.2}Variable Documentation}{52}{subsection.22.9.2}%
+\contentsline {subsubsection}{\numberline {22.9.2.1}const}{52}{subsubsection.22.9.2.1}%
+\contentsline {subsubsection}{\numberline {22.9.2.2}tcpPortUsed}{53}{subsubsection.22.9.2.2}%
+\contentsline {section}{\numberline {22.10}README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{53}{section.22.10}%
+\contentsline {section}{\numberline {22.11}rollup.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}js File Reference}{53}{section.22.11}%
+\contentsline {subsection}{\numberline {22.11.1}Function Documentation}{53}{subsection.22.11.1}%
+\contentsline {subsubsection}{\numberline {22.11.1.1}serve()}{53}{subsubsection.22.11.1.1}%
+\contentsline {subsection}{\numberline {22.11.2}Variable Documentation}{53}{subsection.22.11.2}%
+\contentsline {subsubsection}{\numberline {22.11.2.1}commonjs}{53}{subsubsection.22.11.2.1}%
+\contentsline {subsubsection}{\numberline {22.11.2.2}default}{53}{subsubsection.22.11.2.2}%
+\contentsline {subsubsection}{\numberline {22.11.2.3}import}{53}{subsubsection.22.11.2.3}%
+\contentsline {subsubsection}{\numberline {22.11.2.4}livereload}{53}{subsubsection.22.11.2.4}%
+\contentsline {subsubsection}{\numberline {22.11.2.5}only}{54}{subsubsection.22.11.2.5}%
+\contentsline {subsubsection}{\numberline {22.11.2.6}polyfills}{54}{subsubsection.22.11.2.6}%
+\contentsline {subsubsection}{\numberline {22.11.2.7}production}{54}{subsubsection.22.11.2.7}%
+\contentsline {subsubsection}{\numberline {22.11.2.8}resolve}{54}{subsubsection.22.11.2.8}%
+\contentsline {subsubsection}{\numberline {22.11.2.9}svelte}{54}{subsubsection.22.11.2.9}%
+\contentsline {subsubsection}{\numberline {22.11.2.10}tailwindConfig}{54}{subsubsection.22.11.2.10}%
+\contentsline {subsubsection}{\numberline {22.11.2.11}tailwindcss}{54}{subsubsection.22.11.2.11}%
+\contentsline {section}{\numberline {22.12}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App.svelte File Reference}{54}{section.22.12}%
+\contentsline {section}{\numberline {22.13}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler.svelte File Reference}{54}{section.22.13}%
+\contentsline {section}{\numberline {22.14}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Constants.js File Reference}{54}{section.22.14}%
+\contentsline {subsection}{\numberline {22.14.1}Variable Documentation}{54}{subsection.22.14.1}%
+\contentsline {subsubsection}{\numberline {22.14.1.1}condition\_operator\_types}{54}{subsubsection.22.14.1.1}%
+\contentsline {subsubsection}{\numberline {22.14.1.2}import}{55}{subsubsection.22.14.1.2}%
+\contentsline {subsubsection}{\numberline {22.14.1.3}node\_hover}{55}{subsubsection.22.14.1.3}%
+\contentsline {subsubsection}{\numberline {22.14.1.4}node\_information\_list}{55}{subsubsection.22.14.1.4}%
+\contentsline {subsubsection}{\numberline {22.14.1.5}range\_0\_100}{55}{subsubsection.22.14.1.5}%
+\contentsline {subsubsection}{\numberline {22.14.1.6}range\_0\_180}{55}{subsubsection.22.14.1.6}%
+\contentsline {subsubsection}{\numberline {22.14.1.7}range\_0\_360}{56}{subsubsection.22.14.1.7}%
+\contentsline {section}{\numberline {22.15}src/lib/home/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box.svelte File Reference}{56}{section.22.15}%
+\contentsline {section}{\numberline {22.16}src/lib/validate/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box.svelte File Reference}{56}{section.22.16}%
+\contentsline {section}{\numberline {22.17}src/lib/home/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Messaging\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bar.svelte File Reference}{56}{section.22.17}%
+\contentsline {section}{\numberline {22.18}src/lib/home/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Stream.svelte File Reference}{56}{section.22.18}%
+\contentsline {section}{\numberline {22.19}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IPList.svelte File Reference}{56}{section.22.19}%
+\contentsline {section}{\numberline {22.20}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Navigation\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bar.svelte File Reference}{56}{section.22.20}%
+\contentsline {section}{\numberline {22.21}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Connect\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Banner.svelte File Reference}{56}{section.22.21}%
+\contentsline {section}{\numberline {22.22}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Selector.svelte File Reference}{56}{section.22.22}%
+\contentsline {section}{\numberline {22.23}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Save\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modal.svelte File Reference}{56}{section.22.23}%
+\contentsline {section}{\numberline {22.24}src/lib/validate/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Code\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button.svelte File Reference}{56}{section.22.24}%
+\contentsline {section}{\numberline {22.25}src/lib/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Websocket\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Server\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config.svelte File Reference}{56}{section.22.25}%
+\contentsline {section}{\numberline {22.26}src/routes.js File Reference}{56}{section.22.26}%
+\contentsline {subsection}{\numberline {22.26.1}Variable Documentation}{56}{subsection.22.26.1}%
+\contentsline {subsubsection}{\numberline {22.26.1.1}default}{56}{subsubsection.22.26.1.1}%
+\contentsline {subsubsection}{\numberline {22.26.1.2}svelte}{56}{subsubsection.22.26.1.2}%
+\contentsline {section}{\numberline {22.27}src/routes/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Home.svelte File Reference}{57}{section.22.27}%
+\contentsline {section}{\numberline {22.28}src/routes/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Not\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Found.svelte File Reference}{57}{section.22.28}%
+\contentsline {section}{\numberline {22.29}src/routes/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Validate.svelte File Reference}{57}{section.22.29}%
+\contentsline {section}{\numberline {22.30}src/routes/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Websocket.svelte File Reference}{57}{section.22.30}%
+\contentsline {section}{\numberline {22.31}src/store/behaviour\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tree\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}store.js File Reference}{57}{section.22.31}%
+\contentsline {subsection}{\numberline {22.31.1}Function Documentation}{57}{subsection.22.31.1}%
+\contentsline {subsubsection}{\numberline {22.31.1.1}main()}{57}{subsubsection.22.31.1.1}%
+\contentsline {subsection}{\numberline {22.31.2}Variable Documentation}{57}{subsection.22.31.2}%
+\contentsline {subsubsection}{\numberline {22.31.2.1}behaviour\_tree\_list}{57}{subsubsection.22.31.2.1}%
+\contentsline {subsubsection}{\numberline {22.31.2.2}behaviour\_tree\_save\_modal\_code}{57}{subsubsection.22.31.2.2}%
+\contentsline {subsubsection}{\numberline {22.31.2.3}behaviour\_tree\_xml\_code}{57}{subsubsection.22.31.2.3}%
+\contentsline {subsubsection}{\numberline {22.31.2.4}import}{57}{subsubsection.22.31.2.4}%
+\contentsline {subsubsection}{\numberline {22.31.2.5}show\_behaviour\_tree\_save\_modal}{57}{subsubsection.22.31.2.5}%
+\contentsline {section}{\numberline {22.32}src/store/home\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}store.js File Reference}{58}{section.22.32}%
+\contentsline {subsection}{\numberline {22.32.1}Variable Documentation}{58}{subsection.22.32.1}%
+\contentsline {subsubsection}{\numberline {22.32.1.1}import}{58}{subsubsection.22.32.1.1}%
+\contentsline {subsubsection}{\numberline {22.32.1.2}lidar\_toggle}{58}{subsubsection.22.32.1.2}%
+\contentsline {subsubsection}{\numberline {22.32.1.3}main\_pane\_size\_0\_store}{58}{subsubsection.22.32.1.3}%
+\contentsline {subsubsection}{\numberline {22.32.1.4}main\_pane\_size\_1\_store}{58}{subsubsection.22.32.1.4}%
+\contentsline {subsubsection}{\numberline {22.32.1.5}side\_pane\_size\_0\_store}{58}{subsubsection.22.32.1.5}%
+\contentsline {subsubsection}{\numberline {22.32.1.6}side\_pane\_size\_1\_store}{58}{subsubsection.22.32.1.6}%
+\contentsline {section}{\numberline {22.33}src/store/raspberry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}store.js File Reference}{58}{section.22.33}%
+\contentsline {subsection}{\numberline {22.33.1}Function Documentation}{59}{subsection.22.33.1}%
+\contentsline {subsubsection}{\numberline {22.33.1.1}main()}{59}{subsubsection.22.33.1.1}%
+\contentsline {subsubsection}{\numberline {22.33.1.2}onConnection()}{59}{subsubsection.22.33.1.2}%
+\contentsline {subsubsection}{\numberline {22.33.1.3}onDisconnection()}{59}{subsubsection.22.33.1.3}%
+\contentsline {subsection}{\numberline {22.33.2}Variable Documentation}{59}{subsection.22.33.2}%
+\contentsline {subsubsection}{\numberline {22.33.2.1}import}{59}{subsubsection.22.33.2.1}%
+\contentsline {subsubsection}{\numberline {22.33.2.2}raspberry\_pi\_uuid\_list}{59}{subsubsection.22.33.2.2}%
+\contentsline {subsubsection}{\numberline {22.33.2.3}selected\_raspberry\_pi\_uuid}{59}{subsubsection.22.33.2.3}%
+\contentsline {section}{\numberline {22.34}src/store/websocket\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}store.js File Reference}{59}{section.22.34}%
+\contentsline {subsection}{\numberline {22.34.1}Function Documentation}{60}{subsection.22.34.1}%
+\contentsline {subsubsection}{\numberline {22.34.1.1}main()}{60}{subsubsection.22.34.1.1}%
+\contentsline {subsubsection}{\numberline {22.34.1.2}onMessage()}{60}{subsubsection.22.34.1.2}%
+\contentsline {subsection}{\numberline {22.34.2}Variable Documentation}{60}{subsection.22.34.2}%
+\contentsline {subsubsection}{\numberline {22.34.2.1}camera\_stream}{60}{subsubsection.22.34.2.1}%
+\contentsline {subsubsection}{\numberline {22.34.2.2}import}{60}{subsubsection.22.34.2.2}%
+\contentsline {subsubsection}{\numberline {22.34.2.3}lidar\_stream}{60}{subsubsection.22.34.2.3}%
+\contentsline {subsubsection}{\numberline {22.34.2.4}websocket\_server\_code}{60}{subsubsection.22.34.2.4}%
+\contentsline {subsubsection}{\numberline {22.34.2.5}websocket\_server\_connection\_state}{60}{subsubsection.22.34.2.5}%
+\contentsline {subsubsection}{\numberline {22.34.2.6}websocket\_server\_port}{60}{subsubsection.22.34.2.6}%
+\contentsline {chapter}{Index}{61}{section*.35}%
