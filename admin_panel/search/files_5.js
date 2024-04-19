@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iplist_2esvelte_0',['IPList.svelte',['../IPList_8svelte.html',1,'']]]
+  ['preload_2ejs_0',['preload.js',['../preload_8js.html',1,'']]]
 ];

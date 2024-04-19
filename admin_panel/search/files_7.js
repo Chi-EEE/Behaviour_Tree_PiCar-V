@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['navigationbar_2esvelte_0',['NavigationBar.svelte',['../NavigationBar_8svelte.html',1,'']]],
-  ['notfound_2esvelte_1',['NotFound.svelte',['../NotFound_8svelte.html',1,'']]]
+  ['store_2ejs_0',['store.js',['../store_8js.html',1,'']]]
 ];
