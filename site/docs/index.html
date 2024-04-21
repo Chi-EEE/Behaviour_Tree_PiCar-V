@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation</title>
+    <link rel="stylesheet" href="static/main.css">
+    <link rel="stylesheet" href="static/circle.css">
+    <link rel="stylesheet" href="static/stack.css">
+</head>
+
+<body>
+    <div id="container" style="height: 100vh; display: grid; grid-template-rows: repeat(2, minmax(0, 1fr));">
+        <div id="top-section">
+            <h1>Documentation</h1>
+            <p>Click any of the sections on the bottom to go to their respective documentation.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));">
+            <div id="admin_panel" class="sub-section">
+                <a class="fill" href="admin_panel">
+                    <div class="box">
+                        <h2>Admin Panel</h2>
+                        <div class="circle">
+                            <img src="./static/JavaScript-logo.png" alt="Javascript Logo">
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="raspberry_pi" class="sub-section">
+                <a class="fill" href="raspberry_pi">
+                    <div class="box">
+                        <h2>Raspberry Pi</h2>
+                        <div class="circle">
+                            <img src="./static/Raspberry_Pi-Logo.png" alt="Raspberry Pi Logo">
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="other" class="sub-section">
+                <a class="fill" href="other">
+                    <div class="box">
+                        <h2>Other</h2>
+                        <div class="circle">
+                            <img src="./static/C++-Logo.png" alt="C++ Logo">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
