@@ -16,10 +16,7 @@ jobs:
 
       - name: Install PNPM & 11ty
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y pnpm
-          sudo apt-get install -y nodejs
-          sudo apt-get install -y npm
+          curl -fsSL https://get.pnpm.io/install.sh | sh -
           sudo npm install -g @11ty/eleventy
 
       - name: Build Site and Copy
