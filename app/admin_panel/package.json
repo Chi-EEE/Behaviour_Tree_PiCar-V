@@ -77,11 +77,5 @@
         "tcp-port-used": "^1.0.2",
         "ws": "^8.16.0",
         "xml-formatter": "^3.6.2"
-    },
-    "dependencyGroupComments": {
-        "1": "flowbite: UI components",
-        "2": "codemirror: Code editor",
-        "3": "pixi.js: 2D rendering engine",
-        "4": "ws & tcp-port-used: For web socket connection"
     }
 }
