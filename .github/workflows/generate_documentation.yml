@@ -54,16 +54,11 @@ jobs:
           doxyfile-path: "./Doxyfile"
           working-directory: "./app/other"
 
-      - name: Move Admin Panel Doxygen HTML files
+      - name: Move Doxygen HTML files
         run: |
+          sudo mv docs/static site/docs
           sudo mv site/docs/admin_panel/html/* site/docs/admin_panel
-
-      - name: Move Raspberry Pi Doxygen HTML files
-        run: |
           sudo mv site/docs/raspberry_pi/html/* site/docs/raspberry_pi
-
-      - name: Move Other Doxygen HTML files
-        run: |
           sudo mv site/docs/other/html/* site/docs/other
 
       - name: Deploy
