@@ -34,7 +34,7 @@ jobs:
           cd showcase
           pnpm install
           pnpm run build
-          cp -r _site ../site
+          sudo mv _site/* ../site
 
       - name: Build Doxygen documentation for Admin Panel
         uses: mattnotmitt/doxygen-action@v1.9.5
