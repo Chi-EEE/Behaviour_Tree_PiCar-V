@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "NotoSans-Regular";
+    src: url("NotoSans-Regular.ttf") format("truetype");
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #202124;
+        color: #BDC1C6;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: white;
+        color: black;
+    }
+}
+
+body {
+    font-family: "NotoSans-Regular";
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 5.5em;
+}
+
+h2 {
+    font-size: 4.875em;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+#top-section {
+    flex: 1;
+    text-align: center;
+}
+
+.sub-section {
+    flex: 1;
+    text-align: center;
+}
+
+.sub-section:hover {
+    flex: 1;
+    filter: brightness(80%);
+    text-align: center;
+}
+
+a.fill {
+    width: 100%;
+    height: 100%;
+}
