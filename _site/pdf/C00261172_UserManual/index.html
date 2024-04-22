@@ -1,0 +1,22 @@
+<h1>User Manual for the Behaviour Tree PiCar-V</h1>
+<h2>Admin Panel</h2>
+<h3>Installation</h3>
+<p>To install the Admin Panel, you would have to run the <code>.exe</code> provided in the Final Iteration Release.</p>
+<h3>Running the Websocket server</h3>
+<p>In the Admin Panel, there is a tab called &quot;Manage Websockets&quot;, click it and start the Websocket Server.</p>
+<h2>Raspberry Pi</h2>
+<p>Before beginning this, do the steps for the Admin Panel first.</p>
+<h3>Configurating the Apps</h3>
+<p>If you are connected on Wifi with the Raspberry Pi, simply copy the Wifi IP address on the Admin Panel in the &quot;Manage Websockets&quot; tab.<br>
+Otherwise, If you are connected via ethernet, then copy the ethernet IP address and so on.</p>
+<p>Afterwards, paste in the IP address into the host fields both in the <code>settings/config.jsonc</code> and <code>rpi_daemon.conf</code></p>
+<h3>Installing the Daemon</h3>
+<p>In order to install the Daemon application, follow the steps outlined in the README.md of the daemon's directory.</p>
+<h3>Running the TUI application</h3>
+<p>To run the TUI application, you first have to grant permission to the executable:</p>
+<p><code>chmod +x ./rpi_tui</code></p>
+<p>This grants the TUI application permission to be run as an executable.</p>
+<p>Afterwards simply run:</p>
+<p><code>sudo ./rpi_tui</code></p>
+<p>The reason why it is sudo is because the controllers for the Sunfounder PiCar-V require admin access.</p>
+<p>Afterwards, simply select the Raspberry Pi UUID on the Admin Panel and watch as it displays the Lidar 3d projection and Camera.</p>
