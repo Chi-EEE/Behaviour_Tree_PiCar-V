@@ -66,7 +66,7 @@ jobs:
           publish_dir: ./site
 
   build_doxygen_pdf:
-    needs: build_doxygen
+    needs: generate_page
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -83,12 +83,12 @@ jobs:
           cd docs/admin_panel/latex
           sudo make
 
-          cd ../..
+          cd ../../..
           
           cd docs/raspberry_pi/latex
           sudo make
 
-          cd ../..
+          cd ../../..
 
           cd docs/other/latex
           sudo make
