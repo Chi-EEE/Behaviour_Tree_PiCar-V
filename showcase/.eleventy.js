@@ -7,4 +7,5 @@ module.exports = function (eleventyConfig) {
         components: "_includes/components/**.webc",
     });
 	eleventyConfig.addPassthroughCopy("static");
+	eleventyConfig.addPassthroughCopy("pdf");
 };

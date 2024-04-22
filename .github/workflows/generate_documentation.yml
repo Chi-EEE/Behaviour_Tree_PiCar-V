@@ -9,10 +9,25 @@ permissions:
   contents: write
 
 jobs:
-  build_doxygen:
+  generate_page:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install PNPM & 11ty
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y pnpm
+          sudo apt-get install -y nodejs
+          sudo apt-get install -y npm
+          sudo npm install -g @11ty/eleventy
+
+      - name: Build Site and Copy
+        run: |
+          cd showcase
+          pnpm install
+          pnpm run build
+          cp -r _site ../site
 
       - name: Build Doxygen documentation for Admin Panel
         uses: mattnotmitt/doxygen-action@v1.9.5
@@ -34,21 +49,21 @@ jobs:
 
       - name: Move Admin Panel Doxygen HTML files
         run: |
-          sudo mv docs/admin_panel/html/* docs/admin_panel
+          sudo mv ../../site/docs/admin_panel/html/* site/docs/admin_panel
 
       - name: Move Raspberry Pi Doxygen HTML files
         run: |
-          sudo mv docs/raspberry_pi/html/* docs/raspberry_pi
+          sudo mv ../../site/docs/raspberry_pi/html/* site/docs/raspberry_pi
 
       - name: Move Other Doxygen HTML files
         run: |
-          sudo mv docs/other/html/* docs/other
+          sudo mv ../../site/docs/other/html/* site/docs/other
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./site
 
   build_doxygen_pdf:
     needs: build_doxygen
@@ -65,17 +80,17 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y doxygen-latex
           
-          cd admin_panel/latex
+          cd docs/admin_panel/latex
           sudo make
 
           cd ../..
           
-          cd raspberry_pi/latex
+          cd docs/raspberry_pi/latex
           sudo make
 
           cd ../..
 
-          cd other/latex
+          cd docs/other/latex
           sudo make
 
       - name: Commit PDF    
