@@ -56,15 +56,15 @@ jobs:
 
       - name: Move Admin Panel Doxygen HTML files
         run: |
-          sudo mv ../../site/docs/admin_panel/html/* site/docs/admin_panel
+          sudo mv ../site/docs/admin_panel/html/* site/docs/admin_panel
 
       - name: Move Raspberry Pi Doxygen HTML files
         run: |
-          sudo mv ../../site/docs/raspberry_pi/html/* site/docs/raspberry_pi
+          sudo mv ../site/docs/raspberry_pi/html/* site/docs/raspberry_pi
 
       - name: Move Other Doxygen HTML files
         run: |
-          sudo mv ../../site/docs/other/html/* site/docs/other
+          sudo mv ../site/docs/other/html/* site/docs/other
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
