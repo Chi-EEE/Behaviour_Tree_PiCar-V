@@ -55,8 +55,6 @@ jobs:
 
       - name: Move Doxygen HTML files
         run: |
-          sudo mv docs/static site/docs
-          
           mkdir -p site/_site/docs/admin_panel
           mkdir -p site/_site/docs/raspberry_pi
           mkdir -p site/_site/docs/other
