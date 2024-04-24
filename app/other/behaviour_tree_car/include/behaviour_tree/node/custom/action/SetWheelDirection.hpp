@@ -67,15 +67,18 @@ namespace behaviour_tree::node::custom::action
 				case utils::hash("Forward"):
 				{
 					result = DirectionType::Forward;
+                    break;
 				}
 				case utils::hash("Backward"):
 				{
 					result = DirectionType::Backward;
+                    break;
 				}
 				default:
 				{
-					result = tl::make_unexpected(fmt::format(R"(Invalid direction_type: '{}' | Action:Drive:['{}',{}])", direction_type_attribute, name_attribute, index));
-				}
+					result = tl::make_unexpected(fmt::format(R"(Invalid direction_type: '{}' | Action:SetWheelDirection:['{}',{}])", direction_type_attribute, name_attribute, index));
+                    break;
+                }
 				};
 				return result;
 			}();
