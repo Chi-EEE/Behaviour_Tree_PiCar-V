@@ -1,0 +1,77 @@
+# Mostly from: https://github.com/NazaraEngine/NazaraEngine/blob/main/.github/workflows/linux-build.yml
+
+name: Build Executables
+permissions:
+  contents: write
+on:
+    push:
+        branches:
+        - main
+jobs:
+    build:
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [ubuntu-latest]
+                arch: [armv7]
+                kind: [static]
+                confs:
+                    - { mode: debug, archive: yes }
+
+        runs-on: ${{ matrix.os }}
+
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+
+        - name: Install system dependencies
+          run: |
+            sudo apt-get update
+
+        # Force xmake to a specific folder (for cache)
+        - name: Set xmake env
+          run: echo "XMAKE_GLOBALDIR=${{ runner.workspace }}/xmake-global" >> $GITHUB_ENV
+        
+        # Install xmake
+        - name: Setup xmake
+          uses: xmake-io/github-action-setup-xmake@v1
+          with:
+            xmake-version: branch@dev
+            actions-cache-folder: .xmake-cache-W${{ steps.cache_key.outputs.key }}
+
+        - name: Update xmake repository
+          run: xmake repo --update
+
+        - name: Retrieve dependencies hash
+          id: dep_hash
+          run: echo "hash=$(xmake l utils.ci.packageskey)" >> $GITHUB_OUTPUT
+
+        # Cache xmake dependencies
+        - name: Restore cached xmake dependencies
+          id: restore-depcache
+          uses: actions/cache/restore@v4
+          with:
+            path: ${{ env.XMAKE_GLOBALDIR }}/.xmake/packages
+            key: Linux-${{ matrix.arch }}-${{ matrix.confs.mode }}${{ matrix.confs.cache_key }}-${{ steps.dep_hash.outputs.hash }}-W${{ steps.cache_key.outputs.key }}
+
+        # Setup compilation mode and install project dependencies
+        - name: Configure xmake and install dependencies
+          run: xmake config --arch=${{ matrix.arch }} --mode=${{ matrix.confs.mode }} --static=${{ matrix.kind == 'static' && 'yes' || 'no' }} ${{ matrix.confs.config }} --ccache=n --ffmpeg=y --shadernodes=y --tests=y --unitybuild=y --yes
+
+        - name: Save cached xmake dependencies
+          if: ${{ !steps.restore-depcache.outputs.cache-hit }}
+          uses: actions/cache/save@v4
+          with:
+            path: ${{ env.XMAKE_GLOBALDIR }}/.xmake/packages
+            key: ${{ steps.restore-depcache.outputs.cache-primary-key }}
+        
+        - name: Build RPI executable
+          run: xmake --yes
+
+        - name: Archive result
+          uses: ihiroky/archive-action@v1
+          if: ${{ (github.ref == 'refs/heads/main') && github.event_name == 'push' && matrix.confs.archive }}
+          with:
+            root_dir: package
+            file_path: ${{ env.PACKAGE_NAME }}
+            verbose: true
