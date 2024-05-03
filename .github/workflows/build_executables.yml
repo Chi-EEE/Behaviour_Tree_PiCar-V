@@ -28,9 +28,6 @@ jobs:
           run: |
             sudo apt-get update
 
-        - name: CD to the project directory
-          run: cd ${{ github.workspace }}/app/rpi
-
         # Force xmake to a specific folder (for cache)
         - name: Set xmake env
           run: echo "XMAKE_GLOBALDIR=${{ runner.workspace }}/xmake-global" >> $GITHUB_ENV
@@ -59,6 +56,7 @@ jobs:
 
         # Setup compilation mode and install project dependencies
         - name: Configure xmake and install dependencies
+          working-directory: ./app/rpi
           run: xmake config --arch=${{ matrix.arch }} --mode=${{ matrix.confs.mode }} --static=${{ matrix.kind == 'static' && 'yes' || 'no' }} ${{ matrix.confs.config }} --ccache=n --ffmpeg=y --shadernodes=y --tests=y --unitybuild=y --yes
 
         - name: Save cached xmake dependencies
@@ -69,6 +67,7 @@ jobs:
             key: ${{ steps.restore-depcache.outputs.cache-primary-key }}
         
         - name: Build RPI executable
+          working-directory: ./app/rpi
           run: xmake --yes
 
         - name: Archive result
