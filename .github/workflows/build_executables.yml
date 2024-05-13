@@ -13,7 +13,7 @@ jobs:
             fail-fast: false
             matrix:
                 os: [ubuntu-latest]
-                arch: [arm64-v8a]
+                arch: [arm64]
                 confs:
                     - { mode: debug, archive: yes }
 
