@@ -1,44 +1,45 @@
 # Behaviour Tree PiCar-V
 
-Full-Stack Application used by Users to control a SunFounder Pi-Car
+Full-Stack Application used by users to control a SunFounder Pi-Car.
 
 ## Description
 
 The application contains the following inside the `app` directory: 
 
 - **rpi**
-    - Allows the raspberry pi to communicate to the **backend** and handle messages from it. 
-
-    - There are 3 sub-projects in this project which handle different aspects of the raspberry pi.
+  - Allows the Raspberry Pi to communicate with the **backend** and handle messages from it.
+  - There are three sub-projects within this project, each handling different aspects of the Raspberry Pi.
 
 - **admin_panel**
-    - Main user interface for directly controlling **rpi**.
+  - Main user interface for directly controlling the **rpi**.
 
 - **other**
-    - Many sub-projects which support the main project: **rpi**.
+  - Contains multiple sub-projects that support the main project, **rpi**.
+  - The code for handling the **behaviour_tree** is contained in the `behaviour_tree` and `behaviour_tree_car` projects.
+  - The code that controls the RPLidar is also here, in the `rplidar` directory. It was ported from Python with the help of ChatGPT.
 
-    - The code to handle the **behaviour_tree** are contained in the `behaviour_tree` & `behaviour_tree_car` projects.
-
-    - The code which controls the RPLidar is here aswell in the `rplidar` directory, it was ported from Python with the help of ChatGPT.
+For detailed API documentation, please refer to the [API Documentation](API.md).
 
 ## Getting Started
 
 ### Dependencies
 
-* [XMake](https://xmake.io/#/guide/installation) - Buildsystem for C++
+* [XMake](https://xmake.io/#/guide/installation) - Build system for C++
 * [Node.js](https://nodejs.org/en) - Used to build the frontend
 * [pnpm](https://pnpm.io/installation) - Used to cache the dependencies from npm
-* [Electron](https://www.electronjs.org/) - Used to bundle html and js files into a desktop app
+* [Electron](https://www.electronjs.org/) - Used to bundle HTML and JS files into a desktop app
 
-### Executing program
+### Executing Program
 
-To build the **backend** / **rpi** folder, you would have to run the following command:
-```
+To build the **backend** / **rpi** folder, run the following command:
+
+```sh
 xmake
 ```
+
 This will automatically install all the dependencies from the folder and build the executable file.
 
-If you want to build the **admin_panel**, view the README.md in it's directory for instructions.
+To build the **admin_panel**, view the README.md in its directory for instructions.
 
 ## Authors
 
@@ -46,7 +47,7 @@ If you want to build the **admin_panel**, view the README.md in it's directory f
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 ## Acknowledgments
 
