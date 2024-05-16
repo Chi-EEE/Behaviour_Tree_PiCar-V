@@ -1,19 +1,24 @@
 # API Documentation
 
+## Overview
+This document provides detailed information about the Behavior Tree nodes and their configuration for creating complex AI behaviors.
+
 ## `BehaviourTree`
-The primary node used to configure the Behaviour Tree and to store all the nodes inside of it.
+The root node used to configure the Behavior Tree and store all its child nodes.
+
+### Attributes
+- `cycle_limit`: (integer) The number of cycles the tree can run. `0` indicates unlimited cycles.
 
 ```xml
-<!-- cycle_limit of 0 is unlimited -->
 <BehaviourTree cycle_limit="0">
     <!-- Child nodes here -->
 </BehaviourTree>
 ```
 
-### `Root`
-The 'functions' of the Behaviour Tree. Any Root with id "Main" will always be the starting point; otherwise, the topmost Root node is used.
+## Nodes
 
-If you want more than one child node in the Root, please look at Sequence / Selector nodes.
+### `Root`
+Defines the starting point(s) of the Behavior Tree. The `Root` node with `id="Main"` is the primary entry point. If not specified, the topmost `Root` node is used.
 
 ```xml
 <BehaviourTree>
@@ -27,7 +32,7 @@ If you want more than one child node in the Root, please look at Sequence / Sele
 ```
 
 ### `UseRoot`
-Calls the specified Root node by id.
+Calls another `Root` node by its `id`.
 
 ```xml
 <BehaviourTree>
@@ -40,11 +45,10 @@ Calls the specified Root node by id.
 </BehaviourTree>
 ```
 
-### `Selector`
-Composite node.  
-Goes through each child node sequentially and returns if any node returns SUCCESS.
+### Composite Nodes
 
-Returns SUCCESS if it is returned early; otherwise, it will return FAILURE.
+#### `Selector`
+Executes each child node sequentially until one returns `SUCCESS`. If any node returns `SUCCESS`, it returns `SUCCESS`; otherwise, it returns `FAILURE`.
 
 ```xml
 <BehaviourTree>
@@ -56,17 +60,11 @@ Returns SUCCESS if it is returned early; otherwise, it will return FAILURE.
         </Selector>
     </Root>
 </BehaviourTree>
-<!-- 
-    Output:
-    1
- -->
+<!-- Output: 1 -->
 ```
 
-### `Sequence`
-Composite node.  
-Goes through each child node sequentially and returns if any node returns FAILURE.
-
-Returns SUCCESS if it executes all of the child nodes; otherwise, it will return FAILURE when exited early.
+#### `Sequence`
+Executes each child node sequentially until one returns `FAILURE`. If all nodes return `SUCCESS`, it returns `SUCCESS`; otherwise, it returns `FAILURE`.
 
 ```xml
 <BehaviourTree>
@@ -78,17 +76,11 @@ Returns SUCCESS if it executes all of the child nodes; otherwise, it will return
         </Sequence>
     </Root>
 </BehaviourTree>
-<!-- 
-    Output:
-    1
-    2
-    3
- -->
+<!-- Output: 1, 2, 3 -->
 ```
 
-### `Random`
-Composite node.  
-Randomly chooses one of its child nodes.
+#### `Random`
+Randomly selects and executes one of its child nodes.
 
 ```xml
 <BehaviourTree>
@@ -100,19 +92,17 @@ Randomly chooses one of its child nodes.
         </Random>
     </Root>
 </BehaviourTree>
-<!-- 
-    Output:
-    2
- -->
+<!-- Output: Randomly 1, 2, or 3 -->
 ```
 
-### `Invert`
-Decorator node.  
-Inverts the status returned by its child node.
+### Decorator Nodes
 
-- SUCCESS => FAILURE  
-- FAILURE => SUCCESS  
-- RUNNING => RUNNING
+#### `Invert`
+Inverts the result of its child node.
+
+- `SUCCESS` becomes `FAILURE`
+- `FAILURE` becomes `SUCCESS`
+- `RUNNING` remains `RUNNING`
 
 ```xml
 <BehaviourTree>
@@ -122,18 +112,14 @@ Inverts the status returned by its child node.
         </Invert>
     </Root>
 </BehaviourTree>
-<!-- 
-    Returns:
-    FAILURE
- -->
+<!-- Returns: FAILURE -->
 ```
 
-### `Repeat`
-Decorator node.  
-Repeats running the child node 'count' times and can 'break_on_fail'.
+#### `Repeat`
+Repeats execution of its child node a specified number of times, with an option to stop on failure.
 
-- `count`: integer
-- `break_on_fail`: "true" | "false"
+- `count`: (integer) Number of repetitions.
+- `break_on_fail`: (boolean) Whether to stop on failure.
 
 ```xml
 <BehaviourTree>
@@ -143,16 +129,13 @@ Repeats running the child node 'count' times and can 'break_on_fail'.
         </Repeat>
     </Root>
 </BehaviourTree>
-<!-- 
-    Outputs:
-    Hello World
-    Hello World
-    Hello World
- -->
+<!-- Output: Hello World, Hello World, Hello World -->
 ```
 
-### `Fail`
-Returns FAILURE.
+### Action Nodes
+
+#### `Fail`
+Immediately returns `FAILURE`.
 
 ```xml
 <BehaviourTree>
@@ -160,14 +143,11 @@ Returns FAILURE.
         <Fail/>
     </Root>
 </BehaviourTree>
-<!-- 
-    Returns:
-    FAILURE
- -->
+<!-- Returns: FAILURE -->
 ```
 
-### `Succeed`
-Returns SUCCESS.
+#### `Succeed`
+Immediately returns `SUCCESS`.
 
 ```xml
 <BehaviourTree>
@@ -175,18 +155,117 @@ Returns SUCCESS.
         <Succeed/>
     </Root>
 </BehaviourTree>
-<!-- 
-    Returns:
-    SUCCESS
- -->
+<!-- Returns: SUCCESS -->
 ```
 
-### `Blackboard:ChangeInteger`
-Able to use the Blackboard to store and change variables.
+#### `Action:PauseExecution`
+Pauses execution for a specified number of milliseconds.
 
-- `variable_name`: string
-- `value`: integer
-- `integer_change_type`: "Set" | "Add" | "Subtract"
+- `ms`: (integer) Duration in milliseconds.
+
+```xml
+<BehaviourTree>
+    <Root id="Main">
+        <Sequence>
+            <Action:PauseExecution ms="1000"/>
+            <Action:Print text="Success"/>
+        </Sequence>
+    </Root>
+</BehaviourTree>
+<!-- Output after 1 second: Success -->
+```
+
+#### `Action:Print`
+Prints specified text to the console.
+
+- `text`: (string) The text to print.
+
+```xml
+<BehaviourTree>
+    <Root id="Main">
+        <Action:Print text="Hello World"/>
+    </Root>
+</BehaviourTree>
+<!-- Output: Hello World -->
+```
+
+#### `Action:Drive`
+Controls driving actions with speed and direction.
+
+- `speed`: (integer) Speed value (0-100).
+- `direction_type`: (string) "Forward" or "Backward".
+
+```xml
+<BehaviourTree>
+    <Root id="Main">
+        <Action:Drive speed="50" direction_type="Forward"/>
+    </Root>
+</BehaviourTree>
+```
+
+#### `Action:Turn`
+Controls turning actions with a specified angle.
+
+- `angle`: (integer) Angle value (0-180).
+
+```xml
+<BehaviourTree>
+    <Root id="Main">
+        <Action:Turn angle="90"/>
+    </Root>
+</BehaviourTree>
+```
+
+#### `Action:SetAngle`
+Sets the angle for a specified servo.
+
+- `servo_type`: (string) "FrontWheels", "CameraServo1", "CameraServo2".
+- `angle`: (integer) Angle value (0-180).
+
+```xml
+<BehaviourTree>
+    <Root id="Main">
+        <Action:SetAngle servo_type="FrontWheels" angle="90"/>
+    </Root>
+</BehaviourTree>
+```
+
+#### `Action:SetSpeed`
+Sets the speed for specified wheels.
+
+- `wheel_type`: (string) "Left", "Right", "Both".
+- `speed`: (integer) Speed value (0-100).
+
+```xml
+<BehaviourTree>
+    <Root id="Main">
+        <Action:SetSpeed wheel_type="Both" speed="75"/>
+    </Root>
+</BehaviourTree>
+```
+
+#### `Action:SetWheelDirection`
+Sets the direction for specified wheels.
+
+- `wheel_type`: (string) "Left", "Right", "Both".
+- `direction_type`: (string) "Forward" or "Backward".
+
+```xml
+<BehaviourTree>
+    <Root id="Main">
+        <Action:SetWheelDirection wheel_type="Both" direction_type="Backward"/>
+    </Root>
+</BehaviourTree>
+```
+
+### Condition Nodes
+
+#### `Blackboard:ChangeInteger`
+Modifies an integer variable in the blackboard.
+
+- `variable_name`: (string) Name of the variable.
+- `value`: (integer) Value to set/add/subtract.
+- `integer_change_type`: (string) "Set", "Add", "Subtract".
 
 ```xml
 <BehaviourTree>
@@ -198,19 +277,15 @@ Able to use the Blackboard to store and change variables.
         </Sequence>
     </Root>
 </BehaviourTree>
-<!-- 
-    Initializes variable called 'test' with value 42.
-    Adds 1 to the variable 'test' resulting in value 43.
-    Subtracts 40 from the variable 'test' resulting in value 3.
- -->
+<!-- 'test' = 42 -> 43 -> 3 -->
 ```
 
-### `Blackboard:IntegerCondition`
-Returns the relevant status based on its specified 'condition_operator_type'.
+#### `Blackboard:IntegerCondition`
+Evaluates a condition on an integer variable in the blackboard.
 
-- `variable_name`: string
-- `value`: integer
-- `condition_operator_type`: "=" | "!=" | "<" | ">" | ">="
+- `variable_name`: (string) Name of the variable.
+- `value`: (integer) Value to compare against.
+- `condition_operator_type`: (string) "=", "!=", "<", ">", ">=".
 
 ```xml
 <BehaviourTree>
@@ -221,126 +296,16 @@ Returns the relevant status based on its specified 'condition_operator_type'.
         </Sequence>
     </Root>
 </BehaviourTree>
-<!-- 
-    Initializes variable called 'test' with value 42.
-    Returns SUCCESS as the 'test' variable is 42.
- -->
+<!-- 'test' == 42 -> SUCCESS -->
 ```
 
-### `Action:PauseExecution`
-Returns status RUNNING until the specified 'ms' has passed.
-
-- `ms`: integer
-
-```xml
-<BehaviourTree>
-    <Root id="Main">
-        <Sequence>
-            <Action:PauseExecution ms="1000"/>
-            <Action:Print text="Success"/>
-        </Sequence>
-    </Root>
-</BehaviourTree>
-<!-- 
-    Waits 1 second
-    Outputs:
-    Success
- -->
-```
-
-### `Action:Print`
-Outputs 'text' to the console.
-
-- `text`: string
-
-```xml
-<BehaviourTree>
-    <Root id="Main">
-        <Action:Print text="Hello World"/>
-    </Root>
-</BehaviourTree>
-<!-- 
-    Output:
-    Hello World
- -->
-```
-
-### `Action:Drive`
-Controls driving actions.
-
-- `speed`: integer (range 0-100)
-- `direction_type`: "Forward" | "Backward"
-
-```xml
-<BehaviourTree>
-    <Root id="Main">
-        <Action:Drive speed="50" direction_type="Forward"/>
-    </Root>
-</BehaviourTree>
-```
-
-### `Action:Turn`
-Controls turning actions.
-
-- `angle`: integer (range 0-180)
-
-```xml
-<BehaviourTree>
-    <Root id="Main">
-        <Action:Turn angle="90"/>
-    </Root>
-</BehaviourTree>
-```
-
-### `Action:SetAngle`
-Sets the angle for a servo.
-
-- `servo_type`: "FrontWheels" | "CameraServo1" | "CameraServo2"
-- `angle`: integer (range 0-180)
-
-```xml
-<BehaviourTree>
-    <Root id="Main">
-        <Action:SetAngle servo_type="FrontWheels" angle="90"/>
-    </Root>
-</BehaviourTree>
-```
-
-### `Action:SetSpeed`
-Sets the speed for a wheel.
-
-- `wheel_type`: "Left" | "Right" | "Both"
-- `speed`: integer (range 0-100)
-
-```xml
-<BehaviourTree>
-    <Root id="Main">
-        <Action:SetSpeed wheel_type="Both" speed="75"/>
-    </Root>
-</BehaviourTree>
-```
-
-### `Action:SetWheelDirection`
-Sets the direction for a wheel.
-
-- `wheel_type`: "Left" | "Right" | "Both"
-- `direction_type`: "Forward" | "Backward"
-
-```xml
-<BehaviourTree>
-    <Root id="Main">
-        <Action:SetWheelDirection wheel_type="Both" direction_type="Backward"/>
-    </Root>
-</BehaviourTree>
-```
-
-### `Condition:SucceedOnAverageNearbyScan`
+#### `Condition:SucceedOnAverageNearbyScan`
 Succeeds based on the average of nearby scans.
 
-- `min_angle`: integer (range 0-360)
-- `max_angle`: integer (range 0-360)
-- `cm`: integer
-- `smallest_measure_amount_used`: integer
+- `min_angle`: (integer) Minimum angle (0-360).
+- `max_angle`: (integer) Maximum angle (0-360).
+- `cm`: (integer) Distance in centimeters.
+- `smallest_measure_amount_used`: (integer) Minimum measurements to use.
 
 ```xml
 <BehaviourTree>
@@ -350,12 +315,12 @@ Succeeds based on the average of nearby scans.
 </BehaviourTree>
 ```
 
-### `Condition:SucceedOnAnyNearbyScan`
+#### `Condition:SucceedOnAnyNearbyScan`
 Succeeds if any nearby scan meets the criteria.
 
-- `min_angle`: integer (range 0-360)
-- `max_angle`: integer (range 0-360)
-- `cm`: integer
+- `min_angle`: (integer) Minimum angle (0-360).
+- `max_angle`: (integer) Maximum angle (0-360).
+- `cm`: (integer) Distance in centimeters.
 
 ```xml
 <BehaviourTree>
@@ -365,16 +330,18 @@ Succeeds if any nearby scan meets the criteria.
 </BehaviourTree>
 ```
 
-### `Condition:SucceedOnAverageColour`
-Succeeds based on the average colour detected.
+#### `Condition:SucceedOnAverageColour`
+Succeeds based on the average color detected within a specified tolerance.
 
-- `hex_colour`: string (hexadecimal colour code)
-- `tolerance`: integer (range 0-100)
+- `hex_colour`: (string) Hexadecimal color code.
+- `tolerance`: (integer) Tolerance range (0-100).
 
 ```xml
 <BehaviourTree>
     <Root id="Main">
-        <Condition:SucceedOnAverageColour hex_colour="#FFFFFF" tolerance="10"/>
+       
+
+ <Condition:SucceedOnAverageColour hex_colour="#FFFFFF" tolerance="10"/>
     </Root>
 </BehaviourTree>
 ```
