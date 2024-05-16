@@ -1,5 +1,36 @@
 # API Documentation
 
+## Table of Contents
+
+1. [Overview](#overview)
+2. [`BehaviourTree`](#behaviourtree)
+3. [Nodes](#nodes)
+   - [`Root`](#root)
+   - [`UseRoot`](#useroot)
+4. [Composite Nodes](#composite-nodes)
+   - [`Selector`](#selector)
+   - [`Sequence`](#sequence)
+   - [`Random`](#random)
+5. [Decorator Nodes](#decorator-nodes)
+   - [`Invert`](#invert)
+   - [`Repeat`](#repeat)
+6. [Action Nodes](#action-nodes)
+   - [`Fail`](#fail)
+   - [`Succeed`](#succeed)
+   - [`Action:PauseExecution`](#actionpauseexecution)
+   - [`Action:Print`](#actionprint)
+   - [`Action:Drive`](#actiondrive)
+   - [`Action:Turn`](#actionturn)
+   - [`Action:SetAngle`](#actionsetangle)
+   - [`Action:SetSpeed`](#actionsetspeed)
+   - [`Action:SetWheelDirection`](#actionsetwheeldirection)
+7. [Condition Nodes](#condition-nodes)
+   - [`Blackboard:ChangeInteger`](#blackboardchangeinteger)
+   - [`Blackboard:IntegerCondition`](#blackboardintegercondition)
+   - [`Condition:SucceedOnAverageNearbyScan`](#conditionsucceedonaveragenearbyscan)
+   - [`Condition:SucceedOnAnyNearbyScan`](#conditionsucceedonanynearbyscan)
+   - [`Condition:SucceedOnAverageColour`](#conditionsucceedonaveragecolour)
+
 ## Overview
 This document provides detailed information about the Behavior Tree nodes and their configuration for creating complex AI behaviors.
 
@@ -45,9 +76,9 @@ Calls another `Root` node by its `id`.
 </BehaviourTree>
 ```
 
-### Composite Nodes
+## Composite Nodes
 
-#### `Selector`
+### `Selector`
 Executes each child node sequentially until one returns `SUCCESS`. If any node returns `SUCCESS`, it returns `SUCCESS`; otherwise, it returns `FAILURE`.
 
 ```xml
@@ -63,7 +94,7 @@ Executes each child node sequentially until one returns `SUCCESS`. If any node r
 <!-- Output: 1 -->
 ```
 
-#### `Sequence`
+### `Sequence`
 Executes each child node sequentially until one returns `FAILURE`. If all nodes return `SUCCESS`, it returns `SUCCESS`; otherwise, it returns `FAILURE`.
 
 ```xml
@@ -79,7 +110,7 @@ Executes each child node sequentially until one returns `FAILURE`. If all nodes 
 <!-- Output: 1, 2, 3 -->
 ```
 
-#### `Random`
+### `Random`
 Randomly selects and executes one of its child nodes.
 
 ```xml
@@ -95,9 +126,9 @@ Randomly selects and executes one of its child nodes.
 <!-- Output: Randomly 1, 2, or 3 -->
 ```
 
-### Decorator Nodes
+## Decorator Nodes
 
-#### `Invert`
+### `Invert`
 Inverts the result of its child node.
 
 - `SUCCESS` becomes `FAILURE`
@@ -115,7 +146,7 @@ Inverts the result of its child node.
 <!-- Returns: FAILURE -->
 ```
 
-#### `Repeat`
+### `Repeat`
 Repeats execution of its child node a specified number of times, with an option to stop on failure.
 
 - `count`: (integer) Number of repetitions.
@@ -132,9 +163,9 @@ Repeats execution of its child node a specified number of times, with an option 
 <!-- Output: Hello World, Hello World, Hello World -->
 ```
 
-### Action Nodes
+## Action Nodes
 
-#### `Fail`
+### `Fail`
 Immediately returns `FAILURE`.
 
 ```xml
@@ -146,7 +177,7 @@ Immediately returns `FAILURE`.
 <!-- Returns: FAILURE -->
 ```
 
-#### `Succeed`
+### `Succeed`
 Immediately returns `SUCCESS`.
 
 ```xml
@@ -158,7 +189,7 @@ Immediately returns `SUCCESS`.
 <!-- Returns: SUCCESS -->
 ```
 
-#### `Action:PauseExecution`
+### `Action:PauseExecution`
 Pauses execution for a specified number of milliseconds.
 
 - `ms`: (integer) Duration in milliseconds.
@@ -175,7 +206,7 @@ Pauses execution for a specified number of milliseconds.
 <!-- Output after 1 second: Success -->
 ```
 
-#### `Action:Print`
+### `Action:Print`
 Prints specified text to the console.
 
 - `text`: (string) The text to print.
@@ -189,7 +220,7 @@ Prints specified text to the console.
 <!-- Output: Hello World -->
 ```
 
-#### `Action:Drive`
+### `Action:Drive`
 Controls driving actions with speed and direction.
 
 - `speed`: (integer) Speed value (0-100).
@@ -203,7 +234,7 @@ Controls driving actions with speed and direction.
 </BehaviourTree>
 ```
 
-#### `Action:Turn`
+### `Action:Turn`
 Controls turning actions with a specified angle.
 
 - `angle`: (integer) Angle value (0-180).
@@ -216,7 +247,7 @@ Controls turning actions with a specified angle.
 </BehaviourTree>
 ```
 
-#### `Action:SetAngle`
+### `Action:SetAngle`
 Sets the angle for a specified servo.
 
 - `servo_type`: (string) "FrontWheels", "CameraServo1", "CameraServo2".
@@ -230,7 +261,7 @@ Sets the angle for a specified servo.
 </BehaviourTree>
 ```
 
-#### `Action:SetSpeed`
+### `Action:SetSpeed`
 Sets the speed for specified wheels.
 
 - `wheel_type`: (string) "Left", "Right", "Both".
@@ -244,7 +275,7 @@ Sets the speed for specified wheels.
 </BehaviourTree>
 ```
 
-#### `Action:SetWheelDirection`
+### `Action:SetWheelDirection`
 Sets the direction for specified wheels.
 
 - `wheel_type`: (string) "Left", "Right", "Both".
@@ -258,9 +289,9 @@ Sets the direction for specified wheels.
 </BehaviourTree>
 ```
 
-### Condition Nodes
+## Condition Nodes
 
-#### `Blackboard:ChangeInteger`
+### `Blackboard:ChangeInteger`
 Modifies an integer variable in the blackboard.
 
 - `variable_name`: (string) Name of the variable.
@@ -280,7 +311,7 @@ Modifies an integer variable in the blackboard.
 <!-- 'test' = 42 -> 43 -> 3 -->
 ```
 
-#### `Blackboard:IntegerCondition`
+### `Blackboard:IntegerCondition`
 Evaluates a condition on an integer variable in the blackboard.
 
 - `variable_name`: (string) Name of the variable.
@@ -293,19 +324,21 @@ Evaluates a condition on an integer variable in the blackboard.
         <Sequence>
             <Blackboard:ChangeInteger variable_name="test" value="42" integer_change_type="Set"/>
             <Blackboard:IntegerCondition variable_name="test" value="42" condition_operator_type="="/>
-        </Sequence>
+       
+
+ </Sequence>
     </Root>
 </BehaviourTree>
-<!-- 'test' == 42 -> SUCCESS -->
+<!-- Returns: SUCCESS (test == 42) -->
 ```
 
-#### `Condition:SucceedOnAverageNearbyScan`
+### `Condition:SucceedOnAverageNearbyScan`
 Succeeds based on the average of nearby scans.
 
 - `min_angle`: (integer) Minimum angle (0-360).
 - `max_angle`: (integer) Maximum angle (0-360).
 - `cm`: (integer) Distance in centimeters.
-- `smallest_measure_amount_used`: (integer) Minimum measurements to use.
+- `smallest_measure_amount_used`: (integer) Number of measurements to use.
 
 ```xml
 <BehaviourTree>
@@ -315,7 +348,7 @@ Succeeds based on the average of nearby scans.
 </BehaviourTree>
 ```
 
-#### `Condition:SucceedOnAnyNearbyScan`
+### `Condition:SucceedOnAnyNearbyScan`
 Succeeds if any nearby scan meets the criteria.
 
 - `min_angle`: (integer) Minimum angle (0-360).
@@ -330,18 +363,16 @@ Succeeds if any nearby scan meets the criteria.
 </BehaviourTree>
 ```
 
-#### `Condition:SucceedOnAverageColour`
-Succeeds based on the average color detected within a specified tolerance.
+### `Condition:SucceedOnAverageColour`
+Succeeds based on the average color detected.
 
 - `hex_colour`: (string) Hexadecimal color code.
-- `tolerance`: (integer) Tolerance range (0-100).
+- `tolerance`: (integer) Tolerance level (0-100).
 
 ```xml
 <BehaviourTree>
     <Root id="Main">
-       
-
- <Condition:SucceedOnAverageColour hex_colour="#FFFFFF" tolerance="10"/>
+        <Condition:SucceedOnAverageColour hex_colour="#FFFFFF" tolerance="10"/>
     </Root>
 </BehaviourTree>
 ```
