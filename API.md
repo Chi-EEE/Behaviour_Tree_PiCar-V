@@ -324,9 +324,7 @@ Evaluates a condition on an integer variable in the blackboard.
         <Sequence>
             <Blackboard:ChangeInteger variable_name="test" value="42" integer_change_type="Set"/>
             <Blackboard:IntegerCondition variable_name="test" value="42" condition_operator_type="="/>
-       
-
- </Sequence>
+        </Sequence>
     </Root>
 </BehaviourTree>
 <!-- Returns: SUCCESS (test == 42) -->
